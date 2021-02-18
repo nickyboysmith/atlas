@@ -1,0 +1,65 @@
+﻿<div id="trainerDashboard" class="trainerDashboard" ng-controller="TrainerDashboardCtrl">
+    <div class="row">
+
+        
+        <div class="trainer-home-container">
+
+            <div class="row marginBottom10">
+                
+                <div class="col-sm-1">
+                    <div class="OtherInformation"></div>
+                    <!--<div class="OtherInformation"
+                         uib-tooltip="Email:{{systemTrainerInformation.DisplayedMessage}}, Phone:{{systemTrainerInformation.AdminContactPhoneNumber}}"
+                         tooltip-placement="right"></div>-->
+                </div>
+                <div class="col-sm-5 SystemTrainerInformationBox">
+                    <!--<textarea ng-model="systemTrainerInformation.Content" readonly
+                              class="system-trainer-info form-control"></textarea>-->
+                    <!--{{systemTrainerInformation.DisplayedMessage}}--> 
+                    If you have any <b>System Issues</b> please contact IAM RoadSmart on :
+                    <br />
+                    <br />
+                    Telephone - {{systemTrainerInformation.AdminContactPhoneNumber}} 
+                    <br />
+                    Email - <a href="mailto:{{systemTrainerInformation.AdminContactEmailAddress}}">{{systemTrainerInformation.AdminContactEmailAddress}}</a> 
+                </div>
+                <div class="col-sm-5 SystemTrainerInformationBox" ng-show="systemTrainerInformation.OrganisationAdminContactPhoneNumber != null && systemTrainerInformation.OrganisationAdminContactEmailAddress != null">
+                    <!--{{systemTrainerInformation.OrganisationDisplayedMessage}}-->
+                    For any <b>Course Booking</b> queries please contact {{systemTrainerInformation.OrganisationName}} on :
+                    <br />
+                    <br />
+                    Telephone - {{systemTrainerInformation.OrganisationAdminContactPhoneNumber}}
+                    <br />
+                    Email - <a href="mailto:{{systemTrainerInformation.OrganisationAdminContactEmailAddress}}">{{systemTrainerInformation.OrganisationAdminContactEmailAddress}}</a>
+                </div>
+                <div class="col-sm-1"></div>
+             </div>
+        </div>
+
+        <div>
+            <div class="col-sm-4 trainer-home-inner-container">
+
+                <label class="control-label">Booked Courses:</label>
+
+                <div class="sml-scroll-div">
+                    <table class="table table-hover table-bordered">
+                        <!--<thead></thead>
+                <tr class="bootstrap-dialog-header tableHeader">
+                    <th class="tableHeader">Booked Courses</th>
+                </tr>-->
+                        <tbody>
+                            <tr ng-repeat="bookedCourse in bookedCourses">
+                                <td title="Venue: {{bookedCourse.VenueTitle}} ; Bookings: {{bookedCourse.NumberOfBookedClients}}"
+                                    value="{{bookedCourse.Id}}">
+                                    {{bookedCourse.StartDate | date:'dd MMM yyyy'}} ; {{bookedCourse.CourseTypeCategory}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table><!-- Close Table-->
+                </div>
+
+            </div>
+            <div class="col-sm-8"></div>
+        </div>
+    </div>
+</div>

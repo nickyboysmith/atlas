@@ -1,0 +1,230 @@
+﻿<div id="emailAllTrainers" class="emailAllTrainers container">
+
+    <!--<div class="Title row">
+        <h2></h2>
+    </div>-->
+
+    <form class="form-horizontal row" role="form">
+
+        <div class="row">
+            <div class="col-sm-8">
+                <div class='row'>
+                    <div class='col-sm-3'>
+                        <label>Course:</label>
+                    </div>
+                    <div class='col-sm-9'>
+                        {{course.courseType.Title}} <label>{{course.courseDateStart}}</label> Reference:  <label>{{course.courseReference}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class='row'>
+                    <div class='col-sm-3'>
+                        <label>Email Address:</label>
+                    </div>
+                    <div class='col-sm-9'>
+                        <label>To All Trainers Email Addresses</label>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-3'></div>
+                    <div class='col-sm-9'>
+                        <input type="checkbox" ng-model="trainerEmail.SeparateEmails" ng-click="toggleEmailChoice('Separate')" />
+                        <label>Separate Emails</label>
+                    </div>
+                </div>
+
+                <div class='row'>
+                    <div class='col-sm-3'></div>
+                    <div class='col-sm-9'>
+                        <input type="checkbox" ng-model="trainerEmail.OneEmailWithHiddenAddresses" ng-click="toggleEmailChoice('One')" />
+                        <label>One Email, but Hide All Email Addresses</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div ng-show="trainersWithoutEmails.length > 0" class="purpleitalic">
+                    <div ng-show="trainersWithoutEmails.length == 1">
+                        <b>You have 1 Trainer Without an Email Address</b>
+                    </div>
+                    <div ng-show="trainersWithoutEmails.length > 1">
+                        <b class="purpleitalic">You have {{ trainersWithoutEmails.length }} Trainers Without Email Addresses</b>
+                    </div>
+                    <div class="text-center purpleitalic marginBottom10">
+                        <b>Click below to view these Trainers<br /></b>
+                        <button class="btn" ng-click="openTrainersWithoutEmailsModal()">View Trainers</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class='form-group'>
+            <div class='col-sm-2'>
+                <label>CC:</label>
+            </div>
+            <div class='col-sm-8'>
+                <input type="text"
+                        class="form-control"
+                        maxlength="100"
+                        ng-model="trainerEmail.CCEmailAddresses"
+                        placeholder="CC Email Addresses" />
+            </div>
+            <div class='col-sm-2'></div>
+        </div>
+
+        <div class='form-group'>
+            <div class='col-sm-2'>
+                <label>BCC:</label>
+            </div>
+            <div class='col-sm-8'>
+                <input type="text"
+                        class="form-control"
+                        maxlength="100"
+                        ng-model="trainerEmail.BCCEmailAddresses"
+                        placeholder="BCC Email Addresses" />
+            </div>
+            <div class='col-sm-2'></div>
+        </div>
+
+        <div class='form-group'>
+            <div class='col-sm-2'>
+                <label>Subject:</label>
+            </div>
+            <div class='col-sm-8'>
+                <input type="text"
+                        class="form-control"
+                        maxlength="100"
+                        ng-model="trainerEmail.Subject"
+                        placeholder="Email Subject" />
+            </div>
+            <div class='col-sm-2'></div>
+        </div>
+
+        <div class='form-group'>
+            <div class='col-sm-2'></div>
+            <div class='col-sm-10'>
+                <label>Start Email With</label>
+            </div>
+        </div>
+
+        <div class='form-group'>
+            <div class='col-sm-2'></div>
+            <div class='col-sm-3'>
+                <input type="checkbox" ng-model="trainerEmail.StartDearNamed" ng-click="toggleEmailStart('Named')" />
+                <label>Dear &lt;Trainer Name&gt;,</label>
+            </div>
+
+            <div class='col-sm-3'>
+                <input type="checkbox" ng-model="trainerEmail.StartDearSirMadam" ng-click="toggleEmailStart('SirMadam')" />
+                <label>Dear Sir or Madam,</label>
+            </div>
+
+            <div class='col-sm-4'>
+                <input type="checkbox" ng-model="trainerEmail.StartToWhomItMayConcern" ng-click="toggleEmailStart('ToWhomItMayConcern')" />
+                <label>To Whom It May Concern,</label>
+            </div>
+        </div>
+
+        <div class='form-group'>
+            <div class='col-sm-2'>
+                <label>Email Content:</label>
+            </div>
+            <div class='col-sm-10'>
+                <textarea my-text="" ng-model="trainerEmail.Content"
+                            class="form-control textareacontent"
+                            maxlength="1000"
+                            placeholder="Email Body"></textarea>
+            </div>
+        </div>
+
+
+        <div class='form-group'>
+            <div class='col-sm-2'>
+                <label>Attachments</label>
+            </div>
+            <div class='col-sm-8'>
+                <textarea my-text="" ng-model="trainerEmail.Attachments"
+                            class="form-control textareaattachment"
+                            maxlength="1000"
+                            placeholder="<Semicolon separated Document Name>"></textarea>
+            </div>
+            <div class='col-sm-2'>
+                <button class="btn btn-default btn-sm"
+                        ng-click="AttachDocument()"
+                        title="Attach Document">
+                    Attach Document
+                </button>
+            </div>
+        </div>
+
+
+        <div class='row'>
+            <div class='col-sm-2'></div>
+            <div class='col-sm-2'>
+                <input type="checkbox" ng-model="trainerEmail.SendASAP" ng-click="toggleEmailSend('SendASAP')" />
+                <label>Send ASAP</label>
+            </div>
+            <div class='col-sm-5'>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-sm-2'></div>
+            <div class='col-sm-2'>
+                <input type="checkbox" ng-model="trainerEmail.SendAfter" ng-click="toggleEmailSend('SendAfter')" />
+                <label>Send After</label>
+            </div>
+            <div class='col-sm-1'>
+                <label>Date:</label>
+            </div>
+            <div class='col-sm-2 noRightPadding'>
+                <input type="text"
+                        class="form-control"
+                        ng-model="trainerEmail.SendAfterDate"
+                        placeholder="DD MMM YYYY" />
+            </div>
+            <div class='col-md-1 element-overflow-0'>
+                <a ng-click="toggleCalendar()" ng-show="!displayCalendar" class="calendar-button col-md-6" title="Show Calendar"><div></div></a>
+                <a ng-click="toggleCalendar()" ng-show="displayCalendar" class="calendar-button col-md-6" title="Hide Calendar"><div></div></a>
+            </div>
+            <div class='col-sm-1'>
+                <label>Time:</label>
+            </div>
+
+            <div class='col-sm-3 noLeftPadding'>
+                <select id='trainerEmailSendAfterTime'>
+                    <option ng-repeat="h_m in [] | time:0:23:30">{{h_m}}</option>
+                </select>
+            </div>
+
+            <div class='col-md-offset-2 col-md-10' ng-show="displayCalendar">
+                <date-picker ng-model="trainerEmail.SendAfterDate"
+                                format-date="formatDate"
+                                ng-mouseleave="toggleCalendar()"></date-picker>
+            </div>
+        </div>
+
+        <div class='form-group'>
+            <div class='col-sm-2'></div>
+            <div class='col-sm-10'>
+                <button class="btn btn-default btn-sm"
+                        ng-click="send()"
+                        title="Send">
+                    Send
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 success-message" ng-if="successMessage != ''">{{ successMessage }}</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 validation-message" ng-if="validationMessage != ''">{{ validationMessage }}</div>
+        </div>
+
+</form>
+</div>

@@ -1,0 +1,103 @@
+﻿<div id="systemDocumentStatistics">
+
+
+    <system-feature-information title="document statistics"
+                                controller="DocumentStatisticsCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/documents/statistics"
+                                page-name="Document Statistics"></system-feature-information>
+
+    <div id="allAtlasDocumentsStatistics" class="marginBottom10">
+        <div class="row marginBottom5"> </div>
+        <div class="row marginBottom5">
+            <div class="col-sm-6">Documents in System:</div>
+            <div class="col-sm-3">{{ documentStats.NumberOfDocuments }}</div>
+            <div class="col-sm-3">{{ GetSize(documentStats.TotalSize) }}</div>
+        </div>
+        <div class="row marginBottom5">
+            <div class="col-sm-6">Documents Added This Month:</div>
+            <div class="col-sm-3">{{ documentStats.NumberOfDocumentsThisMonth }}</div>
+            <div class="col-sm-3">{{ GetSize(documentStats.TotalSizeOfDocumentsThisMonth) }}</div>
+        </div>
+        <div class="row marginBottom5">
+            <div class="col-sm-6">Documents Added Last Month:</div>
+            <div class="col-sm-3">{{ documentStats.NumberOfDocumentsPreviousMonth }}</div>
+            <div class="col-sm-3">{{ GetSize(documentStats.TotalSizeOfDocumentsPreviousMonth) }}</div>
+        </div>
+        <div class="row marginBottom5">
+            <div class="col-sm-6">Documents Added This Year:</div>
+            <div class="col-sm-3">{{ documentStats.NumberOfDocumentsThisYear }}</div>
+            <div class="col-sm-3">{{ GetSize(documentStats.TotalSizeOfDocumentsThisYear) }}</div>
+        </div>
+        <div class="row marginBottom5">
+            <div class="col-sm-6">Documents Added 1 Year Ago:</div>
+            <div class="col-sm-3">{{ documentStats.NumberOfDocumentsPreviousYear }}</div>
+            <div class="col-sm-3">{{ GetSize(documentStats.TotalSizeOfDocumentsPreviousYear) }}</div>
+        </div>
+        <div class="row marginBottom5">
+            <div class="col-sm-6">DocumentsAdded 2 Years Ago:</div>
+            <div class="col-sm-3">{{ documentStats.NumberOfDocumentsPreviousTwoYears }}</div>
+            <div class="col-sm-3">{{ GetSize(documentStats.TotalSizeOfDocumentsPreviousTwoYears) }}</div>
+        </div>
+        <div class="row marginBottom5">
+            <div class="col-sm-6">DocumentsAdded 3 Years Ago:</div>
+            <div class="col-sm-3">{{ documentStats.NumberOfDocumentsPreviousThreeYears }}</div>
+            <div class="col-sm-3">{{ GetSize(documentStats.TotalSizeOfDocumentsPreviousThreeYears) }}</div>
+        </div>
+    </div>
+    <div id="OrganisationDocumentsStatistics">
+        <!--Organisation-->
+        <div class='row form-line-separator marginBottom10' ng-show="isAdmin">
+            <div class="col-sm-3">
+                <label>Organisation:</label>
+            </div>
+            <div class='col-sm-9'>
+                <select ng-init="getSelectedOrganisationId()"
+                        ng-change="getOrganisationStatistics(selectedOrganisationId)"
+                        ng-model="selectedOrganisationId" class='col-sm-12 form-control'>
+                    <option value="0">Organisation</option>
+                    <option ng-repeat="organisation in organisations" value="{{organisation.id}}">{{organisation.name}}</option>
+                </select>
+            </div>
+        </div>
+        <!-- Organisation Document Statistics -->
+        <div class="row marginBottom5">
+            <div class="col-sm-6">Documents in System:</div>
+            <div class="col-sm-3">{{ organisationDocumentStats.NumberOfDocuments }}</div>
+            <div class="col-sm-3">{{ GetSize(organisationDocumentStats.TotalSize) }}</div>
+        </div>
+        <div class="row marginBottom5">
+            <div class="col-sm-6">Documents Added This Month:</div>
+            <div class="col-sm-3">{{ organisationDocumentStats.NumberOfDocumentsThisMonth }}</div>
+            <div class="col-sm-3">{{ GetSize(organisationDocumentStats.TotalSizeOfDocumentsThisMonth) }}</div>
+        </div>
+        <div class="row marginBottom5">
+            <div class="col-sm-6">Documents Added Last Month:</div>
+            <div class="col-sm-3">{{ organisationDocumentStats.NumberOfDocumentsPreviousMonth }}</div>
+            <div class="col-sm-3">{{ GetSize(organisationDocumentStats.TotalSizeOfDocumentsPreviousMonth) }}</div>
+        </div>
+        <div class="row marginBottom5">
+            <div class="col-sm-6">Documents Added This Year:</div>
+            <div class="col-sm-3">{{ organisationDocumentStats.NumberOfDocumentsThisYear }}</div>
+            <div class="col-sm-3">{{ GetSize(organisationDocumentStats.TotalSizeOfDocumentsThisYear) }}</div>
+        </div>
+        <div class="row marginBottom5">
+            <div class="col-sm-6">Documents Added 1 Year Ago:</div>
+            <div class="col-sm-3">{{ organisationDocumentStats.NumberOfDocumentsPreviousYear }}</div>
+            <div class="col-sm-3">{{ GetSize(organisationDocumentStats.TotalSizeOfDocumentsPreviousYear) }}</div>
+        </div>
+        <div class="row marginBottom5">
+            <div class="col-sm-6">DocumentsAdded 2 Years Ago:</div>
+            <div class="col-sm-3">{{ organisationDocumentStats.NumberOfDocumentsPreviousTwoYears }}</div>
+            <div class="col-sm-3">{{ GetSize(organisationDocumentStats.TotalSizeOfDocumentsPreviousTwoYears) }}</div>
+        </div>
+        <div class="row marginBottom5">
+            <div class="col-sm-6">DocumentsAdded 3 Years Ago:</div>
+            <div class="col-sm-3">{{ organisationDocumentStats.NumberOfDocumentsPreviousThreeYears }}</div>
+            <div class="col-sm-3">{{ GetSize(organisationDocumentStats.TotalSizeOfDocumentsPreviousThreeYears) }}</div>
+        </div>
+    </div>
+    <div class="text-right">
+        <button class="btn" ng-click="manageDocuments()">Manage Documents</button>
+    </div>
+</div>

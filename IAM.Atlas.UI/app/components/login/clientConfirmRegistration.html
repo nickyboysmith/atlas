@@ -1,0 +1,114 @@
+﻿<div id="clientConfirmRegistration" class="registration-process">
+
+    <div class="row section-container">
+
+        <div id="road-smart-pre"></div>
+        <div id="road-smart-branding-triangle-ish-thingy"></div>
+        <div id="road-smart-branding-container">
+            <img class="position-road-smart-logo"
+                 src="/app_assets/images/iamroad_smart_logo_atlas.png" alt="" />
+        </div>
+        <div class="col-xs-12  col-sm-4">
+            <div class="company-logo"></div>
+        </div>
+        <div class="col-xs-12  col-sm-8">
+            <div class="main-title add-margin-to-title"><span>{{ system.OrganisationName }}</span></div>
+            <div class="main-subtitle"><span>{{ system.AppName }}</span></div>
+        </div>
+    </div>
+
+    <div class="row section-container title-container">
+        <div class="col-xs-12">
+            <p class="top-text">
+                You are in the process of booking a <span>{{ confirmationDetails.DORSCourse }}</span> program.
+                Before selecting your course date you must complete the registration.
+            </p>
+        </div>
+    </div><!-- end .row .section-container title-container -->
+
+    <div class="row section-container title-container">
+        <div class="col-xs-8">
+            <div class="main-title">Confirm Registration</div>
+        </div>
+        <div class="col-xs-4">
+            <div class="btn pull-right" ng-click="previousStep()">Back</div>
+        </div>
+    </div><!-- end .row .section-container title-container -->
+
+    <div class="row section-container remove-40margin-replace-10margin">
+        <div class="col-xs-12">
+            <div class="main-page-title">
+                <span>Welcome {{ confirmationDetails.DisplayName }},</span>
+            </div><!-- end .main-page-title -->
+        </div><!-- end .col-xs-12 -->
+        <div class="col-xs-12">
+            <p>
+                You have been offered the opportunity of attending a {{ confirmationDetails.DORSCourse }}.
+                Please continue to complete this course registration process.
+            </p>
+        </div><!-- end .col-xs-12 -->
+
+        <div class="col-xs-12 text-separation">
+            <div class="main-page-title">
+                Before you can proceed, for legal purposes, you must confirm the following:
+            </div><!-- end .main-page-title -->
+        </div><!-- end .col-xs-12 -->
+
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-1">
+                    <input type="checkbox" ng-model="confirmation.ConfirmedName" />
+                </div><!-- end .col-xs-2 -->
+                <div class="col-xs-10">
+                    <p>I confirm that I am {{ confirmationDetails.DisplayName }}</p>
+                </div><!-- end .col-xs-10 -->
+            </div><!-- end .row -->
+            <div class="row">
+                <div class="col-xs-1">
+                    <input type="checkbox" ng-model="confirmation.ConfirmedCourseAttendance" />
+                </div><!-- end .col-xs-2 -->
+                <div class="col-xs-10">
+                    <p>I confirm that I wish to attend a {{ confirmationDetails.DORSCourse }}</p>
+                </div><!-- end .col-xs-10 -->
+            </div><!-- end .row -->
+            <div class="row">
+                <div class="col-xs-1">
+                    <input type="checkbox" ng-model="confirmation.ConfirmedWillPayCourseSupplier" />
+                </div><!-- end .col-xs-2 -->
+                <div class="col-xs-10">
+                    <p>
+                        I agree to pay the Course Fee as a condition of this offer.
+                        This will be paid to the course organiser on acceptance of a course date.
+                    </p>
+                </div><!-- end .col-xs-10 -->
+            </div><!-- end .row -->
+            
+            <div class="row">
+                <div class="col-xs-1"></div>
+                <div class="row col-sm-10">
+                    <span class="validation-message">{{ validationMessage }}</span>
+                </div>
+            </div>
+        
+            </div><!-- end .col-xs-12 -->
+
+        <div class="col-xs-12 text-separation-40">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="btn pull-left" ng-click="restartProcess()">Cancel</div>
+                </div><!-- end .col-xs-7 -->
+                <div class="col-xs-8 text-right">
+                    <button class="btn" ng-click="previousStep()">Back</button>
+                    &nbsp;
+                    <button class="btn" ng-click="save()">Save and Continue</button>
+                </div><!-- end .col-xs-5 -->
+            </div><!-- end .row -->
+        </div><!-- end .col-xs-12 -->
+
+    </div><!-- end .row .section-container remove-40margin-replace-10margin -->
+
+</div>
+
+
+
+

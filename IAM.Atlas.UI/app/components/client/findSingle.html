@@ -1,0 +1,102 @@
+﻿<div id="findSingleClient">
+
+    <div class="row form-line-separator-20">
+        <div class="col-sm-3">
+            <label>Client</label>
+        </div><!-- end .col-sm-3 -->
+        <div class="col-sm-9">
+            <input 
+                   placeholder="Start typing.."
+                   class="form-control"
+                   type="text"
+                   id="quickTypeClient"
+                   ng-model="selectedClient"
+                   typeahead-min-length="3"
+                   typeahead-on-select="selectedItem($item)"
+                   typeahead-no-results="noResults"
+                   typeahead-loading="loadingLocations"
+                   uib-typeahead="item as item.DisplayContent for item in getSearchableItems($viewValue) | limitTo:15" />
+            <div ng-show="loadingLocations" class="set-white">
+                <i class="glyphicon glyphicon-refresh"></i> Loading results
+            </div>
+            <div ng-show="noResults" class="set-red">
+                <i class="glyphicon glyphicon-remove"></i> No Results Found
+            </div>
+        </div><!-- end .col-sm-9 -->
+    </div>
+
+    <div id="additionalClientContainer" style="display:none;">
+
+        <div class="row form-line-separator">
+            <div class="col-sm-3">
+                <label>Address</label>
+            </div><!-- end .col-sm-3 -->
+            <div class="col-sm-9">
+                <div class="address-holder address-padder">
+                    {{ clientAddress.Address }}
+                    <div>{{ clientAddress.PostCode }}</div>
+                </div>
+            </div><!-- end .col-sm-3 -->
+        </div><!-- end .row -->
+
+        <div class="row form-line-separator-20">
+            <div class="col-sm-3">
+                <label>Outstanding</label>
+            </div><!-- end .col-sm-3 -->
+            <div class="col-sm-6">
+                <input 
+                       type="text"
+                       class="form-control"
+                       ng-disabled="true"
+                       value="{{ totalPaymentAmount }}"
+                       placeholder="£0.00" />
+            </div><!-- end .col-sm-3 -->
+            <div class="col-sm-3"></div>
+        </div><!-- end .row -->
+
+        <div id="coursesAvailableContainer" style="display:none;">
+
+            <div class="row form-line-separator">
+                <div class="col-sm-3"></div><!-- end .col-sm-3 -->
+                <div class="col-sm-9">
+                    <p>Tick a course/(s) that relate to this payment</p>
+                </div><!-- end .col-sm-9 -->
+            </div><!-- end .row -->
+
+            <div class="row form-line-separator-20">
+                <div class="col-sm-3"></div><!-- end .col-sm-3 -->
+                <div class="col-sm-9">
+                    <ul class="address-holder course-container">
+                        <li ng-repeat="course in relatedCourses">
+                            <div class="check-box-container">
+                                <input class="checkbox-spacer"
+                                       type="checkbox"
+                                       checklist-model="selectedCourses.client"
+                                       checklist-value="course" />
+                            </div>
+                            <div class="course-label-container">
+                                <label class="checkbox-label">
+                                    {{ course.CourseType }}
+                                    ({{ course.CourseTypeCategory }}) -
+                                    {{ convertDateForDisplay(course.StartDate) }}
+                                </label>
+                            </div>
+
+
+                        </li>
+                    </ul>
+                </div><!-- end .col-sm-9 -->
+            </div><!-- end .row -->
+        </div><!-- end #coursesAvailableContainer -->
+
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-8">
+                <div 
+                     class="assign-client-course btn"
+                     ng-click="assignClientToPayment()">Assign to Payment</div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,323 @@
+
+
+
+body.print { 
+	background: white; 
+	font-size: 8pt; 
+	color: black;
+	margin: 0;
+	padding: 0;
+    clear: both;
+    overflow: auto;
+    min-height: 100%;
+    height: auto;
+
+	div{
+		margin: 0;
+		padding: 0;
+	}
+
+    div.reportOutput{
+		position: relative;
+        overflow: hidden;
+		background: #c4c4c4;
+	    /*div.reportContent{
+		    background: #c4c4c4;
+            clear: both;
+            overflow: auto;
+            height: auto;
+	    }*/   
+        div.EmaptyLeftPanel{
+            max-width: 5%;
+            height: 100%;
+            overflow: hidden;
+            background-color: transparent;
+            float:left;
+        }
+		table.reportDataTable{
+            float:left;
+			position: relative;
+		    page-break-after: always;
+		    background: white; 
+		    font-family: "Times New Roman", Times, serif !important;
+		    font-size: 8pt !important; 
+		    color: black;
+			right: 0;
+			left: 0;
+			span{
+				text-align:left;
+				font-weight: normal;
+				padding-left: 2px;
+			}
+			span.Date{
+				text-align:center;
+			}
+			span.String{
+				text-align:left;
+			}
+			span.Number{
+				text-align:right;
+			}
+			thead{
+				font-weight: bold;
+				border: 1px solid transparent;
+				border-bottom-color: #c4c4c4;
+
+				span.reportDataItemHeader{
+					font-weight: bold;
+				}
+			}
+			tbody{
+				font-weight: normal;
+				
+				span.reportDataItemHeader{}
+
+				span.Summary{
+					font-weight: bold;
+				}
+
+                tr.AtlasReportDataRow{
+                    background-color: transparent;
+                }
+                tr.AtlasReportDataRow:hover{
+                    background-color: rgba(224, 255, 255, 0.49);
+                    font-weight: bold;
+                }
+			}
+			tfoot{
+                margin: 0;
+                margin-top: 5mm;
+				border: 1px solid transparent;
+				border-bottom-color: #c4c4c4;
+			}
+				
+			tr.reportHeader{
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				padding-top: 4px;
+				padding-bottom: 4px;
+				margin-bottom: 4px;
+		
+                th {
+				    .reportTitle, .reportTitle span{
+					    font-weight: bold;
+					    font-size: 16pt !important; 
+					    margin: 0;
+					    padding: 0;
+					    padding-bottom: 2px;
+					    text-align: center;
+				    }
+
+				    .reportSubTitleAndDate{
+					    padding: 0;
+					    padding-top: 2px;
+					    padding-bottom: 2px;
+                        width: 100% !important;
+                        height: 100% !important;
+                        overflow: hidden;
+					    .reportSubTitle{
+                            float: left;
+                            width: 85% !important;
+                            height: 100% !important;
+                            min-height: 100% !important;
+						    font-weight: bold;
+						    font-size: 8pt !important; 
+						    margin: 0;
+						    padding: 0;
+						    padding-bottom: 2px;
+                            padding-left: 15%;
+						    text-align: center;
+
+                            span{                                
+                                width: 100% !important;
+                                height: 100% !important;
+                            }
+					    }
+					    .reportDate{
+                            width: 15% !important;
+                            float: right;
+                            height: 100% !important;
+                            min-height: 100% !important;
+						    font-size: 6pt !important; 
+						    margin: 0;
+						    padding: 0;
+						    padding-bottom: 2px;
+						    text-align: right;
+						    .reportDateLabel{
+							    text-align: right;
+                                height: 100% !important;
+                                min-height: 100% !important;
+							    float: left;
+						    }
+						    .reportDateData{
+							    text-align: left;
+                                height: 100% !important;
+                                min-height: 100% !important;
+							    float: left;
+						    }
+					    }
+
+				    }
+
+                }
+			}
+				
+			.reportFooter{
+				border: 1px solid transparent;
+				border-top-color: #c4c4c4;
+				margin: 0;
+				margin-top: 4px;
+				margin-bottom: 2px;
+				padding: 0;
+				padding-top: 4px;
+				width: 100%;
+				.reportIdentityAndLogo{
+					padding-left: 3px;
+					.reportLogo{
+						float:left;
+						margin: 0;
+						margin-left: 3px;
+						background: url(/app_assets/images/atlaslogo.png) no-repeat;
+						background-size: 100%;
+						width: 10px;
+						height: 10px;
+					}
+					.reportIdentity{
+						float:left;
+						margin: 0;
+						margin-left: 3px;
+						font-size: 6pt; 
+					}
+				}
+			}
+			.reportFooterPage{
+				padding-right: 3px;
+				span{
+					float:right;
+					margin: 0;
+					margin-left: 3px;
+					font-size: 6pt; 
+				}
+			}
+		}
+        table.reportDataTable.A4Portrait{
+		    width:3508px; /*210mm;*/
+		    width:210mm !important;
+		    padding: 0; /*used for print margins*/
+
+        }
+        table.reportDataTable.A4Landscape{
+            /*****TO DO SET Landscape settings*/
+		    width:3508px; /*210mm;*/
+		    width:297mm !important;
+		    padding: 0; /*used for print margins*/
+            /*-webkit-transform: rotate(-90deg); 
+            -moz-transform:rotate(-90deg);
+            filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);*/
+        }
+    }
+
+	div.no-print{
+		background-color: #c4c4c4;
+		width: 100%;
+		height: auto;
+		min-height: 50px;
+		text-align:right;
+		border: 1px groove transparent;
+		padding: 0;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-left: 10px;
+		padding-right: 40px;
+
+		div.reportFrameLogo{
+			float: left;
+			margin: 0;
+			margin-left: 5px;
+			background: url(/app_assets/images/atlaslogo.png) no-repeat;
+			background-size: 100%;
+			width: 20px;
+			height: 20px;
+		}
+		div.reportFrameCaption{
+			float: left;
+			font-size: 12px;
+			font-weight: bolder;
+			padding-left: 3px;
+			color:#fff;
+
+            .AdditionalInfo{
+                color: blue;
+                font-weight: bold;
+                font-size: 14px;
+            }
+
+            .WarningInfo{
+                color: #404040;
+                font-weight: bold;
+                font-size: 12px;
+                font-style: italic;
+                margin-left: 50px;
+            }
+
+            #dialogPrintInfo{
+                color:black;
+
+                span{
+                    padding: 0;
+                    padding-bottom: 4px;
+                    padding-left: 3px;
+                    width: 100%
+                }
+
+                .PageSetup{                    
+                    width: 829px;
+                    height: 416px;
+                    background-color: transparent;
+			        background: url(/app_assets/images/print/page_setup.png) no-repeat;
+                    background-size: 100%;
+                    border: none;
+                }
+            }
+		}
+        
+        div.PrintInfo{
+            float: left;
+            width: 40px;
+            height: 40px;
+            background-color: transparent;
+			background: url(/app_assets/images/print/print_info.png) no-repeat;
+            background-size: 100%;
+            cursor: pointer;
+            margin: 0;
+            margin-top: -5px;
+            margin-left: 10px;
+        }
+
+		input{
+			float: right;
+		}
+	}
+	div.no-print.header {
+		border-top-color: transparent;
+		border-bottom-color: #d8c5c5;
+	}
+	div.no-print.footer {
+		border-top-color: #d8c5c5;
+		border-bottom-color: transparent;
+	}
+	div.no-print input.btn {
+		margin-left: 10px;
+	}
+
+
+
+}
+
+
+@media print 
+{
+  a[href]:after { content: none !important; }
+  img[src]:after { content: none !important; }
+}

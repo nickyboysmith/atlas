@@ -1,0 +1,296 @@
+
+.AddClient {
+    width: 850px;
+    height: auto;
+    overflow: visible;
+
+    /* IE puts a stupid cross to clear input boxes that Angular can't handle and the model is not updated
+       So best solution is to remove this crazy cross */
+    input::-ms-clear {
+        display: none;
+    }
+
+    #DORSDataDiv{
+        border: 1px solid #c7c7c7;
+        background-color:#f2f2f2;
+
+        .angular-date-picker{
+            z-index:2000 !important;
+        }
+    }
+    #DORSDataDiv.Editable{
+        background-color:rgba(242, 242, 242, 0.25);
+    }
+
+    .confirmation-button-float-right {
+        float: right;
+        width: 100%;
+    }
+
+    .line-holder {
+        height: auto;
+        overflow: hidden;
+    }
+    .confirmation-container {
+        padding-top: 4px;
+        .checkbox-confirm-container {
+            float:left;
+            margin-right: 6px;
+        }
+        .text-container {
+             float:left;
+             width: auto; 
+        }
+    }
+
+    .AddFavourite
+    {
+        position: absolute;
+        top: 0;
+        right: 20px;
+    }
+    form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+        .row {
+            margin-bottom:5px;
+        }
+
+        .control-button {
+            margin-left: -25px;
+        }
+
+        .control-label {
+            display: block;
+            white-space: nowrap;
+            padding: 0;
+            text-align: left;
+        }
+    } 
+}
+
+
+
+.EditClient {
+    width: 850px;
+    height: auto;
+    overflow: visible;
+
+    /* IE puts a stupid cross to clear input boxes that Angular can't handle and the model is not updated
+       So best solution is to remove this crazy cross*/
+    input::-ms-clear {
+        display: none;
+    }
+
+    #DORSDataDiv{
+        border: 1px solid #c7c7c7;
+        background-color:#f2f2f2;
+
+        .angular-date-picker{
+            z-index:2000 !important;
+        }
+    }
+
+    .confirmation-button-float-right {
+        float: right;
+        width: 100%;
+    }
+
+    .line-holder {
+        height: auto;
+        overflow: hidden;
+    }
+    .confirmation-container {
+        padding-top: 4px;
+        .checkbox-confirm-container {
+            float:left;
+            margin-right: 6px;
+        }
+        .text-container {
+             float:left;
+             width: auto;
+        }
+    }
+
+    .AddFavourite
+    {
+        position: absolute;
+        top: 0;
+        right: 20px;
+    }
+    form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+        .row {
+            margin-bottom:5px;
+        }
+
+        .control-button {
+            margin-left: -25px;
+        }
+
+        .control-label {
+            display: block;
+            white-space: nowrap;
+            padding: 0;
+            text-align: left;
+        }
+    } 
+}
+
+
+.RegisterClient {
+    max-width: 650px;
+    width: auto;
+    height: auto;
+    overflow: visible;
+
+    #DORSDataDiv{
+        border: 1px solid #c7c7c7;
+        background-color:#f2f2f2;
+
+        .angular-date-picker{
+            z-index:2000 !important;
+        }
+    }
+
+    .confirmation-button-float-right {
+        float: right;
+        width: 100%;
+    }
+
+    .line-holder {
+        height: auto;
+        overflow: hidden;
+    }
+    .confirmation-container {
+        padding-top: 4px;
+        .checkbox-confirm-container {
+            float:left;
+            margin-right: 6px;
+        }
+        .text-container {
+             float:left;
+             width: auto;
+        }
+    }
+
+    .AddFavourite
+    {
+        position: absolute;
+        top: 0;
+        right: 20px;
+    }
+    form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+        .row {
+            display: inline-block;
+        }
+
+        .control-button {
+            margin-left: -25px;
+        }
+
+        .control-label {
+            display: block;
+            white-space: nowrap;
+            padding: 0;
+            text-align: left;
+        }
+    } 
+}
+
+
+.ClientDetails{
+    .Title{
+        vertical-align: top;
+        padding-left: 0;        
+        h2{
+            margin-top: 2px;
+            padding-left: 0;       
+            vertical-align: top;
+        }
+        h3{
+            margin-top: 4px;
+            padding-left: 0;     
+            vertical-align: middle; 
+        }
+    }
+
+    .ClientStatusPanel{
+        padding: 4px;
+        background-color: #fffed3;
+    }
+
+    div.DorsInfo{
+        padding: 2px;
+        border-bottom: 1px dotted #f3ecec;
+        color: black;
+        font-family:'Times New Roman', Times, serif;
+        font-size: 10px;
+        .label{
+            color: black;
+            font-size: 12px;
+            font-weight: normal;
+        }
+        .data{
+            font-style:italic;
+            font-weight: bold;
+        }
+    }
+    .add-licence-margin {
+        margin-bottom: 5px;
+    }
+    .reduced-text-size {
+        font-size: 13px;
+    }
+    #clientDocumentContainer {    }
+    .TopButtons {
+        margin-left: -5px;
+        padding-left: 0;
+        padding-right: 0;
+        button {
+            margin-right: 0;
+        }
+        button.last {
+            margin-right: 0;
+            padding-left: 0;
+            padding-right: 0;    
+        }
+    }
+
+    .details
+    {
+        textarea{
+            border: none;
+        }   
+    }
+    .top-button-container-10 {
+        margin-top: 10px;
+    }
+    .top-button-container-20 {
+        margin-top: 20px;
+    }
+    .bottom-button-container-20 {
+        margin-bottom: 20px;
+    }
+    .extended-button {
+        width: 100%;
+    }
+}
+
+#clientGridHolder {
+    
+}
+
+.courseView:hover {
+    text-decoration: underline;
+    padding: 0px;
+}

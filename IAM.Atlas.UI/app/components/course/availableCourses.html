@@ -1,0 +1,136 @@
+﻿<div id="availableCoursesDiv">
+    <div class="row marginBottom5">
+        <div class="col-sm-2">
+            Type:
+        </div>
+        <div class="col-sm-10">
+            <select ng-model="selectedCourseTypeId" class='form-control' ng-init="initSelectedCourseTypeId()" ng-change="typeChange(selectedCourseTypeId)">
+                <option value="-1">Show all</option>
+                <option ng-repeat="courseType in courseTypes" ng-selected="selectedCourseTypeId == courseType.Id" value="{{courseType.Id}}">{{courseType.Title}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-2">
+            Region:
+        </div>
+        <div class="col-sm-10">
+            <select ng-model="selectedRegionId" class='form-control' ng-init="initSelectedCourseTypeId()" ng-change="regionChange(selectedRegionId)">
+                <option value="-1">Show all</option>
+                <option ng-repeat="region in regions" ng-selected="selectedRegionId == region.id" value="{{region.id}}">{{region.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-2">
+            Venue:
+        </div>
+        <div class="col-sm-10">
+            <select ng-model="selectedVenueId" class='form-control' ng-init="initSelectedCourseTypeId()" ng-change="venueChange(selectedVenueId)">
+                <option value="-1">Show all</option>
+                <option ng-repeat="venue in venues" ng-selected="selectedVenueId == venue.Id" value="{{venue.Id}}">{{venue.Title}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row marginBottom10">
+        <div class="col-sm-2">
+            &nbsp;
+        </div>
+        <div class="col-sm-10">
+            <input name="availableCoursesFilter" type="radio" ng-model="availableCoursesFilter" ng-value="1" ng-change="interpreterRadioChange(availableCoursesFilter)" />
+            <label>Show All</label><br />
+            <input name="availableCoursesFilter" type="radio" ng-model="availableCoursesFilter" ng-value="2" ng-change="interpreterRadioChange(availableCoursesFilter)" />
+            <label>Show Courses with Interpreter Available</label><br />
+            <input name="availableCoursesFilter" type="radio" ng-model="availableCoursesFilter" ng-value="3" ng-change="interpreterRadioChange(availableCoursesFilter)" />
+            <label>Show Courses with No Interpreter Available</label><br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table  st-table="availableCourses" class="table table-striped table-hover" st-safe-src="availableCoursesTemplate">
+                <thead>
+                    <tr>
+                        <th colspan="7">
+                            <input st-search="" class="form-control" placeholder="Filter Results" type="search" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th st-sort="CourseType">
+                            Type
+                        </th>
+                        <th st-sort="StartDate">
+                            Start Date
+                        </th>
+                        <th st-sort="CourseSessionTitle">
+                            Session
+                        </th>
+                        <th st-sort="VenueName">
+                            Venue
+                        </th>
+                        <th st-sort="CourseReference">
+                            Reference
+                        </th>
+                        <th st-sort="NumberofClientsonCourse">
+                            Booked
+                        </th>
+                        <th st-sort="PlacesRemaining">
+                            Remaining
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="course in availableCourses"
+                        data-ng-dblclick="openCourseModal(course.CourseId)">
+                        <td>
+                            {{ course.CourseType }} 
+                        </td>
+                        <td>
+                            {{ formatDate(course.StartDate) }}
+                        </td>
+                        <td>
+                            {{ course.CourseSessionTitle }}
+                        </td>
+                        <td>
+                            {{ course.VenueName }}
+                        </td>
+                        <td>
+                            {{ course.CourseReference }}
+                        </td>
+                        <td class="text-right">
+                            {{ ifNullZero(course.NumberofClientsonCourse) }}
+                        </td>
+                        <td class="text-right">
+                            {{ course.PlacesRemaining }}
+                        </td>
+                    </tr>
+                    
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7" class="text-center">
+                            <div st-pagination="" st-items-by-page="maxResults" st-displayed-pages="7"></div>
+                        </td>
+                    </tr>
+                    <tr ng-show="availableCourses.length == 0 && loading == false">
+                        <td colspan="7" class="text-center">
+                            <br/><br/>
+                            <h3>No available courses could be found.</h3>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <span class="validation-message">{{ statusMessage }}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div ng-show="loading">
+                <img style="display: block; margin-left: auto; margin-right: auto;" src="/app_assets/images/ajax-loader.gif" />
+            </div>
+        </div>
+    </div>
+</div>

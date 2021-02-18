@@ -1,0 +1,56 @@
+﻿@import '../modules/mixins';
+
+@mixin createTemplateCSS($colour) {
+    background: $colour;
+    #mainContentContainer {
+        ul.breadcrumb {
+            background: darken($colour, 20);
+                border: 1px solid lighten($colour, 5);
+        }
+    }
+    #mainNavigationContainer {
+        background: darken($colour, 20);
+            #systemNavigation {
+                ul{
+                    li.ng-scope:hover {
+                        background:  darken($colour, 35);
+                    }
+                }
+            }
+        .toggleLayoutButton {
+            background: darken($colour, 50);
+        }
+    }
+    #hiddenSubMenu {
+      background: lighten($colour, 5)!important;
+      .closeHiddenMenuContainer {
+            background: darken($colour, 15);
+            border-top: 1px solid darken($colour, 25);
+            border-bottom: 1px solid darken($colour, 25);
+      }
+      ul {
+          li a {
+            border-bottom:1px solid darken($colour, 2);
+          }
+          li a:hover {
+            background: darken($colour, 35);
+          }
+      }
+    }
+    #reportsMenu {
+      background: lighten($colour, 5)!important;
+      .closeHiddenMenuContainer {
+            background: darken($colour, 15);
+            border-top: 1px solid darken($colour, 25);
+            border-bottom: 1px solid darken($colour, 25);
+      }
+      ul {
+          li a {
+            border-bottom:1px solid darken($colour, 2);
+          }
+          li a:hover {
+            background: darken($colour, 35);
+          }
+      }
+    }
+}

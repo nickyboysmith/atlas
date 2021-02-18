@@ -1,0 +1,150 @@
+﻿<div id="viewPaymentDiv">
+    <div class="row marginBottom5">
+        <div class="col-sm-12 ">
+            <span class="validation-message">{{ statusMessage }}</span>
+        </div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-4">
+            <label>Relating to Client:</label>
+        </div><!-- end .col-sm-4 -->
+        <div class="col-sm-7">
+            {{ paymentDetail.ClientName }}
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1">
+            <div ng-click="clientButtonClicked()"
+                 class="assign-client-button btn"
+                 title="View Client">...</div>
+        </div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row marginBottom5" ng-show="showCourseSection">
+        <div class="col-sm-4">
+            <label>Relating to Course:</label>
+        </div><!-- end .col-sm-4 -->
+        <div class="col-sm-7">
+            {{ paymentDetail.CourseReference }}
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1">
+            <div ng-click="openCourseModal(paymentDetail.CourseId)"
+                 class="assign-client-button btn"
+                 title="View Course">...</div>
+        </div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row marginBottom5">
+        <div class="col-sm-4">
+            <label>Payee Name:</label>
+        </div><!-- end .col-sm-4 -->
+        <div class="col-sm-7">
+            {{ paymentDetail.PaymentName }}
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1"></div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row marginBottom5">
+        <div class="col-sm-4">
+            <label>Type:</label>
+        </div><!-- end .col-sm-4 -->
+        <div class="col-sm-7">
+            {{ paymentDetail.PaymentTypeName }}
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1"></div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row marginBottom5">
+        <div class="col-sm-4">
+            <label>Date:</label>
+        </div><!-- end .col-sm-4 -->
+        <div class="col-sm-5">
+            {{ paymentDetail.TransactionDate | date: 'dd-MMM-yyyy' }}<span ng-show="showDateCreated">&nbsp;(Date Created: {{ paymentDetail.DateCreated | date: 'dd-MMM-yyyy'  }})</span>
+        </div><!-- end .col-sm-7 -->
+        <div class="col-sm-1">
+            
+        </div><!-- end .col-sm-2 -->
+        <div class="col-sm-4"></div><!-- end .col-sm-2 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row marginBottom5">
+        <div class="col-sm-4">
+            <label>Method:</label>
+        </div><!-- end .col-sm-4 -->
+        <div class="col-sm-7">
+            {{ paymentDetail.PaymentMethodName }}
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1"></div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row marginBottom5">
+        <div class="col-sm-4">
+            <label>Amount:</label>
+        </div><!-- end .col-sm-4 -->
+        <div class="col-sm-5">
+            {{ paymentDetail.PaymentAmount | currency: '£' }}
+        </div><!-- end .col-sm-7 -->
+        <div class="col-sm-2"></div><!-- end .col-sm-2 -->
+        <div class="col-sm-2"></div><!-- end .col-sm-2 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row marginBottom5">
+        <div class="col-sm-4">
+            <label>Auth Code:</label>
+        </div><!-- end .col-sm-4 -->
+        <div class="col-sm-7">
+            {{ paymentDetail.PaymentAuthCode }}
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1"></div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row marginBottom5">
+        <div class="col-sm-4">
+            <label>Receipt No:</label>
+        </div><!-- end .col-sm-4 -->
+        <div class="col-sm-7">
+            {{ paymentDetail.PaymentReceiptNumber }}
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1"></div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row marginBottom5">
+        <div class="col-sm-4">
+            <label>Reference:</label>
+        </div><!-- end .col-sm-4 -->
+        <div class="col-sm-7">
+            {{ paymentDetail.PaymentReference }}
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1"></div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row marginBottom5">
+        <div class="col-sm-4">
+            <label>Notes:</label>
+        </div><!-- end .col-sm-4 -->
+        <div class="col-sm-7">
+            <div id="viewPaymentNotesTableDiv" ng-show="paymentNotes.length > 0">
+                <table id="viewPaymentNotesTable" class="table table-striped">
+                    <thead>
+                        <th>Type</th>
+                        <th>Note</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="note in paymentNotes">
+                            <td>{{ note.NoteTypeName }}</td>
+                            <td>{{ note.Text }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1"></div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+    <div class="row">
+        <div class="col-sm-4">
+        </div><!-- end .col-sm-4 -->
+        <div class="col-sm-8 text-right">
+            <br/>
+            <button class="btn" ng-click="AddPaymentNote()">Add Note</button>
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1"></div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+</div>

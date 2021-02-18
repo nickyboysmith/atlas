@@ -1,0 +1,118 @@
+﻿<div id="clientPaymentsDiv">
+    <div class="row marginBottom5" ng-show="recordedPayments.length > 0">
+        <div class="col-sm-12">
+            <b>Refunding Payment...</b> <i>Please Select the Payment you want to Refund</i>
+        </div>
+    </div>
+    <div class="row marginBottom5" ng-show="recordedPayments.length > 0">
+        <div class="col-sm-12">
+            <h3>Payments for: {{ client.Name }}</h3>
+        </div>
+    </div>
+    <div class="row" ng-show="loading == false">
+        <div class="col-sm-12 text-right" ng-show="recordedPayments.length > 0">
+            <button class="btn" ng-click="refundSelectedPayment()" ng-show="selectedPaymentId > 0 && selectedPaymentAmount > 0">Refund Selected</button>
+            <button class="btn" ng-click="cancelRefundPayment()" ng-show="selectedPaymentId > 0 && selectedPaymentAmount < 0">Cancel Refund</button>
+        </div>
+    </div>
+    <div class="row" ng-show="loading == false">
+        <div class="col-sm-12">
+            <table st-table="recordedPayments" class="table table-striped table-hover" st-safe-src="recordedPaymentsTemplate">
+                <thead>
+                    <tr>
+                        <th colspan="8">
+                            <input st-search="" class="form-control" placeholder="Filter Results" type="search" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th st-sort="PaymentId">
+                            Payment Id
+                        </th>
+                        <th st-sort="TransactionDate">
+                            Transaction Date
+                        </th>
+                        <th st-sort="PaymentAmount">
+                            Amount
+                        </th>
+                        <th st-sort="PaymentMethodName">
+                            Method
+                        </th>
+                        <th st-sort="PaymentTypeName">
+                            Type
+                        </th>
+                        <th st-sort="PaymentName">
+                            Payment Name
+                        </th>
+                        <th st-sort="ClientName">
+                            Client
+                        </th>
+                        <th st-sort="CourseReference">
+                            Course
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="payment in recordedPayments" ng-click="selectPayment(payment.PaymentId, payment.PaymentAmount)" ng-class="{selectedPaymentRow: payment.PaymentId == selectedPaymentId}">
+                        <td data-ng-dblclick="openPaymentModal(payment.PaymentId)" title="Show Payment">
+                            {{ payment.PaymentId }}
+                        </td>
+                        <td data-ng-dblclick="openPaymentModal(payment.PaymentId)" title="Show Payment">
+                            {{ formatDate(payment.TransactionDate) }}
+                        </td>
+                        <td data-ng-dblclick="openPaymentModal(payment.PaymentId)" title="Show Payment">
+                            {{ payment.PaymentAmount | currency : '£' }}
+                        </td>
+                        <td data-ng-dblclick="openPaymentModal(payment.PaymentId)" title="Show Payment">
+                            {{ payment.PaymentMethodName }}
+                        </td>
+                        <td data-ng-dblclick="openPaymentModal(payment.PaymentId)" title="Show Payment">
+                            {{ payment.PaymentTypeName }}
+                        </td>
+                        <td data-ng-dblclick="openPaymentModal(payment.PaymentId)" title="Show Payment">
+                            {{ payment.PaymentName }}
+                        </td>
+                        <td class="" data-ng-dblclick="openClientModal(payment.ClientId)" title="Show Client">
+                            {{ payment.ClientName }}
+                        </td>
+                        <td class="" data-ng-dblclick="openCourseModal(payment.CourseId)" title="SHow Course">
+                            {{ payment.CourseReference }}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="8" class="text-center">
+                            <div st-pagination="" st-items-by-page="maxResults" st-displayed-pages="7"></div>
+                        </td>
+                    </tr>
+                    <tr ng-show="recordedPayments.length == 0">
+                        <td colspan="8" class="text-center">
+                            <br /><br />
+                            <h3>No payments could be found.</h3>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="row" ng-show="loading == false">
+        <div class="col-sm-12 text-right" ng-show="recordedPayments.length > 0">
+            <button class="btn" ng-click="refundSelectedPayment()" ng-show="selectedPaymentId > 0 && selectedPaymentAmount > 0">Refund Selected</button>
+            <button class="btn" ng-click="cancelRefundPayment()" ng-show="selectedPaymentId > 0 && selectedPaymentAmount < 0">Cancel Refund</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div ng-show="loading == true">
+                <img style="display: block; margin-left: auto; margin-right: auto;" src="/app_assets/images/ajax-loader.gif" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div ng-show="validationMessage != ''">
+                <span class="validation-message">{{ validationMessage }}</span>
+            </div>
+        </div>
+    </div>
+</div>

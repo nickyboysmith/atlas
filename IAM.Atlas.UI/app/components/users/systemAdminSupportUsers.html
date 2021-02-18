@@ -1,0 +1,65 @@
+﻿<div id="SystemAdminSupportUser" class="SystemAdminSupportUser">
+
+    <form class="form-horizontal" role="form">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <label>Current Support List</label>
+            </div>
+        </div>
+
+        <!-- System Admin Support Users smart table -->
+        <div class="row">
+            <div class="col-sm-10">
+                <table st-table="supportUsers" st-safe-src="displaySupportUsers" class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="4">
+                                <input st-search="Name" class="form-control" placeholder="Filter Users" type="search" />
+                            </th>
+                        </tr>
+                        <tr>
+                            <th st-sort="Name">
+                                Name
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="supportUser in supportUsers"
+                            
+                            ng-click="selectSupportUser(supportUser)"
+                            ng-class="{selectedSupportUser : selectedSupportUserId == supportUser.UserId}">
+                            <td>
+                                {{ supportUser.Name }}
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                <div st-pagination="" st-items-by-page="7" st-displayed-pages="7"></div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="col-sm-2">
+                <div class="marginBottom5">
+                    <button class="btn" ng-click="addSystemAdminSupportUser()">Add</button>
+                </div>
+                <div class="marginBottom5">
+                    <button class="btn" ng-disabled="selectedSupportUserId < 1" ng-click="removeSystemAdminSupportUser(selectedSupportUserId)">Remove</button>
+                </div>
+                <div ng-show="errorMessage != ''">
+                    <font color="red">{{ errorMessage }}</font>
+                </div>
+            </div>
+        </div>
+
+    <div ng-show="!isAdmin">
+        Sorry you do not have permission to access this page, please contact your System Administrator.
+    </div>
+
+ </form>
+
+</div>

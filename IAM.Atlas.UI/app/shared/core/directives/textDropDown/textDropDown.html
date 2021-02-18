@@ -1,0 +1,29 @@
+﻿<style>
+    .textDropDown{
+        overflow:visible;height:30px;position:relative;
+    }
+    .textDropDownInput{
+
+    }
+    .textDropDownItem{
+        padding:5px;
+    }
+    .textDropDownItem:hover{
+        background:#ccc;
+    }
+    .textDropDownItems{
+        z-index: 100;
+        position: absolute;
+        background-color: #fff;
+        width: 173px;
+        border: 1px solid #ccc;
+    }
+</style>
+<div style="" class="textDropDown">
+    <div class="textDropDownInput">
+        <input type="text" ng-model="txtItem" ng-change="updateModel(txtItem)" ng-class="cssClass"><button ng-click="showOptionsClicked()">&#x25BC;</button>
+    </div>
+    <div style="" class="textDropDownItems" ng-show="showItems">
+        <div class="textDropDownItem" ng-repeat="item in items" ng-click="updateModel(item)">{{item}}</div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@import '../modules/mixins';
+
+#clientHistoryContainer {
+
+    .history-hidden-note {
+        z-index: 100;
+        min-width: 100px;
+        height: auto;
+        overflow: hidden;
+        background: #fffee4;
+        position: absolute;
+        margin: 0 auto;
+        border: 1px solid #cccccc;
+        border-left: 1px solid #cccccc;
+        border-bottom: 0px;
+
+        .history-note-header {
+            height: 30px;
+            padding: 4px 5px;
+            width: 100%;
+            background: #006ABD;
+            border-top: 1px solid #2381CB;
+            border-bottom: 1px solid #2381CB;
+            color: #ffffff;
+        }
+
+        .history-note-content {
+            padding: 6.5px 5px;
+        }
+    }
+
+}

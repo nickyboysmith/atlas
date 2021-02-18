@@ -1,0 +1,62 @@
+﻿@{
+    // Check if partial views is requested, if so, apply a layout template to it
+    var filePath = Request.AppRelativeCurrentExecutionFilePath;
+    var browserURL = Request.Url;
+    var authCookie = "";
+    var browserCookie = Request.Cookies["Atlas_userSession"];
+
+    if (browserCookie == null) {
+        authCookie = "no_cookie_found";
+    }
+
+    if (browserCookie != null) {
+        var passPhrase = StringCipher.cookieOnlyPassPhrase;
+        authCookie = StringCipher.Decrypt(browserCookie.Value, passPhrase);
+    }
+
+
+    var organisationCookieValue = "organisationUser";
+    var trainerCookieValue = "trainerUser";
+    var clientCookieValue = "clientUser";
+
+
+    // The 'templateUrl' property is set in Routing/DefaultRouteHandler.cs
+    if (Request.RequestContext.RouteData.DataTokens["templateUrl"] == "/app/shared/error/view")
+    {
+        Response.StatusCode = 404;
+    }
+
+    // Pre determined routes
+    if (filePath == "~/") {
+
+        Layout = "~/app/landingPages/client/loginView.cshtml";
+
+    }  else if (filePath.Contains("admin/login")) {
+
+        Layout = "~/app/landingPages/organisation/loginView.cshtml";
+
+    } else if (filePath.Contains("admin") && authCookie == organisationCookieValue) {
+
+        Layout = "~/app/landingPages/organisation/baseView.cshtml";
+
+    } else if (filePath.Contains("admin") && authCookie != organisationCookieValue) {
+
+        Response.Redirect("/admin/login");
+
+    } else if (filePath.Contains("trainer/login")) {
+
+        Layout = "~/app/landingPages/trainer/loginView.cshtml";
+
+    } else if (filePath.Contains("trainer") && authCookie == trainerCookieValue) {
+
+        Layout = "~/app/landingPages/trainer/baseView.cshtml";
+
+    } else if (filePath.Contains("trainer") && authCookie != trainerCookieValue) {
+
+        Response.Redirect("/trainer/login");
+
+    }
+
+
+
+}

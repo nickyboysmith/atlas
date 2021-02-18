@@ -1,0 +1,62 @@
+﻿<div ng-controller="addClientNoteCtrl">
+    <style>
+        .noteTextArea
+        {
+            width:100%;
+        }
+    </style>
+    <div ng-show="!noteSaved">
+        <table>
+            <tr>
+                <td>
+                    <h2>Client:&nbsp;{{client.DisplayName}}</h2><br />
+                </td>
+                <td align="right">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Note:
+                </td>
+                <td align="right">
+                    <select ng-model="clientNote.NoteTypeId" ng-options="noteType.Id as noteType.Name for noteType in noteTypes">
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea ng-model="clientNote.Note" placeholder="Notes" class="noteTextArea" rows="5"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="margin-top:10px;">
+                        <button class="btn" onclick="$('button.close').last().trigger('click')">Cancel</button>
+                    </div>
+                </td>
+                <td align="right">
+                    <div style="margin-top:10px;">
+                        <button ng-click="saveNote()"  class="btn">Save</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div ng-show="noteSaved">
+
+        <h3>Note saved successfully.</h3>
+        <div style="margin-top:30px;text-align:center;">
+            <button class="btn btn-success" onclick="$('button.close').last().trigger('click')">Close</button>
+        </div>
+    </div>
+    
+ 
+
+    <div data-ng-if="showSuccessFader == true">
+        <my-msgfader status="success"></my-msgfader>
+    </div>
+    <div data-ng-if="showErrorFader == true">
+        <my-msgfader status="error"></my-msgfader>
+    </div>
+
+</div>

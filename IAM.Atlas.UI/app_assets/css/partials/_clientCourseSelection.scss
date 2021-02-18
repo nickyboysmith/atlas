@@ -1,0 +1,114 @@
+﻿@import "../modules/_mixins.scss";
+
+#clientCourseSelection {
+
+    span.interpreter {
+        color: #215968;
+        font-size: 17px;
+        font-weight: bold;
+    }
+
+    .pull-text-right {
+        text-align: right;
+        a {
+            color: #00b3e1;
+            text-decoration: none;
+        }
+        a:hover {
+            background: none;
+            text-decoration: underline;
+        }
+    }
+
+    .terms-container {
+        height: 20px; 
+    }
+    .terms-acceptance-container {
+        display: block;
+        float: left;
+        margin-top: -2px;
+        margin-right: 10px;
+    }
+    .paragraph-float {
+        float: left;
+    }
+
+    .reduce-text-size {
+        font-size: 11px;
+        a {
+            font-size: inherit!important;
+            padding: 0;
+        }
+    }
+
+    .terms-modal-link {
+        color: #00b3e1;
+        cursor: pointer;
+    }
+
+    .terms-modal-link:hover {
+        text-decoration: underline;
+    }
+
+    .add-extra-margin {
+        margin-top: 15px;
+    }
+
+    .no-bottom-margin {
+        margin-bottom: 0;
+    }
+
+    .course-selection-container {
+        border: 1px solid #cecece;
+        @include theBorderRadius(3px);
+        padding: 10px;
+        background-color: white;
+
+        .show-course-date-option-container {
+            height: 26px;
+            .radio-button-container {
+                float: left;
+                margin-right: 5px;
+            }
+            .date-container {
+                float: left;
+                label {
+                    font-weight: normal!important;
+                }
+            }
+        }
+        .course-list-container {
+            height: 190px; 
+            overflow-y: scroll;
+            width: 98%;
+            padding-top: 1px;
+            span.information {
+
+            }
+            table.table {
+                padding:3px;
+                margin: 0 auto;
+                width: 98%;
+                font-size: 13px;
+                tr {
+                    cursor: pointer;
+                }
+                tr:hover {
+                    background: #FCFFC9;
+                }
+                tr.course-selected {
+                    background: #E0E0E0;
+                }
+            }
+        }
+
+    }
+    
+    .NoCourses{
+
+        .SelectOther{
+            font-style: italic;
+            font-weight: bold;
+        }
+    }
+}

@@ -1,0 +1,69 @@
+﻿<div id="attachCourseEmailAttachment" class="attachCourseEmailAttachment">
+    <div class="row marginBottom5">
+        <div class="col-sm-3 ">
+            <label>Course:</label>
+        </div>
+        <div class="col-sm-9">
+            {{ course.courseType.Title  }}
+            <br />
+            Ref: {{ course.courseReference }} (Id: {{ course.Id }})
+        </div>
+    </div>
+    <div class="row marginBottom10">
+        <div class="col-sm-3 ">
+            <label>Documents:</label>
+        </div>
+        <div class="col-sm-9">
+           
+
+
+            <div class="sml-scroll-div marginBottom10">
+                <table class="table table-bordered">
+                    <thead></thead>
+                    <tbody>
+                        <tr ng-repeat="document in documents" ng-class="{'isSelected': document.isSelected}">
+                            <td ng-click="setSelectedDocument(document)"
+                                title="{{document.Description}}"
+                                value="{{document.Id}}">
+                                {{ document.Title }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row marginBottom5">
+        <div class="col-sm-3 ">&nbsp;</div>
+        <div class="col-sm-9">
+            <div class="col-sm-6">
+            </div>
+            <div class="col-sm-6 text-right">
+                <button class="btn form-control fixed-width-80" ng-click="uploadNew()">Upload New</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row marginBottom10"></div>
+
+    <div class="row marginBottom5">
+        <div class="col-sm-3 ">&nbsp;</div>
+        <div class="col-sm-9">
+            <div class="col-sm-6">
+                <button class="btn form-control" ng-click="AttachSelected()" ng-disabled="HasAttachmentsSelected()">Attach Selected</button>
+            </div>
+            <div class="col-sm-6 text-right">
+                <button class="btn form-control fixed-width-80" ng-click="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row marginBottom5" ng-show="errorMessage != ''">
+        <div class="col-sm-3 ">&nbsp;</div>
+        <div class="col-sm-9">
+            <span class="validation-message">{{ errorMessage }}</span>
+        </div>
+    </div>
+</div>

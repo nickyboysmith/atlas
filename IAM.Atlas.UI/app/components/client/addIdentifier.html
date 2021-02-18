@@ -1,0 +1,42 @@
+﻿<div id="addIdentifierDiv">
+    <div class="row">
+        <div class="col-sm-4">
+            <label class="control-label"></label>
+        </div>
+        <div class="col-sm-8 form-line-separator-20">{{legacyClient.DisplayName}} (System Id: {{legacyClient.Id}}) <br />
+            <div class="attention-text">Previous System Id: {{legacyClient.PreviousSystemId}}</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <label class="control-label">Client Unique Identifier:</label>
+        </div>
+        <div class="col-sm-8 attention-text"><span>{{legacyClient.IdentifierMessage}}</span></div>
+    </div>
+
+    <div class="row form-line-separator-10">
+        <div class="col-sm-4">
+            
+        </div>
+        <div class="col-sm-8"><input class="form-control cm-sm-12" ng-disabled="hideSaveButton" type="text" ng-model="legacyClient.Identifier" placeholder="New Unique Identifier" /></div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">  
+            &nbsp;          
+        </div>
+        <div class="col-sm-8">
+            <div class="btn pull-left"
+                 ng-click="saveIdentifier()">Save UID</div>
+            <div class="btn pull-right"
+                 ng-click="closeModal()">Close</div>
+        </div>
+    </div>
+    <div ng-show="errorMessage != ''">
+        <font color="red">{{ errorMessage }}</font>
+    </div>
+    <div ng-show="successMessage != ''">
+        {{ successMessage }}
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.custom-file-input::before {
+    content: 'Browse To Upload New';
+    border: 1px solid #a8c1d5;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: arial, helvetica, sans-serif;
+    padding: 2px 5px 2px 5px !important;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    color: #FAFAFF; 
+    background-color: #CEDCE7;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#CEDCE7), to(#596a72));
+    background-image: -webkit-linear-gradient(top, #CEDCE7, #596a72);
+    background-image: -moz-linear-gradient(top, #CEDCE7, #596a72);
+    background-image: -ms-linear-gradient(top, #CEDCE7, #596a72);
+    background-image: -o-linear-gradient(top, #CEDCE7, #596a72);
+    background-image: linear-gradient(to bottom, #CEDCE7, #596a72);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#CEDCE7, endColorstr=#596a72);
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+}
+.custom-file-input:hover::before {
+    border: 1px solid #8aabc5;
+    background-color: #acc4d6;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#acc4d6), to(#434f55));
+    background-image: -webkit-linear-gradient(top, #acc4d6, #434f55);
+    background-image: -moz-linear-gradient(top, #acc4d6, #434f55);
+    background-image: -ms-linear-gradient(top, #acc4d6, #434f55);
+    background-image: -o-linear-gradient(top, #acc4d6, #434f55);
+    background-image: linear-gradient(to bottom, #acc4d6, #434f55);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#acc4d6, endColorstr=#434f55);
+}

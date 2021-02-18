@@ -1,0 +1,64 @@
+﻿<div id="documentContainer">
+    <div class="row form-line-separator-10">
+        <div class="col-sm-2">
+            <strong>Documents</strong>
+        </div>
+        <div class="col-sm-1 docInfo noLeftPadding" ng-click="openDocInfoModal()"></div>
+        <div class="col-sm-7 validation-message">{{documentValidationMessage}}</div>
+        <div class="col-sm-2">
+            <div class="btn pull-right"
+                 ng-click="openAddDocumentModal()"
+                 ng-hide="systemIsReadOnly || isReferringAuthority"
+                 title="Upload and Add a new Document relating to this Client">
+                Add
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="booking-note-holder">
+                <li ng-repeat="document in documents"
+                    ng-click="selectDocument(document);"
+                    ng-mouseenter="showToolTip(document)"
+                    ng-class="{selectedListOrTableItem : document.isSelected}"
+                    value="{{document.Id}}"
+                    title="{{ currentToolTip }}">
+                    {{ document.Title }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row form-line-separator-10">
+        <div class="col-sm-3 pull-left" ng-show="!isReferringAuthority && !systemIsReadOnly">
+            <div class="row paddingLeft15">
+                <div class="btn">
+                    <div ng-click="openDocumentTemplateModal()">Create Letter Document</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" ng-show="(selectedDocument.Type == '.docx' || selectedDocument.Type == '.docx') && !isReferringAuthority && !systemIsReadOnly && selectedDocumentCount == 1">
+            <div class="btn"
+                 ng-click="sendDocumentToPrintQueue()"
+                 title="Send Document to Print Queue">Send Document to Print Queue</div>
+        </div>
+        <div class="col-sm-4" ng-show="(selectedDocument.Type == '.docx' || selectedDocument.Type == '.docx') && !isReferringAuthority && !systemIsReadOnly">
+        </div>
+        <div class="col-sm-3 btn" ng-show="selectedDocument.Id > 0 && !isReferringAuthority && !systemIsReadOnly">
+            <div ng-click="showEmailClientModal()">Email Selected Documents</div>
+        </div>
+        <div class="col-sm-2" ng-show="selectedDocument.Id > 0">
+            <div ng-if="isReferringAuthority || systemIsReadOnly" class="btn pull-left"
+                 ng-click="openDownloadDocumentModal()"
+                 ng-show="selectedDocumentCount == 1"
+                 title="Download the selected document">
+                Download
+            </div>
+            <div ng-if="!isReferringAuthority && !systemIsReadOnly" class="btn pull-right"
+                 ng-click="openDownloadDocumentModal()"
+                 ng-show="selectedDocumentCount == 1"
+                 title="Download the selected document">
+                Download
+            </div>
+        </div>
+    </div>
+</div>

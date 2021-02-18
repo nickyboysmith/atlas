@@ -1,0 +1,263 @@
+
+<!-------------------------------------------------------------
+*
+* Deployment Instructions
+*
+--------------------------------------------------------------!>
+
+1.) Make sure you have the AzurePowerShell on your machine
+2.) Run AzurePowerShell as Administrator
+3.) Set the execution Policy with the command below: 
+	Set-ExecutionPolicy RemoteSigned
+
+4.) Run command to change location - [ location may change depending on who is deploying the release ]
+	cd C:\Users\miles.stewart\Source\Workspaces\Atlas\Development\Atlas\IAM.Atlas\IAM.Atlas.UI
+
+5.) Add Azure Account with the command below:
+	Add-AzureAccount
+
+6.) Get the certificate to validate a remote connection to Azure [Certificates are only valid for 12 hours]
+	Get-AzurePublishSettingsFile
+
+7.) To deploy run the Powershell script with the environment eg "test"
+	.\Deploy.ps1 -Launch test
+
+8.) To deploy the DB all you need to do is the above command with a script number eg. "SP011_01.01"
+	.\Deploy.ps1 -Launch test SP011_01.01
+
+<!-------------------------------------------------------------
+*
+* MANUAL DEPLOYMENT PROCESSES
+*
+--------------------------------------------------------------!>
+
+	
+	<!-- Azure Scheduler Jobs That Should be Running --!>
+
+	1) Atlas-System-Monitor:Calls https://<atlas scheduler web service address>/scheduledsystemstatus at 5 minutes intervals 247
+		Dev:- Implemented 11/02/2016, by Dan M.
+		Test:- Implemented 21/07/2016, by Miley
+		UAT:- Implemented 21/07/2016, by Miley.
+		Live:-Implemented 20/12/2016, by Nick
+	2) Atlas Scheduled Email
+		Dev - Implemented 17/02/2016, By Miley
+		Test:- Implemented 21/07/2016, by Miley
+		UAT:- Implemented 21/07/2016, by Miley.
+		Live:-Implemented 20/12/2016, by Nick
+	3) DorsConnectionStatusCheck: http://<atlas scheduler web service address>/scheduler/api/dorswebserviceinterface/connectionstatuscheck at 5 minute intervals 247
+		Dev:- Implemented 23/03/2016, by Paul T.
+		Test:- Implemented 21/07/2016, by Miley
+		UAT:- Implemented 21/07/2016, by Miley.
+		Live:-Implemented 20/12/2016, by Nick
+	4) Delete_files_marked_for_deletion : http://<atlas scheduler web service address>/scheduler/api/documentmanagement/DeleteDocumentsMarkedForDeletion at 12 hour intervals 24/7
+		Dev:- Implemented 11/05/2016, by Hough.
+		Test:- Implemented 21/07/2016, by Miley
+		UAT:- Implemented 21/07/2016, by Miley.
+		Live:-Implemented 20/12/2016, by Nick	
+	5) Send_Payment_Confirmation_Emails : http://<atlas scheduler web service address>/scheduler/api/ClientOnlineBookingState/SendPaymentConfirmationEmails at 5 minute intervals 24/7
+		Dev:- Implemented 15/06/2016, by Hough.
+		Test:- Implemented 21/07/2016, by Miley
+		UAT:- Implemented 21/07/2016, by Miley.
+		Live:-Implemented 20/12/2016, by Nick	
+	6) Remove_Reserved_Unpaid_Bookings : http://<atlas scheduler web service address>/scheduler/api/ClientOnlineBookingState/RemoveUnpaidBookings at 10 minute intervals 24/7
+		Dev:- Implemented 23/06/2016, by Hough.
+		Test:- Implemented 21/07/2016, by Miley
+		UAT:- Implemented 21/07/2016, by Miley.
+		Live:-Implemented 20/12/2016, by Nick			
+	7) Notify_DORS_Course_Cancellation : http://<atlas scheduler web service address>/scheduler/api/DORS/CancelCourse at 1 hour intervals 24/7
+		Dev:- Implemented 29/06/2016, by Hough.
+		Test:- Implemented 21/07/2016, by Miley
+		UAT:- Implemented 21/07/2016, by Miley.
+		Live:-Implemented 20/12/2016, by Nick	
+	8) Course-Overbooked-Emails : http://<atlas scheduler web service address>/scheduler/api/CourseBookingState/SendCourseOverbookedEmails at 1 hour intervals 24/7 (Disabled)
+		Dev:- Implemented 08/07/2016, by Dan M.
+		Test:- Implemented 21/07/2016, by Miley
+		UAT:- Implemented 21/07/2016, by Miley.
+		Live:-Implemented 20/12/2016, by Nick	
+	9) Log_DORS_Offers_Withdrawn : http://<atlas scheduler web service address>/scheduler/api/DORS/LogOffersWithdrawn at 12 hour intervals 24/7
+		Dev:- Implemented 16/08/2016, by Nick S
+		Test:- Implemented 16/08/2016, by Nick S
+		UAT:- Implemented 16/08/2016, by Nick S
+		Live:-Implemented 20/12/2016, by Nick	
+	10) SendEmailCourseReminders : http://<atlas scheduler web service address>/scheduler/api/CourseReminders/SendEmailCourseReminders at 12 hour intervals 24/7
+		Dev:- Implemented 07/09/2016, by Nick S
+		Test:- Implemented 07/09/2016, by Nick S
+		UAT:- Implemented 07/09/2016, by Nick S
+		Live:-Implemented 20/12/2016, by Nick	
+	11) SendSMSCourseReminders : http://<atlas scheduler web service address>/scheduler/api/CourseReminders/SendSMSCourseReminders every day at 10:00am
+		Dev:- Implemented 07/09/2016, by Nick S
+		Test:- Implemented 07/09/2016, by Nick S
+		UAT:- Implemented 07/09/2016, by Nick S
+		Live:-Implemented 20/12/2016, by Nick	
+	12) DorsNewCourses : http://<atlas scheduler web service address>/scheduler/api/DORS/NewCourses at 10 minute intervals 24/7
+		Dev:- Implemented 22/09/2016, by Paul Tuck
+		Test:- Implemented 25/10/2016, by Miley
+		UAT:- Implemented 25/10/2016, by Miley
+		Live:-Implemented 20/12/2016, by Nick	
+	13) DORSNotifyNewCourseClients : http://<atlas scheduler web service address>/scheduler/api/DORS/NotifyNewCourseClients at 10 minute intervals 24/7
+		Dev:- Implemented 14/10/2016, by John Cocklin
+		Test:- Implemented 25/10/2016, by Miley
+		UAT:- Implemented 25/10/2016, by Miley
+		Live:-Implemented 20/12/2016, by Nick	
+	14) CheckforLockedClientRecords : http://<atlas scheduler web service address>/scheduler/api/ClientLock/CheckForLockedClientRecords at 5 minutes intervals 24/7
+		Dev:- Implemented 14/10/2016,  by John Cocklin
+		Test:- Implemented 25/10/2016, 
+		UAT:- Implemented 25/10/2016, 
+		Live:-Implemented 20/12/2016, by Nick	
+	15) RotateDefaultDORSConnection : http://<atlas scheduler web service address>/scheduler/api/DORS/RotateDefaultDORSConnection at 30 minutes intervals 24/7
+		Dev:- Implemented 08/11/2016, by Hough
+		Test:- Implemented 10/11/2016, by Hough
+		UAT:- Implemented 10/11/2016, by Hough
+		Live:-Implemented 20/12/2016, by Nick	
+	16) ArchiveAndDeleteSMS : http://<atlas scheduler web service address>/scheduler/api/SMS/ArchiveAndDelete at 02:30 Daily
+		Dev:- Implemented 24/11/2016, by Hough
+		Test:- Implemented 24/11/2016, by Hough
+		UAT:- Implemented 24/11/2016, by Hough
+		Live:-Implemented 20/12/2016, by Nick	
+	17) RemoveOldEmailChangeRequests : http://<atlas scheduler web service address>/scheduler/api/Email/RemoveOldEmailChangeRequests at 02:00 Daily
+		Dev:- Implemented 25/11/2016, by Hough
+		Test:- Implemented 25/11/2016, by Hough
+		UAT:- Implemented 25/11/2016, by Hough
+		Live:-Implemented 20/12/2016, by Nick
+	18) CheckDORSForceList : http://<atlas scheduler web service address>/scheduler/api/DORS/CheckForceList Every Day at 22.00
+		Dev:- Implemented 07/12/2016, by Hough
+		Test:- Implemented 07/12/2016, by Hough
+		UAT:- Implemented 07/12/2016, by Hough
+		Live:-Implemented 20/12/2016, by Nick
+	19) RunAnnualStoredProcedures : http://<atlas scheduler web service address>/scheduler/api/AnnualJobs/AnnualStoredProcedures 24/7 at 5 minute intervals
+		Dev:- Updated 07/01/2017, by Hough
+		Test:- Implemented 07/05/2017, by Newnham ***************
+		UAT:- Implemented 07/01/2017, by Hough
+		Live:- Implemented 10/01/2017
+	20) GetAndUpdateTrainerSchemeLicenceStatus : http://<atlas scheduler web service address>/scheduler/api/AnnualJobs/GetAndUpdateTrainerSchemeLicenceStatus at 02:10 daily
+		Dev:- Implemented 09/01/2017, by Hough
+		Test:- Implemented 09/01/2017, by Hough
+		UAT:- Implemented 09/01/2017, by Hough
+		Live:- Implemented 10/01/2017, by Hough
+	21) GetAndUpdateTrainerSchemeLicenceStatus : http://<atlas scheduler web service address>/scheduler/api/Document/CourseAttendanceSignInAndCourseRegister 24/7 at 5 minute intervals
+		Dev:- Implemented 21/02/2017, by Hough
+		Test:- Implemented 21/02/2017, by Hough
+		UAT:- Implemented 21/02/2017, by Hough
+		Live:- Implemented 21/02/2017, by Hough
+	22) DatabaseTidyUpProcess: http://<atlas scheduler web service address>/scheduler/api/DatabaseTidyUp/DatabaseTidyUpProcess Every Sunday at 02.00
+		Dev:- Implemented 22/02/2017, by Hough
+		Test:- Implemented 22/02/2017, by Hough
+		UAT:- Implemented 22/02/2017, by Hough
+		Live:- Implemented 22/02/2017, by Hough
+	23) SendRefundRequestReminder: http://<atlas scheduler web service address>/scheduler/api/Email/SendRefundRequestReminder Every day at 09.00
+		Dev:- Implemented 20/03/2017, by Hough
+		Test:- Implemented 20/03/2017, by Hough
+		UAT:- Implemented 20/03/2017, by Hough
+		Live:- Implemented 20/03/2017, by Hough
+	24) getDORSSites: http://<atlas scheduler web service address>/scheduler/api/DORS/getDORSSites 24/7 at 5 minute intervals
+		Dev:- Implemented 24/03/2017, by Paul
+		Test:- Implemented 24/03/2017, by Paul
+		UAT:- Implemented 24/03/2017, by Paul
+		Live:- Implemented 24/03/2017, by Paul
+	25) UpdateLocalDORSInfo: http://<atlas scheduler web service address>/webapi/api/dorswebserviceinterface/UpdateLocalDORSInfo Every hour
+		Dev: Implemented 12/04/2017, by Paul
+		Test: Implemented 12/04/2017, by Paul
+		UAT: Implemented 12/04/2017, by Paul
+		Live: Implemented 12/04/2017, by Paul
+	26) RemoveClientFromCourse: http://<atlas scheduler web service address>/scheduler/api/dors/RemoveClientFromCourse 24/7 at 10 minute intervals
+		Dev: Implemented 20/04/2017, by Paul
+		Test: Implemented 20/04/2017, by Paul
+		UAT: Implemented 20/04/2017, by Paul
+		Live: Implemented 20/04/2017, by Paul
+	27) CreateDocumentFromLetterTemplate: http://<atlas scheduler web service address>/scheduler/api/Document/CreateDocumentFromLetterTemplate 24/7 at 1 Minute intervals
+		Dev: Implemented 06/06/2017, by Hough
+		Test: Implemented 06/06/2017, by Hough
+		UAT: Implemented 06/06/2017, by Hough
+		Live: Implemented 06/06/2017, by Hough
+	28) notifyDORSAboutCourseAttendance: http://<atlas scheduler web service address>/scheduler/api/DORS/notifyDORSAboutCourseAttendance 24/7 at 1 Hour intervals
+		Dev: Implemented 28/06/2017, by Hough
+		Test: Implemented 28/06/2017, by Hough
+		UAT: Implemented 28/06/2017, by Hough
+		Live: Implemented 28/06/2017, by Hough
+	29) processDORSCheck: http://<atlas scheduler web service address>/scheduler/api/DORS/processDORSCheck at 23:00 daily
+		Dev: Implemented 20/09/2017, by Hough
+		Test: Implemented 20/09/2017, by Hough
+		UAT: Implemented 20/09/2017, by Hough
+		Demo: Implemented 20/09/2017, by Hough
+		Live: Implemented 20/09/2017, by Hough
+	30) processStuckClients: http://<atlas scheduler web service address>/scheduler/api/DORS/ProcessStuckClients at 03:00 daily
+		Dev: Implemented 06/10/2017, by Paul Tuck
+		Test: Implemented 06/10/2017, by Paul Tuck
+		UAT: Implemented 06/10/2017, by Paul Tuck
+		Demo: Implemented 06/10/2017, by Paul Tuck
+		Live: Implemented 06/10/2017, by Paul Tuck
+	31) ProcessStuckClientsCoursePlaces: http://<atlas scheduler web service address>/scheduler/api/DORS/ProcessStuckClientsCoursePlaces at 02:00 daily
+		Dev: Implemented 13/10/2017, by Paul Tuck
+		Test: Implemented 13/10/2017, by Paul Tuck
+		UAT: Implemented 13/10/2017, by Paul Tuck
+		Demo: Implemented 13/10/2017, by Paul Tuck
+		Live: NOT Implemented 13/10/2017, by Paul Tuck (services were disabled!  This needs to be deployed!  @TODO:)
+
+
+UAT								Frequency		Start	Recurrence	Ends	URL
+ArchiveAndDeleteSMS				Every Day		2.30 am Recurring	Never	http://uatatlas.iamroadsmart.com/scheduler/api/SMS/ArchiveAndDelete
+CheckDORSForceList				Every Week		10 pm	Recurring	Never	http://uatatlas.iamroadsmart.com/scheduler/api/DORS/CheckForceList
+DeleteFilesMarkedForDeletion	Every 12 Hours	12 am	Recurring	Never	http://uatatlas.iamroadsmart.com/webapi/api/documentmanagement/DeleteDocumentsMarkedForDeletion
+DorsConnectionStatusCheck		Every Hour		12 am	Recurring	Never	http://uatatlas.iamroadsmart.com/webapi/api/dorswebserviceinterface/connectionstatuscheck
+DorsNewCourses					Every Hour		12 am 	Recurring	Never	http://uatatlas.iamroadsmart.com/scheduler/api/dors/newcourses
+DORSNotifyNewCourseClients		Every Hour		12 am 	Recurring	Never	http://uatatlas.iamroadsmart.com/webapi/api/DORS/NotifyNewCourseClients
+LogDorsOffersWithdrawn			Every Hour		12 am 	Recurring	Never	http://uatatlas.iamroadsmart.com/scheduler/api/DORS/LogOffersWithdrawn
+Notify_DORS_Course_Cancellation Every Hour		12 am 	Recurring	Never	http://uatatlas.iamroadsmart.com/scheduler/api/DORS/CancelCourse
+Remove_Reserved_Unpaid_Bookings	Every 10 Mins	12 am 	Recurring	Never	http://uatatlas.iamroadsmart.com/scheduler/api/ClientOnlineBookingState/RemoveUnpaidBookings
+RemoveOldEmailChangeRequests	Every Day		2 am	Recurring	Never	http://uatatlas.iamroadsmart.com/scheduler/api/Email/RemoveOldEmailChangeRequests
+CheckforLockedClientRecords		Every 5 Mins	12 am	Recurring	Never	http://uatatlas.iamroadsmart.com/scheduler/api/ClientLock/CheckForLockedClientRecords
+RotateDefaultDORSConnection		Every 30 Mins	12 am 	Recurring	Never	http://uatatlas.iamroadsmart.com/scheduler/api/DORS/RotateDefaultDORSConnection
+ScheduledEmail					Every 5 Mins	12 am 	Recurring	Never	http://uatatlas.iamroadsmart.com/scheduler/api/email
+Send_Payment_Confirmation_EmailsEvery 5 Mins	10 am 	Recurring	Never	http://uatatlas.iamroadsmart.com/scheduler/api/ClientOnlineBookingState/SendPaymentConfirmationEmails
+SendCourseOverbookedEmails		Every Hour		12 am 	Recurring	Never	http://uatatlas.iamroadsmart.com/scheduler/api/CourseBookingState/SendCourseOverbookedEmails
+SendEmailCourseReminders		Every Day		8:30 am	Recurring	Never	http://uatatlas.iamroadsmart.com/scheduler/api/CourseReminders/SendEmailCourseReminders
+SendSMSCourseReminders			Every Day		10 am	Recurring	Never	http://uatatlas.iamroadsmart.com/scheduler/api/CourseReminders/SendSMSCourseReminders
+SystemAccessMonitor				Every 5 Mins	12 am 	Recurring	Never	http://uatatlas.iamroadsmart.com/scheduler/api/SystemStatus/SystemAccessMonitor
+
+LIVE-UK							Frequency		Start	Recurrence	Ends	URL
+ArchiveAndDeleteSMS				Every Day		2.30am 	Recurring	Never	http://atlas.iamroadsmart.com/scheduler/api/SMS/ArchiveAndDelete
+CheckDORSForceList				Every Week		10 pm	Recurring	Never	http://atlas.iamroadsmart.com/scheduler/api/DORS/CheckForceList
+DeleteFilesMarkedForDeletion	Every 12 Hours	12 am	Recurring	Never	http://atlas.iamroadsmart.com/webapi/api/documentmanagement/DeleteDocumentsMarkedForDeletion
+DorsConnectionStatusCheck		Every Hour		12 am	Recurring	Never	http://atlas.iamroadsmart.com/webapi/api/dorswebserviceinterface/connectionstatuscheck
+DorsNewCourses					Every Hour		12 am 	Recurring	Never	http://atlas.iamroadsmart.com/scheduler/api/dors/newcourses
+DORSNotifyNewCourseClients		Every Hour		12 am 	Recurring	Never	http://atlas.iamroadsmart.com/webapi/api/DORS/NotifyNewCourseClients
+LogDorsOffersWithdrawn			Every Hour		12 am 	Recurring	Never	http://atlas.iamroadsmart.com/scheduler/api/DORS/LogOffersWithdrawn
+Notify_DORS_Course_Cancellation Every Hour		12 am 	Recurring	Never	http://atlas.iamroadsmart.com/scheduler/api/DORS/CancelCourse
+Remove_Reserved_Unpaid_Bookings	Every 10 Mins	12 am 	Recurring	Never	http://atlas.iamroadsmart.com/scheduler/api/ClientOnlineBookingState/RemoveUnpaidBookings
+RemoveOldEmailChangeRequests	Every Day		2 am	Recurring	Never	http://atlas.iamroadsmart.com/scheduler/api/Email/RemoveOldEmailChangeRequests
+CheckforLockedClientRecords		Every 5 Mins	12 am	Recurring	Never	http://atlas.iamroadsmart.com/scheduler/api/ClientLock/CheckForLockedClientRecords
+RotateDefaultDORSConnection		Every 30 Mins	12 am 	Recurring	Never	http://atlas.iamroadsmart.com/scheduler/api/DORS/RotateDefaultDORSConnection
+ScheduledEmail					Every 5 Mins	12 am 	Recurring	Never	http://atlas.iamroadsmart.com/scheduler/api/email
+Send_Payment_Confirmation_EmailsEvery 5 Mins	10 am 	Recurring	Never	http://atlas.iamroadsmart.com/scheduler/api/ClientOnlineBookingState/SendPaymentConfirmationEmails
+SendCourseOverbookedEmails		Every Hour		12 am 	Recurring	Never	http://atlas.iamroadsmart.com/scheduler/api/CourseBookingState/SendCourseOverbookedEmails
+SendEmailCourseReminders		Every Day		8:30 am	Recurring	Never	http://atlas.iamroadsmart.com/scheduler/api/CourseReminders/SendEmailCourseReminders
+SendSMSCourseReminders			Every Day		10 am	Recurring	Never	http://atlas.iamroadsmart.com/scheduler/api/CourseReminders/SendSMSCourseReminders
+SystemAccessMonitor				Every 5 Mins	12 am 	Recurring	Never	http://atlas.iamroadsmart.com/scheduler/api/SystemStatus/SystemAccessMonitor
+
+
+
+Dev Document Storage Account	atlasdocument
+StorageConnectionString			DefaultEndpointsProtocol=https;AccountName=atlasdocument;AccountKey=XbfsSV9LxJngI6eR7UwAtsVrTcgrGlDs6ncwSeaL96/JKTgfesbSEvpqHrRQ8NnRlk/1oMyT7BkSgqwcwDTlhg==
+
+Test Document Storage Account
+StorageConnectionString
+
+UAT Document Storage Account
+StorageConnectionString
+
+Live Document Storage Account	iamlivestorage
+StorageConnectionString			DefaultEndpointsProtocol=https;AccountName=iamlivestorage;AccountKey=YBFGli7OrDXMXS4YQR1GdgKl/yEQRe8dr8XTmGYYo56QNlfdNow9iy09pbQSiabtWePMkmKVRN3Xq/XAW6CnWw==
+
+
+
+WebHook Address for Runbook
+
+DEV - https://s2events.azure-automation.net/webhooks?token=vRDETjb%2fBNfKj4gAtvNaIfkuUvPQa3yo1VQOM85rrvM%3d
+
+TEST - https://s2events.azure-automation.net/webhooks?token=Q6gI7blEfitHPPTpHgCNyNQlwtVUVr%2bEwOAKVmLLuSc%3d
+
+UAT - https://s2events.azure-automation.net/webhooks?token=JWG6epRKDS2hjUoiyeB7MCKwS5tT5mN369yQ7%2bpE7DE%3d
+
+LIVE-UK https://s12events.azure-automation.net/webhooks?token=5NDk8zQoY5PflGQmNRJwRcAePduNLZqJX8lP7LpKvZ4%3d
+
+DEMO https://s12events.azure-automation.net/webhooks?token=Lv7ZMdIwweRvUG3QuGmaUpp2OOiwe6rNBPfOz8pWvzs%3d

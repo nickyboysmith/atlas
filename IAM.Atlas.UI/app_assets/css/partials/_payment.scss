@@ -1,0 +1,21 @@
+﻿#viewPaymentNotesTableDiv{
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+#viewPaymentNotesTable{
+    border: 1px solid #ddd;
+    margin-bottom: 0px;
+}
+
+#recordedPaymentsDiv{
+    .selectedPaymentRow td{
+        background-color: #85d5f8;
+    }
+}
+
+#clientPaymentsDiv{
+    .selectedPaymentRow td{
+        background-color: #85d5f8;
+    }
+}

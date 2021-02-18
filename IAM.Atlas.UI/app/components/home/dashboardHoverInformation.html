@@ -1,0 +1,390 @@
+﻿<div id="dashboardHover">
+
+    <div class="row form-line-separator-20" ng-if="showDate">
+        <div class="col-md-offset-9 col-md-3">
+            {{ displayDate }}
+        </div><!-- end .col-md-offset-9.col-md-3 -->
+    </div><!-- end .row -->
+
+    <div class="row">
+        <div class="col-md-12">
+            <div ng-if="showLoading"
+                 class="loading">
+                <div class="the-spinning-loader">
+                    <div class="the-spinner"></div>
+                </div>
+            </div><!-- end .loading -->
+            <div ng-if="showError"
+                 class="error-container">
+                {{ errorMessage }}
+            </div><!-- end .error-container -->
+        
+            <table ng-if="showResults && hoverParamName=='NumberOfAttendanceUpdatesDue'"
+                   st-table="hoverInformationCollection"
+                   st-safe-src="hoverInformation"
+                    class="table table-hover table-striped">
+
+                <thead>
+                    <tr>
+
+                        <th st-sort="{{tableHeaders[0]}}">{{ splitUppercase(tableHeaders[0]) }}</th>
+                        <th st-sort="{{tableHeaders[1]}}">{{ splitUppercase(tableHeaders[1]) }}</th>
+                        <th st-sort="{{tableHeaders[3]}}">{{ splitUppercase(tableHeaders[3]) }}</th>
+                        <th st-sort="{{tableHeaders[4]}}">{{ splitUppercase(tableHeaders[4]) }}</th>
+                        <th st-sort="{{tableHeaders[5]}}">{{ splitUppercase(tableHeaders[5]) }}</th>
+                        <th st-sort="{{tableHeaders[6]}}">{{ splitUppercase(tableHeaders[6]) }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="detail in hoverInformationCollection">
+                        <td ng-click="fireModal(tableHeaders[0], detail[tableHeaders[0]])" title="Click to View Course">
+                            {{ detail[tableHeaders[0]] }}
+                        </td>
+                        <td ng-click="fireTrainerDetailsModal(tableHeaders[1], detail[tableHeaders[2]])" title="Click to View Trainer Details">
+                            {{ detail[tableHeaders[1]] }}
+                        </td>
+                        <td ng-click="fireModalTrainerEmail(detail[tableHeaders[3]], detail[tableHeaders[2]], detail[tableHeaders[1]])"title="Click to Email Trainer">
+                            {{ detail[tableHeaders[3]] }}
+                        </td>
+                        <td ng-click="fireModalTrainerSMS(detail[tableHeaders[4]], detail[tableHeaders[2]], detail[tableHeaders[1]])"title="Click to send SMS Text to the Trainer">
+                            {{ detail[tableHeaders[4]] }}
+                        </td>
+                        <td>{{ detail[tableHeaders[5]] }}</td>
+                        <td>{{ detail[tableHeaders[6]] }}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="{{ tableHeaders.length }}" class="text-center">
+                            <div st-pagination=""
+                                 st-items-by-page=10
+                                 st-displayed-pages="7">
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <table ng-if="showResults && hoverParamName=='NumberOfAttendanceVerificationsDue'"
+                   st-table="hoverInformationCollection"
+                   st-safe-src="hoverInformation"
+                   class="table table-hover table-striped">
+
+                <thead>
+                    <tr>
+                        <th ng-repeat="header in tableHeaders">
+                            {{ splitUppercase(header) }}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="detail in hoverInformationCollection">
+                        <td ng-click="fireModal(tableHeaders[0], detail[tableHeaders[0]])" title="Click to View Course">
+                            {{ detail[tableHeaders[0]] }}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="{{ tableHeaders.length }}" class="text-center">
+                            <div st-pagination=""
+                                 st-items-by-page=10
+                                 st-displayed-pages="7">
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <table ng-if="showResults && hoverParamName=='DORSWithdrawnOffers'"
+                   st-table="hoverInformationCollection"
+                   st-safe-src="hoverInformation"
+                   class="table table-hover table-striped">
+
+                <thead>
+                    <tr>
+
+                        <th st-sort="DORSAttendanceRef">AttendanceId</th>
+                        <th st-sort="Licence">Licence Number</th>
+                        <th st-sort="DORSSchemeName">DORS Scheme</th>
+                        <th st-sort="ClientId">ClientId</th>
+                        <th st-sort="Name">Name</th>
+                        <th st-sort="CourseId">Course</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="detail in hoverInformationCollection">
+                        <td ng-click="openClientModal(detail['ClientId'])" title="Click to View Client Details">
+                            {{ detail["DORSAttendanceRef"] }}
+                        </td>
+                        <td ng-click="openClientModal(detail['ClientId'])" title="Click to View Client Details">
+                            {{ detail["Licence"] }}
+                        </td>
+                        <td ng-title="detail['CourseAdditionalInfo']">
+                            {{ detail["DORSSchemeName"] }}
+                        </td>
+                        <td ng-click="openClientModal(detail['ClientId'])" title="Click to View Client Details">
+                            {{ detail["ClientId"] }}
+                        </td>
+                        <td ng-click="openClientModal(detail['ClientId'])" title="Click to View Client Details">
+                            {{ detail["Name"] }}
+                        </td>
+                        <td ng-click="openCourseModal(detail['CourseId'])" title="Click to View Course">
+                            {{ detail["CourseId"] }} : {{ formatDate(detail["StartDate"]) }} : {{ detail["CourseTypeName"] }}
+                        </td>
+                    </tr>
+                    
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+
+            <table ng-if="showResults && hoverParamName=='Payments'"
+                   st-table="hoverInformationCollection"
+                   st-safe-src="hoverInformation"
+                   class="table table-hover table-striped">
+
+                <thead>
+                    <tr>
+                        <th st-sort="DateCreated">Date</th>
+                        <th st-sort="Amount">Amount</th>
+                        <th st-sort="Info">Info</th>
+                        <th st-sort="ClientId">ClientId</th>
+                        <th st-sort="Name">Name</th>
+                        <th st-sort="CourseId">Course</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="detail in hoverInformationCollection">
+                        <td>{{ detail["DateCreated"] }}</td>
+                        <td>{{ detail["Amount"] | currency:"£" }}</td>
+                        <td>{{ detail["Info"] }}</td>
+                        <td ng-click="openClientModal(detail['ClientId'])" title="Click to View Client Details">
+                            {{ detail["ClientId"] }}
+                        </td>
+                        <td ng-click="openClientModal(detail['ClientId'])" title="Click to View Client Details">
+                            {{ detail["Name"] }}
+                        </td>
+                        <td ng-click="openCourseModal(detail['CourseId'])" title="Click to View Course">
+                            <span ng-if="detail.CourseId != 0">{{ detail["CourseId"] }} :</span>
+                            <span ng-if="detail.StartDate != null">{{ formatDate(detail.StartDate) }} :</span>
+                            <span ng-if="detail.CourseTypeName != null">{{ detail["CourseTypeName"] }}</span>
+                        </td>
+                    </tr>
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            <div st-pagination=""
+                                 st-items-by-page=10
+                                 st-displayed-pages="7">
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <table ng-if="showResults && hoverParamName=='UnableToUpdateInDORS'"
+                   st-table="hoverInformationCollection"
+                   st-safe-src="hoverInformation"
+                   class="table table-hover table-striped">
+
+                <thead>
+                    <tr>
+                        <th colspan="6">
+                            <input st-search="" class="form-control" placeholder="Filter Results" type="search" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th st-sort="ClientId">ClientId</th>
+                        <th st-sort="Name">Name</th>
+                        <th st-sort="LicenceNumber">Licence Number</th>
+                        <th st-sort="CourseStartDate">Course</th>
+                        <th st-sort="PossibleReason">Possible Reason</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="detail in hoverInformationCollection">
+                        <td ng-click="openClientModal(detail['ClientId'])" title="Click to View Client Details">
+                            {{ detail["ClientId"] }}
+                        </td>
+                        <td ng-click="openClientModal(detail['ClientId'])" title="Click to View Client Details">
+                            {{ detail["Name"] }}
+                        </td>
+                        <td>{{ detail["LicenceNumber"] }}</td>
+                        <td ng-click="openCourseModal(detail['CourseId'])" title="Click to View Course">
+                            {{ detail["Course"] }}
+                        </td>
+                        <td>{{ detail["PossibleReason"] }}</td>
+                        <td><button class="btn" ng-click="retryContactingDORS(detail['ClientId'])">Retry</button></td>
+                        <td><button class="btn" ng-click="removeFromDORSQue(detail['ClientId'])">Remove</button></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            <div st-pagination=""
+                                 st-items-by-page=10
+                                 st-displayed-pages="7">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr ng-show="UnableToUpdateInDORSStatusMessage != ''">
+                        <td colspan="6" class="text-center validation-message">
+                            {{ UnableToUpdateInDORSStatusMessage }}
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <table ng-if="showResults && hoverParamName=='AttendanceNotUploadedToDORS'"
+                   st-table="hoverInformationCollection"
+                   st-safe-src="hoverInformation"
+                   class="table table-hover table-striped">
+
+                <thead>
+                    <tr>
+                        <th colspan="7">
+                            <input st-search="" class="form-control" placeholder="Filter Results" type="search" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th st-sort="ClientId">ClientId</th>
+                        <th st-sort="Name">Name</th>
+                        <th st-sort="LicenceNumber">Licence Number</th>
+                        <th st-sort="Course">Course</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="detail in hoverInformationCollection">
+                        <td ng-click="openClientModal(detail['ClientId'])" title="Click to View Client Details">
+                            {{ detail["ClientId"] }}
+                        </td>
+                        <td ng-click="openClientModal(detail['ClientId'])" title="Click to View Client Details">
+                            {{ detail["Name"] }}
+                        </td>
+                        <td>{{ detail["LicenceNumber"] }}</td>
+                        <td ng-click="openCourseModal(detail['CourseId'])" title="Click to View Course">
+                            {{ detail["Course"] }}
+                        </td>
+                        <td><button ng-click="attendanceFix(detail['DORSClientIdentifier'], detail['DORSCourseIdentifier'])" class="btn">Remove</button></td>
+                    </tr>
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            <div st-pagination=""
+                                 st-items-by-page=10
+                                 st-displayed-pages="7">
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <table ng-if="showResults && hoverParamName=='ClientsWithMissingReferringAuthorityCreatedThisWeek' || 
+                          showResults && hoverParamName=='ClientsWithMissingReferringAuthorityCreatedThisMonth' ||
+                          showResults && hoverParamName=='ClientsWithMissingReferringAuthorityCreatedLastMonth'"
+                   st-table="hoverInformationCollection"
+                   st-safe-src="hoverInformation"
+                   class="table table-hover table-striped">
+
+                <thead>
+                    <tr>
+                        <th st-sort="ClientId">ClientId</th>
+                        <th st-sort="Name">Name</th>
+                        <th st-sort="LicenceNumber">Licence Number</th>
+                        <th st-sort="DORSScheme">DORS Scheme</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="detail in hoverInformationCollection">
+                        <td ng-click="openClientModal(detail['ClientId'])" title="Click to View Client Details">
+                            {{ detail["ClientId"] }}
+                        </td>
+                        <td ng-click="openClientModal(detail['ClientId'])" title="Click to View Client Details">
+                            {{ detail["Name"] }}
+                        </td>
+                        <td>{{ detail["LicenceNumber"] }}</td>
+                        <td>{{ detail["DORSScheme"] }}</td>
+                    </tr>
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            <div st-pagination=""
+                                 st-items-by-page=10
+                                 st-displayed-pages="7">
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+
+
+
+            <table ng-if="showResults && hoverParamName=='AllOthers'"
+                    st-table="hoverInformationCollection"
+                    st-safe-src="hoverInformation"
+                    class="table table-hover table-striped">
+
+                <thead>
+                    <tr>
+                        
+                        <th st-sort="{{tableHeaders[$index]}}" ng-repeat="header in tableHeaders">
+                            {{ splitUppercase(header) }}
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="detail in hoverInformationCollection">
+                        <td ng-click="fireModal(tableHeaders[0], detail[tableHeaders[0]])" title="Click to View Client Details">
+                            {{ detail[tableHeaders[0]] }}
+                        </td>
+                        <td ng-click="fireModal(tableHeaders[1], detail[tableHeaders[0]])" title="Click to View Client Details">
+                            {{ detail[tableHeaders[1]] }}
+                        </td>
+                        <td>{{ detail[tableHeaders[2]] }}</td>
+                        <td>{{ detail[tableHeaders[3]] }}</td>
+                        <td>{{ detail[tableHeaders[4]] }}</td>
+                        <td ng-click="fireModal(tableHeaders[5], detail[tableHeaders[5]])" title="Click to View Course"
+                            ng-if="tableHeaders[5]">
+                            {{ detail[tableHeaders[5]] }}
+                        </td>
+                        <td ng-click="fireModal(tableHeaders[6], detail[tableHeaders[6]])" title="Click to View Course"
+                            ng-if="tableHeaders[6]">
+                            {{ detail[tableHeaders[6]] }}
+                        </td>
+                        <td ng-click="fireModal(tableHeaders[7], detail[tableHeaders[7]])" title="Click to View Course"
+                            ng-if="tableHeaders[7]">
+                            {{ detail[tableHeaders[7]] }}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="{{ tableHeaders.length }}" class="text-center">
+                            <div st-pagination=""
+                                    st-items-by-page=10
+                                    st-displayed-pages="7">
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div><!-- end .col-md-12 -->
+    </div><!-- end .row -->
+
+
+</div><!-- end #dashboardHover -->

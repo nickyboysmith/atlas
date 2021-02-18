@@ -1,0 +1,56 @@
+﻿<div id="addCourseType" class="addCourseType">
+
+    <form class="form-horizontal row" role="form">
+      
+        <div class="row"></div>
+
+        <div class='col-sm-12'>
+
+            <div class="row marginBottom5">
+                <div class="col-md-3">
+                    <label>Name</label>
+                </div>
+                <div class="col-md-9">
+                    <input type="text"
+                           class="form-control"
+                           data-ng-model="add.courseTypeCategory.Name"
+                           placeholder="Name"
+                           ng-required="true" />
+                </div>
+            </div>
+
+            <div class="row marginBottom5">
+                <div class="col-md-3">
+                    <label>Last Booking</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="text"
+                           class="form-control"
+                           data-ng-model="add.courseTypeCategory.DaysBeforeCourseLastBooking"
+                           ng-required="true" />
+                </div>
+                <div class="col-sm-7">
+                    days before the course starts
+                </div>
+            </div>
+
+            <div class="row marginBottom5">
+                <div class="col-md-3"></div>
+                <div class="col-md-9">
+                    <div class="btn button-fill-width" data-ng-click="save()">Save</div>
+                </div>
+                
+            </div>
+
+        </div>
+  
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!addSuccessMessage === false">
+            <div class="col-sm-12 success-message noRightPadding rightalign">{{ addSuccessMessage }}</div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!addValidationMessage === false">
+            <div class="col-sm-12 validation-message noRightPadding rightalign">{{ addValidationMessage }}</div>
+        </div>
+    </form>
+</div>

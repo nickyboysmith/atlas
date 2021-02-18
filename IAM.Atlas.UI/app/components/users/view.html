@@ -1,0 +1,78 @@
+﻿<div id="viewUser">
+
+
+
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Name:</label>
+        </div>
+        <div class="col-md-8">
+            {{ user.Name }}
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Email Address:</label>
+        </div>
+        <div class="col-md-8">
+            {{ user.Email }}
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Phone:</label>
+        </div>
+        <div class="col-md-8">
+            {{ user.Phone }}
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Gender:</label>
+        </div>
+        <div class="col-md-8">
+            {{ user.Gender.Name }}
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>User Role:</label>
+        </div>
+        <div class="col-md-8">
+            <div>{{userRoles.roleToDisplay}}</div>
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Login Id:</label>
+        </div>
+        <div class="col-md-8">
+            {{ user.LoginId }} (Last login: {{ user.LastLoginAttempt | date:'dd-MMM-yyyy HH:mm:ss'}})
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder" ng-show="showButtons">
+        <div class="col-md-4">
+            <label>&nbsp;</label>
+        </div>
+        <div class="col-md-8">
+            <button class="btn" ng-click="editUser(user.Id)">Edit</button>
+            <button class="btn" ng-click="requestPasswordChange(user)">Request Password Change</button>
+        </div>
+    </div><!-- end .row -->
+
+    <div class="col-md-8">
+        <div class="row col-sm-12 noRightPadding" ng-if="!successMessage === false">
+            <div class="col-sm-12 success-message noRightPadding rightalign">{{ successMessage }}</div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+            <div class="col-sm-12 validation-message noRightPadding rightalign">{{ validationMessage }}</div>
+        </div>
+    </div>
+</div>

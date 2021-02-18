@@ -1,0 +1,338 @@
+﻿<div id="trainerAdminCalendarDiv">
+
+    <div class="yearMonth row">
+        <div class="year col-md-3 col-sm-3">
+            <span>Year</span>
+            <select ng-model="year" ng-change="changedYear(year)">
+                <option ng-repeat="y in years" value="{{ y }}">{{ y }}</option>
+            </select>
+        </div>
+        <div class="month col-md-3 col-sm-3">
+            <span>Month</span>
+            <select ng-model="month" ng-change="changedMonth(month)">
+                <option value="1">1 - Jan</option>
+                <option value="2">2 - Feb</option>
+                <option value="3">3 - Mar</option>
+                <option value="4">4 - Apr</option>
+                <option value="5">5 - May</option>
+                <option value="6">6 - Jun</option>
+                <option value="7">7 - Jul</option>
+                <option value="8">8 - Aug</option>
+                <option value="9">9 - Sep</option>
+                <option value="10">10 - Oct</option>
+                <option value="11">11 - Nov</option>
+                <option value="12">12 - Dec</option>
+            </select>
+        </div>
+        <div class="month col-md-6 col-sm-6">
+            <span>Trainer</span>
+            <select ng-model="calendarTrainer" ng-change="selectTrainer(calendarTrainer)" ng-options="trainer as trainer.DisplayName for trainer in trainers"></select>
+        </div>
+    </div>
+
+    <div class="yearMonth row">
+        <div class="year col-md-12 col-sm-12">
+            <h3>Displaying {{ displayMonthYear() }} availability for {{ calendarTrainer.DisplayName }}:</h3>
+        </div>
+    </div>
+
+    <div class="calendar row">
+
+        <div class="week col-md-12 col-sm-12">
+            <!--Start Row of Days of the week titles-->
+
+            <div class="row">
+                <!--Column 1-->
+                <div class="cal-column col-md-2 col-sm-6">
+                    <div class="main-title col-md-12 col-sm-12">
+                        <span>Monday</span>
+                    </div>
+
+                </div>
+                <!--Column 2-->
+                <div class="cal-column col-md-2 col-sm-6">
+                    <div class="main-title col-md-12 col-sm-12">
+                        <span>Tuesday</span>
+                    </div>
+
+                </div>
+                <!--Column 3-->
+                <div class="cal-column col-md-2 col-sm-6">
+                    <div class="main-title col-md-12 col-sm-12">
+                        <span>Wednesday</span>
+                    </div>
+
+                </div>
+                <!--Column 4-->
+                <div class="cal-column col-md-2 col-sm-6">
+                    <div class="main-title col-md-12 col-sm-12">
+                        <span>Thursday</span>
+                    </div>
+                </div>
+                <!--Column 5-->
+                <div class="cal-column col-md-2 col-sm-6">
+                    <div class="main-title col-md-12 col-sm-12">
+                        <span>Friday</span>
+                    </div>
+                </div>
+                <!--Column 6-->
+                <div class="cal-column col-md-2 col-sm-6">
+                    <div class="main-title col-md-12 col-sm-12">
+                        <span>Saturday</span>
+                    </div>
+                </div>
+                <!--Column 7-->
+                <div class="cal-column col-md-2 col-sm-6">
+                    <div class="main-title col-md-12 col-sm-12">
+                        <span>Sunday</span>
+                    </div>
+                </div>
+                <!--End Row of Days of the week titles-->
+            </div>
+
+
+            <!--Start Row of Column Data-->
+            <!--Column 1-->
+            <div class="row" ng-repeat="calendarRow in calendarRows">
+                <div class="cal-column col-md-2 col-sm-6">
+                    <div class="day-title col-md-12 col-sm-12">
+                        <span>{{ formatDate(calendarRow.DateColumn1) }}</span>
+                    </div>
+                    <div class="day col-md-12 col-sm-12" ng-class="{'prev-month': previousMonth(calendarRow.DateColumn1) == true, 'next-month': nextMonth(calendarRow.DateColumn1) == true}">
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn1Session1Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn1Session1Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn1Session1Available, calendarRow.DateColumn1, 1)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn1) == true || nextMonth(calendarRow.DateColumn1) == true || calendarRow.ShowColumn1Session1Booked == true">
+                            <span>AM</span><span class="sub-title">(Session 1)</span>
+                        </div>
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn1Session2Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn1Session2Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn1Session2Available, calendarRow.DateColumn1, 2)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn1) == true || nextMonth(calendarRow.DateColumn1) == true || calendarRow.ShowColumn1Session2Booked == true">
+                            <span>PM</span><span class="sub-title">(Session 2)</span>
+                        </div>
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn1Session3Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn1Session3Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn1Session3Available, calendarRow.DateColumn1, 3)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn1) == true || nextMonth(calendarRow.DateColumn1) == true || calendarRow.ShowColumn1Session3Booked == true">
+                            <span>EVE</span><span class="sub-title">(Session 3)</span>
+                        </div>
+                    </div>
+                </div>
+                <!--Column 2-->
+                <div class="cal-column col-md-2 col-sm-6">
+                    <div class="day-title col-md-12 col-sm-12">
+                        <span>{{ formatDate(calendarRow.DateColumn2) }}</span>
+                    </div>
+                    <div class="day col-md-12 col-sm-12" ng-class="{'prev-month': previousMonth(calendarRow.DateColumn2) == true, 'next-month': nextMonth(calendarRow.DateColumn2) == true}">
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn2Session1Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn2Session1Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn2Session1Available, calendarRow.DateColumn2, 1)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn2) == true || nextMonth(calendarRow.DateColumn2) == true || calendarRow.ShowColumn2Session1Booked == true">
+                            <span>AM</span><span class="sub-title">(Session 1)</span>
+                        </div>
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn2Session2Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn2Session2Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn2Session2Available, calendarRow.DateColumn2, 2)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn2) == true || nextMonth(calendarRow.DateColumn2) == true || calendarRow.ShowColumn2Session2Booked == true">
+                            <span>PM</span><span class="sub-title">(Session 2)</span>
+                        </div>
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn2Session3Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn2Session3Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn2Session3Available, calendarRow.DateColumn2, 3)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn2) == true || nextMonth(calendarRow.DateColumn2) == true || calendarRow.ShowColumn2Session3Booked == true">
+                            <span>EVE</span><span class="sub-title">(Session 3)</span>
+                        </div>
+                    </div>
+                </div>
+                <!--Column 3-->
+                <div class="cal-column col-md-2 col-sm-6">
+                    <div class="day-title col-md-12 col-sm-12">
+                        <span>{{ formatDate(calendarRow.DateColumn3) }}</span>
+                    </div>
+                    <div class="day col-md-12 col-sm-12" ng-class="{'prev-month': previousMonth(calendarRow.DateColumn3) == true, 'next-month': nextMonth(calendarRow.DateColumn3) == true}">
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn3Session1Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn3Session1Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn3Session1Available, calendarRow.DateColumn3, 1)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn3) == true || nextMonth(calendarRow.DateColumn3) == true || calendarRow.ShowColumn3Session1Booked == true">
+                            <span>AM</span><span class="sub-title">(Session 1)</span>
+                        </div>
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn3Session2Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn3Session2Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn3Session2Available, calendarRow.DateColumn3, 2)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn3) == true || nextMonth(calendarRow.DateColumn3) == true || calendarRow.ShowColumn3Session2Booked == true">
+                            <span>PM</span><span class="sub-title">(Session 2)</span>
+                        </div>
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn3Session3Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn3Session3Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn3Session3Available, calendarRow.DateColumn3, 3)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn3) == true || nextMonth(calendarRow.DateColumn3) == true || calendarRow.ShowColumn3Session3Booked == true">
+                            <span>EVE</span><span class="sub-title">(Session 3)</span>
+                        </div>
+                    </div>
+                </div>
+                <!--Column 4-->
+                <div class="cal-column col-md-2 col-sm-6">
+                    <div class="day-title col-md-12 col-sm-12">
+                        <span>{{ formatDate(calendarRow.DateColumn4) }}</span>
+                    </div>
+                    <div class="day col-md-12 col-sm-12" ng-class="{'prev-month': previousMonth(calendarRow.DateColumn4) == true, 'next-month': nextMonth(calendarRow.DateColumn4) == true}">
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn4Session1Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn4Session1Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn4Session1Available, calendarRow.DateColumn4, 1)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn4) == true || nextMonth(calendarRow.DateColumn4) == true || calendarRow.ShowColumn4Session1Booked == true">
+                            <span>AM</span><span class="sub-title">(Session 1)</span>
+                        </div>
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn4Session2Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn4Session2Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn4Session2Available, calendarRow.DateColumn4, 2)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn4) == true || nextMonth(calendarRow.DateColumn4) == true || calendarRow.ShowColumn4Session2Booked == true">
+                            <span>PM</span><span class="sub-title">(Session 2)</span>
+                        </div>
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn4Session3Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn4Session3Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn4Session3Available, calendarRow.DateColumn4, 3)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn4) == true || nextMonth(calendarRow.DateColumn4) == true || calendarRow.ShowColumn4Session3Booked == true">
+                            <span>EVE</span><span class="sub-title">(Session 3)</span>
+                        </div>
+                    </div>
+                </div>
+                <!--Column 5-->
+                <div class="cal-column col-md-2 col-sm-6">
+                    <div class="day-title col-md-12 col-sm-12">
+                        <span>{{ formatDate(calendarRow.DateColumn5) }}</span>
+                    </div>
+                    <div class="day col-md-12 col-sm-12" ng-class="{'prev-month': previousMonth(calendarRow.DateColumn5) == true, 'next-month': nextMonth(calendarRow.DateColumn5) == true}">
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn5Session1Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn5Session1Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn5Session1Available, calendarRow.DateColumn5, 1)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn5) == true || nextMonth(calendarRow.DateColumn5) == true || calendarRow.ShowColumn5Session1Booked == true">
+                            <span>AM</span><span class="sub-title">(Session 1)</span>
+                        </div>
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn5Session2Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn5Session2Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn5Session2Available, calendarRow.DateColumn5, 2)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn5) == true || nextMonth(calendarRow.DateColumn5) == true || calendarRow.ShowColumn5Session2Booked == true">
+                            <span>PM</span><span class="sub-title">(Session 2)</span>
+                        </div>
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn5Session3Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn5Session3Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn5Session3Available, calendarRow.DateColumn5, 3)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn5) == true || nextMonth(calendarRow.DateColumn5) == true || calendarRow.ShowColumn5Session3Booked == true">
+                            <span>EVE</span><span class="sub-title">(Session 3)</span>
+                        </div>
+                    </div>
+                </div>
+                <!--Column 6-->
+                <div class="cal-column col-md-2 col-sm-6">
+                    <div class="day-title col-md-12 col-sm-12">
+                        <span>{{ formatDate(calendarRow.DateColumn6) }}</span>
+                    </div>
+                    <div class="day col-md-12 col-sm-12" ng-class="{'prev-month': previousMonth(calendarRow.DateColumn6) == true, 'next-month': nextMonth(calendarRow.DateColumn6) == true}">
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn6Session1Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn6Session1Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn6Session1Available, calendarRow.DateColumn6, 1)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn6) == true || nextMonth(calendarRow.DateColumn6) == true || calendarRow.ShowColumn6Session1Booked == true">
+                            <span>AM</span><span class="sub-title">(Session 1)</span>
+                        </div>
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn6Session2Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn6Session2Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn6Session2Available, calendarRow.DateColumn6, 2)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn6) == true || nextMonth(calendarRow.DateColumn6) == true || calendarRow.ShowColumn6Session2Booked == true">
+                            <span>PM</span><span class="sub-title">(Session 2)</span>
+                        </div>
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn6Session3Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn6Session3Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn6Session3Available, calendarRow.DateColumn6, 3)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn6) == true || nextMonth(calendarRow.DateColumn6) == true || calendarRow.ShowColumn6Session3Booked == true">
+                            <span>EVE</span><span class="sub-title">(Session 3)</span>
+                        </div>
+                    </div>
+                </div>
+                <!--Column 7-->
+                <div class="cal-column col-md-2 col-sm-6">
+                    <div class="day-title col-md-12 col-sm-12">
+                        <span>{{ formatDate(calendarRow.DateColumn7) }}</span>
+                    </div>
+                    <div class="day col-md-12 col-sm-12" ng-class="{'prev-month': previousMonth(calendarRow.DateColumn7) == true, 'next-month': nextMonth(calendarRow.DateColumn7) == true}">
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn7Session1Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn7Session1Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn7Session1Available, calendarRow.DateColumn7, 1)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn7) == true || nextMonth(calendarRow.DateColumn7) == true || calendarRow.ShowColumn7Session1Booked == true">
+                            <span>AM</span><span class="sub-title">(Session 1)</span>
+                        </div>
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn7Session2Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn7Session2Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn7Session2Available, calendarRow.DateColumn7, 2)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn7) == true || nextMonth(calendarRow.DateColumn7) == true || calendarRow.ShowColumn7Session2Booked == true">
+                            <span>PM</span><span class="sub-title">(Session 2)</span>
+                        </div>
+                        <div class="session col-md-12 col-sm-12">
+                            <input type="checkbox" name="session"
+                                   ng-model="calendarRow.ShowColumn7Session3Available"
+                                   ng-value="ParseBool(calendarRow.ShowColumn7Session3Available)"
+                                   ng-change="AvailabilityChanged(calendarRow.ShowColumn7Session3Available, calendarRow.DateColumn7, 3)"
+                                   ng-disabled="previousMonth(calendarRow.DateColumn7) == true || nextMonth(calendarRow.DateColumn7) == true || calendarRow.ShowColumn7Session3Booked == true">
+                            <span>EVE</span><span class="sub-title">(Session 3)</span>
+                        </div>
+                    </div>
+                </div>
+                <!--End Row of Column Data-->
+            </div>
+
+            <!-- loading gif -->
+            <div class="row" ng-show="loading">
+                <div class="col-sm-12">
+                    <br /><br />
+                    <img style="display: block; margin-left: auto; margin-right: auto;" src="/app_assets/images/ajax-loader.gif" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <br /><br />
+                    <span class="validation-message">{{ statusMessage }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

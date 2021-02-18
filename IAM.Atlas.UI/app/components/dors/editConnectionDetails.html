@@ -1,0 +1,111 @@
+﻿<div id="editConnectionDetails">
+
+    <system-feature-information title="DORS connection details"
+                                controller="EditConnectionDetailsCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/dors/editConnectionDetails"
+                                page-name="DORS Connection Details"></system-feature-information>
+
+    <div class="row title-separator">
+        <div class="col-md-12">
+            <p>DORS Connection Details<br />{{ organisationName }}</p>
+        </div>
+    </div>
+
+
+    <div class="row form-line-holder">
+        <div class="col-md-5">
+            <label>Connection Name:</label>
+        </div>
+        <div class="col-md-5">
+            <input 
+                   ng-model="connection.Username"
+                   type="text" 
+                   class="form-control" />
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div><!-- End .row -->
+
+    <div class="row form-line-holder">
+        <div class="col-md-5">
+            <label>Connection Password:</label>
+        </div>
+        <div class="col-md-5">
+            <input 
+                   id="passwordReveal"
+                   ng-keyup="changeInputWhenTyping($event)"
+                   ng-model="connection.Password"
+                   type="password" 
+                   class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <div class="btn full-width-button button-add-margin" ng-click="revealPassword()">{{ revealButtonText }}</div>
+        </div>
+    </div><!-- End .row -->
+
+
+    <div class="row form-line-holder">
+        <div class="col-md-5">
+            <label>Connection Enabled:</label>
+        </div>
+        <div class="col-md-5">
+            <input 
+                   ng-model="connection.Enabled"
+                   type="checkbox" 
+                   class="checkbox-add-margin"/>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div><!-- End .row -->
+
+
+    <div class="row form-line-holder">
+        <div class="col-md-5">
+            <label>Password Last changed:</label>
+        </div>
+        <div class="col-md-5">
+            <input 
+                   ng-model="connection.LastChanged"
+                   type="text" 
+                   class="form-control" 
+                   placeholder="10/01/2016"
+                   disabled/>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div><!-- End .row -->
+
+    <div class="row form-line-holder" ng-if="hasConnection">
+        <div class="col-md-5">
+            <label>Notes:</label>
+        </div>
+        <div class="col-md-5">
+            <ul class="note-holder">
+                <li ng-repeat="note in notes">
+                    {{ convertTheDate(note.Date) }}: {{ note.Type }} ({{ note.UserName }}): <br />
+                    {{ note.Text }}
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-2">
+            <div class="btn full-width-button button-add-margin" ng-click="openAddNoteModal()">add</div>
+        </div>
+    </div><!-- End .row -->
+
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2">
+            <div class="btn full-width-button button-add-margin" ng-click="saveConnectionDetails()">save</div>
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+
+    <div data-ng-if="showSuccessFader == true">
+        <my-msgfader status="success"></my-msgfader>
+    </div>
+    <div data-ng-if="showErrorFader == true">
+        <my-msgfader status="error"></my-msgfader>
+    </div>
+
+</div>

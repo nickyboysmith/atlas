@@ -1,0 +1,339 @@
+﻿@import "../modules/_mixins.scss";
+
+#clientLanding {
+    background: #e7e7e7;
+    min-height:100%;
+    .container {
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        overflow: visible;
+        .main-side-bar-container {
+            height:100%!important;
+            position:absolute;
+        } 
+        .main-client-container {
+            margin-left:25%;
+            .sign-out-client {
+                float: right;
+                cursor: pointer;
+            }
+            .client-header {
+                .toggle-menu-button {
+                    @include iconGetter(-4px, -565px);
+                    height: 36px!important;
+                    cursor: pointer;
+                }
+            }
+
+            .client-content-body {
+                .client-org-container {
+                    margin-bottom: 15px;
+                    //margin-top: 15px;
+                    .organisation-name {
+                        font-size: 16px;
+                        font-weight: bold;
+                    }
+                    .organisation-system-name {
+                        font-size: 13px;
+                    }
+                    .client-login-id {
+                        font-size: 13px;
+                    }
+                }
+                .line-holder {
+
+                    margin-bottom: 15px;
+                    label {
+                        padding-bottom: 3px;
+                        margin-bottom: 3px;
+                    }
+                }
+                .footer-padder {
+                    margin-top: 20px;
+                    border-top: 1px solid #cecece;
+                    padding-top: 20px;
+                    padding-bottom:20px;
+                }
+            }
+        }
+        .inner-sidebar-holder {
+            float: right;
+            min-height:100%;
+            width: 100%;
+            background: #323e46;
+            background: #cecece;
+            color: #f9f9f9;
+        }
+        .branding-container {
+            margin-top: 38px; 
+            img {
+                margin: 0 auto;
+                display: block;
+                width: 55%;
+            }
+        }
+        .client-links {
+
+            ul {
+                list-style-type: none;
+                margin: 52px 0 20px;
+                padding: 0 20px;
+                .client-profile-icon {
+                    background: url("/app_assets/images/svg/user-silhouette.svg");
+                    background-repeat: no-repeat;
+                    background-size: 28px;
+                    a {
+                        padding-top: 8px;
+                    }
+                }
+                .client-history-icon {
+                    background: url("/app_assets/images/svg/list-on-clipboard.svg");
+                    background-repeat: no-repeat;
+                    background-size: 28px;
+                    a {
+                        padding-top: 5px;
+                    }
+                }
+                .client-booking-icon {
+                    background: url("/app_assets/images/svg/touching-ipad-screen-with-educative-information.svg");
+                    background-repeat: no-repeat;
+                    background-size: 28px;
+                    a {
+                        padding-top: 2px;
+                    }
+                }
+                .client-payment-icon {
+                    background: url("/app_assets/images/svg/credit-card-payment.svg");
+                    background-repeat: no-repeat;
+                    background-size: 28px;
+                    a {
+                        padding-top: 3px;
+                    }
+                }
+                .client-help-icon {
+                    background: url("/app_assets/images/svg/question-circular-button.svg");
+                    background-repeat: no-repeat;
+                    background-size: 28px;
+                    a {
+                        padding-top: 5px;
+                    }
+                }
+                li {
+                    height: 32px;
+                    margin-bottom: 20px;   
+                }
+                li:hover {
+                    color: white;
+                }
+                li a {
+                    text-decoration:none;    
+                    display: block;
+                    padding-left: 45px;
+                    border-bottom: 1px solid #E2E2E2;     
+                    padding-bottom:10px;  
+                    // color: #f9f9f9;
+                }
+                li a:hover {
+                    background: none;
+                    // color: #f9f9f9;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+
+    /** Off Canvas for client **/
+        @media screen and (max-width: 767px) {
+
+
+        .container .main-side-bar-container {
+            height:100%!important;
+            position:relative;
+        }
+
+        .container .main-client-container {
+            margin-left: 0%;
+        }
+
+      .row-offcanvas {
+        position: relative;
+        -webkit-transition: all .25s ease-out;
+             -o-transition: all .25s ease-out;
+                transition: all .25s ease-out;
+      }
+
+
+
+      .row-offcanvas-left {
+        left: 0;
+      }
+
+
+      .row-offcanvas-left .sidebar-offcanvas {
+        left: -38%; /* 6 columns */
+        display: none;
+      }
+
+
+      .row-offcanvas-left.active {
+        left: 36%; /* 6 columns */
+      }
+
+      .row-offcanvas-left.active .main-client-container {
+            margin-left: 25%;
+      }
+
+      .row-offcanvas-left.active .sidebar-offcanvas {
+        display:block;
+        position: absolute!important;
+        /* left: 50%;  6 columns */
+      }
+
+      .sidebar-offcanvas {
+
+        position: absolute;
+        top: 0;
+        width: 65%; /* 6 columns */
+      }
+    }
+
+    .grey-box {
+        margin-top: 15px;
+        border: 2px solid #cecece;
+        background: #f7f7f7;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        @include theBorderRadius(3px);
+    }
+
+    .reschedule-note {
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid #cecece;
+        background-color: white;
+        .main-title {
+            font-weight: bold;
+            font-size: 16px;
+            padding-bottom: 5px;
+            padding-top: 0px
+        }
+        p {}  
+    }
+    
+    .sml-scroll-div {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 230px;
+    }
+
+
+    .row {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .onlineClientRow {
+        margin-left: -15px;
+        margin-right: -15px;
+
+        .NoCourses{
+
+            .SelectOther{
+                font-style: italic;
+                font-weight: bold;
+            }
+        }
+    }
+ 
+    .address-format {
+        white-space:pre-wrap;
+    }
+
+    .no-padding-or-margin {
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+
+    }
+
+    hr {
+        margin-top: 0px;
+        margin-bottom: 20px;
+        border: 0;
+        border-top: 1px solid #cccccc;
+    }
+
+    @media (min-width: 467px) and (max-width: 767px) {
+      .sidebar-offcanvas {
+        position: absolute;
+        top: 0;
+        width: 40%; /* 6 columns */
+      }
+    }
+
+   @media (min-width: 467px) and (max-width: 767px) {
+      .sidebar-offcanvas {
+        position: absolute;
+        top: 0;
+        width: 40%; /* 6 columns */
+      }
+    }
+
+
+}
+
+
+
+@media (min-width: 391px) and (max-width: 767px) {
+    #clientLanding {
+        .container {
+            .client-header {
+                .toggle-menu-button {
+                    background-position: -10px -564px;
+                }
+            }
+        }
+    }  
+}
+
+@media (min-width: 359px) and (max-width: 390px) {
+    #clientLanding {
+        .container {
+            .client-header {
+                .toggle-menu-button {
+                    background-position: -10px -564px;
+                }
+            }
+        }
+    }  
+}
+
+@media (min-width: 344px) and (max-width: 358px) {
+    #clientLanding {
+        .container {
+            .client-header {
+                .toggle-menu-button {
+                    background-position: -10px -564px;
+                }
+            }
+        }
+    }  
+}
+
+@media screen and (max-width: 343px) {
+    #clientLanding {
+        .container {
+            .client-header {
+                .toggle-menu-button {
+                    background-position: -17px -568px;
+                }
+            }
+        }
+    }  
+}

@@ -1,0 +1,282 @@
+﻿
+$tabHeight: 150px;
+$tabGap: 5px;
+
+.sidePanel
+{
+	position:fixed;	
+	right:0;
+	margin:0;
+    padding: 0;
+    top: 182px;
+    max-width: 25px;
+	color: $textColour;
+    font-family: Arial!important;
+
+}
+	.sidePanel_Tab
+    {
+        cursor: pointer;
+	    position:absolute;	
+	    right:0;	
+	    background-color: darken($background, 20%);
+        min-height: $tabHeight;
+
+        /*Rotate Writing Here*/
+        -ms-writing-mode: tb-rl; /* old syntax. IE */
+        -webkit-writing-mode: vertical-rl;
+        -moz-writing-mode: vertical-rl;
+        -ms-writing-mode: vertical-rl;
+        writing-mode: vertical-rl; /* new syntax */
+			
+        padding: 0;
+        vertical-align: middle;
+        text-align: center;
+
+        font-size: 14px;
+	    font-style: normal;
+	    font-variant: normal;
+	    font-weight: 300;
+	    line-height: 26.4px;
+
+        box-shadow: lighten($background, 50%) -2px -2px 15px ;
+	}
+	.sidePanel_Tab.Message0
+    {
+	    margin-top: $tabHeight + $tabGap;	
+	}
+	.sidePanel_Tab.Message1
+    {
+	    margin-top: (($tabHeight + $tabGap) * 2);	
+	}
+	.sidePanel_Tab.Message2
+    {
+	    margin-top: (($tabHeight + $tabGap) * 3);	
+	}
+	.sidePanel_Tab.Message3
+    {
+	    margin-top: (($tabHeight + $tabGap) * 4);	
+	}
+	.sidePanel_Tab.Message4
+    {
+	    margin-top: (($tabHeight + $tabGap) * 5);	
+	}
+	.sidePanel_Tab.Message5
+    {
+	    margin-top: (($tabHeight + $tabGap) * 6);	
+	}
+    .sidePanel_Tab span{
+        cursor: pointer;
+    }
+
+    .sidePanel_Tab .MessageIcon{
+        width: 20px;
+        height: 20px;
+        background-image: url("../images/message.png");
+        background-size: 100%;
+	    position:absolute;	
+        margin-top:10px;	
+        margin-right:5px;
+    }
+    .sidePanel_Data
+    {
+	    background-color: transparent;
+        border: none;
+    }
+    .sidePanel_Data.Message
+    {
+	    background-color: white;
+        border-radius: 1px;
+        box-shadow: 0 0 0 8px rgba(0,0,0,0.1);
+        padding-top: 20px;
+        opacity: 0.8;
+            font-family: Arial!important;
+
+    }
+    .sidePanel_Data.Menu
+    {
+	    background-color: rgba(0,0,0,0.2);
+        border-radius: 1px;
+        box-shadow: 0 0 0 8px rgba(0,0,0,0.1);
+        padding-top: 5px;
+        padding-bottom: 0;
+        opacity: 0.9;
+        height: auto;
+        z-index: 100;
+        .Close{
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background-image: url(../images/button_cancel.png);
+            background-size: 100%;
+            cursor: pointer;
+        }
+    }
+    .sidePanel_Data .title
+    {
+        padding: 0;
+        padding-left: 4px;
+        padding-bottom: 2px;
+	    color:#000;
+            font-family: Arial!important;
+
+    }
+    
+.sidePanel .list-group a
+{
+    text-decoration: none;
+    -webkit-tap-highlight-color: none;
+        font-family: Arial!important;
+
+	background-color: transparent;
+}
+.sidePanel .list-group.panel
+{
+    box-shadow: 0 1px 1px darken($background, 20%);
+    height: 238px;
+    overflow-y: scroll
+}
+.sidePanel a.list-group-head
+{
+    padding-left: 8px !important;
+	color: darken($textColour, 80%);
+    font-weight: bold;
+}
+.sidePanel .list-group-submenu a
+{
+    padding-left: 16px !important;
+    display: table;
+    line-height: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.sidePanel .list-group-submenu.collapse.in
+{
+    margin-bottom: 2px;
+}
+.sidePanel .list-group-head
+{
+	background-color: darken($background, 20%);
+    font-weight: bold;
+}
+
+.sidePanel .list-group-item
+{
+    cursor: pointer;
+	background-color: darken($background, 5%);
+	color: darken($textColour, 60%);
+    min-width: 200px;
+    max-height: 27px;
+    
+    font-family: 'Lucida Bright', Georgia, serif;
+    font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 300;
+	line-height: 10.4px;
+}
+
+.sidePanel .list-group-item:hover
+{
+	background-color: lighten($background, 50%);
+	color: darken($textColour, 90%);
+}
+
+.sidePanel .MessageContent
+{
+    height: ($tabHeight - 20px);
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 300;
+	line-height: 10.4px;
+    color: black;
+    
+    width: auto;
+    min-width: 300px;
+    max-width: 500px;
+
+    .Close{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 15px;
+        height: 15px;
+        background-image: url(../images/button_cancel.png);
+        background-size: 100%;
+        cursor: pointer;
+    }
+    div{
+        padding: 0;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    .MessageContent_NumberAndButtons{
+        width: 100%;
+        min-height: 30px;
+        font-style:italic;
+        .MessageContent_Number{
+            float: left;
+        }
+        .MessageContent_ControlButtons{
+            float: right;
+            display: inline-block;
+            padding-right: 18px;
+            vertical-align: top;
+            margin-top: -8px;
+            div.Button {
+                width: 30px;
+                height: 30px;
+                background-size: 100%;
+                cursor: pointer;
+            }
+            div.Button.Previous {
+                float: left;
+                background-image: url(../images/mail_left.png);
+            }
+            div.Button.Next {
+                margin-left: 6px;
+                float: right;
+                background-image: url(../images/mail_right.png);
+            }
+        }
+    }
+    .MessageContent_Title{
+        width: 100%;
+        padding-left: 8px;
+        padding-bottom: 6px;
+        font-weight: bold;
+
+    }
+    .MessageContent_Details{
+        width: 100%;
+        padding-left: 10px;
+        padding-bottom: 6px;
+    }
+    .MessageContent_Acknowledge{
+        width: auto;
+        float: right;
+        padding-right: 4px;
+        font-size: 10px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        label{
+            input {
+            }
+            span {
+                padding-left: 4px;
+            }
+        }
+    }
+
+}
+	

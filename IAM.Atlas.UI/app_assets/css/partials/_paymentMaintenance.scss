@@ -1,0 +1,81 @@
+﻿#paymentMaintenance {
+
+    .remove-left-padding {
+        padding-top: 3px;
+        padding-left: 0px;
+        padding-right: 30px !important;
+    }
+
+    .organisationHolder {
+        height: auto;
+        overflow: hidden;
+        margin-bottom: 20px;
+
+        label {
+        }
+    }
+
+    .selectedTableRow {
+        color: #fff;
+        background-color: #006cc2;
+    }
+
+    .selectedTableRow:hover {
+            background-color: #006cc2;
+        }
+
+    .payment-type-management {
+
+        .button-fill-width {
+            width: 100%;
+        }
+
+        .payment-input {
+            height: auto;
+            overflow: hidden;
+
+            label {
+            }
+        }
+
+        .payment-disable {
+            margin: 10px 0;
+
+            input {
+                display: block;
+                padding-top: 1px;
+                float: left;
+                margin-right: 15px;
+            }
+
+            label {
+                font-weight: normal;
+            }
+        }
+
+        .payment-action-buttons {
+            margin-top: 15px;
+        }
+
+        .close-modal-holder {
+            margin-top: 40px;
+        }
+    }
+
+    .payment-types {
+        #paymentMainenanceGridHolder {
+            table {
+                width: 99%;
+
+                tbody {
+                    tr {
+                        td {
+                            border-left: 1px solid #cecece;
+                            border-right: 1px solid #cecece;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

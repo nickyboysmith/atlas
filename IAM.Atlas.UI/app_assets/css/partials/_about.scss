@@ -1,0 +1,78 @@
+
+/*.AtlasModal.about .modal-body 
+,*/ /*#atlasAbout*/
+/*{
+    background: darken($background, 15%);
+}*/
+
+#atlasAbout
+{
+    width: 450px;
+    height: auto;
+
+    div{
+        background-color: transparent;
+    }
+
+        .main-atlas-logo-holder {
+        
+            margin: 5px 0 10px 0;
+
+        #AtlasLogo {
+            float: left;
+            height: 30px;
+            width: 30px;
+            background: url(/app_assets/images/atlaslogo.png) no-repeat;
+            background-size: 100%;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+        #AtlasTitle {
+            float: left;
+            font-family: "-apple-system",BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Ubuntu,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+            font-size: 24px;
+            font-weight: bolder;
+            color: #0094ff;
+            margin-left: 5px;
+            margin-top: 10px;
+            width: 200px;
+        }
+        #IAMRoadSmart {
+            float: right;
+            height: 60px;
+            width: 60px;
+            background: url(/app_assets/images/iamroad_smart_logo_atlas.png) no-repeat;
+            background-size: 100%;
+            margin-right: 20px;
+            /*margin-bottom: 10px;*/
+        }
+
+    }
+
+
+    .close{
+        float: left;
+    }
+    .infoRow{
+        vertical-align: middle;
+        padding: 0;
+        padding-left: 40px;
+        padding-bottom: 6px;
+    }
+    .linkRow{
+        vertical-align: middle;
+        padding: 0;
+        padding-left: 60px;
+        padding-bottom: 6px;
+    }
+
+    .AboutLink{
+        color: lighten($background, 30%);
+        cursor: pointer;
+    }
+    .AboutLink:hover{
+        color: lighten($background, 40%);
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}

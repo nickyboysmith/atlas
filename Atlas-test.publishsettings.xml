@@ -1,0 +1,48 @@
+<publishData>
+  <publishProfile profileName="iam-atlas-test - Web Deploy" 
+                  publishMethod="MSDeploy" 
+                  publishUrl="iam-atlas-test.scm.azurewebsites.net:443" 
+                  msdeploySite="iam-atlas-test" 
+                  userName="$iam-atlas-test" 
+                  userPWD="mnqwtLkCfpFWSmBlPk2RJ1imQq5J3edQaF7uwLPxzfQifiry24KgKtsDicrj" 
+                  destinationAppUrl="http://iam-atlas-test.azurewebsites.net" 
+                  SQLServerDBConnectionString="Data Source=tcp:atlastest.database.windows.net,1433;initial catalog=Atlas_Test;User ID=Atlas!Test1961@atlastest;Password=IAM1961!TestAndDev" 
+                  mySQLDBConnectionString="" 
+                  hostingProviderForumLink="" 
+                  controlPanelLink="http://windows.azure.com" 
+                  webSystem="WebSites" 
+                  targetDatabaseEngineType="sqlazuredatabase" 
+                  targetServerVersion="Version100">
+    <databases>
+      <add name="DefaultConnection" 
+           connectionString="Data Source=tcp:atlastest.database.windows.net,1433;initial catalog=Atlas_Test;User ID=Atlas!Test1961@atlastest;Password=IAM1961!TestAndDev" 
+           providerName="System.Data.SqlClient" 
+           type="Sql" 
+           targetDatabaseEngineType="sqlazuredatabase" 
+           targetServerVersion="Version100" />
+    </databases>
+  </publishProfile>
+  <publishProfile profileName="iam-atlas-test - FTP" 
+                  publishMethod="FTP" 
+                  publishUrl="ftp://waws-prod-am2-025.ftp.azurewebsites.windows.net/site/wwwroot" 
+                  ftpPassiveMode="True" 
+                  userName="iam-atlas-test\$iam-atlas-test" 
+                  userPWD="mnqwtLkCfpFWSmBlPk2RJ1imQq5J3edQaF7uwLPxzfQifiry24KgKtsDicrj" 
+                  destinationAppUrl="http://iam-atlas-test.azurewebsites.net" 
+                  SQLServerDBConnectionString="Data Source=tcp:atlastest.database.windows.net,1433;initial catalog=Atlas_Test;User ID=Atlas!Test1961@atlastest;Password=IAM1961!TestAndDev" 
+                  mySQLDBConnectionString="" 
+                  hostingProviderForumLink="" 
+                  controlPanelLink="http://windows.azure.com" 
+                  webSystem="WebSites" 
+                  targetDatabaseEngineType="sqlazuredatabase" 
+                  targetServerVersion="Version100">
+    <databases>
+      <add name="DefaultConnection" 
+           connectionString="Data Source=tcp:atlastest.database.windows.net,1433;initial catalog=Atlas_Test;User ID=Atlas!Test1961@atlastest;Password=IAM1961!TestAndDev" 
+           providerName="System.Data.SqlClient" 
+           type="Sql" 
+           targetDatabaseEngineType="sqlazuredatabase" 
+           targetServerVersion="Version100" />
+    </databases>
+  </publishProfile>
+</publishData>

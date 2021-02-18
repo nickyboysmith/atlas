@@ -1,0 +1,1306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2276a533d6cf41c29998af5b65244e1e" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="Atlas_DevModel.Organisation" Width="1.5" PointX="100.625" PointY="183.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationUser" Width="1.5" PointX="109.75" PointY="185.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ScriptLog" Width="1.5" PointX="0.5" PointY="9.625" IsExpanded="true" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationUser_Organisation" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardColumn" Width="1.5" PointX="158.25" PointY="182.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardGroupItem" Width="1.875" PointX="35.75" PointY="130.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardGroupUser" Width="3.125" PointX="34" PointY="126.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardReport" Width="1.5" PointX="54.625" PointY="131" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Report" Width="1.5" PointX="125.125" PointY="174" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReportCategory" Width="1.5" PointX="73.5" PointY="25.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReportChart" Width="1.5" PointX="131.875" PointY="185.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReportChartColumn" Width="1.5" PointX="150.25" PointY="187.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReportDataGrid" Width="1.5" PointX="169.75" PointY="176.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReportExportOption" Width="1.5" PointX="130.25" PointY="174" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReportsReportCategory" Width="1.5" PointX="80" PointY="28.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardReport_Report" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportChart_Report" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportDataGrid_Report" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportExportOption_Report" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportsReportCategory_Report" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportsReportCategory_ReportCategory" />
+        <EntityTypeShape EntityType="Atlas_DevModel.C__MigrationHistory" Width="1.5" PointX="0.5" PointY="7.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientEmail" Width="1.5" PointX="33.875" PointY="52.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientNote" Width="1.5" PointX="140.75" PointY="30.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientOrganisation" Width="1.5" PointX="144.375" PointY="84.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientPhone" Width="1.5" PointX="172.875" PointY="40" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PhoneType" Width="1.5" PointX="173.5" PointY="29.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientOrganisation_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientPhone_Phone" />
+        <EntityTypeShape EntityType="Atlas_DevModel.UserPreviousId" Width="1.5" PointX="69.375" PointY="40.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientPreviousId" Width="1.5" PointX="138.375" PointY="97.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Dashboard" Width="1.5" PointX="50.625" PointY="130.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardGroup" Width="1.5" PointX="33.375" PointY="130.125" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardGroupItem_Dashboard" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardReport_Dashboard" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardGroupItem_DashboardGroup" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardGroupUser_DashboardGroup" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientLocation" Width="1.5" PointX="142" PointY="55.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Location" Width="1.5" PointX="139.25" PointY="51.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientLocation_Location" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DataView" Width="1.5" PointX="139.5" PointY="177.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DataViewColumn" Width="1.5" PointX="149.25" PointY="182" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReportDataGridColumn" Width="1.5" PointX="165.5" PointY="180.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardColumn_DataViewColumn" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DataViewColumn_DataView" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportDataGrid_DataView" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportChartColumn_DataViewColumn" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportDataGridColumn_DataViewColumn" />
+        <EntityTypeShape EntityType="Atlas_DevModel.UserFeedback" Width="1.5" PointX="133.25" PointY="127.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationAdminUser" Width="1.5" PointX="71.625" PointY="202.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationReport" Width="1.5" PointX="106.75" PointY="179.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationReportCategory" Width="1.5" PointX="69.75" PointY="26" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReportOwner" Width="1.5" PointX="117.5" PointY="171.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemAdminUser" Width="1.5" PointX="65.5" PointY="48.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.UserReport" Width="1.5" PointX="78.375" PointY="32" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationAdminUser_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationReport_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationReportCategory_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationReport_Report" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationReportCategory_ReportCategory" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportOwner_Report" />
+        <AssociationConnector Association="Atlas_DevModel.FK_UserReport_Report" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Email" Width="1.5" PointX="31.125" PointY="57" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientEmail_Email" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SearchHistoryInterface" Width="1.5" PointX="0.875" PointY="90.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SearchHistoryItem" Width="1.5" PointX="1.625" PointY="86" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SearchHistoryUser" Width="1.5" PointX="3.875" PointY="88.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SearchHistoryInterfaceId_SearchHistoryInterface" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SearchHistoryUserId_SearchHistoryUser" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientPayment" Width="1.5" PointX="109.375" PointY="62.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientPaymentLink" Width="1.5" PointX="85.5" PointY="67.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientPaymentNote" Width="1.5" PointX="145.5" PointY="39.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationPaymentType" Width="1.5" PointX="55.75" PointY="65.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Payment" Width="1.5" PointX="52.75" PointY="64.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PaymentMethod" Width="1.5" PointX="117.5" PointY="120.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PaymentType" Width="1.5" PointX="53.625" PointY="73.125" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientPayment_Payment" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientPaymentLink_Payment" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientPaymentNote_Payment" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationPaymentType_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationPaymentType_PaymentType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Payment_PaymentMethod" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Payment_PaymentType" />
+        <EntityTypeShape EntityType="Atlas_DevModel.UserMenuFavourite" Width="1.5" PointX="4.75" PointY="95.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.UserMenuOption" Width="1.5" PointX="116.75" PointY="93.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseNote" Width="1.5" PointX="37" PointY="79.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseNoteType" Width="1.5" PointX="40.75" PointY="80.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseType" Width="1.5" PointX="96" PointY="79.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Venue" Width="1.5" PointX="88.75" PointY="92.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.VenueAddress" Width="1.5" PointX="86.5" PointY="73.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.VenueCost" Width="1.5" PointX="99.875" PointY="91.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.VenueCostType" Width="1.5" PointX="114.625" PointY="91.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.VenueCourseType" Width="1.5" PointX="91.375" PointY="79.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.VenueDirections" Width="1.5" PointX="94.75" PointY="93.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.VenueEmail" Width="1.5" PointX="29.125" PointY="59.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseNote_CourseNoteType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseType_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueCourseType_CourseType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueEmail_Email" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueAddress_Location" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Venue_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueAddress_Venue" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueCost_Venue" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueCourseType_Venue" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueDirections_Venue" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueCost_VenueCostType" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Area" Width="1.5" PointX="109.5" PointY="195.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationRegion" Width="1.5" PointX="93.5" PointY="179" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Area_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationRegion_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Region" Width="1.5" PointX="90.375" PointY="179.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationRegion_Region" />
+        <EntityTypeShape EntityType="Atlas_DevModel.NoteType" Width="1.5" PointX="143.875" PointY="31.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.StandardCourseType" Width="1.5" PointX="8.875" PointY="7.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CoursePreviousId" Width="1.5" PointX="63" PointY="69.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Course" Width="1.5" PointX="164.625" PointY="61.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Course_CourseType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Course_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseNote_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CoursePreviousId_Course" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseDate" Width="1.5" PointX="146" PointY="77.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDates_Course" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Message" Width="1.5" PointX="62.625" PointY="187.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.MessageAcknowledgement" Width="1.5" PointX="75.25" PointY="185.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.MessageCategory" Width="1.5" PointX="67.25" PointY="190.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.MessageRecipient" Width="1.5" PointX="56.5" PointY="186.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.MessageRecipientException" Width="1.5" PointX="77.375" PointY="189.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.MessageRecipientOrganisation" Width="1.5" PointX="58.5" PointY="193.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.MessageRecipientOrganisationException" Width="1.5" PointX="66.875" PointY="194" />
+        <EntityTypeShape EntityType="Atlas_DevModel.MessageSchedule" Width="1.5" PointX="59.875" PointY="190.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Message_MessageCategory" />
+        <AssociationConnector Association="Atlas_DevModel.FK_MessageAcknowledgement_Message" />
+        <AssociationConnector Association="Atlas_DevModel.FK_MessageRecipient_Message" />
+        <AssociationConnector Association="Atlas_DevModel.FK_MessageRecipientException_Message" />
+        <AssociationConnector Association="Atlas_DevModel.FK_MessageRecipientOrganisation_Message" />
+        <AssociationConnector Association="Atlas_DevModel.FK_MessageRecipientOrganisationException_Message" />
+        <AssociationConnector Association="Atlas_DevModel.FK_MessageSchedule_Message" />
+        <AssociationConnector Association="Atlas_DevModel.FK_MessageRecipientOrganisation_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_MessageRecipientOrganisationException_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.AdministrationMenuGroupItem" Width="2.5" PointX="104.375" PointY="155.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.AdministrationMenuItem" Width="2.5" PointX="109.625" PointY="155.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.AdministrationMenuItemUser" Width="2.5" PointX="115.875" PointY="157.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.AdministrationMenuUser" Width="1.875" PointX="116.125" PointY="101.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AdministrationMenuGroupItem_AdministrationMenuItem" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AdministrationMenuItemUser_AdministrationMenuItem" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseVenue" Width="1.5" PointX="79.625" PointY="87.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseVenue_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseVenue_Venue" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseSchedule" Width="1.5" PointX="154.625" PointY="89.125" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseSchedule_Course" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseTrainer" Width="1.5" PointX="66.375" PointY="40" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DriverLicenceType" Width="1.5" PointX="33" PointY="46.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Trainer" Width="2.625" PointX="15.75" PointY="41.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerCourseType" Width="1.5" PointX="71.75" PointY="40.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerEmail" Width="1.5" PointX="26.375" PointY="52.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerLicence" Width="1.5" PointX="27.875" PointY="45.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerLocation" Width="1.5" PointX="139.25" PointY="48.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerNote" Width="1.5" PointX="146.125" PointY="34.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerOrganisation" Width="1.5" PointX="26.5" PointY="105.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerPhone" Width="1.5" PointX="33.875" PointY="40.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTrainer_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTrainer_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerCourseType_CourseType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerLicence_DriverLicenceType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerEmail_Email" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerLocation_Location" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerOrganisation_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerPhone_Phone" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerCourseType_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerEmail_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerLicence_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerLocation_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerNote_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerOrganisation_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerPhone_Trainer" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientLicence" Width="1.5" PointX="37" PointY="45.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientLicence_DriverLicenceType" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ArchivedEmailAttachment" Width="1.5" PointX="0.5" PointY="2.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ArchivedEmailNote" Width="1.5" PointX="2.5" PointY="2.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ArchivedEmailTo" Width="1.5" PointX="0.5" PointY="4.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.EmailService" Width="1.5" PointX="158.875" PointY="127.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.EmailServiceEmailCount" Width="1.5" PointX="153.75" PointY="124" />
+        <EntityTypeShape EntityType="Atlas_DevModel.EmailServiceEmailsSent" Width="1.5" PointX="167.625" PointY="126.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.EmailServiceNote" Width="1.5" PointX="161.25" PointY="132.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationPrefferedEmailService" Width="1.5" PointX="162.75" PointY="137.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ScheduledEmailAttachment" Width="1.5" PointX="155.25" PointY="151.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ScheduledEmailNote" Width="1.5" PointX="160.625" PointY="146" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ScheduledEmailTo" Width="1.5" PointX="158.875" PointY="152.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ScheduledReport" Width="1.5" PointX="152.375" PointY="193.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ScheduledReportEmailTo" Width="1.5" PointX="154.625" PointY="196.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ScheduledReportHistory" Width="1.5" PointX="154.625" PointY="190.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ScheduledReportParameter" Width="1.5" PointX="154.625" PointY="193.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SchedulerControl" Width="1.5" PointX="131.5" PointY="124" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailServiceNote_EmailService" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationPrefferedEmailService_EmailService" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationPrefferedEmailService_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ScheduledReport_Report" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ScheduledReportEmailTo_ScheduledReport" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ScheduledReportHistory_ScheduledReport" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ScheduledReportParameter_Report" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PaymentPreviousId" Width="1.5" PointX="55" PointY="63.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentPreviousId_Payment" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientPaymentPreviousClientId" Width="1.5" PointX="55" PointY="69.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientPaymentPreviousClientId_Payment" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueCostType_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseLanguage" Width="1.5" PointX="68.375" PointY="50.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Language" Width="1.5" PointX="63.875" PointY="26.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationLanguage" Width="1.5" PointX="60.5" PointY="29.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseLanguage_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseLanguage_OrganisationLanguage" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationLanguage_Language" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationLanguage_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.UserPreferences" Width="1.5" PointX="64.75" PointY="51.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseLog" Width="1.5" PointX="167.5" PointY="106.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseLog_Course" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PublicHoliday" Width="1.5" PointX="4.5" PointY="0.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueEmail_Venue" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseClientPayment" Width="1.875" PointX="133.5" PointY="118.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientPaymentCourseId_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientPaymentPaymentId_Payment" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseTypeCategory" Width="1.5" PointX="30.75" PointY="99.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerCourseTypeCategory" Width="1.5" PointX="26.125" PointY="66.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeCategory_CourseType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerCourseTypeCategoryCourseTypeCategoryId_CourseTypeCategory" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerCourseTypeCategoryTrainerId_Trainer" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerDatesUnavailable" Width="1.5" PointX="21.5" PointY="40.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerWeekDaysAvailable" Width="1.5" PointX="23.375" PointY="49.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerDatesUnavailable_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerWeekDaysAvailable_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Course_CourseTypeCategory" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientQuickSearch" Width="1.5" PointX="62.5" PointY="38.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseQuickSearch" Width="1.5" PointX="183.875" PointY="68.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientQuickSearch_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseQuickSearch_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseQuickSearch_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Note" Width="1.5" PointX="148.25" PointY="28.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientNote_Email" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientPaymentNote_Note" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Note_NoteType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerNote_Email" />
+        <EntityTypeShape EntityType="Atlas_DevModel.AdministrationMenuGroup" Width="1.5" PointX="103.375" PointY="158.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.BlockIP" Width="1.5" PointX="2.125" PointY="96.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AdministrationMenuGroupItem_AdministrationMenuGroup" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Gender" Width="1.5" PointX="179.25" PointY="36.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemControl" Width="1.5" PointX="4.875" PointY="99" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Trainer_Gender" />
+        <EntityTypeShape EntityType="Atlas_DevModel.UserLogin" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSAttendanceLog" Width="1.5" PointX="66.375" PointY="68.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSAttendanceState" Width="1.5" PointX="135.125" PointY="93.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSControl" Width="1.5" PointX="113.875" PointY="21" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSLicenceCheckRequest" Width="1.5" PointX="75.75" PointY="36.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSState" Width="1.5" PointX="111.125" PointY="18.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSTransactionHistory" Width="1.5" PointX="64.75" PointY="72.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.LoginState" Width="1.5" PointX="6.5" PointY="0.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReferringAuthority" Width="2" PointX="40.75" PointY="137.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReferringAuthorityContract" Width="2.25" PointX="43.75" PointY="136.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReferringAuthorityNote" Width="1.5" PointX="142.375" PointY="33.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReferringAuthorityUser" Width="1.5" PointX="34" PointY="138.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemState" Width="1.5" PointX="109.75" PointY="22.125" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSAttendanceLog_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSControl_DORSState" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSState_SystemState" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthorityNote_Note" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthorityContract_ReferringAuthority" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthorityUser_ReferringAuthority" />
+        <EntityTypeShape EntityType="Atlas_DevModel.LoginSession" Width="1.5" PointX="1.125" PointY="93.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationSystemConfiguration" Width="1.5" PointX="81.625" PointY="206.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PostalDistrict" Width="1.5" PointX="6.75" PointY="4.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationSystemConfiguration_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSConnection" Width="1.5" PointX="129.125" PointY="14.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSConnectionHistory" Width="1.5" PointX="77" PointY="40.125" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSConnection_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSConnectionHistory_DORSConnection" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationScheduledEmail" Width="1.5" PointX="145.25" PointY="143.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ScheduledEmailState" Width="1.5" PointX="154.5" PointY="148.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemScheduledEmail" Width="1.5" PointX="159" PointY="148.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationScheduledEmail_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.VenueLocale" Width="1.5" PointX="89" PointY="87.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseVenue_VenueLocale" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueLocale_Venue" />
+        <EntityTypeShape EntityType="Atlas_DevModel.database_firewall_rules" Width="1.5" PointX="4.625" PointY="2.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSConnectionNotification" Width="1.5" PointX="80" PointY="40.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSConnection_DORSState" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSConnectionNotification_DORSConnection" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ArchivedSMSNote" Width="1.5" PointX="2.375" PointY="8.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ArchivedSMSToList" Width="1.5" PointX="2.375" PointY="6.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationPreferredSMSService" Width="1.5" PointX="58" PointY="55.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ScheduledSMSNote" Width="1.5" PointX="59" PointY="141.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ScheduledSMSTo" Width="1.5" PointX="63.625" PointY="149.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SMSService" Width="1.5" PointX="60.25" PointY="53.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SMSServiceMessageCount" Width="1.5" PointX="9" PointY="4.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SMSServiceMessagesSent" Width="1.5" PointX="49.875" PointY="147.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SMSServiceNote" Width="1.5" PointX="57.875" PointY="51.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationPreferredSMSService_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationPreferredSMSService_SMSService" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SMSServiceNote_SMSService" />
+        <EntityTypeShape EntityType="Atlas_DevModel.EmailServiceSendingFailure" Width="1.5" PointX="164.75" PointY="131.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailServiceSendingFailure_EmailService" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemSupportUser" Width="1.5" PointX="117.25" PointY="141.125" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailServiceEmailCount_EmailService" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailServiceEmailsSent_EmailService" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportChart_DataView" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportChartColumn_ReportChart" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportDataGridColumn_ReportDataGrid" />
+        <EntityTypeShape EntityType="Atlas_DevModel.EmailServiceCredential" Width="1.5" PointX="147.75" PointY="130.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailServiceCredential_EmailService" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ScheduledEmail" Width="1.5" PointX="156.75" PointY="145.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationScheduledEmail_ScheduledEmail" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ScheduledEmail_ScheduledEmailState" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ScheduledEmailAttachment_ScheduledEmail" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ScheduledEmailNote_ScheduledEmail" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ScheduledEmailTo_ScheduledEmail" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemScheduledEmail_ScheduledEmail" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ScheduledEmail_EmailService" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationContact" Width="1.5" PointX="136.5" PointY="51.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationContact_Email" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationContact_Location" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationContact_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseDateClientAttendance" Width="1.5" PointX="140.875" PointY="75.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseDateTrainerAttendance" Width="1.5" PointX="146.5" PointY="70.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDateClientAttendance_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDateTrainerAttendance_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDateClientAttendance_CourseDate" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDateTrainerAttendance_CourseDate" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDateTrainerAttendance_Trainer" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationManagement" Width="1.5" PointX="92.25" PointY="190.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationManagement_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationManagement_Organisation1" />
+        <EntityTypeShape EntityType="Atlas_DevModel.AdministrationMenuItemOrganisation" Width="1.5" PointX="110.875" PointY="164" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AdministrationMenuItemOrganisation_AdministrationMenuItem" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AdministrationMenuItemOrganisation_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseReferenceDateFormat" Width="1.5" PointX="91.75" PointY="206.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseReferenceGenerator" Width="1.5" PointX="81" PointY="141" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseReferenceNumber" Width="1.5" PointX="97.875" PointY="207.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseReferencePrefixSuffixSeparator" Width="1.5" PointX="84.875" PointY="202.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseReferenceDateFormat_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseReferenceNumber_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseReferencePrefixSuffixSeparator_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReportDataType" Width="1.5" PointX="164.375" PointY="172.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReportParameter" Width="1.5" PointX="156.25" PointY="174.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportParameter_DataViewColumn" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportParameter_ReportDataGrid" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportParameter_ReportDataType" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemStateSummary" Width="1.5" PointX="119.25" PointY="23.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemStateSummaryHistory" Width="1.5" PointX="113.25" PointY="26.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemStateSummary_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemStateSummaryHistory_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemStateSummary_SystemState" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemStateSummaryHistory_SystemState" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemStateSummaryHistory_SystemStateSummary" />
+        <EntityTypeShape EntityType="Atlas_DevModel.LoginNumber" Width="1.5" PointX="12.375" PointY="0.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PaymentCard" Width="1.5" PointX="43.875" PointY="65.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PaymentCardLog" Width="1.5" PointX="46.875" PointY="68.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PaymentCardSupplier" Width="1.5" PointX="42.875" PointY="73.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentMethod_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCard_Payment" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCardLog_Payment" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCard_PaymentCardSupplier" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCardLog_PaymentCard" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCardLog_PaymentCardSupplier" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PaymentCardType" Width="1.5" PointX="112.875" PointY="120" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerSetting" Width="1.5" PointX="15.375" PointY="36.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCard_PaymentCardType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerSetting_Trainer" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationDORSForceContract" Width="1.5" PointX="67.5" PointY="126.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DOrganisationDORSForceContract_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationSMSTemplateMessage" Width="1.5" PointX="106.5" PointY="196.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PaymentCardProvider" Width="1.5" PointX="39.875" PointY="72.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PaymentLink" Width="1.5" PointX="55" PointY="59.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PaymentNote" Width="1.5" PointX="153.625" PointY="32" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SMSMessageTag" Width="1.5" PointX="6.75" PointY="2.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentNote_Note" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationSMSTemplateMessage_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentLink_Payment" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentLink_Payment1" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentNote_Payment" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCardSupplier_PaymentCardProvider" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationPaymentProvider" Width="1.5" PointX="92.875" PointY="165.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationPaymentProviderCredential" Width="1.5" PointX="94.125" PointY="169.125" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationPaymentProvider_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationPaymentProviderCredential_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PaymentProvider" Width="1.5" PointX="83.375" PointY="168.125" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationPaymentProvider_PaymentProvider" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationPaymentProviderCredential_PaymentProvider" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCard_PaymentProvider" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientDocument" Width="1.5" PointX="53.625" PointY="123.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseDocument" Width="1.5" PointX="53.875" PointY="118.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseDocumentTemplate" Width="1.5" PointX="137.5" PointY="120.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Document" Width="1.5" PointX="49.625" PointY="113.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DocumentContainer" Width="1.5" PointX="4.5" PointY="108.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DocumentOwner" Width="1.5" PointX="39.75" PointY="122" />
+        <EntityTypeShape EntityType="Atlas_DevModel.FileStoragePath" Width="1.5" PointX="38.75" PointY="116.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.FileStoragePathOwner" Width="1.5" PointX="36" PointY="122.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientDocument_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDocument_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDocumentTemplate_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDocument_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Document_FileStoragePath" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentOwner_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentOwner_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_FileStoragePathOwner_FileStoragePath" />
+        <AssociationConnector Association="Atlas_DevModel.FK_FileStoragePathOwner_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardMeter" Width="1.5" PointX="66.5" PointY="92.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationDashboardMeter" Width="1.5" PointX="71.75" PointY="66.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.UserDashboardMeter" Width="1.5" PointX="68.75" PointY="43.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationDashboardMeter_DashboardMeter" />
+        <AssociationConnector Association="Atlas_DevModel.FK_UserDashboardMeter_DashboardMeter" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationDashboardMeter_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientOtherRequirement" Width="1.5" PointX="127.25" PointY="93.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientSpecialRequirement" Width="1.5" PointX="116.375" PointY="54.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SpecialRequirement" Width="1.5" PointX="111" PointY="53.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.sysdiagram" Width="1.5" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientSpecialRequirement_SpecialRequirement" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthority_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthorityContract_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSConnectionNote" Width="1.5" PointX="148" PointY="23.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSConnectionNotes_DORSConnection" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSConnectionNotes_Note" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DocumentDeleted" Width="1.5" PointX="43.75" PointY="112.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DocumentMarkedForDelete" Width="1.5" PointX="44.25" PointY="117" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentDeleted_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentMarkedForDelete_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SpecialRequirement_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientMarkedForArchive" Width="1.5" PointX="127.125" PointY="96.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientMarkedForDelete" Width="1.5" PointX="127.125" PointY="90.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientOnlineBookingState" Width="1.5" PointX="117.25" PointY="71.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientOnlineBookingState_Course" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerDocument" Width="1.5" PointX="51.875" PointY="103.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerDocument_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerDocument_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerDocument_Trainer" />
+        <EntityTypeShape EntityType="Atlas_DevModel.AllCourseDocument" Width="1.5" PointX="52.875" PointY="127.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.AllCourseTypeDocument" Width="1.5" PointX="98.25" PointY="97.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.AllTrainerDocument" Width="1.5" PointX="55.875" PointY="127.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AllCourseDocument_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AllCourseDocument_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AllCourseTypeDocument_CourseType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AllCourseTypeDocument_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AllTrainerDocument_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AllTrainerDocument_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.VenueRegion" Width="1.5" PointX="91" PointY="126.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueRegion_Region" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueRegion_Venue" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientDORSNotification" Width="1.5" PointX="127" PointY="88" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSScheme" Width="1.5" PointX="115" PointY="73" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientOnlineBookingState_DORSSCheme" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CancelledCourse" Width="1.5" PointX="174.625" PointY="87.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSCancelledCourse" Width="1.5" PointX="174.625" PointY="66.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CancelledCourse_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSCancelledCourse_Course" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DocumentType" Width="1.5" PointX="2.375" PointY="4.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemSupportUser_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardMeter_DocumentSummary" Width="1.5" PointX="111.875" PointY="204" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardMeter_DocumentSummary_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientScheduledEmail" Width="1.5" PointX="159" PointY="99.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientScheduledSM" Width="1.5" PointX="138.125" PointY="100.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientScheduledEmail_ScheduledEmail" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DocumentTemplate" Width="1.5" PointX="51.875" PointY="107.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDocumentTemplate_DocumentTemplate" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentTemplate_Document" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientMarkedForDeleteCancelled" Width="1.5" PointX="138.125" PointY="81.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.EmailsBlockedOutgoing" Width="1.5" PointX="107.875" PointY="202.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailsBlockedOutgoing_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSClientCourseRemoval" Width="1.5" PointX="174.625" PointY="59.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSClientCourseRemoval_Course" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseClientTransferred" Width="1.5" PointX="166.75" PointY="81.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSClientCourseTransferred" Width="1.5" PointX="177.625" PointY="59.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientTransferred_FromCourse" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientTransferred_ToCourse" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSClientCourseTransferred_FromCourse" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSClientCourseTransferred_ToCourse" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DocumentMarkedForDeleteCancelled" Width="1.5" PointX="54.875" PointY="106.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentMarkedForDeleteCancelled_Document" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationSystemTaskMessaging" Width="1.5" PointX="134.25" PointY="140.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemTask" Width="1.5" PointX="132" PointY="140.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationSystemTaskMessaging_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationSystemTaskMessaging_SystemTask" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReferringAuthorityClient" Width="1.5" PointX="138.125" PointY="95" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReferringAuthorityDepartment" Width="1.5" PointX="46.5" PointY="119.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReferringAuthorityUserDepartment" Width="1.5" PointX="43.5" PointY="140.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthorityClient_ReferringAuthority" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthorityDepartment_ReferringAuthority" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthorityUserDepartment_ReferringAuthority" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthorityUserDepartment_ReferringAuthorityUser" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SMSServiceCredential" Width="1.5" PointX="62.5" PointY="54" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SMSServiceCredential_SMSService" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardMeterExposure" Width="1.5" PointX="68.75" PointY="130.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardMeterExposure_DashboardMeter" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardMeterExposure_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.FreqAskedQuestion" Width="1.5" PointX="113.125" PointY="112.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.FreqAskedQuestionAnswer" Width="1.5" PointX="112.75" PointY="107.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.FreqAskedQuestionAnswerRequest" Width="1.5" PointX="116.625" PointY="108.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.FreqAskedQuestionGroup" Width="1.5" PointX="12.75" PointY="100.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.FreqAskedQuestionGroupCategory" Width="1.5" PointX="10.5" PointY="100.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.FreqAskedQuestionGroupItem" Width="1.5" PointX="15" PointY="104.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.FreqAskedQuestionOwner" Width="1.5" PointX="110.125" PointY="115.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_FreqAskedQuestionAnswer_FreqAskedQuestion" />
+        <AssociationConnector Association="Atlas_DevModel.FK_FreqAskedQuestionGroupItem_FreqAskedQuestion" />
+        <AssociationConnector Association="Atlas_DevModel.FK_FreqAskedQuestionOwner_FreqAskedQuestion" />
+        <AssociationConnector Association="Atlas_DevModel.FK_FreqAskedQuestionAnswerRequest_FreqAskedQuestionAnswer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_FreqAskedQuestionGroup_FreqAskedQuestionGroupCategory" />
+        <AssociationConnector Association="Atlas_DevModel.FK_FreqAskedQuestionGroupItem_FreqAskedQuestionGroup" />
+        <EntityTypeShape EntityType="Atlas_DevModel.EmailServiceCredentialLog" Width="1.5" PointX="151.875" PointY="134.125" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailServiceCredentialLog_EmailService" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailServiceCredentialLog_EmailServiceCredential" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseOverBookingNotification" Width="1.5" PointX="174.625" PointY="69.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseOverBookingNotification_Course" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientIdentifier" Width="1.5" PointX="127" PointY="84.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthorityNote_ReferringAuthority" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SchedulerControlNote" Width="1.5" PointX="145.375" PointY="29.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SchedulerControlNote_Note" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationEmailCount" Width="1.5" PointX="91.25" PointY="184.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailServiceEmailsSent_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationEmailCount_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDateClientAttendance_Trainer" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DataViewForDocumentTemplate" Width="1.5" PointX="141.75" PointY="139.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DataViewForDocumentTemplateViewableColumn" Width="1.5" PointX="151.5" PointY="161.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DocumentFromTemplateData" Width="1.5" PointX="56.375" PointY="102.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DocumentFromTemplateRequest" Width="1.5" PointX="54.125" PointY="101.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DocumentTemplateDataView" Width="1.5" PointX="135.25" PointY="147.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DocumentTemplateDataViewColumn" Width="1.5" PointX="151.5" PointY="183.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DataViewForDocumentTemplate_DataView" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentTemplateDataView_DataView" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DataViewForDocumentTemplateViewableColumn_DataViewColumn" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentTemplateDataViewColumn_DataViewColumn" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DataViewForDocumentTemplateViewableColumn_DataViewForDocumentTemplate" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentFromTemplateData_DocumentFromTemplateRequest" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentFromTemplateRequest_DocumentTemplate" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseClientEmailReminder" Width="1.5" PointX="174.625" PointY="96" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseClientSMSReminder" Width="1.5" PointX="174.625" PointY="100.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationEmailTemplateMessage" Width="1.5" PointX="127.25" PointY="149.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientEmailReminder_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientSMSReminder_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientEmailReminder_ScheduledEmail" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationEmailTemplateMessage_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemFeatureGroup" Width="1.5" PointX="116.375" PointY="148.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemFeatureGroupItem" Width="1.5" PointX="112.625" PointY="149.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemFeatureItem" Width="1.5" PointX="107.75" PointY="146.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemFeatureUserNote" Width="1.5" PointX="150.5" PointY="98" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemInformation" Width="1.5" PointX="103.375" PointY="147.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AdministrationMenuItem_SystemFeatureItem" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemFeatureUserNote_Note" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemFeatureUserNote_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemInformation_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemFeatureGroupItem_SystemFeatureGroup" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemFeatureGroupItem_SystemFeatureItem" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemFeatureUserNote_SystemFeatureItem" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemInformation_SystemFeatureItem" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSTrainer" Width="1.5" PointX="19.125" PointY="79.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSTrainer_Trainer" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerAccreditation" Width="1.5" PointX="9.75" PointY="117" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerAvailability" Width="1.5" PointX="13.375" PointY="43.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerAvailabilityByMonth" Width="1.5" PointX="22.125" PointY="76.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerAvailability_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerAvailabilityByMonth_Trainer" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseStencilCourse" Width="1.5" PointX="177.625" PointY="67.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseStencilCourse_Course" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseTypeTolerance" Width="1.5" PointX="98.25" PointY="101.125" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeTolerance_CourseType" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationSelfConfiguration" Width="1.5" PointX="51.875" PointY="134.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationSelfConfiguration_CourseReferenceGenerator" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationSelfConfiguration_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationSelfConfiguration_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseDORSForceContract" Width="1.5" PointX="181.625" PointY="81.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDORSForceContract_Course" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationCourseStencil" Width="1.5" PointX="103.875" PointY="139.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationCourseStencil_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseStencil" Width="1.5" PointX="104.25" PointY="100.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseStencil_CourseReferenceGenerator" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseStencil_CourseType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseStencil_CourseTypeCategory" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseStencil_Venue" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseStencilCourse_CourseStencil" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationCourseStencil_CourseStencil" />
+        <EntityTypeShape EntityType="Atlas_DevModel.NetcallAgent" Width="1.5" PointX="9.75" PointY="120.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.NetcallAgentNumberHistory" Width="1.5" PointX="15" PointY="110.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.NetcallErrorLog" Width="1.5" PointX="7" PointY="7.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.NetcallPayment" Width="1.5" PointX="83.625" PointY="53.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.NetcallRequest" Width="1.5" PointX="88.25" PointY="50.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.NetcallRequestPreviousId" Width="1.5" PointX="85.5" PointY="51.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_NetcallAgentNumberHistory_NetcallAgent" />
+        <AssociationConnector Association="Atlas_DevModel.FK_NetcallPayment_NetcallRequest" />
+        <AssociationConnector Association="Atlas_DevModel.FK_NetcallPayment_Payment" />
+        <AssociationConnector Association="Atlas_DevModel.FK_NetcallRequestPreviousId_NetcallRequest" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ScheduledSMSState" Width="1.5" PointX="63.875" PointY="143.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ArchivedSM" Width="1.5" PointX="66.5" PointY="142.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ScheduledSM" Width="1.5" PointX="59.5" PointY="143.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ArchivedSMS_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ArchivedSMS_ScheduledSMSState" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientScheduledSMS_ScheduledSMSId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientSMSReminder_ScheduledSMS" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ScheduledSMS_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ScheduledSMS_ScheduledSMSState" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ScheduledSMS_SMSService" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ScheduledSMSNote_ScheduledSMS" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ScheduledSMSTo_ScheduledSMS" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SMSServiceMessagesSent_ScheduledSMS" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationScheduledSM" Width="1.5" PointX="63.375" PointY="156" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemScheduledSM" Width="1.5" PointX="48.125" PointY="145.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationScheduledSMS_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationScheduledSMS_ScheduledSMS" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemScheduledSMS_ScheduledSMS" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseClonedCourse" Width="1.5" PointX="177.625" PointY="71.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseCloneRequest" Width="1.5" PointX="92.25" PointY="112.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClonedCourse_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClonedCourse_CourseCloneRequest" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseCloneRequest_CourseReferenceGenerator" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseCloneRequest_CourseType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseCloneRequest_CourseTypeCategory" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseCloneRequest_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.VenueImageMap" Width="1.5" PointX="75" PointY="103.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueImageMap_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueImageMap_Venue" />
+        <EntityTypeShape EntityType="Atlas_DevModel.LastRunLog" Width="1.5" PointX="10.625" PointY="0.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseDORSClient" Width="1.5" PointX="174.625" PointY="55.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDORSClient_Course" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSClientCourseAttendance" Width="1.5" PointX="177.625" PointY="55.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSOffersWithdrawnLog" Width="1.5" PointX="131.375" PointY="15.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSClientCourseAttendance_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSOffersWithdrawnLog_DORSConnection" />
+        <EntityTypeShape EntityType="Atlas_DevModel.UserChangeLog" Width="1.5" PointX="108.625" PointY="132.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReferringAuthorityOrganisation" Width="1.5" PointX="43.5" PointY="153.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthorityOrganisation_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthorityOrganisation_ReferringAuthority" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemTrappedError" Width="1.5" PointX="2.5" PointY="10.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSCourse" Width="1.5" PointX="174.625" PointY="63.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSCourseData" Width="1.5" PointX="8.625" PointY="0.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSForce" Width="1.5" PointX="36.875" PointY="136.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSForceContract" Width="1.5" PointX="170.25" PointY="84.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSCourse_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDORSForceContract_DORSForceContractId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DOrganisationDORSForceContract_DORSForceContract" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSSchemeCourseType" Width="1.5" PointX="103.25" PointY="80.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSSchemeCourseType_CourseType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSSchemeCourseType_DORSScheme" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DataImportedFile" Width="1.5" PointX="54.875" PointY="110.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DataImportedFileDataKey" Width="1.5" PointX="57.125" PointY="107" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DataImportedFileDataValue" Width="1.5" PointX="59.375" PointY="107.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DataImportedFile_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DataImportedFileDataKey_DataImportedFile" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DataImportedFileDataValue_DataImportedFileDataKey" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerVenue" Width="1.5" PointX="91" PointY="83.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerVenueNote" Width="1.5" PointX="138.25" PointY="40.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerVenueNote_Note" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerVenue_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerVenue_Venue" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerVenueNote_TrainerVenue" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseInterpreterLanguage" Width="1.5" PointX="174.625" PointY="50.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseInterpreterLanguage_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseInterpreterLanguage_Language" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientView" Width="1.5" PointX="138.125" PointY="86.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSTrainerLicenceState" Width="1.5" PointX="115" PointY="77.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSTrainerScheme" Width="1.5" PointX="117.25" PointY="77.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSTrainerScheme_DORSScheme" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSTrainerScheme_DORSTrainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSTrainerScheme_DORSTrainerLicenceState" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PostCodeInformation" Width="1.5" PointX="11" PointY="5.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerAvailabilityDate" Width="1.5" PointX="13.375" PointY="47.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerBookingRequest" Width="1.5" PointX="177.625" PointY="51.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainingSession" Width="1.5" PointX="9.75" PointY="124.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerBookingRequest_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerAvailabilityDate_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerBookingRequest_Trainer" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ProcessMonitor" Width="1.5" PointX="10.75" PointY="3.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSConnectionForRotation" Width="1.5" PointX="127" PointY="68.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSConnectionForRotation_DORSConnection" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemControl_DefaultDORSConnection" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseDORSNotification" Width="1.5" PointX="179.875" PointY="78.125" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDORSNotification_Course" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSTrainerLicenceType" Width="1.5" PointX="9.75" PointY="97.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSTrainerLicence" Width="1.5" PointX="4.625" PointY="7.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationPayment" Width="1.5" PointX="57" PointY="117.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationPayment_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationPayment_Payment" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientDORSData" Width="1.5" PointX="141.125" PointY="93.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientDORSData_DORSScheme" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientDORSData_ReferringAuthority" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PaymentCardTypePaymentMethod" Width="1.5" PointX="116.875" PointY="115.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCardTypePaymentMethod_PaymentCardType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCardTypePaymentMethod_PaymentMethod" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthority_DORSForce" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSLicenceCheckCompleted" Width="1.5" PointX="124.375" PointY="77.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSLicenceCheckCompleted_DORSLicenceCheckRequest" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationArchiveControl" Width="1.5" PointX="93" PointY="202.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationArchiveControl_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ArchivedEmail" Width="1.5" PointX="95.875" PointY="210.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ArchivedEmail_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientOnlineEmailChangeRequest" Width="1.5" PointX="141.125" PointY="84.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientOnlineEmailChangeRequestHistory" Width="1.5" PointX="141.125" PointY="79.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientOnlineEmailChangeRequest_ClientOrganisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientOnlineEmailChangeRequestHistory_ClientOrganisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseClientPaymentTransfer" Width="1.5" PointX="188.375" PointY="80.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientPaymentTransferFromCourseId_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientPaymentTransferredFromCourseId_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientPaymentTransferToCourseId_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDORSClientTransferredFromCourseId_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDORSClientTransferredToCourseId_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientPaymentTransfer_PaymentId" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseClientTransferRequest" Width="1.5" PointX="180.625" PointY="62.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientTransferRequestTransferFromCourseId_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientTransferRequestTransferToCourseId_Course" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseVenueEmailReason" PointX="183.375" PointY="85.875" Width="1.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseVenueEmail" Width="1.5" PointX="179" PointY="85" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseVenueEmail_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseVenueEmail_CourseVenueEmailReason" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseVenueEmail_ScheduledEmail" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseVenueEmail_Venue" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientDecryptionRequest" Width="1.5" PointX="141.125" PointY="89.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientEncryption" Width="1.5" PointX="127" PointY="82.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientEncryptionRequest" Width="1.5" PointX="138.125" PointY="89.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseGroupEmailRequest" Width="1.5" PointX="177.625" PointY="92.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseGroupEmailRequest_Course" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TriggerLog" Width="1.5" PointX="13" PointY="3.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.InstructorRole" Width="1.5" PointX="19.875" PointY="77.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerInstructorRole" Width="1.5" PointX="22.125" PointY="81.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerVehicle" Width="1.5" PointX="19.125" PointY="84.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerVehicleNote" Width="1.5" PointX="141.25" PointY="43.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerVehicleRemove" Width="1.5" PointX="21.375" PointY="105.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.VehicleType" Width="1.5" PointX="16.875" PointY="85.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerInstructorRole_InstructorRole" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerVehicleNote_Note" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerInstructorRole_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerVehicle_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerVehicle_VehicleType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerVehicleNote_TrainerVehicle" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerVehicleRemove_TrainerVehicle" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerBookingLimitationByMonth" Width="1.5" PointX="10.875" PointY="42" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerBookingSummary" Width="1.5" PointX="19.125" PointY="53.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerBookingLimitationByMonth_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerBookingSummary_Trainer" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerBookingLimitationByYear" Width="1.5" PointX="19.125" PointY="57.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerBookingLimitationByYear_Trainer" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseSessionAllocation" Width="1.5" PointX="162" PointY="62.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseSessionAllocation_Course" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseDocumentRequest" Width="1.5" PointX="177.625" PointY="99.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseDocumentRequestType" Width="1.5" PointX="181.25" PointY="100.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDocumentRequest_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDocumentRequest_CourseDocumentRequestType" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseTypeCategoryFee" Width="1.5" PointX="101.25" PointY="118.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseTypeCategoryRebookingFee" Width="1.5" PointX="93.625" PointY="103.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseTypeFee" Width="1.5" PointX="101.25" PointY="124.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseTypeRebookingFee" Width="1.5" PointX="98.25" PointY="124.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeCategoryFee_CourseType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeCategoryRebookingFee_CourseType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeFee_CourseType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeRebookingFee_CourseType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeCategoryFee_CourseTypeCategory" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeCategoryRebookingFee_CourseTypeCategory" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeCategoryFee_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeCategoryRebookingFee_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeFee_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeRebookingFee_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.NetcallOverride" Width="1.5" PointX="201.25" PointY="75.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_NetcallOverride_Course" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerGrade" Width="1.5" PointX="19.125" PointY="60.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerInsurance" Width="1.5" PointX="22.125" PointY="85.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerVehicleCategory" Width="1.5" PointX="21.375" PointY="108.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.VehicleCategory" Width="1.5" PointX="9.75" PointY="128.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerGrade_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerInsurance_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerVehicleCategory_TrainerVehicle" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerVehicleCategory_VehicleCategory" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseGroupEmailRequestAttachment" Width="1.5" PointX="169.25" PointY="93.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PendingEmailAttachment" Width="1.5" PointX="51.875" PointY="114.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseGroupEmailRequestAttachment_CourseGroupEmailRequest" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseGroupEmailRequestAttachment_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PendingEmailAttachment_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ScheduledEmailAttachment_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PendingEmailAttachment_PendingEmailAttachment" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CancelledRefund" Width="1.5" PointX="94.375" PointY="142.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Refund" Width="1.5" PointX="89.5" PointY="137.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.RefundMethod" Width="1.5" PointX="104.875" PointY="171.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.RefundNote" Width="1.5" PointX="150.75" PointY="32.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.RefundPayment" Width="1.5" PointX="58" PointY="69.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.RefundType" Width="1.5" PointX="95" PointY="157.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CancelledRefund_Refund" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundNote_Note" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Refund_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundMethod_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundType_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundPayment_Payment" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundPayment_Payment2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Refund_RefundMethod" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundNote_Refund" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundPayment_Refund" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Refund_RefundType" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseInterpreter" Width="1.5" PointX="160.75" PointY="85" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Interpreter" Width="1.5" PointX="184.375" PointY="30.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.InterpreterEmail" Width="1.5" PointX="189" PointY="38.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.InterpreterLanguage" Width="1.5" PointX="66.125" PointY="36.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.InterpreterLocation" Width="1.5" PointX="143.5" PointY="51.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.InterpreterNote" Width="1.5" PointX="153" PointY="28" />
+        <EntityTypeShape EntityType="Atlas_DevModel.InterpreterOrganisation" Width="1.5" PointX="83.875" PointY="180.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.InterpreterPhone" Width="1.5" PointX="180.5" PointY="29.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseInterpreter_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseInterpreter_CourseDate" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseInterpreter_Interpreter" />
+        <AssociationConnector Association="Atlas_DevModel.FK_InterpreterEmail_Email" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Interpreter_Gender" />
+        <AssociationConnector Association="Atlas_DevModel.FK_InterpreterEmail_Interpreter" />
+        <AssociationConnector Association="Atlas_DevModel.FK_InterpreterLanguage_Interpreter" />
+        <AssociationConnector Association="Atlas_DevModel.FK_InterpreterLocation_Interpreter" />
+        <AssociationConnector Association="Atlas_DevModel.FK_InterpreterNote_Interpreter" />
+        <AssociationConnector Association="Atlas_DevModel.FK_InterpreterOrganisation_Interpreter" />
+        <AssociationConnector Association="Atlas_DevModel.FK_InterpreterPhone_Interpreter" />
+        <AssociationConnector Association="Atlas_DevModel.FK_InterpreterLanguage_Language" />
+        <AssociationConnector Association="Atlas_DevModel.FK_InterpreterLocation_Location" />
+        <AssociationConnector Association="Atlas_DevModel.FK_InterpreterNote_Note" />
+        <AssociationConnector Association="Atlas_DevModel.FK_InterpreterOrganisation_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_InterpreterPhone_Phone" />
+        <EntityTypeShape EntityType="Atlas_DevModel.NetcallOverridePayment" Width="1.5" PointX="197.125" PointY="72.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_NetcallOverridePayment_NetcallOverride" />
+        <AssociationConnector Association="Atlas_DevModel.FK_NetcallOverridePayment_Payment" />
+        <EntityTypeShape EntityType="Atlas_DevModel.InterpreterAvailabilityDate" Width="1.5" PointX="186.875" PointY="33.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_InterpreterAvailabilityDate_Interpreter" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientOnlineBookingRestriction" Width="1.5" PointX="138.125" PointY="110.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientOnlineBookingRestriction_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientChangeLog" Width="1.5" PointX="144.125" PointY="131" />
+        <EntityTypeShape EntityType="Atlas_DevModel.User" Width="1.5" PointX="122.375" PointY="99.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AdministrationMenuItemUser_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AdministrationMenuUser_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AllCourseDocument_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AllCourseTypeDocument_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_AllTrainerDocument_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_BlockIP_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CancelledCourse_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CancelledRefund_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientChangeLog_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientDecryptionRequest_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientEncryptionRequest_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientMarkedForArchive_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientMarkedForDelete_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientMarkedForDelete_User2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientMarkedForDeleteCancelled_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientMarkedForDeleteCancelled_User2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientOnlineEmailChangeRequest_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientOnlineEmailChangeRequestHistory_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientOtherRequirement_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientPayment_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientSpecialRequirement_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientView_ViewedByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Course_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Course_User2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientEmailReminder_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientPayment_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientPaymentTransfer_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientSMSReminder_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientTransferred_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseCloneRequest_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDate_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDateClientAttendance_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDateTrainerAttendance_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDocumentRequest_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseGroupEmailRequest_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseInterpreter_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseLog_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseNote_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseSchedule_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseStencil_CourseCreationInitiatedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseStencil_CourseRemoveInitialByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseStencil_UpdatedByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseStencil_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTrainer_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeCategoryFee_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeCategoryFee_User2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeCategoryRebookingFee_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeCategoryRebookingFee_User2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeFee_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeFeeDisabledByUserId_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeRebookingFee_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTypeTolerance_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardGroupUser_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DataImportedFileDataKey_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DataView_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DataView_User2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DataViewForDocumentTemplate_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Document_UpdatedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentContainer_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentDeleted_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentFromTemplateRequest_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentMarkedForDelete_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentMarkedForDelete_User1" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentMarkedForDeleteCancelled_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentMarkedForDeleteCancelled_User1" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentTemplate_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentTemplate_User2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentTemplateDataView_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSAttendanceState_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSConnection_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSConnectionForRotation_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSConnectionHistory_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSConnectionNotification_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSLicenceCheckCompleted_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSLicenceCheckRequest_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSTrainer_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSTrainerLicenceState_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSTrainerLicenceType_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSTransactionHistory_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailService_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailServiceCredential_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailServiceCredentialLog_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_FreqAskedQuestion_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_FreqAskedQuestionAnswer_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_FreqAskedQuestionAnswer_User2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_FreqAskedQuestionAnswerRequest_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_FreqAskedQuestionAnswerRequest_User2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_User_Gender" />
+        <AssociationConnector Association="Atlas_DevModel.FK_LoginSession_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Message_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_MessageAcknowledgement_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_MessageRecipient_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_MessageRecipientException_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_NetcallAgent_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_NetcallAgent_User2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_NetcallAgentNumberHistory_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_NetcallOverride_AddedByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_NetcallOverride_DisabledByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Note_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Organisation_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Organisation_User2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationAdminUser_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationEmailTemplateMessage_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationSelfConfiguration_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationSMSTemplateMessage_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationSystemConfiguration_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationSystemTaskMessaging_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationUser_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Payment_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Payment_User1" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCard_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthority_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthority_User2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthorityContract_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthorityDepartment_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthorityUser_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthorityUser_User1" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Refund_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Report_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Report_User2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportOwner_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SchedulerControl_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SearchHistoryUserUserId_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SpecialRequirement_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SpecialRequirement_User1" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemAdminUser_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemControl_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemFeatureGroup_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemFeatureItem_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemFeatureUserNote_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemStateSummary_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemStateSummaryHistory_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemSupportUser_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Trainer_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerAccreditation_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerAvailabilityByMonth_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerCourseTypeCategory_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerDatesUnavailable_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerInstructorRole_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerInsurance_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerInsurance_User2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerVehicle_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerVehicleRemove_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerVenue_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerWeekDaysAvailable_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainingSession_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainingSession_User2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_UserChangeLog_User1" />
+        <AssociationConnector Association="Atlas_DevModel.FK_UserChangeLog_User2" />
+        <AssociationConnector Association="Atlas_DevModel.FK_UserDashboardMeter_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_UserId_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_UserMenuFavourite_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_UserMenuOption_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_UserPreferences_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_UserPreviousId_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_UserReport_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VehicleCategory_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueImageMap_User" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Client" Width="1.5" PointX="130.375" PointY="82.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Client_Gender" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Client_User_CreatedByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Client_User_LockedByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Client_User_UpdatedByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Client_User_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientDecryptionRequest_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientDocument_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientDORSData_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientDORSNotification_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientEmail_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientEncryption_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientEncryptionRequest_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientIdentifier_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientLicence_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientLocation_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientMarkedForArchive_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientMarkedForDelete_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientMarkedForDeleteCancelled_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientMarkedForDeleteCancelled_Client1" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientNote_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientOnlineBookingRestriction_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientOnlineBookingState_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientOnlineEmailChangeRequest_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientOnlineEmailChangeRequestHistory_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientOrganisation_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientOtherRequirement_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientPayment_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientPaymentLink_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientPaymentNote_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientPhone_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientPreviousId_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientQuickSearch_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientScheduledEmail_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientScheduledSMS_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientSpecialRequirement_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientView_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientEmailReminder_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientPaymentClientId_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientPaymentTransferFromClientId_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientPaymentTransferToClientId_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientSMSReminder_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientTransferred_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientTransferRequest_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDateClientAttendance_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseDORSClient_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSClientCourseAttendance_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSClientCourseRemoval_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSClientCourseTransferred_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSLicenceCheckCompleted_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSLicenceCheckRequest_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_NetcallOverride_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReferringAuthorityClient_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_NetcallAgent_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardMeterCategory" Width="1.5" PointX="64.25" PointY="93.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardMeter_DashboardMeterCategory" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CancelledRefundRequest" Width="1.5" PointX="171.125" PointY="77.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.RefundRequest" Width="1.5" PointX="168.875" PointY="114.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.RefundRequestNote" Width="1.5" PointX="171.125" PointY="73.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CancelledRefundRequest_RefundRequest" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CancelledRefundRequest_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundRequest_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundRequest_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundRequestNote_Note" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundRequest_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundRequest_Payment" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundRequest_RefundMethod" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundRequest_RefundType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundRequest_RequestedByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundRequest_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_RefundRequestNote_RefundRequest" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Task" Width="1.5" PointX="126.875" PointY="117.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TaskCategory" Width="1.5" PointX="124.625" PointY="124.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TaskCategoryForOrganisation" Width="1.5" PointX="126.875" PointY="162" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TaskCompletedForUser" Width="1.5" PointX="132.125" PointY="115.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TaskForOrganisation" Width="1.5" PointX="129.125" PointY="158.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TaskForUser" Width="1.5" PointX="129.125" PointY="114.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TaskNote" Width="1.5" PointX="150.5" PointY="30" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TaskRelatedToClient" Width="1.5" PointX="132.625" PointY="90.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TaskRelatedToCourse" Width="1.5" PointX="166.875" PointY="69.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TaskRelatedToTrainer" Width="1.5" PointX="19.125" PointY="45" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TaskRemovedFromOrganisation" Width="1.5" PointX="130.125" PointY="148.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TaskRemovedFromUser" Width="1.5" PointX="129.125" PointY="118.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskRelatedToClient_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskRelatedToCourse_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskNote_Note" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskCategoryForOrganisation_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskForOrganisation_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskRemovedFromOrganisation_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Task_TaskCategory" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Task_User_ClosedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Task_User_CreatedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskCompletedForUser_Task" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskForOrganisation_Task" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskForUser_Task" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskNote_Task" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskRelatedToClient_Task" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskRelatedToCourse_Task" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskRelatedToTrainer_Task" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskRemovedFromOrganisation_Task" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskRemovedFromUser_Task" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskCategory_User_CreatedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskCategory_User_UpdatedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskCategoryForOrganisation_TaskCategory" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskCompletedForUser_User_CompletedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskCompletedForUser_User_UserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskForUser_User_AssignedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskForUser_User_UserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskRelatedToTrainer_Trainer" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskRemovedFromOrganisation_User_RemovedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskRemovedFromUser_User_RemovedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskRemovedFromUser_User_UserId" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientMysteryShopper" Width="1.5" PointX="132.625" PointY="110.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientMysteryShopper_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientMysteryShopper_User" />
+        <EntityTypeShape EntityType="Atlas_DevModel.MysteryShopperAdministrator" Width="1.5" PointX="124.625" PointY="119.125" />
+        <AssociationConnector Association="Atlas_DevModel.FK_MysteryShopperAdministrator_AddedByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_MysteryShopperAdministrator_User" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TaskAction" Width="1.5" PointX="116.125" PointY="191.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TaskActionPriorityForOrganisation" Width="1.5" PointX="102.875" PointY="191.125" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskActionPriorityForOrganisation_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TaskActionPriorityForOrganisation_TaskAction" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSSite" Width="1.5" PointX="88.75" PointY="98.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSSiteVenue" Width="1.5" PointX="91" PointY="93.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSSiteVenue_DORSSite" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSSiteVenue_Venue" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationDORSSite" Width="1.5" PointX="102.875" PointY="151.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.VenueDORSValidationRequest" Width="1.5" PointX="91" PointY="97.5" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationDORSSite_DORSSite" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationDORSSite_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VenueDORSValidationRequest_Venue" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseLocked" Width="1.5" PointX="169.875" PointY="97" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseProfileUneditable" Width="1.5" PointX="166.875" PointY="100" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseLocked_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseProfileUneditable_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseLocked_User_UpdatedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseProfileUneditable_User_UpdatedByUserId" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReportRequest" Width="1.5" PointX="124.625" PointY="115.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReportRequestParameter" Width="1.5" PointX="158.5" PointY="142.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportRequestParameter_ReportParameter" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportRequest_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportRequestParameter_ReportRequest" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VehicleType_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VehicleType_CreatedByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VehicleType_UpdatedByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VehicleCategory_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VehicleCategory_UpdatedByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSClientCourseAttendance_UpdatedByUser" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientReference" Width="1.5" PointX="135.625" PointY="108" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientReference_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientReference_CreatedByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientReference_UpdatedByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportRequest_Report" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportRequest_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardMeterData_Client" Width="1.5" PointX="102.875" PointY="176.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardMeterData_Course" Width="1.5" PointX="102.875" PointY="198.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardMeterData_DocumentStat" Width="1.5" PointX="102.875" PointY="184.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardMeterData_DORSOfferWithdrawn" Width="1.5" PointX="102.875" PointY="214.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardMeterData_Email" Width="1.5" PointX="102.875" PointY="180.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardMeterData_OnlineClientsSpecialRequirement" Width="1.5" PointX="102.875" PointY="195.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardMeterData_Payment" Width="1.5" PointX="102.875" PointY="205" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardMeterData_UnpaidBookedCourse" Width="1.5" PointX="102.875" PointY="201.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DatabaseErrorLog" Width="1.5" PointX="10.875" PointY="8.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardMeterData_Client_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardMeterData_Course_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardMeterData_DocumentStat_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardMeterData_DORSOfferWithdrawn_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardMeterData_Email_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardMeterData_OnlineClientsSpecialRequirement_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardMeterData_Payment_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardMeterData_UnpaidBookedCourse_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PeriodicalSPJob" Width="1.5" PointX="34.875" PointY="1.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DataViewLog" Width="1.5" PointX="141.75" PointY="178.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DataViewLog_DataView" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationSystemConfiguration_Region" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OldLetterAction" Width="1.5" PointX="35.25" PointY="33.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OldLetterTemplate" Width="1.5" PointX="37.375" PointY="34.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OldLetterTemplate_DocumentTemplate" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OldLetterTemplate_LetterAction" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OldLetterTemplate_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OldLetterTemplate_UpdatedByUser" />
+        <EntityTypeShape EntityType="Atlas_DevModel.EmailTemplate" Width="1.5" PointX="144" PointY="150.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.EmailTemplateCategory" Width="1.5" PointX="141.75" PointY="174.875" />
+        <EntityTypeShape EntityType="Atlas_DevModel.EmailTemplateCategoryColumn" Width="1.5" PointX="151.5" PointY="179.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.EmailTemplateScheduledEmail" Width="1.5" PointX="146.25" PointY="155.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.LetterCategory" Width="1.5" PointX="141.75" PointY="182.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.LetterCategoryColumn" Width="1.5" PointX="154.5" PointY="183" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailTemplateCategory_DataView" />
+        <AssociationConnector Association="Atlas_DevModel.FK_LetterCategory_DataView" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailTemplateCategoryColumn_DataViewColumn" />
+        <AssociationConnector Association="Atlas_DevModel.FK_LetterCategory_DataViewColumn" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailTemplate_EmailTemplateCategory" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailTemplate_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailTemplate_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailTemplateScheduledEmail_EmailTemplate" />
+        <AssociationConnector Association="Atlas_DevModel.FK_EmailTemplateCategoryColumn_EmailTemplateCategory" />
+        <AssociationConnector Association="Atlas_DevModel.FK_LetterCategory_LetterCategory" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseClient" Width="1.5" PointX="169.875" PointY="101" />
+        <EntityTypeShape EntityType="Atlas_DevModel.CourseClientRemoved" Width="1.5" PointX="172.125" PointY="100.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientClientId_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientRemovedClientId_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientCourseId_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientRemovedCourseId_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClient_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientAddedByUserId_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientRemoved_CourseClient" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseClientRemovedRemovedByUserId_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientDORSData_DORSAttendanceState" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Course_Document" />
+        <EntityTypeShape EntityType="Atlas_DevModel.LetterTemplate" Width="1.5" PointX="147" PointY="150.375" />
+        <EntityTypeShape EntityType="Atlas_DevModel.LetterTemplateDocument" Width="1.5" PointX="149.25" PointY="125.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_LetterTemplate_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_LetterTemplateDocument_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_LetterTemplate_LetterCategory" />
+        <AssociationConnector Association="Atlas_DevModel.FK_LetterTemplate_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_LetterTemplate_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_LetterTemplateDocument_LetterTemplate" />
+        <AssociationConnector Association="Atlas_DevModel.FK_LetterTemplateDocument_User" />
+        <EntityTypeShape EntityType="Atlas_DevModel.LetterTemplateDocumentProcessRequest" Width="1.5" PointX="6.375" PointY="10.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReportDataTypeSelectIdentifier" Width="1.5" PointX="166.625" PointY="172.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportDataTypeSelectIdentifier_ReportDataType" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationInterpreterSetting" Width="1.5" PointX="127.625" PointY="153.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationTrainerSetting" Width="1.5" PointX="124.625" PointY="150.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseInterpreter_User_UpdatedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTrainer_User_UpdatedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationInterpreterSetting_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationTrainerSetting_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationInterpreterSetting_User_CreatedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationInterpreterSetting_User_UpdatedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationTrainerSetting_User_CreatedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationTrainerSetting_User_UpdatedByUserId" />
+        <EntityTypeShape EntityType="Atlas_DevModel.UniqueCourseTrainerInterpreterReferenceNumber" Width="1.5" PointX="2.625" PointY="0.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReportQueue" Width="1.5" PointX="124.625" PointY="155.125" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReportQueueRequest" Width="1.5" PointX="126.875" PointY="123.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportQueue_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportQueue_User_CreatedByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportQueue_User_LastRunByUserId" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportQueueRequest_ReportQueue" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportQueueRequest_ReportRequest" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReportQueueRequest_User_CreatedByUserId" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DocumentPrintQueue" Width="1.5" PointX="124.625" PointY="146.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentPrintQueue_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentPrintQueue_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DocumentPrintQueue_User_CreatedByUserId" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TrainerPreviousId" Width="1.5" PointX="8.25" PointY="49.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_TrainerPreviousId_Trainer" />
+        <EntityTypeShape EntityType="Atlas_DevModel.VatRate" Width="1.5" PointX="124.625" PointY="129.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VatRate_User" />
+        <EntityTypeShape EntityType="Atlas_DevModel.C_MigrationDocumentTransferInformation" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationContactCourseType" Width="1.5" PointX="141.5" PointY="127.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationContactCourseType_CourseType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationContactCourseType_Email" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationContactCourseType_Location" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationContactCourseType_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientEmailTemplate" Width="1.5" PointX="102.875" PointY="218.5" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientEmailTemplateEmail" Width="1.5" PointX="159" PointY="159" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientEmailTemplate_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientEmailTemplateEmail_ClientEmailTemplate" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientEmailTemplateEmail_ScheduledEmail" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ClientEmailTemplateEmail_User" />
+        <EntityTypeShape EntityType="Atlas_DevModel.TransactionLog" Width="1.5" PointX="9" PointY="9.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Course_Document_AttendanceSignIn" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SendSystemAdminsEmail" Width="1.5" PointX="124.625" PointY="111.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SendSystemAdminsEmail_User" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemTrainerInformation" Width="1.5" PointX="13.5" PointY="9.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SystemTrainerInformationByOrganisation" Width="1.5" PointX="102.875" PointY="167.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SystemTrainerInformationByOrganisation_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.Reconciliation" Width="1.5" PointX="135.875" PointY="130.25" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReconciliationConfiguration" Width="1.5" PointX="130.625" PointY="154.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReconciliationConfiguration_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Reconciliation_ReconciliationConfiguration" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Reconciliation_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReconciliationConfiguration_User" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReconciliationData" Width="1.5" PointX="141.125" PointY="98.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReconciliationData_Payment" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReconciliationData_Reconciliation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardMeterData_UnableToUpdateInDORS" Width="1.5" PointX="102.875" PointY="221.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardMeterData_UnableToUpdateInDORS_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSClientCourseAttendanceLog" Width="1.5" PointX="13.5" PointY="6" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DashboardMeterData_AttendanceNotUploadedToDORS" Width="1.5" PointX="102.875" PointY="163.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DashboardMeterData_AttendanceNotUploadedToDORS_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationCourse" Width="1.5" PointX="167.875" PointY="133.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationCourse_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_OrganisationCourse_Organisation" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PeriodicalSPJobCall" Width="1.5" PointX="30.625" PointY="2.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PeriodicalSPJobCall_PeriodicalSPJob" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PaymentErrorInformation" Width="1.5" PointX="166.875" PointY="136.375" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentErrorInformation_Client" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentErrorInformation_Course" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentErrorInformation_Organisation" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentErrorInformation_User" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PaymentCardValidationType" Width="1.5" PointX="110.625" PointY="120.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PaymentCardValidationTypeLength" Width="1.5" PointX="127.625" PointY="127.625" />
+        <EntityTypeShape EntityType="Atlas_DevModel.PaymentCardValidationTypeVariation" Width="1.5" PointX="130.625" PointY="127.625" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCardType_PaymentCardValidationType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCardValidationTypeLength_PaymentCardValidationType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCardValidationTypeVariation_PaymentCardValidationType" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCardValidationTypeLength_CreatedByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCardValidationTypeLength_DisabledByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCardValidationTypeVariation_CreatedByUser" />
+        <AssociationConnector Association="Atlas_DevModel.FK_PaymentCardValidationTypeVariation_DisabledByUser" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OnlineBookingLog" Width="1.5" PointX="8.375" PointY="12.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ArchivedEmail_ScheduledEmailState" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DataImportedFile_User" />
+        <EntityTypeShape EntityType="Atlas_DevModel.DORSForceRegion" Width="1.5" PointX="92.625" PointY="158.25" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSForceRegion_DORSForce" />
+        <AssociationConnector Association="Atlas_DevModel.FK_DORSForceRegion_Region" />
+        <EntityTypeShape EntityType="Atlas_DevModel.OrganisationNotificationLog" Width="1.5" PointX="10.375" PointY="12.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_VateRate_DeletedByUserId" />
+        <EntityTypeShape EntityType="Atlas_DevModel.SMSServiceSendingFailure" Width="1.5" PointX="62.5" PointY="57.125" />
+        <AssociationConnector Association="Atlas_DevModel.FK_SMSServiceSendingFailure_SMSService" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ReconciliationDataComment" Width="1.5" PointX="143.375" PointY="121.875" />
+        <AssociationConnector Association="Atlas_DevModel.FK_Reconciliation_Document" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReconciliationDataComment_ReconciliationData" />
+        <AssociationConnector Association="Atlas_DevModel.FK_ReconciliationDataComment_User" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTrainer_TrainingSession" />
+        <EntityTypeShape EntityType="Atlas_DevModel.ClientArchivedEmail" Width="1.5" PointX="12.375" PointY="12.75" />
+        <AssociationConnector Association="Atlas_DevModel.FK_CourseTrainer_CourseDate" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

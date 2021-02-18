@@ -1,0 +1,46 @@
+﻿<div id="viewSystemFeatureInformation" class="systemFeatureInformation">
+    <form class="form-horizontal" role="form">
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-1'></div>
+            <div class='col-sm-11'>
+                <label>{{descriptionNotes.Title}}</label>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-1'></div>
+            <div class='col-sm-11'>
+                <textarea ng-model="descriptionNotes.Description"
+                          class="form-control"
+                          maxlength="400"
+                          placeholder="Feature Description"
+                          readonly></textarea>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-9'></div>
+            <div class='col-sm-3'>
+                <button id="addNote" class="btn btn-default btn-sm"
+                        ng-click="addNote()"
+                        title="Add Note">
+                    Add Note
+                </button>
+            </div>
+        </div>
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-1'></div>
+            <div class='col-sm-11'>
+                
+                <!--<textarea ng-model="descriptionNotes.SystemFeatureUserNotes[0].Note.Note1"-->
+                <textarea ng-model="descriptionNotes.Notes"
+                              class="form-control"
+                              maxlength="400"
+                              placeholder="System Feature User Notes"
+                              readonly></textarea>
+            </div>
+        </div>
+</form>
+</div>
+

@@ -1,0 +1,96 @@
+﻿<div id="schedulerControl" class="schedulerControl">
+
+    <system-feature-information title="Scheduler Control"
+                                controller="SchedulerControlCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/schedulerControl/update"
+                                page-name="Scheduler Control"></system-feature-information>
+
+
+    <div class="Title row">
+        <h2></h2>
+    </div>
+    <form class="form-horizontal row" role="form">
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-7'>
+                <label>Select to Disable Scheduling</label>
+            </div>
+            <div class='col-sm-5'></div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'>
+                    <input type="checkbox" ng-model="schedulerControl.EmailScheduleDisabled" ng-change="save('EmailScheduleDisabled', schedulerControl.EmailScheduleDisabled)" />
+                </div>
+                <div class='col-sm-7 blueitalic'>Disable Email Scheduler</div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'>
+                    <input type="checkbox" ng-model="schedulerControl.ReportScheduleDisabled" ng-change="save('ReportScheduleDisabled', schedulerControl.ReportScheduleDisabled)" />
+                </div>
+                <div class='col-sm-7 blueitalic'>Disable Report Scheduler</div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'>
+                    <input type="checkbox" ng-model="schedulerControl.ArchiveScheduleDisabled" ng-change="save('ArchiveScheduleDisabled', schedulerControl.ArchiveScheduleDisabled)" />
+                </div>
+                <div class='col-sm-7 blueitalic'>Disable Archive Scheduler</div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'>
+                    <input type="checkbox" ng-model="schedulerControl.SMSScheduleDisabled" ng-change="save('SMSScheduleDisabled', schedulerControl.SMSScheduleDisabled)" />
+                </div>
+                <div class='col-sm-7 blueitalic'>Disable SMS Scheduler</div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'>
+                    <input type="checkbox" ng-model="schedulerControl.EmailArchiveDisabled" ng-change="save('EmailArchiveDisabled', schedulerControl.EmailArchiveDisabled)" />
+                </div>
+                <div class='col-sm-7 blueitalic'>Disable Archive Email Scheduler</div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'>
+                    <input type="checkbox" ng-model="schedulerControl.SMSArchiveDisabled" ng-change="save('SMSArchiveDisabled', schedulerControl.SMSArchiveDisabled)" />
+                </div>
+                <div class='col-sm-7 blueitalic'>Disable Archive SMS Scheduler</div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+
+        <!--Message banner-->
+        <div class='form-line-holder'>
+            <div class="col-sm-12" ng-if="successMessage != ''">
+                <h3>{{ successMessage }}</h3>
+            </div>
+        </div>
+        <div class='form-line-holder'>
+            <div class="col-sm-12" ng-if="validationMessage != ''">
+                <h3>{{ validationMessage }}</h3>
+            </div>
+        </div>
+
+    </form>
+</div>
+

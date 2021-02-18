@@ -1,0 +1,92 @@
+﻿<div id="reportGenerator" class="reportGenerator row">
+    <div class="reportGeneratorTitle row">
+        <span>Atlas Report Generator</span>
+    </div>
+    <div class="reportGeneratorStatus row">
+        <div class="reportGeneratorInfo row">
+            <span id="reportGeneratorInfoText">Please Wait ... Compiling Data ....</span>
+        </div>
+        <div class="reportGeneratorInfo row">
+            <div class="reportGeneratorWhirlie"></div>
+            <div><span>{{reportTimer}}</span></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        window.setInterval(function () {
+            $('#reportGeneratorInfoText').text(function () {
+                return $(this).text().replace($(this).text(), $(this).text() + '.'); //Show Progressive dots across the page .... for five seconds
+            });
+        }, 5000);
+    });
+</script>
+
+<!--Below is the report HTML. Each Report Request will generate a Unique Request Id. Hence the Div for each report will be Unique.-->
+<div id="reportOutput{{reportRequestId}}" style="display:none;" class="reportOutput{{reportRequestId}} reportOutput">
+    <div class="EmaptyLeftPanel col-sm-0 col-md-1 col-lg-1"></div>
+    <table class="reportDataTable {{reportPageOrientationClass}} col-sm-12 col-md-11 col-lg-11">
+        <thead>
+            <tr class="reportHeader">
+                <th colspan="{{reportColumns.length}}">
+                    <div class="reportTitle row">
+                        <span>{{reportMainTitle}}</span>
+                    </div>
+                </th>
+            </tr>
+            <tr class="reportHeader">
+                <th colspan="{{reportColumns.length}}">
+                    <div class="reportSubTitleAndDate row">
+                        <div class="reportSubTitle reportSubTitle{{reportRequestId}}">
+                            <!--<span>{{reportSubTitle}}</span>-->
+                            <!--<p ng-bind-html="reportSubTitle"></p>-->
+                        </div>
+                        <div class="reportDate">
+                            <div class="reportDateLabel"><span>Date: </span></div>
+                            <div class="reportDateData"><span>{{date | date:'dd MMM yyyy'}}</span></div>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th ng-repeat="col in reportColumns" class="{{col.ColumnDataType}}">
+                    <span class="reportDataItemHeader {{col.ColumnDataType}}">{{col.ColumnTitle}}</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="dataRow in reportData | limitTo:1000" ng-hide="{{dataRow.DataEndRow}}" class="AtlasReportDataRow">
+                <td ng-repeat="col in reportColumns" class="{{col.ColumnDataType}}" title="{{col.ColumnTitle + ': ' + formatDataItem(dataRow['C' + col.ColumnDisplayOrder.toString()],col.ColumnDataType)}}">
+                    <span class="reportDataItem {{col.ColumnDataType}}">
+                        {{formatDataItem(dataRow["C" + col.ColumnDisplayOrder.toString()],col.ColumnDataType)}}
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="{{reportColumns.length}}"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th ng-repeat="col in reportColumns" repeat-done="sectionCompleted('reportColumns')" class="{{col.ColumnDataType}}">
+                    <span class="reportDataItemHeader {{col.ColumnDataType}}"></span>
+                </th>
+            </tr>
+            <tr>
+                <th class="reportFooter" colspan="{{reportColumns.length}}">
+                    <div class="reportIdentityAndLogo col-md-6 col-sm-6">
+                        <div class="reportLogo"></div>
+                        <div class="reportIdentity"><span>Report Id: {{runReportId}} Version: {{reportVersion}}</span></div>
+                    </div>
+                    <div class="reportFooterPage col-md-2 col-sm-2">{{reportData.length - 1}} rows</div><!--We subtract 1 as there is a blank row (deliberate) at the end of the dataset-->
+                    <div class="reportFooterPage col-md-4 col-sm-4">
+                        <span>Request Id: {{reportRequestId}}</span>
+                        <!--<span>Page 1 of {{reportPages}}</span>-->
+                    </div>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+

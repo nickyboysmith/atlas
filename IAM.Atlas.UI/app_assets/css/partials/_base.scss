@@ -1,0 +1,178 @@
+body
+{
+    .marginBottom5{
+        margin-bottom: 5px;
+    }
+
+    .marginBottom10{
+        margin-bottom: 10px;
+    }
+
+    .marginBottom15{
+        margin-bottom: 15px;
+    }
+
+    .marginBottom20{
+        margin-bottom: 20px;
+    }
+
+    .marginBottom30{
+        margin-bottom: 20px;
+    }
+
+    .marginBottom40{
+        margin-bottom: 40px;
+    }
+
+    .marginBottom50{
+        margin-bottom: 50px;
+    }
+
+    .marginBottom60{
+        margin-bottom: 60px;
+    }
+
+    .margintop10{
+        margin-top: 10px;
+    }
+
+    .marginLeft5 {
+        margin-left: 5px;
+    }
+
+    .rightalign {
+      text-align: right;
+
+    }
+
+    .paddingLeft15 {
+        padding-left: 15px;
+    }
+
+     .nowrap {
+         white-space:nowrap;
+     }
+
+    .height-seperator-100 {
+        height: 100px;
+    }
+
+}
+
+[ng-click] {
+    cursor: pointer;
+}
+
+[ng-dblclick] {
+    cursor: pointer;
+}
+
+
+[data-ng-dblclick] {
+  cursor: pointer; }
+
+.validation-message {
+    color:#9400d3; 
+    font-weight:bold;
+}
+
+.warning-message {
+    color: darkorange; 
+    white-space: pre-wrap;
+    font-weight:bold;
+}
+
+.success-message {
+    color: deepskyblue; 
+    white-space: pre-wrap;
+    font-weight:bold;
+}
+
+.smallitalic {
+     font-style: italic;
+     font-size: smaller;
+}
+
+.purpleitalic {
+     color: #9400d3;
+     font-style: italic;
+     text-align: left;
+}
+
+.blueitalic {
+     color: #2196F3;
+     font-style: italic;
+     text-align: left;
+}
+
+.bluebold {
+     color: #2196F3;
+     text-align: left;
+     font-weight: bold;
+}
+
+.reditalic {
+     color: red;
+     font-style: italic;
+     text-align: left;
+}
+
+.reditalicbold {
+     color: red;
+     font-style: italic;
+     text-align: left;
+     font-weight: bold;
+}
+
+.space-divider-10 {
+    padding-bottom:10px;
+}
+
+.space-divider-50 {
+    padding-bottom: 50px;
+}
+
+.showProcessingSpinner {
+    .center-spinner {
+        display: block;
+        margin: 0 auto;
+        width: 100px;
+    }
+    p {
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    } 
+}
+
+div#preloader {  
+ 
+   position: fixed;  
+   /*opacity: 0.5; 
+   display: none;*/  
+   left: 0;  
+   bottom: 0;  
+   z-index: 9996;  
+   width: 100%;  
+   height: 100%;  
+   overflow: visible;  
+   background: url(/app_assets/images/loading.gif) no-repeat;  
+ 
+ } 
+
+/*div#preloader {  
+ 
+   position: absolute;  
+   opacity: 0.5; 
+   display: none;  
+   left: 0;  
+   top: 0;  
+   z-index: 9996;  
+   width: 100%;  
+   height: 100%;  
+   overflow: visible;  
+   background: url(/app_assets/images/loading.gif) no-repeat center center;  
+ 
+ }*/ 
+
+    

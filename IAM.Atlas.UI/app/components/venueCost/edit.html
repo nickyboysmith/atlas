@@ -1,0 +1,103 @@
+﻿<div id="addVenueCost" class="addVenueCost">
+    <div class="Title row">
+        <h2></h2>
+    </div>
+    <form class="form-horizontal row" role="form">
+
+        <!--<div class='col-sm-12 form-group'>-->
+
+            <!--<div class='col-sm-2'>
+                <div ng-show="organisationId < 0">
+                    No Venue selected
+                </div>
+
+            </div>-->
+       
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-4'>
+                <label>Type</label>
+            </div>
+            <div class='col-sm-6'>
+                <select class="form-control" 
+                        ng-model="venueCost.CostTypeId"
+                        ng-options="venueCostType.Id as venueCostType.Name for venueCostType in venueCostTypes">
+                </select>
+            </div>
+
+            <div class="col-sm-1">
+                <button ng-click="addVenueCostType()" class="btn">...</button>
+            </div>
+            <div class="col-sm-1"></div>
+                <!--<span ng-show="!addingVenueCost">
+                    {{ getName(venueCost.CostTypeId) }}
+                </span>-->
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-4'>
+                <label>Cost (£)</label>
+            </div>
+            <div class='col-sm-6'>
+                <input type="text" class="form-control" ng-model="venueCost.Cost" />
+            </div>
+            <div class='col-sm-2'></div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-4'>
+                <label>Valid From</label>
+            </div>
+            <div class='col-sm-6'>
+                <input class="form-control cm-sm-12" type="text" ng-model="venueCost.ValidFromDate" ng-click="toggleFromCalendar()" />
+            </div>
+            <div class='col-sm-2 element-overflow-0'>
+                <a ng-click="toggleFromCalendar()" ng-show="!displayFromCalendar" class="calendar-button col-sm-6" title="Show Calendar"><div></div></a>
+                <a ng-click="toggleFromCalendar()" ng-show="displayFromCalendar" class="calendar-button col-sm-6" title="Hide Calendar"><div></div></a>
+            </div>
+            <div class='col-sm-12'>
+                <div style="position:absolute;z-index:10;" ng-show="displayFromCalendar">
+                    <date-picker ng-model="venueCost.ValidFromDate" ng-mouseleave="toggleFromCalendar()" format-date="formatDate" parse-date="parseDate"></date-picker>
+                </div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-4'>
+                <label>Valid To</label>
+            </div>
+            <div class='col-sm-6'>
+                <input class="form-control cm-sm-12" type="text" ng-model="venueCost.ValidToDate" ng-click="toggleToCalendar()" />
+            </div>
+            <div class='col-sm-2 element-overflow-0'>
+                <a ng-click="toggleToCalendar()" ng-show="!displayCalendar" class="calendar-button col-sm-6" title="Show Calendar"><div></div></a>
+                <a ng-click="toggleToCalendar()" ng-show="displayCalendar" class="calendar-button col-sm-6" title="Hide Calendar"><div></div></a>
+            </div>
+            <div class='col-sm-12'>
+                <div style="position:absolute;" ng-show="displayToCalendar">
+                    <date-picker ng-model="venueCost.ValidToDate" ng-mouseleave="toggleToCalendar()" format-date="formatDate" parse-date="parseDate"></date-picker>
+                </div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <!--<div class='col-sm-2'></div>-->
+            <div class='col-sm-2'>
+                <button ng-click="saveVenueCost()" class="btn">Save</button>
+            </div>
+            <div class='col-sm-8'></div>
+            <div class='col-sm-2'>
+                <button class="btn" onclick="$('button.close').last().trigger('click')">Cancel</button>&nbsp;{{saveMessage}}
+            </div>
+            <!--<div class='col-sm-2'></div>-->
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div data-ng-if="showSuccessFader == true">
+                <my-msgfader status="success"></my-msgfader>
+            </div>
+            <div data-ng-if="showErrorFader == true">
+                <my-msgfader status="error"></my-msgfader>
+            </div>
+        </div>
+</form>
+</div>

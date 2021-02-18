@@ -1,0 +1,17 @@
+﻿<div id="systemFeatureInformationDirective">
+    <div class="col-sm-12 noLeftPadding noRightPadding">
+        <div ng-if="addFavourite" class="favourite-icon system-feature-information-icon col-sm-6 noLeftPadding noRightPadding">
+            <img src="/app_assets/images/star_add2.png" 
+                alt="Add this screen to favourites" 
+                title="Add to favourites"
+                ng-click="addToFavourite()"
+                />
+        </div><!-- end .favourite-icon.system-feature-information-icon -->
+        <div class="information-icon system-feature-information-icon {{ (addFavourite) ? '' : 'pull-right'}} col-sm-6 noLeftPadding noRightPadding">
+            <img src="/app_assets/images/info.png" 
+                alt="Info"
+                title="View System Information" 
+                ng-click="showFeatureInformation()" />
+        </div><!-- end .information-icon.system-feature-information-icon -->
+    </div>
+</div><!-- end #systemFeatureInformationDirective -->

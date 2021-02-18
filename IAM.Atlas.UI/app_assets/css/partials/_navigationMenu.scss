@@ -1,0 +1,127 @@
+
+
+/**
+    Main Block
+*/
+#mainNavigationContainer {
+    background: darken($background, 10%);
+    width: 95px;
+    height: 100%;
+    position: fixed;
+    margin-left: 34px;
+    z-index: 50;
+    a {
+       height: 1px;
+       text-decoration: none;
+    }
+     a:hover {
+        background: transparent;
+    }
+    .navigation-icon {
+        height: 32px;
+        width: 32px;
+        margin: 0 auto;
+    }
+    .navigation-title {
+        margin-top: 6px;
+        color: $textColour;
+        font-size: 10px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    #reservedSection {
+        height: 60px;
+        width: 100%;
+        img {
+            width: 65px;
+            margin: 0 auto;
+            display: block;
+            padding-top: 20px;
+        }
+    }
+
+    #systemNavigation {
+        ul{
+            list-style-type: none;
+            margin: 0;
+            margin-top: 10px;
+            padding: 0;
+
+            li.ng-scope:hover {
+                background:  darken($background, 15%);
+            }
+        }
+
+        ul#mainNavigation {
+            li {
+                /*.home_icon {
+                    @include iconGetter(-10px, -7px)
+                }*/
+                .add_client_icon {
+                    width: 32px;
+                    height: 32px;
+                    background-image: url("../images/add_client.png");
+                    background-size: 100%;
+                }
+                .contacts_icon {
+                    @include iconGetter(-10px, -53px)
+                }     
+                .clients_icon {
+                    @include iconGetter(-10px, -98px)
+                }
+                .reports_icon {
+                    @include iconGetter(-10px, -188px)
+                }
+                .my_reports_icon {
+                    width: 32px;
+                    height: 32px;
+                    background-image: url("../images/my_report.png");
+                    background-size: 100%;
+                }
+                .send_message_icon {
+                    width: 32px;
+                    height: 32px;
+                    background-image: url("../images/send_message.png");
+                    background-size: 100%;
+                }
+                .admin_icon {
+                    @include iconGetter(-10px, -141px)
+                }
+                /**
+                 *  Add new menu icons here
+                 */
+            }
+        }
+
+        /**
+        UserFavouriteMenu
+        */
+        ul#menuFavourite {
+            li {
+                .navigation-icon{
+                    background-image: url(/app_assets/images/favourites_star.png);
+                    background-size: 100%;
+                    background-repeat: no-repeat;
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .toggleLayoutButton {
+        display:none!important;
+        position: absolute;
+        bottom: 0;
+	    min-height: 92px;
+        width: 100%;
+        opacity: 0.85;
+        background: darken($background, 30%);
+
+        a {
+            .toggle-icon {
+                    @include iconGetter(-10px, -231px)
+            }
+        }
+    }
+}

@@ -1,0 +1,304 @@
+﻿<div id="trainerBookings">
+
+    <h1>Trainer Course Bookings page</h1>
+
+    <div>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+            <li ng-class="{'active': bookingState == 'Current'}"><a ng-click="selectBookingsState('Current')">Current</a></li>
+            <li ng-class="{'active': bookingState == 'Previous'}"><a ng-click="selectBookingsState('Previous')">Previous</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div ng-class="{'active': bookingState == 'Current'}" ng-show="bookingState == 'Current'" class="tab-pane tab-holding-container" id="current">
+                <!--Start current tab-->
+
+                <div class="row tab-header">
+                    <div class="col-xs-6">
+                        <h1>Running Courses</h1>
+                    </div>
+                    <div class="col-xs-6">
+                        <p class="current-date">Today: {{ todaysDate }}</p>
+                    </div>
+                </div>
+
+                <div>
+
+                    <!-- Hide the tabs on smaller screens -->
+                    <select class="visible-xs-block hidden-md hidden-lg hidden-print form-control"
+                            ng-options="customOption['name'] for customOption in custom"
+                            ng-model="selectedNavigation"
+                            ng-change="changeTheBlock(selectedNavigation)"></select>
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs custom-nav-tabs hidden-xs hidden-sm">
+                        <li ng-class="{'active': selectedNavigation.name == custom[0].name}" role="presentation"><a ng-click="changeTheBlock( custom[0] )">{{ custom[0].name }}</a></li>
+                        <li ng-class="{'active': selectedNavigation.name == custom[1].name}" role="presentation"><a ng-click="changeTheBlock( custom[1] )">{{ custom[1].name }}</a></li>
+                        <li ng-class="{'active': selectedNavigation.name == custom[2].name}" role="presentation"><a ng-click="changeTheBlock( custom[2] )">{{ custom[2].name }}</a></li>
+                        <li ng-class="{'active': selectedNavigation.name == custom[3].name}" role="presentation"><a ng-click="changeTheBlock( custom[3] )">{{ custom[3].name }}</a></li>
+                        <li ng-class="{'active': selectedNavigation.name == custom[4].name}" role="presentation"><a ng-click="changeTheBlock( custom[4] )">{{ custom[4].name }}</a></li>
+                        <li ng-class="{'active': selectedNavigation.name == custom[5].name}" role="presentation"><a ng-click="changeTheBlock( custom[5] )">{{ custom[5].name }}</a></li>
+                        <li ng-class="{'active': selectedNavigation.name == custom[6].name}" role="presentation"><a ng-click="changeTheBlock( custom[6] )">{{ custom[6].name }}</a></li>
+                        <li ng-class="{'active': selectedNavigation.name == custom[7].name}" role="presentation"><a ng-click="changeTheBlock( custom[7] )">{{ custom[7].name }}</a></li>
+                        <li ng-class="{'active': selectedNavigation.name == custom[8].name}" role="presentation"><a ng-click="changeTheBlock( custom[8] )">{{ custom[8].name }}</a></li>
+                        <li ng-class="{'active': selectedNavigation.name == custom[9].name}" role="presentation"><a ng-click="changeTheBlock( custom[9] )">{{ custom[9].name }}</a></li>
+                        <li ng-class="{'active': selectedNavigation.name == custom[10].name}" role="presentation"><a ng-click="changeTheBlock( custom[10] )">{{ custom[10].name }}</a></li>
+                        <li ng-class="{'active': selectedNavigation.name == custom[11].name}" role="presentation"><a ng-click="changeTheBlock( custom[11] )">{{ custom[11].name }}</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane sub-tab-holding-container active" id="bookingDisplay">
+
+                            <div ng-show="processing">
+                                <img style="display: block; margin-left: auto; margin-right: auto;" src="/app_assets/images/ajax-loader.gif" />
+                            </div>
+                            <div ng-show="noResults">
+                                <p class="no-course-bookings">You aren't booked on any courses during this time period</p>
+                            </div>
+
+                            <!-- Start trainer booking display -->
+                            <div id="trainerBookingDisplay" ng-show="!processing && !noResults">
+                                <div class="row trainer-booking-separation"
+                                     ng-repeat="booking in trainerBookings">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="course-booking-information">Start date: {{ convertDateForDisplay(booking.StartDate) }} - End Date: {{ convertDateForDisplay(booking.EndDate) }}</p>
+                                                <p>Time: {{ booking.StartTime }} - {{ booking.EndTime }}</p>
+                                            </div>
+                                        </div><!-- End Course Date-->
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <label>Organisation</label>
+                                            </div>
+                                            <div class="col-xs-8">{{ booking.OrganisationName }}</div>
+                                        </div><!-- End Course type -->
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <label>Type</label>
+                                            </div>
+                                            <div class="col-xs-8">{{ booking.CourseType }}</div>
+                                        </div><!-- End Course type -->
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <label>Reference</label>
+                                            </div>
+                                            <div class="col-xs-8">{{ booking.Reference }}</div>
+                                        </div><!-- End Course reference -->
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <label>Venue</label>
+                                            </div>
+                                            <div class="col-xs-8">{{ booking.Venue }}</div>
+                                        </div><!-- End Course venue -->
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <label>Max Places</label>
+                                            </div>
+                                            <div class="col-xs-8">{{ booking.MaxPlaces }}</div>
+                                        </div><!-- End Course max place -->
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <label>Booked</label>
+                                            </div>
+                                            <div class="col-xs-8">{{ booking.BookedPlaces }}</div>
+                                        </div><!-- End Course places booked -->
+                                        <div class="row" ng-if="booking.CourseTrainers.length != 0">
+                                            <div class="col-xs-4">
+                                                <label>Additional Trainer(s)</label>
+                                            </div>
+                                            <div class="col-xs-8">
+                                                <ul class="additional-trainers">
+                                                    <li ng-repeat="trainer in booking.CourseTrainers">
+                                                        {{ trainer.Name }}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <div class="add-course-note-button btn" ng-click="openAddNoteModal(booking.Id)">Add Note</div>
+                                            </div>
+                                            <div class="col-xs-4"></div>
+                                        </div>
+                                        <ul class="booking-note-holder">
+                                            <li ng-repeat="note in booking.CourseNotes">
+                                                <ul class="note-structure">
+                                                    <li class="note-header">{{ convertDateForDisplay(note.Date) }}: {{ note.Type }} - ({{ note.User }}):</li>
+                                                    <li>{{ note.Text }}</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <div class="row margintop10">
+                                            <div class="col-xs-6 text-left">
+                                                <div class="add-course-note-button btn" ng-show="booking.CourseRegisterDocumentId > 0" ng-click="downloadCourseRegister(booking.CourseRegisterDocumentId)">Download Register</div>
+                                            </div>
+                                            <div class="col-xs-6 text-right">
+                                                <div class="add-course-note-button btn" ng-show="booking.CourseAttendanceSignInDocumentId > 0" ng-click="downloadCourseRegister(booking.CourseAttendanceSignInDocumentId)">Download Sign In</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="line-below" ng-show="!$last"></div>
+
+
+                                </div>
+                            </div>
+                            <!-- End trainer booking display -->
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane sub-tab-holding-container" id="bookingDisplay2">Second Div</div>
+                    </div>
+
+                </div>
+
+                <!--End current tab-->
+            </div>
+            <div ng-class="{'active': bookingState == 'Previous'}" ng-show="bookingState == 'Previous'" class="tab-pane tab-holding-container" id="previous">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row tab-header">
+                            <div class="col-xs-6">
+                                <h1>Previous Courses</h1>
+                            </div>
+                            <div class="col-xs-6">
+                                <p class="current-date">Today: {{ todaysDate }}</p>
+                            </div>
+                        </div>
+
+                        <div>
+
+                            <!-- Hide the tabs on smaller screens -->
+                            <select class="visible-xs-block hidden-md hidden-lg hidden-print form-control"
+                                    ng-options="previousYear['name'] for previousYear in previousThreeYears"
+                                    ng-model="selectedPreviousYear"
+                                    ng-change="changePreviousYear(selectedPreviousYear)"></select>
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs custom-nav-tabs hidden-xs hidden-sm">
+                                <li ng-class="{'active': selectedPreviousYear.name == previousThreeYears[0].name}" role="presentation"><a ng-click="changePreviousYear( previousThreeYears[0] )">{{ previousThreeYears[0].name }}</a></li>
+                                <li ng-class="{'active': selectedPreviousYear.name == previousThreeYears[1].name}" role="presentation"><a ng-click="changePreviousYear( previousThreeYears[1] )">{{ previousThreeYears[1].name }}</a></li>
+                                <li ng-class="{'active': selectedPreviousYear.name == previousThreeYears[2].name}" role="presentation"><a ng-click="changePreviousYear( previousThreeYears[2] )">{{ previousThreeYears[2].name }}</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane sub-tab-holding-container active" id="bookingDisplay">
+
+                                    <div ng-show="processing">
+                                        <img style="display: block; margin-left: auto; margin-right: auto;" src="/app_assets/images/ajax-loader.gif" />
+                                    </div>
+                                    <div ng-show="noResults">
+                                        <p class="no-course-bookings">You aren't booked on any courses during this time period</p>
+                                    </div>
+
+                                    <!-- Start trainer booking display -->
+                                    <div id="trainerBookingDisplay" ng-show="!processing && !noResults">
+                                        <div class="row trainer-booking-separation"
+                                             ng-repeat="booking in trainerBookings">
+                                            <div class="col-xs-12 col-sm-6">
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <p class="course-booking-information">Start date: {{ convertDateForDisplay(booking.StartDate) }} - End Date: {{ convertDateForDisplay(booking.EndDate) }}</p>
+                                                        <p>Time: {{ booking.StartTime }} - {{ booking.EndTime }}</p>
+                                                    </div>
+                                                </div><!-- End Course Date-->
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <label>Organisation</label>
+                                                    </div>
+                                                    <div class="col-xs-8">{{ booking.OrganisationName }}</div>
+                                                </div><!-- End Course type -->
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <label>Type</label>
+                                                    </div>
+                                                    <div class="col-xs-8">{{ booking.CourseType }}</div>
+                                                </div><!-- End Course type -->
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <label>Reference</label>
+                                                    </div>
+                                                    <div class="col-xs-8">{{ booking.Reference }}</div>
+                                                </div><!-- End Course reference -->
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <label>Venue</label>
+                                                    </div>
+                                                    <div class="col-xs-8">{{ booking.Venue }}</div>
+                                                </div><!-- End Course venue -->
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <label>Max Places</label>
+                                                    </div>
+                                                    <div class="col-xs-8">{{ booking.MaxPlaces }}</div>
+                                                </div><!-- End Course max place -->
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <label>Booked</label>
+                                                    </div>
+                                                    <div class="col-xs-8">{{ booking.BookedPlaces }}</div>
+                                                </div><!-- End Course places booked -->
+                                                <div class="row" ng-if="booking.CourseTrainers.length != 0">
+                                                    <div class="col-xs-4">
+                                                        <label>Additional Trainer(s)</label>
+                                                    </div>
+                                                    <div class="col-xs-8">
+                                                        <ul class="additional-trainers">
+                                                            <li ng-repeat="trainer in booking.CourseTrainers">
+                                                                {{ trainer.Name }}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6">
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <div class="add-course-note-button btn" ng-click="openAddNoteModal(booking.Id)">Add Note</div>
+                                                    </div>
+                                                    <div class="col-xs-4"></div>
+                                                </div>
+                                                <ul class="booking-note-holder">
+                                                    <li ng-repeat="note in booking.CourseNotes">
+                                                        <ul class="note-structure">
+                                                            <li class="note-header">{{ convertDateForDisplay(note.Date) }}: {{ note.Type }} - ({{ note.User }}):</li>
+                                                            <li>{{ note.Text }}</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                                <div class="row margintop10">
+                                                    <div class="col-xs-4">
+                                                        <div class="add-course-note-button btn" ng-click="downloadCourseRegister(booking.CourseRegisterDocumentId)">Download Course Register</div>
+                                                    </div>
+                                                    <div class="col-xs-4"></div>
+                                                </div>
+                                            </div>
+                                            <div class="line-below" ng-show="!$last"></div>
+
+
+                                        </div>
+                                    </div>
+                                    <!-- End trainer booking display -->
+
+                                </div>
+                                <div role="tabpanel" class="tab-pane sub-tab-holding-container" id="bookingDisplay2">Second Div</div>
+                            </div>
+
+                        </div>
+
+                        <!--End current tab-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+

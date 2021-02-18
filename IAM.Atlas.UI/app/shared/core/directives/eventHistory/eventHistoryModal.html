@@ -1,0 +1,45 @@
+﻿<div id="eventHistoryModalDiv">
+
+    <div class="row">
+        <div class="col-sm-8">
+            &nbsp;
+        </div>
+        <div class="col-sm-4 text-right">
+            <select data-ng-change="chooseNoteType()"
+                    data-ng-model="noteTypes"
+                    class='col-sm-12 form-control'
+                    ng-options="historyOption.EventType for historyOption in historyOptions">
+                <option value="">All</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="history-item-container">
+
+        <div class="row" data-ng-show="hideTable">
+            <div class="col-sm-11 validation-message">{{ errorMessage }}</div>
+        </div>
+
+        <table class="table table-striped " data-ng-hide="hideTable" st-table="historyNoteItems" st-safe-src="historyNoteCollection">
+            <thead>
+                <tr>
+                    <th st-sort="date">Date</th>
+                    <th class="nowrap" st-sort="type">Event Type</th>
+                    <th st-sort="created">Detail</th>
+                    <th class="nowrap" st-sort="information">Created By</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="note in historyNoteItems track by $index"
+                    ng-dblclick="viewNote($index)"
+                    title="History Detail:&#13;&#10;{{ removeHtml(note.History) }}&#13;&#10;&#13;&#10;Double Click to see History Details in Expanded View.">
+                    <td class="nowrap">{{ note.EventDate | date:'dd-MMM-yyyy HH:mm:ss'}}</td>
+                    <td class="nowrap">{{ note.EventType }}</td>
+                    <td>{{ removeHtml(note.History) }}</td>
+                    <td class="nowrap">{{ note.UserName }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

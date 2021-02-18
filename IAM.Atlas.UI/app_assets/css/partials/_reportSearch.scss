@@ -1,0 +1,17 @@
+﻿#searchReport {
+    .row {
+        margin: 5px;
+    }
+
+    .btn {
+        margin: 0px 5px 5px 5px;
+    }
+
+    .selectedReport {
+        background-color: #006cc2;
+    }
+
+    tr.selectedReport:hover>td  {
+        background-color: #006cc2;
+    }
+}

@@ -1,0 +1,111 @@
+﻿<div id="venueImageMapDiv">
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="row marginBottom5">
+                <div class="col-sm-4">
+                    Venue:
+                </div>
+                <div class="col-sm-8">
+                    {{ venueTitle }}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            &nbsp;
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="row marginBottom5">
+                <div class="col-sm-4">
+                    File:
+                </div>
+                <div class="col-sm-8">
+                    <input type="text" ng-disabled="true" class="form-control" ng-model="venueImageMap.OriginalFileName" /><br />
+                    <div id="uploadedFileInformation" ng-show="uploadedFile != null">
+                        <span ng-show="fileSize <= maximumFileSize">
+                            File Size: {{ fileSize }} KB<br />
+                            Maximum File Size: {{ maximumFileSize }} KB<br />
+                        </span>
+                        <span ng-show="fileSize > maximumFileSize">
+                            File Size: {{ fileSize }} KB<br />
+                            Maximum File Size: {{ maximumFileSize }} KB<br />
+                            <font color="red">Maximum File Size Exceeded. Upload not allowed.</font>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="row">
+                <div class="col-sm-12">
+                    <label class="custom-file-input" for="UploadFile">
+                    </label>
+                    <input id="UploadFile" type="file" style="visibility: hidden" file-input-chosen="fileSelected">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="isValidFile() || showingExistingVenueImageMap">
+        <div class="col-sm-7">
+
+            <div class="row marginBottom5">
+                <div class="col-sm-4">
+                    Name:
+                </div>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="File Name" ng-model="venueImageMap.FileName" ng-change="formatFileName()" />
+                </div>
+            </div>
+            <div class="row marginBottom5">
+                <div class="col-sm-4">
+                    Title:
+                </div>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="File Title" ng-model="venueImageMap.Title" />
+                </div>
+            </div>
+            <div class="row marginBottom10">
+                <div class="col-sm-4">
+                    Description:
+                </div>
+                <div class="col-sm-8">
+                    <textarea class="form-control" placeholder="Description" ng-model="venueImageMap.Description"></textarea>
+                </div>
+            </div>
+            <div class="row marginBottom10">
+                <div class="col-sm-4">
+                    &nbsp;
+                </div>
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button class="btn" ng-click="Save()">Save</button>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <button class="btn" onclick="$('button.close').last().trigger('click')">Close</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <font color="red">{{ errorMessage }}</font>{{statusMessage}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+
+            <div class="row marginBottom5">
+                <div class="col-sm-12">
+                    <img class="venueImageMapPreview" width="180" src="{{src}}" ng-show="src != ''" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-right">
+                    <button class="btn" ng-click="openDownloadModal()">Download</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>

@@ -1,0 +1,49 @@
+﻿<div id="addExistingSystemFeatureGroupItem" class="systemFeature">
+
+    <div class="Title row">
+        <h2></h2>
+    </div>
+    <form class="form-horizontal row" role="form">
+
+        <div class="col-sm-12">
+            <div class="sml-scroll-div marginBottom10">
+                <table class="table table-bordered">
+                    <thead></thead>
+                    <tbody>
+                        <tr ng-repeat="featureItem in existingFeatureItems" ng-class="{'isSelected': featureItem.isSelected}">
+                            <td ng-click="setSelectedFeatureItems(featureItem)"
+                                title="{{featureItem.Name}}"
+                                value="{{featureItem.Id}}">
+                                {{featureItem.Name}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <button class="btn btn-default btn-sm"
+                            ng-click="Save()"
+                            title="Add Exisiting Items"
+                            ng-disabled="HasItemsSelected()">
+                            Save
+                    </button>
+                </div>
+                <div class="col-sm-6" ng-if="successMessage != ''">
+                    <h3>{{ successMessage }}</h3>
+                </div>
+
+                <div class="col-sm-6" ng-if="validationMessage != ''">
+                    <h3>{{ validationMessage }}</h3>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+
+</div>
+

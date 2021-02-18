@@ -1,0 +1,242 @@
+﻿<div id="recordPayment">
+
+    <div ng-show="showCompletedMessage" class="row form-line-separator-20">
+        <div class="col-sm-12">
+            <p>{{ completedMessage }}</p>
+        </div>
+    </div>
+
+    <div ng-show="errorMessage != ''" class="row form-line-separator-20">
+        <div class="col-sm-12">
+            <p><span class="validation-message">{{ errorMessage }}</span></p>
+        </div>
+    </div>
+
+    <div class="row form-line-separator">
+        <div class="col-sm-3">
+            <label>Relating to client</label>
+        </div><!-- end .col-sm-3 -->
+        <div class="col-sm-8">
+            <input ng-disabled="true"
+                   type="text"
+                   class="form-control"
+                   ng-model="paymentDetail.client" />
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1">
+            <div ng-click="assignClient()"
+                 class="assign-client-button btn"
+                 title="Assign a Client to Payment">...</div>
+        </div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row form-line-separator">
+        <div class="col-sm-3">
+            <label>Relating to course</label>
+        </div><!-- end .col-sm-3 -->
+        <div class="col-sm-8">
+            <input ng-disabled="true"
+                   type="text"
+                   class="form-control"
+                   ng-model="paymentDetail.course" />
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1"></div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row form-line-separator">
+        <div class="col-sm-3">
+            <label>From</label>
+        </div><!-- end .col-sm-3 -->
+        <div class="col-sm-8">
+            <input placeholder="Enter the Payment Name"
+                   type="text"
+                   class="form-control"
+                   ng-model="paymentDetail.from" />
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1"></div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row form-line-separator">
+        <div class="col-sm-3">
+            <label>Type</label>
+        </div><!-- end .col-sm-3 -->
+        <div class="col-sm-8">
+            <select ng-model="paymentDetail.main.type"
+                    ng-options="paymentType as paymentType.Name for paymentType in paymentTypes | filter: { Disabled: false }"
+                    class="form-control">
+                <option value="">Please select a payment type</option>
+            </select>
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1"></div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row form-line-separator">
+        <div class="col-sm-3">
+            <label>Date</label>
+        </div><!-- end .col-sm-3 -->
+        <div class="col-sm-5">
+            <input ng-disabled="true"
+                   ng-model="paymentDetail.date"
+                   type="text"
+                   placeholder="Please select a date"
+                   class="form-control date-picker-placeholder" />
+        </div><!-- end .col-sm-7 -->
+        <div class="col-sm-1">
+            <div class="date-icon" ng-click="showDatePicker()"></div>
+        </div><!-- end .col-sm-2 -->
+        <div class="col-sm-3"></div><!-- end .col-sm-2 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row form-line-separator">
+        <div class="col-sm-offset-3 col-sm-4">
+            <date-picker ng-model="paymentDetail.date"
+                         ng-show="showRecordPaymentDate"
+                         on-date-selected="closeDatePicker()"></date-picker>
+        </div>
+        <div class="col-sm-5"></div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-separator">
+        <div class="col-sm-3">
+            <label>Method</label>
+        </div><!-- end .col-sm-3 -->
+        <div class="col-sm-8">
+            <select ng-model="paymentDetail.main.method"
+                    ng-options="paymentMethod as paymentMethod.Name for paymentMethod in paymentMethods"
+                    class="form-control">
+                <option value="">Please select a payment method</option>
+            </select>
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1"></div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row form-line-separator">
+        <div class="col-sm-3">
+            <label>Amount</label>
+        </div><!-- end .col-sm-3 -->
+        <div class="col-sm-5">
+            <input placeholder="0.00"
+                   type="text"
+                   class="form-control"
+                   ng-change="updateTotalAmount(paymentDetail.main.amount, paymentDetail.additional.amount)"
+                   ng-model="paymentDetail.main.amount" />
+        </div><!-- end .col-sm-7 -->
+        <div class="col-sm-2"></div><!-- end .col-sm-2 -->
+        <div class="col-sm-2"></div><!-- end .col-sm-2 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row form-line-separator">
+        <div class="col-sm-3">
+            <label>Auth Code</label>
+        </div><!-- end .col-sm-3 -->
+        <div class="col-sm-8">
+            <input type="text"
+                   class="form-control"
+                   placeholder="This field is optional"
+                   ng-model="paymentDetail.authCode" />
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1"></div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row form-line-separator-20">
+        <div class="col-sm-3">
+            <label>Receipt No</label>
+        </div><!-- end .col-sm-3 -->
+        <div class="col-sm-8">
+            <input type="text"
+                   class="form-control"
+                   placeholder="This field is optional"
+                   ng-model="paymentDetail.receiptNo" />
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1"></div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+
+
+    <div class="row form-line-separator-20">
+        <div class="col-sm-8">
+            <label><span class="red">*</span> Need to add an additional payment? (eg. fee)</label>
+        </div><!-- end .col-sm-3 -->
+        <div class="col-sm-3">
+            <div class="row">
+                <div class="col-sm-6">
+                    <input class="checkbox-spacer"
+                           ng-checked="openAdditionalContainer"
+                           type="checkbox"
+                           ng-click="updateShowAdditionalPayment(true)" />
+                    <label class="checkbox-label">Yes</label>
+                </div>
+                <div class="col-sm-6">
+                    <input class="checkbox-spacer"
+                           ng-checked="closeAdditionalContainer"
+                           type="checkbox"
+                           ng-click="updateShowAdditionalPayment(false)" />
+                    <label class="checkbox-label">No</label>
+                </div>
+            </div>
+        </div><!-- end .col-sm-2 -->
+        <div class="col-sm-1"></div><!-- end .col-sm-2 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div id="additionalPaymentContainer" style="display:none;">
+        <div class="row form-line-separator">
+            <div class="col-sm-3">
+                <label>Additional</label>
+            </div><!-- end .col-sm-3 -->
+            <div class="col-sm-8">
+                <select ng-options="paymentType as paymentType.Name for paymentType in paymentTypes"
+                        ng-model="paymentDetail.additional.type"
+                        class="form-control">
+                    <option value="">Please select</option>
+                </select>
+            </div><!-- end .col-sm-8 -->
+            <div class="col-sm-1"></div><!-- end .col-sm-2 -->
+        </div><!-- end .row .form-line-separator -->
+
+        <div class="row form-line-separator-20">
+            <div class="col-sm-3">
+                <label>Amount</label>
+            </div><!-- end .col-sm-3 -->
+            <div class="col-sm-5">
+                <input type="text"
+                       placeholder="0.00"
+                       class="form-control"
+                       ng-change="updateTotalAmount(paymentDetail.main.amount, paymentDetail.additional.amount)"
+                       ng-model="paymentDetail.additional.amount" />
+            </div><!-- end .col-sm-7 -->
+            <div class="col-sm-2"></div><!-- end .col-sm-2 -->
+            <div class="col-sm-2"></div><!-- end .col-sm-2 -->
+        </div><!-- end .row .form-line-separator -->
+
+        <div class="row form-line-separator-20">
+            <div class="col-sm-3">
+                <label>Total</label>
+            </div><!-- end .col-sm-3 -->
+            <div class="col-sm-5">£{{ totalAmount }}</div><!-- end .col-sm-5 -->
+            <div class="col-sm-2"></div><!-- end .col-sm-2 -->
+            <div class="col-sm-2"></div><!-- end .col-sm-2 -->
+        </div><!-- end .row .form-line-separator -->
+
+    </div><!-- end #additionalPaymentContainer -->
+
+    <div class="row form-line-separator-20">
+        <div class="col-sm-3">
+            <label>Add note</label>
+        </div><!-- end .col-sm-3 -->
+        <div class="col-sm-8">
+            <textarea
+                ng-model="paymentDetail.note"
+                class="form-control add-note"></textarea>
+        </div><!-- end .col-sm-8 -->
+        <div class="col-sm-1"></div><!-- end .col-sm-1 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row form-line-separator-20">
+        <div class="col-sm-offset-9 col-sm-2">
+            <div ng-click="recordPayment()"
+                 class="save-payment-button btn pull-right">Save</div>
+        </div><!-- end .col-sm-offset-9 .col-sm-2 -->
+        <div class="col-sm-12"></div><!-- end .col-sm-1 -->
+
+    </div><!-- end .row .form-line-separator -->
+
+
+</div>

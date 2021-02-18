@@ -1,0 +1,455 @@
+﻿<div id="courseAttendance">
+
+    <div class="row">
+
+        <div class="col-md-4 course-selection">
+            <div class="row form-line-separator-20">
+                <div class="col-md-12">
+
+                    <div class="row form-line-separator" ng-if="isSystemAdmin">
+                        <div class="col-md-4">
+                            <label>Organisation</label>
+                        </div><!-- end col-md-4 -->
+                        <div class="col-md-8">
+                            <select class="form-control"
+                                    ng-model="selectedOrganisation"
+                                    ng-options="organisation.id as organisation.name for organisation in listOfOrganisations"
+                                    ng-change="buildSearchObject('organisationId', selectedOrganisation)">
+                                <option value="">Select organisation</option>
+                            </select>
+                        </div><!-- end col-md-8 -->
+                    </div><!-- end row.form-line-separator -->
+
+                    <div class="row form-line-separator">
+                        <div class="col-md-4">
+                            <label>Course Type</label>
+                        </div><!-- end col-md-4 -->
+                        <div class="col-md-8">
+                            <select class="form-control"
+                                    ng-model="selectedCourseType"
+                                    ng-change="buildSearchObject('courseTypeId', selectedCourseType)"
+                                    ng-options="courseType.Id as courseType.Title for courseType in courseTypes">
+                                <option value="">Select course type</option>
+                            </select>
+                        </div><!-- end col-md-8 -->
+                    </div><!-- end row.form-line-separator -->
+
+                    <div class="row form-line-separator">
+                        <div class="col-md-4">
+                            <label>Category</label>
+                        </div><!-- end col-md-4 -->
+                        <div class="col-md-8">
+                            <select class="form-control"
+                                    ng-model="selectedCourseTypeCategory"
+                                    ng-change="buildSearchObject('courseTypeCategoryId', selectedCourseTypeCategory)"
+                                    ng-options="courseTypeCategory.Id as courseTypeCategory.Name for courseTypeCategory in courseTypeCategories">
+                                <option value="">Select category</option>
+                            </select>
+                        </div><!-- end col-md-8 -->
+                    </div><!-- end row.form-line-separator -->
+
+                    <div class="row form-line-separator">
+                        <div class="col-md-4">
+                            <label>Course Date</label>
+                        </div><!-- end col-md-5 -->
+                        <div class="col-md-8">
+
+                            <div class="row form-line-separator date-holder">
+                                <div class="col-md-3">
+                                    <label>Start</label>
+                                </div><!-- end col-md-4 -->
+                                <div class="col-md-7">
+                                    <input type="text"
+                                           ng-model="startDate"
+                                           ng-click="showStartDatePicker = !showStartDatePicker"
+                                           ng-change="buildSearchObject('startDate', startDate)"
+                                           placeholder="select date"
+                                           class="form-control" />
+                                </div><!-- end col-md-6 -->
+                                <div class="col-md-2">
+                                    <div class="calendar"
+                                         ng-click="showStartDatePicker = !showStartDatePicker"></div>
+                                </div><!-- end col-md-2 -->
+                            </div><!-- end row -->
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <date-picker ng-show="showStartDatePicker"
+                                                    class="theDatePicker"
+                                                    ng-model="startDate"
+                                                    format-date="formatDate"
+                                                    ng-change="buildSearchObject('startDate', startDate)"
+                                                    on-date-selected="showStartDatePicker = !showStartDatePicker">
+                                    </date-picker>
+                                </div><!-- end col-md-12 -->
+                            </div><!-- end row -->
+
+                            <div class="row form-line-separator date-holder">
+                                <div class="col-md-3">
+                                    <label>End</label>
+                                </div><!-- end col-md-4 -->
+                                <div class="col-md-7">
+                                    <input type="text"
+                                           ng-change="buildSearchObject('endDate', endDate)"
+                                           ng-model="endDate"
+                                           ng-click="showEndDatePicker = !showEndDatePicker"
+                                           placeholder="select date"
+                                           class="form-control" />
+                                </div><!-- end col-md-6 -->
+                                <div class="col-md-2">
+                                    <div class="calendar"
+                                         ng-click="showEndDatePicker = !showEndDatePicker">
+                                    </div>
+                                </div><!-- end col-md-2 -->
+                            </div><!-- end row -->
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <date-picker ng-show="showEndDatePicker"
+                                                    class="theDatePicker"
+                                                    ng-model="endDate"
+                                                    format-date="formatDate"
+                                                    ng-change="buildSearchObject('endDate', endDate)"
+                                                    on-date-selected="showEndDatePicker = !showEndDatePicker">
+                                    </date-picker>
+                                </div><!-- end col-md-12 -->
+                            </div><!-- end row -->
+
+                        </div><!-- end col-md-7 -->
+                    </div><!-- end row.form-line-separator -->
+
+                </div><!-- end col-md-12 -->
+            </div><!-- end row -->
+
+            <div class="row">
+                <div class="col-md-12 form-line-separator-20">
+                    <strong>Courses with Attendance check required</strong>
+                </div><!-- end col-md-12 -->
+                <div class="col-md-12">
+
+                    <div id="courseSelectionHolder">
+                        <table st-table="courses"
+                               st-safe-src="courseCollection"
+                               class="table table-striped">
+                            <tbody>
+                                <tr ng-repeat="course in courses | orderBy: ['StartDate', 'CourseType', 'CourseReference']">
+                                    <td title="{{ course.MouseOverMessage }}"
+                                        ng-click="loadCourseClients(course)">
+                                        {{course.DisplayName}} <br />{{course.CourseType}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- end #courseSelectionHolder -->
+
+                    <div id="courseSpinner">
+                        <img class="center-spinner"
+                             src="/app_assets/images/ajax-loader.gif" />
+                    </div><!-- end #courseSpinner -->
+
+                    <div id="courseError">
+                        <p>No results found!</p>
+                    </div><!-- end #courseError -->
+
+
+
+                </div><!-- end col-md-12 -->
+            </div><!-- end row -->
+        </div><!--end col-md-4 course-selection-->
+
+        <div class="col-md-8 trainer-comparison">
+
+            <div id="theCourseAttendanceClients">
+                <div class="row form-line-separator-20">
+                    <div class="col-md-12">
+                        <div class="header-title">
+                            <div class="{{ attendanceCheckObject.theClass }}">{{ attendanceCheckObject.text }}</div>
+                        </div><!-- end header-title -->
+                    </div><!-- end col-md-12 -->
+                </div><!-- end row -->
+
+                <div id="courseVerificationContainer"> <!-- @TODO: rewrite this as a smart table -->
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="row">
+                                <div class="col-md-4 the-right-border">
+                                    <div class="row top-holding-container left-top-margin">
+                                        <div class="col-md-12">
+                                            <div class="row form-line-separator">
+                                                <div class="col-md-12 top-level-padder">
+                                                    {{ selectedCourse.CourseType }} - {{ selectedCourse.CourseTypeCategory }}
+                                                </div><!-- end .col-md-12-->
+                                            </div><!-- end .row -->
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Reference</label>
+                                                </div><!-- end .col-md-4 -->
+                                                <div class="col-md-8">
+                                                    {{ selectedCourse.CourseReference }}
+                                                </div><!-- end .col-md-8 -->
+                                            </div><!-- end .row -->
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Venue</label>
+                                                </div><!-- end .col-md-4 -->
+                                                <div class="col-md-8">
+                                                    {{ selectedCourse.Venue }}
+                                                </div><!-- end .col-md-8 -->
+                                            </div><!-- end .row -->
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Date</label>
+                                                </div><!-- end .col-md-4 -->
+                                                <div class="col-md-8">
+                                                    {{ selectedCourse.Date}}
+                                                </div><!-- end .col-md-8 -->
+                                            </div><!-- end .row -->
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>{{ selectedCourse.DORSNotes }}</p>
+                                                </div><!-- end .col-md-12 -->
+                                            </div><!-- end .row -->
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="attendees-title">
+                                                        Attendees
+                                                    </div><!-- .attendees-title -->
+                                                </div><!-- end .col-md-4 -->
+                                                <div class="col-md-8">
+                                                    <div ng-if="!attendanceCheckObject.isVerified && selectedCourse != null"
+                                                         class="btn pull-right"
+                                                         ng-click="setAttendanceCheckVerified(selectedCourse.CourseId)">Verify Attendance</div>
+                                                </div><!-- end .col-md-8 -->
+                                            </div><!-- end .row -->
+                                            <div class="row">
+                                                <div class="col-md-2 col-sm-0">
+                                                </div>
+                                                <div class="col-md-5 col-sm-12">
+                                                    <div class="btn pull-right MarkAllPresent" 
+                                                         title="Mark All Course Attendees as Present (Against All Trainers)"
+                                                         ng-click="setCourseAttendancePresentToAll()"
+                                                         >
+                                                        Mark All Present
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 col-sm-12">
+                                                    <div class="btn pull-right MarkAllAbsent"
+                                                         title="Mark All Course Attendees as Absent (Against All Trainers)"
+                                                         ng-click="setCourseAttendanceAbsentToAll()">
+                                                        Mark All Absent
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- col-md-12 -->
+                                    </div><!-- end row top-holding-container left-top-margin -->
+                                </div><!-- end col-md-4 -->
+                                <div class="col-md-4 the-right-border">
+                                    <div class="row top-holding-container middle-top-margin">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12 form-line-separator-20 top-level-padder">
+                                                    <select class="form-control"
+                                                            ng-model="trainerAttendanceSelectionOne"
+                                                            ng-options="courseClientTrainer as courseClientTrainer.TrainerOneOf for courseClientTrainer in courseClientTrainers"
+                                                            ng-change="loadTheTrainerAttendance('one', trainerAttendanceSelectionOne)">
+                                                        <option value="">Select trainer</option>
+                                                    </select>
+                                                </div><!-- end .col-md-12 -->
+                                            </div><!-- end .row -->
+
+                                            <div id="showTrainerOneDetails">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        {{ trainerSelectionDetailsOne.TrainerName }}
+                                                    </div><!-- end .col-md-12 -->
+                                                </div><!-- end .row -->
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        Id: {{ trainerSelectionDetailsOne.TrainerId }}
+                                                    </div><!-- end .col-md-12 -->
+                                                </div><!-- end .row -->
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        DORS Id: {{ trainerSelectionDetailsOne.DORSTrainerIdentifier }}
+                                                    </div><!-- end .col-md-12 -->
+                                                </div><!-- end .row -->
+                                                <div class="row">
+                                                    <div class="col-md-12 space-divider-50 "></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-7"></div>
+                                                    <div class="col-md-4 btn" ng-click="fireModalTrainerEmail(trainerSelectionDetailsOne)">Email Trainer</div>
+                                                    <div class="col-md-1"></div>
+                                                </div>
+                                            </div><!-- end #showTrainerOneDetails -->
+
+                                        </div><!-- col-md-12 -->
+                                    </div><!-- end row top-holding-container middle-top-margin -->
+                                </div><!-- end col-md-4 -->
+                                <div class="col-md-4">
+                                    <div class="row top-holding-container right-top-margin">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12 form-line-separator-20 top-level-padder">
+                                                    <select class="form-control"
+                                                            ng-model="trainerAttendanceSelectionTwo"
+                                                            ng-options="courseClientTrainer as courseClientTrainer.TrainerOneOf for courseClientTrainer in courseClientTrainers"
+                                                            ng-change="loadTheTrainerAttendance('two', trainerAttendanceSelectionTwo)">
+                                                        <option value="">Select trainer</option>
+                                                    </select>
+                                                </div><!-- end .col-md-12 -->
+                                            </div><!-- end .row -->
+
+                                            <div id="showTrainerTwoDetails">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        {{ trainerSelectionDetailsTwo.TrainerName }}
+                                                    </div><!-- end .col-md-12 -->
+                                                </div><!-- end .row -->
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        Id: {{ trainerSelectionDetailsTwo.TrainerId }}
+                                                    </div><!-- end .col-md-12 -->
+                                                </div><!-- end .row -->
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        DORS Id: {{ trainerSelectionDetailsTwo.DORSTrainerIdentifier }}
+                                                    </div><!-- end .col-md-12 -->
+                                                </div><!-- end .row -->
+
+                                                <div class="row">
+                                                    <div class="col-md-12 space-divider-50 "></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-7"></div>
+                                                    <div class="col-md-4 btn" ng-click="fireModalTrainerEmail(trainerSelectionDetailsTwo)">Email Trainer</div>
+                                                    <div class="col-md-1"></div>
+                                                </div>
+
+                                            </div><!-- end #showTrainerTwoDetails -->
+
+                                        </div><!-- col-md-12 -->
+                                    </div><!-- end row top-holding-container middle-top-margin -->
+                                </div><!-- end col-md-4 -->
+                            </div><!-- end row -->
+
+                        </div><!-- end col-md-12 -->
+                    </div><!-- end row -->
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="trainerAttendanceContainer">
+                                <div class="row trainer-container">
+                                    <div class="col-md-4 the-right-border left-padder">
+                                        <div class="row">
+                                            <div class="list-container left-bottom-margin">
+                                                <table st-table="courseClients"
+                                                       st-safe-src="courseClientCollection"
+                                                       class="table table-striped">
+                                                    <tbody>
+
+                                                        <tr data-ng-dblclick="toggleClientAttendance(courseClient.ClientId)" ng-repeat="courseClient  in courseClients | orderBy : 'SortColumn'">
+                                                            <td title="{{courseClient.ClientName}} : Double Click to Toggle Attendance">
+                                                                <span class="ClientName">{{ courseClient.ClientName }}</span>
+                                                                <span class="AttendanceInfo {{ courseClient.ClientCourseAttendanceInfo }}"> ({{ courseClient.ClientCourseAttendanceInfo }})</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table><!-- end table -->
+                                            </div><!-- end list-container -->
+                                        </div><!-- end row -->
+                                    </div><!-- end col-md-4 -->
+                                    <div class="col-md-4 the-right-border middle-table">
+                                        <div class="row">
+                                            <div class="list-container middle-bottom-margin">
+
+                                                <div id="trainerAttendanceOneTable">
+                                                    <table st-table="trainerOneAttendances"
+                                                           st-safe-src="trainerOneAttendanceCollection"
+                                                           class="table table-striped">
+                                                        <tbody>
+                                                            <tr ng-repeat="trainerOneAttendance in trainerOneAttendances | orderBy : 'SortColumn'">
+                                                                <td title="{{trainerOneAttendance.ClientName}}" ng-class="trainerOneAttendance.ClientAttended == false ? 'red' : 'normal'">
+                                                                    {{ trainerOneAttendance.ClientAttended == false ? 'Absent' : 'Present' }}
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table><!-- end table -->
+                                                </div><!-- end #trainerAttendanceOneTable -->
+
+                                                <div class="col-md-12">
+                                                    <div id="trainerAttendanceOneMessage">
+                                                        {{ trainerAttendanceOneMessage }}
+                                                    </div><!-- end #trainerAttendanceOneTable -->
+                                                </div>
+
+                                                <div id="trainerAttendanceOneSpinner">
+                                                    <img class="center-spinner"
+                                                            src="/app_assets/images/ajax-loader.gif" />
+                                                </div><!-- end #trainerAttendanceOneSpinner -->
+
+                                            </div><!-- end list-container -->
+                                        </div><!-- end row -->
+                                    </div><!-- end col-md-4 -->
+                                    <div class="col-md-4 right-table">
+                                        <div class="row">
+                                            <div class="list-container">
+
+                                                <div id="trainerAttendanceTwoTable">
+                                                    <table st-table="trainerTwoAttendances"
+                                                           st-safe-src="trainerTwoAttendanceCollection"
+                                                           class="table table-striped">
+                                                        <tbody>
+                                                            <tr ng-repeat="trainerTwoAttendance in trainerTwoAttendances | orderBy : 'SortColumn'">
+                                                                <td title="{{trainerTwoAttendance.ClientName}}" ng-class="trainerTwoAttendance.ClientAttended == false ? 'red' : 'normal'">
+                                                                    {{ trainerTwoAttendance.ClientAttended == false ? 'Absent' : 'Present' }}
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table><!-- end table -->
+                                                </div><!-- end #trainerAttendanceTwoTable -->
+
+                                                <div class="col-md-12">
+                                                    <div id="trainerAttendanceTwoMessage">
+                                                        {{ trainerAttendanceTwoMessage }}
+                                                    </div><!-- end #trainerAttendanceTwoTable -->
+                                                </div>
+
+                                                <div id="trainerAttendanceTwoSpinner">
+                                                    <img class="center-spinner"
+                                                         src="/app_assets/images/ajax-loader.gif" />
+                                                </div><!-- end #trainerAttendanceTwoSpinner -->
+
+
+                                            </div><!-- end list-container -->
+                                        </div><!-- end row -->
+                                    </div><!-- end col-md-4 -->
+                                </div><!-- end row -->
+
+                            </div><!-- end #trainerAttendanceContainer -->
+                        </div><!-- end col-md-12 -->
+                    </div><!-- end row -->
+
+                </div><!-- end courseVerificationContainer -->
+            </div><!-- end #theCourseAttendanceClients -->
+
+            <div id="courseNotSelected">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>{{ courseAttendanceEmpty }}</p>
+                    </div><!-- end .col-md-12 -->
+                </div><!-- end .row -->
+            </div><!-- #courseNotSelected-->
+
+            <div id="courseAttendanceSpinner">
+                <img class="center-spinner"
+                     src="/app_assets/images/ajax-loader.gif" />
+            </div><!-- end #courseAttendanceSpinner -->
+
+
+
+        </div><!--end col-md-4 trainer-comparison-->
+    </div><!-- end row -->
+
+</div>

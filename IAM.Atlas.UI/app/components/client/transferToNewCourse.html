@@ -1,0 +1,255 @@
+﻿<div id="transferToNewCourseDiv">
+    <div ng-show="!transferred">
+        <div class="row">
+            <span>Client: </span>
+            <span><b>{{client.DisplayName}} (Id: {{ client.Id }})</b></span>
+        </div>
+        <div class="row marginBottom10" ng-show="showDORSData == true">
+            <div class="col-md-12 col-sm-12">
+                <div ng-repeat="clientDORSData in clientDORSDataList">
+                    <div class="col-md-4 col-sm-12 clientDORSData">
+                        <i>DORS Client</i>
+                        <table>
+                            <tr>
+                                <td>
+                                    Reference:
+                                </td>
+                                <td>
+                                    {{ clientDORSData.DORSAttendanceRef }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Referrer:</td>
+                                <td>{{ clientDORSData.ReferringAuthorityName }} ({{ clientDORSData.DateReferred }})</td>
+                            </tr>
+                            <tr>
+                                <td>Expiry:</td>
+                                <td>{{ formatDate(clientDORSData.ExpiryDate) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Scheme:</td>
+                                <td>{{ clientDORSData.DORSSchemeName }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row marginBottom10">
+            <div class="col-md-2 col-sm-12"><h3>Current Course:</h3></div>
+            <div class="col-md-10 col-sm-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <b>{{ TransferFromCourse.courseTypeTitle }}; {{ TransferFromCourse.courseTypeCategoryName }}</b>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <i>Reference:</i>
+                    </div>
+                    <div class="col-sm-10">
+                        <b>{{ TransferFromCourse.courseReference }}</b>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <i>Venue:</i>
+                    </div>
+                    <div class="col-sm-10">
+                        <b>{{ TransferFromCourse.venueTitle }}</b>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <i>Date:</i>
+                    </div>
+                    <div class="col-sm-10">
+                        <b>{{ TransferFromCourse.courseDateStart }} to {{ TransferFromCourse.courseDateEnd }}</b>
+                    </div>
+                </div>
+                <div class="row" ng-show="TransferFromCourse.IsDORSCourse">
+                    <div class="col-sm-12">
+                        <b>This is a DORS Course.</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12"><b>Available Courses</b></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="col-md-12 col-sm-12">
+                    <table class="table table-striped" id="availableCoursesTable" st-table="availableCourses" st-safe-src="availableCoursesTemplate">
+                        <thead>
+                            <tr>
+                                <th colspan="7">
+                                    <input st-search="" class="form-control" placeholder="Filter Results" type="search" />
+                                </th>
+                            </tr>
+                            <tr>
+                                <th st-sort="CourseType">
+                                    Type
+                                </th>
+                                <th st-sort="StartDate">
+                                    Start Date
+                                </th>
+                                <th st-sort="CourseSessionTitle">
+                                    Session
+                                </th>
+                                <th st-sort="VenueName">
+                                    Venue
+                                </th>
+                                <th st-sort="CourseReference">
+                                    Reference
+                                </th>
+                                <th st-sort="NumberofClientsonCourse">
+                                    Booked
+                                </th>
+                                <th st-sort="PlacesRemaining">
+                                    Remaining
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="availableCourse in availableCourses" ng-show="availableCourse.Id != TransferFromCourse.Id && availableCourse.coursePlacesAvailable > 0"
+                                ng-click="selectCourse(availableCourse)">
+                                <td>
+                                    {{ availableCourse.courseTypeTitle }}
+                                </td>
+                                <td>
+                                    {{ availableCourse.courseDateStart }}
+                                </td>
+                                <td>
+                                    {{ availableCourse.courseAssociatedSession }}
+                                </td>
+                                <td>
+                                    {{ availableCourse.venueTitle }}
+                                </td>
+                                <td>
+                                    {{ availableCourse.courseReference }}
+                                </td>
+                                <td>
+                                    {{ availableCourse.coursePlacesBooked }}
+                                </td>
+                                <td>
+                                    {{ availableCourse.coursePlacesAvailable }}
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="7" class="text-center">
+                                    <div st-pagination="" st-items-by-page="maxResults" st-displayed-pages="7"></div>
+                                </td>
+                            </tr>
+                            <tr ng-show="availableCourses.length == 0 && loading == false">
+                                <td colspan="7" class="text-center">
+                                    <br /><br />
+                                    <h3>No available courses could be found.</h3>
+                                </td>
+                            </tr>
+                            <tr ng-show="loading == true">
+                                <td colspan="7" class="text-center">
+                                    <br /><br />
+                                    <img style="display: block; margin-left: auto; margin-right: auto;" src="/app_assets/images/ajax-loader.gif" />
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div ng-show="CoursesAvailable(availableCourses) == false">
+                        No Courses available.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12">
+                <div ng-show="selectedAvailableCourse.Id > 0">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <span>Selected Course:</span>
+                                <span><b>{{ selectedAvailableCourse.courseTypeTitle }}; {{ selectedAvailableCourse.courseTypeCategoryName }}</b></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ColumnA col-md-6 col-sm-12">
+                        <div class="row">
+                            <span><i>Reference: </i></span>
+                            <span><b>{{ selectedAvailableCourse.courseReference }}</b></span>
+                        </div>
+                        <div class="row">
+                            <span><i>Venue: </i></span>
+                            <span><b>{{ selectedAvailableCourse.venueTitle }}</b></span>
+                        </div>
+                        <div class="row">
+                            <span><i>Date: </i></span>
+                            <span><b>{{ selectedAvailableCourse.courseDateStart }} to {{ selectedAvailableCourse.courseDateEnd }}</b></span>
+                        </div>
+                        <div class="row">
+                            <span><i>Last Booking Date:</i></span>
+                            <span><b>{{ selectedAvailableCourse.lastBookingDate }}</b></span>
+                        </div>
+                        <div class="row marginBottom10">
+                            <div class="col-sm-12">
+                                <h3>Transfer Notes:</h3>
+                                <textarea class="form-control" placeholder="Notes" ng-model="transfer.transferNotes"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ColumnB col-md-6 col-sm-12">
+                        <div class="row">
+                            <span><i>Max Attendance: </i></span>
+                            <span><b>{{ selectedAvailableCourse.coursePlaces }}</b></span>
+                        </div>
+                        <div class="row">
+                            <span><i>Places reserved: </i></span>
+                            <span><b>{{ selectedAvailableCourse.courseReserved }}</b></span>
+                        </div>
+                        <div class="row">
+                            <span><i>No. Booked:</i></span>
+                            <span><b>{{ selectedAvailableCourse.coursePlacesBooked }}</b></span>
+                        </div>
+                        <div class="row marginBottom10">
+                            <span><i>Places available:</i></span>
+                            <span><b>{{ selectedAvailableCourse.coursePlacesAvailable }}</b></span>
+                        </div>
+                        <div class="row marginBottom10" ng-show="selectedAvailableCourse.IsDORSCourse">
+                            <span><b>This is a DORS course.</b></span>
+                        </div>
+                        <div class="row marginBottom10">
+                            <div class="col-sm-12">
+                                <button class="btn" ng-click="TransferToNewCourse()" ng-disabled="selectedAvailableCourse == null || selectedAvailableCourse.Id < 1">Transfer</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row marginBottom10">
+                        <div class="col-sm-12">
+                            <div class="row" ng-show="errorMessage != ''">
+                                <div class="col-sm-12 validation-message">
+                                    <font color="red">{{ errorMessage }}</font>
+                                </div>
+                            </div>
+                            <div class="row" ng-show="successMessage != ''">
+                                <div class="col-sm-12 validation-message">
+                                    {{ successMessage }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 text-right">
+                    <button class="btn" ng-click="cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div ng-show="transferred">
+        <div class="row">
+            <div class="col-sm-12">
+                Client transferred successfully
+            </div>
+        </div>
+    </div>
+</div>

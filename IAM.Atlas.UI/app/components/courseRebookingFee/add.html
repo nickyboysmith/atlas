@@ -1,0 +1,126 @@
+﻿<div id="addCourseRebookingFee" class="courseRebookingFee">
+
+    <form class="form-horizontal row" role="form">
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'></div>
+                <div class='col-sm-11'>
+                    {{selectedCourseType.selectedCourseTypeTitle}}
+                </div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'></div>
+                <div class='col-sm-11'>
+                    {{selectedCourseType.selectedCourseTypeCategoryName}}
+                </div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'></div>
+                <div class='col-sm-5'>
+                    Effective Date:
+                </div>
+                <div class='col-sm-4'>
+                    <input type="text"
+                           class="form-control"
+                           ng-model="courseRebookingFees.EffectiveDate"
+                           placeholder="Fee Effective Date" />
+                </div>
+
+                <div class='col-md-2 element-overflow-0'>
+                    <a ng-click="toggleCalendar()" ng-show="!displayCalendar" class="calendar-button col-md-6" title="Show Calendar"><div></div></a>
+                    <a ng-click="toggleCalendar()" ng-show="displayCalendar" class="calendar-button col-md-6" title="Hide Calendar"><div></div></a>
+                </div>
+                <div class='row form-line-separator' style="z-index:10;">
+                    <div class='col-md-offset-2 col-md-10' ng-show="displayCalendar">
+                        <date-picker ng-model="courseRebookingFees.EffectiveDate"
+                                     format-date="formatDate"
+                                     ng-mouseleave="toggleCalendar()"></date-picker>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class='panel'>
+
+            <div class='col-sm-12 form-group'>
+                <div class='form-line-holder'>
+                    <div class='col-sm-3'>
+                        Condition
+                    </div>
+                    <div class='col-sm-4'>
+                        Days Before
+                    </div>
+                    <div class='col-sm-5'>
+                        Rebooking Fee
+                    </div>
+                </div>
+            </div>
+
+            <div data-ng-repeat="dat in courseRebookingFees.courseRebookingFee">
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-1'>
+                            <label>{{dat.Condition}}</label>
+                        </div>
+                        <div class='col-sm-2'>
+                            <input type="checkbox" ng-model="dat.IsSelected" ng-disabled="SetFirstConditionReadOnly(dat.Condition)" />
+                        </div>
+                        <div class='col-sm-4'>
+                            <input type="text"
+                                   class="form-control"
+                                   ng-model="dat.DaysBefore"
+                                   ng-disabled="!dat.IsSelected"
+                                   onkeypress="return !(event.charCode != 46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"/>
+                        </div>
+                        <div class='col-sm-4'>
+                            <input type="text"
+                                   class="form-control"
+                                   ng-model="dat.CourseRebookingFee"
+                                   ng-disabled="!dat.IsSelected"
+                                   onkeypress="return !(event.charCode != 46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"
+                                   placeholder="Rebooking Fee" />
+                        </div>
+                        <div class='col-sm-1'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-6'></div>
+                <div class='col-sm-6'>
+                    <button class="btn btn-default btn-sm"
+                            ng-click="save()"
+                            title="Save">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!--Message banner-->
+        <div class='form-line-holder'>
+            <div class="col-sm-12" ng-if="addSuccessMessage != ''">
+                <h3>{{ addSuccessMessage }}</h3>
+            </div>
+        </div>
+        <div class='form-line-holder'>
+            <div class="col-sm-12" ng-if="addValidationMessage != ''">
+                <h3>{{ addValidationMessage }}</h3>
+            </div>
+        </div>
+
+</form>
+</div>
+

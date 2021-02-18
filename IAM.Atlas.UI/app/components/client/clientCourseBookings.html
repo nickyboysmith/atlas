@@ -1,0 +1,208 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="client-org-container">
+            <div class="organisation-name">{{ organisationName }}</div>
+            <div class="client-login-id">Login Id: {{ client.User.LoginId }}</div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <h2>Course Bookings</h2>
+    </div>
+</div>
+
+<div class="row" ng-show="currentCourses.length > 0">
+    <div class="col-sm-12">
+        <h3>You are currently booked onto the following course(s):</h3>
+    </div>
+</div>
+
+<div class="row" ng-show="currentCourses.length == 0">
+    <div class="col-sm-12">
+        <h3>You are not currently booked on any courses.</h3>
+    </div>
+</div>
+
+<div class="row" ng-show="currentCourses.length > 0">
+    <div class="col-sm-12 grey-box" ng-class="{'sml-scroll-div' : currentCourses.length > 1}" id="currentCourses">
+        <div class="col-sm-12" ng-repeat="course in clientCourseBookings | filter: compareToToday('StartDate', '>') | orderBy : 'StartDate' as currentCourses track by $index">
+
+            <div class="row">
+                <div class="col-sm-10">
+                    <label class="blueitalic" id="courseToReschedule_{{$index}}"><strong>{{$index + 1}}: {{course.CourseType}}</strong></label>
+                </div>
+                <div class="col-sm-2">
+                    <div class="edit-button btn" ng-click="getClientCourseSelection($index, course.CourseTypeId)" ng-hide="clientCourseSelection.index == $index">Reschedule</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="row">
+                        <!--<div class="col-sm-1"></div>-->
+                        <div class="col-sm-4">
+                            <label>Course Date:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <span class="blueitalic"><strong>{{course.StartDate | date:'dd-MMM-yyyy'}} At {{course.StartDate | date: 'hh:mm a'}}</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label>Location:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <span class="blueitalic"><strong>{{course.Venue.Title}}</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-8">
+                            <span class="blueitalic" style="white-space:pre-wrap;"><strong>{{course.Venue.Address}}</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-8">
+                            <span class="blueitalic"><strong>{{course.Venue.PostCode}}</strong></span>
+                        </div>
+                    </div>
+
+                </div>
+            
+
+                <div class="col-sm-5 no-padding-or-margin" ng-show="clientCourseSelection.index == $index">
+                    <div class="row no-padding-or-margin" ng-show="courseSelected.RebookingFee > 0">
+                        <div class="col-sm-12 no-padding-or-margin">
+                            <div class="reschedule-note">
+                                <div class="main-title">Re-Scheduling the Course</div>
+                                <p><strong>N.B.</strong> Re-Scheduling the course is subject to an additional fee of {{ courseSelected.RebookingFee | currency: "£" }} </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 space-divider-10"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-6">
+                            <div class="edit-button btn" ng-click="removeClientCourseSelection()">Cancel Reschedule</div>
+                        </div>
+                    </div>
+
+                </div>
+            
+            </div>
+                  
+            <div class="row">
+                <div class="col-sm-22">
+                    
+                    <div class="row">
+                        <div class="col-sm-12 space-divider-10"></div>
+                    </div>
+
+                    <div class="row" ng-show="course.TotalPaymentOutstanding > 0">
+                        <div class="col-sm-10">
+                            <span class="blueitalic"><strong>A payment of {{course.TotalPaymentOutstanding | currency: '£'}} is due on this course</strong></span>
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                </div>
+            </div>  
+
+            <div class="row">
+                <div class="col-sm-12 space-divider-10"></div>
+            </div>
+
+            <div class="row" id="rowProcessingSpinner_{{$index}}" style="display:none;">
+                <div class="col-xs-12 showProcessingSpinner">
+                    <div class="center-spinner">
+                        <img src="/app_assets/images/ajax-loader.gif" />
+                    </div>
+                </div>
+                <div class="col-sm-12 space-divider-10"></div>
+            </div>
+
+            <div class="row" ng-show="clientCourseSelection.index == $index">
+                <div class="col-sm-12 clientCourseSelection_{{$index}}" id="clientCourseSelection" ng-include="src='/app/components/shared/client/clientCourseSelectionTemplate.html'" style="padding-left:0px; padding-right:0px; ">
+                </div>
+                <div class="col-sm-12 space-divider-10"></div>
+            </div>
+
+            <hr ng-show="currentCourses.length > $index + 1" />
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row" ng-show="!previousCourses === false && previousCourses.length > 0">
+    <div class="col-sm-12">
+        <h3>Your previous course(s) are as follows:</h3>
+    </div>
+</div>
+
+<div class="row" ng-show="!previousCourses === false && previousCourses.length > 0">
+    <div class="col-sm-12 grey-box" ng-class="{'sml-scroll-div' : previousCourses.length > 1}">
+        <div class="col-sm-12" ng-repeat="course in clientCourseBookings | filter: compareToToday('StartDate', '<') | orderBy : 'StartDate' as previousCourses">
+            <div class="row">
+                <div class="col-sm-10">
+                    <label class="blueitalic"><strong>{{$index + 1}}: {{course.CourseType}}</strong></label>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="row">
+                        <!--<div class="col-sm-1"></div>-->
+                        <div class="col-sm-4">
+                            <label>Course Date:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <span class="blueitalic"><strong>{{course.StartDate | date:'dd-MMM-yyyy'}} At {{course.StartDate | date: 'hh:mm a'}}</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label>Location:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <span class="blueitalic"><strong>{{course.Venue.Title}}</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-8">
+                            <span class="blueitalic" style="white-space:pre-wrap;"><strong>{{course.Venue.Address}}</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-8">
+                            <span class="blueitalic"><strong>{{course.Venue.PostCode}}</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 space-divider-10"></div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <hr ng-show="previousCourses.length > $index + 1" />
+
+        </div>
+    </div>
+</div>

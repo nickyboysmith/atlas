@@ -1,0 +1,92 @@
+﻿<div id="specialRequirementMaintenance" class="SpecialRequirementsModal">
+    <system-feature-information title="Client Additional Requirements"
+                                controller="specialRequirementsCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/specialRequirements/update"
+                                page-name="Client Additional Requirements">
+    </system-feature-information>
+
+    <div class='row'>
+    </div>
+
+    <form class="form-horizontal" role="form" style="color: black; ">
+        <!-- First Row -->
+        <div class="row">
+            <!-- First Column -->
+            <div class="col-sm-8">
+                <div class='row form-group' ng-show="isAdminUser">
+                    <div class='col-sm-3'><label>Organisation:</label></div>
+                    <div class='col-sm-6'>
+                        <select id="organisationDD" class='col-sm-12 form-control'
+                                ng-model="selectedOrganisationId"
+                                ng-options="organisation.id as organisation.name for organisation in organisations"
+                                ng-change="showSpecialRequirements(selectedOrganisationId)"
+                                ng-show="isAdminUser"></select>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+
+        <!-- Second Row -->
+        <div class="row">
+            <!-- First Column -->
+            <div class="col-sm-6">
+                <div class='row form-group'>
+                    <div class='col-sm-12'><label>Additional Requirements</label></div>
+                    <div class='col-sm-12'>
+                        <div class="specialRequirementSelectionHolder">
+                            <table class="table table-hover table-bordered table-striped">
+                                <tbody>
+                                    <tr ng-repeat="specialRequirement in specialRequirements">
+                                        <td ng-click="loadSpecialRequirementDetail(specialRequirement.Id)" value="{{specialRequirement.Id}}" ng-class="{selectedSpecialRequirement : selectedSpecialRequirementId == specialRequirement.Id, disabledSpecialRequirement : specialRequirement.Disabled == true}">{{specialRequirement.Name}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class='row form-line-holder'>
+                    <div class='col-sm-12 success-message' ng-hide="statusMessage.length == 0">{{statusMessage}}</div>
+                </div>
+                <div class='row form-line-holder'>
+                    <div class='col-sm-12 validation-message' ng-hide="errorMessage.length == 0">{{errorMessage}}</div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 form-group" ng-show="selectedOrganisationId > 0">
+                <div class='row form-group'>
+                    <label class='col-sm-3'>Name:</label>
+                    <div class='col-sm-9'><span ng-disabled="!isAdminUser && specialRequirementDetail.Id > 0">{{specialRequirementDetail.Name}}</span></div>
+                </div>
+                <div class='row form-group'>
+                    <label class='col-sm-3'>Description:</label>
+                    <div class='col-sm-9'><textarea rows="4" class="form-control" ng-disabled="(!isAdminUser && specialRequirementDetail.Id > 0)" ng-model="specialRequirementDetail.Description"></textarea></div>
+                </div>
+                <div class='row form-group'>
+                    <div class="col-sm-3"></div>
+                    <div class='col-sm-1'><input ng-disabled="" class="cm-sm-1" type="checkbox" ng-model="specialRequirementDetail.Disabled" /></div>
+                    <div class="col-sm-8"><label class='disabled-label'>Disabled</label></div>
+                </div>
+
+                <div class='row form-group'>
+                    <div class='row col-sm-12' style="height:25px;"></div>
+                    <div class='col-sm-3'></div>
+                    <div class="col-sm-3">
+                        <button ng-click="saveSpecialRequirement()" class="btn btn-default fixed-width-80" title="Save Changes">Save</button>
+                    </div>
+                    <div class='col-sm-3'></div>
+                    <div class="col-sm-3">
+                        <button ng-click="addNewRequirement()" class="btn btn-default pull-right fixed-width-80" title="Add New Requirement">New</button>
+                    </div>
+                </div>
+                <!-- <div class='row form-group' ng-show="showSaveSuccess">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9">Save successful.</div>
+                </div>-->
+            </div>
+
+        </div>
+    </form>
+</div>

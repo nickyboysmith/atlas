@@ -1,0 +1,164 @@
+﻿
+@import "../modules/_mixins";
+
+/**
+    QuickLaunch 
+*/
+#quickLaunchContainer {
+    background: darken($background, 10%);
+    width: 34px;
+    height: 100%;
+    position: fixed;
+    z-index: 75;
+    .quick-links-holder {
+            float: left;
+            min-height:100%;
+            background: darken($background, 27%);
+            width: 100%;
+            .small-home-icon {
+                /*@include iconGetter(-11px, -441px);*/ 
+                background-image: url(/app_assets/images/quickLaunch/home.png);
+            }
+            .small-email-icon {
+                /*@include iconGetter(-11px, -410px);*/
+                background-image: url(/app_assets/images/quickLaunch/systeminformation.png);
+                }
+            .small-feedback-icon {
+                /*@include iconGetter(-11px, -410px);*/
+                background-image: url(/app_assets/images/quickLaunch/feedback.png);
+            }
+            .small-info-icon {
+                /*@include iconGetter(-11px, -379px);*/
+                background-image: url(/app_assets/images/quickLaunch/systeminformation.png);
+            }
+            .small-client-icon {
+                /*@include iconGetter(-40px, -379px);*/
+                background-image: url(/app_assets/images/quickLaunch/client.png);
+            }
+            .small-internalmessaging-icon {
+                /*@include iconGetter(-40px, -379px);*/
+                background-image: url(/app_assets/images/quickLaunch/internalmessaging.png);
+            }
+            .small-course-icon {
+                /*@include iconGetter(-40px, -409px);*/
+                background-image: url(/app_assets/images/quickLaunch/course.png);
+            }
+            .small-blockedusers-icon {
+                /*@include iconGetter(-40px, -350px);*/
+                background-image: url(/app_assets/images/quickLaunch/blockedusers.png);
+            }
+            .small-enterpayment-icon {
+                /*@include iconGetter(-69px, -350px);*/
+                background-image: url(/app_assets/images/quickLaunch/enterpayment.png);
+            }
+            .small-ndors-icon{
+                /*@include iconGetter(-40px, -467px);*/
+                background-image: url(/app_assets/images/quickLaunch/ndors-logo.png);
+            }
+            .small-takepayment-icon {
+                /*@include iconGetter(-69px, -379px);*/
+                background-image: url(/app_assets/images/quickLaunch/takepayment.png);
+            }
+            .small-courseattendance-icon {
+                /*@include iconGetter(-96px, -379px);*/
+                background-image: url(/app_assets/images/quickLaunch/courseattendance.png);
+            }
+            .small-availablecourses-icon{
+                background-image: url(/app_assets/images/quickLaunch/availableCourses.png);
+            }
+            .small-findpayment-icon{
+                background-image: url(/app_assets/images/quickLaunch/paymentlist.png);
+            }
+            .small-administerblockedips-icon{
+                background-image: url(/app_assets/images/quickLaunch/blockedips.png);
+            }
+            .small-trainerCalendar-icon{
+                background-image: url(/app_assets/images/quickLaunch/trainercalendar.png);
+            }
+            .small-phone-icon{
+                background-image: url(/app_assets/images/quickLaunch/phone_icon.png);
+            }
+            .small-paymentReconciliation-icon{
+                background-image: url(/app_assets/images/quickLaunch/reconciliation.png);
+            }
+            ul {
+                height: auto;
+                margin:0 auto;
+                margin-top: 20px;
+                padding-left: 0;
+                width: 25px;
+                a {
+                    padding: 0;
+                    border: 0;
+                }
+                li {
+                    height:25px;
+                    margin-bottom: 20px;
+                    background-size: 80%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    display: block;  
+                    border-radius: 999em;
+ 	                /*border: 2.5px solid #fff;*/
+                }
+                /*li:hover {
+                    height:45px;
+                    width: 45px;
+                    margin-top: 9px;
+                    margin-bottom: 9px;
+ 	                border: 3px solid #f6f5f5;
+                }*/
+            }
+        }
+    }
+
+// unblock user panel styles:
+.selectedBlockedUser {
+    background: #006cc2;
+    color:#fff;
+}
+
+#blockedUsers{
+    background:#001f38;
+    position:absolute;
+    z-index:150;
+    top:212px;
+    left:34px;
+    color:#fff;
+    padding:15px;
+    width:480px;
+}
+
+#blockedUsers h3{
+                
+    color:#fff;
+}
+
+.closeXButton{
+    background-image: url(/app_assets/images/sprite.png);
+    background-position: -13px -353px;
+    background-repeat: no-repeat;
+    display: block;
+    height: 10px;
+    width: 10px;
+    cursor: pointer;
+}
+
+.blockerUsersTable{
+    background:#fff;
+    color:#000;
+    width: 300px;
+    height: 300px;
+    float:left;
+    padding:10px;
+    margin:10px;
+    overflow-y:scroll;
+}
+.blockerUsersRightCol{
+    float:left;
+}
+.blockedUsersCloseButton{
+    position:absolute;bottom:24px;
+}
+
+// end unblock user panel styles

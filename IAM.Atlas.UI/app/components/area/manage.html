@@ -1,0 +1,92 @@
+﻿<div id="areaMaintenance">
+    <div class="row">
+        <div class="col-md-12" data-ng-hide="hideSuccessMessage == true">{{ completedMessage }}</div>
+        <div class="col-md-6">
+
+            <div class="organisationHolder" data-ng-hide="hideOrganisationList == true">
+                <label class="col-md-4 remove-left-padding">Organisation</label>
+                <select class="col-md-8" ng-model="selectedOrganisation" data-ng-change="selectTheOrganisation()">
+                    <option value="*">Please select</option>
+                    <option data-ng-repeat="organisation in relatedOrganisations" value="{{ organisation.id }}">{{ organisation.name }}</option>
+                </select>
+            </div>
+
+            <div class="areas">
+
+                <div id="areaMaintenanceGridHolder" data-ng-hide="hideAreaTable == true">
+                    <table st-table="areas" class="table table-striped" st-safe-src="areaCollection">
+                        <thead>
+                            <tr>
+                                <th st-sort="reference">Areas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="area in areas">
+                                <td data-ng-click="selectTheArea(area)">{{ area.Name }}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" class="text-center">
+                                    <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="5"></div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="system-admin-message" data-ng-show="hideAreaTable == true">
+                    <p>Please select an organisation to continue</p>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-6">
+
+            <div class="area-management">
+                <div class="area-input" data-ng-hide="hideOnStart === true">
+                    <label class="col-md-4 remove-left-padding">Area</label>
+                    <input id="areaInput" class="col-md-8" type="text" data-ng-model="manage.theArea.Name" />
+                </div>
+
+                <div class="area-notes" data-ng-hide="hideOnStart === true">
+                    <label class='col-md-4 remove-left-padding'>Notes</label>
+                    <div class='col-md-8'><textarea rows="4" class="form-control" type="text" data-ng-model="manage.theArea.Notes" placeholder="Notes" /></div>
+                </div>
+
+                <div class="area-disable" data-ng-hide="hideOnStart === true">
+                    <input type="checkbox" data-ng-model="manage.theArea.Disabled.area" data-ng-click="changeTheMessage()" />
+                    <label><strong>{{ manage.theArea.Disabled.status }}</strong>: {{ manage.theArea.Disabled.label }}</label>
+                </div>
+
+                <div class="row area-action-buttons">
+                    <div class="col-md-3" data-ng-hide="hideOnStart === true">
+                        <div class="btn button-fill-width" data-ng-click="saveAreaMaintenance()">Save</div>
+                    </div>
+                    <div class="col-md-6"></div>
+                    <div id="theAddNewContainer" class="col-md-3" data-ng-hide="hideAddNewOnStart === true">
+                        <div class="btn button-fill-width" data-ng-click="addNewArea()">Add New</div>
+                    </div>
+                </div>
+
+
+                <div class="row close-modal-holder">
+                    <div class="col-md-9"></div>
+                    <div class="col-md-3">
+                        <div class="btn button-fill-width" data-ng-click="closeModal()">Close</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div data-ng-if="showSuccessFader == true">
+        <my-msgfader status="success"></my-msgfader>
+    </div>
+    <div data-ng-if="showErrorFader == true">
+        <my-msgfader status="error"></my-msgfader>
+    </div>
+</div>

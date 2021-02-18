@@ -1,0 +1,35 @@
+﻿<div id="editConnectionSettings">
+
+    <system-feature-information title="DORS connection settings"
+                                controller="EditConnectionSettingsCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/dors/editConnectionSettings"
+                                page-name="DORS Connection Settings"></system-feature-information>
+
+    <div class="row">
+        <div class="col-md-12">
+            <p>Organisations with DORS Connections</p>
+        </div><!-- End .col-md-12 -->
+    </div><!-- End .row -->
+    <div class="row form-line-separator-20">
+        <div class="col-md-12">
+            <div class="big-scrollable-container">
+                <ul>
+                    <li 
+                        ng-repeat="organisation in organisationList" 
+                        ng-dblclick="showEditModal(organisation)" 
+                        ng-class="organisation.Enabled ? '' : 'pink-background'"
+                        title="Double click to edit"
+                        >{{ organisation.Name }}</li>
+                </ul>
+            </div><!-- End .big-scrollable-container -->
+        </div><!-- End .col-md-12 -->
+    </div><!-- End .row -->
+    <div class="row">
+        <div class="col-md-3">
+            <div class="btn" ng-click="showAddModal()">Add new</div>
+        </div>
+        <div class="col-md-6"></div>
+        <div class="col-md-3"></div>
+    </div>
+</div><!-- End #editConnectionSettings -->

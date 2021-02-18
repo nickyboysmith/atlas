@@ -1,0 +1,83 @@
+﻿
+
+<div class="row section-container">
+
+    <div id="road-smart-pre"></div>
+    <div id="road-smart-branding-triangle-ish-thingy"></div>
+    <div id="road-smart-branding-container">
+        <img class="position-road-smart-logo"
+             src="/app_assets/images/iamroad_smart_logo_atlas.png" alt="" />
+    </div>
+
+    <div class="col-xs-12  col-sm-4">
+        <div class="company-logo"></div>
+    </div>
+    <div class="col-xs-12  col-sm-8">
+        <div class="main-title add-margin-to-title">Driver Rider Improvement Schemes</div>
+        <div class="main-subtitle">Online booking</div>
+    </div>
+
+</div>
+
+<div class="row section-container">
+
+    <div class="col-sm-12 title-container add-margin-to-title">
+        <div class="col-sm-12">
+            <span>Your Licence Number may not have been entered incorrectly.</span>
+        </div>
+        <div class="col-sm-12">
+            <span>You can retry by Clicking <a href="/">here</a>.</span>
+        </div>
+    </div>
+
+    <div class="col-sm-12 title-container add-margin-to-title" ng-show="contacts.length == 0">
+        <div class="col-sm-12 top-text">
+            <span>If you believe that your Licence has been entered correctly and wish to discuss your details further please use the contact NDORS Link Below.</span>
+        </div>
+        <div class="col-sm-12 top-text">
+            <p class="top-text">
+                {{NonAtlasAreaInfo}}:
+                <a href="{{NonAtlasAreaLink}}"
+                    onclick="window.open(this.href, 'newwindow', 'width=800, height=600, scrollbars=yes, resizable=yes'); return false;">{{NonAtlasAreaLinkTitle}}</a>
+            </p>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row section-container" ng-hide="contacts.length == 0">
+    <div class="col-sm-12 top-text">
+        <span>If you believe that your Licence has been entered correctly and wish to discuss your details further please use the contact information Below.</span>
+    </div>
+    <div class="col-xs-12">
+        <div class="main-booking-title pull-left"><h3 style="font-weight:bold; padding-left:20px;">Please find Organisation Contact Information Below</h3></div>
+    </div>
+    <div class="col-xs-12">
+        <table id="organisationContacts">
+            <tr>
+                <th class="tableHead" style="width:350px;"><h3>Area</h3></th>
+                <th class="tableHead"><h3>Organisation</h3></th>
+            </tr>
+        </table>
+        <div class="organisationContactsContainer">
+            <table id="organisationContacts">
+                <tr ng-repeat="contact in contacts">
+                    <td style="width:350px;">{{ contact.Area }}</td>
+                    <td>
+                        <table>
+                            <tr colspan="2"><td> {{ contact.OrganisationName }}</td></tr>
+                            <tr ng-show="showRow(contact.OrganisationAddress);"> <td><span class="tableLabel">Address: </span>{{ contact.OrganisationAddress }}   </td></tr>
+                            <tr ng-show="showRow(contact.OrganisationPostCode);"><td><span class="tableLabel">PostCode: </span>{{ contact.OrganisationPostCode }} </td></tr>
+                            <tr ng-show="showRow(contact.OrganisationEmail);">   <td><span class="tableLabel">Email: </span>{{ contact.OrganisationEmail }}       </td></tr>
+                            <tr ng-show="showRow(contact.OrganisationPhone);">   <td><span class="tableLabel">Phone: </span>{{ contact.OrganisationPhone }}       </td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+

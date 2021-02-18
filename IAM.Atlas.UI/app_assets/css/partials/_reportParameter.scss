@@ -1,0 +1,88 @@
+﻿#reportParameters {
+    .row {
+        margin: 5px;
+    }
+
+    .btn {
+        margin: 0px 5px 5px 5px;
+    }
+
+    .reportparameter {
+        width: 235px;
+    }
+
+    .reportparametermselect {
+        border: 1px solid lightgray;
+        padding: 5px;
+    }
+
+    .report-parameter-label{
+        text-align:left;
+        padding: 0;
+    }
+    
+
+    .reportparameters-loading-gif { 
+        left: 0;  
+        bottom: 0;  
+        z-index: 9996;  
+        width: 100px;  
+        height: 100px;  
+        overflow: visible;  
+        background: url(/app_assets/images/loading-blue.gif) no-repeat;  
+        background-size: 100%;
+        margin-left: 20%;
+     }
+
+    .report-parameter-row-limiter{
+        padding: 0px;
+        padding-left: 2px;
+        margin: 0px;
+
+        font-style: italic;
+        font-size: 10px;
+
+        label{
+            margin: 0;
+            padding:0;
+            padding-left:1px;
+            padding-right:1px;
+        }
+
+        div{
+            padding: 0;
+            margin: 0;
+            input{
+                margin:0;
+                margin-left: 2px;
+                margin-right: 2px;
+                padding: 1px;
+            }
+            select{
+                margin-left: 2px;
+                margin-right: 2px;
+                width: 100%;
+            }
+        }
+    }
+
+    .DropdownListRefreshInfo{        
+        font-style: italic;
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+    .Normal, .Error, .Success{      
+        font-style: italic;
+        font-weight: bold;
+    }
+    .Normal{
+        color: black;
+    }
+    .Error{
+        color: red;
+    }
+    .Success{
+        color: green;
+    }
+}

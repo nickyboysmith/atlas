@@ -1,0 +1,43 @@
+
+
+.FeedBack{
+    width: 400px;
+    .FeedbackComments{
+        font-size: 14px;
+        font-style: italic;
+        padding-top: 2px;
+        padding-bottom: 4px;
+    }
+
+    .field-holder{
+        min-height: 30px;
+
+        label{
+            min-height: 20px;
+            min-width: 40px;
+        }
+    }
+
+    .FeedbackResponse
+    {
+        padding-left: 35px;
+        vertical-align: top;
+
+        table{
+            width: 100%;
+
+            td{
+                vertical-align: top;
+                padding-bottom: 2px;
+            }
+        }
+
+    }
+    input[type='text']{
+        width: 100%;
+    }
+    textarea{
+        width: 100%;
+        min-height: 60px;
+    }
+}

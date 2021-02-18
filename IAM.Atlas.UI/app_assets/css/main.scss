@@ -1,0 +1,278 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide {
+    display: none !important;
+}
+
+// Modules and Variables
+@import "modules/mainColours";
+@import "modules/all";
+@import "modules/reset";
+@import "modules/typography";
+@import "modules/buttons";
+@import "modules/figures";
+@import "modules/grids";
+@import "modules/labels";
+@import "modules/print";
+@import "modules/_modal.css";
+
+ 
+// Partials
+@import "partials/base";
+@import "partials/personalMenu";
+@import "partials/configureOrganisation";
+@import "partials/feedback";
+@import "partials/navigationMenu";
+@import "partials/changePassword";
+@import "partials/client.scss";
+@import "partials/organisationDisplay";
+@import "partials/course";
+@import "partials/about";
+@import "partials/_subMenu.scss";
+@import "partials/clientSearch";
+@import "partials/clientHistory"; 
+@import "partials/paymentMaintenance";
+@import "partials/publicHoliday";
+@import "partials/paymentProvider";
+@import "partials/addCourse"; 
+@import "partials/addCourseDocument"; 
+@import "partials/addCourseStencil"; 
+@import "partials/fadeSaveStatus";
+@import "partials/viewCourse"; 
+@import "partials/viewVenue"; 
+@import "partials/viewDataView"; 
+@import "partials/quickLaunch";
+@import "partials/quickSearch";
+@import "partials/_emailConfirmation";
+@import "partials/_systemAdminMenu";
+@import "partials/dorsLicenceCheck.scss";
+@import "partials/organisationSelfConfiguration";
+@import "partials/organisationSystemConfiguration";
+@import "partials/referringAuthority";
+@import "partials/schedulerControl";
+@import "partials/emailBlockedOutgoingAddress";
+@import "partials/clientDeleteMarked";
+@import "partials/documentDeleteMarked";
+@import "partials/dashboardMeter";
+@import "partials/assignUserDashBoardMeters";
+@import "partials/systemFeature";
+@import "partials/_stencilCourse.scss";
+@import "partials/_courseFee.scss";
+@import "partials/_emailAllClients.scss";
+@import "partials/_emailAllTrainers.scss";
+@import "partials/_blockedIP.scss";
+@import "partials/_courseRebookingFee.scss";
+@import "partials/_cancelTimeout.scss";
+@import "partials/_attachCourseEmailAttachment.scss";
+@import "partials/_cloneCourse.scss";
+@import "partials/eventHistory"; 
+@import "partials/_cookiePolicy.scss"; 
+@import "partials/_interpreterLanguage.scss"; 
+@import "partials/_systemAdminSupportUser.scss"; 
+@import "partials/_taskCategory.scss"; 
+@import "partials/_mysteryShopperAdministration.scss";
+@import "partials/_vehicleTypeAdministration.scss";
+@import "partials/_trainerVehicle.scss";
+@import "partials/_courseType.scss";
+@import "partials/_courseTypeCategory.scss";
+@import "partials/_paymentType.scss";
+@import "partials/_systemTask.scss";
+@import "partials/_reportCategory.scss";
+@import "partials/_vehicleCategoryAdmin.scss";
+@import "partials/_documentPrintQueue.scss";
+@import "partials/_previewEmail.scss";
+@import "partials/_dashboardHover.scss";
+@import "partials/_onLineTerms.scss";
+
+/*@import "partials/adminMenu";*/
+/*the sidePanel Holds the Admin menu command thead Messages Panels*/
+@import "partials/sidePanel";
+
+/*the topPanel Holds the Status Panels*/
+@import "partials/topPanel";
+
+/*the Dashboard Panels*/
+@import "partials/dashboard";   
+
+// Template change
+@import "partials/templateChange"; 
+
+// Trainer page
+@import "partials/trainerLandingPage";
+@import "partials/trainerAbout";
+@import "partials/trainerAvailability";
+@import "partials/trainerAdd.scss";
+@import "partials/trainerBookings";
+@import "partials/trainerAttendance";
+@import "partials/trainerSettings";
+
+//Trainer Search page
+@import "partials/trainerSearch.scss";
+
+//Report Search page
+@import "partials/reportSearch.scss";
+
+//Report Parameters page
+@import "partials/reportParameter.scss";
+
+//Report Generator page
+@import "partials/reportGenerator.scss";
+
+// Course Trainer Modules
+@import "partials/_addCourseTrainerModal";
+
+// Course Trainer Modules
+@import "partials/_addCourseInterpreterModal.scss";
+
+// Login Page
+@import "partials/loginOrganisation";
+@import "partials/loginTrainer";
+@import "partials/loginClient";
+
+// User Partial
+@import "partials/userAdd.scss";
+
+// Data View Partial
+@import "partials/addDataView";
+
+// Directive CSS
+@import "partials/dragDropUpdate";
+
+// DORS Partial
+@import "partials/_dorsConnectionDetails";
+
+// Client Landing pAGE
+@import "partials/_clientLandingPage";
+
+// Assign trainer course type categories
+@import "partials/assignTrainerCourseTypeCategories";
+
+// Record Payment
+@import "partials/recordPayment";
+
+// Find Client Modal
+@import "partials/findSingleClient";
+
+// Accept Card
+@import "partials/acceptCard";
+
+// Document holder
+@import "partials/document";
+
+// Send email
+@import "partials/sendEmail";
+
+// Update Special Requirements
+@import "partials/updateSpecialRequirements";
+
+// Add special requirement
+@import "partials/addSpecialRequirement";
+
+// Document Upload
+@import "partials/documentUpload"; 
+
+// Client Confirm Registration
+@import "partials/clientConfirmRegistration";
+
+// Third-party
+/*@import "vendor/colorpicker";*/
+/*@import "vendor/jquery.ui.core";*/ 
+
+// 
+@import "partials/_allTrainersDocuments.scss";
+
+// All Courses Documents
+@import "partials/_allCoursesDocuments.scss";
+
+// All Course Types Documents
+@import "partials/_allCourseTypesDocuments.scss";
+
+// Client Special Requirements
+@import "partials/clientSpecialRequirements";
+
+// Client Course Selection
+@import "partials/clientCourseSelection";
+
+// Show Venue Address
+@import "partials/showVenueAddress"; 
+
+// Organisation Documents
+@import "partials/_organisationDocuments";
+
+// Client Course Selection
+@import "partials/clientCourseConfirmation";
+
+// System Support Users
+@import "partials/_systemSupportUser";
+
+@import "partials/_transferClientToNewCourse.scss";
+
+// Letter Maintenance
+@import "partials/letterTemplateMaintenance";
+
+// Course Attendance
+@import "partials/courseAttendance";
+
+// Course Trainers
+@import "partials/_courseTrainer";
+
+// System Feature
+@import "partials/_systemFeatureInformation";
+@import "partials/_systemFeatureAddNote.scss";
+
+// System feature directive
+@import "partials/_systemFeatureInformationDirective"; 
+
+// Reminder Templates
+@import "partials/_reminderEmail";
+@import "partials/_reminderSMS";
+
+// Venue Image Map
+@import "partials/_venueImageMap";
+
+//Netcall Agents Administration
+@import "partials/_netcallAgents.scss";
+@import "partials/_netcallAddAgent.scss";
+
+//Trainer Dashboard
+@import "partials/_trainerDashboard.scss";
+
+// Payment View
+@import "partials/_payment.scss"; 
+
+// Refund Request View
+@import "partials/_refundRequest.scss"; 
+
+@import "partials/_clientAvailableCourses.scss";
+
+@import "partials/_refunds.scss";
+
+@import "partials/_task.scss";
+
+@import "partials/_vat.scss";
+
+
+// came from trainer settings, but was global for project
+.sml-scroll-div{
+    overflow-y:scroll;
+    height:300px;
+}
+
+.md-scroll-div{
+    overflow-y:scroll;
+    height:500px;
+}
+
+.lg-scroll-div{
+    overflow-y:scroll;
+    height:700px;
+}
+
+.statusMessage{
+    background-color: lightgreen;
+    padding: 8px;
+    margin-top: 8px;
+	border-radius: 6px;
+}
+
+
+//Override Bootstrap
+@import "modules/bootstrapOveride.scss";

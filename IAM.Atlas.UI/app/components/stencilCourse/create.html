@@ -1,0 +1,40 @@
+﻿<div>
+    <div id="createStencilCourses">
+        <div class="modal-message-container" >
+            
+            <div class="row form-line-separator">
+                <div class="col-md-12">
+                    {{course.name}} (Version: {{course.versionNumber | leftPad: "000"}})
+                </div>
+            </div><!-- end .row -->
+
+            <div class="row form-line-separator">
+                <div class="col-md-12">
+                    <label class="blueitalic">You are about to create Courses based on this Stencil. <br /> Please confirm by selecting "Create Courses".</label>
+                </div>
+            </div><!-- end .row -->
+
+            <div class="row form-line-separator">
+                <div class="col-xs-12 col-md-4">
+                    <button ng-click="close()" class="btn pull-left">Close</button>
+                </div>
+                <div class="col-xs-12 col-md-8">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-6">                                                        
+                        </div>
+                        <div class="col-xs-6 col-md-6 ">
+                            <button ng-click="createCourses($event)" class="btn pull-right fixed-width-140">Create Courses</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-12">
+                    <label><span class="validation-message">{{ validationMessage }}</span></label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

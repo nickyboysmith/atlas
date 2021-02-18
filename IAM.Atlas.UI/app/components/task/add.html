@@ -1,0 +1,176 @@
+﻿<div id="AddTaskDiv">
+    <div class="row marginBottom5">
+        <div class="col-sm-3">
+            Category
+        </div>
+        <div class="col-sm-9">
+            <select class='form-control'
+                    ng-model="task.TaskCategoryId"
+                    ng-options="taskCategory.TaskCategoryId as taskCategory.TaskCategoryTitle for taskCategory in taskCategories"></select>
+        </div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-3">
+            Title
+        </div>
+        <div class="col-sm-9">
+            <input type="text" ng-model="task.Title" class="form-control" placeholder="Task Title" />
+        </div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-3">
+            Priority
+        </div>
+        <div class="col-sm-9">
+            <label>
+                <input name="taskPriority"
+                       id="taskPriority1"
+                       type="radio"
+                       ng-value="1"
+                       ng-click="setTaskPriority(1)"
+                       ng-checked="{{task.PriorityNumber == 1}}" />1
+            </label>&nbsp;
+            <label>
+                <input name="taskPriority"
+                       id="taskPriority2"
+                       type="radio"
+                       ng-value="2"
+                       ng-click="setTaskPriority(2)"
+                       ng-checked="{{task.PriorityNumber == 2}}" />2
+            </label>&nbsp;
+            <label>
+                <input name="taskPriority"
+                       id="taskPriority3"
+                       type="radio"
+                       ng-value="3"
+                       ng-click="setTaskPriority(3)"
+                       ng-checked="{{task.PriorityNumber == 3}}" />3
+            </label>&nbsp;
+            <label>
+                <input name="taskPriority"
+                       id="taskPriority4"
+                       type="radio"
+                       ng-value="4"
+                       ng-click="setTaskPriority(4)"
+                       ng-checked="{{task.PriorityNumber == 4}}" />4
+            </label>
+
+</div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-3">
+            Notes
+        </div>
+        <div class="col-sm-9">
+            <textarea ng-model="task.Notes" class="form-control" rows="5" placeholder="Notes"></textarea>
+        </div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-3">
+            Deadline
+        </div>
+        <div class="col-sm-9">
+            <div class="row">
+                <div class='col-sm-6'>
+                    <input class="form-control cm-sm-12" type="text" format-date-iam ng-model="task.DeadlineDate" ng-click="toggleCalendar()" />
+                    <div style="position:absolute; z-index:100000;" ng-show="displayCalendar">
+                        <date-picker ng-model="task.DeadlineDate" format-date="formatDate" ng-mouseleave="toggleCalendar();"></date-picker>
+                    </div>
+                </div>
+                <div class='col-sm-2 element-overflow-0'>
+                    <a ng-click="toggleCalendar()" ng-show="!displayCalendar" class="calendar-button col-sm-6" title="Show Calendar"><div></div></a>
+                    <a ng-click="toggleCalendar()" ng-show="displayCalendar" class="calendar-button col-sm-6" title="Hide Calendar"><div></div></a>
+                </div>
+                <div class='col-sm-4'>
+                    <text-drop-down ng-model="task.DeadlineTime" items="hours"></text-drop-down>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-3">
+            &nbsp;
+        </div>
+        <div class="col-sm-9">
+            <div class="row">
+                <div class="col-sm-12">
+                    <label><input type="checkbox" ng-model="task.SendToOrganisation" />&nbsp;Send to All in Organisation</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    Or Specific User
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="User Name (User Id)" ng-disabled="true" ng-model="taskUserNameId" />
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn" ng-click="openSelectUserModal()">...</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-3">
+            &nbsp;
+        </div>
+        <div class="col-sm-9">
+            <h3>Task Links</h3>
+            <div class="row marginBottom5">
+                <div class="col-sm-2">
+                    Client
+                </div>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" ng-model="taskClientLabel" ng-disabled="true" />
+                </div>
+                <div class="col-sm-1">
+                    <button class="btn" ng-click="openRelateTaskToClientModal()">...</button>
+                </div>
+            </div>
+            <div class="row marginBottom5">
+                <div class="col-sm-2">
+                    Course
+                </div>
+                <div class="col-sm-9">
+                    <input type="text" ng-model="taskCourseLabel" class="form-control" ng-disabled="true" />
+                </div>
+                <div class="col-sm-1">
+                    <button class="btn" ng-click="openRelateTaskToCourseModal()">...</button>
+                </div>
+            </div>
+            <div class="row marginBottom5">
+                <div class="col-sm-2">
+                    Trainer
+                </div>
+                <div class="col-sm-9">
+                    <input type="text" ng-model="taskTrainerLabel" class="form-control" ng-disabled="true" />
+                </div>
+                <div class="col-sm-1">
+                    <button class="btn" ng-click="openRelateTaskToTrainerModal()">...</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-3">
+            &nbsp;
+        </div>
+        <div class="col-sm-9">
+            <div class="row">
+                <div class="col-sm-6">
+                    <button class="btn" ng-click="saveTask()">Save</button>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <button class="btn" onclick="$('button.close').last().trigger('click');">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-12 validation-message">
+            {{ validationMessage }}
+        </div>
+    </div>
+</div>

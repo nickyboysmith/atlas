@@ -1,0 +1,48 @@
+<publishData>
+  <publishProfile profileName="iam-atlas-demo - Web Deploy" 
+                  publishMethod="MSDeploy" 
+                  publishUrl="iam-atlas-demo.scm.azurewebsites.net:443" 
+                  msdeploySite="iam-atlas-demo" 
+                  userName="$iam-atlas-demo" 
+                  userPWD="MWqxBvluTJMnQRS4aKHxtyo35Pk5q60NueKjxsPbuNqybNreHbNrkNGjpHEz"
+                  destinationAppUrl="http://iam-atlas-demo.azurewebsites.net"
+                  SQLServerDBConnectionString="Data Source=tcp:atlasdemo.database.windows.net,1433;Initial Catalog=Atlas_Demo;User ID=AtlasDemo@atlasdemo;Password=4tl45d3m02017~!" 
+                  mySQLDBConnectionString="" 
+                  hostingProviderForumLink="" 
+                  controlPanelLink="http://windows.azure.com" 
+                  webSystem="WebSites" 
+                  targetDatabaseEngineType="sqlazuredatabase" 
+                  targetServerVersion="Version100">
+    <databases>
+      <add name="DefaultConnection" 
+           connectionString="Data Source=tcp:atlasdemo.database.windows.net,1433;Initial Catalog=Atlas_Demo;User ID=AtlasDemo@atlasdemo;Password=4tl45d3m02017~!" 
+           providerName="System.Data.SqlClient" 
+           type="Sql" 
+           targetDatabaseEngineType="sqlazuredatabase" 
+           targetServerVersion="Version100" />
+    </databases>
+  </publishProfile>
+  <publishProfile profileName="iam-atlas-demo - FTP" 
+                  publishMethod="FTP" 
+                  publishUrl="ftp://waws-prod-ln1-003.ftp.azurewebsites.windows.net/site/wwwroot" 
+                  ftpPassiveMode="True" 
+                  userName="iam-atlas-demo\$iam-atlas-demo" 
+                  userPWD="MWqxBvluTJMnQRS4aKHxtyo35Pk5q60NueKjxsPbuNqybNreHbNrkNGjpHEz" 
+                  destinationAppUrl="http://iam-atlas-demo.azurewebsites.net" 
+                  SQLServerDBConnectionString="Data Source=tcp:atlasdemo.database.windows.net,1433;Initial Catalog=Atlas_Demo;User ID=AtlasDemo@atlasdemo;Password=4tl45d3m02017~!" 
+                  mySQLDBConnectionString="" 
+                  hostingProviderForumLink="" 
+                  controlPanelLink="http://windows.azure.com" 
+                  webSystem="WebSites" 
+                  targetDatabaseEngineType="sqlazuredatabase" 
+                  targetServerVersion="Version100">
+    <databases>
+      <add name="DefaultConnection" 
+           connectionString="Data Source=tcp:atlasdemo.database.windows.net,1433;Initial Catalog=Atlas_Demo;User ID=AtlasDemo@atlasdemo;Password=4tl45d3m02017~!" 
+           providerName="System.Data.SqlClient" 
+           type="Sql" 
+           targetDatabaseEngineType="sqlazuredatabase" 
+           targetServerVersion="Version100" />
+    </databases>
+  </publishProfile>
+</publishData>

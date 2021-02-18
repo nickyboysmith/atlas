@@ -1,0 +1,24 @@
+﻿#reportGenerator {
+    .row {
+        margin: 5px;
+    }
+
+    .reportGeneratorTitle{
+        font-weight: bold;
+        font-size: x-large;
+    }
+
+    .reportGeneratorStatus{
+        text-align:center;
+        margin: 0 auto !important;
+        .reportGeneratorInfo{
+            font-style:italic;
+            .reportGeneratorWhirlie{
+                background: url("/app_assets/images/ajax-loader.gif");
+                width: 100px;
+                height: 100px;
+                background-size: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+﻿<div>
+    Report: <b>{{report.Title}}</b>
+</div>
+<div ng-show="statusMessage != ''">
+    <span style="color:crimson;">{{statusMessage}}</span>
+</div>
+<div id="reportOwners" style="width:600px;">
+    
+    <drag-drop-update reference-one-title="Available Users"
+                      reference-one-value=""
+                      reference-two-title="Report Owners"
+                      reference-two-value=""
+                      show-reference-header=false
+                      from="availableUsers"
+                      to="reportOwners"
+                      from-data-source="availableUsers"
+                      to-data-source="reportOwners"
+                      list-one-header="Available Users"
+                      list-two-header="Report Owners"></drag-drop-update>
+
+</div><!-- End #trainerAvailabilityCourseTypes -->

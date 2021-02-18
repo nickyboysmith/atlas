@@ -1,0 +1,58 @@
+﻿#stencilCourseMaintenance {
+
+    .element-overflow-0 {
+        width: 0;
+        margin-left: 0;
+    }
+
+    .element-overflow-1 {
+        width: 0;
+        margin-left: -8.33%;
+    }
+
+    .element-overflow-2 {
+        width: 0;
+        margin-left: -16.66%;
+    }
+
+    .element-overflow-3 {
+        width: 0;
+        margin-left: -25%;
+    }
+
+
+    .form-control {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        padding-left: 9px;
+        padding-right: 9px;
+        margin: 3px;
+    }
+
+    .control-label {
+        display: block;
+        white-space: nowrap;
+        padding: 7px 7px 7px 12px;
+        text-align: left;
+    }
+
+    .selectedCourseStencil {
+        background: #00508f;
+        color: #fff;
+    }
+
+    .selectedCourseStencil:hover {
+        background: #00508f;
+        color: #fff;
+    }
+
+    .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+        background-color: #00508f;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .alignText {
+        padding: 7px 15px 7px 15px;
+    }
+}

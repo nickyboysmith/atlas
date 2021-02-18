@@ -1,0 +1,189 @@
+﻿<div ng-controller="addClientPaymentCtrl">
+
+    <form name="clientPaymentForm" novalidate style="width: 800px">
+        <div id="addClientPayment">
+            <div style="border: 1px solid #bbbbbb;padding:10px;" class="row">
+                <div class="col-md-12 Title">
+                    <h2 class="col-md-4">CLIENT: </h2><h3 class="col-md-8">{{client.DisplayName}}</h3>
+                </div>
+            </div>
+
+            <div style="border: 1px solid #bbbbbb;margin-top:10px;padding:10px;" class="row">
+                <div class="col-md-12 row">
+                    <label class="col-md-12 control-label">Add Payment</label>
+                </div>
+
+                <div class="row col-md-12">
+                    <label class="col-md-4 control-label">Type:</label>
+                    <div class="col-md-8">
+                        <select name="paymentTypename"
+                                ng-model="clientPayment.selectedPaymentType"
+                                ng-options="paymentType.Id as paymentType.Name for paymentType in paymentTypes">
+                                <!--ng-required="clientPayment.selectedPaymentType != null"-->
+                            <option value="" ng-hide="clientPayment.selectedPaymentType != null">--Pick One--</option>
+                        </select>
+                    </div>
+        <!--<span style="color:red" ng-show="hasError(clientPaymentForm.selectedPaymentType, clientPaymentForm.selectedPaymentType.$error.required)">Select a Payment Type</span>-->
+                </div>
+
+
+                <div class="row col-md-12">
+                    <label class="col-md-4 control-label">Expiry Date:</label>
+                    <div class="col-md-6">
+                        <input class="form-control cm-sm-12"
+                               type="text"
+                               ng-model="clientPayment.transactionDate"
+                               placeholder="DD MMM YYYY"
+                               ng-click="toggleCalendar()" />
+                    </div>
+                    <div class="col-md-2 element-overflow-0">
+                        <a ng-click="toggleCalendar()"
+                           ng-show="!displayCalendar"
+                           class="calendar-button col-md-6"
+                           title="Show Calendar"><div></div></a>
+                        <a ng-click="toggleCalendar()"
+                           ng-show="displayCalendar"
+                           class="calendar-button col-md-6"
+                           title="Hide Calendar"><div></div></a>
+                    </div>
+                </div>
+                <div class="row col-md-12">
+                    <div class="col-md-12">
+                        <div style="position:absolute; left: 400px; top: 200px;" ng-show="displayCalendar">
+            <!--<div ng-show="displayCalendar">-->
+                            <date-picker ng-model="clientPayment.transactionDate"
+                                         ng-mouseleave="toggleCalendar()"></date-picker>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row col-md-12">
+                    <label class="col-md-4 control-label">Method:</label>
+                    <div class="row col-md-8">
+                        <select name="paymentMethod"
+                                ng-model="clientPayment.selectedPaymentMethod"
+                    ng-options="paymentMethod.Id as paymentMethod.Name for paymentMethod in paymentMethods">
+                            <option value="" ng-hide="clientPayment.selectedPaymentMethod != null">--Pick One--</option>
+                        </select>
+                    </div>
+        <span style="color:red" ng-show="hasError(clientPaymentForm.selectedPaymentMethod, clientPaymentForm.selectedPaymentMethod.$error.required)">Select a Payment Method</span>*@
+                </div>
+
+                <div class="row col-md-12">
+                    <label class="col-md-4 control-label">Amount:</label>
+                    <div class="row col-md-8">
+                        <input type="text"
+                               name="amount"
+                               placeholder="£0.00"
+                               data-ng-model="clientPayment.amount"
+                               required
+                               data-blur-currency />
+                    </div>
+                    <span style="color:red" ng-show="hasError(clientPaymentForm.amount, clientPaymentForm.amount.$error.required)">Enter an amount!</span>
+                </div>
+                <!--data-ng-required="clientpayment.amount > 0"*-->
+                <div class="row col-md-12">
+                    <label class="col-md-4 control-label">Auth Code:</label>
+                    <div class="row col-md-8">
+                        <input type="text"
+                               name="authcode"
+                               placeholder="Authentication Code"
+                               ng-model="clientPayment.authCode"
+                               ng-maxlength="100" />
+
+                    </div>
+                </div>
+
+                <div class="row col-md-12">
+                    <label class="col-md-4 control-label">Receipt No: </label>
+                    <div class="row col-md-8">
+                        <input type="text"
+                               name="receiptNo"
+                               placeholder="Receipt Reference"
+                               ng-model="clientPayment.receiptNumber"
+                               ng-maxlength="100" />
+                    </div>
+                </div>
+
+                <div class="row col-md-12">
+                    <!---<button ng-click="addPayment()" ng-disabled="clientPaymentForm.$invalid" class="btn">Save</button>-->
+                    <button ng-click="addPayment()" class="btn">Save</button>
+                </div>
+
+                <div class="row col-md-12">
+                    <label class="col-md-4 control-label">Additional:</label>
+                    <div class="row col-md-8">
+                        <select name="additionalPaymentMethod"
+                                ng-model="clientPayment.selectedAdditionalPaymentMethod"
+                                ng-options="additionalPaymentMethod.Id as additionalPaymentMethod.Name for additionalPaymentMethod in additionalPaymentMethods">
+                            <option value="" ng-hide="clientPayment.selectedAdditionalPaymentMethod != null">--Pick One--</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row col-md-12">
+                    <label class="col-md-4 control-label">Add Amount:</label>
+                    <div class="row col-md-8">
+                        <input type="text"
+                               name="additionalAmount"
+                               placeholder="£0.00"
+                               data-ng-model="clientPayment.additionalAmount"
+                               data-blur-currency />
+
+                    </div>
+                </div>
+
+                <div class="row col-md-12">
+
+                    <label class="col-md-4 control-label">Total:</label>
+                    <div class="row col-md-8">
+                        {{sumTotals() | currency:"£" }}
+                    </div>
+                </div>
+
+                <div class="row col-md-12">
+                    <label class="col-md-4 control-label">Notes:</label>
+                    <div class="row col-md-8">
+                        <textarea ng-model="clientPayment.note"
+                                  name="notes"
+                                  placeholder="Notes"
+                                  class="noteTextArea"
+                                  cols="40"
+                                  rows="10"
+                                  ng-maxlength="1000"></textarea>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <button ng-click="cancelPayment()" class="btn" onclick="$('button.close').last().trigger('click')">Cancel</button>
+                    </div>
+                    <div class="col-md-4">
+                            <!--<button ng-click="addPayment()" ng-disabled="clientPaymentForm.$invalid" class="btn">Save</button>*-->
+                        <button ng-click="addPayment()" class="btn">Save</button>
+                    </div>
+                    <div class="col-md-4">
+
+                        <div>Valid :{{clientPaymentForm.$valid}}</div>
+
+                        <label><span class="validation-message">{{ validationMessage }}</span></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-ng-if="showSuccessFader == true">
+            <my-msgfader status="success"></my-msgfader>
+        </div>
+        <div data-ng-if="showErrorFader == true">
+            <my-msgfader status="error"></my-msgfader>
+        </div>
+
+
+    </form>
+</div>
+
+
+
+

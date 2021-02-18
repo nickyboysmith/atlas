@@ -1,0 +1,14 @@
+﻿
+<div id="test">
+
+    <div class="row">
+
+        <div class="col-md-3">Change template</div>
+        <div class="col-md-9">
+            <select ng-model="colour" ng-change="changeTheTemplate()">
+                <option ng-repeat="template in templates" value="{{ template.value }}">{{ template.label }}</option>
+            </select>
+        </div>
+    </div>
+
+</div>

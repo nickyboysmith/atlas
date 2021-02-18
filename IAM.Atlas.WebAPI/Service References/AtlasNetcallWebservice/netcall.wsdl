@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="urn:netcall" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="urn:netcall" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:netcall">
+      <s:complexType name="AccountDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Result" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResultDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AmountToPay" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CourseDateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CourseVenue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShopperReference" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AccountPaymentResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Result" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResultDescription" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAccountDetailsSoapIn">
+    <wsdl:part name="RequestID" type="s:string" />
+    <wsdl:part name="RequestTime" type="s:string" />
+    <wsdl:part name="CallingNumber" type="s:string" />
+    <wsdl:part name="AppContext" type="s:string" />
+    <wsdl:part name="ClientID" type="s:string" />
+    <wsdl:part name="DOB" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountDetailsSoapOut">
+    <wsdl:part name="GetAccountDetailsResult" type="tns:AccountDetail" />
+  </wsdl:message>
+  <wsdl:message name="PostAccountPaymentResultSoapIn">
+    <wsdl:part name="RequestID" type="s:string" />
+    <wsdl:part name="RequestTime" type="s:string" />
+    <wsdl:part name="CallingNumber" type="s:string" />
+    <wsdl:part name="AppContext" type="s:string" />
+    <wsdl:part name="ClientID" type="s:string" />
+    <wsdl:part name="PaymentResult" type="s:string" />
+    <wsdl:part name="AuthorisationReference" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PostAccountPaymentResultSoapOut">
+    <wsdl:part name="PostAccountPaymentResultResult" type="tns:AccountPaymentResult" />
+  </wsdl:message>
+  <wsdl:message name="PostAccountPaymentResultOldSoapIn">
+    <wsdl:part name="RequestID" type="s:string" />
+    <wsdl:part name="RequestTime" type="s:string" />
+    <wsdl:part name="CallingNumber" type="s:string" />
+    <wsdl:part name="AppContext" type="s:string" />
+    <wsdl:part name="ClientID" type="s:string" />
+    <wsdl:part name="PaymentResult" type="s:string" />
+    <wsdl:part name="AuthorisationReference" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PostAccountPaymentResultOldSoapOut">
+    <wsdl:part name="PostAccountPaymentResultOldResult" type="tns:AccountPaymentResult" />
+  </wsdl:message>
+  <wsdl:portType name="NetcallSoap">
+    <wsdl:operation name="GetAccountDetails">
+      <wsdl:input message="tns:GetAccountDetailsSoapIn" />
+      <wsdl:output message="tns:GetAccountDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostAccountPaymentResult">
+      <wsdl:input message="tns:PostAccountPaymentResultSoapIn" />
+      <wsdl:output message="tns:PostAccountPaymentResultSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostAccountPaymentResultOld">
+      <wsdl:input message="tns:PostAccountPaymentResultOldSoapIn" />
+      <wsdl:output message="tns:PostAccountPaymentResultOldSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetcallSoap" type="tns:NetcallSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="GetAccountDetails">
+      <soap:operation soapAction="urn:netcall/GetAccountDetails" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="urn:tppayments" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="urn:netcall" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostAccountPaymentResult">
+      <soap:operation soapAction="urn:netcall/PostAccountPaymentResult" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="urn:tppayments" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="urn:netcall" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostAccountPaymentResultOld">
+      <soap:operation soapAction="urn:netcall/PostAccountPaymentResultOld" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="urn:tppayments" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="urn:netcall" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetcallSoap12" type="tns:NetcallSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="GetAccountDetails">
+      <soap12:operation soapAction="urn:netcall/GetAccountDetails" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="literal" namespace="urn:tppayments" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" namespace="urn:netcall" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostAccountPaymentResult">
+      <soap12:operation soapAction="urn:netcall/PostAccountPaymentResult" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="literal" namespace="urn:tppayments" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" namespace="urn:netcall" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostAccountPaymentResultOld">
+      <soap12:operation soapAction="urn:netcall/PostAccountPaymentResultOld" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="literal" namespace="urn:tppayments" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" namespace="urn:netcall" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Netcall">
+    <wsdl:port name="NetcallSoap" binding="tns:NetcallSoap">
+      <soap:address location="http://devatlas.iamroadsmart.com/netcall/netcall.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NetcallSoap12" binding="tns:NetcallSoap12">
+      <soap12:address location="http://devatlas.iamroadsmart.com/netcall/netcall.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

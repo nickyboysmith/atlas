@@ -1,0 +1,46 @@
+﻿<div id="addDorsConnection">
+   
+    <div class="row form-line-separator">
+        <div class="col-md-5">
+            <label>Organisation:</label>
+        </div><!-- end .col-md-5 -->
+        <div class="col-md-7">
+            <select
+                    ng-model="connection.OrganisationId"
+                    ng-options="organisation as organisation.Name for organisation in organisationList"
+                    class="form-control">
+                <option value="">Please select an Organisation</option>
+            </select>
+        </div><!-- end .col-md-7 -->
+    </div><!-- end .row -->
+    <div class="row form-line-separator">
+        <div class="col-md-5">
+            <label>Connection Name:</label>
+        </div><!-- end .col-md-5 -->
+        <div class="col-md-7">
+            <input 
+                   ng-model="connection.Username"
+                   type="text" 
+                   class="form-control" />
+        </div><!-- end .col-md-5 -->
+    </div><!-- end .row -->
+    <div class="row form-line-separator-20">
+        <div class="col-md-5">
+            <label>Connection Password:</label>
+        </div><!-- end .col-md-5 -->
+        <div class="col-md-7">
+            <input 
+                   ng-model="connection.Password"
+                   type="password"
+                   class="form-control" />
+        </div><!-- end .col-md-7 -->
+    </div><!-- end .row -->
+
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-3">
+            <div class="btn" ng-click="saveConnection()">save details</div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

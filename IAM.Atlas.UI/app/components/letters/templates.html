@@ -1,0 +1,108 @@
+﻿<div id="letterTemplateMaintenance">
+    <form class="form-horizontal" role="form" style="color: black; ">
+        <!-- First Row -->
+        <div class="row">
+            <div class="col-sm-6">
+                <!-- First Column -->
+                <div class='row margintop10 marginBottom20' ng-show="isAdmin">
+                    <div class="col-sm-3">
+                        <label>Organisation:</label>
+                    </div>
+                    <div class='col-sm-9 form-line-separator'>
+                        <select ng-init="getSelectedOrganisationId()"
+                                ng-change="getLetterTemplateCategoriesByOrganisation(selectedOrganisationId)"
+                                ng-model="selectedOrganisationId" class='col-sm-12 form-control'>
+                            <option value="0">Organisation</option>
+                            <option ng-repeat="organisation in organisations" value="{{organisation.id}}">{{organisation.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6"></div>
+        </div>
+
+        <!-- Second Row -->
+        <div class="row">
+            <div class='col-sm-12'><label>Template Category</label></div>
+            <!-- First Column -->
+            <div class="col-sm-6">
+                <div class='row form-group'>
+                    <div class='col-sm-12'>
+                        <div class="letterTemplateCategorySelectionHolder">
+                            <table class="table table-hover table-bordered table-striped">
+                                <tbody>
+                                    <tr ng-repeat="letterTemplateCategory in letterTemplateCategories | orderBy: 'LetterCategoryTitle'"
+                                        ng-click="getSelectedLetterTemplateDetails(letterTemplateCategory.LetterCategoryId, letterTemplateCategory.LetterCategoryCode)">
+                                        <td>{{letterTemplateCategory.LetterCategoryTitle}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class='row form-line-holder'>
+                    <div class='col-sm-12 success-message' ng-hide="statusMessage.length == 0">{{statusMessage}}</div>
+                </div>
+                <div class='row form-line-holder'>
+                    <div class='col-sm-12 validation-message' ng-hide="errorMessage.length == 0">{{errorMessage}}</div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-6 form-group" ng-show="selectedOrganisationId > 0">
+                <div class='row form-group'>
+                    <div class='col-sm-12'>{{selectedLetterTemplate.LetterCategoryTitle}}</div>
+                </div>
+                <div class='row form-group'>
+                    <div class='col-sm-12' ng-show="selectedLetterTemplate.LetterCategoryTitle != selectedLetterTemplate.LetterCategoryDescription">{{selectedLetterTemplate.LetterCategoryDescription}}</div>
+                </div>
+                <div class='row form-group'>
+                    <label class='col-sm-3'>Title:</label>
+                    <div class='col-sm-9'><input class="form-control ng-pristine ng-valid ng-touched" type="text" ng-disabled="(selectedLetterTemplate.Id > 0)" ng-model="selectedLetterTemplate.LetterTemplateTitle"></div>
+                </div>
+                <div class='row form-group'>
+                    <label class='col-sm-3'>Template:</label>
+                    <div class='col-sm-9'><input class="form-control ng-pristine ng-valid ng-touched" type="text" ng-disabled="(selectedLetterTemplate.Id > 0)" ng-model="selectedLetterTemplate.LetterTemplateDocumentName" readonly></div>
+                </div>
+                <div class='row form-group'>
+                    <label class='col-sm-4'>Version:</label>
+                    <div class='col-sm-8'>{{selectedLetterTemplate.LetterTemplateVersion}}</div>
+                </div>
+                <div class='row form-group marginBottom20'>
+                    <label class='col-sm-4'>Date Changed:</label>
+                    <div class='col-sm-8'>{{selectedLetterTemplate.LetterTemplateDateChanged | date: 'dd/MM/yyyy HH:mm'}}</div>
+                </div>
+
+
+                <div class='row form-group marginBottom10'>
+                    <div class='row col-sm-12'></div>
+                    <div class='col-sm-3'></div>
+                    <div class="col-sm-9">
+                        <button ng-click="upload()" ng-show="selectedLetterTemplate.LetterCategoryId > 0" class="btn btn-block" title="Upload New Template Document">Upload New Template Document</button>
+                    </div>
+                </div>
+                <div class='row form-group marginBottom10'>
+                    <div class='col-sm-3'></div>
+                    <div class="col-sm-9">
+                        <button ng-click="download(selectedLetterTemplate.LetterTemplateDocumentId)" ng-show="selectedLetterTemplate.LetterCategoryId > 0" class="btn btn-block" title="Download Current Template Document">Download Current Template Document</button>
+                    </div>
+                </div>
+                <div class='row form-group'>
+                    <div class='col-sm-3'></div>
+                    <div class="col-sm-3">
+                        <button ng-click="save(selectedLetterTemplate.LetterTemplateId, selectedLetterTemplate.LetterTemplateTitle)" ng-show="selectedLetterTemplate.LetterCategoryId > 0" class="btn btn-block" title="Save Changes">Save</button>
+                    </div>
+                </div>
+
+                <div class='row form-group' ng-show="showSaveSuccess">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9">Save successful.</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="validation-message">{{validationMessage}}</div>
+        </div>
+    </form>
+</div>

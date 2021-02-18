@@ -1,0 +1,44 @@
+﻿
+
+.organisationSystemConfiguration {
+    
+        form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+        .control-label {
+            display: block;
+            white-space: nowrap;
+            padding: 0;
+            text-align: left;
+        }
+
+         .selectedOrganisation {
+            background: #cce9ff !important;
+        }
+
+         .selectedOrganisation:hover {
+            background: #ffffe6;
+            color: #fff;
+        }
+
+         .row {
+            display: inline-block;
+        }
+
+        .ImplementedSystemFlags{
+            background-color: transparent;
+        }
+        .UnimplementedSystemFlags{
+            background-color: #e8e6e6;
+            background-color: ghostwhite;
+        }
+
+    }
+
+    .paddingLeft30 {
+        padding-left: 30px;
+
+    }
+}

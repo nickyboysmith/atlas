@@ -1,0 +1,161 @@
+﻿<div id="addTrainer" class="addTrainer">
+
+    <div class="row">
+        <div class="col-md-12 validation-message" ng-if="successMessage != ''">
+            <h3>{{ successMessage }}</h3>
+        </div>
+    </div>
+
+    <div class="row" ng-show="$parent.isAdmin">
+        <div class="col-md-2" >
+            <input type="checkbox" ng-model="trainer.AddUser" />
+        </div>
+        <div class="col-md-10">
+            <label>Connect Trainer to Existing User</label>
+        </div>
+    </div>
+
+    <!-- Field holder row -->
+    <div class="row form-line-holder" ng-show="trainer.AddUser">
+        <div class="col-md-4">
+            <label>User</label>
+        </div>
+        <div class="col-md-8">
+            <label>{{ searchText }}</label>
+
+            <input id="userText"
+                   type="text"
+                   ng-model="selected"
+                   placeholder="Bind To A User"
+                   typeahead-min-length="3"
+                   typeahead-on-select="selectedItem($item)"
+                   typeahead-no-results="noResults"
+                   typeahead-loading="loadingLocations"
+                   uib-typeahead="item as item.LoginId for item in getSearchableItems($viewValue) | limitTo:15" />
+            <div ng-show="loadingLocations" class="set-white">
+                <i class="glyphicon glyphicon-refresh"></i> Loading results
+            </div>
+            <div ng-show="noResults" class="set-red">
+                <i class="glyphicon glyphicon-remove"></i> No Results Found
+            </div>
+        </div>
+    </div>
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Title</label>
+        </div>
+        <div class="col-md-4">
+
+            <select ng-model="selectedTitle"
+                    ng-change="displayName(selectedTitle)"
+                    class='form-control'
+                    ng-options="title.StringId as title.Title for title in trainerTitles"></select>
+
+
+            <!--<select id="trainerTitle"
+                    class="form-control" 
+                    ng-change="displayName()"
+                    ng-model="trainer.Title">
+                        <option value="Dr">Dr</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Ms">Ms</option>
+                        <option value="Rev">Rev</option>
+                        <option value="Other">Other</option>
+            </select>-->
+        </div>
+        <div class="col-md-4" ng-show="selectedTitle == 'Other'">
+            <input type="text"
+                   class="form-control"
+                   ng-model="trainer.otherTitle"
+                   ng-keyup="displayName(selectedTitle)"
+                   ng-minlength="1" 
+                   placeholder="Other"/>
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>First Name</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" 
+                   class="form-control" 
+                   ng-model="trainer.FirstName"
+                   ng-keyup="displayName(selectedTitle)"
+                   ng-required="true"
+                   ng-minlength="1"
+                   placeholder="First Name"
+                   />
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Other Names</label>
+        </div>
+        <div class="col-md-8">
+            <input 
+                   type="text" 
+                   class="form-control" 
+                   ng-model="trainer.OtherNames" 
+                   ng-required="true"
+                   ng-minlength="1"
+                   placeholder="Other Names"
+                   />
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Surname</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" 
+                   class="form-control" 
+                   ng-model="trainer.Surname"
+                   ng-keyup="displayName(selectedTitle)"
+                   ng-required="true"
+                   placeholder="Surname"
+                   />
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Display Name</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" 
+                   class="form-control" 
+                   ng-model="trainer.DisplayName"
+                   ng-required="true"
+                   ng-minlength="1"
+                   placeholder="Display Name"
+                   />
+        </div>
+    </div><!-- end .row -->
+
+    <!-- Start the buttons -->
+    <div class="row action-button-container">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+            <div class="row">                
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
+                    <div class="userButton save btn" ng-click="save()">Save</div>
+                </div>
+            </div><!-- end .row-->
+        </div><!-- end .col-md-8 -->
+    </div><!-- end .row .action-button-container -->
+
+    <div data-ng-if="showSuccessFader == true">
+        <my-msgfader status="success" message="Action Successful"></my-msgfader>
+    </div>
+    <div data-ng-if="showErrorFader == true">
+        <my-msgfader status="error"></my-msgfader>
+    </div>
+
+
+</div>

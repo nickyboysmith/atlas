@@ -1,0 +1,135 @@
+﻿<div id="referingAuthority">
+
+    <!-- Organisation -->
+    <div class="row" ng-show="isAdmin">
+        <div class="col-sm-4">
+            <label>Ref. Auth. Organisation</label>
+        </div>
+        <div class="col-sm-8">
+            <select ng-model="selectedOrganisation.AssociatedOrganisationId" 
+                    class='form-control marginBottom5'
+                    ng-change="getReferringAuthority(selectedOrganisation)"
+                    ng-options="organisation.AssociatedOrganisationId as organisation.Name for organisation in organisations">
+            </select>
+        </div>
+        
+    </div>
+
+    <!-- Name -->
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Name</label>
+        </div>
+        <div class="col-md-8">
+            <input ng-model="authority.Name"
+                   type="text"
+                   class="form-control" />
+        </div>        
+    </div><!-- End .row -->
+
+    <!-- Description -->
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Description</label>
+        </div>
+        <div class="col-md-8">
+            <textarea id="passwordReveal"
+                   ng-model="authority.Description"
+                   rows="4"
+                   class="form-control"></textarea>
+        </div>
+    </div><!-- End .row -->
+
+    <!-- Disabled -->
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            
+        </div>
+        <div class="col-md-1">
+            <input ng-model="authority.Disabled"
+                   type="checkbox"
+                   class="checkbox-add-margin" />
+            
+        </div>
+        <div class="col-md-6 blueitalic">Disabled
+        </div>
+        <div class="col-md-1">
+            &nbsp;
+        </div>
+
+    </div><!-- End .row -->
+
+    <!-- Contract Label -->
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            
+        </div>
+        <div class="col-md-8">
+            <label>Contract</label>
+        </div>
+    </div><!-- End .row -->
+
+
+    <!-- Reference -->
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Reference</label>
+        </div>
+        <div class="col-md-8">
+            <input ng-model="authority.Reference"
+                   type="text"
+                   class="form-control" />
+        </div>
+    </div><!-- End .row -->
+
+
+    <div class='row form-line-holder'>
+        <label class='col-sm-4'>Start Date</label>
+        <div class='col-sm-6'>
+            <input class="form-control cm-sm-12" type="text" format-date-iam ng-model="authority.StartDate" ng-click="toggleCalendar()" />
+            <div style="position:absolute; z-index:100000;" ng-show="displayCalendar">
+                <date-picker ng-model="authority.StartDate" format-date="formatDate" ng-mouseleave="toggleCalendar()"></date-picker>
+            </div>
+        </div>
+        <div class='col-sm-2 element-overflow-0'>
+            <a ng-click="toggleCalendar()" ng-show="!displayCalendar" class="calendar-button col-sm-6" title="Show Calendar"><div></div></a>
+            <a ng-click="toggleCalendar()" ng-show="displayCalendar" class="calendar-button col-sm-6" title="Hide Calendar"><div></div></a>
+        </div>
+    </div>
+
+    <div class='row form-line-holder'>
+        <label class='col-sm-4'>End Date</label>
+        <div class='col-sm-6'>
+            <input class="form-control cm-sm-12" type="text" format-date-iam ng-model="authority.EndDate" ng-click="toggleCalendar2()" />
+            <div style="position:absolute; z-index:100000;" ng-show="displayCalendar2">
+                <date-picker ng-model="authority.EndDate" format-date="formatDate" ng-mouseleave="toggleCalendar2()"></date-picker>
+            </div>
+        </div>
+        <div class='col-sm-2 element-overflow-0'>
+            <a ng-click="toggleCalendar2()" ng-show="!displayCalendar2" class="calendar-button col-sm-6" title="Show Calendar"><div></div></a>
+            <a ng-click="toggleCalendar2()" ng-show="displayCalendar2" class="calendar-button col-sm-6" title="Hide Calendar"><div></div></a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+
+    <!-- Save Button -->
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2">
+            <div class="btn full-width-button button-add-margin" ng-click="saveAuthority()" >Save</div>
+        </div>
+    </div>
+
+    <div class="row col-sm-12 noRightPadding" ng-if="!successMessage === false">
+        <div class="col-sm-12 success-message leftalign">{{ successMessage }}</div>
+    </div>
+
+    <div class="row col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+        <div class="col-sm-12 validation-message leftalign">{{ validationMessage }}</div>
+    </div>
+
+</div>
+

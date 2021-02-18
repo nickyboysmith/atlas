@@ -1,0 +1,84 @@
+﻿<div id="assignTrainerCourseTypeCategories">
+
+    <system-feature-information title="Assign Course Types"
+                                controller="AssignTrainerCourseTypeCategoriesCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/courseTypeCategories/assignTrainer"
+                                page-name="Assign Course Types"></system-feature-information>            
+
+    <!-- Extendable div on select -->
+
+    <div class="row">
+
+        <div id="assignTrainerFirstModalColumn" class="col-sm-12">
+
+            <div class='row form-line-separator-20' ng-show="showOrganisationDropdown">
+                <div class='col-md-12'>
+                    <label>Organisation</label>
+                </div>
+                <div class='col-md-12'>
+                    <select id="organisationDD"
+                            class='form-control'
+                            ng-options="organisation as organisation.name for organisation in organisationList"
+                            ng-change="getTrainerForTheOrganisation(selectedOrganisation)"
+                            ng-model="selectedOrganisation">
+                        <option value="">Please Select an organisation</option>
+                    </select><!-- end select -->
+                </div><!-- end .col-sm-12 -->
+            </div><!-- end div  -->
+
+            <div class='row form-line-separator' ng-show="showTrainerList">
+                <!--Organisation list here -->
+                <div class='col-sm-12'>
+                    <div class="trainer-title">Trainer List:</div>
+                </div>
+                <div class='col-sm-12'>
+                    <table st-safe-src="trainerCollection" st-table="trainerList" class="table table-hover table-bordered">
+                        <tbody>
+                            <tr ng-repeat="trainer in trainerList">
+                                <td ng-click="selectTheTrainer(trainer)">
+                                    {{ trainer.DisplayName }}
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" class="text-center">
+                                    <div st-pagination="" st-items-by-page="5" st-displayed-pages="7"></div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table><!-- Close Table-->
+                </div><!-- end .col-sm-12 -->
+            </div><!-- end div -->
+
+
+        </div><!-- end #assignTrainerFirstModalColumn .col-sm-12 -->
+        <div id="additionalAssignTrainerContainer" style="display:none;">
+            <div class="col-sm-7 has-dropdown-{{ showOrganisationDropdown }}">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>Trainer: {{ selectedTrainer.DisplayName }}</p>
+                    </div><!-- end .col-sm-12 -->
+                </div><!-- end .row -->
+                <div class="row">
+                    <div class="col-sm-10">
+
+                        <ul class="booking-note-holder">
+                            <li ng-repeat="courseType in trainerSelectedCourseTypes">
+                                {{ courseType.Name }}
+                            </li>
+                        </ul>
+
+                    </div><!-- end .col-sm-10 -->
+                    <div class="col-sm-2">
+                        <div class="button-hold btn" ng-click="openAssignCourseTypesModal()">update</div>
+                    </div><!-- end .col-sm-2 -->
+                </div><!-- end .row -->
+            </div><!-- end .col-sm-7 -->
+        </div><!-- end #additionalAssignTrainerContainer -->
+
+    </div>
+
+
+</div>

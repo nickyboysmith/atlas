@@ -1,0 +1,69 @@
+﻿@import "../modules/_mixins.scss";
+
+.fade-message {
+    border-radius: 11px;
+    border-style: solid;
+    border-width: 2px;
+    padding: 5px 0;
+    height: auto;
+    overflow: hidden;
+}
+
+.fade-success {
+    border-color: green;
+    background-color: #98bf21;
+}
+
+.fade-error {
+    border-color: red;
+    background-color: #f56b58;
+    color: white;
+}
+.fade-image {
+    height: 21px;
+    float: left;
+    width: 30px;
+    margin: 5px 15px 5px 5px;
+    display: block;
+
+}
+.fade-image-success {
+    @include theFadeImage("success");
+}
+.fade-image-error {
+    @include theFadeImage("error");
+}
+.fade-image-warning {
+    @include theFadeImage("warning");
+}
+.fade-image-info {
+    @include theFadeImage("info");
+}
+
+.fade-message-container {
+    float:left;
+    padding-top: 6px;
+}
+
+.fadein.ng-hide-remove,
+.fadeout.ng-hide-add {
+    -moz-transition: all linear 1s;
+    -o-transition: all linear 1s;
+    -webkit-transition: all linear 1s;
+    transition: all linear 1s;
+}
+
+.fadein.ng-hide-remove,
+.fadeout.ng-hide-add.ng-hide-add-active {
+    opacity: 0;
+}
+
+.fadeout.ng-hide-add,
+.fadein.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+}
+
+.ng-hide-add, .ng-hide-remove {
+    /* ensure visibility during the transition */
+    display: block !important; 
+}

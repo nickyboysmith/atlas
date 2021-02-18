@@ -1,0 +1,70 @@
+﻿<div id="reminderSMS" class="reminderSMS">
+
+    <div class="Title row">
+        <h2></h2>
+    </div>
+    <form class="form-horizontal row" role="form">
+
+        <!--Organisation-->
+        <div ng-show="isAdmin">
+            <div class='col-sm-12 form-group'>
+                <div class='col-sm-3'>
+                    <label>Organisation</label>
+                </div>
+                <div class='col-sm-6'>
+                    <select ng-model="organisationId"
+                            ng-change="getReminderSMS(organisationId)"
+                            class='form-control'
+                            ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-3'></div>
+            <div class='col-sm-9'>
+                <a id="clientNameLink" href ng-click="insertText(insertClientName)">{{clientNameLink}}</a><br />
+                <a id="courseTypeLink" href ng-click="insertText(insertCourseType)">{{courseTypeLink}}</a><br />
+                <a id="courseDateLink" href ng-click="insertText(insertCourseDate)">{{courseDateLink}}</a><br />
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-3'>
+                <label>SMS Content</label>
+            </div>
+            <div class='col-sm-9'>
+                <textarea my-text="" ng-model="reminderSMS.Content"
+                          class="form-control"
+                          maxlength="600"
+                          placeholder="SMS Content"></textarea>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-3'></div>
+            <div class='col-sm-9'>
+                <button class="btn btn-default btn-sm"
+                        ng-click="save()"
+                        title="Save">
+                    Save
+                </button>
+            </div>
+        </div>
+
+        <div class='col-sm-12 row'>
+            <!--Message banner-->
+            <div class="row">
+                <div class="col-sm-12" ng-if="successMessage != ''">
+                    <h3>{{ successMessage }}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12" ng-if="validationMessage != ''">
+                    <h3>{{ validationMessage }}</h3>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

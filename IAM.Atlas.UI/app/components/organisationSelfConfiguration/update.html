@@ -1,0 +1,558 @@
+﻿<div id="selfConfiguration" class="organisationSelfConfiguration container">
+
+
+    <system-feature-information title="organisation self configuration"
+                                controller="OrganisationSelfConfigurationCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/organisationSelfConfiguration/update"
+                                page-name="Organisation Self Configuration"></system-feature-information>    
+
+    <form class="form-horizontal row" role="form">
+
+        <!--Organisation-->
+        <div ng-show="isAdmin" class="form-group">
+            <div class="row col-md-12 col-sm-12 noRightPadding">
+                <div class="col-md-7 col-sm-12">
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                        <label>Organisation:</label>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <!--ng-change="$parent.getUsers(organisationId)"-->
+                        <select ng-model="organisationId"
+                                ng-change="getSelfConfigurationByOrganisation(organisationId)"
+                                class='form-control'
+                                ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-0"></div>
+            </div>
+        </div>
+
+        <div class='form-group'>
+            <div id="column1" class="col-md-6 col-sm-12 noRightPadding">
+                <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                        <label>Client Application Description</label>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <textarea ng-model="selfConfiguration.ClientApplicationDescription"
+                                  class="form-control"
+                                  maxlength="200"
+                                  placeholder="Client Application Description"></textarea>
+                    </div>
+                </div>
+                <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                        <label>Client Welcome Message</label>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <textarea ng-model="selfConfiguration.ClientWelcomeMessage"
+                                  class="form-control"
+                                  maxlength="200"
+                                  placeholder="Client Welcome Message"></textarea>
+                    </div>
+                </div>
+                <!-- SMS Course Reminders -->
+                <div class="row col-md-12 col-sm-12 noRightPadding" ng-if="isSMSEnabled"><!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                            <div class="col-md-10 col-sm-10 noRightPadding noLeftPadding">
+                                <input type="checkbox" ng-model="selfConfiguration.AllowSMSCourseRemindersToBeSent" />
+                                <span class="blueitalic">Allow the Sending of SMS Course Reminders</span>
+                            </div>
+                            <div class="col-md-2 col-sm-2 noRightPadding noLeftPadding">
+                                <button class="btn btn-default pull-left"
+                                        ng-click="editSMSTemplate()"
+                                        ng-show="selfConfiguration.AllowSMSCourseRemindersToBeSent"
+                                        title="Edit SMS Course Reminder Template">
+                                    Template
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Email Course Reminders -->
+                <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                            <div class="col-md-10 col-sm-10 noRightPadding noLeftPadding">
+                                <input type="checkbox" ng-model="selfConfiguration.AllowEmailCourseRemindersToBeSent" />
+                                <span class="blueitalic">Allow the Sending of Email Course Reminders</span>
+                            </div>
+                            <div class="col-md-2 col-sm-2 noRightPadding noLeftPadding">
+                                <button class="btn btn-default pull-left"
+                                        ng-click="editEmailTemplate()"
+                                        ng-show="selfConfiguration.AllowEmailCourseRemindersToBeSent"
+                                        title="Edit Email Course Reminder Template">
+                                    Template
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course Attendance -->
+                <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                            <input type="checkbox" ng-model="selfConfiguration.AutomaticallyVerifyCourseAttendance" />
+                            <span class="blueitalic">Auto Verify Course Attendance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auto Email Clients about course transfer -->
+                <div class="row col-md-12 col-sm-12 noRightPadding marginBottom10">
+                    <!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row col-md-12 col-sm-12 noRightPadding">
+                            <!--<div class="row">-->
+                            <input type="checkbox" ng-model="selfConfiguration.AllowAutoCourseTransferEmailsToClient" />
+                            <span class="blueitalic">Auto Email Clients When Transferring Courses</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Days Before SMS Course Reminder-->
+                <div class="row col-md-12 col-sm-12 noRightPadding" ng-if="isSMSEnabled"><!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                        <label>Days Before SMS Course Reminder</label>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                            <div class="col-md-2 col-sm-2 noLeftPadding">
+                                <input type="text" class="form-control" ng-model="selfConfiguration.DaysBeforeSMSCourseReminder" />
+                            </div>
+                            <div class="col-md-2 col-sm-2 noRightPadding noLeftPadding">
+                                <span>Days</span>
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Days Before Email Course Reminder-->
+                <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                        <label>Days Before Email Course Reminder</label>
+                    </div>
+                    <div class="col-md-8 col-sm-8">                        
+                        <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                            <div class="col-md-2 col-sm-2 noLeftPadding">
+                                <input type="text" class="form-control" ng-model="selfConfiguration.DaysBeforeEmailCourseReminder" />
+                            </div>
+                            <div class="col-md-2 col-sm-2 noRightPadding noLeftPadding">
+                                <span>Days</span>
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manual car restrictions -->
+                <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                            <input type="checkbox" ng-model="selfConfiguration.ShowManulCarCourseRestriction" />
+                            <span class="blueitalic">Show Manual Car Restrictions on Courses</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Photocard Licence Details on Client Details -->
+                <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                            <input type="checkbox" ng-model="selfConfiguration.ShowLicencePhotocardDetails" />
+                            <span class="blueitalic">Show Photocard Licence Details on Client Details</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Drivers Licence ExpiryDate on Client Details -->
+                <div class="row col-md-12 col-sm-12 noRightPadding">
+                    <!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row col-md-12 col-sm-12 noRightPadding">
+                            <!--<div class="row">-->
+                            <input type="checkbox" ng-model="selfConfiguration.ShowDriversLicenceExpiryDate" />
+                            <span class="blueitalic">Show Drivers Licence Expiry Date on Client Details</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Show Client Display Name on Client Details -->
+                <div class="row col-md-12 col-sm-12 noRightPadding">
+                    <!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row col-md-12 col-sm-12 noRightPadding">
+                            <!--<div class="row">-->
+                            <input type="checkbox" ng-model="selfConfiguration.ShowClientDisplayName" />
+                            <span class="blueitalic">Show Client Display Name on Client Details</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Show Trainer Costs on Course Details -->
+                <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                            <input type="checkbox" ng-model="selfConfiguration.ShowTrainerCosts" />
+                            <span class="blueitalic">Show Trainer Costs on Course Details</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Auto Email Venues on Course Creation -->
+                <div class="row col-md-12 col-sm-12 noRightPadding marginBottom10"><!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                            <input type="checkbox" ng-model="selfConfiguration.AllowAutoEmailCourseVenuesOnCreationToBeSent" />
+                            <span class="blueitalic">Auto Email Venues on Course Creation</span>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <!-- Hold Online Course Bookings Minutes -->
+                <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                        <label>Hold Online Course Bookings for</label>
+                    </div>
+                    <div class="col-md-8 col-sm-8">                       
+                        <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                            <div class="col-md-2 col-sm-2 noLeftPadding">
+                                <input type="text" class="form-control" ng-model="selfConfiguration.MinutesToHoldOnlineUnpaidCourseBookings" />
+                            </div>
+                            <div class="col-md-2 col-sm-2 noRightPadding noLeftPadding">
+                                <span>Minutes</span>
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Clients Locking Minutes -->
+                <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                        <label>Clients Locking for a Maximum of</label>
+                    </div>
+                    <div class="col-md-8 col-sm-8">                     
+                        <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                            <div class="col-md-2 col-sm-2 noLeftPadding">
+                                <input type="text" class="form-control" ng-model="selfConfiguration.MaximumMinutesToLockClientsFor" />
+                            </div>
+                            <div class="col-md-2 col-sm-2 noRightPadding noLeftPadding">
+                                <span>Minutes</span>
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Online Booking - Cut off Booking-->
+                <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                        <label>Online Booking - Cut off Booking</label>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                            <div class="col-md-2 col-sm-2 noLeftPadding">
+                                <input type="text" class="form-control" ng-model="selfConfiguration.OnlineBookingCutOffDaysBeforeCourse" />
+                            </div>
+                            <div class="col-md-6 col-sm-6 noRightPadding noLeftPadding">
+                                <span>Days Before Course Starts</span>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <!-- Trainers Have Course Reference -->
+                <div class="row col-md-12 col-sm-12 noRightPadding">
+                    <!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row col-md-12 col-sm-12 noRightPadding">
+                            <!--<div class="row">-->
+                            <div class="col-md-10 col-sm-10 noRightPadding noLeftPadding">
+                                <input type="checkbox" ng-model="selfConfiguration.TrainersHaveCourseReference" />
+                                <span class="blueitalic">Trainers Have Course Reference</span>
+                            </div>
+                            <div class="col-md-2 col-sm-2 noRightPadding noLeftPadding">
+                                <button class="btn btn-default pull-left"
+                                        ng-click="editTrainerCourseReferenceSettings()"
+                                        ng-show="showTrainerSettings()"
+                                        title="Edit Trainer Course Reference Settings">
+                                    Settings
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interpreters Have Course Reference -->
+                <div class="row col-md-12 col-sm-12 noRightPadding">
+                    <!--<div class="row">-->
+                    <div class="col-md-4 col-sm-4 noRightPadding noLeftPadding">
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row col-md-12 col-sm-12 noRightPadding">
+                            <!--<div class="row">-->
+                            <div class="col-md-10 col-sm-10 noRightPadding noLeftPadding">
+                                <input type="checkbox" ng-model="selfConfiguration.InterpretersHaveCourseReference" />
+                                <span class="blueitalic">Interpreters Have Course Reference</span>
+                            </div>
+                            <div class="col-md-2 col-sm-2 noRightPadding noLeftPadding">
+                                <button class="btn btn-default pull-left"
+                                        ng-click="editInterpreterCourseReferenceSettings()"
+                                        ng-show="showInterpreterSettings()"
+                                        title="Edit Interpreter Course Reference Settings">
+                                    Settings
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+            <div id="column2" class="col-md-6 col-sm-12 noRightPadding noLeftPadding">
+                <!--New Client Message-->
+                <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                    <div class="col-md-5 col-sm-5 noRightPadding noLeftPadding">
+                        <label>New Client Message</label>
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        <textarea ng-model="selfConfiguration.NewClientMessage"
+                                  class="form-control"
+                                  maxlength="400"
+                                  placeholder="New Client Message"></textarea>
+                    </div>
+                </div>
+
+                <!--Returning Client Message-->
+                <div class="row col-md-12 col-sm-12 noRightPadding marginbottom10"><!--<div class="row">-->
+                    <div class="col-md-5 col-sm-5 noRightPadding noLeftPadding">
+                        <label>Returning Client Message</label>
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        <textarea ng-model="selfConfiguration.ReturningClientMessage"
+                                  class="form-control"
+                                  maxlength="400"
+                                  placeholder="Returning Client Message"></textarea>    
+                    </div>
+                </div>
+
+                <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                    <div class="col-md-5 col-sm-5 noRightPadding noLeftPadding">
+                    </div>
+                    <div class="col-md-7 col-sm-7 noRightPadding">
+
+                        <!-- Unique Reference for all DORS Courses -->
+                        <div class="row col-md-12 col-sm-12 noRightPadding">
+                            <!--<div class="row">-->
+                            <input type="checkbox" ng-disabled="true" ng-model="selfConfiguration.UniqueReferenceForAllDORSCourses" />
+                            <span class="blueitalic">Unique Reference for all DORS Courses</span>
+                        </div>
+
+                        <!-- Unique Reference for all NON DORS Courses -->
+                        <div class="row col-md-12 col-sm-12 noRightPadding">
+                            <!--<div class="row">-->
+                            <input type="checkbox" ng-model="selfConfiguration.UniqueReferenceForAllNonDORSCourses" />
+                            <span class="blueitalic">Unique Reference for all NON DORS Courses</span>
+                        </div>
+
+                        <!-- All NON DORS Courses must have a Reference -->
+                        <div class="row col-md-12 col-sm-12 noRightPadding">
+                            <!--<div class="row">-->
+                            <input type="checkbox" ng-model="selfConfiguration.NonDORSCoursesMustHaveReferences" />
+                            <span class="blueitalic">All NON DORS Courses must have a Reference</span>
+                        </div>
+
+                        <!--Automatically Generate Course Attendance-->
+                        <div class="row col-md-12 col-sm-12 noRightPadding marginBottom10" ><!--<div class="row">-->
+                            <input type="checkbox" ng-model="selfConfiguration.AutomaticallyGenerateCourseReference" />
+                            <span class="blueitalic">Automatically Generate Course Attendance</span>
+                        </div>
+                        <div class="row col-md-12 col-sm-12 noRightPadding"><!--<div class="row">-->
+                            <div class="sml-scroll-div" ng-show="selfConfiguration.AutomaticallyGenerateCourseReference">
+                                <table class="table table-hover table-bordered">
+                                    <thead></thead>
+                                    <tbody>
+                                        <tr ng-repeat="template in courseReferences">
+                                            <td ng-click="selectCourseReferenceTemplate(template.Id)"
+                                                ng-class="{selectedTemplate : selectedTemplate == template.Id}"
+                                                title="{{template.Description}}"
+                                                value="{{template.Id}}">
+                                                {{template.Title}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table><!-- Close Table-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Venue Reply Email Name -->
+                <div class="row col-md-12 col-sm-12 noRightPadding">
+                    <!--<div class="row">-->
+                    <div class="col-md-5 col-sm-5 noRightPadding noLeftPadding">
+                        <label>Venue Reply Email Name</label>
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        <input type="text" class="form-control" ng-model="selfConfiguration.VenueReplyEmailName" />
+                    </div>
+                </div>
+
+                <!-- Venue Reply Email Address -->
+                <div class="row col-md-12 col-sm-12 noRightPadding">
+                    <!--<div class="row">-->
+                    <div class="col-md-5 col-sm-5 noRightPadding noLeftPadding marginBottom10">
+                        <label>Venue Reply Email Address</label>
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        <input type="text" class="form-control" ng-model="selfConfiguration.VenueReplyEmailAddress" />
+                    </div>
+                </div>
+
+                <!-- Trainer Notification BCC Email Address -->
+                <div class="row col-md-12 col-sm-12 noRightPadding">
+                    <!--<div class="row">-->
+                    <div class="col-md-5 col-sm-5 noRightPadding noLeftPadding">
+                        <label>Trainer Notification BCC Email Address</label>
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        <input type="text" class="form-control" ng-model="selfConfiguration.TrainerNotificationBCCEmailAddress" />
+                    </div>
+                </div>
+
+                <!-- SMS Display Name -->
+                <div class="row col-md-12 col-sm-12 noRightPadding" ng-if="isSMSEnabled">
+                    <!--<div class="row">-->
+                    <div class="col-md-5 col-sm-5 noRightPadding noLeftPadding">
+                        <label>SMS Display Name</label>
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        <input type="text" class="form-control" ng-model="selfConfiguration.SMSDisplayName" />
+                    </div>
+                </div>
+
+                <!-- Clients Additional Requirements Notification Settings -->
+                <div class="row col-md-12 col-sm-12 noRightPadding">
+                    <label class="blueitalic">Clients Special (aka Additional) Requirements Notification Settings</label>
+                </div>
+
+                <!-- Notify Administrators Only -->
+                <div class="row col-md-12 col-sm-12 noRightPadding">
+                    <!--<div class="row">-->
+                    <div class="col-md-5 col-sm-5 noRightPadding noLeftPadding">
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        <div class="row col-md-12 col-sm-12 noRightPadding">
+                            <!--<div class="row">-->
+                            <input type="checkbox" ng-click="toggleSpecialRequirementSettings('AdminOnly')" ng-model="selfConfiguration.SpecialRequirementsToAdminsOnly" />
+                            <span class="blueitalic">Notify Administrators Only</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notify Support Users Only -->
+                <div class="row col-md-12 col-sm-12 noRightPadding">
+                    <!--<div class="row">-->
+                    <div class="col-md-5 col-sm-5 noRightPadding noLeftPadding">
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        <div class="row col-md-12 col-sm-12 noRightPadding">
+                            <!--<div class="row">-->
+                            <input type="checkbox" ng-click="toggleSpecialRequirementSettings('SupportUsersOnly')" ng-model="selfConfiguration.SpecialRequirementsToSupportUsers" />
+                            <span class="blueitalic">Notify Support Users Only</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notify All Users -->
+                <div class="row col-md-12 col-sm-12 noRightPadding">
+                    <!--<div class="row">-->
+                    <div class="col-md-5 col-sm-5 noRightPadding noLeftPadding">
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        <div class="row col-md-12 col-sm-12 noRightPadding">
+                            <!--<div class="row">-->
+                            <input type="checkbox" ng-click="toggleSpecialRequirementSettings('AllUsers')" ng-model="selfConfiguration.SpecialRequirementsToAllUsers" />
+                            <span class="blueitalic">Notify All Users</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class='col-sm-12 col-md-12 row'>   
+            <div class="col-sm-11 col-md-11"></div>
+            <div class="col-sm-1 col-md-1 vertical-margin">
+                <button class="btn btn-default btn-sm"
+                        ng-click="saveSettings()"
+                        title="Save Settings">
+                    Save Settings
+                </button>
+            </div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!successMessage === false">
+            <div class="col-sm-12 success-message noRightPadding rightalign">{{ successMessage }}</div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+            <div class="col-sm-12 validation-message noRightPadding rightalign">{{ validationMessage }}</div>
+        </div>
+
+
+</form>
+</div>

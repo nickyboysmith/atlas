@@ -1,0 +1,87 @@
+﻿<div id="ReportCategory" class="reportCategory">
+    <div class="Title row">
+        <h2> Report Categories</h2>
+    </div>
+
+    <div class="row"></div>
+    <form class="form-horizontal row" role="form">
+
+        <div ng-show="isAdmin">
+            <div class='row col-sm-12 marginBottom10'>
+                <div class='col-sm-2'>
+                    <label>Organisation:</label>
+                </div>
+                <div class='col-sm-4'>
+                    <select ng-model="organisationId"
+                            ng-change="getReportCategories(organisationId)"
+                            class='form-control'
+                            ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+                </div>
+                <div class='col-sm-6'></div>
+            </div>
+        </div>
+
+        <div class='row col-sm-12 marginBottom10'>
+            <div class='col-sm-12'>
+                <label>Report Categories</label>
+            </div>
+        </div>
+
+        <div class='row col-sm-12'>
+            <div class="col-sm-6">
+                <div class="sml-scroll-div">
+                    <table class="table table-hover table-bordered">
+                        <thead></thead>
+                        <tbody>
+                            <tr ng-repeat="reportCategory in reportCategories">
+                                <td ng-click="selectReportCategory(reportCategory)"
+                                    ng-class="{selectedReportCategoryId : selectedReportCategoryId == reportCategory.Id}"
+                                    value="{{reportCategory.Id}}">
+                                    {{reportCategory.Title}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+
+                <div class='row marginBottom10'>
+                    <label class="col-sm-5">Category</label>
+                    <div class='col-sm-7'>
+                        <input class="form-control" type="text" ng-model="reportCategoryDetails.Title" placeholder="Report Category Title" />
+                    </div>
+                </div>
+                <div class='row marginBottom10'>
+                    <div class="col-sm-5">
+                        <label>Disabled</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input ng-model="reportCategoryDetails.Disabled"
+                               type="checkbox"
+                               class="checkbox-add-margin" />
+                    </div>
+                    <div class="col-sm-5"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="btn button-fill-width" data-ng-click="saveReportCategory()">Save</div>
+                    </div>
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-3">
+                        <div class="btn button-fill-width" data-ng-click="addReportCategory()">Add New</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!successMessage === false">
+            <div class="col-sm-12 success-message noRightPadding rightalign">{{ successMessage }}</div>
+        </div>
+        <div class="row col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+            <div class="col-sm-12 validation-message noRightPadding rightalign">{{ validationMessage }}</div>
+        </div>
+    </form>
+</div>

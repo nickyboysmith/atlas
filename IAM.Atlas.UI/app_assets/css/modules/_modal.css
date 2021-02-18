@@ -1,0 +1,1139 @@
+﻿.modal-content, .modal-body, .bootstrap-dialog-body, .bootstrap-dialog-message, .modal-body {
+  width: auto;
+  height: auto;
+  display: inline-block; }
+  .modal-content .bootstrap-dialog-title, .modal-body .bootstrap-dialog-title, .bootstrap-dialog-body .bootstrap-dialog-title, .bootstrap-dialog-message .bootstrap-dialog-title, .modal-body .bootstrap-dialog-title {
+    text-transform: uppercase; }
+  .modal-content .bootstrap-dialog-close-button, .modal-body .bootstrap-dialog-close-button, .bootstrap-dialog-body .bootstrap-dialog-close-button, .bootstrap-dialog-message .bootstrap-dialog-close-button, .modal-body .bootstrap-dialog-close-button {
+    vertical-align: top;
+    margin-top: -5px; }
+  .modal-content .bootstrap-dialog-close-button .close, .modal-body .bootstrap-dialog-close-button .close, .bootstrap-dialog-body .bootstrap-dialog-close-button .close, .bootstrap-dialog-message .bootstrap-dialog-close-button .close, .modal-body .bootstrap-dialog-close-button .close {
+    color: red !important;
+    font-size: 31px;
+    vertical-align: top; }
+  .modal-content .bootstrap-dialog-close-button .close:hover, .modal-body .bootstrap-dialog-close-button .close:hover, .bootstrap-dialog-body .bootstrap-dialog-close-button .close:hover, .bootstrap-dialog-message .bootstrap-dialog-close-button .close:hover, .modal-body .bootstrap-dialog-close-button .close:hover {
+    color: red; }
+
+.modal-header {
+  padding: 3px;
+  padding-left: 8px;
+  padding-right: 5px; }
+
+.modal-header, .bootstrap-dialog-header, .bootstrap-dialog-title {
+  /*background-color: darken($background, 10%) !important;*/
+  background-color: #f4f5f5;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f4f5f5), to(#dfdddd));
+  background-image: -webkit-linear-gradient(top, #f4f5f5, #dfdddd);
+  background-image: -moz-linear-gradient(top, #f4f5f5, #dfdddd);
+  background-image: -ms-linear-gradient(top, #f4f5f5, #dfdddd);
+  background-image: -o-linear-gradient(top, #f4f5f5, #dfdddd);
+  background-image: linear-gradient(to bottom, #f4f5f5, #dfdddd);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f4f5f5, endColorstr=#dfdddd);
+  color: #000 !important; }
+
+.bootstrap-dialog-title {
+  font-size: 12px !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  padding: 5px 0px 4px 12px !important; }
+
+.modal-body, bootstrap-dialog-body {
+  /*background: lighten($background,70%);*/
+  background: #fff; }
+
+/**********************************************************
+ *
+ * Put any custom css for anything inside the modal footer here
+ *
+ **********************************************************/
+.modal-footer {
+  margin-top: 0;
+  padding-top: 8px;
+  padding-bottom: 8px; }
+
+/**********************************************************
+ *
+ * Put any custom css for anything inside the modal body here
+ *
+ **********************************************************/
+.modal-body {
+  padding-top: 5px;
+  padding-bottom: 5px; }
+  .modal-body .Title {
+    width: 100%;
+    height: 1px;
+    overflow: hidden;
+    margin-bottom: 20px; }
+    .modal-body .Title h2 {
+      display: none;
+      margin: 20px 14px; }
+  .modal-body .AddFavourite {
+    position: absolute;
+    top: 0;
+    right: 3px !important; }
+  .modal-body .user-search-button {
+    margin-left: 0 !important;
+    margin-top: 10px !important; }
+
+/**********************************************************
+ *
+ * Put all widths for modal dialog boxes below this line
+ *
+ **********************************************************/
+.clientDetailModal .modal-dialog {
+  width: 1000px; }
+  .clientDetailModal .modal-dialog #addClient {
+    width: 1000px; }
+
+.clientDetailModal .modal-dialog {
+  width: 1260px; }
+  .clientDetailModal .modal-dialog #clientDetails {
+    width: 1200px; }
+
+.clientAddNoteModal .modal-dialog {
+  width: 475px; }
+
+.clientAddModal .modal-dialog {
+  width: 912px; }
+
+.addCourseTrainerModal .modal-dialog {
+  width: 750px; }
+
+.courseNoteModal .modal-dialog {
+  width: 320px; }
+  .courseNoteModal .modal-dialog #addCourseNote {
+    width: 300px; }
+
+.cancelCourseModal .modal-dialog {
+  width: 300px; }
+
+.trainerEditModal .modal-dialog {
+  width: 1100px; }
+  .trainerEditModal .modal-dialog #trainerAbout {
+    width: 800px; }
+
+.userSearchModal .modal-dialog {
+  width: 950px; }
+  .userSearchModal .modal-dialog #userSearchResults {
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden; }
+  .userSearchModal .modal-dialog #userSearchAddEditButtons {
+    padding-left: 0px; }
+
+.viewUserModal .modal-dialog #viewUser {
+  width: 500px; }
+
+.editUserModal .modal-dialog #editUser {
+  width: 500px; }
+
+.editUserModal .modal-dialog .row {
+  padding-bottom: 5px; }
+
+.courseTypeModal .modal-dialog {
+  width: 800px; }
+  .courseTypeModal .modal-dialog #courseType {
+    width: 800px; }
+
+.courseTypeCategoryModal .modal-dialog {
+  width: 800px; }
+  .courseTypeCategoryModal .modal-dialog #courseTypeCategory {
+    width: 800px; }
+
+.trainerSearchModal .modal-dialog {
+  width: 630px; }
+  .trainerSearchModal .modal-dialog #searchTrainer {
+    width: 567px; }
+
+.courseTypeCategoryModal .modal-dialog {
+  width: 750px; }
+  .courseTypeCategoryModal .modal-dialog #courseMaintenance {
+    width: 750px; }
+
+/*.courseTypeModal .modal-dialog {
+    width: 750px;
+
+    .selectedCourseType {
+        background-color: #006cc2;
+        color: #fff;
+    }
+
+    tr.selectedCourseType:hover > td {
+        background-color: #006cc2;
+    }
+
+    categoryTable {
+        min-height: 180px;
+    }
+
+    .row {
+        margin: 5px;
+    }
+
+    th {
+        color: white;
+    }
+
+    #courseMaintenance {
+        width: 750px;
+    }
+}*/
+.stencilCourseModal .modal-dialog {
+  width: 850px; }
+  .stencilCourseModal .modal-dialog #stencilCourseMaintenance {
+    width: 850px; }
+
+.SystemTasksModal .modal-dialog {
+  width: 750px; }
+  .SystemTasksModal .modal-dialog #SystemTaskMaintenance {
+    width: 750px; }
+
+.SpecialRequirementsModal .modal-dialog {
+  width: 750px; }
+  .SpecialRequirementsModal .modal-dialog #specialRequirementMaintenance {
+    width: 750px; }
+
+.paymentProviderModal .modal-dialog {
+  width: 750px; }
+  .paymentProviderModal .modal-dialog #editPaymentProviders {
+    width: 750px; }
+
+.reportAddModal .modal-dialog {
+  width: 750px; }
+  .reportAddModal .modal-dialog #addReports {
+    width: 750px; }
+  .reportAddModal .modal-dialog .checkBoxListContainer {
+    border: 1px solid #ccc !important;
+    width: 300px !important;
+    height: 100px !important;
+    overflow-y: scroll !important; }
+  .reportAddModal .modal-dialog .listContainerNoScroll {
+    border: 1px solid #ccc !important;
+    width: 300px !important;
+    height: auto; }
+
+.reportGeneratorModal .modal-dialog {
+  width: 950px; }
+
+.paymentTypeModal .modal-dialog {
+  width: 750px; }
+  .paymentTypeModal .modal-dialog #paymentType {
+    width: 750px; }
+
+.reportCategoryModal .modal-dialog {
+  width: 750px; }
+  .reportCategoryModal .modal-dialog #ReportCategory {
+    width: 750px;
+    min-height: 250px; }
+
+.reportParametersModal .modal-dialog {
+  width: 700px; }
+  .reportParametersModal .modal-dialog #reportParameters {
+    width: 700px; }
+
+.reportSearchModal .modal-dialog {
+  width: 400px; }
+  .reportSearchModal .modal-dialog #searchReport {
+    width: 400px; }
+  .reportSearchModal .modal-dialog .OrganisationList {
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 300px;
+    max-height: 400px;
+    width: auto;
+    min-width: 70%;
+    border: 2px solid #F3F3F8; }
+    .reportSearchModal .modal-dialog .OrganisationList span {
+      font-style: italic;
+      color: #edeaea; }
+    .reportSearchModal .modal-dialog .OrganisationList table {
+      width: 100%; }
+
+.venueModal .modal-dialog {
+  width: 414px; }
+  .venueModal .modal-dialog #viewCourse {
+    width: 350px; }
+  .venueModal .modal-dialog #viewVenue {
+    width: 350px; }
+
+.addUserModal .modal-dialog {
+  width: 450px; }
+  .addUserModal .modal-dialog #addUser {
+    width: 450px; }
+
+.addTrainerFromUserModal .modal-dialog {
+  width: 800px; }
+  .addTrainerFromUserModal .modal-dialog #trainerAbout {
+    width: 800px; }
+
+.addClientFromUserModal .modal-dialog {
+  width: 800px; }
+  .addClientFromUserModal .modal-dialog #addClient {
+    width: 800px; }
+
+.addAvailableTrainerCourseTypes .modal-dialog {
+  width: 650px; }
+  .addAvailableTrainerCourseTypes .modal-dialog #trainerAvailabilityCourseTypes {
+    width: 650px; }
+
+.updateTrainerCourseTypes .modal-dialog {
+  width: 712px; }
+  .updateTrainerCourseTypes .modal-dialog #trainerAvailabilityCourseTypes {
+    width: 650px; }
+
+.chooseOrganisationModal .modal-dialog {
+  width: 400px; }
+  .chooseOrganisationModal .modal-dialog #chooseOrganisation {
+    width: 400px; }
+  .chooseOrganisationModal .modal-dialog select {
+    width: 300px;
+    height: 25px; }
+
+.cookiePolicyModal .modal-dialog {
+  width: 400px; }
+  .cookiePolicyModal .modal-dialog #cookiePolicy {
+    width: 400px; }
+
+.viewSingleCourseOptionModal .modal-dialog {
+  width: 600px; }
+  .viewSingleCourseOptionModal .modal-dialog #viewSingleCourseOption {
+    width: 100%; }
+    .viewSingleCourseOptionModal .modal-dialog #viewSingleCourseOption .SchemeName .ExpiryDate {
+      font-style: italic;
+      font-weight: bold; }
+  @media (min-width: 0px) and (max-width: 500px) {
+    .viewSingleCourseOptionModal .modal-dialog {
+      width: 90%; } }
+
+.viewMultipleCourseOptionsModal .modal-dialog {
+  width: 700px; }
+  .viewMultipleCourseOptionsModal .modal-dialog #viewMultipleCourseOptions {
+    width: 100%; }
+    .viewMultipleCourseOptionsModal .modal-dialog #viewMultipleCourseOptions .selectedCourse {
+      background-color: #fbfbaf; }
+    .viewMultipleCourseOptionsModal .modal-dialog #viewMultipleCourseOptions .SchemeName .ExpiryDate {
+      font-style: italic;
+      font-weight: bold; }
+  @media (min-width: 0px) and (max-width: 500px) {
+    .viewMultipleCourseOptionsModal .modal-dialog {
+      width: 90%; } }
+
+.organisationContactsModal .modal-dialog {
+  width: 500px; }
+  .organisationContactsModal .modal-dialog #organisationContacts {
+    width: 100%; }
+  @media (min-width: 0px) and (max-width: 470px) {
+    .organisationContactsModal .modal-dialog {
+      width: 90%; } }
+
+@media only screen and (max-device-width: 480px) {
+  .organisationContactsAreaHeadings {
+    /*don't show on iPhone*/
+    display: none; } }
+
+.organisationContactsContainer {
+  max-height: 400px;
+  overflow-y: scroll; }
+  .organisationContactsContainer .organisationContactsContainerLine {
+    height: 1px;
+    width: 100%;
+    border-bottom-style: dotted;
+    border-color: #d5e1e1; }
+    @media only screen and (min-device-width: 481px) {
+      .organisationContactsContainer .organisationContactsContainerLine {
+        /*Only show if iPhone*/
+        display: none; } }
+
+#organisationContacts th, #organisationContacts tr, #organisationContacts td {
+  width: 450px;
+  padding: 5px 0px 0px 20px;
+  vertical-align: top; }
+
+#organisationContacts .tableHead h3 {
+  font-weight: bold;
+  text-decoration: underline;
+  text-align: center; }
+
+#organisationContacts .tableLabel {
+  font-weight: bold; }
+
+.loginInvitationModal .modal-dialog {
+  width: 400px; }
+  .loginInvitationModal .modal-dialog #loginInvitation {
+    width: 400px; }
+
+.publicHolidayModal .modal-dialog {
+  width: 450px; }
+  .publicHolidayModal .modal-dialog #managePublicHoliday {
+    width: 450px; }
+
+.addPublicHolidayModal .modal-dialog {
+  width: 450px; }
+  .addPublicHolidayModal .modal-dialog #addPublicHoliday {
+    width: 450px; }
+
+.editConnectionDetailsModal .modal-dialog {
+  width: 450px; }
+  .editConnectionDetailsModal .modal-dialog #editConnectionDetails {
+    width: 450px; }
+
+.referingAuthorityModal .modal-dialog {
+  width: 450px; }
+  .referingAuthorityModal .modal-dialog #referingAuthority {
+    width: 450px; }
+
+.clientDeleteConfirmationModal .modal-dialog {
+  width: 450px; }
+  .clientDeleteConfirmationModal .modal-dialog #clientDeleteConfirmation {
+    width: 450px; }
+
+.addDORSConnectionNoteModal .modal-dialog {
+  width: 350px; }
+  .addDORSConnectionNoteModal .modal-dialog #addDorsConnectionNote {
+    width: 350px; }
+
+.editConnectionSettingsModal .modal-dialog {
+  width: 414px; }
+  .editConnectionSettingsModal .modal-dialog #editConnectionSettings {
+    width: 350px; }
+
+.addDORSConnectionModal .modal-dialog {
+  width: 500px; }
+  .addDORSConnectionModal .modal-dialog #addDorsConnection {
+    width: 439px; }
+
+.addVenueLocaleModal .modal-dialog {
+  width: 500px; }
+  .addVenueLocaleModal .modal-dialog #addVenueLocale {
+    width: 439px; }
+
+.featureUnavailableModal .modal-dialog {
+  width: 500px; }
+  .featureUnavailableModal .modal-dialog #featureUnavailable {
+    width: 500px; }
+
+.trainerBookingAddNoteModal .modal-dialog {
+  width: 350px; }
+  .trainerBookingAddNoteModal .modal-dialog #addCourseNote {
+    width: 289px; }
+
+.assignTrainerCourseTypeCategoriesModal .modal-dialog {
+  width: 414px; }
+  .assignTrainerCourseTypeCategoriesModal .modal-dialog #assignTrainerCourseTypeCategories {
+    width: 350px; }
+
+.updateTrainerCourseTypeCategoriesModal .modal-dialog {
+  width: 663px; }
+  .updateTrainerCourseTypeCategoriesModal .modal-dialog #updateTrainerCourseTypeCategories {
+    width: 600px; }
+
+.assignUserDashBoardMetersModal .modal-dialog {
+  width: 950px; }
+  .assignUserDashBoardMetersModal .modal-dialog #assignUserDashBoardMeters {
+    width: 950px; }
+
+.updateUserDashBoardMetersModal .modal-dialog {
+  width: 663px; }
+  .updateUserDashBoardMetersModal .modal-dialog #updateUserDashBoardMeters {
+    width: 600px; }
+
+.sendClientEmailModal .modal-dialog {
+  width: 520px; }
+  .sendClientEmailModal .modal-dialog #sendEmail {
+    width: 459px; }
+
+.adminMenuModal .modal-dialog {
+  width: 863px; }
+  .adminMenuModal .modal-dialog #adminMenu {
+    width: 800px; }
+    .adminMenuModal .modal-dialog #adminMenu .list-group-head {
+      font-weight: bold; }
+    .adminMenuModal .modal-dialog #adminMenu .list-group-item {
+      font-style: italic; }
+
+.addAdminMenuGroupModal .modal-dialog {
+  width: 350px; }
+  .addAdminMenuGroupModal .modal-dialog #addAdminMenuGroup {
+    width: 300px; }
+
+.recordPaymentModal .modal-dialog {
+  width: 650px; }
+  .recordPaymentModal .modal-dialog #recordPayment {
+    width: 588px; }
+
+.acceptCardPaymentModal .modal-dialog {
+  width: 700px; }
+  .acceptCardPaymentModal .modal-dialog #acceptCard {
+    width: 638px; }
+
+.recordPaymentAssignClientModal .modal-dialog {
+  width: 450px; }
+  .recordPaymentAssignClientModal .modal-dialog #findSingleClient {
+    width: 387px; }
+
+.updateClientSpecialRequirementsModal .modal-dialog {
+  width: 663px; }
+  .updateClientSpecialRequirementsModal .modal-dialog #updateSpecialRequirements {
+    width: 600px; }
+
+.addSpecialRequirementModal .modal-dialog {
+  width: 650px; }
+  .addSpecialRequirementModal .modal-dialog #addSpecialRequirement {
+    width: 387px; }
+
+@media screen and (max-width: 343px) {
+  .trainerBookingAddNoteModal .modal-dialog {
+    width: 290px; }
+    .trainerBookingAddNoteModal .modal-dialog #addCourseNote {
+      width: 230px; } }
+
+.OrganisationSelfConfigurationModal .modal-dialog {
+  width: 1163px; }
+  .OrganisationSelfConfigurationModal .modal-dialog #selfConfiguration {
+    width: 1100px; }
+
+.addClientDocumentModal .modal-dialog {
+  width: 550px; }
+  .addClientDocumentModal .modal-dialog #documentUpload {
+    width: 488px; }
+
+.allTrainerDocumentsModal .modal-dialog {
+  width: 550px; }
+  .allTrainerDocumentsModal .modal-dialog #allTrainersDocuments {
+    width: 488px; }
+
+.addExistingAllTrainersDocumentModal .modal-dialog {
+  width: 550px; }
+  .addExistingAllTrainersDocumentModal .modal-dialog #allTrainersDocumentsAddExisting {
+    width: 488px; }
+
+.uploadNewAllTrainerDocumentModal .modal-dialog {
+  width: 500px; }
+  .uploadNewAllTrainerDocumentModal .modal-dialog #uploadNewAllTrainerDocument {
+    width: 480px; }
+
+.allCourseDocumentsModal .modal-dialog {
+  width: 550px; }
+  .allCourseDocumentsModal .modal-dialog #allCoursesDocuments {
+    width: 488px; }
+
+.courseDocumentModal .modal-dialog {
+  width: 480px; }
+  .courseDocumentModal .modal-dialog #uploadCourseDocument {
+    width: 450px; }
+
+.addExistingAllCoursesDocumentModal .modal-dialog {
+  width: 550px; }
+  .addExistingAllCoursesDocumentModal .modal-dialog #allCoursesDocumentsAddExisting {
+    width: 488px; }
+
+.uploadNewAllCourseDocumentModal .modal-dialog {
+  width: 500px; }
+  .uploadNewAllCourseDocumentModal .modal-dialog #uploadNewAllCourseDocument {
+    width: 480px; }
+
+.editAllCourseDocumentModal .modal-dialog {
+  width: 500px; }
+  .editAllCourseDocumentModal .modal-dialog #editAllCoursesDocument {
+    width: 480px; }
+
+.documentPrintQueueModal .modal-dialog {
+  width: 500px; }
+  .documentPrintQueueModal .modal-dialog #dashboardPrintQueue {
+    width: 850px; }
+  .documentPrintQueueModal .modal-dialog .selectedDocumentPrintQueue td {
+    background-color: #85d5f8; }
+
+.documentInformationModal .modal-dialog .selectedDocumentInformation td {
+  background-color: #85d5f8; }
+
+.allCourseTypeDocumentsModal .modal-dialog {
+  width: 550px; }
+  .allCourseTypeDocumentsModal .modal-dialog #allCourseTypesDocuments {
+    width: 488px; }
+
+.addExistingAllCourseTypesDocumentModal .modal-dialog {
+  width: 550px; }
+  .addExistingAllCourseTypesDocumentModal .modal-dialog #allCourseTypesDocumentsAddExisting {
+    width: 488px; }
+
+.uploadNewAllCourseTypeDocumentModal .modal-dialog {
+  width: 500px; }
+  .uploadNewAllCourseTypeDocumentModal .modal-dialog #uploadNewAllCourseTypeDocument {
+    width: 480px; }
+
+.editAllCourseTypeDocumentModal .modal-dialog {
+  width: 500px; }
+  .editAllCourseTypeDocumentModal .modal-dialog #editAllCourseTypesDocument {
+    width: 480px; }
+
+.showVenueAddressModal .modal-dialog {
+  width: 317px; }
+  .showVenueAddressModal .modal-dialog #showVenueAddress {
+    width: 255px; }
+
+.editAllTrainerDocumentModal .modal-dialog {
+  width: 500px; }
+  .editAllTrainerDocumentModal .modal-dialog #editAllTrainersDocument {
+    width: 480px; }
+
+.addTrainerDocumentModal .modal-dialog {
+  width: 500px; }
+  .addTrainerDocumentModal .modal-dialog #addTrainerDocument {
+    width: 480px; }
+
+.feedback .modal-dialog {
+  width: 500px; }
+  .feedback .modal-dialog #FeedbackForm {
+    width: 480px; }
+
+.DocumentStatisticsModal .modal-dialog {
+  width: 600px; }
+  .DocumentStatisticsModal .modal-dialog #systemDocumentStatistics {
+    width: 520px; }
+
+.OrganisationSystemConfigurationModal .modal-dialog {
+  width: 1200px; }
+  .OrganisationSystemConfigurationModal .modal-dialog #systemConfiguration {
+    width: 1200px; }
+
+.organisationCreateNewModal .modal-dialog {
+  width: 500px; }
+  .organisationCreateNewModal .modal-dialog #organisationCreateNew {
+    width: 480px; }
+
+.schedulerControlModal .modal-dialog {
+  width: 500px; }
+  .schedulerControlModal .modal-dialog #schedulerControl {
+    width: 480px; }
+
+.organisationCreateNewModal .modal-dialog {
+  width: 500px; }
+  .organisationCreateNewModal .modal-dialog #createNewOrganisation {
+    width: 480px; }
+
+.SystemSupportUsersModal .modal-dialog {
+  width: 500px; }
+  .SystemSupportUsersModal .modal-dialog #SystemSupportUsersDiv {
+    width: 480px; }
+
+.addSystemSupportUserModal .modal-dialog {
+  width: 500px; }
+  .addSystemSupportUserModal .modal-dialog #AddSupportUserDiv {
+    width: 480px; }
+
+.EmailBlockedOutgoingAddressModal .modal-dialog {
+  width: 500px; }
+  .EmailBlockedOutgoingAddressModal .modal-dialog #DeleteEmailBlockedOutingAddress {
+    width: 480px; }
+
+.DORSControlSettingsModal .modal-dialog {
+  width: 500px; }
+  .DORSControlSettingsModal .modal-dialog #DORSControlSettings {
+    width: 480px; }
+
+.DeleteMarkedClientsModal .modal-dialog {
+  width: 500px; }
+  .DeleteMarkedClientsModal .modal-dialog #DeleteMarkedClients {
+    width: 480px; }
+
+.DeleteMarkedDocumentsModal .modal-dialog {
+  width: 500px; }
+  .DeleteMarkedDocumentsModal .modal-dialog #DeleteMarkedDocuments {
+    width: 480px; }
+
+.transferToNewCourseModal .modal-dialog {
+  width: 1100px; }
+  .transferToNewCourseModal .modal-dialog #transferToNewCourseDiv {
+    width: 1080px; }
+
+.SystemControlModal .modal-dialog {
+  width: 1100px; }
+  .SystemControlModal .modal-dialog #systemControl {
+    width: 1080px; }
+
+.MessagingModal .modal-dialog {
+  width: 700px; }
+  .MessagingModal .modal-dialog #systemControl {
+    width: 680px; }
+  .MessagingModal .modal-dialog #MessagingDiv {
+    width: 430px; }
+
+#activeSystemUsers {
+  width: 400px; }
+
+.DashboardMeterModal .modal-dialog {
+  width: 900px; }
+  .DashboardMeterModal .modal-dialog #dashboardMeterExposure {
+    width: 900px; }
+
+.OrganisationDashboardMeterModal .modal-dialog {
+  width: 600px; }
+  .OrganisationDashboardMeterModal .modal-dialog #OrganisationDashboardMeter {
+    width: 550px; }
+
+.downloadDocumentModal .modal-dialog {
+  width: 500px; }
+  .downloadDocumentModal .modal-dialog #documentDownloadDiv {
+    width: 500px; }
+
+.createDocFromLetterTemplateModal .modal-dialog {
+  width: 500px; }
+  .createDocFromLetterTemplateModal .modal-dialog #createDocFromLetterTemplate {
+    width: 500px; }
+
+.downloadDocumentModal .modal-dialog {
+  width: 500px; }
+  .downloadDocumentModal .modal-dialog #documentDownloadDiv {
+    width: 500px; }
+
+.addIdentifierModal .modal-dialog {
+  width: 500px; }
+  .addIdentifierModal .modal-dialog #addIdentifierDiv {
+    width: 500px; }
+
+.courseTrainerModal .modal-dialog {
+  width: 750px; }
+  .courseTrainerModal .modal-dialog .selectedCourseTrainer {
+    background-color: #006cc2;
+    color: #fff; }
+  .courseTrainerModal .modal-dialog tr.selectedCourseTrainer:hover > td {
+    background-color: #006cc2; }
+  .courseTrainerModal .modal-dialog categoryTable {
+    min-height: 180px; }
+  .courseTrainerModal .modal-dialog .row {
+    margin: 5px; }
+  .courseTrainerModal .modal-dialog th {
+    color: white; }
+  .courseTrainerModal .modal-dialog #courseTrainer {
+    width: 750px; }
+
+.courseAttendanceModal .modal-dialog {
+  width: 1250px; }
+  .courseAttendanceModal .modal-dialog #courseAttendance {
+    width: 1190px; }
+
+.SystemFeatureModal .modal-dialog {
+  width: 900px; }
+  .SystemFeatureModal .modal-dialog #systemFeature {
+    width: 850px; }
+
+.addSystemFeatureGroupModal .modal-dialog {
+  width: 500px; }
+  .addSystemFeatureGroupModal .modal-dialog #addSystemFeatureGroup {
+    width: 480px; }
+
+.addSystemFeatureGroupItemModal .modal-dialog {
+  width: 500px; }
+  .addSystemFeatureGroupItemModal .modal-dialog #addSystemFeatureGroupItem {
+    width: 480px; }
+
+.addExistingSystemFeatureGroupItemModal .modal-dialog {
+  width: 400px; }
+  .addExistingSystemFeatureGroupItemModal .modal-dialog #addExistingSystemFeatureGroupItem {
+    width: 380px; }
+
+.systemFeatureInformationModal .modal-dialog {
+  width: 442px; }
+  .systemFeatureInformationModal .modal-dialog #systemFeatureInformation {
+    width: 380px; }
+
+.viewSystemFeatureInformationModal .modal-dialog {
+  width: 442px; }
+  .viewSystemFeatureInformationModal .modal-dialog #viewSystemFeatureInformation {
+    width: 380px; }
+  .viewSystemFeatureInformationModal .modal-dialog .form-group {
+    padding-left: 0 !important;
+    padding-right: 0 !important; }
+  .viewSystemFeatureInformationModal .modal-dialog #addNote {
+    float: right; }
+
+.systemFeatureAddNoteModal .modal-dialog {
+  width: 322px; }
+  .systemFeatureAddNoteModal .modal-dialog #systemFeatureAddNote {
+    width: 260px; }
+
+.courseStencilModal .modal-dialog {
+  width: 1250px; }
+  .courseStencilModal .modal-dialog #courseStencil {
+    width: 1190px; }
+
+.ReminderEmailModal .modal-dialog {
+  width: 600px; }
+  .ReminderEmailModal .modal-dialog #reminderEmail {
+    width: 580px; }
+
+.ReminderSMSModal .modal-dialog {
+  width: 600px; }
+  .ReminderSMSModal .modal-dialog #reminderSMS {
+    width: 580px; }
+
+.sendClientSMSModal .modal-dialog {
+  width: 600px; }
+  .sendClientSMSModal .modal-dialog #smsClient {
+    width: 580px; }
+
+.dashboardHoverInformationModal .modal-dialog {
+  width: 1037px; }
+  .dashboardHoverInformationModal .modal-dialog #dashboardHover {
+    width: 973px; }
+
+.dashboardHoverInformationSmallModal .modal-dialog {
+  width: 737px; }
+  .dashboardHoverInformationSmallModal .modal-dialog #dashboardHover {
+    width: 717px; }
+
+.LetterUploadModal .modal-dialog {
+  width: 750px; }
+  .LetterUploadModal .modal-dialog #letterUploadDiv {
+    width: 580px; }
+
+.letterTemplatesModal .modal-dialog {
+  width: 750px; }
+  .letterTemplatesModal .modal-dialog #letterTemplateMaintenance {
+    width: 750px; }
+
+.cloneCourseModal .modal-dialog {
+  width: 600px; }
+  .cloneCourseModal .modal-dialog #cloneCourse {
+    width: 580px; }
+
+.cloneCourseConfirmationModal .modal-dialog {
+  width: 400px; }
+  .cloneCourseConfirmationModal .modal-dialog #cloneCourseConfirmation {
+    width: 340px; }
+
+.venueImageMapModal .modal-dialog {
+  width: 600px; }
+  .venueImageMapModal .modal-dialog #venueImageMapDiv {
+    width: 580px; }
+
+.downloadVenueImageMapModal .modal-dialog {
+  width: 600px; }
+  .downloadVenueImageMapModal .modal-dialog #downloadVenueImageMapDiv {
+    width: 580px; }
+
+.NetcallAgentsModal .modal-dialog {
+  width: 600px; }
+  .NetcallAgentsModal .modal-dialog #netcallAgents {
+    width: 580px; }
+
+.AddNetcallAgentModal .modal-dialog {
+  width: 400px; }
+  .AddNetcallAgentModal .modal-dialog #addNetcallAgent {
+    width: 380px; }
+
+.EditNetcallAgentNumberModal .modal-dialog {
+  width: 300px; }
+  .EditNetcallAgentNumberModal .modal-dialog #editNetcallAgentNumber {
+    width: 280px; }
+
+.AddVenueCostModal .modal-dialog {
+  width: 350px; }
+  .AddVenueCostModal .modal-dialog #addVenueCost {
+    width: 330px; }
+
+.availableCoursesModal .modal-dialog {
+  width: 800px; }
+  .availableCoursesModal .modal-dialog #availableCoursesDiv {
+    width: 780px; }
+
+.DORSDefaultConnectionRotationModal .modal-dialog {
+  width: 600px; }
+  .DORSDefaultConnectionRotationModal .modal-dialog #DORSDefaultConnectionRotationDiv {
+    width: 580px; }
+
+.findPaymentModal .modal-dialog {
+  width: 800px; }
+  .findPaymentModal .modal-dialog #recordedPaymentsDiv {
+    width: 780px; }
+
+.ArchiveControlModal .modal-dialog {
+  width: 700px; }
+  .ArchiveControlModal .modal-dialog #archiveControl {
+    width: 680px; }
+
+.clientRescheduleCourseDetailsModal .modal-dialog {
+  width: 557px; }
+  .clientRescheduleCourseDetailsModal .modal-dialog #clientRescheduleCourseDetails {
+    width: 495px; }
+
+.clientRescheduleCourseConfirmModal .modal-dialog {
+  width: 457px; }
+  .clientRescheduleCourseConfirmModal .modal-dialog #clientRescheduleCourseConfirm {
+    width: 395px; }
+
+.CourseFeeModal .modal-dialog {
+  width: 800px; }
+  .CourseFeeModal .modal-dialog #courseFee {
+    width: 780px; }
+
+.CancelCourseFeeModal .modal-dialog {
+  width: 420px; }
+  .CancelCourseFeeModal .modal-dialog #cancelCourseFee {
+    width: 400px; }
+
+.AddCourseFeeModal .modal-dialog {
+  width: 420px; }
+  .AddCourseFeeModal .modal-dialog #addCourseFee {
+    width: 400px; }
+
+.UpdateVenueCostTypeModal .modal-dialog {
+  width: 600px; }
+  .UpdateVenueCostTypeModal .modal-dialog #updateVenueCostType {
+    width: 580px; }
+
+.paymentViewModal .modal-dialog {
+  width: 500px; }
+  .paymentViewModal .modal-dialog #viewPaymentDiv {
+    width: 480px; }
+
+.addPaymentNoteModal .modal-dialog {
+  width: 340px; }
+  .addPaymentNoteModal .modal-dialog #addPaymentNoteDiv {
+    width: 300px; }
+
+.EmailAllClientsModal .modal-dialog {
+  width: 870px; }
+  .EmailAllClientsModal .modal-dialog #emailAllClients {
+    width: 850px; }
+
+.EmailAllTrainersModal .modal-dialog {
+  width: 870px; }
+  .EmailAllTrainersModal .modal-dialog #emailAllTrainers {
+    width: 850px; }
+
+.blockedIPModal .modal-dialog {
+  width: 720px; }
+  .blockedIPModal .modal-dialog #blockedIP {
+    width: 700px; }
+
+.trainerAdminCalendarModal .modal-dialog {
+  width: 870px; }
+  .trainerAdminCalendarModal .modal-dialog #trainerAdminCalendarDiv {
+    width: 850px; }
+
+.CourseRebookingFeeModal .modal-dialog {
+  width: 800px; }
+  .CourseRebookingFeeModal .modal-dialog #courseRebookingFee {
+    width: 780px; }
+
+.CancelCourseRebookingFeeModal .modal-dialog {
+  width: 420px; }
+  .CancelCourseRebookingFeeModal .modal-dialog #cancelCourseRebookingFee {
+    width: 400px; }
+
+.AddCourseRebookingFeeModal .modal-dialog {
+  width: 420px; }
+  .AddCourseRebookingFeeModal .modal-dialog #addCourseRebookingFee {
+    width: 400px; }
+
+.courseTrainersModal .modal-dialog {
+  width: 750px; }
+  .courseTrainersModal .modal-dialog #courseTrainer {
+    width: 750px; }
+
+.trainersWithoutEmailsModal .modal-dialog {
+  width: 750px; }
+  .trainersWithoutEmailsModal .modal-dialog #trainersWithoutEmailsDiv {
+    width: 750px; }
+
+.clientsWithoutEmailsModal .modal-dialog {
+  width: 750px; }
+  .clientsWithoutEmailsModal .modal-dialog #clientsWithoutEmailsDiv {
+    width: 750px; }
+
+.viewEventNoteModal .modal-dialog #viewClientNoteDiv {
+  width: 430px; }
+
+.InterpreterLanguageModal .modal-dialog {
+  width: 500px; }
+  .InterpreterLanguageModal .modal-dialog #interpreterLanguage {
+    width: 500px; }
+
+.AddInterpreterLanguageModal .modal-dialog {
+  width: 500px; }
+  .AddInterpreterLanguageModal .modal-dialog #addInterpreterLanguage {
+    width: 500px; }
+
+.EditInterpreterLanguageModal .modal-dialog {
+  width: 800px; }
+  .EditInterpreterLanguageModal .modal-dialog #editInterpreterLanguage {
+    width: 800px; }
+
+.AddLanguageModal .modal-dialog {
+  width: 300px; }
+  .AddLanguageModal .modal-dialog #addLanguage {
+    width: 300px; }
+
+.AddInterpreterNoteModal .modal-dialog {
+  width: 300px; }
+  .AddInterpreterNoteModal .modal-dialog #addInterpreterNote {
+    width: 300px; }
+
+.OrganisationDocumentManagementModal .modal-dialog {
+  width: 1250px; }
+  .OrganisationDocumentManagementModal .modal-dialog #OrganisationDocuments {
+    width: 1250px; }
+
+/*.SystemAdminSupportUsersModal .modal-dialog{
+    width:600px;
+    #SystemAdminSupportUsers{
+        width:600px;
+    }
+}*/
+.addSystemAdminSupportUsersModal .modal-dialog {
+  width: 600px; }
+  .addSystemAdminSupportUsersModal .modal-dialog #AddSystemAdminSupportUsers {
+    width: 600px; }
+
+.refundRequestModal .modal-dialog {
+  width: 850px; }
+  .refundRequestModal .modal-dialog #refundRequestsDiv {
+    width: 850px; }
+
+.cancelRefundRequestModal .modal-dialog {
+  width: 380px; }
+  .cancelRefundRequestModal .modal-dialog #refundRequestsDiv {
+    width: 380px; }
+
+.TaskCategoryModal .modal-dialog {
+  width: 600px; }
+  .TaskCategoryModal .modal-dialog #taskCategory {
+    width: 600px; }
+
+.addTaskCategoryModal .modal-dialog {
+  width: 350px; }
+  .addTaskCategoryModal .modal-dialog #addTaskCategory {
+    width: 300px; }
+
+.MysteryShopperAdministrationModal .modal-dialog {
+  width: 500px; }
+  .MysteryShopperAdministrationModal .modal-dialog #mysteryShopperAdministration {
+    width: 500px; }
+
+.reconciliationConfiguration .modal-dialog {
+  width: 700px; }
+  .reconciliationConfiguration .modal-dialog #reconciliationConfiguration {
+    width: 700px; }
+
+.addReconciliationConfiguration .modal-dialog {
+  width: 500px; }
+  .addReconciliationConfiguration .modal-dialog #addReconciliationConfiguration {
+    width: 500px; }
+
+.paymentReconciliation .modal-dialog {
+  width: 1500px; }
+  .paymentReconciliation .modal-dialog #paymentReconciliation {
+    width: 1500px; }
+
+.newPaymentReconciliation .modal-dialog {
+  width: 800px; }
+  .newPaymentReconciliation .modal-dialog #newPaymentReconciliation {
+    width: 800px; }
+
+.TaskListModal .modal-dialog {
+  width: 800px; }
+  .TaskListModal .modal-dialog #TaskListDiv {
+    width: 800px; }
+
+.VehicleTypeAdministrationModal .modal-dialog {
+  width: 600px; }
+  .VehicleTypeAdministrationModal .modal-dialog #vehicleTypeAdministration {
+    width: 600px; }
+
+.addVehicleTypeModal .modal-dialog {
+  width: 350px; }
+  .addVehicleTypeModal .modal-dialog #addVehicleTypeModal {
+    width: 300px; }
+
+.VehicleCategoryAdminModal .modal-dialog {
+  width: 600px; }
+  .VehicleCategoryAdminModal .modal-dialog #vehicleCategoryAdmin {
+    width: 600px; }
+
+.addVehicleCategoryModal .modal-dialog {
+  width: 350px; }
+  .addVehicleCategoryModal .modal-dialog #addVehicleCategoryModal {
+    width: 300px; }
+
+.editOrganisationDocumentModal .modal-dialog {
+  width: 380px; }
+  .editOrganisationDocumentModal .modal-dialog #editOrganisationDocument {
+    width: 380px; }
+
+.TrainerVehicleModal .modal-dialog {
+  width: 800px; }
+  .TrainerVehicleModal .modal-dialog #TrainerVehicle {
+    width: 800px; }
+
+.AddTrainerVehicleNoteModal .modal-dialog {
+  width: 300px; }
+  .AddTrainerVehicleNoteModal .modal-dialog #addTrainerVehicleNote {
+    width: 300px; }
+
+.TrainerVehicleDetailModal .modal-dialog {
+  width: 400px; }
+  .TrainerVehicleDetailModal .modal-dialog #trainerVehicleDetail {
+    width: 400px; }
+
+.AddTrainerVehicleModal .modal-dialog {
+  width: 500px; }
+  .AddTrainerVehicleModal .modal-dialog #addTrainerVehicle {
+    width: 500px; }
+
+.EditTrainerVehicleModal .modal-dialog {
+  width: 500px; }
+  .EditTrainerVehicleModal .modal-dialog #editTrainerVehicle {
+    width: 500px; }
+
+.refundPaymentModal .modal-dialog {
+  width: 750px; }
+  .refundPaymentModal .modal-dialog #refundPaymentDiv {
+    width: 750px; }
+
+.clientPaymentsModal .modal-dialog {
+  width: 975px; }
+  .clientPaymentsModal .modal-dialog #clientPaymentsDiv {
+    width: 975px; }
+
+.AddTaskModal .modal-dialog {
+  width: 800px; }
+  .AddTaskModal .modal-dialog #AddTaskDiv {
+    width: 800px; }
+
+.trainerSettingsModal .modal-dialog {
+  width: 700px; }
+  .trainerSettingsModal .modal-dialog #TrainerSettings {
+    width: 700px; }
+
+.eventHistoryModal .modal-dialog {
+  width: 1260px; }
+  .eventHistoryModal .modal-dialog #eventHistoryModalDiv {
+    width: 1200px; }
+
+.PreviewEmailModal .modal-dialog {
+  width: 800px; }
+  .PreviewEmailModal .modal-dialog #previewEmail {
+    width: 600px; }
+
+.ukVATRatesModal .modal-dialog {
+  width: 600px; }
+  .ukVATRatesModal .modal-dialog #ukVATRatesDiv {
+    width: 600px; }
+
+.addUKVATRateModal .modal-dialog {
+  width: 380px; }
+  .addUKVATRateModal .modal-dialog #addUKVATRateDiv {
+    width: 380px; }
+
+.addNewCourseModal .modal-dialog {
+  width: 620px; }
+  .addNewCourseModal .modal-dialog #addCourse {
+    width: 100%; }
+
+showOnlineTermsModal.modal-dialog {
+  width: 100px; }
+  showOnlineTermsModal.modal-dialog #showOnlineTerms {
+    width: 100%; }
+

@@ -1,0 +1,116 @@
+﻿@import '../modules/mixins';
+
+#clientHistoryContainer {
+
+    /*.row {
+        margin: 0px;
+    }*/
+
+    .history-hidden-note {
+        z-index: 100;
+        min-width: 100px;
+        height: auto;
+        overflow: hidden;
+        background: #fffee4;
+        position: absolute;
+        margin: 0 auto;
+        border: 1px solid #cccccc;
+        border-left: 1px solid #cccccc;
+        border-bottom: 0px;
+
+        .history-note-header {
+            height: 30px;
+            padding: 4px 5px;
+            width: 100%;
+            background: #006ABD;
+            border-top: 1px solid #2381CB;
+            border-bottom: 1px solid #2381CB;
+            color: #ffffff;
+        }
+
+        .history-note-content {
+            padding: 6.5px 5px;
+        }
+    }
+
+    #eventHistoryGridHolder {
+        padding: 0 14px;
+
+        label.position-history-label {
+            display: block;
+            padding-top: 8px;
+        }
+
+        .history-item-container {
+            margin: 1px;
+            margin-top: 8px;
+            margin-bottom: 25px;
+            border: 1px solid #cccccc;
+            min-height: 185px;
+            height:250px;
+            overflow-y:scroll;
+
+            .showErrorMessage {
+                padding: 10px;
+            }
+        }
+    }
+
+}
+
+#courseHistoryContainer {
+    margin-left: 40px;
+    margin-right: 40px;
+
+    .history-hidden-note {
+        z-index: 100;
+        min-width: 100px;
+        height: auto;
+        overflow: hidden;
+        background: #fffee4;
+        position: absolute;
+        margin: 0 auto;
+        border: 1px solid #cccccc;
+        border-left: 1px solid #cccccc;
+        border-bottom: 0px;
+
+        .history-note-header {
+            height: 30px;
+            padding: 4px 5px;
+            width: 100%;
+            background: #006ABD;
+            border-top: 1px solid #2381CB;
+            border-bottom: 1px solid #2381CB;
+            color: #ffffff;
+        }
+
+        .history-note-content {
+            padding: 6.5px 5px;
+        }
+    }
+
+    #eventHistoryGridHolder {
+        padding: 0 0px;
+
+        label.position-history-label {
+            display: block;
+            padding-top: 8px;
+        }
+
+        .history-item-container {
+            margin: 1px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #cccccc;
+            min-height: 185px;
+            height:470px;
+            overflow-y:scroll;
+
+            .showErrorMessage {
+                padding: 10px;
+            }
+        }
+    }
+
+    
+}

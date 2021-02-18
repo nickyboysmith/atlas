@@ -1,0 +1,67 @@
+﻿
+
+.organisationSelfConfiguration {
+    
+    width: 1200px;
+
+    .form-line-holder {
+        height: auto;
+        overflow: hidden;
+        margin-bottom: 10px; 
+    }
+
+    form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+        .row {
+            display: inline-block;
+        }
+
+        .control-button {
+            margin-left: -25px;
+        }
+
+        .blueitalic{
+            font-size:13px;
+        }
+
+        /*.form-group{
+            padding-right:0px;
+            margin:0px;
+        }*/
+      
+        .selectedTemplate {
+            background: #00508f;
+            color: #fff;
+        }
+
+        .selectedTemplate:hover {
+            background: #00508f;
+            color: #fff;
+        }
+
+        /*.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+            background-color: #00508f;
+            color: #fff;
+            cursor: pointer;
+        }*/
+
+        .control-label {
+            display: block;
+            white-space: nowrap;
+            padding: 0;
+            text-align: left;
+        }
+
+        .right-shim {
+            margin-right:15px;
+        }
+
+        .vertical-margin{
+            margin-top:15px;
+            margin-bottom:15px;
+        }
+    }
+}

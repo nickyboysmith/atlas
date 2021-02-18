@@ -1,0 +1,62 @@
+ 
+******************************************************************************************
+ 
+**Running Script: "Migration_110.001_MigratePaymentProviderData.sql" Jul  2 2017  6:43AM
+ 
+*Populate Payment Provider Data Tables Jul  2 2017  6:43AM
+ 
+*Ensure Payment Providers Exist* Jul  2 2017  6:43AM
+ 
+-INSERT INTO #PaymentProvider Jul  2 2017  6:43AM
+
+(3 row(s) affected)
+ 
+-INSERT INTO dbo.PaymentProvider Jul  2 2017  6:43AM
+
+(0 row(s) affected)
+ 
+-INSERT INTO #OrganisationPaymentProviderMatch Jul  2 2017  6:43AM
+
+(8 row(s) affected)
+ 
+-Live Data Jul  2 2017  6:43AM
+ 
+-INSERT INTO #PaymentProviderDefault Jul  2 2017  6:43AM
+
+(3 row(s) affected)
+ 
+-Live Jul  2 2017  6:43AM
+ 
+-INSERT INTO #PaymentProviderCredential Jul  2 2017  6:43AM
+
+(7 row(s) affected)
+ 
+-INSERT INTO #OrganisationPaymentProvider Jul  2 2017  6:43AM
+
+(8 row(s) affected)
+ 
+-INSERT INTO [OrganisationPaymentProvider] Jul  2 2017  6:43AM
+
+(0 row(s) affected)
+ 
+-UPDATE [OrganisationPaymentProvider] Jul  2 2017  6:43AM
+
+(4 row(s) affected)
+ 
+-INSERT INTO #OrganisationPaymentProviderCredential Jul  2 2017  6:43AM
+
+(22 row(s) affected)
+ 
+-INSERT INTO [OrganisationPaymentProviderCredential] Jul  2 2017  6:43AM
+
+(0 row(s) affected)
+ 
+-UPDATE [OrganisationPaymentProviderCredential] Jul  2 2017  6:43AM
+
+(0 row(s) affected)
+ 
+*Tidy Up Jul  2 2017  6:43AM
+ 
+**Completed Script: "Migration_110.001_MigratePaymentProviderData.sql" Jul  2 2017  6:43AM
+ 
+******************************************************************************************

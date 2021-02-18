@@ -1,0 +1,106 @@
+﻿<div id="editPaymentProviders" class="paymentProvider">
+    
+    <div class="Title row">
+        <h2>Payment Providers</h2>
+    </div>
+    <div class='row'>
+    </div>
+    <form class="form-horizontal row" role="form">
+        
+           
+        <div class='col-sm-12 form-group'>
+            <div class="col-sm-5">
+                <label>Payment Providers</label>
+            </div>
+            <div class="col-sm-7"></div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class="col-sm-5">
+                <div class="sml-scroll-div">
+                    <table class="table table-hover table-bordered">
+                        <thead></thead>
+                        <tbody>
+                            <tr ng-repeat="paymentProvider in paymentProviders">
+                                <td ng-click="selectPaymentProvider(paymentProvider.Id)"
+                                     ng-class="{selectedPaymentProvider : selectedPaymentProvider == paymentProvider.Id}"
+                                    value="{{paymentProvider.Id}}">
+                                    {{paymentProvider.Name}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-sm-7">
+                <div class='row marginBottom10'>
+                    <label class='col-sm-3'>Name</label>
+                    <div class='col-sm-9'><input ng-disabled="!isAdmin" class="form-control col-sm-12" type="text" ng-model="paymentProviderDetails.Name" placeholder="Payment Provider Name" /></div>
+                </div>
+                <div class='row marginBottom10'>
+                    <label class='col-sm-3'>Notes</label>
+                    <div class='col-sm-9'><textarea rows="4" class="form-control" type="text" ng-model="paymentProviderDetails.Notes" placeholder="Notes" /></div>
+                </div>
+
+                <div class='row marginBottom10'>
+                    <div class="col-sm-5">
+                        <label>Disabled</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input ng-model="paymentProviderDetails.Disabled"
+                               type="checkbox"
+                               class="checkbox-add-margin" />
+                    </div>
+                    <div class="col-sm-5"></div>
+                </div>
+
+                <div class='row marginBottom10'>
+                    <div class="col-sm-5">
+                        <label>System Default</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input ng-model="paymentProviderDetails.SystemDefault"
+                               type="checkbox"
+                               class="checkbox-add-margin" />
+                    </div>
+                    <div class="col-sm-5"></div>
+                </div>
+
+                <div class='row'>
+                   
+
+                    
+                    <div class="col-sm-3">
+                        <button ng-click="savePaymentProvider()" class="btn btn-default btn-sm" title="Save Changes">Save</button>
+                    </div>
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-3">
+                        <button ng-click="addPaymentProvider()" class="btn btn-default btn-sm" title="Add a New Provider">Add New</button>
+                    </div>
+                </div>
+
+                <!--<div class="row">
+                    <div class="col-sm-3">
+                        <div class="btn button-fill-width" data-ng-click="saveReportCategory()">Save</div>
+                    </div>
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-3">
+                        <div class="btn button-fill-width" data-ng-click="addReportCategory()">Add New</div>
+                    </div>
+                </div>-->
+
+            </div>
+
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!successMessage === false">
+            <div class="col-sm-12 success-message noRightPadding rightalign">{{ successMessage }}</div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+            <div class="col-sm-12 validation-message noRightPadding rightalign">{{ validationMessage }}</div>
+        </div>
+
+</form>
+</div>

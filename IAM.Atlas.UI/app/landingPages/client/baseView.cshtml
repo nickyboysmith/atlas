@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-cloak>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title ng-bind="title">@(PageData["title"] ?? "IAM.Atlas for Visual Studio")</title>
+    <meta name="description" content="@PageData["description"]">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="/favicon.ico"> 
+    @Styles.Render("~/app_assets/css/app")
+    <link rel="stylesheet" href="~/app_assets/vendor/datepicker/angular-date-picker.css" />
+    
+
+
+</head>
+
+<body ng-controller="ClientHomeCtrl" id="clientLanding" ng-cloak>
+
+    <sign-out-message style="display: none;"></sign-out-message>
+
+
+    <div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas main-side-bar-container" id="sidebar">
+                <div class="inner-sidebar-holder">
+                    <div class="branding-container">
+                        <img src="~/app_assets/images/iamroad_smart_logo_atlas_large.png" alt="" />
+                    </div>
+                    <div class="client-links">
+                        <ul>
+                            <li class="client-profile-icon"><a ui-sref="Client Home">My Profile</a></li>
+                            <li class="client-booking-icon"><a ui-sref="Course Bookings">Course Bookings</a></li>
+                            <li class="client-payment-icon"><a ui-sref="Client Payment">Make a Payment</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!--/.sidebar-offcanvas-->
+            <div class="col-xs-12 col-sm-9 main-client-container">
+                <div class="row client-header">
+                    <div class="visible-xs col-xs-3">
+                        <div class="toggle-button toggle-menu-button" data-toggle="offcanvas"></div>
+                    </div>
+                    <div class="col-xs-5 col-sm-5"></div>
+                    <div class="col-xs-4 col-sm-7" ng-controller="SignOutCtrl">
+                        <div class="sign-out-client" ng-click="logOutClient()">Sign out</div>
+                    </div>
+                </div><!--/row-->
+                <div class="client-content-body">
+                    <div id="ui-view" ui-view data-tmpl-url="@Request.RequestContext.RouteData.DataTokens[" templateUrl"]">
+                    </div>
+                </div>
+            </div><!--/.col-xs-12.col-sm-9-->
+        </div><!--/row-->
+    </div><!--/.container-->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="offcanvas"]').click(function () {
+                $('.row-offcanvas').toggleClass('active')
+            });
+        });
+    </script>
+
+    <script src="~/app_assets/js/vendor/postcode/crafty_postcode.class.js"></script>
+    <script src="~/app_assets/js/globals.js"></script>
+    <!--For Examples see of Bootstrap Dialog http://nakupanda.github.io/bootstrap3-dialog/ -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.4/js/bootstrap-dialog.min.js"></script>
+    <link rel="stylesheet" href="~/app_assets/css/bootstrap/bootstrap-dialog.css" />
+
+    <!--Documentation for Bootstrap UI for angular -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
+
+    <!-- Using jQuery Cookie to manage cookies. Documentation is here: https://github.com/js-cookie/js-cookie  -->
+    <script type="text/javascript" src="~/Scripts/updatedCookie.js"></script>
+
+    <!-- Place the app.js here -->
+    <script src="~/app/landingPages/client/clientAuthenticated.js"></script>
+
+    @*Documentation for the datepicker http://myplanet.github.io/angular-date-picker/*@
+    <script src="~/app_assets/vendor/datepicker/angular-date-picker.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-datepicker/0.2.16/angular-datepicker.min.js"></script>*@
+
+
+    @Scripts.Render("~/js/app")
+
+
+
+    @*
+        Google Analytics
+        ----------------
+        Google recommends that this script be placed at the top of the page. Factors to consider: if you place this
+        script at the top of the page, you'll be able to count users who don't fully load the page, and you'll incur
+        the max number of simultaneous connections of the browser.
+        https://developers.google.com/analytics/devguides/collection/analyticsjs/
+    *@
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', '@WebConfigurationManager.AppSettings["GoogleAnalytics:PropertyID"]', '@(Request.IsLocal ? "none" : "auto")');
+    </script>
+</body>
+</html>

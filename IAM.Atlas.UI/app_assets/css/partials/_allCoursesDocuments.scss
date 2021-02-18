@@ -1,0 +1,42 @@
+﻿#allCoursesDocuments{
+
+    .allCoursesButtonDivMargin
+    {
+        margin-top: 37px;
+    }
+
+    tr.allCoursesDocumentList, th.allCoursesDocumentList
+    {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+    }
+
+    tr.selectedAllCourseDocument
+    {
+        color: white;
+        background-color:#428bca;
+    }
+
+    .tableDivHeight{
+        height:570px;
+    }
+}
+
+#allCoursesDocumentsAddExisting{
+    
+    tr.allCoursesDocumentList, th.allCoursesDocumentList
+    {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+    }
+
+    tr.selectedDocument
+    {
+        color: white;
+        background-color:#428bca;
+    }
+
+    .tableDivHeight{
+        height:540px;
+    }
+}

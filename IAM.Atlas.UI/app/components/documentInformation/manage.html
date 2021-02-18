@@ -1,0 +1,57 @@
+﻿<div>
+    <div class="history-item-container">
+
+        <div class="row" data-ng-show="hideTable">
+            <div class="col-sm-11 validation-message">{{ errorMessage }}</div>
+        </div>
+
+        <table class="table table-striped table-hover" data-ng-hide="hideTable" st-table="docInformation" st-safe-src="documentInformation">
+            <thead>
+                <tr>
+                    <th st-sort="date">Title</th>
+                    <th class="nowrap" st-sort="type">Name</th>
+                    <th st-sort="created">Last Modified</th>
+                    <th class="nowrap" st-sort="information">Updated By Name</th>
+                    <th class="nowrap" st-sort="information">Size</th>
+                    <th class="nowrap" st-sort="information">Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="doc in documentInformation track by $index"
+                    title="Double click to download the document"
+                    ng-click="selectDocument(doc)"
+                    ng-dblclick="downloadSelectedDocument(doc)"
+                    ng-class="{selectedDocumentInformation : doc.isSelected == true}">
+                    <td class="nowrap">{{ doc.DocumentTitle}}</td>
+                    <td class="nowrap">{{ doc.FileName}}</td>
+                    <td class="nowrap">{{ doc.LastModified | date:'dd-MMM-yyyy HH:mm:ss'}}</td>
+                    <td class="nowrap">{{ doc.UpdatedByName }}</td>
+                    <td>{{ doc.FileSize }}</td>
+                    <td class="nowrap">{{ doc.DocumentType }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="row" ng-show="documentOrigin == 'client'">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3">
+                <div ng-show="(selectedDocument.DocumentType == '.docx' || selectedDocument.DocumentType == '.docx') && !isReferringAuthority && !systemIsReadOnly && selectedDocuments.length > 0">
+                    <div class="btn"
+                         ng-click="sendDocumentToPrintQueue()"
+                         title="Send Document to Print Queue">Send Documents to Print Queue</div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div ng-show="selectedDocuments.length > 0 && !isReferringAuthority && !systemIsReadOnly">
+                    <div class="btn"
+                         ng-click="showEmailClientModal()"
+                         title="Email Selected Documents">Email Selected Documents</div>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="row validation-message margintop10">
+            <div class="col-sm-12 text-center">{{documentValidationMessage}}</div>
+        </div>
+    </div>
+</div>

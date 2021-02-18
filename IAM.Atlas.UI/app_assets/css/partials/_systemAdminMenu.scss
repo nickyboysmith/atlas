@@ -1,0 +1,50 @@
+﻿
+
+.systemAdminMenu {
+    
+    width: 800px;
+
+    .form-line-holder {
+        height: auto;
+        overflow: hidden;
+        margin-bottom: 10px; 
+    }
+
+    form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+        .row {
+            display: inline-block;
+        }
+
+        .control-button {
+            margin-left: -25px;
+        }
+
+      
+        .selectedMenuItem {
+            background: #00508f;
+            color: #fff;
+        }
+
+        .selectedMenuItem:hover {
+            background: #00508f;
+            color: #fff;
+        }
+
+        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+            background-color: #00508f;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .control-label {
+            display: block;
+            white-space: nowrap;
+            padding: 0;
+            text-align: left;
+        }
+    }
+}

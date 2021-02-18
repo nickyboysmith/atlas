@@ -1,0 +1,31 @@
+﻿.courseRebookingFee {
+ 
+    form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+      
+        .table tr:hover td
+        {
+            background-color:#ffffe6;
+        }
+
+        .selectedCategory {
+            background: #cce9ff !important;
+        }
+
+        .selectedCategory:hover {
+            background: #ffffe6;
+        }
+
+        .sml-scroll-div {
+            border: 1px solid black;
+        }
+
+        .panel {
+            border: 1px solid black;
+        }
+
+    }
+}

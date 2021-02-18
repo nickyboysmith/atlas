@@ -1,0 +1,113 @@
+﻿<div id="SystemTaskMaintenance" class="systemTask">
+    <div class="AddFavourite">
+        <input class="AddFavourite" type="submit"
+               id="addToMenuFavourite" name="submit"
+               alt="Add to Favourites"
+               value=""
+               title="Add this to the your Favourites"
+               ng-click="addToMenuFavourite()" />
+    </div>
+    <div class="Title row ">
+        <h2>System Tasks</h2><br />
+    </div>
+    <div class='row'>
+    </div>
+    <form class="form-horizontal" role="form" style="color: black; ">
+        <!-- First Row -->
+        <div class="row">
+            <!-- First Column -->
+            <div class="col-sm-8">
+
+                <div class='row form-group' ng-show="isAdminUser">
+                    <div class='col-sm-3'><label>Organisation</label></div>
+                    <div class='col-sm-6'>
+                        <select id="organisationDD" class='col-sm-12 form-control'
+                                ng-model="selectedOrganisationId"
+                                ng-options="organisation.id as organisation.name for organisation in organisations"
+                                ng-change="showSystemTasks(selectedOrganisationId)"
+                                ng-show="isAdminUser"></select>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+
+        <div class='row marginBottom10'>
+            <div class='col-sm-12'>
+                <label>Systems Tasks</label>
+            </div>
+        </div>
+
+        <!-- Second Row -->
+        <div class="row">
+            <!-- First Column -->
+            <div class="col-sm-6">
+                <div class="sml-scroll-div marginBottom10">
+                    <table class="table table-bordered table-striped">
+                        <thead></thead>
+                        <tbody>
+                            <tr ng-repeat="systemTask in systemTasks">
+                                <td ng-click="loadSystemTaskDetail(systemTask.Id)" value="{{systemTask.Id}}" ng-class="{selectedSystemTask : selectedSystemTaskId == systemTask.Id}">{{systemTask.Title}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+              
+                <!--<<div class='row form-line-holder'>
+                  
+                    <div class='col-sm-12 statusMessage' ng-hide="statusMessage.length == 0">{{statusMessage}}</div>
+                </div>
+                <div class='row form-line-holder'>
+                    
+                    <div class='col-sm-12 errorMessage' ng-hide="errorMessage.length == 0">{{errorMessage}}</div>
+                </div>-->
+            </div>
+            <div class="col-sm-6 form-group" ng-show="selectedSystemTaskId > 0 && selectedOrganisationId > 0">
+                <div class='row form-group'>
+                    <label class='col-sm-3 control-label'>System Task:</label>
+                    <div class='col-sm-9 labelLineup'><span ng-disabled="!isAdminUser && systemTaskDetail.Id > 0" >{{systemTaskDetail.Title}}</span></div>
+                </div>
+                <div class='row form-group'>
+                    <label class='col-sm-3 control-label'></label>
+                    <div class='col-sm-9 labelLineup'><span ng-disabled="!isAdminUser && systemTaskDetail.Id > 0" >{{systemTaskDetail.Description}}</span></div>
+                </div>
+                <div class='row form-group'>
+                    <div class="col-sm-3"></div>
+                    <div class='col-sm-1'><input ng-disabled="" class="cm-sm-1" type="checkbox" ng-model="systemTaskDetail.SendMessagesViaEmail" /></div>
+                    <div class="col-sm-8"><label class='disabled-label'>{{systemTaskDetail.EmailOptionCaption}}</label></div>
+                </div>
+                <div class='row form-group'>
+                    <div class="col-sm-3"></div>
+                    <div class='col-sm-1'><input ng-disabled="" class="cm-sm-1" type="checkbox" ng-model="systemTaskDetail.SendMessagesViaInternalMessaging" /></div>
+                    <div class="col-sm-8"><label class='disabled-label'>{{systemTaskDetail.InternalMessageOptionCaption}}</label></div>
+                </div>
+                <div class='row form-group'>
+                    <div class='row col-sm-12'></div>
+
+                    <label class='col-sm-3 control-label'></label>
+                    <div class="col-sm-3">
+                        <button ng-click="saveSystemTask()" class="btn btn-default btn-sm" title="Save Changes">Save</button>
+                    </div>
+                    <div class="col-sm-3  pull-right">
+
+                    </div>
+                </div>
+                <div class='row form-group' ng-show="showSaveSuccess">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9"><b>Save successful.</b></div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!successMessage === false">
+            <div class="col-sm-12 success-message noRightPadding rightalign">{{ successMessage }}</div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+            <div class="col-sm-12 validation-message noRightPadding rightalign">{{ validationMessage }}</div>
+        </div>
+
+    </form>
+</div>

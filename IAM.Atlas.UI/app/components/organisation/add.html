@@ -1,0 +1,43 @@
+﻿<div id="organisationCreateNew">
+
+    <div class="Title row">
+        <h2></h2>
+    </div>
+    <form class="form-horizontal row" role="form">
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-12'>
+                <label>Organisation Name</label>
+            </div>
+            <div class='col-sm-12'>
+                <input type="text" class="form-control" maxlength="320" ng-model="organisation.Name" />
+            </div>
+        </div>
+
+        <div class='form-line-holder'>
+            <div class="col-sm-3">
+                <button class="btn btn-default btn-sm pull-left"
+                        ng-click="saveNewOrganisation()"
+                        ng-disabled="HasOrganisationName()"
+                        title="Save Settings">
+                    Save
+                </button>
+            </div>
+            <div class="col-sm-9"></div>
+            </div>
+
+            <!--Message banner-->
+            <div class='form-line-holder'>
+                <div class="col-sm-12" ng-if="successMessage != ''">
+                    <h3>{{ successMessage }}</h3>
+                </div>
+            </div>
+            <div class='form-line-holder'>
+                <div class="col-sm-12" ng-if="validationMessage != ''">
+                    <h3>{{ validationMessage }}</h3>
+                </div>
+            </div>
+
+</form>
+</div>
+

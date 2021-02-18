@@ -1,0 +1,187 @@
+﻿@import "../modules/mixins";
+
+#trainerAvailability {
+    .date-icon {
+        margin-top: 6px;
+        @include iconGetter(-6px, -506px);
+        height: 20px;
+        display: block;
+    } 
+    .holding-container {
+        height: 204px;
+        width:100%;
+        @include theBorderRadius(5px);
+        border: 1px solid #cecece;
+        overflow-y: scroll;
+        ul {
+            list-style-type: none;
+            padding:0;
+            li {
+                padding: 5px 10px;
+            }
+            li:nth-child(even) {
+                background: #EFEFEF;
+            }
+            li:hover {
+                background:#6495d6;
+                color: #fff;
+            }
+        }
+        .selectedUnavailable {
+            background:#6495d6;
+            color: #fff;
+        }
+        .selectedUnavailable:nth-child(even) {
+            background:#6495d6;
+            color: #fff;
+        }
+    }        
+    .action-buttons {
+        width: 100%!important;
+        display: block;
+    }
+    input.available-checkbox {
+        display:block; 
+        float: left;
+        margin-right: 10px;
+    }
+    ul.available-days {
+        list-style-type: none;
+        padding:0;
+        margin-top: -3px;
+        margin-bottom: 0;
+        li {
+            margin-bottom: 3px;
+            padding: 4px 0;
+        }
+        li:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .separator {
+        margin-top:30px;
+    }
+    p {
+        span {
+            font-weight: bold;
+        }
+    }
+    .checkbox-container {
+        /*float: right;*/
+    }
+    .purple {
+        color: #9681b0;
+    }
+}
+
+#trainerAvailabilityCalendarDiv, #trainerAdminCalendarDiv
+{
+    container{
+      border: 1px solid black;
+      margin: 0;
+      padding: 4px;
+    }
+
+    .yearMonth {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .year {
+    }
+    .month {
+    }
+
+    .calendar {
+      background-color: white;
+    }
+    .cal-column {
+      background-color: transparent;
+      border: 1px black solid;
+      padding: 0;
+      margin: 0;
+      max-width:14%;
+    }
+    .main-title{
+      margin: 0;
+      padding: 0;
+      padding-left: 2px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      text-align: center;
+      font-size: medium;
+      font-weight: bold;
+      border-bottom: 1px black solid;
+      background-color: #ccffee;
+    }
+    .hide {
+      display: none;
+    }
+    .day-title{
+      border-bottom: 1px black solid;
+      margin: 0;
+      padding: 0;
+      padding-left: 5px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      font-size:x-small;
+      font-weight: bold;
+      background-color: #00b3b3;
+    }
+
+    .year-month-select {
+        width: 80px;
+    }
+
+    .day{
+      margin: 0;
+      padding: 0;
+      padding-left: 3px;
+      padding-top: 2px;
+      padding-bottom: 2px;  
+    }
+
+    input[type=checkbox]{
+      cursor: pointer;  
+    }
+
+    input[type=checkbox].prev-month, input[type=checkbox].next-month, input[type=checkbox].past-date
+    {
+      pointer-events: none;  
+      cursor: default;
+    }
+    
+    .prev-month{
+      background-color: #e6e6e6;  
+    }
+    
+    .next-month{
+      background-color: #f7f6ed;
+    }
+    
+    .session{
+      margin: 0;
+      padding: 0;
+      padding-left: 2px;
+      padding-top: 2px;
+      padding-bottom: 2px;  
+      font-size:small;
+    }
+    
+    span.sub-title{  
+      padding-left: 1px;
+      font-size:x-small;
+    }
+}
+ 
+@media screen and (max-width: 767px) {
+    #trainerAvailability {
+        .added-responsive-bottom-margin {
+            margin-bottom:30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #cecece;
+        }
+        .separator {
+            margin-top: 0;
+        }
+    }  
+}

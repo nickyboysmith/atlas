@@ -1,0 +1,96 @@
+﻿<div id="courseReferenceGeneratorSettings" class="courseReferenceGeneratorSettings">
+
+    <system-feature-information title="Course Interpreter Reference Generation Settings"
+                                controller="CourseReferenceInterpreterSettingsCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/courseReference/updateInterpreterSettings"
+                                page-name="Course Interpreter Reference Generation Settings"></system-feature-information>
+
+    <div class="Title row">
+        <h2></h2>
+    </div>
+    <form class="form-horizontal row" role="form">
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-7'>
+                <label>Settings</label>
+            </div>
+            <div class='col-sm-5'></div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'>
+                    <input type="checkbox" ng-model="interpreterSettings.AutoGenerateInterpreterCourseReference" />
+                </div>
+                <div class='col-sm-10 blueitalic'>Auto Generate Interpreter Course Reference</div>
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'>
+                    <input type="checkbox" ng-model="interpreterSettings.LetAtlasSystemGenerateUniqueNumber" />
+                </div>
+                <div class='col-sm-10 blueitalic'>Let Atlas System Generate Unique Number</div>
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'>
+                    <input type="checkbox" ng-model="interpreterSettings.ReferenceEditable" />
+                </div>
+                <div class='col-sm-10 blueitalic'>Reference Editable</div>
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'>
+                    <input type="checkbox" 
+                           ng-model="interpreterSettings.ReferencesStartWithCourseTypeCode"
+                           ng-click="clearStartAllReferencesWith()"/>
+                </div>
+                <div class='col-sm-10 blueitalic'>References Start With Course Type Code</div>
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'></div>
+                <div class='col-sm-7 blueitalic'>Or Start All References With</div>
+                <div class='col-sm-4'>
+                    <input type="text" class="form-control" ng-model="interpreterSettings.StartAllReferencesWith" ng-disabled="interpreterSettings.ReferencesStartWithCourseTypeCode"/>
+                </div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'></div>
+                <div class='col-sm-11'>
+                    <button class="btn btn-default btn-sm"
+                            ng-click="saveInterpreterSettings()"
+                            title="Save Trainer Settings">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!updateSuccessMessage === false">
+            <div class="col-sm-12 success-message leftalign">{{ updateSuccessMessage }}</div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!updateValidationMessage === false">
+            <div class="col-sm-12 validation-message leftalign">{{ updateValidationMessage }}</div>
+        </div>
+
+    </form>
+</div>
+

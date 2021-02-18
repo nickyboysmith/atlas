@@ -1,0 +1,133 @@
+﻿<div id="courseTypeCategory" class="courseTypeCategory">
+
+    <system-feature-information title="course type categories"
+                                controller="CourseTypeCategoryCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/courseTypeCategories/update"
+                                page-name="Course Type Categories"></system-feature-information>
+
+    <form class="form-horizontal row" role="form">
+
+        <div class='row'></div>
+        <div class='row'></div>
+
+        <div ng-show="isAdmin">
+            <div class='col-sm-12 form-group'>
+                <div class='col-sm-2'>
+                    <label>Organisation:</label>
+                </div>
+                <div class='col-sm-4'>
+                    <select ng-model="organisationId"
+                            ng-change="getCourseTypesByOrganisation(organisationId)"
+                            class='form-control'
+                            ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+                </div>
+                <div class='col-sm-6'></div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-2'>
+                <label>Course Type:</label>
+            </div>
+            <div class='col-sm-4'>
+                <select ng-model="selectedCourseTypeCategory.selectedCourseTypeId"
+                        class='form-control'
+                        ng-options="courseType.Id as courseType.Title for courseType in courseTypes"
+                        ng-change="getCourseTypesCategoriesByCourseType(selectedCourseTypeCategory.selectedCourseTypeId)"></select>
+            </div>
+            <div class='col-sm-6'></div>
+        </div>
+
+
+
+        <div class='row'>
+
+            <div class="col-sm-12">
+
+                <!-- Course Type Categories -->
+                <div class='col-sm-6'>
+
+                    <label>Categories</label>
+
+                        <div class="sml-scroll-div marginBottom10">
+                            <table class="table table-hover table-bordered table-striped">
+                                <thead></thead>
+                                <tbody>
+                                    <tr data-ng-repeat="courseTypeCategory in courseTypeCategories">
+                                        <td ng-click="setSelectedCourseTypeCategoryDetail(courseTypeCategory)"
+                                            value="{{courseTypeCategory.Id}}"
+                                            ng-class="{selectedCourseTypeCategoryDetailId : courseTypeCategory.Id == selectedCourseTypeCategoryDetailId}">
+                                            {{courseTypeCategory.Name}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    
+                </div>
+
+                <div class="col-sm-6">
+
+                    <div class='row marginBottom5'>
+                        <!-- Title -->
+                        <div class="col-sm-3">
+                            <label>Category</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" data-ng-model="selectedCourseTypeCategoryDetail.Name" placeholder="Course Type Category" " />
+                        </div>
+                    </div>
+                    <!-- Course Type Code -->
+                    <div class="row marginBottom5">
+                        <div class="col-sm-3">
+                            <label>Last Booking</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" data-ng-model="selectedCourseTypeCategoryDetail.DaysBeforeCourseLastBooking" />
+                        </div>
+                        <div class="col-sm-6">
+                            days before the course starts
+                        </div>
+                    </div>
+
+
+                    <!-- Course Type Disable Checkbox -->
+                    <div class="row marginBottom5">
+                        <div class='col-sm-3'></div>
+                        <div class="col-sm-1">
+                            <input type="checkbox" data-ng-model="selectedCourseTypeCategoryDetail.Disabled" />
+                        </div>
+                        <div class="col-sm-8">
+                            <label class="disabled-label">Disabled</label>
+                        </div>
+                       
+                    </div>
+
+
+                    <div class="row">
+                        <div class='col-sm-3'></div>
+                        <div class="col-sm-3">
+                            <div class="btn button-fill-width" data-ng-click="saveCourseTypeCategory()">Save</div>
+                        </div>
+
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-1">
+                            <div class="btn button-fill-width" data-ng-click="addNewCourseTypeCategory()">Add new</div>
+                        </div>
+                        <div class='col-sm-2'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!successMessage === false">
+            <div class="col-sm-12 success-message leftalign">{{ successMessage }}</div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+            <div class="col-sm-12 validation-message leftalign">{{ validationMessage }}</div>
+        </div>
+
+    </form>
+</div>

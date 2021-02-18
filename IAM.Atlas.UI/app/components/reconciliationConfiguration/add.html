@@ -1,0 +1,63 @@
+﻿<div id="addReconciliationConfiguration">
+    <div class="col-sm-12">
+        <div class="row marginBottom20">
+            <div class="row margintop10 marginBottom20">
+                <div class="col-sm-3">Configuration:</div>
+                <div class="col-sm-5 noLeftPadding">
+                    <input type="text" class="form-control" ng-model="newConfig.Name" placeholder="Name" required />
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+            <div class="row marginBottom10">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-5 noLeftPadding">Date Column Number: </div>
+                <div class="col-sm-2">
+                    <input type="number" min="0" step="1" class="form-control" ng-model="newConfig.transactionDateColumnNumber" placeholder="999" required />
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <div class="row marginBottom10">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-5 noLeftPadding">Amount Column Number: </div>
+                <div class="col-sm-2">
+                    <input type="number" min="0" step="1" class="form-control" ng-model="newConfig.transactionAmountColumnNumber" placeholder="999" required />
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <div class="row marginBottom10">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-5 noLeftPadding">Reference 1 Column Number: </div>
+                <div class="col-sm-2">
+                    <input type="number" min="0" step="1" class="form-control" ng-model="newConfig.reference1ColumnNumber" placeholder="999" />
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <div class="row marginBottom10">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-5 noLeftPadding">Reference 2 Column Number: </div>
+                <div class="col-sm-2">
+                    <input type="number" min="0" step="1" class="form-control" ng-model="newConfig.reference2ColumnNumber" placeholder="999" />
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <div class="row marginBottom10">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-5 noLeftPadding">Reference 3 Column Number: </div>
+                <div class="col-sm-2">
+                    <input type="number" min="0" step="1" class="form-control" ng-model="newConfig.reference3ColumnNumber" placeholder="999" />
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-2 btn" ng-click="save()">Save</div>
+                <div class="col-sm-7"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 validation-message pull-left">{{validationMessage}}</div>
+        </div>
+    </div>
+</div>
+
+

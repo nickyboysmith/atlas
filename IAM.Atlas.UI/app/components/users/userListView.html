@@ -1,0 +1,72 @@
+﻿<style>
+    .st-sort-ascent:before {
+        content: '\25B2';
+    }
+
+    .st-sort-descent:before {
+        content: '\25BC';
+    }
+</style>
+
+<button ng-click="getUsers()">Refresh Users</button>
+
+<table st-table="users" class="table table-striped" st-safe-src="usersTemplate">
+
+    <thead>
+        <tr>
+            <td colspan="5">
+                <input st-search placeholder="Filter results" class="input-sm form-control" type="search" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                Items per page:&nbsp;<input type="text" value="{{itemsPerPage}}" ng-model="itemsPerPage" /><br />
+                Show Disabled Users:&nbsp;<input type="checkbox" ng-model="showDisabled" />
+            </td>
+        </tr>
+        <tr>
+            <th st-sort="Id">
+                Id
+            </th>
+            <th st-sort="LoginId">
+                LoginId
+            </th>
+            <th st-sort="Name">
+                Name
+            </th>
+            <th st-sort="Email">
+                Email
+            </th>
+            <th st-sort="Phone">
+                Phone
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="user in users | filter:showUser">
+            <td>
+                {{user.Id}}
+            </td>
+            <td>
+                {{user.LoginId}}
+            </td>
+            <td>
+                {{user.Name}}
+            </td>
+            <td>
+                {{user.Email}}
+            </td>
+            <td>
+                {{user.Phone}}
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5" class="text-center">
+                <div st-pagination="" st-items-by-page="itemsPerPage"></div>
+            </td>
+        </tr>
+    </tfoot>
+</table>

@@ -1,0 +1,115 @@
+﻿
+<div id="searchTrainer" class="SearchTrainer">
+    <div class="AddFavourite">
+        <input class="AddFavourite" type="submit"
+               id="addToMenuFavourite" name="submit"
+               alt="Add to Favourites"
+               value=""
+               title="Add this to the your Favourites"
+               ng-click="addToMenuFavourite()" />
+    </div>
+    <div class="Title row" >
+        <h2>Trainer Administration</h2>
+    </div>
+    <div class='row'>
+    </div>
+    <form class="form-horizontal row" role="form" style="color: black; ">
+        <div>
+            <div class="marginBottom10 text-center">
+                <h3 style="color:darkseagreen">{{ successMessage }}</h3><div class="validation-message">{{ errorMessage }}</div>
+            </div>
+        </div>
+        <!--Organisation-->
+        <div class='row form-line-separator' ng-show="isAdmin">
+            <div class="col-sm-3">
+                <label>Organisation:</label>
+            </div>
+            <div class='col-sm-9'>
+                <select ng-change="getCourseTypes(selectedOrganisation)" 
+                        ng-model="selectedOrganisation" 
+                        class='col-sm-12 form-control'
+                        ng-options="organisation.id as organisation.name for organisation in organisations">
+                </select>
+            </div>
+        </div>
+
+        <!--Course Type-->
+        <div class='row form-line-separator'>
+            <div class="col-sm-3">
+                <label>Course Type:</label>
+            </div>
+            <div class='col-sm-9'>
+                <select 
+                        ng-change="getCourseCategories(selectedCourseType)" 
+                        ng-model="selectedCourseType" 
+                        class='col-sm-12 form-control'>
+                    <option value="0">Course Type</option>
+                    <option value="All">All</option>
+                    <option value="Unallocated">Unallocated</option>
+                    <option ng-repeat="coursetype in courseTypes" value="{{coursetype.Id}}">{{coursetype.Description}}</option>
+
+                </select>
+            </div>
+        </div>
+
+        <!--Course Type Category-->
+        <div class='row form-line-separator' ng-hide="!showCategories">
+            <div class="col-sm-3">
+                <label>Course Type Category:</label>
+            </div>
+            <div class='col-sm-6'>
+                <select ng-change="getTrainers(selectedCourseCategory)" ng-model="selectedCourseCategory" class='col-sm-12 form-control'>
+                    <option value="0">Course Type Category</option>
+                    <option value="All">All</option>
+                    <option ng-repeat="coursecategory in courseCategories" value="{{coursecategory.Id}}">{{coursecategory.Name}}</option>
+                </select>
+            </div>
+        </div>
+        <!--Results-->
+        <div class='row form-line-separator'>
+            <!--Organisation list here -->
+            <div class='col-sm-10'>
+                <table st-safe-src="trainerCollection" st-table="trainers"  class="table table-hover table-bordered">
+                    <thead>
+                        <tr class="bootstrap-dialog-header">
+                            <th style="color:white;">Trainers</th>
+                        </tr>
+                        <tr ng-show="trainers.length > 0">
+                            <td>
+                                <input st-search="" class="form-control" placeholder="filter ..." type="text" />
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="trainer in trainers">
+                            <td ng-click="$parent.selectTrainer(trainer.Id)"
+                                ng-dblclick="$parent.showTrainer(trainer.Id)"
+                                value="{{trainer.Id}}"
+                                ng-class="{selectedTrainer: trainer.Id === selectedTrainer}"
+                                ng-show="trainer.Id > 0">
+                                {{trainer.DisplayName}}&nbsp;({{trainer.Email}})
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6" class="text-center">
+                                <div st-pagination="" st-items-by-page="10" st-displayed-pages="7"></div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class='col-sm-2'>
+                <button 
+                        ng-click="createTrainer()" 
+                        class="btn btn-block" 
+                        title="Add New">Add New</button>
+                <button 
+                        ng-click="editTrainer()" 
+                        class="btn btn-block" 
+                        title="Details">Details</button>
+            </div>
+        </div>
+    </form>
+</div>

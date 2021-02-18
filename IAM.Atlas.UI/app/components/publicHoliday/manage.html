@@ -1,0 +1,82 @@
+﻿
+
+<div id="managePublicHoliday" class="PublicHolidays">
+    <div class="Title row">
+        <h2>Public Holidays</h2>
+    </div>
+    <div class='row'>
+    </div>
+    <form class="form-horizontal row" role="form">
+        <div class="col-sm-12">
+
+            <div class="countryHolder">
+                <label class="col-md-4 remove-left-padding">Country</label>
+                
+                <select class="col-md-8" ng-model="selectedCountry" ng-change="selectTheCountry(selectedCountry)" ng-options="country.id as country.name for country in Countries">
+                </select>
+
+            </div>
+
+            <div class="publicHoliday">
+
+                <div id="publicHolidayGridHolder">
+                    <table class="table" st-table="publicHolidays" st-safe-src="publicHolidayCollection">
+                        <thead>
+                            <tr>
+                                <th st-sort="reference">Dates</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="publicHoliday in publicHolidays" 
+                                data-ng-click="selectThePublicHoliday(publicHoliday)" 
+                                ng-class="{selectedPublicHoliday: manage.thePublicHoliday.Id === publicHoliday.Id}">
+                                <td>{{ publicHoliday.Date | date:'dd-MM-yyyy' }}</td>
+                                <td>({{publicHoliday.Title}})</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" class="text-center">
+                                    <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="5"></div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-6">
+
+            <div class="row public-holiday-buttons">
+                <div class="col-md-2">
+                    <div class="btn button-fill-width" data-ng-click="addPublicHoliday()">Add New</div>
+                </div>
+                <div class="col-md-2">
+                </div>
+                    <div class="col-md-2">
+                        <div class="btn button-fill-width" data-ng-click="removePublicHoliday()"
+                             ng-disabled="isDistantDate()">Remove</div>
+                    </div>
+                </div>
+
+        </div>
+
+        <div class="col-md-6">
+            <label><span>{{ removeValidationMessage }}</span></label>
+        </div>
+
+        <div data-ng-if="showSuccessFader == true">
+            <my-msgfader status="success"></my-msgfader>
+        </div>
+        <div data-ng-if="showErrorFader == true">
+            <my-msgfader status="error"></my-msgfader>
+        </div>
+    
+
+ </form>
+</div>
+
+
+

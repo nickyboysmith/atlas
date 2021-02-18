@@ -1,0 +1,182 @@
+﻿<div id="homeDashboard" ng-controller="DashboardCtrl">
+    <div class="row">
+        <!--<div class="col-sm-6">-->
+        <div class="col-sm-12">
+            <div class="dropdown-title-container row" ng-hide="systemIsReadOnly">
+                <div class="title col-md-5 col-sm-12" title="System Information">
+                    <span>.......</span>
+                </div>
+                <div class="documentPrintQueueContainer col-md-2 col-sm-12">
+                    <div class="documentPrintQueue" ng-click="openDocPrintQueueManagementModal()" ng-show="documentPQSummary.DocumentsInQueue > 0" title="{{documentPQSummaryInfo}}">
+                        <div class="documentPrintQueueInfo"><span>{{documentPQSummary.DocumentsInQueue}}</span></div>
+                    </div>
+                </div>
+                <div class="taskContainer col-md-5 col-sm-12">
+                    <div ng-show="showUserTaskPanel == true || {{isAdmin}} == true">
+                        <div class="item viewAllTasksByUser" title="View All User Tasks" ng-show="{{isAdmin}} == true || {{isOrganisationAdmin}} == true" ng-click="viewAllUserTaskLists()"></div>
+                        <div class="item refreshTaskSummary" title="Refresh" ng-click="getUserTaskSummary()"></div>
+                        <div class="item addTask" title="Create a New Task" ng-show="allowUserToCreateTasks == true || {{isAdmin}} == true" ng-click="addNewTask()"></div>
+                        <div ng-repeat="taskSummary in userTaskSummary | orderBy: '-TaskPriorityNumber'" 
+                             class="item taskPrioritySummary Colour{{taskSummary.TaskPriorityNumber}}" 
+                             ng-click="viewTaskList(taskSummary.TaskPriorityNumber, taskSummary.TotalNumberOfOpenTasks)"
+                             title="{{taskSummary.TotalNumberOfOpenTasks}} Tasks & Actions at Priority {{taskSummary.TaskPriorityNumber}}">
+                            {{taskSummary.TotalNumberOfOpenTasks}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-split-containter">
+                <div class="row">
+                    <div class="meterBoxContainer">
+                        <div class="meterBox" ng-repeat="(key, value) in meter">
+                            <div class="picture {{ meterByKey[key]['Category'] }}">
+
+                            </div>
+                            <div class="meterInformation" ng-click="meterDataShow = !meterDataShow">
+                                <span>{{ meterByKey[key]['Description'] }}</span>
+                            </div>
+                            <div class="title">
+                                <span>{{ meterByKey[key]['Title'] }}</span>
+                            </div>
+                            <div class="meterData {{ key }} animate-hide" ng-show="meterDataShow">
+                                <div class="title">
+                                    <div class="text"><span>{{ meterByKey[key]['Title'] }} Meter</span></div>
+                                    <div class="closeIcon" ng-click="meterDataShow = !meterDataShow" title="Close"></div>
+                                </div>
+                                <table class="table" ng-if="key != 'Payments'">
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr ng-repeat="(theKey, theValue) in filterUpdateTime(value)" 
+                                        >
+                                        <td>{{ splitUppercase(theKey) }}:</td>
+                                        <td class="pull-text-right "
+                                            ng-click="openExtraInformationModal(key, theKey)"
+                                            ng-class="{'hoverUnderline select-figure': (key == 'Clients' || key == 'Courses' || key == 'DORSOfferWithdrawn')}"
+                                            title="{{ key == 'Clients' || key == 'Courses' || key == 'DORSOfferWithdrawn' ? 'Click to view' : '' }}"
+                                            >
+                                            <strong>{{ theValue }}</strong>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="table" ng-if="key == 'Payments'">
+                                    <tr>
+                                        <th></th>
+                                        <th>Online</th>
+                                        <th>Phone</th>
+                                        <th>Unallocated</th>
+                                        <th>Refunded</th>
+                                        <th>Total</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                    <tr ng-repeat="(index, payment) in meter['Payments']" ng-if="index != 'lastUpdated'">
+                                        <td>{{ payment.label }}</td>
+                                        <td class="pull-text-right select-figure"
+                                            ng-click="openExtraInformationModal(key, payment.label + '|Online')">
+                                            {{ payment.online }}
+                                        </td>
+                                        <td class="pull-text-right select-figure"
+                                            ng-click="openExtraInformationModal(key, payment.label + '|Phone')">
+                                            {{ payment.phone }}
+                                        </td>
+                                        <td class="pull-text-right select-figure"
+                                            ng-click="openExtraInformationModal(key, payment.label + '|Unallocated')">
+                                            {{ payment.unallocated }}
+                                        </td>
+                                        <td class="pull-text-right select-figure"
+                                            ng-click="openExtraInformationModal(key, payment.label + '|Refunded')">
+                                            {{ payment.refunded }}
+                                        </td>
+                                        <td class="pull-text-right select-figure"
+                                            ng-click="openExtraInformationModal(key, payment.label + '|Total')">
+                                            {{ payment.total }}
+                                        </td>
+                                        <td class="pull-text-right select-figure"
+                                            ng-click="openExtraInformationModal(key, payment.label + '|Amount')">
+                                            £{{  payment.amount }}
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="meterFooter">
+                                    <div class="refresh {{ key }}">
+                                        <img ng-click="createMeterData(key)"
+                                             title="Click to Refresh Results Now"
+                                             src="/app_assets/images/dashboard/refresh.png"
+                                             alt="" />
+                                    </div><!-- end .refresh -->
+                                    <div class="text">
+                                        Last Updated: {{value['lastUpdated']}}
+                                    </div><!-- end .text -->
+                                </div><!-- end .meterFooter -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="col-sm-6">
+            <div class="dropdown-title-container">
+                <div class="title">Charts</div>
+                <div
+                     class="title-icon hide-dashboard-container"
+                     ng-click="openPanel($event)">
+                </div>
+            </div>
+            <div class="dashboard-split-containter">
+
+                <div class="row chart-holder">
+                    <div class="col-sm-12">
+                        <div class="dropdown-title-container">
+                            <div class="title">Yesterday' total</div>
+                            <div class="title-icon hide-dashboard-container"
+                                 ng-click="openPanel($event)">
+                            </div>
+                        </div>
+
+                        <div class="dashboard-split-containter">
+                            <canvas
+                                    id="line"
+                                    class="chart chart-line"
+                                    chart-data="data"
+                                    chart-labels="labels"
+                                    chart-legend="true"
+                                    chart-series="series"
+                                    chart-click="onClick">
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row chart-holder">
+                    <div class="col-sm-12">
+                        <div class="dropdown-title-container">
+                            <div class="title">Browser Usage</div>
+                            <div class="title-icon hide-dashboard-container"
+                                 ng-click="openPanel($event)">
+                            </div>
+                        </div>
+
+                        <div class="dashboard-split-containter">
+                            <canvas id="line"
+                                    class="chart chart-line"
+                                    chart-data="data"
+                                    chart-labels="labels"
+                                    chart-legend="true"
+                                    chart-series="series"
+                                    chart-click="onClick"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>-->
+    </div>
+</div>
+
+
+
+

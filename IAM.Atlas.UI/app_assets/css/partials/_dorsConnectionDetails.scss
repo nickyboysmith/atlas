@@ -1,0 +1,45 @@
+@import "../modules/_mixins";
+
+#editConnectionDetails {
+
+    .title-separator {
+        margin-bottom: 10px;
+    }
+
+    .form-line-holder {
+        margin-bottom: 6px;
+        label {
+            padding-top: 7px;
+        }
+    }
+    .full-width-button {
+        width: 100%;
+        text-align: center;
+    }
+    .button-add-margin {
+        margin-top:4px;
+    }
+    .checkbox-add-margin {
+        margin-top: 11px;
+    }
+    ul.note-holder {
+        @include theBorderRadius(5px);
+        border: 1px solid #cecece;
+        padding: 5px 10px;
+        list-style-type: none;
+        height: 200px;
+        overflow: hidden;
+        overflow-y:scroll;
+        li  {
+            border-bottom: 1px dashed #cecece;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            font-size: 13px;
+            cursor:pointer;
+        }
+        li:last-child {
+            border-bottom: 0px;
+        }
+    }
+
+}

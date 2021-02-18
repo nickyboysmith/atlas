@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6C7546EA-D02F-492B-930C-971B7AC0F265}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IAM.Atlas.WebAPI</RootNamespace>
+    <AssemblyName>IAM.Atlas.WebAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GemBox.Document, Version=23.3.30.1088, Culture=neutral, PublicKeyToken=b1b72c69714d4847, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.5840.25917, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.6\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Images\100.png" />
+    <Content Include="Parameters.xml" />
+    <Content Include="Service References\AtlasNetcallWebservice\IAM.Atlas.WebAPI.AtlasNetcallWebservice.AccountDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AtlasNetcallWebservice\IAM.Atlas.WebAPI.AtlasNetcallWebservice.AccountPaymentResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AtlasNetcallWebservice\IAM.Atlas.WebAPI.AtlasNetcallWebservice.GetAccountDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AtlasNetcallWebservice\IAM.Atlas.WebAPI.AtlasNetcallWebservice.PostAccountPaymentResultOldResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AtlasNetcallWebservice\IAM.Atlas.WebAPI.AtlasNetcallWebservice.PostAccountPaymentResultResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\AtlasNetcallWebservice\netcall.disco" />
+    <None Include="Service References\AtlasNetcallWebservice\configuration91.svcinfo" />
+    <None Include="Service References\AtlasNetcallWebservice\configuration.svcinfo" />
+    <None Include="Service References\AtlasNetcallWebservice\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Classes\AuthorizationRequiredAttribute.cs" />
+    <Compile Include="Classes\AllowCrossDomainAccessAttribute.cs" />
+    <Compile Include="Classes\ArrayTools.cs" />
+    <Compile Include="Classes\DORSTools.cs" />
+    <Compile Include="Classes\EntityTools.cs" />
+    <Compile Include="Classes\Error.cs" />
+    <Compile Include="Classes\GemBoxDocumentHelper.cs" />
+    <Compile Include="Classes\GlobalVariables.cs" />
+    <Compile Include="Classes\Payment\PaymentProviderInterface.cs" />
+    <Compile Include="Classes\Payment\PaymentTools.cs" />
+    <Compile Include="Classes\Payment\ProcessPayment.cs" />
+    <Compile Include="Classes\Payment\Providers\BarclaysSmartPay.cs" />
+    <Compile Include="Classes\Payment\Providers\NetBanx.cs" />
+    <Compile Include="Classes\Payment\Providers\SecureTrading.cs" />
+    <Compile Include="Classes\TokenServices.cs" />
+    <Compile Include="Classes\StringTools.cs" />
+    <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\AdministrationMenuController.cs" />
+    <Compile Include="Controllers\ArchiveControlController.cs" />
+    <Compile Include="Controllers\PaymentReconcilicationController.cs" />
+    <Compile Include="Controllers\VatController.cs" />
+    <Compile Include="Controllers\BlockedIPController.cs" />
+    <Compile Include="Controllers\ClientOnlineBookingStateController.cs" />
+    <Compile Include="Controllers\ClientEmailTemplateController.cs" />
+    <Compile Include="Controllers\CourseFeeController.cs" />
+    <Compile Include="Controllers\CourseRebookingFeeController.cs" />
+    <Compile Include="Controllers\CourseInterpreterController.cs" />
+    <Compile Include="Controllers\DocumentInformationController.cs" />
+    <Compile Include="Controllers\DORSSchemeController.cs" />
+    <Compile Include="Controllers\EmailAllController.cs" />
+    <Compile Include="Controllers\InterpreterLanguageController.cs" />
+    <Compile Include="Controllers\DocumentPrintQueueController.cs" />
+    <Compile Include="Controllers\ReconciliationConfigurationController.cs" />
+    <Compile Include="Controllers\SignOutController.cs" />
+    <Compile Include="Controllers\TrainerVehicleController.cs" />
+    <Compile Include="Controllers\VehicleCategoryController.cs" />
+    <Compile Include="Controllers\VehicleTypeController.cs" />
+    <Compile Include="Controllers\MysteryShopperController.cs" />
+    <Compile Include="Controllers\NetCallController.cs" />
+    <Compile Include="Controllers\CourseCloneRequestController.cs" />
+    <Compile Include="Controllers\CourseReferenceGeneratorController.cs" />
+    <Compile Include="Controllers\CourseAttendanceController.cs" />
+    <Compile Include="Controllers\NetcallTestController.cs" />
+    <Compile Include="Controllers\PaymentNoteController.cs" />
+    <Compile Include="Controllers\RefundRequestSearchController.cs" />
+    <Compile Include="Controllers\PaymentSearchController.cs" />
+    <Compile Include="Controllers\RefundController.cs" />
+    <Compile Include="Controllers\StencilCourseController.cs" />
+    <Compile Include="Controllers\CourseStencilController.cs" />
+    <Compile Include="Controllers\DashboardMeterController.cs" />
+    <Compile Include="Controllers\LettersController.cs" />
+    <Compile Include="Controllers\MessagingController.cs" />
+    <Compile Include="Controllers\CourseTrainersController.cs" />
+    <Compile Include="Controllers\SMSController.cs" />
+    <Compile Include="Controllers\SystemControlController.cs" />
+    <Compile Include="Controllers\SystemFeatureController.cs" />
+    <Compile Include="Controllers\SystemTaskController.cs" />
+    <Compile Include="Controllers\DorsControlController.cs" />
+    <Compile Include="Controllers\EmailBlockedOutgoingAddress.cs" />
+    <Compile Include="Controllers\CourseBookingController.cs" />
+    <Compile Include="Controllers\CourseTypeFeeController.cs" />
+    <Compile Include="Controllers\SchedulerControlController.cs" />
+    <Compile Include="Controllers\SpecialRequirementController.cs" />
+    <Compile Include="Controllers\CourseReferenceController.cs" />
+    <Compile Include="Controllers\SendEmailController.cs" />
+    <Compile Include="Controllers\ClientRegisterController.cs" />
+    <Compile Include="Controllers\DocumentController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DocumentManagementController.cs" />
+    <Compile Include="Controllers\DorsConnectionNotesController.cs" />
+    <Compile Include="Controllers\DorsConnectionController.cs" />
+    <Compile Include="Controllers\AreaController.cs" />
+    <Compile Include="Controllers\AtlasBaseController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\CourseTypeCategoryController.cs" />
+    <Compile Include="Controllers\DORSWebServiceInterfaceController.cs" />
+    <Compile Include="Controllers\OrganisationSelfConfigurationController.cs" />
+    <Compile Include="Controllers\OrganisationSystemConfigurationController.cs" />
+    <Compile Include="Controllers\PaymentCardTypeController.cs" />
+    <Compile Include="Controllers\PaymentCardSupplierController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\RecordPaymentController.cs" />
+    <Compile Include="Controllers\ReferringAuthorityController.cs" />
+    <Compile Include="Controllers\ReportCategoryController.cs" />
+    <Compile Include="Controllers\SystemAuthenticationController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\SystemStateController.cs" />
+    <Compile Include="Controllers\TaskCategoryController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\TrainerAttendanceController.cs" />
+    <Compile Include="Controllers\TrainerBookingsController.cs" />
+    <Compile Include="Controllers\TrainerDocumentController.cs" />
+    <Compile Include="Controllers\TrainerNoteController.cs" />
+    <Compile Include="Controllers\CourseNoteController.cs" />
+    <Compile Include="Controllers\CourseTrainerController.cs" />
+    <Compile Include="Controllers\OrganisationLanguageController.cs" />
+    <Compile Include="Controllers\CourseTypeController.cs" />
+    <Compile Include="Controllers\DriverLicenceTypeController.cs" />
+    <Compile Include="Controllers\PhoneTypeController.cs" />
+    <Compile Include="Controllers\PublicHolidayController.cs" />
+    <Compile Include="Controllers\QuickSearchController.cs" />
+    <Compile Include="Controllers\TrainerAvailabilityController.cs" />
+    <Compile Include="Controllers\UserPreferenceController.cs" />
+    <Compile Include="Controllers\TrainerController.cs" />
+    <Compile Include="Controllers\DataViewController.cs" />
+    <Compile Include="Controllers\VenueImageMapController.cs" />
+    <Compile Include="Controllers\VenueLocaleController.cs" />
+    <Compile Include="Controllers\VenueCostController.cs" />
+    <Compile Include="Controllers\VenueCostTypeController.cs" />
+    <Compile Include="Controllers\PaymentProviderController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\ClientNoteController.cs" />
+    <Compile Include="Controllers\ClientPaymentController.cs" />
+    <Compile Include="Controllers\SearchCoursesController.cs" />
+    <Compile Include="Controllers\NoteHistoryController.cs" />
+    <Compile Include="Controllers\PaymentTypeController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="Controllers\SystemAdminController.cs" />
+    <Compile Include="Controllers\UserSearchHistoryController.cs" />
+    <Compile Include="Controllers\ConfigureOrganisation.cs" />
+    <Compile Include="Controllers\FeedbackController.cs" />
+    <Compile Include="Controllers\NavigationController.cs" />
+    <Compile Include="Controllers\OrganisationController.cs" />
+    <Compile Include="Controllers\PasswordController.cs" />
+    <Compile Include="Controllers\ClientSearchController.cs" />
+    <Compile Include="Controllers\SignInController.cs" />
+    <Compile Include="Controllers\SystemFontController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\MenuFavouriteController.cs" />
+    <Compile Include="Controllers\VenueController.cs" />
+    <Compile Include="Controllers\GenderController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Area\AreaJSON.cs" />
+    <Compile Include="Models\Clients\ClientOnlineEmailChangeRequestViewJSON.cs" />
+    <Compile Include="Models\Client\ClientDORSDataJSON.cs" />
+    <Compile Include="Models\Client\ClientGetResultJSON.cs" />
+    <Compile Include="Models\Client\ClientJSON.cs" />
+    <Compile Include="Models\Client\ClientLoginJSON.cs" />
+    <Compile Include="Models\Client\ClientSearchJSON.cs" />
+    <Compile Include="Models\Client\CourseInformationJSON.cs" />
+    <Compile Include="Models\CourseStencil\CourseStencilJSON.cs" />
+    <Compile Include="Models\CourseType\CourseTypeJSON.cs" />
+    <Compile Include="Models\Course\CourseClientJSON.cs" />
+    <Compile Include="Models\Clients\ClientViewJSON.cs" />
+    <Compile Include="Models\Course\CourseJSON.cs" />
+    <Compile Include="Models\Dashboard\PaymentExtraInformation.cs" />
+    <Compile Include="Models\Document\DocumentJSON.cs" />
+    <Compile Include="Models\DORSConnection\DORSConnectionJSON.cs" />
+    <Compile Include="Models\DORSOfferWithdrawn\DORSOfferWithdrawnJSON.cs" />
+    <Compile Include="Models\DORSOfferWithdrawn\DORSOfferWithdrawnMeterJSON.cs" />
+    <Compile Include="Models\DragDropUpdate\DragDropUpdateJSON.cs" />
+    <Compile Include="Models\Language\OrganisationLanguageJSON.cs" />
+    <Compile Include="Models\Letters\OldLetterTemplateJSON.cs" />
+    <Compile Include="Models\Navigation\UserMenuOptionJSON.cs" />
+    <Compile Include="Models\Netcall\AccountDetail.cs" />
+    <Compile Include="Models\Netcall\AccountDetailWithCourseId.cs" />
+    <Compile Include="Models\Netcall\AccountPaymentResult.cs" />
+    <Compile Include="Models\Netcall\NetcallClientDetailsJSON.cs" />
+    <Compile Include="Models\Netcall\NetcallClientPaymentDetail.cs" />
+    <Compile Include="Models\Note\NoteJSON.cs" />
+    <Compile Include="Models\Note\NoteTypeJSON.cs" />
+    <Compile Include="Models\Message\MessageJSON.cs" />
+    <Compile Include="Models\Organisation\Organisation.cs" />
+    <Compile Include="Models\PaymentProvider\PaymentProviderJSON.cs" />
+    <Compile Include="Models\Payment\Card.cs" />
+    <Compile Include="Models\Payment\CardHolderAddress.cs" />
+    <Compile Include="Models\Payment\PaymentAuthorization.cs" />
+    <Compile Include="Models\Payment\PaymentOrderReference.cs" />
+    <Compile Include="Models\Payment\PaymentError.cs" />
+    <Compile Include="Models\Payment\PaymentFrontendStructure.cs" />
+    <Compile Include="Models\Payment\PaymentJSON.cs" />
+    <Compile Include="Models\Payment\PaymentSuccess.cs" />
+    <Compile Include="Models\SystemConfiguration\OrganisationSystemConfigurationJSON.cs" />
+    <Compile Include="Models\Trainer\TrainerJSON.cs" />
+    <Compile Include="Models\PublicHoliday\PublicHoliday.cs" />
+    <Compile Include="Models\UserSearchHistory\UserSearchHistoryJSON.cs" />
+    <Compile Include="Models\User\UserJSON.cs" />
+    <Compile Include="Models\User\UserViewModel.cs" />
+    <Compile Include="Models\VenueCostType\VenueCostTypeJSON.cs" />
+    <Compile Include="Models\VenueCost\VenueCostJSON.cs" />
+    <Compile Include="Models\VenueCourseType\VenueCourseTypeJSON.cs" />
+    <Compile Include="Models\Venue\VenueImageMapJSON.cs" />
+    <Compile Include="Models\Venue\VenueJSON.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\Payment\PaymentViewModel.cs" />
+    <Compile Include="Controllers\TrainerCourseTypeCategoryController.cs" />
+    <Compile Include="Service References\AtlasNetcallWebservice\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Images\Web.config" />
+    <None Include="Service References\AtlasNetcallWebservice\netcall.wsdl" />
+    <None Include="Web.config.live">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\DocumentCache\" />
+    <Folder Include="Filters\" />
+    <Folder Include="Models\CourseLog\" />
+    <Folder Include="Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IAM.Atlas.Data\IAM.Atlas.Data.csproj">
+      <Project>{b00665cd-61ba-4faf-bf12-5661c0970033}</Project>
+      <Name>IAM.Atlas.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IAM.Atlas.DocumentManagement\IAM.Atlas.DocumentManagement.csproj">
+      <Project>{e5f31077-a7c4-4ef7-a54d-4d8ba8b4bb0d}</Project>
+      <Name>IAM.Atlas.DocumentManagement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IAM.Atlas.Tools\IAM.Atlas.Tools.csproj">
+      <Project>{04abddb8-e555-41ee-8db3-df676abcbdd8}</Project>
+      <Name>IAM.Atlas.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IAM.DORS.Webservice\IAM.DORS.Webservice.csproj">
+      <Project>{d539b0b0-e255-4af0-9a59-eaeca6a0c6cf}</Project>
+      <Name>IAM.DORS.Webservice</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AtlasNetcallWebservice\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>61817</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:63105/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

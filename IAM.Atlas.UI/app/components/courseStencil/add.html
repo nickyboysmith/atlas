@@ -1,0 +1,437 @@
+﻿<div id="courseStencil" class="AddCourseStencil">
+    <system-feature-information title="add course stencil"
+                                controller="addCourseStencilCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/courseStencil/add"
+                                page-name="Create Multi-Course Stencil"></system-feature-information>
+    <div class="Title row">
+        <h2>Create Multi-Course Stencil</h2>
+    </div>
+    <div class='row'>
+    </div>
+
+    <div class="row">
+        <div class='col-sm-6'>
+
+            <div class="row form-line-separator" ng-hide="hideCloning">
+                <div class="col-sm-4">
+                    <label>Clone Stencil:</label>
+                </div>
+                <div class='col-sm-5'>
+                    <select ng-model="courseStencils" class='form-control'
+                            ng-options="courseStencils.Id as courseStencils.name for courseStencils in courseStencil.listOfCourseStencils | orderBy: 'name'"
+                            ng-change="courseStencilSelected(courseStencils)">
+                        <option value="" selected>Stencil Name</option>
+                    </select>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-4">
+                    <label>Create a Maximum of:</label>
+                </div>
+                <div class='col-sm-2'>
+                    <input class="form-control rightalign" type="text" ng-model="courseStencil.maxCourses" placeholder="999" />
+                </div>
+                <div class="col-sm-6">
+                    <label>Courses</label>
+                    <span class="small-italic">(Course Dates)</span>
+                </div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class='col-sm-4'></div>
+                <div class='col-sm-4'>
+                    <input type="checkbox" ng-model="courseStencil.excludeBankHolidays" />
+                    <label>Exclude Bank Holidays</label>
+                </div>
+                <div class='col-sm-4'></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class='col-sm-4'></div>
+                <div class='col-sm-4'>
+                    <input type="checkbox" ng-model="courseStencil.excludeWeekends" />
+                    <label>Exclude Weekends</label>
+                </div>
+                <div class='col-sm-4'></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-4">
+                    <label>Earliest Start Date:</label>
+                </div>
+                <div class='col-sm-3'>
+                    <input type="text" class="form-control" ng-model="courseStencil.earliestStartDate" ng-click="toggleCalendar()">
+                </div>
+                <div class="col-md-1 element-overflow-0">
+                    <a ng-click="toggleCalendar()" ng-show="!displayCalendar" class="calendar-button col-sm-6" title="Show Calendar"><div></div></a>
+                    <a ng-click="toggleCalendar()" ng-show="displayCalendar" class="calendar-button col-sm-6" title="Hide Calendar"><div></div></a>
+                </div>
+                <div class="col-sm-1 display-calendar" ng-show="displayCalendar">
+                    <date-picker ng-model="courseStencil.earliestStartDate" format-date="formatDate" ng-mouseleave="toggleCalendar()"></date-picker>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-4">
+                    <label>Latest Start Date:</label>
+                </div>
+                <div class='col-sm-3'>
+                    <input type="text" class="form-control" ng-model="courseStencil.latestStartDate" ng-click="toggleCalendar2()">
+                </div>
+                <div class="col-md-1 element-overflow-0">
+                    <a ng-click="toggleCalendar2()" ng-show="!displayCalendar2" class="calendar-button col-sm-6" title="Show Calendar"><div></div></a>
+                    <a ng-click="toggleCalendar2()" ng-show="displayCalendar2" class="calendar-button col-sm-6" title="Hide Calendar"><div></div></a>
+                </div>
+                <div class="col-sm-1 display-calendar" z-index:10;" ng-show="displayCalendar2">
+                    <date-picker ng-model="courseStencil.latestStartDate" format-date="formatDate" ng-mouseleave="toggleCalendar2()"></date-picker>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class='col-sm-6'></div>
+                <div class='col-sm-2'>
+                    <input type="checkbox" ng-model="courseStencil.allowSessionTime2" />
+                </div>
+                <div class='col-sm-2'>
+                    <input type="checkbox" ng-model="courseStencil.allowSessionTime3" />
+                </div>
+                <div class='col-sm-2'></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class='col-sm-4'>
+                    <label>Session Start Times:</label>
+                </div>
+                <div class='col-sm-2'>
+                    <input type="text" class="form-control" ng-model="courseStencil.sessionStartTime1" placeholder="HH:MM">
+                </div>
+                <div class='col-sm-2'>
+                    <input type="text" class="form-control" ng-model="courseStencil.sessionStartTime2" ng-disabled="!courseStencil.allowSessionTime2" placeholder="HH:MM">
+                </div>
+                <div class='col-sm-2'>
+                    <input type="text" class="form-control" ng-model="courseStencil.sessionStartTime3" ng-disabled="!courseStencil.allowSessionTime3" placeholder="HH:MM">
+                </div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class='col-sm-4'>
+                    <label>Session End Times:</label>
+                </div>
+                <div class='col-sm-2'>
+                    <input type="text" class="form-control" ng-model="courseStencil.sessionEndTime1" placeholder="HH:MM">
+                </div>
+                <div class='col-sm-2'>
+                    <input type="text" class="form-control" ng-model="courseStencil.sessionEndTime2" ng-disabled="!courseStencil.allowSessionTime2"placeholder="HH:MM">
+                </div>
+                <div class='col-sm-2'>
+                    <input type="text" class="form-control" ng-model="courseStencil.sessionEndTime3" ng-disabled="!courseStencil.allowSessionTime3" placeholder="HH:MM">
+                </div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-4">
+                    <label>Multi Day Course Days:</label>
+                </div>
+                <div class='col-sm-2'>
+                    <input class="form-control rightalign" type="text" ng-model="courseStencil.multiDayCourseDaysBetween" placeholder="999" />
+                </div>
+                <div class="col-sm-6">
+                    <label>Between Course Dates</label>
+                </div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-4">
+                    <label>Course Type:</label>
+                </div>
+                <div class='col-sm-5'>
+                    <select ng-model="courseStencil.courseTypeId" class='form-control'
+                            ng-options="courseType.Id as courseType.Description for courseType in courseStencil.listOfCourseTypes | orderBy: 'Description'"
+                            ng-change="courseTypeChange(courseStencil.courseTypeId)"
+                            ng-disabled="disableName">
+                        <option value="" selected>Course Type</option>
+                    </select>
+                </div>
+                <div class="col-sm-3"><button ng-click="" class="btn btn-default btn-sm" title="">.....</button></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-4">
+                    <label>Course Type Category:</label>
+                </div>
+                <div class='col-sm-5'>
+                    <select ng-model="courseStencil.courseTypeCategoryId" class='form-control' 
+                            ng-options="courseTypeCategory.Id as courseTypeCategory.Name for courseTypeCategory in courseStencil.listOfCourseTypeCategories | filter: {CourseTypeId : courseStencil.courseTypeId} | orderBy: 'Name'">
+                        <option value="" selected>Course Type Category</option>
+                    </select>
+                </div>
+                <div class="col-sm-3"><button ng-click="" class="btn btn-default btn-sm" title="">.....</button></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-4">
+                    <label>Venue:</label>
+                </div>
+                <div class='col-sm-5'>
+                    <select ng-model="courseStencil.venueId" class='form-control'
+                            ng-options="venue.Id as venue.Title for venue in courseStencil.listOfVenues | filter: { DORSVenue: isDORSCourseType}"
+                            ng-change="venueSelected(courseStencil.venueId)">
+                        <option value="" selected>Venues</option>
+                    </select>
+                </div>
+                <div class="col-sm-3"><button ng-click="" class="btn btn-default btn-sm" title="">.....</button></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-4">
+                    <label>Trainer Cost:</label>
+                </div>
+                <div class='col-sm-2'>
+                    <input class="form-control rightalign" type="text" ng-model="courseStencil.trainerCost" placeholder="£999.99" />
+                </div>
+                <div class="col-sm-6"></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-4">
+                    <label>Trainers Required:</label>
+                </div>
+                <div class='col-sm-2'>
+                    <input class="form-control rightalign" type="text" ng-model="courseStencil.trainersRequired" placeholder="999" />
+                </div>
+                <div class="col-sm-6"></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-4">
+                    <label>Course Places:</label>
+                </div>
+                <div class='col-sm-2'>
+                    <input class="form-control rightalign" type="text" ng-model="courseStencil.coursePlaces" placeholder="999" />
+                </div>
+                <div class="col-sm-6"></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-4">
+                    <label>Reserved Places:</label>
+                </div>
+                <div class='col-sm-2'>
+                    <input class="form-control rightalign" type="text" ng-model="courseStencil.reservedPlaces" placeholder="999" />
+                </div>
+                <div class="col-sm-6"></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-4">
+                    <label>Reference Template:</label>
+                </div>
+                <div class='col-sm-5'>
+                    <select ng-model="courseStencil.courseReferenceGeneratorId" class='form-control'
+                            ng-options="courseReferenceGenerator.Id as courseReferenceGenerator.Title for courseReferenceGenerator in courseStencil.listOfCourseReferenceGenerators"
+                            ng-change="courseReferenceGeneratorSelected(courseStencil.courseReferenceGeneratorId)">
+                        <option value="" selected>Course Reference Template</option>
+                    </select>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-4">
+                    <label>Begin Reference With:</label>
+                </div>
+                <div class='col-sm-4'>
+                    <input class="form-control" type="text" ng-model="courseStencil.beginReferenceWith" placeholder="Begin Ref" />
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-4">
+                    <label>End Reference With:</label>
+                </div>
+                <div class='col-sm-4'>
+                    <input class="form-control" type="text" ng-model="courseStencil.endReferenceWith" placeholder="End Ref" />
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+
+        </div>
+
+
+
+        <div class='col-sm-6'>
+            <div class="row form-line-separator">
+                <div class='col-sm-4'>
+                    <input type="checkbox" ng-model="courseStencil.weeklyCourses" ng-change="toggleCourseIntervalCheckboxes('weekly')"/>
+                    <label>Weekly Courses</label>
+                </div>
+                <div class="col-sm-4 zero-padding">
+                    <label text-left>...Preferred Weekday Start:</label>
+                </div>
+                <div class='col-sm-3'>
+                    <select ng-model="courseStencil.weeklyCourseStartDay" class='form-control'
+                            ng-options="daysInAWeek.id as daysInAWeek.day for daysInAWeek in courseStencil.listOfDaysInAWeek | filter:{weekday: courseStencil.excludeWeekends === true ? true : ''} "
+                            ng-change="preferredWeekdayStartSelected(courseStencil.weeklyCourseStartDay)"
+                            ng-disabled="!courseStencil.weeklyCourses">
+                    </select>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class='col-sm-4'>
+                    <input type="checkbox" ng-model="courseStencil.monthlyCourses" ng-change="toggleCourseIntervalCheckboxes('monthly')"/>
+                    <label>Monthly Courses</label>
+                </div>
+                <div class="col-sm-4 zero-padding">
+                    <label text-left>...Preferred Day Start:</label>
+                </div>
+                <div class='col-sm-2'>
+                    <select ng-model="courseStencil.monthlyCoursesPreferredDayStart" class='form-control'
+                            ng-options="daysInAMonth.id as daysInAMonth.day for daysInAMonth in courseStencil.listOfDaysInAMonth"
+                            ng-disabled="!courseStencil.monthlyCourses">
+                    </select>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class='col-sm-4'>
+                    <input type="checkbox" ng-model="courseStencil.dailyCourses" ng-change="toggleCourseIntervalCheckboxes('daily')"/>
+                    <label>Daily Courses</label>
+                </div>
+                <div class="col-sm-4 zero-padding">
+                    <label text-left>...Skip Every:</label>
+                </div>
+                <div class='col-sm-2'>
+                    <select ng-model="courseStencil.dailyCoursesSkipDays" class='form-control'
+                            ng-options="daysToSkip.Id as daysToSkip.skipday for daysToSkip in courseStencil.listOfSkipDays"
+                            ng-disabled="!courseStencil.dailyCourses">
+                    </select>
+                </div>
+                <div class="col-sm-2 zero-padding">
+                    <label text-left>n.th Day</label>
+                </div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class='col-sm-1'></div>
+                <div class='col-sm-3'>
+                    <label>Exclude Days</label>
+                </div>
+                <div class='col-sm-8'></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class='col-sm-2'></div>
+                <div class='col-sm-1 left-pad-8'>
+                    <label>Mon</label>
+                </div>
+                <div class='col-sm-1 left-pad-8'>
+                    <label>Tue</label>
+                </div>
+                <div class='col-sm-1 left-pad-8'>
+                    <label>Wed</label>
+                </div>
+                <div class='col-sm-1 left-pad-8'>
+                    <label>Thu</label>
+                </div>
+                <div class='col-sm-1 left-pad-9'>
+                    <label>Fri</label>
+                </div>
+                <div class='col-sm-1 left-pad-8'>
+                    <label>Sat</label>
+                </div>
+                <div class='col-sm-1 left-pad-8'>
+                    <label>Sun</label>
+                </div>
+                <div class='col-sm-3'></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class='col-sm-2'></div>
+                <div class='col-sm-1'>
+                    <input type="checkbox" ng-model="courseStencil.excludeMonday" ng-disabled="courseStencil.weeklyCourseStartDay === 1 && courseStencil.weeklyCourses == true"/>
+                </div>
+                <div class='col-sm-1'>
+                    <input type="checkbox" ng-model="courseStencil.excludeTuesday" ng-disabled="courseStencil.weeklyCourseStartDay === 2 && courseStencil.weeklyCourses == true"/>
+                </div>
+                <div class='col-sm-1'>
+                    <input type="checkbox" ng-model="courseStencil.excludeWednesday" ng-disabled="courseStencil.weeklyCourseStartDay === 3 && courseStencil.weeklyCourses == true"/>
+                </div>
+                <div class='col-sm-1'>
+                    <input type="checkbox" ng-model="courseStencil.excludeThursday" ng-disabled="courseStencil.weeklyCourseStartDay === 4 && courseStencil.weeklyCourses == true" />
+                </div>
+                <div class='col-sm-1'>
+                    <input type="checkbox" ng-model="courseStencil.excludeFriday" ng-disabled="courseStencil.weeklyCourseStartDay === 5 && courseStencil.weeklyCourses == true" />
+                </div>
+                <div class='col-sm-1'>
+                    <input type="checkbox" ng-model="courseStencil.excludeSaturday" ng-disabled="courseStencil.weeklyCourseStartDay === 6 && courseStencil.weeklyCourses == true" />
+                </div>
+                <div class='col-sm-1'>
+                    <input type="checkbox" ng-model="courseStencil.excludeSunday" ng-disabled="courseStencil.weeklyCourseStartDay === 7 && courseStencil.weeklyCourses == true" />
+                </div>
+                <div class='col-sm-3'></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-12 seperator-300"></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class='col-sm-3 left-pad-8'>
+                    <label>Notes: </label>
+                </div>
+                <div class="col-sm-7">
+                    <textarea rows="6" class="form-control" type="text" placeholder="Stencil Notes" ng-model="courseStencil.notes"></textarea>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+
+            <div class="row form-line-separator-20">
+                <div class="col-sm-12"></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class='col-sm-3  left-pad-8'>
+                    <label>Stencil Name: </label>
+                </div>
+                <div class="col-sm-6">
+                    <input ng-disabled="disableName" class="form-control" type="text" ng-model="courseStencil.name" placeholder="Stencil Name" />
+                </div>
+                <div class="col-sm-3">
+                    <label class="text-muted normal-font">Version {{courseStencil.versionNumber | leftPad: '000'}}</label>
+                </div>
+            </div>
+
+            <div class="row form-line-separator-20">
+                <div class="col-sm-12"></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-5"></div>
+                <div class="col-sm-5">
+                    <button ng-click="addCourseStencil(c)" class="btn btn-default btn-sm" title="Save" ng-disabled="courseStencil.createCourses">Save</button>
+                    <button class="btn btn-default btn-sm" onclick="$('button.close').last().trigger('click')" ng-show="showCancel">Cancel</button>
+                    <button ng-click="setCreateCourses($event)" class="btn btn-default btn-sm" title="Create Courses" ng-disabled="courseStencil.createCourses || courseStencil.Id == 0">Create Courses</button>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+
+            <div class="row form-line-separator">
+                <div class="col-sm-12">
+                    <label><span class="validation-message">{{ validationMessage }}</span></label>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

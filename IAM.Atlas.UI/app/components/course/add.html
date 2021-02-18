@@ -1,0 +1,423 @@
+﻿<div id="addCourse" class="AddCourse">
+
+    <system-feature-information title="add course"
+                                controller="addCourseCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/course/add"
+                                page-name="Add Course"
+                                add-favourite="true">
+    </system-feature-information>
+
+    <div class="Title row">
+        <h2>Add Course</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="row form-line-separator CourseType">
+                <div class="col-md-3">
+                    <label>Type:</label>
+                </div>
+                <div class="col-md-8">
+                    <select class='form-control'
+                            ng-model="selectedCourseType"
+                            ng-options="coursetype as coursetype.Description for coursetype in course.courseTypeOptions| orderBy:'Description'"
+                            ng-change="courseTypeSelected(selectedCourseType)">
+                        <option value="">Please select a course type</option>
+                    </select>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+            <div class="row form-line-separator CourseTypeInfo" ng-if="showCourseTypeAdditionalInformation">
+                <div class="col-md-offset-3 col-md-8">
+                    <div class="additional-information-container">
+                        <p>{{ courseTypeInfo }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-line-separator CourseReference">
+                <div class="col-md-3">
+                    <label>Reference:</label>
+                </div>
+                <div class="col-md-8">
+                    <input class="form-control"
+                           type="text"
+                           ng-model="course.courseReference"
+                           placeholder="Course Reference" />
+                </div>
+            </div>
+
+            <div class="row form-line-separator Venue">
+                <div class="col-md-3">
+                    <label>Venue:</label>
+                </div>
+                <div class="col-md-8">
+                    <select class='form-control'
+                            ng-model="selectedVenue"
+                            ng-options="coursevenue as coursevenue.Title for coursevenue in course.courseVenueOptions | filter: { DORSVenue: course.courseDorsCourse} | orderBy:'Title'"
+                            ng-change="selectCourseVenue(selectedVenue)">
+                        <option value="">Please select a Venue</option>
+                    </select>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+
+            <div class="row form-line-separator VenueInfo" ng-if="showVenueAdditionalInformation">
+                <div class="col-md-offset-3 col-md-8">
+                    <div class="additional-information-container">
+                        <p>{{ venueInfo }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-line-separator CoursePlaces">
+                <div class="col-md-3">
+                    <label>Places:</label>
+                </div>
+                <div class="col-md-2">
+                    <input class="form-control" type="text" ng-model="course.coursePlaces" ng-change="notOverMaxPlaces(course.coursePlaces)" />
+                </div>
+                <div class="col-md-4 text-right">
+                    <label>Reserved:</label>
+                </div>
+                <div class="col-md-2">
+                    <input class="form-control" type="text" ng-model="course.courseReserved" />
+                </div>
+            </div>
+
+            <div class="row form-line-separator Category" ng-show="course.courseTypeId != null && course.courseTypeId > 0">
+                <div class="col-md-3">
+                    <label>Category:</label>
+                </div>
+                <div class="col-md-8">
+                    <select class="form-control"
+                            ng-model="course.selectedCourseCategory"
+                            ng-options="courseCategory.Name for courseCategory in course.courseCategoryOptions | filter:{CourseTypeId: course.courseTypeId}">
+                        <option value="" ng-hide="course.selectedCourseCategory != null">--Course Type Category (Optional)--</option>
+                    </select>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+
+            <div class="row form-line-separator Language" ng-show="orgSystemConfig.ShowCourseLanguage == true">
+                <div class="col-md-3">
+                    <label>Language:</label>
+                </div>
+                <div class="col-md-8">
+                    <select ng-model="course.languageId" class='form-control' ng-options="courseLanguage.Id as courseLanguage.Description for courseLanguage in course.courseLanguageOptions">
+                        <option value="">Course Language</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row form-line-separator TrainersRequired">
+                <div class="col-md-3">
+                    <label>Trainers Required:</label>
+                </div>
+                <div class="col-md-2">
+                    <input class="form-control"
+                           type="text"
+                           title="Input the number of Trainers Required on this Course"
+                           id="postcode"
+                           ng-model="course.trainersRequired" />
+                </div>
+                <div class="col-md-3">
+                    <label ng-show="orgSystemConfig.ShowTrainerCosts == true">Trainer Cost:</label>
+                </div>
+                <div class="col-md-2">
+                    <input class="form-control"
+                           type="text"
+                           id="postcode"
+                           ng-show="orgSystemConfig.ShowTrainerCosts == true"
+                           ng-model="course.trainerCost" />
+                </div>
+            </div>
+
+            <!--Course Dates and Times-->
+            <div class="row" ng-show="isMultiDayCoursesAllowed()">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-1">
+                    <input type="checkbox" ng-model="course.multiday" />
+                </div>
+                <div class="col-md-7">
+                    <label class="blueitalic">Multi Day Course</label>
+                </div>
+            </div>
+            <!--Course Dates and Times .......... MulitDay-->
+            <div class='row MultiDayCourse' ng-show="course.multiday">
+                <div class="row NumberOfCourseDates">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-9">
+                        <span class='Information'>Input the number of Different Dates This Course will be Run on below.</span>
+                    </div>
+                </div>
+                <div class="row NumberOfCourseDates">
+                    <div class="col-md-3">
+                        <label class='control-label'>No. of Course Dates:</label>
+                    </div>
+                    <div class='col-md-1 side-padding-1 margin-left-14'>
+                        <input class="form-control cm-sm-12" 
+                               type="number" 
+                               ng-minlength="1" 
+                               ng-maxlength="2" 
+                               ng-model="course.NumberOfCourseDates" />
+                    </div>
+                    <div class="col-md-7 Information noRightPadding" ng-show="!(course.courseDateStart == null || course.courseDateStart == undefined)">
+                        <span>{{course.courseDateStart}}</span><span> <b>To</b> </span><span>{{course.courseDateEnd}}</span>
+                    </div>
+                </div>
+                <!--{ StartDate: '', EndDate: '', Session: '', StartTime: '', EndTime: '' }-->
+                <div class="row MultiDatesAndTimes">
+                    <!--Show New Line for Each Course Date with Times-->
+                    <div class="MultiDateAndTime" ng-repeat="MultiDateAndTime in course.MultiDatesAndTimes track by $index" ng-scr>
+                        <div class="row DateAndTimes" ng-show="{{$index}} < course.NumberOfCourseDates">
+                            <div class="col-md-3 left-side-padding-17">
+                                <label>{{NthNumber($index + 1)}} Date:</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input class="form-control StartDate{{$index}}"
+                                       type="text"
+                                       ng-model="MultiDateAndTime.StartDate"
+                                       ng-mouseleave="hideCalendar($index)"
+                                       ng-click="toggleCalendar($index)" />
+                            </div>
+                            <div class='col-md-1 element-overflow-0'>
+                                <a ng-click="toggleCalendar($index)" ng-show="!MultiDateAndTime.DisplayCalendar" class="calendar-button col-md-6" title="Show Calendar"><div></div></a>
+                                <a ng-click="toggleCalendar($index)" ng-show="MultiDateAndTime.DisplayCalendar" class="calendar-button col-md-6" title="Hide Calendar"><div></div></a>
+                            </div>
+                            <div class="col-md-2">
+                                <label class='control-label'>Session:</label>
+                            </div>
+                            <div class="col-md-3 side-padding-1">
+                                <select class="col-md-12 side-padding-1 form-control"
+                                        title="Session: What Part of the Day is the Course Run Over."
+                                        ng-change="MultiDateSessionChanged($index)"
+                                        ng-model="MultiDateAndTime.Session"
+                                        ng-options="trainingSession.SessionTitle for trainingSession in course.courseTrainingSessions | orderBy: 'SessionNumber'"></select>
+                            </div>
+                        </div>
+                        <div class="row SessionTimes side-padding-1" ng-show="{{$index}} < course.NumberOfCourseDates">
+                            <div class="col-md-9"></div>
+                            <div class="col-md-1 side-padding-1">
+                                <input class="form-control col-md-12" title="Start Time" type="text" ng-model="MultiDateAndTime.StartTime" placeholder="HH:MM" />
+                            </div>
+                            <div class="col-md-1">
+                                <label>To:</label>
+                            </div>
+                            <div class="col-md-1 side-padding-1">
+                                <input class="form-control col-md-12" title="End Time" type="text" ng-model="MultiDateAndTime.EndTime" placeholder="HH:MM" />
+                            </div>
+                            <!--<div class="col-md-5"></div>-->
+                        </div>
+
+                    </div> <!--END ng-repeat="MultiDateAndTime in course.MultiDatesAndTimes"-->
+                </div>
+            </div>
+            <div class="row MultiDatesAndTimesHiddenElements">
+                <div class="MultiDateAndTime" ng-repeat="MultiDateAndTime in course.MultiDatesAndTimes track by $index">
+                    <div class="row StartDateCalendar Calendar{{$index}}" style="z-index:10;">
+                        <div class='col-md-9' ng-show="MultiDateAndTime.DisplayCalendar">
+                            <date-picker ng-model="MultiDateAndTime.StartDate"
+                                         format-date="formatDate"
+                                         ng-mouseleave="toggleCalendar($index)"
+                                         ng-change="CheckDateEntries()"
+                                         ></date-picker>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Course Dates and Times .......... Not MulitDay-->
+            <div class="row NotMultiDayCourse" ng-show="!course.multiday">
+                <div class="row DateAndTimes">
+                    <div class="col-md-3">
+                        <label>Date and Times:</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input class="form-control"
+                               type="text"
+                               ng-model="course.courseDateStart"
+                               ng-click="toggleCalendar()"
+                               ng-mouseleave="hideCalendar()"
+                                />
+                    </div>
+                    <div class='col-md-2 element-overflow-0'>
+                        <a ng-click="toggleCalendar()" ng-show="!displayCalendar" class="calendar-button col-md-6" title="Show Calendar"><div></div></a>
+                        <a ng-click="toggleCalendar()" ng-show="displayCalendar" class="calendar-button col-md-6" title="Hide Calendar"><div></div></a>
+                    </div>
+                </div>
+                <div class="row StartDateCalendar" style="z-index:10;">
+                    <div class='col-md-offset-3 col-md-9' ng-show="displayCalendar">
+                        <date-picker ng-model="course.courseDateStart"
+                                        format-date="formatDate"
+                                        ng-mouseleave="toggleCalendar()"></date-picker>
+                    </div>
+                </div>
+                <div class="row SessionPicker">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-2">
+                        <label class='control-label'>Session:</label>
+                    </div>
+                    <div class="col-md-3 side-padding-1">
+                        <select class="col-md-12 form-control"
+                                title="Session: What Part of the Day is the Course Run Over."
+                                ng-change="SessionChanged()"
+                                ng-model="course.selectedTrainingSession"                                
+                                ng-options="trainingSession.SessionTitle for trainingSession in course.courseTrainingSessions | orderBy: 'SessionNumber'">
+                            <!--<option value="">--Pick One--</option>-->
+                        </select>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+                <div class="row SessionTimes">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-1 side-padding-1">
+                        <input class="form-control col-md-12" title="Start Time" type="text" ng-model="course.courseTimeStart" placeholder="HH:MM" />
+                    </div>
+                    <div class="col-md-1">
+                        <label>To:</label>
+                    </div>
+                    <div class="col-md-1 side-padding-1">
+                        <input class="form-control col-md-12" title="End Time" type="text" ng-model="course.courseTimeEnd" placeholder="HH:MM" />
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+            </div>
+
+            <div class="row CourseOptions">
+
+                <div class="row">
+                    <div class='col-md-offset-3 col-md-1'>
+                        <input type="checkbox" ng-model="course.courseHasInterpreter" />
+                    </div>
+                    <div class="col-md-7">
+                        <label class="blueitalic">Interpreter Provided</label>
+                    </div>
+                </div>
+
+                <!-- does this course have a theory component?  does this course have a practical component? -->
+                <div class="row">
+                    <div class='col-md-offset-3 col-md-1'>
+                        <input type="checkbox" ng-model="course.TheoryCourse" ng-disabled="theoryDisabled" />
+                    </div>
+                    <div class="col-md-7">
+                        <label class="blueitalic">Theory Course</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class='col-md-offset-3 col-md-1'>
+                        <input type="checkbox" ng-model="course.PracticalCourse" ng-disabled="practicalDisabled" />
+                    </div>
+                    <div class="col-md-7">
+                        <label class="blueitalic">Practical Course</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class='col-md-offset-3 col-md-1'>
+                        <input type="checkbox" ng-model="course.courseAttendanceCheckRequired" />
+                    </div>
+                    <div class="col-md-7">
+                        <label class="blueitalic">Attendance Check Required</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class='col-md-offset-3 col-md-1'>
+                        <input type="checkbox" ng-model="course.courseAttendanceByTrainer" />
+                    </div>
+                    <div class="col-md-7">
+                        <label class="blueitalic">Attendance should be Updated by Trainer</label>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="orgSystemConfig.manualCarCourseRestriction == true">
+                    <div class='col-md-offset-3 col-md-1'>
+                        <input type="checkbox" ng-model="course.courseManualCarsOnly" />
+                    </div>
+                    <div class="col-md-7">
+                        <label class="blueitalic">Manual Cars Only</label>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="orgSystemConfig.manualCarCourseRestriction == true">
+                    <div class='col-md-offset-3 col-md-1'>
+                        <input type="checkbox" ng-model="course.courseRestrictOnlineBookingManualOnly" />
+                    </div>
+                    <div class="col-md-7">
+                        <label class="blueitalic">Restrict on-line Bookings to Manual Cars Only</label>
+                    </div>
+                </div>
+
+                <div class="row" ng-show="isDorsFeatureEnabled() && showDORSCheckbox">
+                    <div class='col-md-offset-3 col-md-1'>
+                        <input type="checkbox" ng-model="course.courseDorsCourse" ng-disabled="disableDORSCheckbox" />
+                    </div>
+                    <div class="col-md-7">
+                        <label class="blueitalic">DORS Course</label>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="isDorsCourseChecked()">
+                    <div class='col-md-offset-3 col-md-1'>
+                        <input type="checkbox" ng-model="course.courseUpdateDorsAttendance" />
+                    </div>
+                    <div class="col-md-7">
+                        <label class="blueitalic">Send Attendance to DORS</label>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="isDorsCourseChecked()">
+                    <div class='col-md-offset-3 col-md-1'>
+                        <input type="checkbox" ng-model="course.notifyDORS" />
+                    </div>
+                    <div class="col-md-7">
+                        <label class="blueitalic">Notify DORS Immediately about this course</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row AddCourseButtons">
+                <div class="row add-top-margin-20">
+                    <div class="col-md-3">
+                        &nbsp;
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-default btn-sm" onclick="$('button.close').last().trigger('click')">Cancel</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button ng-click="addCourse(true)" class="btn btn-default btn-sm" title="Save and Close the Dialog">Save And Close</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button ng-click="addCourse()" class="btn btn-default btn-sm" title="Save">Save And Add</button>
+                    </div>
+                </div>
+                <div class="row" ng-show="validationMessage != ''">
+                    <div class="col-md-offset-3 col-md-12">
+                        <span class="validation-message" title="{{validationMessageAdditionalInformation}}">{{ validationMessage }}</span>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end .col-md-12 -->
+    </div><!-- end .row .form-line-separator-->
+
+
+    <div data-ng-if="showSuccessFader == true">
+        <my-msgfader status="success"></my-msgfader>
+    </div>
+    <div data-ng-if="showErrorFader == true">
+        <my-msgfader status="error"></my-msgfader>
+    </div>
+
+
+</div>

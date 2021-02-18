@@ -1,0 +1,67 @@
+﻿<div id="addVenueLocale">
+
+    <div class="row form-line-separator">
+        <div class="col-md-4">
+            <label>Title</label>
+        </div>
+        <div class="col-md-8">
+            <input 
+                   ng-model="venueLocale.Title" 
+                   type="text" 
+                   class="form-control" 
+                   ng-disabled="showForEditLocale" />
+        </div>
+    </div>
+
+    <div class="row form-line-separator" ng-if="showForEditLocale">
+        <div class="col-md-4">
+            <label>Enabled</label>
+        </div>
+        <div class="col-md-8">
+            <input ng-model="venueLocale.Enabled"
+                   type="checkbox" />
+        </div>
+    </div>
+
+    <div class="row form-line-separator">
+        <div class="col-md-4">
+            <label>Description</label>
+        </div>
+        <div class="col-md-8">
+            <textarea ng-model="venueLocale.Description" class="form-control" rows="4"></textarea>
+        </div>
+    </div>
+
+    <div class="row form-line-separator">
+        <div class="col-md-4">
+            <label>Maximum Places</label>
+        </div>
+        <div class="col-md-4">
+            <input ng-model="venueLocale.MaximumPlaces" type="text" class="form-control" />
+        </div>
+        <div class="col-md-4">
+            <p>(Default for venue)</p>
+        </div>
+    </div>
+
+    <div class="row form-line-separator-20">
+        <div class="col-md-4">
+            <label>Reserved Places</label>
+        </div>
+        <div class="col-md-4">
+            <input ng-model="venueLocale.ReservedPlaces" type="text" class="form-control" />
+        </div>
+        <div class="col-md-4">
+            <p>(Default for venue)</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-3">
+            <div class="btn" ng-click="save()">save</div>
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+
+</div>

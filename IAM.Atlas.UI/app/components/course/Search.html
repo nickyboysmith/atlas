@@ -1,0 +1,312 @@
+﻿<div id="courseFeature">
+    <!---  Search feature -->
+    <div class="row">
+
+        <div class="col-md-12 search-icon-holder previous-search-separator">
+            <div class="course-search-icon" data-ng-click="course.searchDisplay = !course.searchDisplay"></div>
+        </div>
+
+
+        <div class="col-md-12" data-ng-hide="course.searchDisplay">
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row marginBottom15">
+                        <div class="col-md-3 noRightPadding">
+                            <label>Previous Search</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="full form-control"
+                                    data-ng-change="loadSearchParams()"
+                                    data-ng-model="previousSearch">
+                                <option value="">Please select a previous search</option>
+                                <option data-ng-repeat="(searchKey, search) in searches" value="{{ searchKey }}">{{ search }}</option>
+                            </select>
+                        </div>
+                        <!--<div class="col-md-5"></div>-->
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-12 text-right">
+                            <button class="btn" ng-click="newCourse()" ng-hide="systemIsReadOnly">Add New Course</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form name="theCourseSearch">
+                <!-- Start the reference -->
+                <div class="row marginBottom15">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Reference</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input class="date-input-field form-control"
+                                       name="reference"
+                                       type="text"
+                                       placeholder="Please select a reference"
+                                       data-ng-model="course.reference"
+                                       data-ng-minlength="3"
+                                       data-ng-maxlength="100" />
+                                <span class="error" ng-show="theCourseSearch.reference.$error.required">This field is required</span>
+                                <span class="error" ng-show="theCourseSearch.reference.$error.minlength">Minimum of 3 Characters</span>
+                                <span class="error" ng-show="theCourseSearch.reference.$error.maxlength">Maximum of 100 Characters</span>
+                            </div>
+                        </div><!-- end reference -->
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Which Date</label>
+                            </div>
+                            <div class="col-md-9">
+                                <select class="full form-control"
+                                        data-ng-model="course.searchDates"
+                                        data-ng-required="true"
+                                        ng-change="disableFutureCourseCheckbox()">
+                                    <option value="*">Show all date ranges</option>
+                                    <option value="next">Next</option>
+                                    <option value="previous">Previous</option>
+                                    <option value="between">Between</option>
+                                </select>
+                                <div data-ng-show="course.searchDates=='next'||course.searchDates=='previous'" class="separate-hidden-search-params days-amount">
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <input class="day-amount form-control"
+                                                   data-ng-model="course.dayAmount"
+                                                   type="text" />
+                                        </div>
+                                        <div class="col-md-8">
+                                            Days
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div data-ng-show="course.searchDates=='between'" class="separate-hidden-search-params days-between">
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label>Start</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input class="date-input-field form-control"
+                                                           data-ng-model="course.startDate"
+                                                           type="text" />
+                                                </div>
+                                                <div class="col-md-2">
+
+                                                    <div class="date-picker">
+                                                        <div class="date-picker-icon"
+                                                             data-ng-click="course.showStartDatePicker = !course.showStartDatePicker"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <date-picker class="theDatePicker"
+                                                         data-ng-model="course.startDate"
+                                                         data-ng-show="course.showStartDatePicker"
+                                                         data-ng-click="course.showStartDatePicker = !course.showStartDatePicker"
+                                                         format-date="formatDate"></date-picker>
+
+
+                                            <div class="row date-separation">
+                                                <div class="col-md-2">
+                                                    <label>End</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input class="date-input-field form-control"
+                                                           data-ng-model="course.endDate"
+                                                           type="text" />
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="date-picker-icon"
+                                                         data-ng-click="course.showEndDatePicker = !course.showEndDatePicker"></div>
+                                                </div>
+                                            </div>
+                                            <date-picker class="theDatePicker"
+                                                         data-ng-model="course.endDate"
+                                                         data-ng-show="course.showEndDatePicker"
+                                                         data-ng-click="course.showEndDatePicker = !course.showEndDatePicker"
+                                                         format-date="formatDate"></date-picker>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div><!-- end dateSelect -->
+                    </div>
+                </div>
+
+
+                <!-- Start the Course Types -->
+                <div class="row marginBottom15">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Course Type</label>
+                            </div>
+                            <div class="col-md-9">
+                                <select class="full form-control"
+                                        ng-model="course.type"
+                                        ng-required="true">
+                                    <option value="*" selected>Show all Course Types</option>
+                                    <option data-ng-repeat="courseType in courseTypes | orderBy : 'Title'" value="{{ courseType.Id }}">{{ courseType.Description }}</option>
+
+                                </select>
+                            </div>
+                        </div><!-- end courseType-->
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Select Venue</label>
+                            </div>
+                            <div class="col-md-9">
+                                <select class="full form-control"
+                                        data-ng-model="course.venue"
+                                        data-ng-required="true">
+                                    <option value="*" selected>Show all Venues</option>
+                                    <option data-ng-repeat="venue in relatedVenues" value="{{ venue.Id }}">{{ venue.Title }}</option>
+                                </select>
+                            </div>
+                        </div><!-- end venue -->
+                    </div>
+                </div>
+
+                <!-- Start the results per page input -->
+                <div class="row marginBottom15">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Max Rows</label>
+                            </div>
+                            <div class="col-md-2">
+                                <input class="form-control"
+                                       type="text"
+                                       data-ng-model="course.maxRows"
+                                       placeholder="200" />
+                            </div>
+                            <!--<div class="col-md-7"></div>-->
+                            <div class="col-md-2 noRightPadding">
+                                <label>Per Page</label>
+                            </div>
+                            <div class="col-md-2">
+                                <input class="form-control"
+                                       type="text"
+                                       data-ng-model="course.maxResults"
+                                       placeholder="15" />
+                            </div>
+                            <div class="col-md-3"></div>
+                            <!--<div class="col-md-3">
+                    <label>Per page</label>
+                </div>
+                <div class="col-md-2">
+                    <input class="form-control"
+                           type="text"
+                           data-ng-model="course.maxResults"
+                           placeholder="1000" />
+                </div>
+                <div class="col-md-7"></div>-->
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row marginBottom5">
+                            <div class="col-md-5">
+                                <label>Show Cancelled Courses</label>
+                            </div>
+                            <div class="col-md-1">
+                                <input type="checkbox" ng-model="course.cancelled" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <label>Show Future Courses (-2 days) Only</label>
+                            </div>
+                            <div class="col-md-1">
+                                <input type="checkbox" ng-disabled="course.searchDates != '*'" ng-model="course.futureCoursesOnly" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Start the COMPLETE button -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-12 text-right">
+                            <div class="searchButton btn fixed-width-140" data-ng-click="searchCourses()">Find Courses</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div ng-show="processing">
+        <img style="display: block; margin-left: auto; margin-right: auto;" src="/app_assets/images/ajax-loader.gif" />
+    </div>
+    <div ng-show="noResults">
+        <b>No results found.</b>
+    </div>
+    <!---  Smart Table grid -->
+    <div id="courseGridHolder" ng-show="!processing && !noResults">
+        <table st-safe-src="courseCollection" st-table="courses" class="table table-striped">
+            <thead>
+                <tr>
+                    <th st-sort="reference">Reference</th>
+                    <th st-sort="courseType">Course Type</th>
+                    <th st-sort="courseTypeCategory">Category</th>
+                    <th st-sort="venue">Venue</th>
+                    <th class="text-center" st-sort="date">Date</th>
+                    <th class="text-center" st-sort="remaining">Remaining</th>
+                    <th class="text-center" st-sort="trainers">Trainers Required</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th colspan="8"><input st-search="" class="form-control" placeholder="Filter results" type="text" /></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="singleCourse in courses track by $index"
+                    data-ng-dblclick="courseViewPage(singleCourse.Id, $index)"
+                    id="courseSearchResult_{{ singleCourse.Id }}"
+                    class="{{ singleCourse.available }} {{singleCourse.cancelled}}"
+                    data-ng-mouseenter="showHoverMessage(singleCourse.Id, singleCourse.cancelled)">
+                    <td class="nowrap">{{singleCourse.reference}}</td>
+                    <td>{{singleCourse.courseType}}</td>
+                    <td>{{singleCourse.courseTypeCategory}}</td>
+                    <td>{{singleCourse.venue}}</td>
+                    <td class="nowrap">{{singleCourse.date | date: 'dd-MMM-yyyy' }}</td>
+                    <td class="text-center">{{singleCourse.remaining}}</td>
+                    <td class="text-center">{{singleCourse.trainers}}</td>
+                    <td>
+                        <a href="#" ng-click="courseViewPage(singleCourse.Id, $index)">view</a>
+                    </td>
+                    <div class="course-hidden-message"
+                         style="top:{{ courseAvailiabiltyMessageMargin }}; width: {{ courseAvailiabiltyMessageWidth }}; height: {{ courseAvailiabiltyMessageHeight }}"
+                         data-ng-show="courseAvailiabiltyMessage"
+                         data-ng-mouseleave="courseAvailiabiltyMessage = false">{{courseAvailabilityMessageContent}}</div>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="8" class="text-center">
+                        <div st-pagination="" st-items-by-page="course.maxResults" st-displayed-pages="5"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+</div>

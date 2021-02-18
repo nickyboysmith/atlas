@@ -1,0 +1,450 @@
+﻿
+<div id="trainerAbout">
+
+    <div id="hideUploadContainer" ng-if="hideUploadContainer == true">
+        <h1>About page</h1>
+        <p>This is the about page</p>
+    </div><!-- end #hideUploadContainer -->
+
+    <div class="row trainer-file-upload-container" ng-hide="true">
+        <!--NB THis Section is being Hidden for now. Not essential. May be brought back later.-->
+        <div class="col-md-12">
+            <p>{{ message }}</p>
+        </div>
+        <div class="col-md-3">
+            <div class="image-preview">
+                <img id="previewProfilePicture" src="" alt="" style="display:none;" />
+            </div>
+        </div>
+        <div class="col-md-9">
+            <label for="trainerUpload"
+                   class="btn pad-browse-button">
+                Upload Picture
+            </label>
+            <input id="trainerUpload"
+                   type="file"
+                   ng-model="trainer.ProfilePicture"
+                   onchange="angular.element(this).scope().showImagePreview()" />
+        </div>
+        <div class="col xs-12 col-md-12"></div>
+    </div><!-- End file-upload container row -->
+
+
+    <div class="row col-xs-12 col-sm-12">
+        <div>
+            <div class="marginBottom10 text-center">
+                <div style="color:darkseagreen">{{ successMessage }}</div>
+                <div class="validation-message">{{ errorMessage }}</div>
+            </div>
+        </div>
+        <!-- The trainer details -->
+        <div class="col-xs-12 col-sm-6">
+
+            <!-- Field holder row -->
+            <div class="row trainer-field-holder-row">
+                <div class="col-xs-12 col-sm-3">
+                    <label>Title:</label>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <select ng-model="selectedTitle"
+                            ng-change="displayName(selectedTitle)"
+                            ng-options="title.StringId as title.Title for title in trainerTitles"></select>
+
+                    <!--<select ng-model="trainer.Title"
+                            ng-change="displayName()">
+                        <option value="Dr">Dr</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Ms">Ms</option>
+                        <option value="Rev">Rev</option>
+                        <option value="Other">Other</option>
+                    </select>-->
+
+                </div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-8 margintop10" ng-show="selectedTitle == 'Other'">
+                    <input type="text"
+                           ng-model="trainer.otherTitle"
+                           ng-keyup="displayName(selectedTitle)"
+                           placeholder="Title" />
+                </div>
+            </div>
+            <!-- Field holder row -->
+            <div class="row  trainer-field-holder-row">
+                <div class="col-xs-12 col-sm-3">
+                    <label>First Name:</label>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <input type="text"
+                           ng-model="trainer.FirstName"
+                           ng-keyup="displayName(selectedTitle)"
+                           placeholder="First Name" />
+                </div>
+            </div>
+            <!-- Field holder row -->
+            <div class="row trainer-field-holder-row">
+                <div class="col-xs-12 col-sm-3">
+                    <label>Other Names:</label>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <input type="text" ng-model="trainer.OtherNames" placeholder="Other Names" />
+                </div>
+            </div>
+            <!-- Field holder row -->
+            <div class="row trainer-field-holder-row">
+                <div class="col-xs-12 col-sm-3">
+                    <label>Surname:</label>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <input type="text"
+                           ng-model="trainer.Surname"
+                           ng-keyup="displayName(selectedTitle)"
+                           placeholder="Surname" />
+                </div>
+            </div>
+            <!-- Field holder row -->
+            <div class="row trainer-field-holder-row">
+                <div class="col-xs-12 col-sm-3">
+                    <label>Display Name:</label>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <input type="text" ng-model="trainer.DisplayName" placeholder="Display Name" />
+                </div>
+            </div>
+            <!-- Field holder row -->
+            <div class="row trainer-field-holder-row">
+                <div class="hidden-xs">
+                    <div class="col-sm-3">
+                        <label></label>
+                    </div>
+                </div>
+
+                <div class="visible-xs">
+                    <div class="col-xs-12">
+                        <label>Postcode</label>
+                    </div>
+                </div>
+
+                <div class="col-xs-6 col-sm-3">
+                    <input type="text" ng-model="trainer.Address.Postcode" capitalize placeholder="Postcode" />
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="btn" ng-click="getAddressChoices()">Find</div>
+                </div>
+                <div class="col-sm-8 col-sm-offset-4" ng-show="TransformedAddressList.length > 0">
+                    <select ng-model="selectedAddress" ng-options="o as o for o in TransformedAddressList" ng-change="selectAddress(selectedAddress)">
+                        <option value="">Please select an address</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Field holder row -->
+            <div class="row trainer-field-holder-row">
+                <div class="col-xs-12 col-sm-3">
+                    <label>Address:</label>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <textarea rows="5" class="textarea" ng-model="trainer.Address.Address" placeholder="Address"></textarea>
+                </div>
+            </div>
+            <!-- Field holder row -->
+            <div class="row trainer-field-holder-row">
+                <div class="col-xs-12 col-sm-3">
+                    <label>Postcode:</label>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <input type="text" ng-model="trainer.Address.Postcode" capitalize placeholder="Postcode" />
+                </div>
+                <div class="col-xs-6 col-sm-5">
+                    <select>
+                        <option value="value">Country</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Field holder row -->
+            <div class="row trainer-field-holder-row">
+                <div class="col-xs-12 col-sm-3">
+                    <label>Email:</label>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <input type="text" ng-model="trainer.Email.Address" placeholder="Email Address" />
+                </div>
+            </div>
+
+            <!-- Field holder row -->
+            <div class="row trainer-field-holder-row" ng-show="trainer.PhoneNumbers.length == 0">
+
+                <!-- If there is no phone number associated with trainer -->
+                <div class="col-xs-12 col-sm-3">
+                    <label>Phone:</label>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <select class="getPhoneType">
+                        <option ng-repeat="phoneType in phoneTypes"
+                                value="{{ phoneType.Id }}">
+                            {{ phoneType.Type }}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-xs-6 col-sm-5">
+                    <input type="text" name="getPhoneNumber" value="" />
+                </div>
+            </div>
+
+            <!-- If there are phone numbers associated with trainers -->
+            <div class="row trainer-field-holder-row the-phone-number-container" ng-show="trainer.PhoneNumbers.length > 0" ng-repeat="(key, phone) in trainer.PhoneNumbers track by $index">
+                <div class="col-xs-12 col-sm-3">
+                    <label>Phone:</label>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <select class="getPhoneType">
+                        <option ng-repeat="phoneType in phoneTypes"
+                                ng-selected="phone.PhoneTypeId == phoneType.Id" value="{{ phone.PhoneTypeId }}">
+                            {{ phoneType.Type }}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-xs-6 col-sm-5">
+                    <input type="text" class="getPhoneNumber" value="{{ phone.Number }}" data-phone-Id="{{ phone.Id }}" />
+                </div>
+            </div>
+
+            <div class="row marginBottom10">
+                <div id="addedPhoneNumbers" class="col-sm-12"></div>
+                <div class="col-xs-12 trainer-field-holder-row">
+                    <!-- Add a new div -->
+                    <div class="col-xs-11 text-right">
+                        <div class="btn" ng-click="addNewPhoneNumber()" title="Click to Add Additional Phone Number">Add</div>
+                    </div>
+                    <div class="col-xs-1"></div>
+                </div>
+            </div>
+
+            <div class="row trainer-field-holder-row">
+                <div class="col-xs-12 col-sm-3">
+                    <label>Bound to User:</label>
+                </div>
+                <div class="col-xs-12 col-sm-8" ng-show="trainer.UserName != ''">
+                    <input type="text" ng-model="trainer.UserName" ng-disabled="trainer.UserName != ''" />
+                </div>
+
+                <div class="col-xs-12 col-sm-6" ng-show="trainer.UserName == ''">
+                    <label style="display:none;">{{ searchText }}</label>
+
+                    <input id="userSearchText"
+                           type="text"
+                           ng-model="selected"
+                           placeholder="Bind To A User"
+                           typeahead-min-length="3"
+                           typeahead-on-select="selectedItem($item)"
+                           typeahead-no-results="noResults"
+                           typeahead-loading="loadingLocations"
+                           uib-typeahead="item as item.LoginId for item in getSearchableItems($viewValue) | limitTo:15" />
+                    <div ng-show="loadingLocations" class="set-white">
+                        <i class="glyphicon glyphicon-refresh"></i> Loading results
+                    </div>
+                    <div ng-show="noResults" class="set-red">
+                        <i class="glyphicon glyphicon-remove"></i> No Results Found
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3" ng-show="trainer.UserName == '' && trainerId > 0">
+                    <div class="btn pull-right" ng-show="$parent.isAdmin" ng-click="bindToUser()">Bind To User</div>
+                </div>
+            </div>
+
+        </div><!-- End .col-xs-12 .col-sm-6 -->
+        <!-- The trainer licence details -->
+        <div class="col-xs-12 col-sm-6">
+            <!-- Field holder row -->
+            <div class="row trainer-field-holder-row">
+                <div class="col-xs-12 col-sm-3">
+                    <label>DORS Identifier:</label>
+                </div>
+                <div class="col-xs-12 col-sm-9">
+                    <input type="text" ng-model="trainer.DORSTrainerIdentifier" placeholder="DORS Trainer Identifier" />
+                </div>
+            </div><!-- // End .trainer-field-holder-row -->
+            <!-- Field holder row -->
+            <div class="row trainer-field-holder-row">
+                <div class="col-xs-12 col-sm-3">
+                    <label>Licence:</label>
+                </div>
+                <div class="col-xs-12 col-sm-9">
+                    <input type="text" ng-model="trainer.Licence.Number" capitalize placeholder="Licence Number" />
+                </div>
+            </div><!-- // End .trainer-field-holder-row -->
+         
+          
+            <!-- Field holder row -->
+            <div class="row trainer-field-holder-row">
+                <div class="col-xs-12 col-sm-3">
+                    <label>Licence Type:</label>
+                </div>
+                <div class="col-xs-12 col-sm-9">
+                    <select ng-model="trainer.Licence.Type">
+                        <option ng-repeat="licenceType in licenceTypes | orderBy: 'Name'"
+                                ng-selected="trainer.Licence.Type == licenceType.Id"
+                                value="{{ licenceType.Id }}">
+                            {{ licenceType.Name }}
+                        </option>
+                    </select>
+                </div>
+            </div><!-- // End .trainer-field-holder-row -->
+
+            <div class="row trainer-field-holder-row">
+                <div class="col-xs-12 col-sm-3">
+                    <label>Licence Expiry:</label>
+                </div>
+                <div class='col-sm-4'>
+                    <input class="cm-sm-12" type="text" ng-model="trainer.Licence.ExpiryDate" ng-click="toggleCalendar()" />
+                </div>
+                <div class='col-sm-1'>
+                </div>
+                <div class='col-sm-2 element-overflow-0'>
+                    <a ng-click="toggleCalendar()" ng-show="!displayCalendar" class="calendar-button col-sm-6" title="Show Calendar"><div></div></a>
+                    <a ng-click="toggleCalendar()" ng-show="displayCalendar" class="calendar-button col-sm-6" title="Hide Calendar"><div></div></a>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-sm-5'></div>
+                <div class='col-sm-3'>
+                    <div style="position:absolute; z-index:1000" ng-show="displayCalendar">
+                        <date-picker ng-model="trainer.Licence.ExpiryDate" format-date="formatDate" ng-mouseleave="toggleCalendar()"></date-picker>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row trainer-field-holder-row">
+                <div class="col-xs-12 col-sm-3">
+                    <label>Photocard Expiry Date:</label>
+                </div>
+                <div class='col-sm-4'>
+                    <input class="cm-sm-12" type="text" ng-model="trainer.Licence.PhotocardExpiryDate" ng-click="togglePhotoCalendar()" />
+                </div>
+                <div class='col-sm-1'>
+                </div>
+                <div class='col-sm-2 element-overflow-0'>
+                    <a ng-click="togglePhotoCalendar()" ng-show="!displayPhotoCalendar" class="calendar-button col-sm-6" title="Show Calendar"><div></div></a>
+                    <a ng-click="togglePhotoCalendar()" ng-show="displayPhotoCalendar" class="calendar-button col-sm-6" title="Hide Calendar"><div></div></a>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-sm-5'></div>
+                <div class='col-sm-3'>
+                    <div style="position:absolute; z-index:1000" ng-show="displayPhotoCalendar">
+                        <date-picker ng-model="trainer.Licence.PhotocardExpiryDate" format-date="formatDate" ng-mouseleave="togglePhotoCalendar()"></date-picker>
+                    </div>
+                </div>
+            </div>
+          
+            <div>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#notes" class="nav-tabs-short" aria-controls="notes" role="tab" data-toggle="tab">Notes</a></li>
+                    <li role="presentation"><a href="#documents" class="nav-tabs-short" aria-controls="documents" role="tab" data-toggle="tab">Documents</a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content tab-content-container margintop10">
+                    <div role="tabpanel" class="tab-pane tab-holding-container active" id="notes">
+                        <div class="row marginBottom5">
+                            <div class="col-sm-12">
+                                <textarea rows="8" class="form-control textarea" type="text" ng-model="trainerNotes" ng-disabled="true"></textarea>
+                            </div>
+                        </div>
+                        <div class="row margintop10">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9">
+                                <button class="btn btn-default btn-sm pull-right margintop10" ng-click="addTrainerNoteModal(trainerId)" title="Click to Add Notes">Add Note</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div role="tabpanel" class="tab-pane tab-holding-container" id="documents">
+                        <div class="row trainer-doc-container">
+                            <div class="col-sm-12">
+                                <div class="row trainer-field-holder-row">
+                                    <div class="trainerDocumentList">
+                                        <div class="trainerDocumentListItem {{ $last ? '' : 'trainerDocumentNotLastListItem' }}" ng-repeat="document in trainerDocuments">
+                                            <span class="trainerDocumentTitle"
+                                                  title="{{document.Description}}"
+                                                  ng-click="selectDocument(document)"
+                                                  ng-class="{selectedListOrTableItem : selectedDocument.Id == document.Id}">
+                                                {{ document.Title }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row margintop10">
+                            <div class="col-sm-3">
+                                <div ng-show="selectedDocument.Id > 0">
+                                    <button class="btn btn-default btn-sm" ng-click="openDownloadDocumentModal(selectedDocument)" title="Download selected course document">Download</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
+                                <button class="btn btn-default btn-sm pull-right" ng-click="addDocument(trainerId)" title="Upload and add a new document to be accessible by this Trainer">Add Document</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row margintop10">
+                        <div class="col-sm-2">
+                            <label>Vehicles</label>
+                        </div>
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-2 text-left" title="{{isTrainerVehicleSelected() ? 'Please Select a Vehicle First': ''}}">
+                            <button class="btn btn-default btn-sm marginBottom5"
+                                    title="Edit"
+                                    ng-click="openEditTrainerVehicleModal()"
+                                    ng-disabled="isTrainerVehicleSelected()">
+                                Edit
+                            </button>
+                        </div>
+                        <div class="col-sm-2 text-right">
+                            <button class="btn btn-default btn-sm marginBottom5"
+                                    title="Add"
+                                    ng-click="openAddTrainerVehicleModal()">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="sml-scroll-div marginBottom10">
+                                <table class="table table-hover table-bordered table-striped">
+                                    <thead></thead>
+                                    <tbody>
+                                        <tr ng-repeat="trainerVehicleDetail in trainerVehicleDetails">
+                                            <td ng-dblclick="selectTrainerVehicle(trainerVehicleDetail)"
+                                                ng-click="setSelectedTrainerVehicleDetails(trainerVehicleDetail)"
+                                                ng-class="{selectedTrainerVehicleDetailId : selectedTrainerVehicleDetailId == trainerVehicleDetail.TrainerVehicleId}"
+                                                title="{{trainerVehicleDetail.TrainerName}} {{trainerVehicleDetail.VehicleTypeDescription}} "
+                                                value="{{trainerVehicleDetail.TrainerVehicleId}}">
+                                                {{trainerVehicleDetail.TrainerName}} {{trainerVehicleDetail.VehicleTypeDescription}} {{trainerVehicleDetail.TrainerVehicleNumberPlate}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row margintop10">
+        <div class="col-xs-12 col-sm-3">
+            <div class="btn" ng-click="save()" title="Save Details">Save</div>
+        </div>
+    </div>
+
+    <div data-ng-if="showSuccessFader == true">
+        <my-msgfader status="success"></my-msgfader>
+    </div>
+    <div data-ng-if="showErrorFader == true">
+        <my-msgfader status="error"></my-msgfader>
+    </div>
+</div>

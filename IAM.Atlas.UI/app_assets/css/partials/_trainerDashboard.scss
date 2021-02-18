@@ -1,0 +1,36 @@
+﻿.trainerDashboard {
+
+
+    .sml-scroll-div {
+            overflow-y:scroll;
+            min-height :300px;
+            border: 1px solid black;
+        }
+
+    div.OtherInformation {
+          width: 30px;
+          height: 30px;
+          background: url(/app_assets/images/info.png) no-repeat !important;
+          background-size: 100% !important; 
+
+    }
+
+    .system-trainer-info {
+        height: 40px;
+    }
+
+    .SystemTrainerInformationBox {
+        border:1px solid #AAA;
+        padding:10px;
+        margin-bottom:20px;
+        margin-left:5px;
+    }
+
+}
+
+/*<div class="information-icon system-feature-information-icon {{ (addFavourite) ? '' : 'pull-right'}} col-sm-6 noLeftPadding noRightPadding">
+            <img src="/app_assets/images/info.png" 
+                alt="Info"
+                title="View System Information" 
+                ng-click="showFeatureInformation()" />
+        </div><!-- end .information-icon.system-feature-information-icon -->*/

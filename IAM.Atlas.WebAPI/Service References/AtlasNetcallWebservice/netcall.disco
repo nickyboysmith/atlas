@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://devatlas.iamroadsmart.com/netcall/netcall.asmx?wsdl" docRef="http://devatlas.iamroadsmart.com/netcall/netcall.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://devatlas.iamroadsmart.com/netcall/netcall.asmx" xmlns:q1="urn:netcall" binding="q1:NetcallSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://devatlas.iamroadsmart.com/netcall/netcall.asmx" xmlns:q2="urn:netcall" binding="q2:NetcallSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

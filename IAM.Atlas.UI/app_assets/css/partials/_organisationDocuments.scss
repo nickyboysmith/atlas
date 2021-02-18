@@ -1,0 +1,37 @@
+﻿#OrganisationDocuments{
+    .markedForDeletionOrgDocument{
+        background-color:pink;
+    }
+    .deletedOrgDocument{
+        background-color:red;
+    }
+    .selectedOrgDocument{
+        background-color: #ccc;
+    }
+    #hoverDeletedMsg{
+        position: absolute;
+        opacity: 0.85;
+        z-index: 100;
+        text-align: center;
+        background-color:red;
+        font-weight: bold;
+        line-height:30px;
+    }
+    #hoverMarkedForDeletionMsg{
+        position: absolute;
+        opacity: 0.85;
+        z-index: 100;
+        text-align: center;
+        background-color:pink;
+        font-weight: bold;
+        line-height:30px;
+    }
+    #documentListButtons{
+        /*margin-top: 155px;*/
+        margin-top: 50px;
+    }
+    #documentListUploadButtons{
+        /*margin-top: 155px;*/
+        margin-top: 50px;
+    }
+}

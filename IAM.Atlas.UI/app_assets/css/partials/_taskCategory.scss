@@ -1,0 +1,32 @@
+﻿
+
+.taskCategory {
+    
+    form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+      
+       .table tr:hover td
+        {
+            background-color:#ffffe6;
+        }
+
+        .selectedTaskCategoryId {
+            background: #cce9ff !important;
+        }
+
+        .selectedTaskCategoryId:hover {
+            background: #ffffe6;
+            color: #fff;
+        }
+
+        .sml-scroll-div {
+            border: 1px solid black;
+            height:160px;
+            }
+
+       
+    }
+}

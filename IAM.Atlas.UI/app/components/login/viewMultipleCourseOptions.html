@@ -1,0 +1,31 @@
+﻿<div id="viewMultipleCourseOptions">
+    <div class="row">
+        <div class="col-md-12 Eligible">
+            <p>
+                <span>You are eligible to take the multiple courses. Please select the course you would like to register for first, from the list below</span>
+            </p>
+        </div>
+        <!--Course list here-->
+        <div class='col-sm-9'>
+            <table class="table table-hover table-bordered">                
+                <tbody>
+                    <tr ng-repeat="dorsCourse in courseOptions | orderBy: 'SchemeName' track by $index">
+                        <td ng-click="$parent.selectDorsCourse(dorsCourse.SchemeId, dorsCourse.SchemeName, dorsCourse.ForceName, $index)"                            
+                            value="{{dorsCourse.SchemeId}}"
+                            ng-class="{selectedCourse: dorsCourse.SchemeId === selectedDorsSchemeId && dorsCourse.SchemeName === selectedDorsSchemeName && dorsCourse.ForceName === selectedDorsForceName}">
+                            <span class="SchemeName">{{dorsCourse.SchemeName}} <span class="ExpiryDate">(Must Be taken by: {{dorsCourse.ExpiryDate | date :  "MMM dd yyyy" }})</span></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-12">
+            <div class="col-xs-6 col-sm-4 pull-left">
+                <div ng-click="closeDialog('viewMultipleCourseOptionsModal');" class="licence-button btn">Cancel</div>
+            </div>
+            <div class="col-xs-6 col-sm-4 pull-right">
+                <div ng-click="selectCourse();" ng-disabled ="selectedDorsSchemeId == 0" class="licence-button btn">Continue</div>
+            </div>
+        </div>
+    </div>
+</div>

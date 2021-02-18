@@ -1,0 +1,42 @@
+﻿#allCourseTypesDocuments{
+
+    .allCoursesButtonDivMargin
+    {
+        margin-top: 37px;
+    }
+
+    tr.allCourseTypesDocumentList, th.allCourseTypesDocumentList
+    {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+    }
+
+    tr.selectedAllCourseTypeDocument
+    {
+        color: white;
+        background-color:#428bca;
+    }
+
+    .tableDivHeight{
+        height:570px;
+    }
+}
+
+#allCourseTypesDocumentsAddExisting{
+    
+    tr.allCourseTypesDocumentList, th.allCourseTypesDocumentList
+    {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+    }
+
+    tr.selectedDocument
+    {
+        color: white;
+        background-color:#428bca;
+    }
+
+    .tableDivHeight{
+        height:540px;
+    }
+}

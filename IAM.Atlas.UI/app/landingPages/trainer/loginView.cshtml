@@ -1,0 +1,119 @@
+﻿<h1>@AppState["customAppName"]</h1>
+
+<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-cloak>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title ng-bind="title">@(PageData["title"] ?? "IAM.Atlas for Visual Studio")</title>
+    <meta name="description" content="@PageData[" description"]">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="/favicon.ico?v=1.1"> 
+    @Styles.Render("~/app_assets/css/app")
+
+</head>
+
+
+
+<body id="organisationLogin" class="trainer" ng-cloak>
+
+
+    <div id="orgLoginContainer">
+
+        <div class="container">
+
+            <div class="row branding-container">
+                <div class="col-xs-12">
+                    <img src="~/app_assets/images/iamroad_smart_logo_atlas.png" alt="" />
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-1 col-sm-2 col-md-3"></div>
+                <div class="col-xs-10 col-sm-8 col-md-6">
+                    <div class="organisation-logo"></div>
+                </div>
+                <div class="col-xs-1 col-sm-2 col-md-3"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-1 col-sm-2 col-md-3"></div>
+                <div class="col-xs-10 col-sm-8 col-md-6 contact-link-holder">
+                    <a class="contact-link" href="#">Contact us</a>
+                </div>
+                <div class="col-xs-1 col-sm-2 col-md-3"></div>
+
+            </div>
+
+            <div class="row login-box-container">
+                <div class="col-xs-1 col-sm-2 col-md-3"></div>
+                <div class="col-xs-10 col-sm-8 col-md-6 login-box">
+
+                    <div id="ui-view" ui-view data-tmpl-url="@Request.RequestContext.RouteData.DataTokens[" templateUrl"]">
+                    </div><!-- End #ui-view -->
+
+                </div><!-- End .col-sm-8 -->
+                <div class="col-xs-1 col-sm-2 col-md-3"></div>
+            </div><!-- End .row -->
+
+        </div><!-- End .container -->
+
+
+
+    </div> <!-- End #orgLoginContainer -->
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+
+        @*Documentation for the datepicker http://myplanet.github.io/angular-date-picker/*@
+        <script src="~/app_assets/vendor/datepicker/angular-date-picker.js"></script>
+        @*<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-datepicker/0.2.16/angular-datepicker.min.js"></script>*@
+
+        <script src="~/app_assets/js/globals.js"></script>
+
+        @*For Examples see of Bootstrap Dialog http://nakupanda.github.io/bootstrap3-dialog/*@
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.4/js/bootstrap-dialog.min.js"></script>
+        <link rel="stylesheet" href="~/app_assets/css/bootstrap/bootstrap-dialog.css" />
+
+
+        @* Using jQuery Cookie to manage cookies. Documentation is here: https://github.com/js-cookie/js-cookie *@
+        <script type="text/javascript" src="~/Scripts/updatedCookie.js"></script>
+
+
+
+
+        <!-- Place the app.js here -->
+        <script src="~/app/landingPages/trainer/trainerLogin.js"></script>
+
+
+        @Scripts.Render("~/js/app")
+        @*
+        Google Analytics
+        ----------------
+        Google recommends that this script be placed at the top of the page. Factors to consider: if you place this
+        script at the top of the page, you'll be able to count users who don't fully load the page, and you'll incur
+        the max number of simultaneous connections of the browser.
+        https://developers.google.com/analytics/devguides/collection/analyticsjs/
+        *@
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+            ga('create', '@WebConfigurationManager.AppSettings["GoogleAnalytics:PropertyID"]', '@(Request.IsLocal ? "none" : "auto")');
+        </script>
+    </body>
+</html>

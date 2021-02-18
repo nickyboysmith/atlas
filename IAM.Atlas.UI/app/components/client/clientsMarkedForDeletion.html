@@ -1,0 +1,53 @@
+﻿<div id="searchTrainer" class="SearchTrainer" style="width:950px;">
+    <form class="form-horizontal row" role="form" style="color: black; ">
+        <!--Results-->
+        <div class='row form-group' id="userSearchResults">
+            <!--User list here -->
+            <div class='col-sm-12' id="usersLoadingRow" style="display:none;">
+                <img style="display: block; margin-left: auto; margin-right: auto;" src="../../../app_assets/images/ajax-loader.gif" />
+            </div>
+            <div class='col-sm-12' id="userResultsRow">
+                <table st-table="deletedClients" class="table table-hover table-bordered" st-safe-src="deletedClientsTemplate">
+                    <thead class="marginBottom10">
+                        <tr>
+                            <td colspan="6">
+                                <input st-search placeholder="filter results" class="col-sm-3" type="search" />
+                                <span class="col-sm-3"></span>
+                                <span class="col-sm-2">Items per page:</span>&nbsp;
+                                <input type="text" class="col-sm-1" value="{{itemsPerPage}}" ng-model="itemsPerPage" />
+                                <span class="col-sm-4"></span>
+                            </td>
+                        </tr>
+                        <tr class="bootstrap-dialog-header">
+                            <th>Client Id</th>
+                            <th>Client Name</th>
+                            <th>Licence Number</th>
+                            <th>Date Created</th>
+                            <th>Date Deleted</th>
+                            <th>Comment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="client in deletedClients"
+                            ng-click="showClientModal(client.ClientId)"
+                            value="{{client.ClientId}}">
+                            <td>{{client.ClientId}}</td>
+                            <td>{{client.ClientName}}</td>
+                            <td>{{client.LicenceNumber}}</td>
+                            <td>{{client.ClientCreatedDate | date:'EEE dd MMMM yyyy HH:mm'}}</td>
+                            <td>{{client.DateRequested | date:'EEE dd MMMM yyyy HH:mm'}}</td>
+                            <td>{{client.Note}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6" class="text-center">
+                                <div st-pagination="" st-items-by-page="itemsPerPage"></div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>

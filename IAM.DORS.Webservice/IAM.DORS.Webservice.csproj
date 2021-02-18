@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D539B0B0-E255-4AF0-9A59-EAECA6A0C6CF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IAM.DORS.Webservice</RootNamespace>
+    <AssemblyName>IAM.DORS.Webservice</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\MockService.cs" />
+    <Compile Include="DORSConnectionException.cs" />
+    <Compile Include="Interface.cs" />
+    <Compile Include="Models\AttendanceStatus.cs" />
+    <Compile Include="Models\ClientStatus.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Force.cs" />
+    <Compile Include="Models\ForceContract.cs" />
+    <Compile Include="Models\OfferWithdrawn.cs" />
+    <Compile Include="Models\Scheme.cs" />
+    <Compile Include="Models\Site.cs" />
+    <Compile Include="Models\TrainerLicence.cs" />
+    <Compile Include="Models\UpdateTrainer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DORSService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DORSService_v2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DORSService_v1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="WebServiceEndPoint\OutDorsService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.AddCourseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.AttendanceStatusEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.CancelBookingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.CancelCourseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.CourseResponseEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.CourseResponseEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.CourseWithAttendeesResponseEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.ForceContractEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.ForceEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.GetAttendanceIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.GetAttendanceStatusListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.GetCourseByIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.GetCourseIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.GetCourseListBySiteIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.GetForceContractListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.GetForceListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.GetIdentityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.GetOfferWithdrawnEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.GetOfferWithdrawnResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.GetSchemeListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.GetSiteListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.GetTrainerLicensesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.LookupStatusEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.LookupStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.OperationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.SchemeEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.SiteEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.TrainerLicenseEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.UpdateCourseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\IAM.DORS.Webservice.DORSService.UpdateTrainersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService\OutDorsService.wsdl" />
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.AddCourseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.AttendanceStatusEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.CancelBookingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.CancelCourseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.CourseResponseEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.CourseResponseEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.ForceContractEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.ForceEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.GetAttendanceIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.GetAttendanceStatusListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.GetCourseIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.GetCourseListBySiteIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.GetForceContractListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.GetForceListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.GetIdentityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.GetOfferWithdrawnEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.GetOfferWithdrawnResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.GetSchemeListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.GetSiteListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.GetTrainerLicensesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.LookupStatusEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.LookupStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.OperationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.SchemeEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.SiteEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.TrainerEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.UpdateCourseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\IAM.DORS.Webservice.DORSService_v2.UpdateTrainersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v2\OutDorsService.wsdl" />
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.AddBookingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.AddCourseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.AttendanceStatusEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.CancelBookingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.CancelCourseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.CourseEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.ForceContractEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.ForceEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.GetAttendanceIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.GetAttendanceStatusListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.GetCourseIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.GetCourseListBySiteIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.GetForceContractListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.GetForceListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.GetIdentityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.GetOfferWithdrawnEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.GetOfferWithdrawnResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.GetSchemeListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.GetSiteListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.LookupStatusEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.LookupStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.SchemeEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.SiteEntityCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.UpdateBookingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\IAM.DORS.Webservice.DORSService_v1.UpdateCourseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DORSService_v1\OutDorsService_2013_12.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\DORSService\" />
+    <WCFMetadataStorage Include="Service References\DORSService_v2\" />
+    <WCFMetadataStorage Include="Service References\DORSService_v1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DORSService_v1\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DORSService_v1\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DORSService_v1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DORSService_v2\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DORSService_v2\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DORSService_v2\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DORSService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DORSService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DORSService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

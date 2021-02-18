@@ -1,0 +1,27 @@
+﻿<div id="systemFeatureInformation">
+
+    <div class="row form-line-separator">
+        <div class="col-md-12">
+            <p>{{ systemFeatureDescription }}</p>
+        </div><!-- end .col-md-12 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row form-line-separator">
+        <div class="col-md-12">
+            <div 
+                 class="btn pull-right"
+                 ng-click="openAddNoteModal()">Add Note</div>
+        </div><!-- end .col-md-12 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row form-line-separator" ng-if="showSystemFeatureNotes != false">
+        <div class="col-md-12">
+            <ul class="booking-note-holder">
+                <li ng-repeat="systemFeatureNote in systemFeatureNotes">
+                    {{ systemFeatureNote.Content }}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div><!-- end #systemFeatureInformation -->

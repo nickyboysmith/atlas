@@ -1,0 +1,27 @@
+@import "../modules/_mixins.scss";
+
+#courseStencil {
+    .small-italic {
+        font-style:italic;
+        font-size:x-small
+    }
+    .display-calendar {
+        position:absolute;
+        z-index:10;
+    }
+    .zero-padding {
+        padding: 0px;
+    }
+    .left-pad-8 {
+        padding-left: 8px;
+    }
+    .left-pad-9 {
+        padding-left: 9px;
+    }
+    .seperator-300 {
+       height:300px;
+    }    
+    .normal-font{
+        font-weight: normal;
+    }
+}

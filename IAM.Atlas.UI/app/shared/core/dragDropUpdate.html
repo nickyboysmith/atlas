@@ -1,0 +1,53 @@
+﻿<div id="dragDropUpdate">
+
+    <div class="row theContainer" ng-if="showReferenceHeader == true">
+        <div class="col-md-6">
+            <p><strong>{{ referenceOneTitle }}:</strong> {{ referenceOneValue }}</p>
+        </div>
+        <div class="col-md-6">
+            <p><strong>{{ referenceTwoTitle }}:</strong> {{ referenceTwoValue }}</p>
+        </div>
+    </div><!-- end .theContainer -->
+
+    <div class="row listHolder">
+
+        <div class="col-md-6">
+            <p>{{ listOneHeader }}</p>
+            <div class="listContainer"
+                 id="available"
+                 ng-drop="true"
+                 ng-drop-success="dropInNewArea($data, $event, from, to)">
+                <ul>
+                    <li ng-repeat="available in fromDataSource"
+                        track by available.Id
+                        ng-drag="true"
+                        ng-drag-data="{{ available }}"
+                        data-allow-transform="true">
+                        {{ available.Name }}
+                    </li>
+
+                </ul>
+            </div><!-- end .listContainer -->
+        </div><!-- end .col-md-6 -->
+
+        <div class="col-md-6">
+            <p>{{ listTwoHeader }}</p>
+            <div class="listContainer"
+                 id="selected"
+                 ng-drop="true"
+                 ng-drop-success="dropInNewArea($data, $event, to, from)">
+                <ul>
+                    <li ng-repeat="selected in toDataSource"
+                        track by selected.Id
+                        ng-drag="true"
+                        ng-drag-data="{{ selected }}"
+                        data-allow-transform="true">
+                        {{ selected.Name }}
+                    </li>
+                </ul>
+            </div><!-- end .listContainer -->
+        </div><!-- end .col-md-6 -->
+
+    </div><!-- end .listHolder -->
+
+</div>

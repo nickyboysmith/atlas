@@ -1,0 +1,167 @@
+﻿
+<script src="https://code.angularjs.org/1.3.14/i18n/angular-locale_en-gb.js"></script>
+
+<div id="addPublicHoliday" class="PublicHolidays">
+
+    <div class="Title row">
+        <h2>Add Public Holiday</h2>
+    </div>
+    <div class='row'>
+    </div>
+    <form class="form-horizontal row" role="form">
+
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-2'>
+                <label>Title: </label>
+            </div>
+            <div class='col-sm-10'>
+
+                <input type="text"
+                       name="title"
+                       class="form-control"
+                       placeholder="Title"
+                       ng-model="manage.thePublicHoliday.Title"
+                       ng-maxlength="100" />
+
+            </div>
+        </div>
+
+       
+
+
+
+
+
+
+
+        <!--<div class="row form-line-separator">
+            <div class="col-md-offset-3 col-md-9">
+                <div class='row form-line-separator'>
+                    <div class="col-md-2">
+                        <label>Date:</label>
+                    </div>
+                    <div class='col-md-5'>
+                        <input class="form-control"
+                               type="text"
+                               ng-model="manage.thePublicHoliday.Date"
+                               ng-click="toggleCalendar()" />
+                    </div>
+                    <div class='col-md-2 element-overflow-0'>
+                        <a ng-click="toggleCalendar()" ng-show="!displayCalendar" class="calendar-button col-md-6" title="Show Calendar"><div></div></a>
+                        <a ng-click="toggleCalendar()" ng-show="displayCalendar" class="calendar-button col-md-6" title="Hide Calendar"><div></div></a>
+                    </div>
+                </div>
+            </div>
+            <div class='row form-line-separator' style="z-index:10;">
+                <div class='col-md-offset-3 col-md-9' ng-show="displayCalendar">
+                    <date-picker ng-model="manage.thePublicHoliday.Date"
+                                 format-date="formatDate"
+                                 ng-mouseleave="toggleCalendar()"></date-picker>
+                </div>
+            </div>
+        </div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class='col-sm-12 form-group'>
+            <!--<div class="col-md-offset-3 col-md-9">-->
+                <!--<div class='row form-line-separator'>-->
+                    <div class="col-md-2">
+                        <label>Date:</label>
+                    </div>
+                    <div class='col-md-5'>
+                        <input class="form-control"
+                               type="text"
+                               ng-model="manage.thePublicHoliday.Date"
+                               ng-click="toggleCalendar()" />
+                    </div>
+                    <div class='col-md-2 element-overflow-0'>
+                        <a ng-click="toggleCalendar()" ng-show="!displayCalendar" class="calendar-button col-md-6" title="Show Calendar"><div></div></a>
+                        <a ng-click="toggleCalendar()" ng-show="displayCalendar" class="calendar-button col-md-6" title="Hide Calendar"><div></div></a>
+                    </div>
+                <!--</div>-->
+            <!--</div>-->
+
+            <div class='row form-line-separator' style="z-index:10;">
+                <div class='col-md-offset-2 col-md-10' ng-show="displayCalendar">
+                    <date-picker ng-model="manage.thePublicHoliday.Date"
+                                 format-date="formatDate"
+                                 ng-mouseleave="toggleCalendar()"></date-picker>
+                </div>
+            </div>
+        </div>
+
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-2'></div>
+            <div class='col-sm-10'>
+                <label>In Countries</label>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-2'></div>
+            <div class='col-sm-10'>
+                <table class="table">
+                    <thead></thead>
+                    <tbody>
+                        <tr ng-repeat="country in Countries">
+
+                            <td>
+                                <input type="checkbox" checklist-model="selectedCountries.Countries" checklist-value="country.id">
+                                {{country.name}}
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-2'></div>
+            <div class='col-sm-10'>
+                <button ng-click="savePublicHoliday()" class="btn">Save</button>
+            </div>
+        </div>
+
+        <label><span>{{ addValidationMessage }}</span></label>
+
+        <div data-ng-if="showSuccessFader == true">
+            <my-msgfader status="success"></my-msgfader>
+        </div>
+        <div data-ng-if="showErrorFader == true">
+            <my-msgfader status="error"></my-msgfader>
+        </div>
+
+</form>
+</div>
+
+
+
+
+
+
+
+
+

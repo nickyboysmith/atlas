@@ -1,0 +1,1871 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{90C56164-F9C6-4566-AB99-54E09E19131B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>App.AtlasUI</RootNamespace>
+    <AssemblyName>App.AtlasUI</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Common.1.3.0\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Common.NetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Common.1.3.0\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Management.2.0.0\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Compute, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Management.Compute.5.0.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.MediaServices, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Management.MediaServices.2.0.0\lib\net40\Microsoft.WindowsAzure.Management.MediaServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Monitoring, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Management.Monitoring.1.0.0\lib\net40\Microsoft.WindowsAzure.Management.Monitoring.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Management.Network.3.0.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Scheduler, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Management.Scheduler.3.0.0\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Management.Sql.3.0.0\lib\net40\Microsoft.WindowsAzure.Management.Sql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Management.Storage.3.0.0\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.WebSites, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Management.WebSites.3.0.0\lib\net40\Microsoft.WindowsAzure.Management.WebSites.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.22.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.22.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.2\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\components\about\controllers\aboutController.js" />
+    <Content Include="app\components\adminMenu\add.html" />
+    <Content Include="app\components\adminMenu\controllers\addAdminMenuController.js" />
+    <Content Include="app\components\adminMenu\addAdminMenuGroup.html" />
+    <Content Include="app\components\adminMenu\controllers\addAdminMenuGroupController.js" />
+    <Content Include="app\components\adminMenu\services\adminMenuService.js" />
+    <Content Include="app\components\adminTools\services\adminToolService.js" />
+    <Content Include="app\components\archiveControl\controllers\archiveControlController.js" />
+    <Content Include="app\components\archiveControl\services\archiveControlService.js" />
+    <Content Include="app\components\archiveControl\update.html" />
+    <Content Include="app\components\area\controllers\manageAreaController.js" />
+    <Content Include="app\components\area\factories\areaManagementFactory.js" />
+    <Content Include="app\components\area\services\areaManagementService.js" />
+    <Content Include="app\components\blockedIP\controllers\blockedIPController.js" />
+    <Content Include="app\components\blockedIP\services\blockedIPService.js" />
+    <Content Include="app\components\blockedIP\update.html" />
+    <Content Include="app\components\changePassword\controllers\changePasswordController.js" />
+    <Content Include="app\components\changePassword\controllers\changePasswordRequestController.js" />
+    <Content Include="app\components\area\manage.html" />
+    <Content Include="app\components\changePassword\request.html" />
+    <Content Include="app\components\changePassword\services\angular-no-captcha.js" />
+    <Content Include="app\components\changePassword\services\organisationListService.js" />
+    <Content Include="app\components\changePassword\services\passwordValidationService.js" />
+    <Content Include="app\components\changePassword\services\changePasswordRequestService.js" />
+    <Content Include="app\components\clientSite\controllers\clientSitePaymentController.js" />
+    <Content Include="app\components\clientSite\payment.html" />
+    <Content Include="app\components\client\addClientDocument.html" />
+    <Content Include="app\components\client\availableCourses.html" />
+    <Content Include="app\components\client\bookCourse.html" />
+    <Content Include="app\components\client\clientCourseBookings.html" />
+    <Content Include="app\components\client\clientRescheduleCourseConfirm.html" />
+    <Content Include="app\components\client\controllers\addClientDocumentController.js" />
+    <Content Include="app\components\client\controllers\clientAvailableCoursesController.js" />
+    <Content Include="app\components\client\controllers\clientBookCourseController.js" />
+    <Content Include="app\components\client\controllers\clientDocumentController.js" />
+    <Content Include="app\components\client\controllers\addIdentifierController.js" />
+    <Content Include="app\components\client\controllers\clientCourseBookings.js" />
+    <Content Include="app\components\client\controllers\clientPaymentsController.js" />
+    <Content Include="app\components\client\controllers\clientRescheduleCourseConfirmController.js" />
+    <Content Include="app\components\client\controllers\clientsMarkedForDeletionController.js" />
+    <Content Include="app\components\client\controllers\deleteConfirmationController.js" />
+    <Content Include="app\components\client\controllers\deleteMarkedController.js" />
+    <Content Include="app\components\client\controllers\editClientController.js" />
+    <Content Include="app\components\client\controllers\editCourseBookingController.js" />
+    <Content Include="app\components\client\controllers\findSingleClientController.js" />
+    <Content Include="app\components\client\controllers\removeFromCourseController.js" />
+    <Content Include="app\components\client\controllers\clientRescheduleCourseDetailsController.js" />
+    <Content Include="app\components\client\controllers\transferToNewCourseController.js" />
+    <Content Include="app\components\client\controllers\updateSpecialRequirementsController.js" />
+    <Content Include="app\components\client\deleteConfirmation.html" />
+    <Content Include="app\components\client\deleteMarked.html" />
+    <Content Include="app\components\client\documents.html" />
+    <Content Include="app\components\client\addIdentifier.html" />
+    <Content Include="app\components\client\edit.html" />
+    <Content Include="app\components\client\add.html" />
+    <Content Include="app\components\client\addNote.html" />
+    <Content Include="app\components\client\controllers\clientHomeController.js" />
+    <Content Include="app\components\client\editCourseBooking.html" />
+    <Content Include="app\components\client\controllers\addClientPaymentController.js" />
+    <Content Include="app\components\client\findSingle.html" />
+    <Content Include="app\components\client\payments.html" />
+    <Content Include="app\components\client\removeFromCourse.html" />
+    <Content Include="app\components\client\search.html" />
+    <Content Include="app\components\client\CD_View.html" />
+    <Content Include="app\components\client\addPayment.html" />
+    <Content Include="app\components\client\C_List.html" />
+    <Content Include="app\components\client\controllers\addClientNoteController.js" />
+    <Content Include="app\components\client\controllers\clientsController.js" />
+    <Content Include="app\components\client\controllers\C_Controller.js" />
+    <Content Include="app\components\client\services\clientService.js" />
+    <Content Include="app\components\client\clientRescheduleCourseDetails.html" />
+    <Content Include="app\components\client\transferToNewCourse.html" />
+    <Content Include="app\components\client\updateSpecialRequirements.html" />
+    <Content Include="app\components\client\clientsMarkedForDeletion.html" />
+    <Content Include="app\components\courseFee\add.html" />
+    <Content Include="app\components\courseFee\cancel.html" />
+    <Content Include="app\components\courseFee\controllers\addCourseFeeController.js" />
+    <Content Include="app\components\courseFee\controllers\cancelCourseFeeController.js" />
+    <Content Include="app\components\courseFee\controllers\courseFeeController.js" />
+    <Content Include="app\components\courseFee\services\courseFeeService.js" />
+    <Content Include="app\components\courseFee\update.html" />
+    <Content Include="app\components\courseRebookingFee\add.html" />
+    <Content Include="app\components\courseRebookingFee\cancel.html" />
+    <Content Include="app\components\courseRebookingFee\controllers\addCourseRebookingFeeController.js" />
+    <Content Include="app\components\courseRebookingFee\controllers\cancelCourseRebookingFeeController.js" />
+    <Content Include="app\components\courseRebookingFee\controllers\courseRebookingFeeController.js" />
+    <Content Include="app\components\courseRebookingFee\services\courseRebookingFeeService.js" />
+    <Content Include="app\components\courseRebookingFee\update.html" />
+    <Content Include="app\components\courseReference\controllers\courseReferenceInterpreterSettingsController.js" />
+    <Content Include="app\components\courseReference\controllers\courseReferenceTrainerSettingsController.js" />
+    <Content Include="app\components\courseReference\services\courseReferenceService.js" />
+    <Content Include="app\components\courseReference\updateInterpreterSettings.html" />
+    <Content Include="app\components\courseReference\updateTrainerSettings.html" />
+    <Content Include="app\components\courseStencil\add.html" />
+    <Content Include="app\components\courseTypeCategories\add.html" />
+    <Content Include="app\components\courseTypeCategories\controllers\addCourseTypeCategoryController.js" />
+    <Content Include="app\components\course\addCourseEmailAttachment.html" />
+    <Content Include="app\components\course\addCourseInterpreter.html" />
+    <Content Include="app\components\course\attachCourseEmailAttachment.html" />
+    <Content Include="app\components\course\availableCourses.html" />
+    <Content Include="app\components\course\clientsWithoutEmails.html" />
+    <Content Include="app\components\course\cloneCourse.html" />
+    <Content Include="app\components\course\cloneCourseConfirmation.html" />
+    <Content Include="app\components\course\controllers\addCourseEmailAttachmentController.js" />
+    <Content Include="app\components\course\controllers\addCourseInterpreterController.js" />
+    <Content Include="app\components\course\controllers\attachCourseEmailAttachmentController.js" />
+    <Content Include="app\components\course\controllers\availableCoursesController.js" />
+    <Content Include="app\components\course\controllers\clientsWithoutEmailsController.js" />
+    <Content Include="app\components\course\controllers\cloneCourseConfirmationController.js" />
+    <Content Include="app\components\course\controllers\cloneCourseController.js" />
+    <Content Include="app\components\course\controllers\courseInterpreterController.js" />
+    <Content Include="app\components\course\controllers\emailAllClientsController.js" />
+    <Content Include="app\components\course\controllers\emailAllTrainersController.js" />
+    <Content Include="app\components\course\controllers\trainersWithoutEmailsController.js" />
+    <Content Include="app\components\course\emailAllClients.html" />
+    <Content Include="app\components\course\emailAllTrainers.html" />
+    <Content Include="app\components\course\factories\courseInterpreterFactory.js" />
+    <Content Include="app\components\course\services\courseInterpreterService.js" />
+    <Content Include="app\components\course\services\emailAllService.js" />
+    <Content Include="app\components\course\trainersWithoutEmails.html" />
+    <Content Include="app\components\documentPrintQueue\manage.html" />
+    <Content Include="app\components\documentPrintQueue\controllers\documentPrintQueueController.js" />
+    <Content Include="app\components\documentPrintQueue\services\documentPrintQueueService.js" />
+    <Content Include="app\components\documentInformation\controllers\documentInformationController.js" />
+    <Content Include="app\components\documentInformation\manage.html" />
+    <Content Include="app\components\documentInformation\services\documentInformationService.js" />
+    <Content Include="app\components\dors\controllers\DORSDefaultConnectionRotationController.js" />
+    <Content Include="app\components\dors\DORSDefaultConnectionRotation.html" />
+    <Content Include="app\components\dors\services\DORSConnectionService.js" />
+    <Content Include="app\components\email\controllers\previewEmailController.js" />
+    <Content Include="app\components\email\preview.html" />
+    <Content Include="app\components\email\services\emailService.js" />
+    <Content Include="app\components\interpreterLanguage\add.html" />
+    <Content Include="app\components\interpreterLanguage\addLanguage.html" />
+    <Content Include="app\components\interpreterLanguage\addNote.html" />
+    <Content Include="app\components\interpreterLanguage\controllers\addInterpreterLanguageController.js" />
+    <Content Include="app\components\interpreterLanguage\controllers\addLanguageController.js" />
+    <Content Include="app\components\interpreterLanguage\controllers\addNoteController.js" />
+    <Content Include="app\components\interpreterLanguage\controllers\editInterpreterLanguageController.js" />
+    <Content Include="app\components\interpreterLanguage\controllers\interpreterLanguageController.js" />
+    <Content Include="app\components\interpreterLanguage\update.html" />
+    <Content Include="app\components\interpreterLanguage\services\interpreterLanguageService.js" />
+    <Content Include="app\components\interpreterLanguage\view.html" />
+    <Content Include="app\components\login\controllers\blockedController.js" />
+    <Content Include="app\components\letterTemplate\controllers\letterTemplateController.js" />
+    <Content Include="app\components\letterTemplate\createDocFromLetterTemplate.html" />
+    <Content Include="app\components\letterTemplate\services\letterTemplateService.js" />
+    <Content Include="app\components\login\services\signOutService.js" />
+    <Content Include="app\components\mysteryShopper\controllers\mysteryShopperAdministrationController.js" />
+    <Content Include="app\components\mysteryShopper\manage.html" />
+    <Content Include="app\components\mysteryShopper\services\mysteryShopperService.js" />
+    <Content Include="app\components\paymentReconciliation\controllers\newPaymentReconciliationController.js" />
+    <Content Include="app\components\paymentReconciliation\controllers\paymentReconciliationController.js" />
+    <Content Include="app\components\paymentReconciliation\services\paymentReconciliationService.js" />
+    <Content Include="app\components\paymentReconciliation\new.html" />
+    <Content Include="app\components\paymentReconciliation\view.html" />
+    <Content Include="app\components\reconciliationConfiguration\controllers\addReconciliationConfigurationController.js" />
+    <Content Include="app\components\reconciliationConfiguration\controllers\reconciliationConfigurationController.js" />
+    <Content Include="app\components\reconciliationConfiguration\services\reconciliationConfigurationService.js" />
+    <Content Include="app\components\reconciliationConfiguration\add.html" />
+    <Content Include="app\components\reconciliationConfiguration\view.html" />
+    <Content Include="app\components\report\reportGenerator.html" />
+    <Content Include="app\components\SMS\allClient.html" />
+    <Content Include="app\components\SMS\controllers\allClientSMSController.js" />
+    <Content Include="app\components\SMS\allTrainer.html" />
+    <Content Include="app\components\SMS\controllers\allTrainerSMSController.js" />
+    <Content Include="app\components\task\add.html" />
+    <Content Include="app\components\task\addTaskSelectUser.html" />
+    <Content Include="app\components\task\controllers\addTaskController.js" />
+    <Content Include="app\components\task\controllers\addTaskSelectUserController.js" />
+    <Content Include="app\components\task\controllers\relateTaskToClientController.js" />
+    <Content Include="app\components\task\controllers\relateTaskToCourseController.js" />
+    <Content Include="app\components\task\controllers\relateTaskToTrainerController.js" />
+    <Content Include="app\components\task\controllers\taskAssignToUserController.js" />
+    <Content Include="app\components\task\assignToUser.html" />
+    <Content Include="app\components\task\relateTaskToClient.html" />
+    <Content Include="app\components\task\relateTaskToCourse.html" />
+    <Content Include="app\components\task\relateTaskToTrainer.html" />
+    <Content Include="app\components\adminTools\controllers\findOutOfSyncDORSLicenceController.js" />
+    <Content Include="app\components\adminTools\findOutOfSyncDORSLicence.html" />
+    <Content Include="app\components\trainerVehicle\add.html" />
+    <Content Include="app\components\trainerVehicle\addNote.html" />
+    <Content Include="app\components\trainerVehicle\controllers\addNoteController.js" />
+    <Content Include="app\components\trainerVehicle\controllers\addTrainerVehicleController.js" />
+    <Content Include="app\components\trainerVehicle\controllers\editTrainerVehicleController.js" />
+    <Content Include="app\components\trainerVehicle\controllers\trainerVehicleController.js" />
+    <Content Include="app\components\trainerVehicle\controllers\trainerVehicleDetailController.js" />
+    <Content Include="app\components\trainerVehicle\detail.html" />
+    <Content Include="app\components\trainerVehicle\edit.html" />
+    <Content Include="app\components\trainerVehicle\services\trainerVehicleService.js" />
+    <Content Include="app\components\trainerVehicle\update.html" />
+    <Content Include="app\components\trainer\admin\services\trainerService.js" />
+    <Content Include="app\components\vat\addUKVATRate.html" />
+    <Content Include="app\components\vat\controllers\addUKVATRateController.js" />
+    <Content Include="app\components\vat\controllers\ukVATRatesController.js" />
+    <Content Include="app\components\vat\services\vatService.js" />
+    <Content Include="app\components\vat\ukVATRates.html" />
+    <Content Include="app\components\vehicleCategory\add.html" />
+    <Content Include="app\components\vehicleCategory\controllers\addVehicleCategoryController.js" />
+    <Content Include="app\components\vehicleCategory\controllers\vehicleCategoryAdminController.js" />
+    <Content Include="app\components\vehicleCategory\manage.html" />
+    <Content Include="app\components\vehicleCategory\services\vehicleCategoryService.js" />
+    <Content Include="app\components\vehicleType\add.html" />
+    <Content Include="app\components\vehicleType\controllers\addVehicleTypeController.js" />
+    <Content Include="app\components\vehicleType\manage.html" />
+    <Content Include="app\components\vehicleType\services\vehicleTypeService.js" />
+    <Content Include="app\components\netcall\controllers\testNetcallController.js" />
+    <Content Include="app\components\netcall\services\netcallService.js" />
+    <Content Include="app\components\netcall\test.html" />
+    <Content Include="app\components\payment\addNote.html" />
+    <Content Include="app\components\payment\controllers\addPaymentNoteController.js" />
+    <Content Include="app\components\payment\controllers\findPaymentController.js" />
+    <Content Include="app\components\payment\controllers\requestRefundPaymentController.js" />
+    <Content Include="app\components\payment\controllers\refundPaymentController.js" />
+    <Content Include="app\components\payment\controllers\viewPaymentController.js" />
+    <Content Include="app\components\payment\find.html" />
+    <Content Include="app\components\payment\requestRefund.html" />
+    <Content Include="app\components\payment\refund.html" />
+    <Content Include="app\components\payment\services\paymentService.js" />
+    <Content Include="app\components\payment\services\refundService.js" />
+    <Content Include="app\components\payment\view.html" />
+    <Content Include="app\components\refundRequest\controllers\cancelRefundRequestController.js" />
+    <Content Include="app\components\refundRequest\controllers\findRefundRequestController.js" />
+    <Content Include="app\components\refundRequest\cancel.html" />
+    <Content Include="app\components\refundRequest\find.html" />
+    <Content Include="app\components\refundRequest\services\refundRequestService.js" />
+    <Content Include="app\components\shared\client\clientCourseSelectionTemplate.html" />
+    <Content Include="app\components\stencilCourse\controllers\createStencilCourseController.js" />
+    <Content Include="app\components\stencilCourse\controllers\editStencilCourseController.js" />
+    <Content Include="app\components\stencilCourse\controllers\removeStencilCourseController.js" />
+    <Content Include="app\components\stencilCourse\create.html" />
+    <Content Include="app\components\stencilCourse\remove.html" />
+    <Content Include="app\components\courseStencil\controllers\addCourseStencilController.js" />
+    <Content Include="app\components\courseStencil\services\courseStencilService.js" />
+    <Content Include="app\components\stencilCourse\services\editStencilCourseService.js" />
+    <Content Include="app\components\stencilCourse\update.html" />
+    <Content Include="app\components\courseTrainer\controllers\courseTrainersController.js" />
+    <Content Include="app\components\courseTrainer\services\courseTrainersService.js" />
+    <Content Include="app\components\courseTrainer\update.html" />
+    <Content Include="app\components\courseTypeCategories\updateTrainer.html" />
+    <Content Include="app\components\courseType\documents\allCourseTypes.html" />
+    <Content Include="app\components\courseType\documents\allCourseTypesDocumentsAddExisting.html" />
+    <Content Include="app\components\courseType\documents\allCourseTypesDocumentUpload.html" />
+    <Content Include="app\components\courseType\documents\controllers\allCourseTypesDocumentsAddExistingController.js" />
+    <Content Include="app\components\courseType\documents\controllers\allCourseTypesDocumentsController.js" />
+    <Content Include="app\components\courseType\documents\controllers\allCourseTypesDocumentUploadController.js" />
+    <Content Include="app\components\courseType\documents\controllers\editAllCourseTypesDocumentController.js" />
+    <Content Include="app\components\courseType\documents\editAllCourseTypesDocument.html" />
+    <Content Include="app\components\courseType\documents\services\courseTypeDocumentService.js" />
+    <Content Include="app\components\course\attendance.html" />
+    <Content Include="app\components\course\controllers\courseAttendanceController.js" />
+    <Content Include="app\components\course\controllers\reminderEmailController.js" />
+    <Content Include="app\components\course\controllers\reminderSMSController.js" />
+    <Content Include="app\components\course\documents\allCourses.html" />
+    <Content Include="app\components\course\documents\allCoursesDocumentsAddExisting.html" />
+    <Content Include="app\components\course\documents\allCoursesDocumentUpload.html" />
+    <Content Include="app\components\course\documents\controllers\allCoursesDocumentsAddExistingController.js" />
+    <Content Include="app\components\course\documents\controllers\allCoursesDocumentsController.js" />
+    <Content Include="app\components\course\documents\controllers\allCoursesDocumentUploadController.js" />
+    <Content Include="app\components\course\documents\controllers\editAllCoursesDocumentController.js" />
+    <Content Include="app\components\course\documents\editAllCoursesDocument.html" />
+    <Content Include="app\components\course\documents\services\courseDocumentService.js" />
+    <Content Include="app\components\course\factories\courseAttendanceFactory.js" />
+    <Content Include="app\components\course\reminderEmail.html" />
+    <Content Include="app\components\course\reminderSMS.html" />
+    <Content Include="app\components\course\services\courseAttendanceService.js" />
+    <Content Include="app\components\dashboardMeter\add.html" />
+    <Content Include="app\components\dashboardMeter\controllers\dashboardMeterUserController.js" />
+    <Content Include="app\components\dashboardMeter\controllers\dashboardMeterController.js" />
+    <Content Include="app\components\dashboardMeter\controllers\organisationDashboardMeterController.js" />
+    <Content Include="app\components\dashboardMeter\factories\userDashBoardMeterFactory.js" />
+    <Content Include="app\components\dashboardMeter\services\dashboardMeterService.js" />
+    <Content Include="app\components\dashboardMeter\update.html" />
+    <Content Include="app\components\dashboardMeter\assignUser.html" />
+    <Content Include="app\components\dashboardMeter\controllers\assignUserDashBoardMeterController.js" />
+    <Content Include="app\components\dashboardMeter\services\userDashBoardMeterService.js" />
+    <Content Include="app\components\documents\controllers\documentDownloadController.js" />
+    <Content Include="app\components\documents\download.html" />
+    <Content Include="app\components\documents\services\downloadDocumentService.js" />
+    <Content Include="app\components\home\controllers\dashboardHoverInformationController.js" />
+    <Content Include="app\components\home\dashboardHoverInformation.html" />
+    <Content Include="app\components\letters\controllers\letterTemplatesController.js" />
+    <Content Include="app\components\letters\controllers\letterUploadController.js" />
+    <Content Include="app\components\letters\services\letterService.js" />
+    <Content Include="app\components\letters\templates.html" />
+    <Content Include="app\components\letters\upload.html" />
+    <Content Include="app\components\messaging\controllers\messagingController.js" />
+    <Content Include="app\components\messaging\send.html" />
+    <Content Include="app\components\messaging\services\messagingService.js" />
+    <Content Include="app\components\SMS\client.html" />
+    <Content Include="app\components\SMS\controllers\clientSMSController.js" />
+    <Content Include="app\components\SMS\services\SMSService.js" />
+    <Content Include="app\components\specialRequirements\controllers\AddSpecialRequirementController.js" />
+    <Content Include="app\components\specialRequirements\Add.html" />
+    <Content Include="app\components\systemControl\controllers\editSystemControlController.js" />
+    <Content Include="app\components\systemControl\services\systemControlService.js" />
+    <Content Include="app\components\systemControl\update.html" />
+    <Content Include="app\components\specialRequirements\controllers\SpecialRequirementsController.js" />
+    <Content Include="app\components\specialRequirements\services\SpecialRequirementsService.js" />
+    <Content Include="app\components\specialRequirements\Update.html" />
+    <Content Include="app\components\systemFeature\addExistingSystemFeatureGroupItem.html" />
+    <Content Include="app\components\systemFeature\addNote.html" />
+    <Content Include="app\components\systemFeature\addSystemFeatureGroup.html" />
+    <Content Include="app\components\systemFeature\addSystemFeatureGroupItem.html" />
+    <Content Include="app\components\systemFeature\addSystemFeatureInformationNote.html" />
+    <Content Include="app\components\systemFeature\controllers\addExistingSystemFeatureGroupItemController.js" />
+    <Content Include="app\components\systemFeature\controllers\addSystemFeatureGroupController.js" />
+    <Content Include="app\components\systemFeature\controllers\addSystemFeatureGroupItemController.js" />
+    <Content Include="app\components\systemFeature\controllers\addSystemFeatureNote.js" />
+    <Content Include="app\components\systemFeature\controllers\addSystemFeatureInformationNoteController.js" />
+    <Content Include="app\components\systemFeature\controllers\systemFeatureInformationController.js" />
+    <Content Include="app\components\systemFeature\controllers\updateSystemFeatureController.js" />
+    <Content Include="app\components\systemFeature\controllers\viewSystemFeatureInformationController.js" />
+    <Content Include="app\components\systemFeature\services\systemFeatureService.js" />
+    <Content Include="app\components\systemFeature\update.html" />
+    <Content Include="app\components\systemFeature\view.html" />
+    <Content Include="app\components\systemFeature\viewSystemFeatureInformation.html" />
+    <Content Include="app\components\systemTasks\controllers\SystemTaskController.js" />
+    <Content Include="app\components\systemTasks\services\SystemTaskService.js" />
+    <Content Include="app\components\systemTasks\Update.html" />
+    <Content Include="app\components\courseTypeCategories\assignTrainer.html" />
+    <Content Include="app\components\courseTypeCategories\controllers\assignTrainerCourseTypeCategoryController.js" />
+    <Content Include="app\components\courseTypeCategories\Update.html" />
+    <Content Include="app\components\courseTypeCategories\controllers\CourseTypeCategoryController.js" />
+    <Content Include="app\components\courseTypeCategories\services\CourseTypeCategoryService.js" />
+    <Content Include="app\components\dashboardMeter\updateMeter.html" />
+    <Content Include="app\components\course\addDocument.html" />
+    <Content Include="app\components\course\cancel.html" />
+    <Content Include="app\components\course\controllers\addCourseDocumentController.js" />
+    <Content Include="app\components\course\controllers\cancelCourseController.js" />
+    <Content Include="app\components\course\services\cancelCourseService.js" />
+    <Content Include="app\components\documents\controllers\deleteMarkedController.js" />
+    <Content Include="app\components\documents\controllers\documentStatisticsController.js" />
+    <Content Include="app\components\documents\deleteMarked.html" />
+    <Content Include="app\components\documents\statistics.html" />
+    <Content Include="app\components\dors\addDORSConnection.html" />
+    <Content Include="app\components\dors\addDORSConnectionNote.html" />
+    <Content Include="app\components\dors\controllers\addDORSConnectionController.js" />
+    <Content Include="app\components\dors\controllers\addDORSConnectionNoteController.js" />
+    <Content Include="app\components\dors\controllers\DORSControlSettingsController.js" />
+    <Content Include="app\components\dors\controllers\DORSLicenceCheckController.js" />
+    <Content Include="app\components\dors\controllers\editConnectionDetailsController.js" />
+    <Content Include="app\components\dors\controllers\editConnectionSettingsController.js" />
+    <Content Include="app\components\dors\DORSLicenceCheck.html" />
+    <Content Include="app\components\dors\editConnectionDetails.html" />
+    <Content Include="app\components\dors\editConnectionSettings.html" />
+    <Content Include="app\components\dors\editDORSControlSettings.html" />
+    <Content Include="app\components\dors\services\dorsConnectionCreationService.js" />
+    <Content Include="app\components\dors\services\dorsControlSettingsService.js" />
+    <Content Include="app\components\dors\services\dorsService.js" />
+    <Content Include="app\components\dors\services\dorsConnectionSettingsService.js" />
+    <Content Include="app\components\dors\services\dorsConnectionDetailsService.js" />
+    <Content Include="app\components\emailBlockedOutgoingAddress\controllers\emailBlockedOutgoingAddressController.js" />
+    <Content Include="app\components\emailBlockedOutgoingAddress\delete.html" />
+    <Content Include="app\components\emailBlockedOutgoingAddress\services\emailBlockedOutgoingAddressService.js" />
+    <Content Include="app\components\email\controllers\sendEmailController.js" />
+    <Content Include="app\components\email\services\sendEmailService.js" />
+    <Content Include="app\components\email\view.html" />
+    <Content Include="app\components\gender\services\genderService.js" />
+    <Content Include="app\components\help\controllers\helpController.js" />
+    <Content Include="app\components\help\view.html" />
+    <Content Include="app\components\home\client.html" />
+    <Content Include="app\components\emailConfirmation\confirm.html" />
+    <Content Include="app\components\emailConfirmation\controllers\emailConfirmationController.js" />
+    <Content Include="app\components\home\controllers\dashboardController.js" />
+    <Content Include="app\components\home\factories\dashboardFactory.js" />
+    <Content Include="app\components\home\services\dashboardService.js" />
+    <Content Include="app\components\login\clientConfirmRegistration.html" />
+    <Content Include="app\components\login\clientCourseConfirmation.html" />
+    <Content Include="app\components\login\clientCoursePayment.html" />
+    <Content Include="app\components\login\clientCoursePaymentVerification.html" />
+    <Content Include="app\components\login\clientCourseSelection.html" />
+    <Content Include="app\components\login\clientRegister.html" />
+    <Content Include="app\components\login\clientSpecialRequirements.html" />
+    <Content Include="app\components\login\controllers\clientConfirmRegistrationController.js" />
+    <Content Include="app\components\login\controllers\clientCourseConfirmationController.js" />
+    <Content Include="app\components\login\controllers\clientCoursePaymentController.js" />
+    <Content Include="app\components\login\controllers\clientCoursePaymentVerificationController.js" />
+    <Content Include="app\components\login\controllers\clientCourseSelectionController.js" />
+    <Content Include="app\components\login\controllers\clientSpecialRequirementsController.js" />
+    <Content Include="app\components\login\controllers\fullyBookedCourseNotificationController.js" />
+    <Content Include="app\components\login\controllers\loginInvitationController.js" />
+    <Content Include="app\components\login\controllers\organisationSelectionController.js" />
+    <Content Include="app\components\login\controllers\organisationContactsController.js" />
+    <Content Include="app\components\login\controllers\showCookieController.js" />
+    <Content Include="app\components\login\controllers\showTermsController.js" />
+    <Content Include="app\components\login\controllers\viewCourseOptionsController.js" />
+    <Content Include="app\components\login\controllers\clientRegisterController.js" />
+    <Content Include="app\components\login\controllers\viewOrganisationContactsController.js" />
+    <Content Include="app\components\login\cookiePolicy.html" />
+    <Content Include="app\components\login\factories\loginFactory.js" />
+    <Content Include="app\components\login\factories\signOutFactory.js" />
+    <Content Include="app\components\login\fullyBookedCourseNotification.html" />
+    <Content Include="app\components\login\loginInvitation.html" />
+    <Content Include="app\components\login\organisationSelection.html" />
+    <Content Include="app\components\login\organisationContacts.html" />
+    <Content Include="app\components\login\services\emailConfirmationService.js" />
+    <Content Include="app\components\login\services\clientRegisterService.js" />
+    <Content Include="app\components\login\services\organisationSelectionService.js" />
+    <Content Include="app\components\login\services\viewCourseOptionsService.js" />
+    <Content Include="app\components\login\services\organisationContactService.js" />
+    <Content Include="app\components\login\showOnlineTerms.html" />
+    <Content Include="app\components\login\viewMultipleCourseOptions.html" />
+    <Content Include="app\components\login\viewSingleCourseOption.html" />
+    <Content Include="app\components\login\viewOrganisationContacts.html" />
+    <Content Include="app\components\organisationSelfConfiguration\controllers\organisationSelfConfigurationController.js" />
+    <Content Include="app\components\organisationSelfConfiguration\services\organisationSelfConfigurationService.js" />
+    <Content Include="app\components\organisationSelfConfiguration\update.html" />
+    <Content Include="app\components\organisationSystemConfiguration\controllers\organisationSystemConfigurationController.js" />
+    <Content Include="app\components\organisationSystemConfiguration\services\organisationSystemConfigurationService.js" />
+    <Content Include="app\components\organisationSystemConfiguration\update.html" />
+    <Content Include="app\components\organisation\add.html" />
+    <Content Include="app\components\organisation\controllers\addOrganisationController.js" />
+    <Content Include="app\components\organisation\controllers\editOrganisationDocumentController.js" />
+    <Content Include="app\components\organisation\controllers\OrganisationDocumentsController.js" />
+    <Content Include="app\components\organisation\editOrganisationDocument.html" />
+    <Content Include="app\components\organisation\documents.html" />
+    <Content Include="app\components\organisation\services\organisationService.js" />
+    <Content Include="app\components\payment\acceptCard.html" />
+    <Content Include="app\components\payment\controllers\acceptCardPaymentController.js" />
+    <Content Include="app\components\payment\controllers\recordPaymentController.js" />
+    <Content Include="app\components\payment\factories\acceptCardPaymentFactory.js" />
+    <Content Include="app\components\payment\factories\recordPaymentFactory.js" />
+    <Content Include="app\components\payment\record.html" />
+    <Content Include="app\components\payment\services\acceptCardPaymentService.js" />
+    <Content Include="app\components\payment\services\recordPaymentService.js" />
+    <Content Include="app\components\referringAuthority\controllers\referringAuthorityController.js" />
+    <Content Include="app\components\referringAuthority\services\referringAuthorityService.js" />
+    <Content Include="app\components\referringAuthority\update.html" />
+    <Content Include="app\components\report\controllers\reportController.js" />
+    <Content Include="app\components\report\controllers\reportOwnersController.js" />
+    <Content Include="app\components\report\controllers\reportParametersController.js" />
+    <Content Include="app\components\report\reportOwners.html" />
+    <Content Include="app\components\report\reportParameters.html" />
+    <Content Include="app\components\report\save.html" />
+    <Content Include="app\components\report\services\reportParametersService.js" />
+    <Content Include="app\components\report\services\reportService.js" />
+    <Content Include="app\components\report\controllers\editReportConfigurationController.js" />
+    <Content Include="app\components\schedulerControl\controllers\editSchedulerControlController.js" />
+    <Content Include="app\components\schedulerControl\services\schedulerControlService.js" />
+    <Content Include="app\components\schedulerControl\update.html" />
+    <Content Include="app\components\taskCategory\add.html" />
+    <Content Include="app\components\taskCategory\controllers\addTaskCategoryController.js" />
+    <Content Include="app\components\taskCategory\controllers\taskCategoryController.js" />
+    <Content Include="app\components\taskCategory\services\taskCategoryService.js" />
+    <Content Include="app\components\taskCategory\update.html" />
+    <Content Include="app\components\task\controllers\taskListController.js" />
+    <Content Include="app\components\task\list.html" />
+    <Content Include="app\components\task\services\taskService.js" />
+    <Content Include="app\components\trainer\about\addDocument.html" />
+    <Content Include="app\components\trainer\about\controllers\addTrainerDocumentController.js" />
+    <Content Include="app\components\trainer\admin\calendar.html" />
+    <Content Include="app\components\trainer\admin\controllers\trainerAdminCalendarController.js" />
+    <Content Include="app\components\trainer\attendance\controllers\trainerAttendanceController.js" />
+    <Content Include="app\components\trainer\attendance\factories\trainerAttendanceFactory.js" />
+    <Content Include="app\components\trainer\attendance\services\trainerAttendanceService.js" />
+    <Content Include="app\components\trainer\attendance\view.html" />
+    <Content Include="app\components\report\cloneReport.html" />
+    <Content Include="app\components\report\controllers\cloneReportController.js" />
+    <Content Include="app\components\report\services\cloneReportService.js" />
+    <Content Include="app\components\trainer\availability\calendar.html" />
+    <Content Include="app\components\trainer\availability\controllers\trainerAvailabilityCalendarController.js" />
+    <Content Include="app\components\trainer\bookings\controllers\trainerBookingsController.js" />
+    <Content Include="app\components\trainer\bookings\factories\trainerBookingsFactory.js" />
+    <Content Include="app\components\trainer\bookings\services\trainerBookingsService.js" />
+    <Content Include="app\components\trainer\bookings\view.html" />
+    <Content Include="app\components\trainer\documents\allTrainersDocumentsAddExisting.html" />
+    <Content Include="app\components\trainer\documents\allTrainers.html" />
+    <Content Include="app\components\trainer\documents\allTrainersDocumentUpload.html" />
+    <Content Include="app\components\trainer\documents\controllers\allTrainersDocumentsAddExistingController.js" />
+    <Content Include="app\components\trainer\documents\controllers\allTrainersDocumentsController.js" />
+    <Content Include="app\components\trainer\documents\controllers\allTrainersDocumentUploadController.js" />
+    <Content Include="app\components\trainer\documents\controllers\editAllTrainersDocumentController.js" />
+    <Content Include="app\components\trainer\documents\editAllTrainersDocument.html" />
+    <Content Include="app\components\trainer\documents\services\trainerDocumentService.js" />
+    <Content Include="app\components\trainer\home\controllers\trainerDashboardController.js" />
+    <Content Include="app\components\trainer\home\services\trainerDashboardService.js" />
+    <Content Include="app\components\trainer\settings\controllers\trainerSettingsController.js" />
+    <Content Include="app\components\trainer\settings\services\trainerSettingsService.js" />
+    <Content Include="app\components\trainer\settings\view.html" />
+    <Content Include="app\components\users\addNetcallAgent.html" />
+    <Content Include="app\components\users\addSystemAdminSupportUsers.html" />
+    <Content Include="app\components\users\addSystemSupportUser.html" />
+    <Content Include="app\components\users\controllers\addNetcallAgentController.js" />
+    <Content Include="app\components\users\controllers\addSystemAdminSupportUsersController.js" />
+    <Content Include="app\components\users\controllers\addSystemSupportUserController.js" />
+    <Content Include="app\components\users\controllers\editNetcallAgentNumberController.js" />
+    <Content Include="app\components\users\controllers\editUserController.js" />
+    <Content Include="app\components\users\controllers\activeSystemUsersController.js" />
+    <Content Include="app\components\users\controllers\netcallAgentsController.js" />
+    <Content Include="app\components\users\controllers\systemAdminSupportUsersController.js" />
+    <Content Include="app\components\users\controllers\systemSupportUsersController.js" />
+    <Content Include="app\components\users\controllers\viewUserController.js" />
+    <Content Include="app\components\users\edit.html" />
+    <Content Include="app\components\users\activeUsers.html" />
+    <Content Include="app\components\users\editNetcallAgentNumber.html" />
+    <Content Include="app\components\users\netcallAgents.html" />
+    <Content Include="app\components\users\systemAdminSupportUsers.html" />
+    <Content Include="app\components\users\systemSupportUsers.html" />
+    <Content Include="app\components\users\view.html" />
+    <Content Include="app\components\vehicleType\controllers\vehicleTypeAdministrationController.js" />
+    <Content Include="app\components\venueCourseType\add.html" />
+    <Content Include="app\components\courseType\controllers\courseTypeController.js" />
+    <Content Include="app\components\courseType\factories\courseTypeFactory.js" />
+    <Content Include="app\components\venueCourseType\controllers\addVenueCourseTypeController.js" />
+    <Content Include="app\components\courseType\controllers\addCourseTypeController.js" />
+    <Content Include="app\components\courseType\add.html" />
+    <Content Include="app\components\courseType\services\courseTypeService.js" />
+    <Content Include="app\components\course\addCourseTrainer.html" />
+    <Content Include="app\components\course\addNote.html" />
+    <Content Include="app\components\course\controllers\addCourseNoteController.js" />
+    <Content Include="app\components\course\controllers\courseTrainerController.js" />
+    <Content Include="app\components\course\controllers\editCourseController.js" />
+    <Content Include="app\components\course\controllers\addCourseController.js" />
+    <Content Include="app\components\course\factories\courseTrainerFactory.js" />
+    <Content Include="app\components\course\Search.html" />
+    <Content Include="app\components\course\controllers\courseController.js" />
+    <Content Include="app\components\course\add.html" />
+    <Content Include="app\components\course\edit.html" />
+    <Content Include="app\components\courseType\update.html" />
+    <Content Include="app\components\dataView\add.html" />
+    <Content Include="app\components\dataView\controllers\dataViewController.js" />
+    <Content Include="app\components\dataView\controllers\addDataViewController.js" />
+    <Content Include="app\components\dataView\services\dataViewService.js" />
+    <Content Include="app\components\dataView\Update.html" />
+    <Content Include="app\components\feedback\view.html" />
+    <Content Include="app\components\client\controllers\addClientController.js" />
+    <Content Include="app\components\client\controllers\clientDetailsController.js" />
+    <Content Include="app\components\course\factories\courseFactory.js" />
+    <Content Include="app\components\course\services\courseService.js" />
+    <Content Include="app\components\course\services\courseTrainerService.js" />
+    <Content Include="app\components\feedback\controllers\FeedBackController.js" />
+    <Content Include="app\components\changePassword\services\processPasswordChange.js" />
+    <Content Include="app\components\home\controllers\homeController.js" />
+    <Content Include="app\components\login\chooseOrganisation.html" />
+    <Content Include="app\components\login\controllers\loginOrganisationController.js" />
+    <Content Include="app\components\login\controllers\loginController.js" />
+    <Content Include="app\components\login\controllers\loginTrainerController.js" />
+    <Content Include="app\components\login\controllers\signOutController.js" />
+    <Content Include="app\components\login\factories\authenticationFactory.js" />
+    <Content Include="app\components\login\controllers\chooseOrganisationController.js" />
+    <Content Include="app\components\login\organisationView.html" />
+    <Content Include="app\components\login\blockedView.html" />
+    <Content Include="app\components\login\signOutClientView.html" />
+    <Content Include="app\components\login\signOutTrainerView.html" />
+    <Content Include="app\components\login\signOutOrganisationView.html" />
+    <Content Include="app\components\login\clientView.html" />
+    <Content Include="app\components\notifications\view.html" />
+    <Content Include="app\components\login\services\authenticationService.js" />
+    <Content Include="app\components\login\services\systemService.js" />
+    <Content Include="app\components\notifications\controllers\NotificationController.js" />
+    <Content Include="app\components\organisation\controllers\configureOrganisationController.js" />
+    <Content Include="app\components\organisation\services\configureOrganisationService.js" />
+    <Content Include="app\components\organisation\services\systemFontService.js" />
+    <Content Include="app\components\reportCategory\controllers\reportCategoriesController.js" />
+    <Content Include="app\components\reportCategory\factories\reportCategoriesFactory.js" />
+    <Content Include="app\components\reportCategory\manage.html" />
+    <Content Include="app\components\reportCategory\services\reportCategoriesService.js" />
+    <Content Include="app\components\publicHoliday\controllers\addPublicHolidayContoller.js" />
+    <Content Include="app\components\publicHoliday\controllers\managePublicHolidayController.js" />
+    <Content Include="app\components\publicHoliday\factories\publicHolidayManagementFactory.js" />
+    <Content Include="app\components\publicHoliday\services\publicHolidayManagementService.js" />
+    <Content Include="app\components\quickSearch\controllers\quickSearchController.js" />
+    <Content Include="app\components\quickSearch\services\quickSearchService.js" />
+    <Content Include="app\components\report\controllers\reportSearchController.js" />
+    <Content Include="app\components\report\services\reportSearchService.js" />
+    <Content Include="app\components\report\view.html" />
+    <Content Include="app\components\trainer\about\add.html" />
+    <Content Include="app\components\trainer\about\controllers\addTrainerNoteController.js" />
+    <Content Include="app\components\trainer\about\controllers\trainerAddController.js" />
+    <Content Include="app\components\trainer\about\controllers\TrainerAboutController.js" />
+    <Content Include="app\components\publicHoliday\manage.html" />
+    <Content Include="app\components\publicHoliday\add.html" />
+    <Content Include="app\components\trainer\about\addNote.html" />
+    <Content Include="app\components\trainer\about\view.html" />
+    <Content Include="app\components\trainer\about\factories\TrainerProfileFactory.js" />
+    <Content Include="app\components\trainer\about\services\TrainerProfileService.js" />
+    <Content Include="app\components\trainer\availability\addTrainerUnavailability.html" />
+    <Content Include="app\components\trainer\availability\controllers\availableTrainerCourseTypesController.js" />
+    <Content Include="app\components\trainer\availability\controllers\addTrainerUnavailabilityController.js" />
+    <Content Include="app\components\trainer\availability\controllers\trainerAvailabilityController.js" />
+    <Content Include="app\components\trainer\availability\factories\trainerAvailabilityFactory.js" />
+    <Content Include="app\components\trainer\availability\services\trainerAvailabilityService.js" />
+    <Content Include="app\components\trainer\availability\updateTrainerCourseTypes.html" />
+    <Content Include="app\components\trainer\home\factories\trainerProfilePictureFactory.js" />
+    <Content Include="app\components\trainer\home\services\trainerProfilePictureService.js" />
+    <Content Include="app\components\trainer\search\controllers\trainerSearchController.js" />
+    <Content Include="app\components\trainer\search\services\trainerSearchService.js" />
+    <Content Include="app\components\users\add.html" />
+    <Content Include="app\components\users\controllers\addUserController.js" />
+    <Content Include="app\components\users\factories\userFactory.js" />
+    <Content Include="app\components\users\services\userService.js" />
+    <Content Include="app\components\venueCostType\controllers\venueCostTypeController.js" />
+    <Content Include="app\components\venueCostType\services\venueCostTypeService.js" />
+    <Content Include="app\components\payment\controllers\managePaymentTypesController.js" />
+    <Content Include="app\components\payment\factories\paymentManagementFactory.js" />
+    <Content Include="app\components\payment\services\paymentManagementService.js" />
+    <Content Include="app\components\paymentProvider\controllers\paymentProviderController.js" />
+    <Content Include="app\components\paymentProvider\services\paymentProviderService.js" />
+    <Content Include="app\components\scriptLog\controllers\scriptLogController.js" />
+    <Content Include="app\components\searchHistory\services\searchHistoryService.js" />
+    <Content Include="app\components\users\controllers\usersController.js" />
+    <Content Include="app\components\venueCost\controllers\venueCostController.js" />
+    <Content Include="app\components\venueCost\services\venueCostService.js" />
+    <Content Include="app\components\venueCourseType\services\venueCourseTypeService.js" />
+    <Content Include="app\components\venueLocale\add.html" />
+    <Content Include="app\components\venueLocale\controllers\addVenueLocaleController.js" />
+    <Content Include="app\components\venueLocale\services\venueLocaleService.js" />
+    <Content Include="app\components\venue\addRegion.html" />
+    <Content Include="app\components\venue\controllers\addVenueRegionController.js" />
+    <Content Include="app\components\venue\controllers\downloadVenueImageMapController.js" />
+    <Content Include="app\components\venue\controllers\showVenueAddressController.js" />
+    <Content Include="app\components\venue\controllers\venueController.js" />
+    <Content Include="app\components\venue\controllers\venueImageMapController.js" />
+    <Content Include="app\components\venue\downloadVenueImageMap.html" />
+    <Content Include="app\components\venue\services\showVenueAddressService.js" />
+    <Content Include="app\components\venue\services\venueService.js" />
+    <Content Include="app\components\venue\services\venueImageMapService.js" />
+    <Content Include="app\components\venue\showVenueAddress.html" />
+    <Content Include="app\components\venue\venueImageMap.html" />
+    <Content Include="app\components\webApiTest\controllers\webApiTestController.js" />
+    <Content Include="app\landingPages\client\clientLogin.js" />
+    <Content Include="app\landingPages\client\clientAuthenticated.js" />
+    <Content Include="app\landingPages\organisation\organisationLogin.js" />
+    <Content Include="app\landingPages\trainer\trainerLogin.js" />
+    <Content Include="app\shared\administration\services\adminMenuService.js" />
+    <Content Include="app\components\venue\Update.html" />
+    <Content Include="app\components\trainer\availability\view.html" />
+    <Content Include="app\components\venueCost\edit.html" />
+    <Content Include="app\components\trainer\search\view.html" />
+    <Content Include="app\landingPages\trainer\loginView.cshtml" />
+    <Content Include="app\landingPages\organisation\loginView.cshtml" />
+    <Content Include="app\landingPages\client\baseView.cshtml" />
+    <Content Include="app\components\users\userSearch.html" />
+    <Content Include="app\landingPages\client\loginView.cshtml" />
+    <Content Include="app\shared\core\controllers\dragDropUpdateController.js" />
+    <Content Include="app\shared\core\directives\ambaSortableList\ambaSortableList.js" />
+    <Content Include="app\shared\core\directives\capitalize\capitalize.directive.js" />
+    <Content Include="app\shared\core\directives\dateFormatter\iamDate.directive.js" />
+    <Content Include="app\shared\core\directives\dateValidation\validDate.directive.js" />
+    <Content Include="app\shared\core\directives\date\date.directive.js" />
+    <Content Include="app\shared\core\directives\documentUpload\documentUploadController.js" />
+    <Content Include="app\shared\core\directives\documentUpload\view.html" />
+    <Content Include="app\shared\core\directives\eventHistory\eventHistoryFactory.js" />
+    <Content Include="app\shared\core\directives\eventHistory\eventHistoryModal.html" />
+    <Content Include="app\shared\core\directives\eventHistory\eventHistoryModalController.js" />
+    <Content Include="app\shared\core\directives\eventHistory\viewEventNoteController.js" />
+    <Content Include="app\shared\core\directives\eventHistory\viewEventNote.html" />
+    <Content Include="app\shared\core\directives\featureUnavailable\view.html" />
+    <Content Include="app\shared\core\directives\fadeMessage\fadeMessage.html" />
+    <Content Include="app\shared\core\directives\featureUnavailable\featureUnavailable.directive.js" />
+    <Content Include="app\shared\core\directives\fileInputChosen\fileInputChosen.directive.js" />
+    <Content Include="app\shared\core\directives\fileInputChosen\fileInputChosen.readme.txt" />
+    <Content Include="app\shared\core\directives\eventHistory\eventHistoryService.js" />
+    <Content Include="app\shared\core\directives\eventHistory\eventHistoryController.js" />
+    <Content Include="app\shared\core\directives\eventHistory\eventHistory.directive.js" />
+    <Content Include="app\shared\core\directives\eventHistory\eventHistory.html" />
+    <Content Include="app\shared\core\directives\inputNumberValidation\readme.txt" />
+    <Content Include="app\shared\core\directives\inputNumberValidation\inputNumberValidation.directive.js" />
+    <Content Include="app\shared\core\directives\insertText\insertText.directive.js" />
+    <Content Include="app\shared\core\directives\linkEnabled\linkEnabled.directive.js" />
+    <Content Include="app\shared\core\directives\multiInput\multiInput.js" />
+    <Content Include="app\shared\core\directives\systemFeatureInformation\systemFeatureInformationDirectiveController.js" />
+    <Content Include="app\shared\core\directives\systemFeatureInformation\view.html" />
+    <Content Include="app\shared\core\factories\modalOptionsFactory.js" />
+    <Content Include="app\shared\core\featureUnavailable.html" />
+    <Content Include="app\shared\core\dragDropUpdate.html" />
+    <Content Include="app\shared\core\changeTemplate.html" />
+    <Content Include="app\components\trainer\home\controllers\TrainerHomeController.js" />
+    <Content Include="app\components\trainer\home\view.html" />
+    <Content Include="app\documents\general\WhereToFindYourLicenceNumber.pdf" />
+    <Content Include="app\documents\general\PrivacyNotice.pdf" />
+    <None Include="app\shared\baseLayout\index.cshtml" />
+    <Content Include="app\shared\core\directives\textDropDown\textDropDown.html" />
+    <Content Include="app\shared\core\directives\textDropDown\textDropDown.js" />
+    <Content Include="app\shared\core\factories\unAuthorizedAccessFactory.js" />
+    <Content Include="app\shared\core\services\angular-idle.js" />
+    <Content Include="app\shared\core\services\ngDraggable.js" />
+    <Content Include="app\shared\core\services\queryString.js" />
+    <Content Include="app\shared\craftyClicks\factories\craftyClicksFactory.js" />
+    <Content Include="app\shared\craftyClicks\services\craftyClicksService.js" />
+    <Content Include="app\shared\core\directives\checklist-model.js" />
+    <Content Include="app\shared\date\factories\dateFactory.js" />
+    <Content Include="app\shared\document\services\DocumentService.js" />
+    <Content Include="app\shared\getAddress\factories\getAddressFactory.js" />
+    <Content Include="app\shared\getAddress\services\getAddressService.js" />
+    <Content Include="app\shared\licence\services\licenceService.js" />
+    <Content Include="app\shared\navigation\alreadySignedIn-dialog.html" />
+    <Content Include="app\shared\navigation\factories\navigationFactory.js" />
+    <Content Include="app\shared\navigation\services\navigationService.js" />
+    <Content Include="app\shared\navigation\timeout-dialog.html" />
+    <Content Include="app\shared\navigation\warning-dialog.html" />
+    <Content Include="app\shared\notes\services\noteTypeService.js" />
+    <Content Include="app\shared\notification\services\message-center.js" />
+    <Content Include="app\shared\string\services\stringService.js" />
+    <Content Include="app\shared\systemState\services\systemStateService.js" />
+    <Content Include="app\shared\_PageStart.html" />
+    <Content Include="app_assets\css\angular-chart.css" />
+    <None Include="app_assets\css\modules\_bootstrapOveride.scss" />
+    <Content Include="app_assets\css\modules\_modal.css">
+      <DependentUpon>_modal.scss</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\modules\_modal.min.css">
+      <DependentUpon>_modal.css</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\partials\_paymentReconciliation.scss" />
+    <Content Include="app_assets\css\partials\_newPaymentReconciliation.scss" />
+    <Content Include="app_assets\css\partials\_onLineTerms.scss" />
+    <None Include="app_assets\css\partials\_vat.scss" />
+    <Content Include="app_assets\css\partials\_acceptCard.scss" />
+    <Content Include="app_assets\css\partials\_allCoursesDocuments.scss" />
+    <Content Include="app_assets\css\partials\_allCourseTypesDocuments.css">
+      <DependentUpon>_allCourseTypesDocuments.scss</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\partials\_allCourseTypesDocuments.min.css">
+      <DependentUpon>_allCourseTypesDocuments.css</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\partials\_allCourseTypesDocuments.scss" />
+    <Content Include="app_assets\css\modules\_modal.scss" />
+    <Content Include="app\shared\core\directives\systemFeatureInformation\systemFeatureInformation.directive.js" />
+    <Content Include="app_assets\css\partials\_addCourseStencil.scss" />
+    <Content Include="app_assets\css\modules\_labels.scss" />
+    <Content Include="app_assets\css\partials\_addCourseDocument.scss" />
+    <Content Include="app_assets\css\partials\_addCourseInterpreterModal.scss" />
+    <Content Include="app_assets\css\modules\_print.scss" />
+    <None Include="app_assets\css\partials\_allTrainersDocuments.scss" />
+    <Content Include="app_assets\css\partials\_allTrainersDocuments.css">
+      <DependentUpon>_allTrainersDocuments.scss</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\partials\_allTrainersDocuments.min.css">
+      <DependentUpon>_allTrainersDocuments.css</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\partials\_blockedIP.scss" />
+    <Content Include="app_assets\css\partials\_cancelTimeout.scss" />
+    <Content Include="app_assets\css\partials\_attachCourseEmailAttachment.scss" />
+    <Content Include="app_assets\css\partials\_client.css" />
+    <Content Include="app_assets\css\partials\_client.min.css" />
+    <Content Include="app_assets\css\partials\_dorsLicenceCheck.css" />
+    <Content Include="app_assets\css\partials\_dorsLicenceCheck.min.css" />
+    <Content Include="app_assets\css\partials\_mysteryShopperAdministration.scss" />
+    <None Include="app_assets\css\partials\_clientAvailableCourses.scss" />
+    <Content Include="app_assets\css\partials\_document.scss" />
+    <Content Include="app_assets\css\partials\_addSpecialRequirement.scss" />
+    <Content Include="app\shared\core\directives\documentUpload\documentUpload.directive.js" />
+    <Content Include="app_assets\css\partials\_documentUpload.scss" />
+    <Content Include="app_assets\css\partials\_clientConfirmRegistration.scss" />
+    <Content Include="app_assets\css\partials\_clientSpecialRequirements.scss" />
+    <Content Include="app_assets\css\partials\_clientCourseSelection.scss" />
+    <Content Include="app_assets\css\partials\_clientCourseConfirmation.scss" />
+    <Content Include="app_assets\css\partials\_clientDeleteMarked.scss" />
+    <Content Include="app_assets\css\partials\_documentDeleteMarked.scss" />
+    <Content Include="app_assets\css\partials\_dashboardMeter.scss" />
+    <Content Include="app_assets\css\partials\_assignUserDashBoardMeters.scss" />
+    <Content Include="app_assets\css\partials\_courseAttendance.scss" />
+    <Content Include="app_assets\css\partials\_courseTrainer.scss" />
+    <Content Include="app_assets\css\partials\_courseAdd.scss" />
+    <Content Include="app_assets\css\partials\_courseFee.scss" />
+    <Content Include="app_assets\css\partials\_courseRebookingFee.scss" />
+    <Content Include="app_assets\css\partials\_cloneCourse.scss" />
+    <Content Include="app_assets\css\partials\_eventHistory.scss" />
+    <Content Include="app_assets\css\partials\_cookiePolicy.scss" />
+    <Content Include="app_assets\css\partials\_courseType.scss" />
+    <Content Include="app_assets\css\partials\_courseTypeCategory.scss" />
+    <Content Include="app_assets\css\partials\_documentPrintQueue.scss" />
+    <Content Include="app_assets\css\partials\_dashboardHover.scss" />
+    <None Include="app_assets\css\partials\_dorsLicenceCheck.scss" />
+    <Content Include="app_assets\css\partials\_emailBlockedOutgoingAddress.scss" />
+    <Content Include="app_assets\css\partials\_letterTemplateMaintenance.scss" />
+    <Content Include="app_assets\css\partials\_netcallAgents.scss" />
+    <Content Include="app_assets\css\partials\_netcallAddAgent.scss" />
+    <Content Include="app_assets\css\partials\_emailAllClients.scss" />
+    <Content Include="app_assets\css\partials\_emailAllTrainers.scss" />
+    <Content Include="app_assets\css\partials\_interpreterLanguage.scss" />
+    <Content Include="app_assets\css\partials\_paymentType.scss" />
+    <Content Include="app_assets\css\partials\_systemTask.scss" />
+    <Content Include="app_assets\css\partials\_reportCategory.scss" />
+    <Content Include="app_assets\css\partials\_previewEmail.scss" />
+    <Content Include="app_assets\css\partials\_reconciliationConfiguration.scss" />
+    <Content Include="app_assets\css\partials\_paymentMaintenance.scss" />
+    <None Include="app_assets\css\partials\_task.scss" />
+    <Content Include="app_assets\css\partials\_trainerSearch - Copy - Copy %282%29.css">
+      <DependentUpon>_reportGenerator.scss</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\partials\_trainerSearch - Copy.min - Copy %282%29.css">
+      <DependentUpon>_trainerSearch - Copy - Copy %282%29.css</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\partials\_trainerSearch.css" />
+    <Content Include="app_assets\css\partials\_trainerSearch.min.css" />
+    <Content Include="app_assets\css\partials\_vehicleTypeAdministration.scss" />
+    <None Include="app_assets\css\partials\_organisationDocuments.scss" />
+    <Content Include="app_assets\css\partials\_refundRequest.scss" />
+    <None Include="app_assets\css\partials\_payment.scss" />
+    <None Include="app_assets\css\partials\_refunds.scss" />
+    <Content Include="app_assets\css\partials\_trainerSearch - Copy %282%29.css">
+      <DependentUpon>_reportParameter.scss</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\partials\_trainerSearch - Copy %282%29.min.css">
+      <DependentUpon>_trainerSearch - Copy %282%29.css</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\partials\_trainerSearch - Copy - Copy.css">
+      <DependentUpon>_referringAuthority.scss</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\partials\_trainerSearch - Copy.css">
+      <DependentUpon>_reportSearch.scss</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\partials\_trainerSearch - Copy.min - Copy.css">
+      <DependentUpon>_trainerSearch - Copy - Copy.css</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\partials\_trainerSearch - Copy.min.css">
+      <DependentUpon>_trainerSearch - Copy.css</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\partials\_systemFeature.scss" />
+    <Content Include="app_assets\css\partials\_systemFeatureInformation.scss" />
+    <Content Include="app_assets\css\partials\_systemFeatureAddNote.scss" />
+    <Content Include="app_assets\css\partials\_systemFeatureInformationDirective.scss" />
+    <Content Include="app_assets\css\partials\_reminderEmail.scss" />
+    <Content Include="app_assets\css\partials\_reminderSMS.scss" />
+    <Content Include="app_assets\css\partials\_stencilCourse.scss" />
+    <Content Include="app_assets\css\partials\_trainerDashboard.scss" />
+    <Content Include="app_assets\css\partials\_paymentProvider.scss" />
+    <Content Include="app_assets\css\partials\_specialRequirementMaintenance.scss" />
+    <Content Include="app_assets\css\partials\_systemAdminSupportUser.scss" />
+    <Content Include="app_assets\css\partials\_taskCategory.scss" />
+    <Content Include="app_assets\css\partials\_trainerVehicle.scss" />
+    <Content Include="app_assets\css\partials\_reportGenerator.scss" />
+    <None Include="app_assets\css\partials\_transferClientToNewCourse.scss" />
+    <Content Include="app_assets\images\add_client.png" />
+    <Content Include="app_assets\images\ajax-loader.gif" />
+    <Content Include="app_assets\css\main.css">
+      <DependentUpon>main.scss</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\offcanvas.css" />
+    <Content Include="app_assets\css\partials\_trainerLandingPage.scss" />
+    <Content Include="app_assets\css\partials\_trainerAbout.scss" />
+    <Content Include="app_assets\css\partials\_adminMenu.scss" />
+    <Content Include="app_assets\css\partials\_quickLaunch.scss" />
+    <Content Include="app_assets\css\main.css.map" />
+    <Content Include="app_assets\css\partials\_addCourseTrainerModal.scss" />
+    <Content Include="app_assets\css\partials\_quickSearch.scss" />
+    <Content Include="app_assets\css\partials\_trainerAvailability.scss" />
+    <Content Include="app_assets\css\partials\_trainerSearch.scss" />
+    <Content Include="app\landingPages\trainer\baseView.cshtml" />
+    <Content Include="app_assets\css\partials\_loginOrganisation.scss" />
+    <Content Include="app_assets\css\partials\_sidePanel.scss" />
+    <Content Include="app_assets\css\partials\_loginTrainer.scss" />
+    <Content Include="app_assets\css\partials\_loginClient.scss" />
+    <Content Include="app_assets\css\partials\_topPanel.scss" />
+    <Content Include="app_assets\css\partials\_dashboard.scss" />
+    <Content Include="app_assets\css\partials\_userAdd.scss" />
+    <Content Include="app\shared\core\directives\dragDropUpdate.directive.js" />
+    <Content Include="app_assets\css\partials\_dragDropUpdate.scss" />
+    <Content Include="app_assets\css\partials\_trainerAdd.scss" />
+    <Content Include="app_assets\css\partials\_publicHoliday.scss" />
+    <Content Include="app_assets\css\partials\_addDataView.scss" />
+    <Content Include="app_assets\css\partials\_reportSearch.scss" />
+    <Content Include="app_assets\css\partials\_dorsConnectionDetails.scss" />
+    <Content Include="app\shared\core\directives\fadeMessage\fadeMessage.directive.js" />
+    <Content Include="app_assets\css\partials\_clientLandingPage.scss" />
+    <Content Include="app_assets\css\partials\_trainerBookings.scss" />
+    <Content Include="app_assets\css\partials\_trainerAttendance.scss" />
+    <Content Include="app_assets\css\partials\_emailConfirmation.scss" />
+    <Content Include="app_assets\css\partials\_assignTrainerCourseTypeCategories.scss" />
+    <Content Include="app_assets\css\partials\_systemAdminMenu.scss" />
+    <Content Include="app_assets\css\partials\_reportParameter.scss" />
+    <Content Include="app_assets\css\partials\_recordPayment.scss" />
+    <Content Include="app_assets\css\partials\_findSingleClient.scss" />
+    <Content Include="app_assets\css\partials\_trainerSettings.scss" />
+    <Content Include="app_assets\css\partials\_sendEmail.scss" />
+    <Content Include="app_assets\css\partials\_updateSpecialRequirements.scss" />
+    <Content Include="app_assets\css\partials\_organisationSelfConfiguration.scss" />
+    <Content Include="app_assets\css\partials\_organisationSystemConfiguration.scss" />
+    <Content Include="app_assets\css\partials\_showVenueAddress.scss" />
+    <Content Include="app_assets\css\partials\_referringAuthority.scss" />
+    <Content Include="app_assets\css\partials\_schedulerControl.scss" />
+    <Content Include="app_assets\css\partials\_systemSupportUser.scss" />
+    <Content Include="app_assets\css\partials\_venueImageMap.scss" />
+    <Content Include="app_assets\css\partials\_viewVenue.scss" />
+    <Content Include="app_assets\css\partials\_viewDataView.scss" />
+    <Content Include="app_assets\css\partials\_vehicleCategoryAdmin.scss" />
+    <None Include="___trainer.cshtml" />
+    <Content Include="app\shared\core\controllers\changeTemplateController.js" />
+    <Content Include="app\shared\core\directives\angular-spectrum-colorpicker.js" />
+    <Content Include="app\shared\core\directives\directives.js" />
+    <Content Include="app\shared\core\directives\directives.spec.js">
+      <DependentUpon>directives.js</DependentUpon>
+    </Content>
+    <Content Include="app\shared\core\directives\rightClick.directive.js" />
+    <Content Include="app\shared\core\factories\atlasCookieFactory.js" />
+    <Content Include="app\shared\core\factories\broadcastFactory.js" />
+    <Content Include="app\shared\core\factories\overlayFactory.js" />
+    <Content Include="app\shared\menu\services\menuFavouriteService.js" />
+    <Content Include="app\shared\modal\services\modalService.js" />
+    <Content Include="app\shared\notification\controllers\notificationMsgController.js" />
+    <Content Include="app\shared\notification\factories\notificationFactory.js" />
+    <Content Include="app\shared\notification\services\notificationService.js" />
+    <Content Include="app\shared\organisationDisplay\controllers\organisationDisplayController.js" />
+    <Content Include="app\shared\organisationDisplay\factories\organisationDisplayFactory.js" />
+    <Content Include="app\shared\organisationDisplay\services\organisationDisplayService.js" />
+    <Content Include="app\shared\organisationDisplay\services\organisationDisplaySortService.js" />
+    <Content Include="app\shared\toggle\controllers\toggleController.js" />
+    <Content Include="app\shared\toggle\factories\toggleFactory.js" />
+    <Content Include="app\shared\toggle\services\toggleService.js" />
+    <Content Include="app_assets\css\bootstrap\bootstrap-dialog.css" />
+    <Content Include="app_assets\css\bootstrap\bootstrap-dialog.min.css" />
+    <Content Include="app_assets\css\partials\Scss1.css">
+      <DependentUpon>_paymentProvider.scss</DependentUpon>
+    </Content>
+    <Content Include="app_assets\images\angularjs.svg" />
+    <Content Include="app_assets\images\AtlasLogo.png" />
+    <Content Include="app_assets\images\atlas_organisation_logo_2.png" />
+    <Content Include="app_assets\images\availability.png" />
+    <Content Include="app_assets\images\bullet_blue.png" />
+    <Content Include="app_assets\images\calendar2.png" />
+    <Content Include="app_assets\images\close-drop-down-submenu.png" />
+    <Content Include="app_assets\images\custom_select_dropdown.png" />
+    <Content Include="app_assets\images\dashboard\clients.png" />
+    <Content Include="app_assets\images\dashboard\courses.png" />
+    <Content Include="app_assets\images\dashboard\documents.png" />
+    <Content Include="app_assets\images\dashboard\email.png" />
+    <Content Include="app_assets\images\dashboard\other.png" />
+    <Content Include="app_assets\images\dashboard\payment.png" />
+    <Content Include="app_assets\images\dashboard\refresh.png" />
+    <Content Include="app_assets\images\dashboard\speed.png" />
+    <Content Include="app_assets\images\dashboard\timeup.png" />
+    <Content Include="app_assets\images\dashboard_hide.png" />
+    <Content Include="app_assets\images\dashboard_show.png" />
+    <Content Include="app_assets\images\datepicker\doubleArrow.png" />
+    <Content Include="app_assets\images\datepicker\endArrow.png" />
+    <Content Include="app_assets\images\datepicker\singleArrow.png" />
+    <Content Include="app_assets\images\dbAdd.png" />
+    <Content Include="app_assets\images\dbRemove.png" />
+    <Content Include="app_assets\images\dbView.png" />
+    <Content Include="app_assets\images\drop-down-submenu.png" />
+    <Content Include="app_assets\images\fade_success.png" />
+    <Content Include="app_assets\images\fade_info.png" />
+    <Content Include="app_assets\images\fade_error.png" />
+    <Content Include="app_assets\images\fade_warning.png" />
+    <Content Include="app_assets\images\button_cancel.png" />
+    <Content Include="app_assets\images\calendar.png" />
+    <Content Include="app_assets\images\dashboard\rightArrow_blue.png" />
+    <Content Include="app_assets\images\grey_refresh.png" />
+    <Content Include="app_assets\images\iamroad_smart_logo_atlas.png" />
+    <Content Include="app_assets\images\iamroad_smart_logo_atlas_large.png" />
+    <Content Include="app_assets\images\iamroad_smart_logo_atlas_negative.png" />
+    <Content Include="app_assets\images\lightbulb.png" />
+    <Content Include="app_assets\images\loading-blue.gif" />
+    <Content Include="app_assets\images\loading.gif" />
+    <Content Include="app_assets\images\logout.png" />
+    <Content Include="app_assets\images\mail_left.png" />
+    <Content Include="app_assets\images\mail_right.png" />
+    <Content Include="app_assets\images\my_report.png" />
+    <Content Include="app_assets\images\envelope.png" />
+    <Content Include="app_assets\images\envelope_left.png" />
+    <Content Include="app_assets\images\envelope_right.png" />
+    <Content Include="app_assets\images\e_mail.png" />
+    <Content Include="app_assets\images\favourites_heart.png" />
+    <Content Include="app_assets\images\favourites_star.png" />
+    <Content Include="app_assets\images\home_blue.png" />
+    <Content Include="app_assets\images\info.png" />
+    <Content Include="app_assets\images\magnify.png" />
+    <Content Include="app_assets\images\message.png" />
+    <Content Include="app_assets\images\ndors-logo.png" />
+    <Content Include="app_assets\images\new-ajax-loader.gif" />
+    <Content Include="app_assets\images\organizer_today.png" />
+    <Content Include="app_assets\images\other_info.png" />
+    <Content Include="app_assets\images\payment-icons\american-express-curved-32px.png" />
+    <Content Include="app_assets\images\payment-icons\cirrus-curved-32px.png" />
+    <Content Include="app_assets\images\payment-icons\delta-curved-32px.png" />
+    <Content Include="app_assets\images\payment-icons\direct-debit-curved-32px.png" />
+    <Content Include="app_assets\images\payment-icons\maestro-curved-32px.png" />
+    <Content Include="app_assets\images\payment-icons\mastercard-curved-32px.png" />
+    <Content Include="app_assets\images\payment-icons\paypal-curved-32px.png" />
+    <Content Include="app_assets\images\payment-icons\providers\BarclaysSmartPay.png" />
+    <Content Include="app_assets\images\payment-icons\providers\NetBanx.png" />
+    <Content Include="app_assets\images\payment-icons\providers\SecureTrading.png" />
+    <Content Include="app_assets\images\payment-icons\solo-curved-32px.png" />
+    <Content Include="app_assets\images\payment-icons\switch-curved-32px.png" />
+    <Content Include="app_assets\images\payment-icons\visa-curved-32px.png" />
+    <Content Include="app_assets\images\payment-icons\visa-electron-curved-32px.png" />
+    <Content Include="app_assets\images\pdslogo.png" />
+    <Content Include="app_assets\images\person_gnome.png" />
+    <Content Include="app_assets\images\print\page_setup.png" />
+    <Content Include="app_assets\images\print\print_info.png" />
+    <Content Include="app_assets\images\profile-picture-large.png" />
+    <Content Include="app_assets\images\queue\documentQueue.png" />
+    <Content Include="app_assets\images\quickLaunch\availableCourses.png" />
+    <Content Include="app_assets\images\quickLaunch\blockedips.png" />
+    <Content Include="app_assets\images\quickLaunch\blockedusers.png" />
+    <Content Include="app_assets\images\quickLaunch\client.png" />
+    <Content Include="app_assets\images\quickLaunch\course.png" />
+    <Content Include="app_assets\images\quickLaunch\courseattendance.png" />
+    <Content Include="app_assets\images\quickLaunch\enterpayment.png" />
+    <Content Include="app_assets\images\quickLaunch\feedback.png" />
+    <Content Include="app_assets\images\quickLaunch\home.png" />
+    <Content Include="app_assets\images\quickLaunch\internalmessaging.png" />
+    <Content Include="app_assets\images\quickLaunch\ndors-logo.png" />
+    <Content Include="app_assets\images\quickLaunch\paymentlist.png" />
+    <Content Include="app_assets\images\quickLaunch\phone_icon.png" />
+    <Content Include="app_assets\images\quickLaunch\reconciliation.png" />
+    <Content Include="app_assets\images\quickLaunch\requestpaymentrefund.png" />
+    <Content Include="app_assets\images\quickLaunch\systeminformation.png" />
+    <Content Include="app_assets\images\quickLaunch\takepayment.png" />
+    <Content Include="app_assets\images\quickLaunch\trainer.png" />
+    <Content Include="app_assets\images\quickLaunch\trainercalendar.png" />
+    <Content Include="app_assets\images\send_message.png" />
+    <Content Include="app_assets\images\star_add2.png" />
+    <Content Include="app_assets\images\task\add.png" />
+    <Content Include="app_assets\images\task\refresh.png" />
+    <Content Include="app_assets\images\task\user.png" />
+    <Content Include="app_assets\images\test_company_logo.png" />
+    <Content Include="app_assets\images\trainer\about.png" />
+    <Content Include="app_assets\images\trainer\bookings.png" />
+    <Content Include="app_assets\images\trainer\courseattendance.png" />
+    <Content Include="app_assets\images\trainer\message.png" />
+    <Content Include="app_assets\images\trainer\trainercalendar.png" />
+    <Content Include="app_assets\images\venue_information.png" />
+    <Content Include="app_assets\images\x-profile-picture-large.png" />
+    <Content Include="app_assets\images\sprite.png" />
+    <Content Include="app_assets\images\status\bullet_Level0.png" />
+    <Content Include="app_assets\images\status\bullet_Level1.png" />
+    <Content Include="app_assets\images\status\bullet_Level2.png" />
+    <Content Include="app_assets\images\status\bullet_Level4.png" />
+    <Content Include="app_assets\images\status\bullet_Level3.png" />
+    <Content Include="app_assets\images\svg\credit-card-payment.svg" />
+    <Content Include="app_assets\images\svg\list-on-clipboard.svg" />
+    <Content Include="app_assets\images\svg\question-circular-button.svg" />
+    <Content Include="app_assets\images\svg\touching-ipad-screen-with-educative-information.svg" />
+    <Content Include="app_assets\images\svg\user-silhouette.svg" />
+    <Content Include="app_assets\images\trainer_logo.png" />
+    <Content Include="app_assets\images\welcome_page\jcb.jpg" />
+    <Content Include="app_assets\images\welcome_page\maestro.jpg" />
+    <Content Include="app_assets\images\welcome_page\mastercard.jpg" />
+    <Content Include="app_assets\images\welcome_page\visa.jpg" />
+    <Content Include="app_assets\images\welcome_page\visadebit.jpg" />
+    <Content Include="app_assets\images\welcome_page\visaelectron.jpg" />
+    <Content Include="app_assets\images\yellow_help.png" />
+    <Content Include="app_assets\js\template.js" />
+    <Content Include="app_assets\vendor\datepicker\angular-date-picker.css" />
+    <Content Include="app_assets\vendor\datepicker\angular-date-picker.js" />
+    <Content Include="app_assets\vendor\multiSelect\angular-bootstrap-multiselect-templates.js" />
+    <Content Include="app_assets\vendor\multiSelect\angular-bootstrap-multiselect.min.js" />
+    <Content Include="app_assets\vendor\reCaptcha\angular-re-captcha.js" />
+    <Content Include="app\landingPages\trainer\trainerAuthenticated.js" />
+    <Content Include="Scripts\creditCardValidator.js" />
+    <Content Include="Scripts\spectrum.js" />
+    <Content Include="app\shared\core\filters\filters.js" />
+    <Content Include="app\shared\core\filters\filters.spec.js">
+      <DependentUpon>filters.js</DependentUpon>
+    </Content>
+    <Content Include="app\shared\core\services\services.js" />
+    <Content Include="app\shared\core\services\services.spec.js">
+      <DependentUpon>services.js</DependentUpon>
+    </Content>
+    <Content Include="app\shared\error\controllers\errorController.js" />
+    <Content Include="app\shared\menu\controllers\menuFavouriteController.js" />
+    <Content Include="app\shared\navigation\controllers\navigationController.js" />
+    <Content Include="app_assets\css\app.css">
+      <DependentUpon>app.less</DependentUpon>
+    </Content>
+    <Content Include="app_assets\css\app.less" />
+    <Content Include="app_assets\css\spectrum.css" />
+    <Content Include="app_assets\css\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app_assets\images\add_comment.png" />
+    <Content Include="app_assets\images\change_password.png" />
+    <Content Include="app_assets\images\help.png" />
+    <Content Include="app_assets\images\information_32.png" />
+    <Content Include="app_assets\images\off_icon.png" />
+    <Content Include="app_assets\images\settings.png" />
+    <Content Include="app_assets\js\globals.js" />
+    <Content Include="app_assets\js\vendor\postcode\crafty_postcode.class.js" />
+    <Content Include="Content\jasmine\jasmine.css" />
+    <Content Include="Content\jasmine\jasmine_favicon.png" />
+    <Content Include="app_assets\css\variables.less" />
+    <Content Include="crafty_postcode_busy.gif" />
+    <Content Include="Global.asax" />
+    <Content Include="app_assets\images\dummyAtlasLogo.png" />
+    <Content Include="app_assets\images\logo_with_iamgroup.png" />
+    <Content Include="app_assets\images\profile_picture.png" />
+    <Content Include="Scripts\angular-autocomplete.js" />
+    <Content Include="Scripts\angular-breadcrumb.js" />
+    <Content Include="Scripts\angular-breadcrumb.min.js" />
+    <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="app_assets\images\angularjs.png" />
+    <Content Include="app_assets\images\iam-logo.png" />
+    <Content Include="Scripts\atlas.js" />
+    <Content Include="Scripts\updatedCookie.js" />
+    <Content Include="Scripts\vendor\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\vendor\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\vendor\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\vendor\angular-ui\ui-bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\controllers.js" />
+    <Content Include="Scripts\controllers.spec.js">
+      <DependentUpon>controllers.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\directives.js" />
+    <Content Include="Scripts\directives.spec.js">
+      <DependentUpon>directives.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\filters.js" />
+    <Content Include="Scripts\filters.spec.js">
+      <DependentUpon>filters.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jasmine-samples\Player.js" />
+    <Content Include="Scripts\jasmine-samples\PlayerSpec.js" />
+    <Content Include="Scripts\jasmine-samples\Song.js" />
+    <Content Include="Scripts\jasmine-samples\SpecHelper.js" />
+    <Content Include="Scripts\jasmine\boot.js" />
+    <Content Include="Scripts\jasmine\console.js" />
+    <Content Include="Scripts\jasmine\jasmine-html.js" />
+    <Content Include="Scripts\jasmine\jasmine.js" />
+    <Content Include="Scripts\services.js" />
+    <Content Include="Scripts\services.spec.js">
+      <DependentUpon>services.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\vendor\angular-csp.css" />
+    <Content Include="Scripts\vendor\angular-ui-router.js" />
+    <Content Include="Scripts\vendor\angular-ui-router.min.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_af-na.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_af-za.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_af.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_am-et.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_am.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-001.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-ae.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-bh.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-dz.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-eg.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-iq.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-jo.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-kw.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-lb.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-ly.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-ma.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-om.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-qa.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-sa.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-sd.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-sy.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-tn.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar-ye.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ar.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_bg-bg.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_bg.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_bn-bd.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_bn-in.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_bn.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ca-ad.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ca-es.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ca.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_cs-cz.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_cs.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_da-dk.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_da.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_de-at.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_de-be.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_de-ch.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_de-de.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_de-li.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_de-lu.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_de.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_el-cy.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_el-gr.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_el.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-as.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-au.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-bb.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-be.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-bm.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-bw.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-bz.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-ca.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-dsrt-us.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-dsrt.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-fm.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-gb.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-gu.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-gy.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-hk.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-ie.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-in.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-iso.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-jm.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-mh.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-mp.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-mt.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-mu.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-na.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-nz.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-ph.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-pk.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-pr.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-pw.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-sg.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-tc.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-tt.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-um.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-us.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-vg.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-vi.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-za.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en-zw.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_en.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-419.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-ar.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-bo.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-cl.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-co.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-cr.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-do.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-ea.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-ec.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-es.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-gq.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-gt.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-hn.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-ic.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-mx.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-ni.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-pa.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-pe.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-pr.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-py.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-sv.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-us.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-uy.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es-ve.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_es.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_et-ee.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_et.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_eu-es.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_eu.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fa-af.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fa-ir.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fa.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fi-fi.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fi.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fil-ph.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fil.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-be.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-bf.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-bi.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-bj.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-bl.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-ca.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-cd.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-cf.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-cg.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-ch.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-ci.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-cm.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-dj.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-fr.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-ga.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-gf.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-gn.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-gp.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-gq.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-km.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-lu.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-mc.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-mf.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-mg.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-ml.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-mq.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-ne.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-re.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr-yt.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_fr.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_gl-es.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_gl.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_gsw-ch.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_gsw.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_gu-in.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_gu.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_he-il.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_he.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_hi-in.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_hi.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_hr-hr.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_hr.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_hu-hu.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_hu.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_id-id.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_id.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_in.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_is-is.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_is.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_it-it.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_it-sm.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_it.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_iw.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ja-jp.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ja.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_kn-in.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_kn.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ko-kr.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ko.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ln-cd.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ln.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_lt-lt.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_lt.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_lv-lv.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_lv.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ml-in.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ml.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_mr-in.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_mr.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ms-my.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ms.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_mt-mt.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_mt.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_nl-cw.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_nl-nl.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_nl-sx.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_nl.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_no.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_or-in.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_or.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_pl-pl.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_pl.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_pt-br.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_pt-pt.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_pt.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ro-ro.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ro.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ru-ru.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ru.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_sk-sk.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_sk.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_sl-si.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_sl.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_sq-al.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_sq.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_sr-cyrl-rs.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_sr-latn-rs.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_sr.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_sv-se.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_sv.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_sw-tz.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_sw.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ta-in.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ta.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_te-in.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_te.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_th-th.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_th.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_tl.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_tr-tr.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_tr.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_uk-ua.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_uk.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ur-pk.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_ur.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_vi-vn.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_vi.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_zh-cn.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_zh-hans-cn.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_zh-hk.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_zh-tw.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_zh.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_zu-za.js" />
+    <Content Include="Scripts\vendor\i18n\angular-locale_zu.js" />
+    <Content Include="Scripts\vendor\angular-animate.js" />
+    <Content Include="Scripts\vendor\angular-animate.min.js" />
+    <Content Include="Scripts\vendor\angular-cookies.js" />
+    <Content Include="Scripts\vendor\angular-cookies.min.js" />
+    <Content Include="Scripts\vendor\angular-loader.js" />
+    <Content Include="Scripts\vendor\angular-loader.min.js" />
+    <Content Include="Scripts\vendor\angular-mocks.js" />
+    <Content Include="Scripts\vendor\angular-resource.js" />
+    <Content Include="Scripts\vendor\angular-resource.min.js" />
+    <Content Include="Scripts\vendor\angular-route.js" />
+    <Content Include="Scripts\vendor\angular-route.min.js" />
+    <Content Include="Scripts\vendor\angular-sanitize.js" />
+    <Content Include="Scripts\vendor\angular-sanitize.min.js" />
+    <Content Include="Scripts\vendor\angular-scenario.js" />
+    <Content Include="Scripts\vendor\angular-touch.js" />
+    <Content Include="Scripts\vendor\angular-touch.min.js" />
+    <Content Include="Scripts\vendor\angular-touch.min.js.map" />
+    <Content Include="Scripts\vendor\angular-sanitize.min.js.map" />
+    <Content Include="Scripts\vendor\angular-route.min.js.map" />
+    <Content Include="Scripts\vendor\angular-resource.min.js.map" />
+    <Content Include="Scripts\vendor\angular-loader.min.js.map" />
+    <Content Include="Scripts\vendor\angular-cookies.min.js.map" />
+    <Content Include="Scripts\vendor\angular-animate.min.js.map" />
+    <Content Include="Scripts\vendor\angular.js" />
+    <Content Include="Scripts\vendor\angular.min.js" />
+    <Content Include="Scripts\vendor\angular.min.js.map" />
+    <Content Include="Scripts\vendor\errors.json" />
+    <Content Include="Scripts\vendor\jasmine-html.js" />
+    <Content Include="Scripts\vendor\jasmine.js" />
+    <Content Include="Scripts\.jshintrc" />
+    <Content Include="app_assets\css\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="app_assets\css\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="app_assets\css\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="app_assets\css\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="app_assets\css\bootstrap\wells.less" />
+    <Content Include="app_assets\css\bootstrap\variables.less" />
+    <Content Include="app_assets\css\bootstrap\utilities.less" />
+    <Content Include="app_assets\css\bootstrap\type.less" />
+    <Content Include="app_assets\css\bootstrap\tooltip.less" />
+    <Content Include="app_assets\css\bootstrap\thumbnails.less" />
+    <Content Include="app_assets\css\bootstrap\theme.less" />
+    <Content Include="app_assets\css\bootstrap\tables.less" />
+    <Content Include="app_assets\css\bootstrap\scaffolding.less" />
+    <Content Include="app_assets\css\bootstrap\responsive-utilities.less" />
+    <Content Include="app_assets\css\bootstrap\responsive-embed.less" />
+    <Content Include="app_assets\css\bootstrap\progress-bars.less" />
+    <Content Include="app_assets\css\bootstrap\print.less" />
+    <Content Include="app_assets\css\bootstrap\popovers.less" />
+    <Content Include="app_assets\css\bootstrap\panels.less" />
+    <Content Include="app_assets\css\bootstrap\pagination.less" />
+    <Content Include="app_assets\css\bootstrap\pager.less" />
+    <Content Include="app_assets\css\bootstrap\normalize.less" />
+    <Content Include="app_assets\css\bootstrap\navs.less" />
+    <Content Include="app_assets\css\bootstrap\navbar.less" />
+    <Content Include="app_assets\css\bootstrap\modals.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\vendor-prefixes.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\text-overflow.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\text-emphasis.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\table-row.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\tab-focus.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\size.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\responsive-visibility.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\resize.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\reset-filter.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\progress-bar.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\panels.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\pagination.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\opacity.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\nav-vertical-align.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\nav-divider.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\list-group.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\labels.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\image.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\hide-text.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\grid-framework.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\grid.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\gradients.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\forms.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\clearfix.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\center-block.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\buttons.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\border-radius.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\background-variant.less" />
+    <Content Include="app_assets\css\bootstrap\mixins\alerts.less" />
+    <Content Include="app_assets\css\bootstrap\mixins.less" />
+    <Content Include="app_assets\css\bootstrap\media.less" />
+    <Content Include="app_assets\css\bootstrap\list-group.less" />
+    <Content Include="app_assets\css\bootstrap\labels.less" />
+    <Content Include="app_assets\css\bootstrap\jumbotron.less" />
+    <Content Include="app_assets\css\bootstrap\input-groups.less" />
+    <Content Include="app_assets\css\bootstrap\grid.less" />
+    <Content Include="app_assets\css\bootstrap\glyphicons.less" />
+    <Content Include="app_assets\css\bootstrap\forms.less" />
+    <Content Include="app_assets\css\bootstrap\dropdowns.less" />
+    <Content Include="app_assets\css\bootstrap\component-animations.less" />
+    <Content Include="app_assets\css\bootstrap\code.less" />
+    <Content Include="app_assets\css\bootstrap\close.less" />
+    <Content Include="app_assets\css\bootstrap\carousel.less" />
+    <Content Include="app_assets\css\bootstrap\buttons.less" />
+    <Content Include="app_assets\css\bootstrap\button-groups.less" />
+    <Content Include="app_assets\css\bootstrap\breadcrumbs.less" />
+    <Content Include="app_assets\css\bootstrap\bootstrap.less" />
+    <Content Include="app_assets\css\bootstrap\badges.less" />
+    <Content Include="app_assets\css\bootstrap\alerts.less" />
+    <Content Include="app\components\about\view.html" />
+    <Content Include="app\components\changePassword\Update.html" />
+    <Content Include="app\shared\navigation\view.html" />
+    <Content Include="app\components\login\view.html" />
+    <Content Include="app\components\scriptLog\scriptLogView.html" />
+    <Content Include="app\components\users\userListView.html" />
+    <Content Include="app\shared\error\view.html" />
+    <Content Include="app\components\webApiTest\view.cshtml" />
+    <Content Include="app\landingPages\organisation\baseView.cshtml" />
+    <Content Include="app_assets\css\main.scss" />
+    <Content Include="app_assets\css\partials\_base.scss" />
+    <Content Include="app_assets\css\modules\_buttons.scss" />
+    <Content Include="app_assets\css\modules\_grids.scss" />
+    <Content Include="app_assets\css\modules\_typography.scss" />
+    <Content Include="app_assets\css\modules\_figures.scss" />
+    <Content Include="app_assets\css\modules\_reset.scss" />
+    <Content Include="app_assets\css\modules\_all.scss" />
+    <Content Include="app_assets\css\partials\_personalMenu.scss" />
+    <Content Include="app_assets\css\modules\_mainColours.scss" />
+    <Content Include="app\components\organisation\Update.html" />
+    <Content Include="app_assets\css\partials\_configureOrganisation.scss" />
+    <Content Include="app\components\report\viewer.html" />
+    <Content Include="app_assets\css\partials\_feedback.scss" />
+    <Content Include="app_assets\css\partials\_navigationMenu.scss" />
+    <Content Include="app_assets\css\partials\_changePassword.scss" />
+    <Content Include="app_assets\css\partials\_client.scss" />
+    <Content Include="app_assets\css\partials\_organisationDisplay.scss" />
+    <Content Include="app_assets\css\partials\_about.scss" />
+    <Content Include="app_assets\css\partials\_course.scss" />
+    <Content Include="app_assets\css\modules\_mixins.scss" />
+    <Content Include="app\components\home\View.html" />
+    <Content Include="app_assets\css\partials\_subMenu.scss" />
+    <Content Include="app_assets\css\partials\_clientHistory.scss" />
+    <Content Include="app_assets\css\partials\_clientSearch.scss" />
+    <Content Include="app\components\payment\manage.html" />
+    <Content Include="app\components\paymentProvider\Update.html" />
+    <Content Include="app\components\venueCostType\Update.html" />
+    <Content Include="app_assets\css\partials\_addCourse.scss" />
+    <Content Include="app_assets\css\partials\_fadeSaveStatus.scss" />
+    <None Include="app_assets\css\partials\_viewCourse.scss" />
+    <Content Include="app_assets\css\partials\_templateChange.scss" />
+    <Content Include="app_assets\css\modules\_templateVariables.scss" />
+    <Content Include="app_assets\css\modules\_templateMixins.scss" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <None Include="Scripts\vendor\jquery-2.0.3.intellisense.js" />
+    <Content Include="Scripts\vendor\jquery-2.0.3.js" />
+    <Content Include="Scripts\vendor\jquery-2.0.3.min.js" />
+    <Content Include="Scripts\vendor\jquery-2.0.3.min.map" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="app\landingPages\organisation\organisationAuthenticated.js" />
+    <Content Include="Scripts\vendor\smart-table\smart-table-custom.js" />
+    <Content Include="Scripts\vendor\smart-table\smart-table.min.js" />
+    <Content Include="apple-touch-icon-precomposed.png" />
+    <Content Include="crossdomain.xml" />
+    <Content Include="favicon.ico" />
+    <Content Include="humans.txt" />
+    <Content Include="Packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="robots.txt" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ScriptLog.cs" />
+    <Compile Include="Routing\DefaultRoute.cs" />
+    <Compile Include="Routing\DefaultRouteHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\components\clientSite\services\" />
+    <Folder Include="app\components\client\factories\" />
+    <Folder Include="app\components\email\factories\" />
+    <Folder Include="app\components\quickSearch\factories\" />
+    <Folder Include="app\components\report\factories\" />
+    <Folder Include="app\shared\core\vendor\" />
+    <Folder Include="app_assets\css\vendor\" />
+    <Folder Include="Content\fonts\" />
+    <Folder Include="Content\styles\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Scripts\App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IAM.Atlas.Data\IAM.Atlas.Data.csproj">
+      <Project>{b00665cd-61ba-4faf-bf12-5661c0970033}</Project>
+      <Name>IAM.Atlas.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IAM.Atlas.Tools\IAM.Atlas.Tools.csproj">
+      <Project>{04abddb8-e555-41ee-8db3-df676abcbdd8}</Project>
+      <Name>IAM.Atlas.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\components\course\controllers\addCourseTrainerController.js" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>8080</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:4350/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\BuildWebCompiler.1.8.270\build\BuildWebCompiler.targets" Condition="Exists('..\packages\BuildWebCompiler.1.8.270\build\BuildWebCompiler.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\BuildWebCompiler.1.8.270\build\BuildWebCompiler.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BuildWebCompiler.1.8.270\build\BuildWebCompiler.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

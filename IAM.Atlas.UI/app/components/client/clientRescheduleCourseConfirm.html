@@ -1,0 +1,36 @@
+﻿
+<div id="clientRescheduleCourseDetails">
+
+    <div class="row">
+        <div class="col-sm-12" id="addressDetails">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <label class="blueitalic"><strong>Thank you. Your course has been rescheduled.</strong></label>
+                    <label class="blueitalic"><strong>You wil recieve and email confirmation.</strong></label>
+                    <label class="blueitalic" ng-show="courseSelected.RebookingFee == 0"><strong>There is no additional payment due.</strong></label>
+                    <label class="blueitalic" ng-show="courseSelected.RebookingFee > 0"><strong>After which an additional payment of {{ courseSelected.RebookingFee | currency: "£" }} will be due.</strong></label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12" style="padding-bottom:10px;"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-5"></div>
+                <div class="col-sm-2">
+                    <div class="edit-button btn rightalign" ng-click="closeAndRedirectToProfilePage()">Close</div>
+                </div>
+                <div class="col-sm-5"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12" style="padding-bottom:10px;"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

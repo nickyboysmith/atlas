@@ -1,0 +1,22 @@
+﻿<div id="viewSingleCourseOption">
+    <div class="row">
+        <div class="col-md-12 Eligible">
+            <span>
+                You are eligible to take the course:
+            </span>
+        </div>
+        <div class="col-md-12 SchemeName">
+            <span>
+                "{{courseOptions.SchemeName}} <span class="ExpiryDate">(Must Be taken by: {{courseOptions.ExpiryDate | date :  "MMM dd yyyy" }})</span>"
+            </span>
+        </div>
+        <div class="col-md-12">
+            <div class="col-xs-6 col-sm-4 pull-left">
+                <div ng-click="closeDialog('viewSingleCourseOptionModal');" class="licence-button btn">Cancel</div>
+            </div>
+            <div class="col-xs-6 col-sm-4 pull-right">
+                <div ng-click="selectCourse();" class="licence-button btn">Continue</div>
+            </div>
+        </div>
+    </div>
+</div>

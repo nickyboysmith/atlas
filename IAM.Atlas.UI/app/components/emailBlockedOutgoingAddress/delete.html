@@ -1,0 +1,76 @@
+﻿<div id="DeleteEmailBlockedOutingAddress" class="emailBlockedOutgoingAddress">
+
+    <system-feature-information title="blocked outgoing email addresses"
+                                controller="EmailBlockedOutgoingAddressCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/emailBlockedOutgoingAddress/delete"
+                                page-name="Blocked Outgoing Email Addresses"></system-feature-information>
+
+    <div class="Title row">
+        <h2></h2>
+    </div>
+    <form class="form-horizontal row" role="form">
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-12 col-xs-offset-1'>Email Addresses listed were blocked automatically because the Email Service reported Emails with that address bouncing.</div>
+            <div class='col-sm-12 col-xs-offset-1'>While in this list the Email Service will not send emails to the Email Addresses listed.</div>
+        </div>
+
+            <div ng-show="$parent.isAdmin">
+                <div class='col-sm-12 form-group'>
+                    <div class='col-sm-3'>
+                        <label>Organisation:</label>
+                    </div>
+                    <div class='col-sm-9'>
+                        <select ng-model="organisationId"
+                                ng-change="getBlockedEmailsByOrganisation(organisationId)"
+                                class='form-control'
+                                ng-options="organisation.id as organisation.name for organisation in organisations">
+
+                                <option value="">*Global*</option>
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+        <!--table-hover--> 
+            <div class="col-sm-12">
+                <div class="sml-scroll-div marginBottom10">
+                    <table class="table table-bordered">
+                        <thead></thead>
+                        <tbody>
+                            <tr ng-repeat="email in blockedEmails" ng-class="{'isSelected': email.isSelected}" >
+                                <td ng-click="setSelectedEmails(email)"
+                                    title="{{email.Email}}"
+                                    value="{{email.Id}}">
+                                    {{email.Email}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="col-sm-6">
+                        <button class="btn btn-default btn-sm"
+                                ng-click="removeBlockedEmails()"
+                                title="Create New Organisation"
+                                ng-disabled="HasBlockedEmails()">
+                            Remove Selected From the List
+                        </button>
+                    </div>
+                    <div class="col-sm-6" ng-if="successMessage != ''">
+                         <h3>{{ successMessage }}</h3>
+                    </div>
+
+                    <div class="col-sm-6" ng-if="validationMessage != ''">
+                         <h3>{{ validationMessage }}</h3>
+                    </div>
+                </div>
+            </div>
+
+</form>
+</div>
+

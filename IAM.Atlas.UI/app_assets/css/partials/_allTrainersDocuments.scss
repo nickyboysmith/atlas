@@ -1,0 +1,42 @@
+﻿#allTrainersDocuments{
+
+    .allTrainersButtonDivMargin
+    {
+        margin-top: 37px;
+    }
+
+    tr.allTrainersDocumentList, th.allTrainersDocumentList
+    {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+    }
+
+    tr.selectedAllTrainerDocument
+    {
+        color: white;
+        background-color:#428bca;
+    }
+
+    .tableDivHeight{
+        height:570px;
+    }
+}
+
+#allTrainersDocumentsAddExisting{
+    
+    tr.allTrainersDocumentList, th.allTrainersDocumentList
+    {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+    }
+
+    tr.selectedDocument
+    {
+        color: white;
+        background-color:#428bca;
+    }
+
+    .tableDivHeight{
+        height:540px;
+    }
+}

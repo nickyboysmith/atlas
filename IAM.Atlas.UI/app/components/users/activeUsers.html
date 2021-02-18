@@ -1,0 +1,23 @@
+﻿<div id="activeSystemUsers">
+    <div class="row">
+        <div class="col-sm-12">
+            <p>Active Users</p>
+        </div><!-- End .col-md-12 -->
+    </div><!-- End .row -->
+    <div class="row form-line-separator-20">
+        <div class="col-sm-12">
+            <div class="big-scrollable-container">
+                <ul>
+                    <li ng-repeat="user in activeUsers" >{{ user.Name }}:- Since {{user.CreationTime | date:'MMM d, y h:mm a'}}</li>
+                </ul>
+            </div><!-- End .big-scrollable-container -->
+        </div><!-- End .col-md-12 -->
+    </div><!-- End .row -->
+    <!--<div class="row">
+        <div class="col-md-3">
+            <div class="btn" ng-click="clodeModal()">Close</div>
+        </div>
+        <div class="col-md-6"></div>
+        <div class="col-md-3"></div>
+    </div>-->
+</div><!-- End #activeSystemUsers -->

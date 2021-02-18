@@ -1,0 +1,55 @@
+﻿<div id="trainersWithoutEmailsDiv">
+    <div class="row">
+        <div class="col-sm-12">
+            Course: <b>{{ course.courseType.Title }} {{ course.courseDateStart }}</b>; Reference: <b>{{ course.courseReference }}</b>
+        </div>
+    </div>
+    <div class="row marginBottom10">
+        <div class="col-sm-12">
+            <h3>Trainers With No Email Addresses</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table st-table="trainersWithoutEmails" st-safe-src="trainersWithoutEmailsCollection" class="table table-striped">
+                <thead>
+                    <th st-sort="TrainerId">
+                        Trainer Id
+                    </th>
+                    <th st-sort="TrainerName">
+                        Name
+                    </th>
+                    <th st-sort="TrainerDateOfBirth">
+                        Date Of Birth
+                    </th>
+                    <th st-sort="TrainerLicenceNumber">
+                        Licence
+                    </th>
+                    <th st-sort="TrainerMainPhoneNumber">
+                        Main Phone
+                    </th>
+                    <th st-sort="TrainerSecondPhoneNumber">
+                        Other
+                    </th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="trainer in trainersWithoutEmails" ng-dblclick="openTrainerModal(trainer.TrainerId)">
+                        <td>{{ trainer.TrainerId }}</td>
+                        <td>{{ trainer.TrainerName }}</td>
+                        <td>{{ formatDate(trainer.TrainerDateOfBirth) }}</td>
+                        <td>{{ trainer.TrainerLicenceNumber }}</td>
+                        <td>{{ trainer.TrainerMainPhoneNumber }}</td>
+                        <td>{{ trainer.TrainerSecondPhoneNumber }}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

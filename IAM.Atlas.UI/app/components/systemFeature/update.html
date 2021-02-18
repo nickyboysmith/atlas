@@ -1,0 +1,225 @@
+﻿<div id="systemFeature" class="systemFeature">
+
+    <div class="Title row">
+        <h2></h2>
+    </div>
+    <form class="form-horizontal row" role="form">
+
+            <div class='col-sm-12 form-group'>
+                <div class='col-sm-2'>
+                    <label>Group</label>
+                </div>
+                <div class='col-sm-10'></div>
+            </div>
+
+                <div class='col-sm-12 form-group'>
+
+                    <div class='col-sm-3'>
+
+                        <div class="sml-scroll-div">
+                            <table class="table table-hover table-bordered">
+                                <thead></thead>
+                                <tbody>
+                                    <tr ng-repeat="group in featureGroup">
+                                        <td ng-click="selectFeatureGroup(group.Id)"
+                                            ng-class="{selectedFeatureGroup : selectedFeatureGroup == group.Id}"
+                                            title="{{group.Description}}"
+                                            value="{{group.Id}}">
+                                            {{group.Name}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                   
+
+                    <div class='col-sm-3'>
+                        <div class='row marginBottom10'>
+                            <div class="col-sm-2"></div>
+                            <div class='col-sm-10'>
+                                <input class="form-control" type="text" ng-model="featureGroupDetails.Name" ng-disabled="true" placeholder="Group Name" />
+                            </div>
+                        </div>
+                        <div class='row marginBottom10'>
+                            <div class="col-sm-2">
+                                Title
+                            </div>
+                            <div class='col-sm-10'>
+                                <input type="text" 
+                                       class="form-control"
+                                       ng-model="featureGroupDetails.Title"
+                                       placeholder="Group Title" />
+                            </div>
+                        </div>
+
+                        <div class='row marginBottom10'>
+                            <div class='col-sm-2'></div>
+                            <div class='col-sm-10'>
+                                <textarea ng-model="featureGroupDetails.Description"
+                                          class="form-control"
+                                          maxlength="400"
+                                          placeholder="Group Description"></textarea>
+                            </div>
+                        </div>
+
+                        <div class='row marginBottom10'>
+                            <div class='col-sm-2'></div>
+                            <div class='col-sm-6'>
+                                <div class="control-label">
+                                    <input type="checkbox" ng-model="featureGroupDetails.Disabled" />&nbsp;Disabled
+                                </div>
+                            </div>
+                            <div class='col-sm-4'>
+                               
+                            </div>
+                        </div>
+
+                        <div class='row marginBottom10'>
+                            <div class='col-sm-2'></div>
+                            <div class='col-sm-3'>
+                                <button class="btn btn-default btn-sm"
+                                        ng-click="saveFeatureGroup()"
+                                        title="Save"
+                                        ng-disabled="IsGroupSelected()">
+                                    Save
+                                </button>
+                            </div>
+                            <div class='col-sm-3'>
+                                <button class="btn btn-default btn-sm"
+                                        ng-click="newGroup()"
+                                        title="Add New">
+                                    New
+                                </button>
+                            </div>
+                            <div class='col-sm-3'>
+                                <button class="btn btn-default btn-sm"
+                                        ng-click="close()"
+                                        title="Close">
+                                    Close
+                                </button>
+                            </div>
+                            <div class='col-sm-3'></div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <label>GroupTitle Items</label>
+                        <div class="sml-scroll-div">
+                            <table class="table table-hover table-bordered">
+                                <thead></thead>
+                                <tbody>
+                                    <tr ng-repeat="groupItem in featureGroupItem">
+                                        <td ng-click="selectFeatureGroupItem(groupItem.Id)"
+                                            ng-class="{selectedFeatureGroupItem : selectedFeatureGroupItem == groupItem.Id}"
+                                            title="{{groupItem.Description}}"
+                                            value="{{groupItem.Id}}">
+                                            {{groupItem.Name}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-3'>
+                        <div class='col-sm-12 form-group'>
+                            
+                        </div>
+                        <div class='row marginBottom10'>
+                            <div class="col-sm-2"></div>
+                            <div class='col-sm-10'>
+                                <input class="form-control" type="text" ng-model="featureGroupItemDetails.Name" ng-disabled="true" placeholder="Item Name" />
+                            </div>
+                        </div>
+                        <div class='row marginBottom10'>
+                            <div class="col-sm-2">
+                                Title
+                            </div>
+                            <div class='col-sm-10'>
+                                <input type="text" 
+                                       class="form-control" 
+                                       ng-model="featureGroupItemDetails.Title"
+                                       placeholder="Item Title" />
+                            </div>
+                        </div>
+
+                        <div class='row marginBottom10'>
+                            <div class='col-sm-2'></div>
+                            <div class='col-sm-10'>
+                                <textarea ng-model="featureGroupItemDetails.Description"
+                                          class="form-control"
+                                          maxlength="400"
+                                          placeholder="Item Description"></textarea>
+                            </div>
+                        </div>
+
+                        <div class='row marginBottom10'>
+                            <div class='col-sm-2'></div>
+                            <div class='col-sm-6'>
+                                <div class="control-label">
+                                    <input type="checkbox" ng-model="featureGroupItemDetails.Disabled" />&nbsp;Disabled
+                                </div>
+                            </div>
+                            <div class='col-sm-4'></div>
+                        </div>
+
+                        <div class='row marginBottom10'>
+                            <div class='col-sm-2'></div>
+                            <div class='col-sm-3'>
+                                <button class="btn btn-default btn-sm"
+                                        ng-click="saveFeatureGroupItem()"
+                                        title="Save"
+                                        ng-disabled="IsGroupItemSelected()">
+                                    Save
+                                </button>
+                            </div>
+                            <div class='col-sm-3'></div>
+                            <div class='col-sm-3'>
+                                <button class="btn btn-default btn-sm"
+                                        ng-click="close()"
+                                        title="Close">
+                                    Close
+                                </button>
+                            </div>
+                            <div class='col-sm-1'></div>
+                        </div>
+                        <div class='row marginBottom10'>
+                            <div class='col-sm-2'></div>
+                            <div class='col-sm-2'>
+                                <button class="btn btn-default btn-sm"
+                                        ng-click="newGroupItem()"
+                                        title="New Group Item"
+                                        ng-disabled="IsGroupItemSelected()">
+                                    Add New
+                                </button>
+                            </div>
+                            <div class='col-sm-1'></div>
+                            <div class='col-sm-3'>
+                                <button class="btn btn-default btn-sm"
+                                        ng-click="existingGroupItem()"
+                                        title="Add Existing Item"
+                                        ng-disabled="IsGroupItemSelected()">
+                                    Add Existing
+                                </button>
+                            </div>
+                            <div class='col-sm-4'></div>
+                        </div>
+                    </div>
+                </div>
+
+        <!--Message banner-->
+        <div class="row">
+            <div class="col-sm-12" ng-if="successMessage != ''">
+                <h3>{{ successMessage }}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" ng-if="validationMessage != ''">
+                <h3>{{ validationMessage }}</h3>
+            </div>
+        </div>
+
+</form>
+
+</div>

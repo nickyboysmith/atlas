@@ -1,0 +1,235 @@
+﻿<div class="row form-line-separator">
+    <system-feature-information page-name="Clone Course">
+    </system-feature-information>
+</div>
+
+<div id="cloneCourse">
+
+    <div class="row form-line-separator">
+        <div class="col-md-3">
+            <strong>For Course:</strong>
+        </div>
+        <div class="col-md-9">
+            {{ courseType.Title }} 
+            <span ng-if="courseTypeCategory"> - ({{ courseTypeCategory.Name }})</span>
+        </div>
+    </div>
+
+    <div class="row form-line-separator">
+        <div class="col-md-3">
+            <strong>Reference:</strong>
+        </div>
+        <div class="col-md-9">
+            {{ courseReference }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <strong>Date:</strong>
+        </div>
+        <div class="col-md-9">
+            {{ originalCourseStartDate | date:'dd-MMM-yyyy' }} to {{ originalCourseEndDate | date: 'dd-MMM-yyyy' }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <hr>
+        </div><!-- end .col-md-12 -->
+    </div>
+
+    <div class="row form-line-separator">
+        <div class="col-md-4">
+            <label>Create maximum of</label>
+        </div><!-- end .col-md-4 -->
+        <div class="col-md-2">
+            <input 
+                   ng-model="cloneSettings.maximumCourses"
+                   ng-change="updateMaximumCourses(cloneSettings.maximumCourses)"
+                   class="input-number-validation form-control text-right" 
+                   type="text" />
+        </div><!-- end .col-md-2 -->
+        <div class="col-md-6">
+            Courses <small>(Course Dates)</small>
+        </div>
+    </div>
+
+    <div class="row form-line-separator">
+        <div class="col-md-4">
+            <label>Start Date:</label>
+        </div><!-- end .col-md-4 -->
+        <div class="col-md-4">
+            <input 
+                   ng-model="cloneSettings.startDate"
+                   ng-click="showDatePicker('showStartDate')"
+                   class="form-control" 
+                   type="text" />
+        </div><!-- end .col-md-4 -->
+        <div class="col-md-4">
+            <div 
+                 class="calendar-icon"
+                 ng-click="showDatePicker('showStartDate')"></div>
+        </div><!-- end .col-md-6 -->
+    </div>
+
+    <div 
+         class="row form-line-separator"                          
+         ng-if="showStartDate">
+        <div class="col-md-offset-4 col-md-4">
+            <date-picker ng-model="cloneSettings.startDate"
+                         format-date="formatDate"
+                         on-date-selected="showDatePicker('showStartDate')"></date-picker>
+        </div><!-- end .col-md-4 -->
+        <div class="col-md-4"></div><!-- end .col-md-4 -->
+    </div><!-- end .row -->
+
+    <div class="row form-line-separator">
+        <div class="col-md-4">
+            <label>End Date:</label>
+        </div><!-- end .col-md-4 -->
+        <div class="col-md-4">
+            <input 
+                   ng-model="cloneSettings.endDate"
+                   ng-click="showDatePicker('showEndDate')"
+                   class="form-control" 
+                   type="text" />
+        </div><!-- end .col-md-4 -->
+        <div class="col-md-4">
+            <div 
+                 class="calendar-icon"
+                 ng-click="showDatePicker('showEndDate')"></div>
+        </div><!-- end .col-md-4 -->
+    </div>
+
+    <div class="row form-line-separator"
+         ng-if="showEndDate">
+        <div class="col-md-offset-4 col-md-4">
+            <date-picker ng-model="cloneSettings.endDate"
+                         format-date="formatDate"
+                         on-date-selected="showDatePicker('showEndDate')"></date-picker>
+        </div><!-- end .col-md-4 -->
+        <div class="col-md-4"></div><!-- end .col-md-4 -->
+    </div><!-- end .row -->
+
+    <div class="row form-line-separator">
+        <div class="col-md-4">
+            <label>Use Reference Template:</label>
+        </div><!-- end .col-md-4 -->
+        <div class="col-md-8">
+            <select 
+                    ng-model="cloneSettings.referenceTemplate"
+                    ng-options="referenceTemplate.Id as referenceTemplate.Title for referenceTemplate in courseReferenceTemplates"
+                    ng-change="selectCourseReferenceGenerator(cloneSettings.referenceTemplate)"
+                    class="form-control">
+                <option value="">Please select course template</option>
+            </select><!-- end select -->
+        </div><!-- end .col-md-8 -->
+    </div>
+
+    <div class="row form-line-separator">
+        <div class="col-md-4">
+            <div class="text-right">OR:</div>
+        </div><!-- end .col-md-4 -->
+        <div class="col-md-8">
+            <input 
+                   ng-model="cloneSettings.sameReference"
+                   type="checkbox" /> 
+            <span><strong><em>Use the Same Reference as Parent Course</em></strong></span>
+        </div><!-- end .col-md-8 -->
+    </div>
+
+    <div class="row form-line-separator">
+        <div class="col-md-4">
+        </div><!-- end .col-md-4 -->
+        <div class="col-md-8">
+            <input 
+                   ng-model="cloneSettings.sameTrainers"
+                   type="checkbox" />
+            <span><strong><em>Use the Same Trainers on Parent Course(s)</em></strong></span>
+        </div><!-- end .col-md-8 -->
+    </div>
+
+    <div class="row form-line-separator" ng-if="showWeeklyMonthlyCourses">
+        <div class="col-md-4">
+        </div><!-- end .col-md-4 -->
+        <div class="col-md-8">
+            <input 
+                   ng-change="updateCourseRepeatSelection('weeklyCourses')"
+                   ng-model="cloneSettings.weeklyCourses"
+                   ng-checked="cloneSettings.weeklyCourses"
+                   type="checkbox" />
+            <span>Weekly Courses</span>
+        </div><!-- end .col-md-8 -->
+    </div>
+
+    <div class="row form-line-separator" ng-if="showWeeklyMonthlyCourses">
+        <div class="col-md-4">
+        </div><!-- end .col-md-4 -->
+        <div class="col-md-8">
+            <input 
+                   ng-change="updateCourseRepeatSelection('monthlyCourses')"
+                   ng-model="cloneSettings.monthlyCourses"
+                   ng-checked="cloneSettings.monthlyCourses"
+                   type="checkbox" />
+            <span>Monthly Courses</span>
+        </div><!-- end .col-md-8 -->
+    </div>
+
+    <div class="row form-line-separator" ng-if="showWeeklyMonthlyCourses">
+        <div class="col-md-4">
+            <label>Create course every</label>
+        </div><!-- end .col-md-4 -->
+        <div class="col-md-2">
+            <input 
+                   ng-model="cloneSettings.createCourseEveryWeek"
+                   ng-change="updateCourseAmountSelection('weeklyCourses', cloneSettings.createCourseEveryWeek)"
+                   class="input-number-validation form-control text-right" 
+                   type="text" />
+        </div><!-- end .col-md-2 -->
+        <div class="col-md-6 labelLineup">
+            Weeks
+        </div>
+    </div>
+
+    <div class="row form-line-separator" ng-if="showWeeklyMonthlyCourses">
+        <div class="col-md-4">
+            <label>Create course every</label>
+        </div><!-- end .col-md-4 -->
+        <div class="col-md-2">
+            <input 
+                   ng-model="cloneSettings.createCourseEveryMonth"
+                   ng-change="updateCourseAmountSelection('monthlyCourses', cloneSettings.createCourseEveryMonth)"
+                   class="input-number-validation form-control text-right" 
+                   type="text" />
+        </div><!-- end .col-md-2 -->
+        <div class="col-md-6  labelLineup">
+            Months
+        </div>
+    </div>
+
+
+    <div class="row form-line-separator margin-top-spacer-20">
+        <div class="col-md-offset-4 col-md-8 rightalign">
+            <div 
+                 ng-click="courseConfirmation()"
+                 class="btn">Create Courses</div>
+        </div><!-- end .col-md-12 -->
+    </div>
+
+    <div class="row form-line-separator">
+        <!--Message banner-->
+        <div class="row col-sm-12 col-md-12" ng-if="!successMessage === false">
+            <div class="col-sm-12">
+                <span class="success-message">{{ successMessage }}</span>
+            </div>
+        </div>
+        <div class="row col-sm-12 col-md-12"  ng-if="!errorMessage === false">
+            <div class="col-md-12 col-sm-12">
+                <span class="validation-message">{{ errorMessage }}</span>
+            </div>
+        </div>
+    </div>
+
+
+</div><!--- end #cloneCourse -->

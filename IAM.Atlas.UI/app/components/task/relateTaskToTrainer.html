@@ -1,0 +1,47 @@
+﻿<div id="relateTaskToTrainerDiv">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Trainers</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table st-table="taskTrainers" st-safe-src="taskTrainersTemplate" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            <input st-search="" class="form-control" placeholder="Filter Users" type="search" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="taskTrainer in taskTrainers" ng-class="{taskSelectedOrganisationTrainer : selectedTrainerId == taskTrainer.Id}">
+                        <td ng-click="selectTrainer(taskTrainer.Id)">
+                            {{ taskTrainer.DisplayName }}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="text-center">
+                            <div ng-if="taskTrainersTemplate.length >= 1" class="TableSummary col-md-12 col-sm-12">
+                                {{taskTrainersTemplate.length}} Trainers have been retrieved from the database
+                            </div>
+                            <div st-pagination="" st-items-by-page="maxResults" st-displayed-pages="7"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn" ng-click="linkTaskToTrainer(selectedTrainerId)" ng-disabled="selectedTrainerId < 0">Link to Trainer</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 validation-message">
+            {{validationMessage}}
+        </div>
+    </div>
+</div>

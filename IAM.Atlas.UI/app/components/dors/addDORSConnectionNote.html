@@ -1,0 +1,37 @@
+﻿<div id="addDorsConnectionNote">
+    <div class="row form-line-separator">
+        <div class="col-md-3">
+            <label>Type</label>
+        </div>
+        <div class="col-md-9">
+            <select 
+                    ng-options="noteType.Name for noteType in noteTypes"
+                    ng-model="note.type"
+                    class="form-control">
+            </select>
+        </div>
+    </div><!-- End note type select row -->
+    <div class="row form-line-separator">
+        <div class="col-md-3">
+            <label>Note</label>
+        </div>
+        <div class="col-md-9">
+            <textarea class="form-control default-note-textarea-height" ng-model="note.content"></textarea>
+        </div>
+    </div><!-- End note type select row -->
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-2">
+            <div class="btn" ng-click="saveTheNote()">Save</div>
+        </div>
+        <div class="col-md-7"></div>
+    </div>
+
+    <div data-ng-if="showSuccessFader == true">
+        <my-msgfader status="success"></my-msgfader>
+    </div>
+    <div data-ng-if="showErrorFader == true">
+        <my-msgfader status="error"></my-msgfader>
+    </div>
+
+</div>

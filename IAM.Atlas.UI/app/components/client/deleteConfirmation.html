@@ -1,0 +1,38 @@
+﻿<div id="clientDeleteConfirmation">
+
+    <!-- Name -->
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Name:</label>
+        </div>
+        <div class="col-md-8">
+            <span>{{ clientName }}</span>
+        </div>
+    </div><!-- End .row -->
+    <!-- Description -->
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Delete Notes:</label>
+        </div>
+        <div class="col-md-8">
+            <textarea ng-model="clientDelete.deleteNotes"
+                      rows="4"
+                      class="form-control"></textarea>
+        </div>
+    </div><!-- End .row -->   
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+
+    <!-- Save Button -->
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2">
+            <div class="btn full-width-button button-add-margin" ng-click="confirmDelete()">Delete</div>
+        </div>
+    </div>
+
+    <div class="col-md-12 statusMessage" id="statusMessage" data-ng-hide="hideSuccessMessage == true">{{ completedMessage }}</div>
+    <div class="col-md-12 errorMessage" id="errorMessage" data-ng-hide="hideErrorMessage == true">{{ errorMessage }}</div>
+</div>
+

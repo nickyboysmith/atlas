@@ -1,0 +1,29 @@
+﻿<div class="row">
+    <form class="col-sm-8 col-sm-offset-3 col-md-4 col-md-offset-4" ng-submit="logMeIn(user)">
+        <h2 class="text-center">Sign In</h2>
+        <div class="form-box">
+            <div class="form-group">
+                <label>Login:</label>
+                <input ng-model="user.userName" type="text" class="form-control" placeholder="Login Id or Email" required autofocus />
+                <a href="#">Request Password Reset</a>
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input ng-model="user.password" type="password" class="form-control" placeholder="Password" required />
+                <a href="#">Change Password</a>
+            </div>
+            <div>
+                <input name="rememberMe"
+                       id="rememberMe"
+                       class="checkbox-inline"
+                       type="checkbox"
+                       ng-model="user.remember"
+                       ng-disabled="!(user.userName && user.password)" />
+                <span>Remember Me</span>
+                <button class="btn btn-primary" type="submit" ng-disabled="!(user.userName && user.password)">Sign In</button>
+            </div>
+        </div>
+    </form>
+    <div class="col-sm-12 system-message"><span>System Message Here</span></div>
+
+</div>

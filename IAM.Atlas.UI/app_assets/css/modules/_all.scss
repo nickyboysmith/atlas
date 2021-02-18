@@ -1,0 +1,805 @@
+@import "_mixins.scss";
+
+/**
+ * Put all variables under this comment
+ */
+@mixin borderRadius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin create-gradient($colourStart, $colourEnd) {
+    background: $colourStart; /* Old browsers */
+    background: -moz-linear-gradient(top, $colourStart 0%, $colourEnd 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$colourStart), color-stop(100%,$colourEnd)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, $colourStart 0%,$colourEnd 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, $colourStart 0%,$colourEnd 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, $colourStart 0%,$colourEnd 100%); /* IE10+ */
+    background: linear-gradient(to bottom, $colourStart 0%,$colourEnd 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$colourStart', endColorstr='$colourEnd',GradientType=0 ); /* IE6-9 */
+}
+
+@mixin iconGetter($left, $right) {
+    background-image: url(/app_assets/images/sprite.png);
+    background-position: $left $right;
+    background-repeat: no-repeat;
+    display: block; 
+}
+
+/**
+ * Baser styles go here
+ * These styles are styles that will be used throughout the project and won't be changed 
+ */
+body {
+    color: $baseBlack;
+    font-size: 14px;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    min-height: 100%;
+    background: $background;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    -ms-overflow-style: scrollbar;
+}
+
+
+a {
+    font-size: 14px;
+    color: $baseBlack;
+    outline: none;
+    padding-left: 3px;
+    padding-right: 3px;
+    text-decoration: underline;
+}
+
+a:link, a:visited, a:active, a:hover {
+    color: $baseBlack;
+}
+
+a:hover {
+    background-color: #c7d1d6;
+}
+
+header, footer, hgroup, nav, section {
+    display: block;
+}
+
+mark {
+    background-color: #a6dbed;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.element-overflow-0{
+    width: 0;
+    margin-left: 0;
+}
+.element-overflow-1{
+    width: 0;
+    margin-left: -8.33%;
+}
+.element-overflow-2{
+    width: 0;
+    margin-left: -16.66%;
+}
+.element-overflow-3{
+    width: 0;
+    margin-left: -25%;
+}
+
+.form-control {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+.control-label {
+    display: block;
+    white-space: nowrap;
+    padding: 0;
+    text-align: left;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.clear-fix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #000;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5 {
+    font-size: 1em;
+}
+
+h5 a:link, h5 a:visited, h5 a:active {
+    padding: 0;
+    text-decoration: none;
+}
+
+h6 {
+    font-size: 1em;
+}
+
+
+.extra {
+    padding-top: 10px;
+}
+
+.logo-holder {
+    opacity: 0.4;
+    width: 140px;
+    display: block;
+    margin: 85px auto 20px auto;
+}
+
+
+
+/**
+    Main Content Holder
+*/
+#mainContentContainer {
+    height: auto;
+    overflow: visible;
+    width: 1000px;
+    margin-left: 165px;
+    display: inline-block;
+    top: 0;
+
+    .main-atlas-logo-holder {
+        /*margin: 5px 0 30px 0;*/
+        margin: 5px 0 10px 0;
+        #CompanyLogo {
+            height: 60px;
+            width: 275px;
+            background: url(/app_assets/images/logo_with_iamgroup.png) no-repeat;
+            background-size: 185px;
+            margin-left: -9px;
+            margin-top: 30px;
+
+            a {
+                height: 60px;
+                width: 198px;
+                text-indent: -9999999px;
+                position: absolute;
+                display: block;
+            }
+
+            a:hover {
+                background: transparent;
+            }
+        }
+        #AtlasLogo {
+            float: left;
+            height: 30px;
+            width: 30px;
+            background: url(/app_assets/images/atlaslogo.png) no-repeat;
+            background-size: 100%;
+            margin-left: -9px;
+            margin-top: 10px;
+        }
+        #AtlasTitle {
+            float: left;
+            font-family: "-apple-system",BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Ubuntu,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+            font-size: 24px;
+            font-weight: bolder;
+            color: #fff;
+            margin-left: 5px;
+            margin-top: 10px;
+            width: 200px;
+        }
+    }
+
+    ul.breadcrumb {
+        @include borderRadius(5px);
+        background: #006CC2;
+        border: 1px solid #5C83D5;
+
+        li {
+            opacity: 0.9;
+            color: $textColour;
+        }
+
+        li a {
+            color: $textColour;
+        }
+
+        li a:hover {
+            background: transparent;
+        }
+    }
+    
+    .applicationInformation {
+        @include borderRadius(5px);
+        margin-top: 80px !important;
+        margin-bottom: 8px !important;
+        width: 100% !important;
+        height: 40px !important;
+        background: #006CC2;
+        border: 1px solid #5C83D5;
+
+        div {
+            margin-top: 6px !important;
+            margin-left: 15px !important;
+            opacity: 0.9;
+            color: $textColour;
+            width: 80%;
+            height: 40px;
+        }
+
+        /*li a {
+            color: $textColour;
+        }
+
+        li a:hover {
+            background: transparent;
+        }*/
+    }
+
+    .insideMainContainer {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        background: lighten($background,70%);
+        padding: 20px;
+        @include borderRadius(3px);
+    }
+}
+/**
+    RIGHT BAR
+*/
+#accountDetailContainer {
+    width: 295px;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    .account-details-holder {
+        width: 100%;
+        height: 48px;
+        margin-top: 37px;
+        padding-right: 20px;
+
+        .status-bar {
+            height: 100%;
+            width: 5px;
+            margin-right: -2px;
+            @include create-gradient(#0ce625, #2fb605);
+            @include borderRadius(1px);
+            border: 1px solid #2fb605;
+            float: right;
+        }
+
+        .account-holder-name {
+            float: left;
+            text-align: right;
+            margin-right: 15px;
+            padding-top: 8px;
+            width: 70%;
+            color: $textColour;
+
+            .account-holder-full-name {
+                font-weight: bold;
+            }
+
+            .account-holder-organisation {
+                font-size: 12px;
+            }
+        }
+
+        .account-holder-image {
+            float: right;
+            height: 48px;
+            width: 48px;
+            overflow: hidden;
+            @include borderRadius(3px);
+            border: 2px solid #E7E4E4;
+
+            img.default-picture {
+                margin-left: -2px;
+            }
+        }
+    }
+}
+
+.form-line-separator {
+    /*margin-bottom: 10px;*/ // Changed to 5px to minimise white space
+    margin-bottom: 5px;
+
+    label {
+        padding-top: 7px;
+    }
+}
+
+.form-line-separator-10 {
+    margin-bottom: 10px;
+
+    label {
+        padding-top: 7px;
+    }
+}
+
+.form-line-separator-20 {
+    margin-bottom: 20px;
+
+    label {
+        padding-top: 7px;
+    }
+}
+
+.errorMessage {
+    background-color: salmon;
+}
+
+.labelLineup{
+    padding-top: 7px;
+}
+
+.default-note-textarea-height {
+    height: 150px !important;
+}
+
+.big-scrollable-container {
+    width: 100%;
+    @include theBorderRadius(5px);
+    height: 300px;
+    border: 1px solid #cecece;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 3;
+
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-bottom: 0;
+
+        li {
+            padding: 5px 8px;
+            cursor: pointer;
+        }
+
+        li:nth-child(odd) {
+            background: #ececec;
+        }
+    }
+}
+
+/** shared styles **/
+.error-red {
+    background: red !important;
+    color: white;
+}
+
+.pink-background {
+    background: rgb(255, 140, 140);
+    color: black;
+}
+
+.error-red-underlined {
+    color: red !important;
+    text-decoration: underline;
+}
+
+.disabled-label {
+    color: #428bca;
+    font-style: italic;
+}
+
+.attention-text{
+    color: red; 
+}
+
+.attention-text-bold{
+    color: red; 
+    font-weight: bold;
+}
+
+.selectedListOrTableItem{
+    background: #cce9ff;
+}
+
+.selectedListOrTableItem:hover{
+    background: #ffffe6;
+}
+
+.tableHeader {
+    color: black !important;
+}
+
+/** Right Click Hidden Menu **/
+.right-click-hidden-menu {
+    position: absolute;
+    z-index: 101;
+
+    ul {
+        border: 1px solid #cecece;
+        background: #fdfdfd;
+        width: 250px;
+        list-style-type: none;
+        margin: 0;
+        padding: 10px;
+        @include boxShadow();
+
+        .right-click-menu-title {
+            font-weight: bold;
+            border-bottom: 0px;
+            margin-bottom: 5px;
+            cursor: default;
+        }
+
+        li.right-click-menu-title:hover {
+            background: none;
+        }
+
+        li.course-menu-title {
+            border-bottom: 1px solid #E7E7E7;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            padding-bottom: 4px;
+            font-weight: bold;
+        }
+
+        li.course-menu-title:hover {
+            background: none;
+        }
+
+        li.report-menu-title {
+            border-bottom: 1px solid #E7E7E7;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            padding-bottom: 4px;
+            font-weight: bold;
+        }
+
+        li.report-menu-title:hover {
+            background: none;
+        }
+
+
+
+
+
+        li {
+            border-bottom: 1px solid #f0f0f0;
+            display: block;
+            width: 100%;
+            padding: 5px 0;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background: #f3f3f3;
+        }
+
+        li:last-child {
+            border-bottom: 0;
+        }
+    }
+}
+
+/**
+ * table higlight
+ */
+table.table.table-striped {
+    tbody {
+        tr:hover td {
+            background: #FFFFF2 !important;
+            color: #404040;
+        }
+    }
+}
+
+table.table {
+
+    thead th {
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+    }
+
+    tr {
+
+    }
+
+    td{
+        padding-top: 3px !important;
+        padding-bottom: 3px !important;
+        padding-left: 4px !important;
+        padding-right: 5px !important;
+    }
+
+    tfoot tr .pagination{
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+/**
+ * Custom select
+ */
+select {
+    overflow: hidden;
+    background: url(/app_assets/images/custom_select_dropdown.png) no-repeat right !important;
+    -moz-appearance: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+
+/**
+ * Global Note CSS
+ */
+ul.booking-note-holder {
+    height: 200px;
+    border: 1px solid #cecece;
+    @include theBorderRadius(5px);
+    background: white;
+    overflow-y: scroll;
+    list-style-type: none;
+    padding-left: 0;
+
+    li {
+        color: #444444;
+        padding: 5px;
+        border-bottom: 1px dashed #cecece;
+
+        ul.note-structure {
+            overflow: hidden;
+            list-style-type: none;
+            padding-left: 0;
+
+            li {
+                padding-top: 0;
+                padding-bottom: 0;
+                border-bottom: 0;
+            }
+
+            li.note-header {
+                margin-bottom: -1px;
+            }
+        }
+    }
+
+    li:last-child {
+        border-bottom: 0;
+    }
+}
+
+/**
+ * Global Checkbox CSS
+ */
+input.checkbox-spacer {
+    margin-right: 6px;
+    margin-top: 11px;
+    display: block;
+    float: left;
+}
+
+label.checkbox-label {
+    float: left;
+}
+
+/**
+ * Global sign out  message 
+ */
+.sign-out-message-container {
+    margin-top: 150px;
+    border: 2px solid #689CC5;
+    background: #FBF8F8;
+    padding: 20px;
+    @include theBorderRadius(4px);
+
+    .sign-out-message-title {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    p {
+        margin: 0;
+    }
+}
+
+/**
+ * Global registration process
+ */
+.registration-process {
+
+    .title-container {
+        padding-bottom: 10px !important;
+        padding-top: 10px !important;
+        margin-top: 10px !important;
+
+        .main-title {
+            padding-top: 1px;
+            font-size: 16px !important;
+            font-weight: bold;
+        }
+
+        p.top-text {
+            font-size: 16px;
+        }
+    }
+
+    .remove-40margin-replace-10margin {
+        margin-top: 10px !important;
+        padding-top: 10px;
+    }
+
+    .main-page-title {
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .text-separation {
+        margin-top: 20px;
+    }
+
+    .text-separation-10 {
+        margin-top: 10px;
+    }
+
+    .text-separation-40 {
+        margin-top: 40px;
+    }
+
+    .PaymentSecuritLayerMessage{
+        font-size: 12px;
+        font-weight: bold;
+        padding: 3px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 5px;
+        color: #2190ef;
+    }
+
+    .ThreeDSecureIFrame{
+        border-style: ridge;
+        border-width: 2px;
+        border-color: #2f4f4f;
+        margin: 2px;
+        padding: 2px;
+    }
+    .ThreeDSecureIFrame iframe{
+        border-style: ridge;
+        border-width: 1px;
+        border-color: #959c32;
+        margin: 0;
+        padding: 0;
+    }
+
+    .PayNowButton{
+        width: auto;
+    }
+}
+
+/**
+ *
+*/
+iframe#threeDSecureIFrame {
+    width: 390px;
+    height: 400px;
+    margin: 0 auto;
+    display: block;
+    background: white;
+}  
+
+.side-padding-1{
+    padding-left:1px;
+    padding-right:1px;
+}
+.side-padding-1-5{
+    padding-left:1px;
+    padding-right:5px;
+}
+.side-padding-5-1{
+    padding-left:5px;
+    padding-right:1px;
+}
+.left-side-padding-17{
+    padding-left:17px;
+}
+
+/**
+ * Loading spinner
+ */
+.the-spinning-loader {
+    width: 100%;
+    .the-spinner {
+        background: url("/app_assets/images/ajax-loader.gif");
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+    }
+}
+
+/**
+ * margin-top    
+*/
+.margin-top-spacer-20 {
+    margin-top:20px;
+}
+
+
+/**
+ * Calendar Icon
+ * Can go beside the input box and will line up
+*/
+.calendar-icon {
+    text-decoration: none !important;
+    background: url(/app_assets/images/calendar.png) no-repeat !important;
+    background-size: 100% !important;
+    width: 21px;
+    height: 22px;
+    margin-top: 6px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+
+/**
+ * not-allowed cursor is shown when form attributes set to disabled or readonly
+ * Override and change to the normal pointer
+*/
+  fieldset[disabled],
+  .form-control[disabled], .form-control[readonly] {
+    cursor: default;
+    background-color: #eeeeee !important;
+  }
+
+
+div.OtherInformation{
+    width:30px;
+    height:30px;
+    background: url(/app_assets/images/other_info.png) no-repeat !important;
+    background-size: 100% !important;
+}
+
+div.container-modal{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}

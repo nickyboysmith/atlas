@@ -1,0 +1,79 @@
+﻿<div id="uploadCourseDocument">
+    <div class="row marginBottom5">
+        <div class="col-sm-3 ">
+            <label>Course:</label>
+        </div>
+        <div class="col-sm-9">
+            {{ course.courseType.Title  }}
+            <br />
+            Ref: {{ course.courseReference }} (Id: {{ course.Id }})
+        </div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-3 ">
+            <label>Document:</label>
+        </div>
+        <div class="col-sm-9">
+            <div class="marginBottom5">
+                <input type="text" class="form-control" ng-model="document.OriginalFileName" ng-disabled="true" ng-show="document.UploadedFile != null" />
+            </div>
+            <div class="marginBottom5">
+                <input class="form-control" id="fileUpload" type="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
+            </div>
+            <div id="uploadedFileInformation" ng-show="document.UploadedFile != null">
+                <span ng-show="uploadedFileSize <= maximumFileSize">
+                    File Size: {{ uploadedFileSize }} KB<br />
+                    Maximum File Size: {{ maximumFileSize }} KB<br />
+                </span>
+                <span ng-show="uploadedFileSize > maximumFileSize">
+                    File Size: {{ uploadedFileSize }} KB<br />
+                    Maximum File Size: {{ maximumFileSize }} KB<br />
+                    <span class="validation-message">Maximum File Size Exceeded. Upload not allowed.</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row marginBottom5">
+        <div class="col-sm-3 ">
+            <label>File Name:</label>
+        </div>
+        <div class="col-sm-9">
+            <div>
+                <input class="form-control" type="text" ng-model="document.FileName" placeholder="On File Document Name" ng-change="formatFileName()" />
+            </div>
+            <div ng-show="showFileNameCharacterMessage" class="validation-message">File names can only consist of alphanumeric characters, fullstops, hyphens and underscores.</div>
+        </div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-3 ">
+            <label>Title:</label>
+        </div>
+        <div class="col-sm-9"><input class="form-control" type="text" ng-model="document.Title" placeholder="Document Title" /></div>
+    </div>
+    <div class="row marginBottom10">
+        <div class="col-sm-3 ">
+            <label>Description:</label>
+        </div>
+        <div class="col-sm-9">
+            <textarea rows="8" class="form-control" type="text" ng-model="document.Description" placeholder="Description"></textarea>
+        </div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-3 ">&nbsp;</div>
+        <div class="col-sm-9">
+            <div class="col-sm-6">
+                <button class="btn form-control fixed-width-80" ng-click="Save()" ng-disabled="uploadedFileSize > maximumFileSize">Save</button>
+            </div>
+            <div class="col-sm-6 text-right">
+                <button class="btn form-control fixed-width-80" ng-click="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div class="row marginBottom5" ng-show="errorMessage != ''">
+        <div class="col-sm-3 ">&nbsp;</div>
+        <div class="col-sm-9">
+            <span class="validation-message">{{ errorMessage }}</span>
+        </div>
+    </div>
+</div>

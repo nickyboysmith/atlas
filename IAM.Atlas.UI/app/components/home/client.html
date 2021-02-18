@@ -1,0 +1,287 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="client-org-container">
+            <div class="organisation-name">{{ organisationName }}</div>
+            <div class="client-login-id">Login Id: {{ client.User.LoginId }}</div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="line-holder">
+        <div class="col-sm-2">
+            <label>Title:</label>
+        </div>
+
+        <div class="col-sm-2" ng-show=!editMode>
+            <div class="response-value">{{ client.Title }}</div>
+        </div>
+
+        <!--Edit Mode-->
+        <div class="col-sm-2" ng-show=editMode>
+            <select ng-model="selectedTitle"
+                    ng-change="displayName(selectedTitle)"
+                    class='form-control'
+                    ng-options="title.StringId as title.Title for title in clientTitles"></select>
+        </div>
+
+        <div class="col-sm-2" ng-show=!editMode>
+            <div class="response-value">{{ client.OtherTitle }}</div>
+        </div>
+
+        <!--Edit Mode-->
+        <div class="col-sm-2" ng-show="editMode">
+            <input class="form-control" type="text" ng-model="client.OtherTitle" ng-show="selectedTitle == 'Other'" placeholder="Other" ng-keyup="displayName(selectedTitle)" />
+        </div>
+        <div class="col-sm-8"></div>
+    </div>
+</div><!-- End -->
+
+<div class="row">
+    <div class="line-holder">
+        <div class="col-sm-2">
+            <label>First Name:</label>
+        </div>
+
+        <div class="col-sm-5" ng-show=!editMode>
+            <div class="response-value">{{ client.FirstName }}</div>
+        </div>
+
+        <!--Edit Mode-->
+        <div class="col-sm-5" ng-show=editMode>
+            <input class="form-control" type="text" ng-model="client.FirstName" placeholder="First Name" ng-keyup="displayName(selectedTitle)" ng-blur="capitalizeFirstName(client.FirstName)" />
+        </div>
+        <div class="col-sm-5"></div>
+    </div>
+</div><!-- End -->
+
+<div class="row">
+    <div class="line-holder">
+        <div class="col-sm-2">
+            <label>Other Names:</label>
+        </div>
+
+        <div class="col-sm-5" ng-show=!editMode>
+            <div class="response-value">{{ client.OtherNames }}</div>
+        </div>
+
+        <!--Edit Mode-->
+        <div class="col-sm-5" ng-show=editMode>
+            <input class="form-control" type="text" ng-model="client.OtherNames" placeholder="Other Names" ng-blur="capitalizeOtherNames(client.OtherNames)" />
+        </div>
+        <div class="col-sm-5"></div>
+    </div>
+</div><!-- End -->
+
+<div class="row">
+    <div class="line-holder">
+        <div class="col-sm-2">
+            <label>Surname:</label>
+        </div>
+
+        <div class="col-sm-5" ng-show=!editMode>
+            <div class="response-value">{{ client.Surname }}</div>
+        </div>
+
+        <!--Edit Mode-->
+        <div class="col-sm-5" ng-show=editMode>
+            <input class="form-control" type="text" ng-model="client.Surname" placeholder="Surname" ng-keyup="displayName(selectedTitle)" ng-blur="capitalizeSurname(client.Surname)" />
+        </div>
+        <div class="col-sm-5"></div>
+    </div>
+</div><!-- End -->
+
+<div class="row" ng-show="showClientDisplayName">
+    <div class="line-holder">
+        <div class="col-sm-2">
+            <label>Display Name:</label>
+        </div>
+
+        <div class="col-sm-5" ng-show=!editMode>
+            <div class="response-value">{{ client.DisplayName }}</div>
+        </div>
+
+        <!--Edit Mode-->
+        <div class="col-sm-5" ng-show=editMode>
+            <input class="form-control" type="text" ng-model="client.DisplayName" placeholder="Display Name" ng-keyup="displayNameChanged = true" />
+        </div>
+        <div class="col-sm-5"></div>
+    </div>
+</div><!-- End -->
+
+<div class="row">
+    <div class="line-holder">
+        <div class="col-sm-2">
+            <label>Address:</label>
+        </div>
+
+        <div class="col-sm-5" ng-show=!editMode>
+            <div class="response-value address-format">{{ client.Address }}</div>
+        </div>
+
+        <!--Edit Mode-->
+        <div class="col-sm-5" ng-show=editMode>
+            <textarea rows="4" class="form-control" type="text" ng-model="client.Address" placeholder="Address" />
+        </div>
+            
+        <div class="col-sm-5"></div>
+    </div>
+</div><!-- End -->
+
+<div class="row">
+    <div class="line-holder">
+        <div class="col-sm-2">
+            <label>Email Address:</label>
+        </div>
+
+        <div class="col-sm-5" ng-show=!editMode>
+            <div class="response-value">{{ client.Email }}</div>
+        </div>
+
+        <!--Edit Mode-->
+        <div class="col-sm-5" ng-show=editMode>
+            <input class="form-control" type="text" ng-model="client.Email" placeholder="Email Address" />
+        </div>
+        <div class="col-sm-5"></div>
+    </div>
+</div><!-- End -->
+
+<div class="row">
+    <div class="line-holder">
+        <div class="col-sm-2">
+            <label>Phone:</label>
+        </div>
+        <div class="col-sm-2" ng-show=!editMode>
+            <div class="response-value">{{ client.Phone }}</div>
+        </div>
+
+        <!--Edit Mode-->
+        <div class="col-sm-2" ng-show=editMode>
+            <input class="form-control control-button" type="text" placeholder="Phone Number" ng-model="client.Phone" />
+        </div>
+        <div class="col-sm-9"></div>
+    </div>
+</div><!-- End -->
+
+<div class="row">
+    <div class="line-holder">
+        <div class="col-sm-2">
+            <label>Date of Birth:</label>
+        </div>
+
+        <div class="col-sm-2" ng-show=!editMode>
+            <div class="response-value">{{ client.DateOfBirth }}</div>
+        </div>
+
+        <!--Edit Mode-->
+        <div class="col-sm-2" ng-show=editMode>
+            <!--<div class='col-sm-5'>-->
+                <input class="form-control" type="text" format-date-iam ng-model="client.DateOfBirth" ng-click="toggleDOBCalendar()" />
+                <div style="position:absolute; z-index:100000;" ng-show="displayDOBCalendar">
+                    <date-picker ng-model="client.DateOfBirth" format-date="formatDate" ng-mouseleave="toggleDOBCalendar(); ckeckDOBAgainstLicence()"></date-picker>
+                </div>
+       </div>
+       <div class='col-sm-2 element-overflow-0' ng-show=editMode>
+           <a ng-click="toggleDOBCalendar()" ng-show="!displayDOBCalendar" class="calendar-button col-sm-6" title="Show DOB Calendar"><div></div></a>
+           <a ng-click="toggleDOBCalendar()" ng-show="displayDOBCalendar" class="calendar-button col-sm-6" title="Hide DOB Calendar"><div></div></a>
+       </div>
+       <div class="col-sm-8"></div>
+
+    </div>
+</div><!-- End -->
+
+<div class="row">
+    <div class="line-holder">
+        <div class="col-sm-2">
+            <label>Gender:</label>
+        </div>
+        <div class="col-sm-2" ng-show=!editMode>
+            <div class="response-value">{{ client.Gender }}</div>
+        </div>
+        <!--Edit Mode-->
+        <div class="col-sm-2" ng-show=editMode>
+            <select ng-model="selectedGenderId"
+                    ng-change="changeGender(selectedGenderId)"
+                    class='form-control'
+                    ng-options="gender.Id as gender.Name for gender in clientGenders"></select>
+        </div>
+        <div class="col-sm-8"></div>
+    </div>
+</div><!-- End -->
+
+<div class="row" ng-show="clientOnlineEmailChangeRequest.Status != ''">
+    <div class="line-holder">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11">
+            <div class="validation-message">{{ clientOnlineEmailChangeRequest.Status }}</div>
+        </div>
+    </div>
+</div><!-- End -->
+
+<div class="row" ng-show="clientOnlineEmailChangeRequest.Id > 0">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-9 white-box">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-7">
+                <label>Email Change Awaiting Confirmation</label>
+            </div>
+            <div class="col-sm-3">
+                <div class="cancel-button btn" ng-click="cancelEmailChangeRequest()">Cancel Email Change</div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label>Current Email Address:</label>
+            </div>
+            <div class="col-sm-4">
+                <span>{{clientOnlineEmailChangeRequest.PreviousEmailAddress}}</span>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label>New Email Address:</label>
+            </div>
+            <div class="col-sm-4">
+                <span>{{clientOnlineEmailChangeRequest.NewEmailAddress}}</span>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label>Confirmation:</label>
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" ng-model="clientOnlineEmailChangeRequest.confirmationCode" placeholder="Confirmation Code" />
+            </div>
+            <div class="col-sm-4">
+                <div class="submit-button btn" ng-click="confirmEmailChangeRequest()">Submit</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+
+<div class="row col-sm-12 noRightPadding" ng-if="!saveStatusMessage === false">
+    <div class="col-sm-12 success-message noLeftPadding leftalign">{{ saveStatusMessage }}</div>
+</div>
+
+<div class="row col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+    <div class="col-sm-12 validation-message noLeftPadding leftalign">{{ validationMessage }}</div>
+</div>
+
+
+<div class="row footer-padder">
+    <div class="col-sm-2" ng-show=!editMode >
+        <div class="edit-button btn" ng-click="toggleEditMode(editMode)" >Edit Details</div>
+    </div>
+    <div class="col-sm-2" ng-show=editMode>
+        <div class="save-button btn" ng-click="saveClient()" >Save Details</div>
+    </div>
+    <div class="col-sm-2" ng-show=editMode>
+        <div class="cancel-button btn" ng-click="cancelEditMode()">Cancel</div>
+    </div>
+    <div class="col-sm-6"></div>
+</div>

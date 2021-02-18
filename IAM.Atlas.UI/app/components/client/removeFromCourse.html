@@ -1,0 +1,42 @@
+﻿<div id="removeFromCourseDiv">
+    <div ng-show="!removed">
+        <div class="row marginBottom10">
+            <div class="col-sm-12">
+                Client: <b>{{client.DisplayName}}</b> (Id: {{ client.Id }})
+            </div>
+        </div>
+        <div class="row marginBottom10">
+            <div class="col-sm-12">
+                <div>Course: <b>{{ currentCourse.Reference }}</b> ({{ currentCourse.CourseDate | date:'dd MMM yyyy' | uppercase }} at {{currentCourse.CourseDate | date :'HH:mm'}})</div>
+                <div ng-show="currentCourse.IsDORSCourse"><b>This a DORS controlled Course.</b></div>
+            </div>
+        </div>
+        <div class="row marginBottom5">
+            <div class="col-sm-12">
+                <div>Removal Reason</div>
+                <div><textarea placeholder="Notes" class="form-control" ng-model="notes"></textarea></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 text-left">
+                <span class="">
+                    <button class="btn" ng-click="removeClientFromCourse(client.Id, currentCourse.Id, notes)">Remove</button>
+                </span>
+            </div>
+            <div class="col-sm-6 text-right">
+                <span class="">
+                    <button class="btn" ng-click="cancel()">Cancel</button>
+                </span>
+            </div>
+        </div>
+        <div class="row" ng-show="errorMessage != ''">
+            <div class="col-sm-12">
+                <font color="red">{{ errorMessage }}</font>
+            </div>
+        </div>
+    </div>
+    <div ng-show="removed">
+        Client successfully removed from course.
+    </div>
+    
+</div>

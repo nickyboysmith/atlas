@@ -1,0 +1,92 @@
+﻿<div id="blockedIP" class="blockedIP">
+
+    <system-feature-information title="Administer Blocked IPs"
+                                controller="BlockedIPCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/blockedIP/update"
+                                page-name="Administer Blocked IPs"></system-feature-information>
+
+    <div class="Title row">
+        <h2></h2>
+    </div>
+    <form class="form-horizontal row" role="form">
+
+
+
+        <div class='col-sm-12 form-group'>
+
+            <div class="col-sm-6">
+                <div class='col-sm-12 form-group'>
+                    <div class="col-sm-6">
+                        <div class='form-line-holder'>
+                            <label>Blocked IPs</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <button class="btn btn-default btn-sm"
+                                ng-click="removeBlockedIPs()"
+                                title="Unblock Selected"
+                                ng-disabled="HasBlockedIPs()">
+                            Unblock Selected
+                        </button>
+                    </div>
+                </div>
+                <div class='col-sm-12 form-group'>
+                    <div class="sml-scroll-div marginBottom10">
+                        <table class="table table-bordered">
+                            <thead></thead>
+                            <tbody>
+                                <tr ng-repeat="IP in blockedIPs | filter: { 'BlockDisabled': false }" ng-class="{'isSelected': IP.isSelected}">
+                                    <td ng-click="setSelectedBlockedIP(IP)"
+                                        title="{{IP.BlockedIP}}"
+                                        value="{{IP.Id}}">
+                                        {{IP.BlockedIP}} {{(IP.DateBlocked | date:'dd/MM/yyyy HH:mm:ss')}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <label>Un-Blocked IPs</label>
+                    </div>
+                </div>
+                <div class='col-sm-12 form-group'>
+                    <div class="sml-scroll-div marginBottom10">
+                        <table class="table table-bordered">
+                            <thead></thead>
+                            <tbody>
+                                <tr ng-repeat="IP in blockedIPs | filter: { 'BlockDisabled': true }">
+                                    <td
+                                        title="{{IP.BlockedIP}}"
+                                        value="{{IP.Id}}">
+                                        {{IP.BlockedIP}} {{(IP.DateBlocked | date:'dd/MM/yyyy HH:mm:ss')}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                
+                <div class="col-sm-6" ng-if="successMessage != ''">
+                    <h3>{{ successMessage }}</h3>
+                </div>
+
+                <div class="col-sm-6" ng-if="validationMessage != ''">
+                    <h3>{{ validationMessage }}</h3>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>

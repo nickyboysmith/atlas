@@ -1,0 +1,229 @@
+﻿<div id="courseFee" class="courseFee">
+
+    <system-feature-information title="Course Fee Maintenance"
+                                controller="CourseFeeCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/courseFee/update"
+                                page-name="Course Fee Maintenance"></system-feature-information>
+
+    <form class="form-horizontal row" role="form">
+       
+        <!--<div class='form-line-holder'>
+            OrganisationId: {{organisationId}}
+        </div>
+        <div class='form-line-holder'>
+            Selected Course Type Id: {{selectedCourseType.selectedCourseTypeId}}#
+        </div>
+        <div class='form-line-holder'>
+            Selected Course Type Category Id: {{selectedCourseType.selectedCourseTypeCategoryId}}
+        </div>
+        <div class='form-line-holder'>
+            Selected Course Fee Id: {{selectedCourseType.selectedCourseFeeId}}
+        </div>
+        <div class='form-line-holder'>
+            Actual Course Type Fee Id: {{courseFees[selectedCourseType.selectedCourseFeeId].CourseTypeFeeId}}
+        </div>
+        <div class='form-line-holder'>
+            Actual Course Type Category Fee Id: {{courseFees[selectedCourseType.selectedCourseFeeId].CourseTypeCategoryFeeId}}
+        </div>-->
+
+        <div ng-show="isAdmin">
+            <div class='col-sm-12 form-group'>
+                <div class='col-sm-2'>
+                    <label>Organisation:</label>
+                </div>
+                <div class='col-sm-4'>
+                    <select ng-model="organisationId"
+                            ng-change="getCourseTypesByOrganisation(organisationId)"
+                            class='form-control'
+                            ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+                </div>
+                <div class='col-sm-6'></div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-2'>
+                <label>Course Type:</label>
+            </div>
+
+            <div class='col-sm-4'>
+                <select ng-model="selectedCourseType.selectedCourseTypeId"
+                        ng-change="getCourseTypeCategoriesByOrganisation(selectedCourseType.selectedCourseTypeId)"
+                        class='form-control'
+                        ng-options="courseType.Id as courseType.Title for courseType in courseTypes">
+                    <option style="display: none" value=""></option>
+                </select>
+            </div>
+            <div class='col-sm-6'></div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+
+            <div class="col-sm-6">
+
+                <label>Categories</label>
+
+                <div class="col-sm-12">
+                    <div class="sml-scroll-div marginBottom10">
+                        <table class="table table-bordered">
+                            <thead></thead>
+                            <tbody>
+                                <tr ng-repeat="courseTypeCategory in courseTypeCategories">
+                                    <td ng-click="setSelectedCourseTypeCategory(courseTypeCategory.Id, courseTypeCategory.Name)"
+                                        ng-class="{selectedCategory : selectedCourseType.selectedCourseTypeCategoryId == courseTypeCategory.Id}"
+                                        title="{{courseTypeCategory.Name}}"
+                                        value="{{courseTypeCategory.Id}}">
+                                        {{courseTypeCategory.Name}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-6">
+
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-12'>
+                            {{selectedCourseType.selectedCourseTypeTitle}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-12'>
+                            {{selectedCourseType.selectedCourseTypeCategoryName}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-7'>
+                            Effective Date:
+                        </div>
+                        <div class='col-sm-5'>
+                            <select ng-model="selectedCourseType.selectedCourseFeeId"
+                                    class='form-control'
+                                    ng-options="courseFee.Id as courseFee.EffectiveDate | date:'dd MMM yyyy' for courseFee in courseFees">
+
+                                <option style="display: none" value=""></option>
+                                <option value="-1" disabled>Effective Date</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-7'>
+                            Fee
+                        </div>
+                        <div class='col-sm-5'>
+                            <input type="text"
+                                    class="form-control"
+                                    ng-disabled="isDistantDate()"
+                                    ng-model="courseFees[selectedCourseType.selectedCourseFeeId].CourseFee"
+                                    onkeypress="return !(event.charCode != 46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"
+                                    placeholder="Course Fee" />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-7'>
+                            Booking Supplement
+                        </div>
+                        <div class='col-sm-5'>
+                            <input type="text"
+                                    class="form-control"
+                                    ng-disabled="isDistantDate()"
+                                    ng-model="courseFees[selectedCourseType.selectedCourseFeeId].BookingSupplement"
+                                    onkeypress="return !(event.charCode != 46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"
+                                    placeholder="Supplement" />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-7'>
+                            Payment Due within
+                        </div>
+                        <div class='col-sm-3'>
+                            <input type="text"
+                                    class="form-control"
+                                    ng-disabled="isDistantDate()"
+                                    ng-model="courseFees[selectedCourseType.selectedCourseFeeId].PaymentDays"
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+                        </div>
+                        <div class='col-sm-1'>
+                            Days
+                        </div>
+                        <div class='col-sm-1'></div>
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-8'></div>
+                        <div class='col-sm-3'>
+                            <button class="btn btn-default btn-sm"
+                                    ng-click="openCancelFeeChangeModal()"
+                                    ng-hide="isDistantDate()"
+                                    title="Save">
+                                Cancel Fee Change
+                            </button>
+                        </div>
+                        <div class='col-sm-1'></div>
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-3'>
+                            <button class="btn btn-default btn-sm"
+                                    ng-disabled="isDistantDate()"
+                                    ng-click="saveCourseFee()"
+                                    title="Save">
+                                Save
+                            </button>
+                        </div>
+                        <div class='col-sm-5'></div>
+                        <div class='col-sm-3'>
+                            <button class="btn btn-default btn-sm"
+                                    ng-click="openAddFeeChangeModal()"
+                                    title="Save">
+                                Add Fee Change
+                            </button>
+                        </div>
+                        <div class='col-sm-1'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Message banner-->
+        <div class='form-line-holder'>
+            <div class="col-sm-12" ng-if="successMessage != ''">
+                <h3>{{ successMessage }}</h3>
+            </div>
+        </div>
+        <div class='form-line-holder'>
+            <div class="col-sm-12" ng-if="validationMessage != ''">
+                <h3>{{ validationMessage }}</h3>
+            </div>
+        </div>
+
+</form>
+</div>
+

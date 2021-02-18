@@ -1,0 +1,95 @@
+﻿<div id="addCourseType" class="addCourseType">
+
+    <form class="form-horizontal row" role="form">
+        <!--<div class="col-sm-12">-->
+            <!--<div class="row">-->
+                <div class='col-sm-12'>
+
+                    <div class="row marginBottom5">
+                        <div class="col-md-4">
+                            <label>Title</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input id="courseTypeTitleInput"
+                                   type="text"
+                                   class="form-control"
+                                   data-ng-model="add.courseType.Title"
+                                   placeholder="Title"
+                                   ng-required="true" />
+                        </div>
+                    </div>
+
+                    <div class="row marginBottom5">
+                        <div class="col-md-4">
+                            <label>Code</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input id="courseTypeCodeInput"
+                                   type="text"
+                                   class="form-control"
+                                   data-ng-model="add.courseType.Code"
+                                   placeholder="Code"
+                                   ng-required="true" />
+                        </div>
+                    </div>
+
+                    <div class="row marginBottom5">
+                        <div class="col-md-4">
+                            <label>Description</label>
+                        </div>
+                        <div class="col-md-8">
+                            <textarea rows="4"
+                                      class="form-control"
+                                      type="text"
+                                      data-ng-model="add.courseType.Description"
+                                      placeholder="Description" />
+                        </div>
+                    </div>
+
+                    <!-- Is this course type for DORS courses -->
+                    <div class="row" ng-show="organisationHasDORSConnection">
+                        <div class="col-md-4">
+                            &nbsp;
+                        </div>
+                        <div class="col-md-1">
+                            <input type="checkbox" data-ng-model="add.courseType.isDORSCourse" />
+                        </div>
+                        <div class="col-md-7">
+                            <label>DORS Course</label>
+                        </div>
+                    </div>
+                    <div class="row marginBottom5" ng-show="add.courseType.isDORSCourse">
+                        <div class="col-md-4">
+                            <label>DORS Scheme</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-control" ng-model="DORSSchemeId" data-ng-change="selectTheDORSScheme(DORSSchemeId)">
+                                <option value="">Please select</option>
+                                <option data-ng-repeat="DORSScheme in DORSSchemes" value="{{ DORSScheme.Id }}">{{ DORSScheme.Name }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row marginBottom5">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-8">
+                            <div class="btn button-fill-width" data-ng-click="save()">Save</div>
+                        </div>
+                        <!--<div class="col-md-1">
+                            <div class="btn button-fill-width" data-ng-click="cancel('saveVenueCourseTypes')">Cancel</div>
+                        </div>-->
+                    </div>
+
+                </div>
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!addSuccessMessage === false">
+            <div class="col-sm-12 success-message noRightPadding rightalign">{{ addSuccessMessage }}</div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!addValidationMessage === false">
+            <div class="col-sm-12 validation-message noRightPadding rightalign">{{ addValidationMessage }}</div>
+        </div>
+    </form>
+</div>

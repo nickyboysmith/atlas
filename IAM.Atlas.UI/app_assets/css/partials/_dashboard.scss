@@ -1,0 +1,395 @@
+@import "../modules/_mixins.scss";
+
+
+#homeDashboard {
+
+    .documentPrintQueueContainer{
+        
+        .documentPrintQueue{
+            height: 40px;
+            width: 40px;
+            padding: 0;
+            margin: 0;
+            margin-right: 4px;
+            margin-top: 2px;
+            margin-bottom: 2px;
+            cursor: pointer;
+            background: url("/app_assets/images/queue/documentQueue.png") no-repeat !important;
+            background-size: 100% !important;
+            border: none;
+
+            .documentPrintQueueInfo{
+                background-color: transparent;
+                width: 40px;
+                font-weight: bold;
+                border: 1px solid transparent;
+                position: absolute;
+                bottom: 0;
+                text-align: center;
+                color: #5a5858;
+                margin: 0;
+                margin-bottom: 2px;
+            }
+            .documentPrintQueueInfo:hover {
+                border: 1px solid transparent;
+                color: black;
+            }
+        }
+    }
+
+    .taskContainer{
+
+        .item{
+            float:right;
+            height: 30px;
+            width: 30px;
+            padding: 0;
+            margin: 0;
+            margin-right: 4px;
+            margin-top: 2px;
+            margin-bottom: 2px;
+            cursor: pointer;
+            background-size: 100% !important;
+            background-color: #D8D8D8;
+            border: 3px solid transparent;
+            text-align:center;
+            vertical-align:middle;
+        }
+        .item:hover{
+            border-color: rgba(230, 255, 255, 0.5); 
+        }
+        .item:active{
+            border-color: rgba(228, 228, 228, 0.9); 
+        }
+        .item.taskPrioritySummary{
+            background-color: #D8D8D8;
+            border-radius: 50%;
+        }
+        .item.taskPrioritySummary span{
+            background-color: transparent;
+        }
+        .item.taskPrioritySummary.Colour1{
+            background-color: #FFE6E6;
+        }
+        .item.taskPrioritySummary.Colour1:active{
+            background-color: darken(#FFE6E6,5%);
+            font-weight: bold;
+        }
+        .item.taskPrioritySummary.Colour2{
+            background-color: #00ffff;
+        }
+        .item.taskPrioritySummary.Colour2:active{
+            background-color: lighten(#00ffff,15%);
+            font-weight: bold;
+        }
+        .item.taskPrioritySummary.Colour3{
+            background-color: #FFFFD9;
+        }
+        .item.taskPrioritySummary.Colour3:active{
+            background-color: lighten(#FFFFD9,15%);
+            font-weight: bold;
+        }
+        .item.taskPrioritySummary.Colour4{
+            background-color: #D9D9E6;
+        }
+        .item.taskPrioritySummary.Colour4:active{
+            background-color: lighten(#D9D9E6,15%);
+            font-weight: bold;
+        }
+        .item.addTask{
+            background: url("/app_assets/images/task/add.png") no-repeat !important;
+            background-size: 100% !important;
+        }
+        .item.refreshTaskSummary{            
+            background: url("/app_assets/images/task/refresh.png") no-repeat !important;
+            background-size: 100% !important;
+        }
+        .item.viewAllTasksByUser{            
+            background: url("/app_assets/images/task/user.png") no-repeat !important;
+            background-size: 100% !important;
+        }
+    }
+    .li-horizontal{
+        float:left;
+        padding: 10px 15px;
+        max-width: 640px;
+        /*cursor: pointer*/
+    }
+    .dropdown-title-container {
+        width: auto;
+        @include theBorderRadius(3px 3px 0 0); 
+        border: 1px solid #E4E4E4;
+        /*padding: 10px 15px;*/
+        padding: 0;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        height: auto;
+        overflow: hidden;
+        .title {
+            font-size: 16px;
+            float: left;
+        }
+        /*.help-icon {
+            width: 17px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }*/
+        .help-icon {
+            float: left;
+            height: 14px;
+            width: 14px;
+            margin-top: 5px;
+            margin-left: 15px;
+            margin-right: 5px;
+            background: url("/app_assets/images/yellow_help.png") no-repeat !important;
+            background-size: 100% !important;
+            cursor: help;
+        }
+        .title-icon {
+            float: right;
+            width: 23px;
+            height:14px;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+        .show-dashboard-container {
+            background: url("/app_assets/images/dashboard_hide.png") no-repeat!important;
+            background-size: 75%!important;
+        }
+        .hide-dashboard-container {
+            background: url("/app_assets/images/dashboard_show.png") no-repeat;
+            background-size: 75%;
+        }
+    }
+    .dashboard-split-containter {
+        border: 1px solid #E4E4E4;
+        border-top: 0px;
+        padding: 20px; 
+        /*display: none;*/
+        margin-bottom: 10px;
+            ul {
+                min-height: 105px;
+                list-style-type: none;
+                padding: 0;
+                margin-bottom: 0;
+            }
+            
+            .row  {word-wrap: break-word;}
+            /**
+             * table highlight
+             */
+            table.table {
+                tbody {
+                    tr {
+                        td{
+                            cursor: default !important;
+                        }
+                        td.pull-text-right {
+                            text-align: right;
+                        }
+                        td.select-figure {
+                            cursor: pointer !important;
+                        }
+                        td.pull-text-right.select-figure:hover {
+                            background:#c0c0ff!important;
+                        }
+                        th, td {
+                            border-top: 0;
+                            padding: 3px 8px;
+                        }
+                    }
+                    tr:hover {
+                        background: #FFFFF2 !important;
+                        color: #404040;
+                    }
+                }
+            }
+    }
+    .dashboard-split-containter .Clients {
+        ul {
+            li {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .dashboard-split-containter .Courses ul li {
+        cursor: pointer; }
+
+    .meterBoxContainer {
+        width: 100%;
+        height: auto;
+        padding:0;
+        padding-top: 2px;
+        padding-left: 10px;
+        padding-bottom: 20px;
+        .meterBox{        
+            float: left;
+            overflow: hidden;
+            margin:0;
+            padding-right: 5px;
+            display: inline-block;
+            position: relative;
+            .picture, .meterInformation{
+                width: 210px;
+                height: 210px;
+                cursor: pointer; 
+                opacity: 0.5;
+                text-align: justify;
+                vertical-align: central;
+            }
+            .picture{
+                background-image: url(/app_assets/images/dashboard/other.png);
+                background-size: 100%;
+                background-color: antiquewhite;
+                border: 1px solid blue;
+            }
+            .picture.Clients{
+                background-image: url(/app_assets/images/dashboard/clients.png);
+            }
+            .picture.Courses{
+                background-image: url(/app_assets/images/dashboard/courses.png);
+            }
+            .picture.Documents{
+                background-image: url(/app_assets/images/dashboard/documents.png);
+            }
+            .picture.Email{
+                background-image: url(/app_assets/images/dashboard/email.png);
+            }
+            .picture.Payments{
+                background-image: url(/app_assets/images/dashboard/payment.png);
+            }
+            .picture.TimeUp{
+                background-image: url(/app_assets/images/dashboard/timeup.png);
+            }
+            .picture.Speed{
+                background-image: url(/app_assets/images/dashboard/speed.png);
+            }
+            .picture.DORS{
+                background-image: url(/app_assets/images/dashboard/timeup.png);
+            }
+            .meterInformation{
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 188, 212, 0);
+                transition: background-color 0.5s;
+                color: transparent;
+                padding: 5px;
+                padding-top: 10px;
+            }
+            .meterInformation:hover{
+                background-color: rgba(255, 255, 242, 0.8);
+                color: #000;
+                font-weight: bold;
+                font-family: 'Times New Roman', Times, serif;
+                font-size: smaller;
+                font-size-adjust: 0.58;
+            }
+            .title{
+                height: 40px;
+                width: 100%;
+                margin: 0;
+                margin-top: 3px;
+                margin-bottom: 1px;
+                padding: 1px;
+                color: #000;
+                text-align: center;
+                font-weight: bold;
+            }
+            .meterData{
+                width:auto;
+                height:auto;
+                padding: 5px;
+                color: #000;
+                position:fixed;
+                top: 30%;
+                left: 30%;
+                margin-top: -5%; 
+                margin-left: -10%; 
+                border: 1px solid #ccc;
+                background-color: antiquewhite;
+                z-index: 10;
+
+                .title{
+                    text-align: left;
+
+                    .text{
+                        float:left;
+                    }
+                    .closeIcon{
+                        float:right;
+                        width: 10px;
+                        height: 10px;
+                        background-image: url(../images/button_cancel.png);
+                        background-size: 100%;
+                    }
+                }
+            }
+            .meterData.animate-hide {
+                -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+                -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+                -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+                transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+                line-height:20px;
+                opacity:1;
+                padding:10px;
+                border:1px solid black;
+                background:white;
+                /*position: absolute;
+                left: 0;
+                top: 0;*/
+            }
+
+            .meterData.animate-hide.ng-hide {
+                left: -100%;
+                opacity:0;
+                padding:0 10px;
+            }
+        }
+    }
+
+    .meterFooter {
+        width: 100%;
+        height: 25px;
+        .text {
+            font-size:x-small;
+            text-align:right;
+            margin-top:10px;
+            float: right;
+        }
+        .refresh {
+            float: right;
+            margin-top: 5px;
+            margin-left: 10px;
+            img {
+                width: 15px
+            }
+            cursor: pointer;
+        }
+    }
+
+    .chart-holder {
+        margin-bottom: 10px;
+    }
+    
+    .chart-inner-container{
+        margin-top:5px;
+    }    
+}
+
+#dashboardHover [ng-click] {
+    cursor: pointer;
+}
+#dashboardHover [ng-click]:hover {
+    text-decoration: underline;
+}
+
+.hoverUnderline:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

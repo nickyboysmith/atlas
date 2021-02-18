@@ -1,0 +1,14 @@
+
+SCRIPTRUNNER
+
+Copy all scripts from the Sprints directorys into one local directory - currently C:\Scripts\ScriptsDir as referenced in ScriptRunner.cmd
+Copy ScriptRunner.cmd into this directory.
+
+Now have all the Scripts and ScriptRunner.cmd inside C:\Scripts\ScriptsDir
+
+TO RUN
+
+Navigate to C:\Scripts\ScriptsDir and run ScriptRunner.cmd
+
+All errors are logged to a timestamped text file which is created inside the directory.
+The current processing script and it's completion are output to the console window.    

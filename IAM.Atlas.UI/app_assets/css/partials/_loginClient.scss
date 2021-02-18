@@ -1,0 +1,236 @@
+﻿@import '../modules/_mixins.scss';
+
+body#loginClient {
+    background: #fefefe;
+
+    #road-smart-pre {
+        height: 20px;
+        width: 100%;
+        background: #00b3e1;
+    }
+
+    #road-smart-branding-triangle-ish-thingy {
+	    width: 0;
+	    height: 0;
+	    border-top: 35px solid #00b3e1;
+	    border-right: 780px solid transparent;
+    }
+
+    /** Responsive **/
+    @media (min-width: 994px) and (max-width: 1200px) {
+        #road-smart-branding-triangle-ish-thingy {
+	        border-top: 35px solid #00b3e1;
+	        border-right: 647px solid transparent;
+        }
+    }
+    @media (min-width: 991px) and (max-width: 993px) {
+        #road-smart-branding-triangle-ish-thingy {
+	        border-top: 35px solid #00b3e1;
+	        border-right: 500px solid transparent;
+        }
+    }
+    
+    @media (min-width: 768px) and (max-width: 990px) {
+        #road-smart-branding-triangle-ish-thingy {
+	        border-top: 35px solid #00b3e1;
+	        border-right: 494px solid transparent;
+        }
+    }
+    
+    @media (min-width: 0px) and (max-width: 767px) {
+        #road-smart-pre {
+	        display: none;
+        }
+        #road-smart-branding-triangle-ish-thingy {
+	        border-top: 15px solid #00b3e1;
+	        border-right: 394px solid transparent;
+        }
+    }
+
+    #road-smart-branding-container {
+         margin-bottom: 20px;
+         height: 1px;
+        .position-road-smart-logo {
+            width:8.5%;
+            height:4000%;
+            float: right;
+            margin-right: 12px;
+            margin-top: -17px;
+            background: url('/app_assets/images/iamroad_smart_logo_atlas.png') no-repeat;
+            -webkit-background-position: center center no-repeat;
+            -moz-background-position: center center no-repeat;
+            -o-background-position: center center no-repeat;
+            background-position: center center;
+            -webkit-background-size: contain;
+            -moz-background-size: contain;
+            -o-background-size: contain;
+            background-size: contain;
+            }
+    }
+    
+    .section-container {
+        margin-top: 10px;
+        border: 1px solid #e4e4e4;
+        background: #F9F9F9;
+        @include theBorderRadius(3px);
+        // padding-top: 35px;
+        padding-bottom: 10px;
+    }
+    .company-logo {
+        height: 60px;
+        width: 180px;
+        background: url(/app_assets/images/atlas_organisation_logo_2.png) no-repeat;
+        background-size: 183px;
+        display: block;
+        margin: 0 auto;
+    }
+    .add-margin-to-title {
+        margin-top:12px;
+    }
+    .main-title {
+        font-size:22px;
+    }
+    .main-subtitle {
+        margin-top: -1px;
+        font-size: 16px;
+        color: #F19F0A;
+    }
+    .main-booking-title {
+        text-align: center; 
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    .inside-course-booking {
+        padding-left: 20px;
+        padding-right: 20px;
+        .main-booking-title {
+            font-size: 15px;
+        }
+    }
+    .add-section-bottom-margin {
+        margin-bottom: 20px;
+    }
+    label.text-container {
+        margin-top:5px;
+    }
+    input[type=text],input[type=password] {
+        @include theBorderRadius(3px);
+        width: 100%;
+        border: 1px solid #cecece;
+        padding: 5px;
+    }
+    .button-row-container {
+        margin-top: 20px;
+    }
+    .remember-me-container {
+        input[type=checkbox] {
+            float: left;
+            display:block;
+            margin-right:5px;
+        }
+        float:left;
+        margin-right:30px;
+    }
+    .payment-icon-container {
+        margin-top: 40px;
+        ul {
+            height: auto;
+            overflow: hidden;
+            list-style-type: none;
+            padding: 0;
+            li {
+                float: left;
+                margin-right: 12px;
+                margin-bottom: 10px;
+            }
+            li.payment-card{
+                width: 51px;
+                height: 32px;
+            }
+            li.payment-card.amex, li.payment-card.solo, li.payment-card.switch
+            {
+                display:none;
+            }
+        }
+    }
+
+    .rowalign {
+        margin-left:0px;
+        margin-right:0px;
+        margin-top:10px;
+    }    
+
+    p.top-text {
+        font-size: 16px;
+    }
+
+    a.disabled {
+        cursor: default;
+    }
+    
+    .section-container {
+
+
+
+        .online-booking-system-notice {
+
+            text-align: center;
+            background-color: #ddd;
+            border: 2px solid;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size:14px;
+
+        }
+
+        .system-notice-title {
+            
+            font-size:18px;
+            font-weight:bold;
+            margin-bottom:20px;
+            border: 0;
+        }
+
+         .system-notice {
+            /*text-align:center;*/
+            /*font-size:14px;*/
+            
+            margin-bottom:20px;
+            border: 0;
+        }
+
+        .red {
+            border-color: red;
+            color: red;
+            /*border: 1px solid red;*/
+            /*background: #EFD3D8;*/
+        }
+        .green {
+            border-color: green;
+            color: green;
+            /*border: 1px solid green;*/
+            /*background: #D1EFD1;*/
+        }
+        .yellow {
+            border-color: yellow;
+            color: yellow;
+            /*border: 1px solid yellow;*/
+            /*background: #faf6b7;*/
+        }
+        .blue {
+            border-color: blue;
+            color: blue;
+            /*border: 1px solid blue;*/
+            /*background: #b8f0fa;*/
+        }
+        .default-colour {
+            border-color: black;
+            color: black;
+            /*border: 1px solid blue;*/
+            /*background: #b8f0fa;*/
+        }
+    }
+    
+
+}
+

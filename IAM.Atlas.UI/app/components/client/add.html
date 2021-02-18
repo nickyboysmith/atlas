@@ -1,0 +1,862 @@
+﻿<script type="text/javascript">
+    var cp_obj = CraftyPostcodeCreate();
+    cp_obj.set("access_token", "baad2-c97f0-791d0-00ebc");
+    cp_obj.set("first_res_line", "----- please select your address ----");
+    cp_obj.set("res_autoselect", "0");
+    cp_obj.set("single_res_autoselect", 1);
+    cp_obj.set("result_elem_id", "crafty_postcode_result_display");
+    cp_obj.set("form", "");
+    cp_obj.set("elem_company", "company");
+    cp_obj.set("elem_street1", "address1");
+    cp_obj.set("elem_street2", "address2");
+    cp_obj.set("elem_street3", "");
+    cp_obj.set("elem_town", "town");
+    cp_obj.set("elem_county", "county");
+    cp_obj.set("elem_postcode", "postcodeAddressLookup");
+</script>
+
+<div id="addClient" class="AddClient">
+
+    <system-feature-information title="add client"
+                                controller="addClientCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/client/add"
+                                page-name="add client"
+                                add-favourite="true">
+    </system-feature-information>   
+   
+    <div class="row bottom-button-container-20 marginBottom20" ng-show="client.showDeletionRow">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11">
+            <span class="error-red-underlined">This client has been marked for deletion.</span>&nbsp;<button class="btn" ng-click="cancelDeletion(clientId)">Cancel Deletion</button>
+        </div>
+    </div>
+
+    <!-- bind to existing user -->
+    <div class='row' ng-show="$parent.isAdmin">
+        <div class='col-sm-6'>
+            <label class='col-sm-3 control-label'>&nbsp;</label>
+            <div class="col-md-1">
+                <input type="checkbox" ng-model="client.AddUser" />
+            </div>
+            <div class="col-md-8">
+                <label>Connect Client to Existing User</label>
+            </div>                
+        </div>
+    </div>
+    <form class="form-horizontal" role="form" style="color: black; ">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class='row col-sm-12' ng-show="client.AddUser">
+                    <label class='col-sm-3 control-label'>User:</label>
+                    <div class='col-sm-9'>
+                        <input id="userText"
+                               type="text"
+                               ng-model="selected"
+                               placeholder="Bind To A User"
+                               typeahead-min-length="3"
+                               typeahead-on-select="selectedUser($item)"
+                               typeahead-no-results="noResults"
+                               typeahead-loading="loadingLocations"
+                               class="form-control cm-sm-12"
+                               uib-typeahead="item as item.LoginId for item in getSearchableItems($viewValue) | limitTo:15" />
+                        <div ng-show="loadingLocations" class="set-white">
+                            <i class="glyphicon glyphicon-refresh"></i> Loading results
+                        </div>
+                        <div ng-show="noResults" class="set-red">
+                            <i class="glyphicon glyphicon-remove"></i> No Results Found
+                        </div>
+                    </div>
+                </div><!-- end bind to existing user -->
+
+                <div class="row" ng-show="IsMysteryShopperAdministrator == true || isAdmin == true">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-1">
+                        <input type="checkbox" ng-model="client.isMysteryShopper" />
+                    </div>
+                    <div class="col-sm-8">
+                        <span class="reditalicbold">This Client is a Mystery Shopper</span>
+                    </div>
+                </div>
+
+                <div class='row'>
+                    <div class="col-sm-3">
+                        <label class='control-label'>Title:</label>
+                    </div>
+
+                    <div class='col-sm-6'>
+
+                        <select ng-model="selectedTitle"
+                                ng-change="displayName(selectedTitle)"
+                                class='form-control'
+                                ng-options="title.StringId as title.Title for title in clientTitles"></select>
+
+                    </div>
+
+                    <div class='col-sm-3'>
+                        <input class="form-control cm-sm-12" type="text" ng-model="client.otherTitle" placeholder="Other" ng-keyup="displayName(selectedTitle)" ng-show="selectedTitle == 'Other'" />
+                    </div>
+                </div>
+
+                <div class='row'>
+                    <div class="col-sm-3">
+                        <label class='control-label'>First Name<font color="red">*</font>:</label>
+                    </div>
+                    <div class='col-sm-9'><input class="form-control cm-sm-12" type="text" ng-model="client.firstName" placeholder="First Name" ng-keyup="displayName(selectedTitle)" ng-blur="capitalizeFirstName(client.firstName)" /></div>
+                </div>
+
+                <div class='row'>
+                    <div class="col-sm-3">
+                        <label class='control-label'>Other Names:</label>
+                    </div>
+                    <div class='col-sm-9'><input class="form-control cm-sm-12" type="text" ng-model="client.otherNames" placeholder="Other Names" ng-blur="capitalizeOtherNames(client.otherNames)" /></div>
+                </div>
+
+                <div class='row'>
+                    <div class="col-sm-3">
+                        <label class='control-label'>Surname<font color="red">*</font>:</label>
+                    </div>
+                    <div class='col-sm-9'><input class="form-control cm-sm-12" type="text" ng-model="client.surname" placeholder="Surname" ng-keyup="displayName(selectedTitle)" ng-blur="capitalizeSurname(client.surname)" /></div>
+                </div>
+                <div class='row' ng-show="showClientDisplayName">
+                    <div class="col-sm-3">
+                        <label class='control-label'>Display Name:</label>
+                    </div>
+                    <div class='col-sm-9'><input class="form-control cm-sm-12" type="text" ng-model="client.displayName" placeholder="Display Name" ng-keyup="displayNameChanged = true" /></div>
+                </div>
+
+                <div class='row'>
+                    <label class='col-sm-3'>Gender:</label>
+                    <div class="col-md-5">
+                        <select class="form-control"
+                                ng-model="client.clientGenders"
+                                ng-options="gender.Id as gender.Name for gender in genders"></select>
+                    </div>
+                </div>
+
+                <div class='row col-sm-12'>
+                    <label class='col-sm-3 control-label'>Date of Birth:</label>
+                    <div class='col-sm-5'>
+                        <input class="form-control cm-sm-12" type="text" format-date-iam ng-model="client.DateOfBirth" ng-click="toggleDOBCalendar()" date-field />
+                        <div style="position:absolute; z-index:100000;" ng-show="displayDOBCalendar">
+                            <date-picker ng-model="client.DateOfBirth" format-date="formatDate" ng-mouseleave="toggleDOBCalendar(); ckeckDOBAgainstLicence()"></date-picker>
+                        </div>
+                    </div>
+                    <div class='col-sm-2 element-overflow-0'>
+                        <a ng-click="toggleDOBCalendar()" ng-show="!displayDOBCalendar" class="calendar-button col-sm-6" title="Show DOB Calendar"><div></div></a>
+                        <a ng-click="toggleDOBCalendar()" ng-show="displayDOBCalendar" class="calendar-button col-sm-6" title="Hide DOB Calendar"><div></div></a>
+                    </div>
+                </div>
+
+                <div class='row col-sm-12' ng-show="client.DOBDiffersFromLicence == true">
+                    <div class='col-sm-3'></div>
+                    <div class='col-sm-9'>
+                        <span class="warning-message">DOB does not match the Licence</span>
+                    </div>
+                </div>
+
+                <div class='row'>
+                    <div class='col-sm-3'></div>
+                    <div class="col-sm-5">
+                        <input class="form-control col-sm-12" type="text" ng-model="client.postcode" capitalize placeholder="Enter postcode" />
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="btn" ng-click="getAddressChoices()">Find</div>
+                    </div>
+                </div>
+
+                <div class='row' ng-show="TransformedAddressList.length > 0">
+                    <div class='col-sm-3'></div>
+                    <div class="col-sm-9">
+                        <select class="form-control" ng-model="selectedAddress" ng-options="o as o for o in TransformedAddressList" ng-change="selectAddress(selectedAddress)">
+                            <option value="">Please select an address</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class='row' style="display:none;">
+                    <label class='col-sm-3 control-label'>Company:</label>
+                    <div class='col-sm-8'><input class="form-control cm-sm-12" type="text" id="company" ng-model="client.company" placeholder="Company" /></div>
+                    <div class='col-sm-1'></div>
+                </div>
+                <div class='row' style="display:none;">
+                    <label class='col-sm-3 control-label'>Address 1:</label>
+                    <div class='col-sm-8'><input class="form-control cm-sm-12" type="text" id="address1" ng-model="client.address1" placeholder="Address" /></div>
+                    <div class='col-sm-1'></div>
+                </div>
+                <div class='row' style="display:none;">
+                    <label class='col-sm-3 control-label'>Address 2:</label>
+                    <div class='col-sm-8'><input class="form-control cm-sm-12" type="text" id="address2" ng-model="client.address2" placeholder="Address" /></div>
+                    <div class='col-sm-1'></div>
+                </div>
+                <div class='row' style="display:none;">
+                    <div class="col-sm-3">
+                        <label class='control-label'>Town:</label>
+                    </div>
+                    <div class='col-sm-8'><input class="form-control cm-sm-12" type="text" id="town" ng-model="client.town" placeholder="Town" /></div>
+                    <div class='col-sm-1'></div>
+                </div>
+                <div class='row' style="display:none;">
+                    <div class="col-sm-3">
+                        <label class='control-label'>County:</label>
+                    </div>
+                    <div class='col-sm-8'><input class="form-control cm-sm-12" type="text" id="county" ng-model="client.county" placeholder="County" /></div>
+                    <div class='col-sm-1'></div>
+                </div>
+                <div class='row'>
+                    <div class="col-sm-3">
+                        <label class='control-label'>Address<font color="red">*</font>:</label>
+                    </div>
+                    <div class='col-sm-9'><textarea rows="4" class="form-control" type="text" id="county" ng-model="client.county" placeholder="Address" /></div>
+                </div>
+                <div class='row'>
+                    <div class="col-sm-3">
+                        <label class='control-label'>Post Code:</label>
+                    </div>
+                    <div class='col-sm-5'><input class="form-control cm-sm-12" type="text" id="postcode" ng-model="client.postcode" placeholder="Post Code" /></div>
+                    <div class='col-sm-4'></div>
+                </div>
+                <div class='row'>
+                    <div class="col-sm-3">
+                        <label class='control-label'>Country:</label>
+                    </div>
+                    <div class='col-sm-9'>
+                        <select id="countries" name="countries" ng-model="client.country" ng-init="client.country = 'United Kingdom'" class='col-sm-12 form-control'>
+                            <option value="Afghanistan">Afghanistan</option>
+                            <option value="Åland Islands">Åland Islands</option>
+                            <option value="Albania">Albania</option>
+                            <option value="Algeria">Algeria</option>
+                            <option value="American Samoa">American Samoa</option>
+                            <option value="Andorra">Andorra</option>
+                            <option value="Angola">Angola</option>
+                            <option value="Anguilla">Anguilla</option>
+                            <option value="Antarctica">Antarctica</option>
+                            <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                            <option value="Argentina">Argentina</option>
+                            <option value="Armenia">Armenia</option>
+                            <option value="Aruba">Aruba</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Austria">Austria</option>
+                            <option value="Azerbaijan">Azerbaijan</option>
+                            <option value="Bahamas">Bahamas</option>
+                            <option value="Bahrain">Bahrain</option>
+                            <option value="Bangladesh">Bangladesh</option>
+                            <option value="Barbados">Barbados</option>
+                            <option value="Belarus">Belarus</option>
+                            <option value="Belgium">Belgium</option>
+                            <option value="Belize">Belize</option>
+                            <option value="Benin">Benin</option>
+                            <option value="Bermuda">Bermuda</option>
+                            <option value="Bhutan">Bhutan</option>
+                            <option value="Bolivia">Bolivia</option>
+                            <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                            <option value="Botswana">Botswana</option>
+                            <option value="Bouvet Island">Bouvet Island</option>
+                            <option value="Brazil">Brazil</option>
+                            <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+                            <option value="Brunei Darussalam">Brunei Darussalam</option>
+                            <option value="Bulgaria">Bulgaria</option>
+                            <option value="Burkina Faso">Burkina Faso</option>
+                            <option value="Burundi">Burundi</option>
+                            <option value="Cambodia">Cambodia</option>
+                            <option value="Cameroon">Cameroon</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Cape Verde">Cape Verde</option>
+                            <option value="Cayman Islands">Cayman Islands</option>
+                            <option value="Central African Republic">Central African Republic</option>
+                            <option value="Chad">Chad</option>
+                            <option value="Chile">Chile</option>
+                            <option value="China">China</option>
+                            <option value="Christmas Island">Christmas Island</option>
+                            <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+                            <option value="Colombia">Colombia</option>
+                            <option value="Comoros">Comoros</option>
+                            <option value="Congo">Congo</option>
+                            <option value="Congo, The Democratic Republic of The">Congo, The Democratic Republic of The</option>
+                            <option value="Cook Islands">Cook Islands</option>
+                            <option value="Costa Rica">Costa Rica</option>
+                            <option value="Cote D'ivoire">Cote D'ivoire</option>
+                            <option value="Croatia">Croatia</option>
+                            <option value="Cuba">Cuba</option>
+                            <option value="Cyprus">Cyprus</option>
+                            <option value="Czech Republic">Czech Republic</option>
+                            <option value="Denmark">Denmark</option>
+                            <option value="Djibouti">Djibouti</option>
+                            <option value="Dominica">Dominica</option>
+                            <option value="Dominican Republic">Dominican Republic</option>
+                            <option value="Ecuador">Ecuador</option>
+                            <option value="Egypt">Egypt</option>
+                            <option value="El Salvador">El Salvador</option>
+                            <option value="Equatorial Guinea">Equatorial Guinea</option>
+                            <option value="Eritrea">Eritrea</option>
+                            <option value="Estonia">Estonia</option>
+                            <option value="Ethiopia">Ethiopia</option>
+                            <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+                            <option value="Faroe Islands">Faroe Islands</option>
+                            <option value="Fiji">Fiji</option>
+                            <option value="Finland">Finland</option>
+                            <option value="France">France</option>
+                            <option value="French Guiana">French Guiana</option>
+                            <option value="French Polynesia">French Polynesia</option>
+                            <option value="French Southern Territories">French Southern Territories</option>
+                            <option value="Gabon">Gabon</option>
+                            <option value="Gambia">Gambia</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Ghana">Ghana</option>
+                            <option value="Gibraltar">Gibraltar</option>
+                            <option value="Greece">Greece</option>
+                            <option value="Greenland">Greenland</option>
+                            <option value="Grenada">Grenada</option>
+                            <option value="Guadeloupe">Guadeloupe</option>
+                            <option value="Guam">Guam</option>
+                            <option value="Guatemala">Guatemala</option>
+                            <option value="Guernsey">Guernsey</option>
+                            <option value="Guinea">Guinea</option>
+                            <option value="Guinea-bissau">Guinea-bissau</option>
+                            <option value="Guyana">Guyana</option>
+                            <option value="Haiti">Haiti</option>
+                            <option value="Heard Island and Mcdonald Islands">Heard Island and Mcdonald Islands</option>
+                            <option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
+                            <option value="Honduras">Honduras</option>
+                            <option value="Hong Kong">Hong Kong</option>
+                            <option value="Hungary">Hungary</option>
+                            <option value="Iceland">Iceland</option>
+                            <option value="India">India</option>
+                            <option value="Indonesia">Indonesia</option>
+                            <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+                            <option value="Iraq">Iraq</option>
+                            <option value="Ireland">Ireland</option>
+                            <option value="Isle of Man">Isle of Man</option>
+                            <option value="Israel">Israel</option>
+                            <option value="Italy">Italy</option>
+                            <option value="Jamaica">Jamaica</option>
+                            <option value="Japan">Japan</option>
+                            <option value="Jersey">Jersey</option>
+                            <option value="Jordan">Jordan</option>
+                            <option value="Kazakhstan">Kazakhstan</option>
+                            <option value="Kenya">Kenya</option>
+                            <option value="Kiribati">Kiribati</option>
+                            <option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
+                            <option value="Korea, Republic of">Korea, Republic of</option>
+                            <option value="Kuwait">Kuwait</option>
+                            <option value="Kyrgyzstan">Kyrgyzstan</option>
+                            <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
+                            <option value="Latvia">Latvia</option>
+                            <option value="Lebanon">Lebanon</option>
+                            <option value="Lesotho">Lesotho</option>
+                            <option value="Liberia">Liberia</option>
+                            <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
+                            <option value="Liechtenstein">Liechtenstein</option>
+                            <option value="Lithuania">Lithuania</option>
+                            <option value="Luxembourg">Luxembourg</option>
+                            <option value="Macao">Macao</option>
+                            <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>
+                            <option value="Madagascar">Madagascar</option>
+                            <option value="Malawi">Malawi</option>
+                            <option value="Malaysia">Malaysia</option>
+                            <option value="Maldives">Maldives</option>
+                            <option value="Mali">Mali</option>
+                            <option value="Malta">Malta</option>
+                            <option value="Marshall Islands">Marshall Islands</option>
+                            <option value="Martinique">Martinique</option>
+                            <option value="Mauritania">Mauritania</option>
+                            <option value="Mauritius">Mauritius</option>
+                            <option value="Mayotte">Mayotte</option>
+                            <option value="Mexico">Mexico</option>
+                            <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
+                            <option value="Moldova, Republic of">Moldova, Republic of</option>
+                            <option value="Monaco">Monaco</option>
+                            <option value="Mongolia">Mongolia</option>
+                            <option value="Montenegro">Montenegro</option>
+                            <option value="Montserrat">Montserrat</option>
+                            <option value="Morocco">Morocco</option>
+                            <option value="Mozambique">Mozambique</option>
+                            <option value="Myanmar">Myanmar</option>
+                            <option value="Namibia">Namibia</option>
+                            <option value="Nauru">Nauru</option>
+                            <option value="Nepal">Nepal</option>
+                            <option value="Netherlands">Netherlands</option>
+                            <option value="Netherlands Antilles">Netherlands Antilles</option>
+                            <option value="New Caledonia">New Caledonia</option>
+                            <option value="New Zealand">New Zealand</option>
+                            <option value="Nicaragua">Nicaragua</option>
+                            <option value="Niger">Niger</option>
+                            <option value="Nigeria">Nigeria</option>
+                            <option value="Niue">Niue</option>
+                            <option value="Norfolk Island">Norfolk Island</option>
+                            <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+                            <option value="Norway">Norway</option>
+                            <option value="Oman">Oman</option>
+                            <option value="Pakistan">Pakistan</option>
+                            <option value="Palau">Palau</option>
+                            <option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
+                            <option value="Panama">Panama</option>
+                            <option value="Papua New Guinea">Papua New Guinea</option>
+                            <option value="Paraguay">Paraguay</option>
+                            <option value="Peru">Peru</option>
+                            <option value="Philippines">Philippines</option>
+                            <option value="Pitcairn">Pitcairn</option>
+                            <option value="Poland">Poland</option>
+                            <option value="Portugal">Portugal</option>
+                            <option value="Puerto Rico">Puerto Rico</option>
+                            <option value="Qatar">Qatar</option>
+                            <option value="Reunion">Reunion</option>
+                            <option value="Romania">Romania</option>
+                            <option value="Russian Federation">Russian Federation</option>
+                            <option value="Rwanda">Rwanda</option>
+                            <option value="Saint Helena">Saint Helena</option>
+                            <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                            <option value="Saint Lucia">Saint Lucia</option>
+                            <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+                            <option value="Saint Vincent and The Grenadines">Saint Vincent and The Grenadines</option>
+                            <option value="Samoa">Samoa</option>
+                            <option value="San Marino">San Marino</option>
+                            <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                            <option value="Saudi Arabia">Saudi Arabia</option>
+                            <option value="Senegal">Senegal</option>
+                            <option value="Serbia">Serbia</option>
+                            <option value="Seychelles">Seychelles</option>
+                            <option value="Sierra Leone">Sierra Leone</option>
+                            <option value="Singapore">Singapore</option>
+                            <option value="Slovakia">Slovakia</option>
+                            <option value="Slovenia">Slovenia</option>
+                            <option value="Solomon Islands">Solomon Islands</option>
+                            <option value="Somalia">Somalia</option>
+                            <option value="South Africa">South Africa</option>
+                            <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands</option>
+                            <option value="Spain">Spain</option>
+                            <option value="Sri Lanka">Sri Lanka</option>
+                            <option value="Sudan">Sudan</option>
+                            <option value="Suriname">Suriname</option>
+                            <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+                            <option value="Swaziland">Swaziland</option>
+                            <option value="Sweden">Sweden</option>
+                            <option value="Switzerland">Switzerland</option>
+                            <option value="Syrian Arab Republic">Syrian Arab Republic</option>
+                            <option value="Taiwan, Province of China">Taiwan, Province of China</option>
+                            <option value="Tajikistan">Tajikistan</option>
+                            <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
+                            <option value="Thailand">Thailand</option>
+                            <option value="Timor-leste">Timor-leste</option>
+                            <option value="Togo">Togo</option>
+                            <option value="Tokelau">Tokelau</option>
+                            <option value="Tonga">Tonga</option>
+                            <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                            <option value="Tunisia">Tunisia</option>
+                            <option value="Turkey">Turkey</option>
+                            <option value="Turkmenistan">Turkmenistan</option>
+                            <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+                            <option value="Tuvalu">Tuvalu</option>
+                            <option value="Uganda">Uganda</option>
+                            <option value="Ukraine">Ukraine</option>
+                            <option value="United Arab Emirates">United Arab Emirates</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="United States">United States</option>
+                            <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+                            <option value="Uruguay">Uruguay</option>
+                            <option value="Uzbekistan">Uzbekistan</option>
+                            <option value="Vanuatu">Vanuatu</option>
+                            <option value="Venezuela">Venezuela</option>
+                            <option value="Viet Nam">Viet Nam</option>
+                            <option value="Virgin Islands, British">Virgin Islands, British</option>
+                            <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
+                            <option value="Wallis and Futuna">Wallis and Futuna</option>
+                            <option value="Western Sahara">Western Sahara</option>
+                            <option value="Yemen">Yemen</option>
+                            <option value="Zambia">Zambia</option>
+                            <option value="Zimbabwe">Zimbabwe</option>
+                        </select>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-3'>
+                        <label class='control-label'>Email:</label>
+                    </div>
+                    <div class='col-sm-9'><input class="form-control cm-sm-12" type="text" ng-model="client.email" ng-change="emailCourseReminderCheckbox()" placeholder="Email Address" /></div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-3'></div>
+                    <div class='col-sm-9'>
+                        <input class="form-control cm-sm-12" type="text" ng-model="client.confirmEmail" ng-change="emailCourseReminderCheckbox()" placeholder="Email Confirmation" onpaste="return false;" />
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-3'>
+                        <label class='control-label'>Phone:</label>
+                    </div>
+                    <div class='col-sm-3'>
+                        <select ng-model="client.phoneNumberType" class='col-sm-12 form-control'>
+                            <option>Mobile</option>
+                            <option>Home</option>
+                            <option>Work</option>
+                            <option>Online</option>
+                            <option>Fax</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class='col-sm-4'>
+                        <input class="form-control cm-sm-12 control-button" type="text" placeholder="Phone Number" ng-model="client.phoneNumber" ng-change="smsCourseReminderCheckbox()" />
+                    </div>
+                    <div class='col-sm-2'>
+                        <button ng-click="addPhone()" class="btn btn-default btn-sm">Add</button>
+                    </div>
+                </div>
+                <div class='row' ng-repeat="phoneNumber in client.phoneNumbers track by $index">
+                    <div class='col-sm-3'></div>
+                    <div class='col-sm-3'>
+                        <select ng-model="phoneNumber.numberType" ng-init="phoneNumber.numberType = getPhoneNumberType($index)" class='col-sm-12 form-control'>
+                            <option>Mobile</option>
+                            <option>Home</option>
+                            <option>Work</option>
+                            <option>Online</option>
+                            <option>Fax</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class='col-sm-4'>
+                        <input class="form-control cm-sm-12 control-button" type="text" placeholder="Phone Number" value="{{phoneNumber.number}}" ng-model="phoneNumber.number" />
+                    </div>
+                    <div class='col-sm-2'>
+                        <button ng-click="deletePhoneNumber($index)" class="btn btn-default btn-sm ">Delete</button>
+                    </div>
+                </div>
+                <!--Email Course Reminders-->
+                <div class='row'>
+                    <label class='col-sm-3'>&nbsp;</label>
+                    <div class='col-sm-9'>
+                        <div class="col-md-2">
+                            <input type="checkbox" ng-model="client.EmailCourseReminders" />
+                        </div>
+                        <div class="col-md-10">
+                            <label>Email Course Reminders</label>
+                        </div>
+                    </div>
+                </div>
+                <!--SMS Course Reminders-->
+                <div class='row'>
+                    <label class='col-sm-3'>&nbsp;</label>
+                    <div class='col-sm-9'>
+                        <div class="col-md-2">
+                            <input type="checkbox" ng-model="client.SMSCourseReminders" />
+                        </div>
+                        <div class="col-md-10">
+                            <label>SMS Course Reminders</label>
+                        </div>
+                    </div>
+                </div>
+                <div class='row col-sm-12'>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class='row'>
+                    <div class='col-sm-3 control-label'></div>
+                    <div class='col-sm-9'><label><input type="checkbox" ng-model="client.UKLicence" />&nbsp;UK Licence Holder</label></div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-3 noLeftPadding'><label class="control-label">Licence<font color="red" ng-show="client.UKLicence == true">*</font>:</label></div>
+                    <div class='col-sm-9'>
+                        <input class="form-control cm-sm-12" type="text" ng-model="client.licenceNo" capitalize placeholder="Licence Number" ng-mouseleave="populateFromLicence()" />
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-3 noLeftPadding'>
+                        <label>Type:</label>
+                    </div>
+                    <div class='col-sm-9'>
+                        <!--<select ng-model="client.licenceTypeId" class='col-sm-12 form-control'>
+                            <option value="">Licence Type</option>
+                            <option value="1">Car</option>
+                        </select>-->
+                        <select ng-model="client.LicenceTypeId"
+                                class='form-control'
+                                ng-options="licenceType.Id as licenceType.Name for licenceType in licenceTypes">
+                        </select>
+                    </div>
+                </div>
+                <div class='row' ng-show="showDriversLicenceExpiryDate">
+                    <div class='col-sm-3 noLeftPadding'>
+                        <label class='control-label'>Licence Expiry:</label>
+                    </div>
+                    <div class='col-sm-5'>
+                        <input class="form-control cm-sm-12" type="text" ng-model="client.licenceExpiryDate" ng-click="toggleCalendar()" />
+                    </div>
+                    <div class='col-sm-2 element-overflow-0'>
+                        <a ng-click="toggleCalendar()" ng-show="!displayCalendar" class="calendar-button col-sm-6" title="Show Calendar"><div></div></a>
+                        <a ng-click="toggleCalendar()" ng-show="displayCalendar" class="calendar-button col-sm-6" title="Hide Calendar"><div></div></a>
+                    </div>
+                </div>
+                <div class='row' ng-show="showDriversLicenceExpiryDate">
+                    <div class='col-sm-3'></div>
+                    <div class='col-sm-5'>
+                        <div style="position:absolute; z-index:1000" ng-show="displayCalendar">
+                            <date-picker ng-model="client.licenceExpiryDate" format-date="formatDate" ng-mouseleave="toggleCalendar()"></date-picker>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='row' ng-show="showPhotoCardExpiry">
+                    <div class='col-sm-3 noLeftPadding'>
+                        <label class='control-label'>Photocard Expiry:</label>
+                    </div>
+                    <div class='col-sm-5'>
+                        <input class="form-control cm-sm-12" type="text" format-date-iam ng-model="client.licencePhotocardExpiryDate" ng-click="togglePhotoCalendar()" />
+                    </div>
+                    <div class='col-sm-2 element-overflow-0'>
+                        <a ng-click="togglePhotoCalendar()" ng-show="!displayPhotoCalendar" class="calendar-button col-sm-6" title="Show Calendar"><div></div></a>
+                        <a ng-click="togglePhotoCalendar()" ng-show="displayPhotoCalendar" class="calendar-button col-sm-6" title="Hide Calendar"><div></div></a>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-3'></div>
+                    <div class='col-sm-5'>
+                        <div style="position:absolute; z-index:1000" ng-show="displayPhotoCalendar">
+                            <date-picker ng-model="client.licencePhotocardExpiryDate" format-date="formatDate" ng-mouseleave="togglePhotoCalendar()"></date-picker>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        &nbsp;
+                    </div>
+                    <div class="col-sm-5">
+                        <input type="checkbox" ng-model="client.isDORSClient" />&nbsp;<label><i>DORS Client</i></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <button class="btn" ng-click="CheckDORS()" ng-show="client.isDORSClient == true" ng-disabled="client.isMysteryShopper == true" >Check DORS</button>
+                    </div>
+                </div>
+                <div class="row" ng-show="client.isMysteryShopper == true && client.isDORSClient == true" >
+                    <div class="col-sm-1">
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="reditalicbold">This is a Mystery Shopper & a DORS Course. DORS Data will have to be entered Manually.</span>
+                    </div>
+                    <div class="col-sm-1">
+                    </div>
+                </div>
+                <div id="DORSDataDiv" ng-show="client.isDORSClient == true" class="row marginBottom5 {{AllowManualEditingOfClientDORSData == true || client.isMysteryShopper == true ? 'Editable' : ''}}">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <b><i>DORS Data</i></b>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                Date Referred:
+                            </div>
+                            <div class="col-sm-7">
+                                <div class='row'>
+                                    <div class='col-sm-7'>
+                                        <input class="form-control" 
+                                               type="text" 
+                                               placeholder="dd/mm/yyyy" 
+                                               format-date-iam ng-model="client.DORSRefferalDate" 
+                                               ng-click="toggleDORSRefferalCalendar()" 
+                                               ng-disabled="AllowManualEditingOfClientDORSData == false && client.isMysteryShopper == false" 
+                                               ng-keypress="DORSEdited()" />
+                                    </div>
+                                    <div class='col-sm-5'>
+                                        <a ng-click="toggleDORSRefferalCalendar()" 
+                                           ng-show="!displayDORSRefferalCalendar" 
+                                           class="calendar-button col-sm-6" 
+                                           title="Show Calendar" 
+                                           ng-disabled="AllowManualEditingOfClientDORSData == false && client.isMysteryShopper == false"
+                                           ><div></div></a>
+                                        <a ng-click="toggleDORSRefferalCalendar()" 
+                                           ng-show="displayDORSRefferalCalendar" 
+                                           class="calendar-button col-sm-6" 
+                                           title="Hide Calendar" 
+                                           ng-disabled="AllowManualEditingOfClientDORSData == false && client.isMysteryShopper == false"
+                                           ><div></div></a>
+                                    </div>
+                                </div>
+                                <div class='row'>
+                                    <div class='col-sm-12'>
+                                        <div style="" ng-show="displayDORSRefferalCalendar">
+                                            <date-picker ng-model="client.DORSRefferalDate" format-date="formatDate" ng-change="DORSEdited()"></date-picker>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                Attendance Reference:
+                            </div>
+                            <div class="col-sm-7">
+                                <input class="form-control"
+                                        type="text" 
+                                       ng-model="client.DORSAttendanceReference" 
+                                       placeholder="DORS Attendance Reference" 
+                                       ng-disabled="AllowManualEditingOfClientDORSData == false && client.isMysteryShopper == false" 
+                                       ng-keypress="DORSEdited()" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                DORS Attendance Status:
+                            </div>
+                            <div class="col-sm-7">
+                                <input class="form-control"
+                                       type="text"
+                                       ng-model="client.DORSAttendanceStatus"
+                                       placeholder="DORS Attendance Status"
+                                       ng-disabled="AllowManualEditingOfClientDORSData == false && client.isMysteryShopper == false"
+                                       ng-keypress="DORSEdited()" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                Referrer:
+                            </div>
+                            <div class="col-sm-7">
+                                <select ng-model="client.DORSReferringAuthorityId"
+                                        class="form-control"
+                                        ng-change="DORSEdited()"
+                                        ng-disabled="AllowManualEditingOfClientDORSData == false && client.isMysteryShopper == false"
+                                        ng-options="referringAuthority.Id as referringAuthority.Name for referringAuthority in referringAuthorities">
+                                    <option value="">Pick a Referrer</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                DORS Expiry Date:
+                            </div>
+                            <div class="col-sm-7">
+                                <div class='row'>
+                                    <div class='col-sm-7'>
+                                        <input class="form-control cm-sm-12"
+                                               type="text"
+                                               ng-model="client.DORSExpiryDate"
+                                               ng-disabled="AllowManualEditingOfClientDORSData == false && client.isMysteryShopper == false"
+                                               format-date-iam
+                                               ng-click="toggleDORSExpiryCalendar()"
+                                               placeholder="dd/mm/yyyy"
+                                               ng-change="DORSEdited()" />
+                                    </div>
+                                    <div class='col-sm-5 element-overflow-0'>
+                                        <a ng-click="toggleDORSExpiryCalendar()" 
+                                           ng-show="!displayDORSExpiryCalendar" 
+                                           class="calendar-button col-sm-6" 
+                                           title="Show Calendar" 
+                                           ng-disabled="AllowManualEditingOfClientDORSData == false && client.isMysteryShopper == false"
+                                           ><div></div></a>
+                                        <a ng-click="toggleDORSExpiryCalendar()" 
+                                           ng-show="displayDORSExpiryCalendar" 
+                                           class="calendar-button col-sm-6" 
+                                           title="Hide Calendar" 
+                                           ng-disabled="AllowManualEditingOfClientDORSData == false && client.isMysteryShopper == false"
+                                           ><div></div></a>
+                                    </div>
+                                </div>
+                                <div class='row'>
+                                    <div class='col-sm-12'>
+                                        <div style="" ng-show="displayDORSExpiryCalendar">
+                                            <date-picker ng-model="client.DORSExpiryDate" format-date="formatDate" ng-change="DORSEdited()"></date-picker>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                Scheme:
+                            </div>
+                            <div class="col-sm-7">
+                                <select class="form-control"
+                                        ng-model="client.DORSSchemeId"
+                                        ng-disabled="AllowManualEditingOfClientDORSData == false && client.isMysteryShopper == false"
+                                        ng-change="DORSEdited()"
+                                        ng-options="DORSScheme.Id as DORSScheme.Name for DORSScheme in DORSSchemes">
+                                    <option value="">Pick a Scheme</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div ng-show="checkingDORS == true">
+                        Please Wait .... Checking DORS<br />
+                        <img src="/app_assets/images/ajax-loader.gif" height="50" width="50" />
+                    </div>
+                    <div class="validation-message">
+                        {{ DORSCheckStatusMessage }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-3">
+                        &nbsp;
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button class="btn btn-default btn-sm" onclick="$('button.close').last().trigger('click')">Cancel</button>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <button ng-click="addClient()" class="btn btn-default btn-sm" title="Save and Close the Dialog" ng-disabled="clientAdded">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <button class="btn"
+                            ng-click="editClient(clientId)"
+                            ng-show="clientAdded"
+                            title="Re-edit the Client's details">
+                        Edit Client
+                    </button>
+                    <button class="btn"
+                            ng-click="bookCourse(clientId)"
+                            ng-show="clientAdded"
+                            title="Book this Client onto a course">
+                        Book Course
+                    </button>
+                    <button class="btn"
+                            ng-click="takePayment()"
+                            ng-show="clientAdded"
+                            title="Take a card payment from a Client">
+                        Take Payment
+                    </button>
+                    <button class="btn"
+                            ng-click="enterPayment()"
+                            ng-show="clientAdded"
+                            title="Record a Payment already Received from the Client">
+                        Enter Payment
+                    </button>
+                    <button class="btn"
+                            ng-click="addNote(clientId)"
+                            ng-show="clientAdded"
+                            title="Add a new note against the Client's details'">
+                        Add Note
+                    </button>
+                    <button class="btn"
+                            ng-show="clientAdded"
+                            ng-click="deleteClient()"
+                            title="Mark the Client's details for deletion from the database">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!successMessage === false">
+            <div class="col-sm-12 success-message noLeftPadding leftalign">{{ successMessage }}</div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+            <div class="col-sm-12 validation-message noLeftPadding leftalign">{{ validationMessage }}</div>
+        </div>
+    </form>
+</div>

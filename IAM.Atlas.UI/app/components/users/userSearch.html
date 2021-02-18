@@ -1,0 +1,133 @@
+﻿<div id="searchTrainer" class="SearchTrainer" style="width:950px;">
+    <!--<div class="AddFavourite">
+        <input class="AddFavourite" type="submit"
+               id="addToMenuFavourite" name="submit"
+               alt="Add to Favourites"
+               value=""
+               title="Add this to the your Favourites"
+               ng-click="addToMenuFavourite()" />
+    </div>-->
+    <div class="Title row">
+        <h2>User Administration</h2>
+    </div>
+    <div class='row'>
+    </div>
+    <form class="form-horizontal row" role="form" style="color: black; ">
+        <!--Organisation-->
+        <div class='row' ng-show="$parent.isAdmin">
+            <label class='col-sm-2'>Organisation:</label>
+            <div class='col-sm-6'>
+                <select ng-change="$parent.getUsers(organisationId)" ng-model="organisationId" class='col-sm-12 form-control' ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+
+        <!--Filter Options: Row 1-->
+        <div class='row form-group'>
+            <label class='col-sm-2'>Show:</label>
+            <div class='col-sm-2'>
+                <input type="checkbox" ng-model="$parent.administrators" />
+                <span>Administrators</span>
+                
+            </div>
+            <div class='col-sm-3' ng-show="$parent.isAdmin">
+                <input type="checkbox" ng-model="$parent.systemAdministrators" />
+                <span>System Administrators</span>
+
+            </div>
+            <div class='col-sm-4'>
+                <input type="checkbox" ng-model="$parent.systemUsers" />
+                <span>System User (Non Administrator)</span>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+
+        <!--Filter Options: Row 2-->
+        <div class='row form-group'>
+            <label class='col-sm-2 control-label'></label>
+            <div class='col-sm-2'>
+                <input type="checkbox" ng-model="$parent.clients" />
+                <span>Clients</span>
+            </div>
+            <div class='col-sm-4'>
+                <input type="checkbox" ng-model="$parent.trainers" />
+                <span>Trainers</span>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+
+        <!--Filter Options: Row 3-->
+        <div class='row form-group'>
+            <div class='col-sm-2'><!-- Empty --></div>
+            <div class='col-sm-4'>
+                <input type="checkbox" ng-model="$parent.disabled" />
+                <span>Disabled Accounts</span>
+            </div>
+            <div class='col-sm-7'><!-- Empty --></div>
+        </div>
+
+        <div class="row">
+            <div class='col-sm-2 control-label'></div>
+            <div class='col-sm-4'>
+                <button ng-click="$parent.getUsers()" class="btn btn-default btn-sm user-search-button" title="Search">Search</button><br />
+            </div>
+            <div class="col-sm-4">
+                <button ng-click="createUser()" class="btn btn-default btn-sm user-search-button" title="Add New">Add</button>&nbsp;
+                <button ng-click="editUser()" class="btn btn-default btn-sm user-search-button" title="Details">Edit</button>
+            </div>
+        </div>
+
+        <!--Results-->
+        <div class='row form-group' id="userSearchResults">
+            <!--User list here -->
+            <div class='col-sm-12' id="usersLoadingRow" style="display:none;">
+                <img style="display: block; margin-left: auto; margin-right: auto;" src="../../../app_assets/images/ajax-loader.gif" />
+            </div>
+            <div class='col-sm-12' id="userResultsRow">
+                <table st-table="users" class="table table-hover table-bordered" st-safe-src="usersTemplate">
+                    <thead>
+                        <tr>
+                            <td colspan="6">
+                                <input st-search placeholder="filter results" class="col-sm-3" type="search" />
+                                <span class="col-sm-3"></span>
+                                <span class="col-sm-2">Items per page:</span>&nbsp;
+                                <input type="text" class="col-sm-1" value="{{itemsPerPage}}" ng-model="itemsPerPage" />
+                                <span class="col-sm-4"></span>
+                            </td>
+                        </tr>
+                        <tr class="bootstrap-dialog-header">
+                            <th>Type</th>
+                            <th>User Name</th>
+                            <th>Login Id</th>
+                            <th>Email</th>
+                            <th>Last Login</th>
+                            <th class="text-center">Disabled</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="user in users"
+                            ng-click="$parent.selectUser(user.Id)"
+                            ng-dblclick="$parent.showUser(user.Id)"
+                            value="{{user.Id}}"
+                            ng-class="{selectedTrainer: user.Id === selectedUser}"
+                            title="Double Click to View User Details">
+                            <td>{{user.UserType}}</td>
+                            <td>{{user.Name}}</td>
+                            <td>{{user.LoginId}}</td>
+                            <td>{{user.Email}}</td>
+                            <td>{{user.LastLogin}}</td>
+                            <td class="text-center">{{user.Disabled}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6" class="text-center">
+                                <div st-pagination="" st-items-by-page="itemsPerPage"></div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>

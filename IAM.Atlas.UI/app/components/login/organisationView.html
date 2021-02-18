@@ -1,0 +1,68 @@
+﻿<div class="row separate-row separate-row-top">
+    <div class="col-md-2">
+        <label></label>
+    </div>
+    <div class="col-md-10" >
+        <input 
+               name="allowCookies" 
+               id="allowCookies" 
+               class="checkbox-inline" 
+               ng-click="storeCookiePreference();" 
+               type="checkbox"                
+               ng-model="cookiesAllowed" 
+               />
+        <span>Cookies Allowed on this Computer&nbsp;</span>
+        <a href="#" ng-click="showCookiePolicy();" style="text-decoration:underline; color:#2196F3; font-style:italic;">Cookie Information</a>
+    </div>
+
+</div><!-- end .row -->
+<div class="row separate-row ">
+    <div class="col-md-2">
+        <label>Login ID</label>
+    </div>
+    <div class="col-md-7">
+        <input ng-disabled="!cookiesAllowed || !systemStatus.SystemAvailable" class="login-input" type="text" ng-model="login.user" name="username" placeholder="Login name or Email" />
+    </div>
+    <div class="col-md-3">
+        <div class="change-requests" ng-click="showPasswordRequestModal();">Password Reset</div>
+    </div>
+</div><!-- end .row -->
+<div class="row separate-row">
+    <div class="col-md-2">
+        <label>Password</label>
+    </div>
+    <div class="col-md-7">
+        <input ng-disabled="!cookiesAllowed || !systemStatus.SystemAvailable" class="login-input" type="password" ng-model="login.password" name="password" placeholder="Password" ng-keypress="enterSubmitForm($event)"/>
+    </div>
+    <div class="col-md-3">       
+    </div>
+</div><!-- end .row -->
+
+<div class="row separate-row-20">
+    <div class="col-md-2"></div>
+    <div class="col-md-7">
+        <div class="row">
+            <div class="col-md-9 checkbox-container">
+                <input type="checkbox" class="login-checkbox" ng-model="rememberMe" />
+                <span>Remember me</span>
+            </div>
+            <div class="col-md-3">
+                <div class="btn sign-in-button" ng-disabled="!cookiesAllowed || !systemStatus.SystemAvailable" ng-click="logUserIn()">Sign In</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div><!-- end .row -->
+
+<div class="row">
+
+    <div class="col-md-1"></div>
+    <div class="col-md-10 system-message-response {{ systemStatus.SystemColour }}">
+        <!--<div class="system-icon {{ systemStatus }}"></div>-->
+        <div class="system-icon"></div>
+        <div class="system-message">{{ systemStatus.SystemStatusMessage }}</div>
+
+    </div>
+    <div class="col-md-1"></div>
+
+</div><!-- end .row -->

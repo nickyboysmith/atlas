@@ -1,0 +1,84 @@
+﻿<div id="TaskListDiv">
+    <div class="row marginBottom5" ng-show="viewAllUsers == true">
+        <div class="col-sm-3">
+            Organisation
+        </div>
+        <div class="col-sm-9">
+            <select ng-model="selectedOrganisationId" ng-change="selectOrganisation(selectedOrganisationId)" ng-options="organisation.id as organisation.name for organisation in organisations" class="form-control" />
+        </div>
+    </div>
+    <div class="row marginBottom5" ng-show="viewAllUsers == true">
+        <div class="col-sm-3">
+            User
+        </div>
+        <div class="col-sm-9">
+            <select ng-model="selectedUserId" ng-change="selectUser(selectedUserId)" ng-options="user.Id as user.Name for user in organisationUsers" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-striped table-hover" st-table="tasks" st-safe-src="tasksTemplate">
+                <thead>
+                    <tr>
+                        <th colspan="4">
+                            <input st-search="" class="form-control" placeholder="Filter Results" type="search" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Task or Action</th>
+                        <th>Category</th>
+                        <th>Linked To</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="task in tasks" ng-click="selectTask(task.TaskId, task.TaskTitle)" ng-class="{selectedTask : task.TaskId == selectedTaskId}">
+                        <td>
+                            <span ng-show="task.TaskNote != '' && task.TaskNote != null" title="{{ task.TaskNote }}">{{ task.TaskTitle }}</span>
+                            <span ng-show="task.TaskNote == '' || task.TaskNote == null">{{ task.TaskTitle }}</span>
+                        </td>
+                        <td>{{ task.TaskCategory }}</td>
+                        <td>
+                            <span ng-show="task.TaskRelatedToClientId != null"
+                                  title="View Client Details"
+                                  ng-click="showClientModal(task.TaskRelatedToClientId)">{{ task.LinkedToDetails }}</span>
+                            <span ng-show="task.TaskRelatedToCourseId != null"
+                                  title="View Course Details"
+                                  ng-click="showCourseModal(task.TaskRelatedToCourseId)">{{ task.LinkedToDetails }}</span>
+                            <span ng-show="task.TaskRelatedToTrainerId != null"
+                                  title="View Trainer Details"
+                                  ng-click="showTrainerModal(task.TaskRelatedToTrainerId)">{{ task.LinkedToDetails }}</span>
+                        </td>
+                        <td>
+                            <span ng-show="task.TaskDeadlineDate != null"><input type="checkbox" title="Acknowledged" ng-click="Completed(task.TaskId, task.UserId, task.TaskTitle)" />&nbsp;Acknowledged</span>
+                            <span ng-show="task.TaskDeadlineDate == null"><label><input type="checkbox" title="Completed" ng-click="Completed(task.TaskId, task.UserId, task.TaskTitle)" />&nbsp;Completed</label></span>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            <div st-pagination="" st-items-by-page="maxResults" st-displayed-pages="7"></div>
+                        </td>
+                    </tr>
+                    <tr ng-show="tasks.length == 0 && loading == false">
+                        <td colspan="4" class="text-center">
+                            <br /><br />
+                            <h3>No tasks for this user could be found.</h3>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 text-right">
+            <button class="btn" ng-click="openAssignTaskModal()" ng-disabled="selectedTaskId == -1">Assign Selected Task</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 validation-message">
+            {{ validationMessage }}&nbsp;
+        </div>
+    </div>
+</div>

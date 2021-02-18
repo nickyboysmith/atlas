@@ -1,0 +1,155 @@
+.angular-date-picker {
+    color: #333;
+    font: normal 14px sans-serif;
+    border: 1px solid #ddd;
+    display: inline-block;
+    background: #fff;
+}
+.angular-date-picker > ._month {
+    text-align: center;
+    line-height: 22px;
+    padding: 10px;
+    background: #fcfcfc;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+.angular-date-picker > ._month > button {
+    color: #555;
+    font: normal 14px sans-serif;
+    outline: none;
+    position: absolute;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.angular-date-picker > ._month > button:hover {
+    color: #333;
+}
+
+
+
+.angular-date-picker ._month
+{
+    height: 30px;
+    padding: 0 !important;
+    padding-top: 4px !important;
+}
+.angular-date-picker ._month div.leftButtons 
+, .angular-date-picker ._month div.rightButtons
+{
+    height: 16px;
+}
+.angular-date-picker ._month div.leftButtons {
+    padding: 0;
+    padding-left: 2px;
+}
+.angular-date-picker ._month div.rightButtons {
+    padding: 0;
+    padding-right: 2px;
+}
+
+.angular-date-picker ._month button{
+    border: none;
+    background-color: transparent;
+}
+
+.angular-date-picker ._month button._previous
+, .angular-date-picker ._month button._previousYear
+, .angular-date-picker ._month button._previousBigYear
+, .angular-date-picker ._month button._next
+, .angular-date-picker ._month button._nextYear
+, .angular-date-picker ._month button._nextBigYear
+{
+    width: 16px !important;
+    height: 16px !important;
+    padding: 0 !important;
+    margin: 0;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+.angular-date-picker ._month button._previous 
+, .angular-date-picker ._month button._previousYear
+, .angular-date-picker ._month button._previousBigYear
+{
+    float: left;
+}
+.angular-date-picker ._month button._next
+, .angular-date-picker ._month button._nextYear
+, .angular-date-picker ._month button._nextBigYear
+{
+    float: right;
+}
+.angular-date-picker ._month button._previous div
+, .angular-date-picker ._month button._previousYear div
+, .angular-date-picker ._month button._previousBigYear div
+, .angular-date-picker ._month button._next div
+, .angular-date-picker ._month button._nextYear div
+, .angular-date-picker ._month button._nextBigYear div
+{
+    width: 16px;
+    height: 16px;
+    background-size: 100%;
+}
+.angular-date-picker ._month button._previous div 
+, .angular-date-picker ._month button._previousYear div
+, .angular-date-picker ._month button._previousBigYear div
+{
+    transform: rotate(180deg);
+}
+.angular-date-picker ._month button._previous div 
+, .angular-date-picker ._month button._next div 
+{
+    background-image:url("/app_assets/images/datepicker/singleArrow.png");
+}
+.angular-date-picker ._month button._previousYear div 
+, .angular-date-picker ._month button._nextYear div 
+{
+    background-image:url("/app_assets/images/datepicker/doubleArrow.png");
+}
+.angular-date-picker ._month button._previousBigYear div 
+, .angular-date-picker ._month button._nextBigYear div 
+{
+    background-image:url("/app_assets/images/datepicker/endArrow.png");
+}
+
+
+
+.angular-date-picker > ._days {
+    width: 210px; /* 30 x 7 */
+    margin: 10px;
+    text-align: center;
+}
+.angular-date-picker > ._days > ._day-of-week, .angular-date-picker > ._days > ._day {
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    width: 30px;
+    line-height: 28px;
+    float: left;
+}
+.angular-date-picker > ._days > ._day-of-week {
+    font-weight: bold;
+}
+.angular-date-picker > ._days > ._day.-padding {
+    opacity: .5;
+    cursor: default;
+}
+.angular-date-picker > ._days > ._day.-selectable {
+    cursor: pointer;
+}
+.angular-date-picker > ._days > ._day.-selectable.-selected {
+    background: #e0e0e0;
+}
+.angular-date-picker > ._days > ._day.-selectable.-today {
+    border-color: #aaa;
+}
+.angular-date-picker > ._days > ._day.-selectable:hover {
+    background: #eee;
+}
+.angular-date-picker > ._days:after {
+    content: '';
+    display: block;
+    clear: left;
+    height: 0;
+}

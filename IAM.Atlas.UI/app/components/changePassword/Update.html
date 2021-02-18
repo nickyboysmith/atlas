@@ -1,0 +1,85 @@
+﻿<div class="row change-password-container">
+
+    <div class="col-md-12 marginBottom10">
+    </div>
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4">
+                <label class='control-label'>Login Id:</label>
+            </div>
+            <div class="col-md-7">
+                <input type="text" disabled data-ng-model="organisation.loginID" value="{{ mergedLoginEmail }}" />
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4">
+                <label class='control-label'>Current Password:</label>
+            </div>
+            <div class="col-md-7">
+                <input type="password" data-ng-model="organisation.currentPassword" />
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4">
+                <label class='control-label'>New Password:</label>
+            </div>
+            <div class="col-md-7">
+                <input type="password" data-ng-model="organisation.newPassword" data-ng-keyup="validatePasswordStrength($event); passwordsMatch()" />
+                <div ng-show="validatedText != ''" class="validator {{ validatedClass }} password-validation">{{ validatedText }}</div>
+            </div>                
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4">
+                <label class="control-label">Confirm Password:</label>
+            </div>
+            <div class="col-md-7">
+                <input type="password" data-ng-model="organisation.confirmPassword" data-ng-keyup="passwordsMatch()" />
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-show="passwordMatchMessage != ''">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-7">
+                <div class="validation-message">{{ passwordMatchMessage }}</div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    <div class="col-md-12 marginBottom10">
+        <div class="row submit-button-holder">
+            <div class="col-md-4"></div>
+            <div class="col-md-6">
+                <input type="submit" class="password-change-button btn btn-default btn-sm" value="Accept Password Change" ng-hide="hideChangeButton" data-ng-click="processChangePassword()" />
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 smallitalic">This Feature allows you to change your password.<br />We recommend that you use a “Strong” password.<br />
+            A Strong Password would contain Alphabetic, in Upper and Lower case, numeric characters, a symbol and be at least 8 characters long.<br />
+            “Sch3m3!0n3” (Scheme!one) is an example of a Strong Password which is easy to remember.<br />
+            Notice how we replace the “e” with “3” and “o” with “0” (zero).<br />
+            </div>
+        </div>
+    </div>
+
+</div>

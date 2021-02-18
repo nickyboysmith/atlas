@@ -1,0 +1,17 @@
+﻿#organisationDisplay {
+  width: 340px;
+  height: auto;
+  position: absolute;
+  top: 32px;
+  left: 450px;
+  padding:10px;
+  min-height: 100px;
+  margin-top: -33px;
+  #organisationName {
+      height: auto;
+      width:170px;
+  }
+  img#organisationLogo {
+      border: 0px!important;
+  }
+}

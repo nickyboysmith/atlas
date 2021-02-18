@@ -1,0 +1,373 @@
+ 
+******************************************************************************************
+ 
+**Running Script: "Migration_200.001_DORSDataMigration.sql" Jul  2 2017 12:39PM
+ 
+*Populate DORS Tables Jul  2 2017 12:39PM
+ 
+*Migrating Data For: Cleveland Driver Improvement Group .... OldSystemID: 178 .... NewSystemID: 318
+ 
+*Get System User Ids Jul  2 2017 12:39PM
+ 
+*Populate DORS Tables Jul  2 2017 12:39PM
+ 
+-INSERT INTO [DORSConnection] Table Jul  2 2017 12:39PM
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(8 row(s) affected)
+
+(8 row(s) affected)
+ 
+-INSERT INTO DORSLicenceCheckCompleted Table Jul  2 2017 12:39PM
+
+(1 row(s) affected)
+
+(10 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(2 row(s) affected)
+ 
+-INSERT INTO DORSScheme Table Jul  2 2017 12:39PM
+
+(8 row(s) affected)
+ 
+-INSERT INTO DORSForce Table Jul  2 2017 12:39PM
+
+(0 row(s) affected)
+ 
+-INSERT INTO DORSForceContract Table Jul  2 2017 12:39PM
+Msg 208, Level 16, State 1, Line 152
+Invalid object name 'migration.tbl_DORS_ForceContracts_Organisation_RegCrseType'.
+
+
+
+
+/*SECOND RUN*/
+ 
+******************************************************************************************
+ 
+**Running Script: "Migration_200.001_DORSDataMigration.sql" Jul  2 2017 12:45PM
+ 
+*Populate DORS Tables Jul  2 2017 12:45PM
+ 
+*Migrating Data For: Cleveland Driver Improvement Group .... OldSystemID: 178 .... NewSystemID: 318
+ 
+*Get System User Ids Jul  2 2017 12:45PM
+ 
+*Populate DORS Tables Jul  2 2017 12:45PM
+ 
+-INSERT INTO [DORSConnection] Table Jul  2 2017 12:45PM
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+ 
+-INSERT INTO DORSLicenceCheckCompleted Table Jul  2 2017 12:45PM
+Msg 2627, Level 14, State 1, Procedure uspNewDORSAttendanceState, Line 47 [Batch Start Line 0]
+Violation of UNIQUE KEY constraint 'UC_DORSAttendanceState_DORSAttendanceStateIdentifier'. Cannot insert duplicate key in object 'dbo.DORSAttendanceState'. The duplicate key value is (10737781).
+The statement has been terminated.
+
+
+/*THIRD RUN*/
+ 
+******************************************************************************************
+ 
+**Running Script: "Migration_200.001_DORSDataMigration.sql" Jul  2 2017  1:00PM
+ 
+*Populate DORS Tables Jul  2 2017  1:00PM
+ 
+*****************************************************************************
+ 
+**DISABLE SOME TRIGGERS
+ 
+*Migrating Data For: Cleveland Driver Improvement Group .... OldSystemID: 178 .... NewSystemID: 318
+ 
+*Get System User Ids Jul  2 2017  1:00PM
+ 
+*Populate DORS Tables Jul  2 2017  1:00PM
+ 
+-INSERT INTO [DORSConnection] Table Jul  2 2017  1:00PM
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+ 
+-INSERT INTO DORSLicenceCheckCompleted Table Jul  2 2017  1:00PM
+
+(2 row(s) affected)
+ 
+-INSERT INTO DORSScheme Table Jul  2 2017  1:00PM
+
+(0 row(s) affected)
+ 
+-INSERT INTO DORSForce Table Jul  2 2017  1:00PM
+
+(0 row(s) affected)
+ 
+-INSERT INTO DORSForceContract Table Jul  2 2017  1:00PM
+
+(110 row(s) affected)
+ 
+-INSERT INTO DORSSchemeCourseType Table Jul  2 2017  1:00PM
+
+(0 row(s) affected)
+
+(136 row(s) affected)
+ 
+*****************************************************************************
+ 
+**ENABLE DISABLED TRIGGERS
+ 
+**Completed Script: "Migration_200.001_DORSDataMigration.sql" Jul  2 2017  1:00PM
+ 
+******************************************************************************************

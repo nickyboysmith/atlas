@@ -1,0 +1,14 @@
+#newPaymentReconciliation {
+
+    .listHolder {
+        margin-top: 0px !important;
+    }
+
+    label {
+        margin-bottom: 0px;
+    }
+
+    #documentUpload input[type="file"] {
+        display: none;
+    }
+}

@@ -1,0 +1,46 @@
+﻿
+
+.netcallAgentsTable {
+    
+    /*width: 900px;*/
+
+        form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+         .selectedNetcallAgent {
+            background: #ffffe8;
+            color: black;
+        }
+
+         .selectedNetcallAgent:hover {
+            background: #ffffe8;
+            color: black;
+        }
+
+        table {
+            background: transparent;
+            tbody {
+                tr.true {
+                    td {
+                        background: #FFF0FF;
+                        color: black
+                    }
+                }
+                /*tr.true:hover {
+                    td {
+                        background: #FFF0FF;
+                        color: black
+                    }
+                }*/
+            }
+        } 
+    }
+}
+
+
+
+
+
+        

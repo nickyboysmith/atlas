@@ -1,0 +1,37 @@
+﻿
+@import "../modules/templateVariables.scss";
+@import "../modules/templateMixins.scss";
+
+
+/**
+ * The main container template changes
+ */
+.moveLeft {
+    // do nothing
+}
+.moveCenter {
+    float: right;
+    margin-right: 460px
+}
+
+.moveRight {
+    float: right;
+    margin-right: 135px;
+}
+
+/**
+ * The different colour templates.
+ */
+.template-pink {
+    @include createTemplateCSS($hotPink);
+}
+.template-blue {
+    @include createTemplateCSS($hotBlue);
+}
+.template-green {
+    @include createTemplateCSS($hotGreen);
+}
+.template-red {
+    @include createTemplateCSS($hotRed);
+}
+

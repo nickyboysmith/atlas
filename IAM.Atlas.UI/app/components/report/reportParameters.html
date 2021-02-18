@@ -1,0 +1,351 @@
+﻿<div id="reportParameters">
+    <!--Heading Section-->
+    <div class="row reportParametersHeading">
+        <div class="col xs-12 col-md-12">
+            <h1>Report: {{report.reportTitle}}</h1>
+            <p ng-show="report.reportDescription !== report.reportTitle">{{report.reportDescription}}</p>
+        </div>
+    </div>
+    <hr />
+    <!--Inputs Section-->
+    <form class="form-horizontal row" role="form" style="color: black; ">
+        <div class="row">
+            <div ng-if="successMessage != ''">
+                <h3>{{ successMessage }}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <h4>
+                <span>The Parameters Below are optional.</span>
+                <span>Select Parameters to narrow the data range.</span>
+            </h4>
+        </div>
+        <!--<div class="row reportparameters-loading" ng-show="showReportparametersLoading">
+            <div class="col-md-12 col-sm-12 reportparameters-loading-message">
+                <span>Loading Optional Parameters ..... Please wait</span>
+            </div>
+            <div class="col-md-12 col-sm-12">
+                <div class="reportparameters-loading-gif"></div>
+            </div>
+        </div>-->
+        <!--Between Dates Parameters-->
+        <div ng-repeat="input in report.inputParameters | filter: {'parameterType': 'BDate'} " class="row">
+            <div class='col-md-3 col-sm-12'>
+                <label class='col-md-12 col-sm-12 control-label report-parameter-label'>{{input.parameterTitle}}: </label>
+            </div>
+            <div class='col-md-3 col-sm-12'>
+                <input class='form-control cm-sm-12'
+                       type='text'
+                       format-date-iam ng-model="reportParameterData.bDate"
+                       ng-click='reportParameterControl.toggleBDateCalendar()'
+                       ng-change='reportParameterData.bDateParameterId={{input.parameterId}};' />
+                <div style='position:absolute; z-index:100000;' ng-show='reportParameterControl.bDateDisplay'>
+                    <date-picker ng-model='reportParameterData.bDate'
+                                 format-date="formatDate"
+                                 ng-mouseleave='reportParameterControl.toggleBDateCalendar()'
+                                 ng-change='reportParameterData.bDateParameterId={{input.parameterId}};'></date-picker>
+                </div>
+            </div>
+            <div class='col-md-1 col-sm-12 element-overflow-0'>
+                <a ng-click='reportParameterControl.toggleBDateCalendar()' ng-show='!reportParameterControl.bDateDisplay' class='calendar-button col-md-12 col-sm-12' title='Show Calendar'><div></div></a>
+                <a ng-click='reportParameterControl.toggleBDateCalendar()' ng-show='reportParameterControl.bDateDisplay' class='calendar-button col-md-12 col-sm-12' title='Hide Calendar'><div></div></a>
+            </div>
+            <div class='col-md-1 col-sm-12'>
+                <label class='col-md-12 col-sm-12 control-label'>To:</label>
+            </div>
+            <div class='col-md-3 col-sm-12'>
+                <input class='form-control cm-sm-12'
+                       type='text'
+                       format-date-iam
+                       ng-model="reportParameterData.bDateTo"
+                       ng-click='reportParameterControl.toggleBDateToCalendar()'
+                       ng-change='reportParameterData.bDateToParameterId={{input.parameterId}};' />
+                <div style='position:absolute; z-index:100000;' ng-show='reportParameterControl.bDateToDisplay'>
+                    <date-picker ng-model='reportParameterData.bDateTo'
+                                 format-date="formatDate"
+                                 ng-mouseleave='reportParameterControl.toggleBDateToCalendar()'
+                                 ng-change='reportParameterData.bDateToParameterId={{input.parameterId}};'></date-picker>
+                </div>
+            </div>
+            <div class='col-md-1 col-sm-12 element-overflow-0'>
+                <a ng-click='reportParameterControl.toggleBDateToCalendar()' ng-show='!reportParameterControl.bDateToDisplay' class='calendar-button col-md-12 col-sm-12' title='Show Calendar'><div></div></a>
+                <a ng-click='reportParameterControl.toggleBDateToCalendar()' ng-show='reportParameterControl.bDateToDisplay' class='calendar-button col-md-12 col-sm-12' title='Hide Calendar'><div></div></a>
+            </div>
+        </div>
+
+        <!--String Input Parameter-->
+        <div ng-repeat="input in report.inputParameters | filter: {'parameterType': 'String'} " class="row">
+            <div class='col-md-3 col-sm-12'>
+                <label class='col-md-12 col-sm-12 control-label report-parameter-label'>{{input.parameterTitle}}: </label>
+            </div>
+            <div class='col-md-6 col-sm-12'>
+                <input class='reportparameter'
+                       type='text'
+                       title='Please Input the exact "{{input.parameterTitle}}" OR What "{{input.parameterTitle}}" Begins With'
+                       ng-model='reportParameterData.string'
+                       ng-change="reportParameterData.stringParameterId={{input.parameterId}};">
+            </div>
+            <div class='col-md-3 col-sm-0'>
+            </div>
+        </div>
+
+        <!--Venue Dropdown List Parameter-->
+        <div ng-repeat="input in report.inputParameters | filter: {'parameterType': 'VenueSingle'} " class="row">
+            <div class='col-md-3 col-sm-12'>
+                <label class='col-md-12 col-sm-12 control-label report-parameter-label'>{{input.parameterTitle}}: </label>
+            </div>
+            <div class='col-md-7 col-sm-12'>
+                <div class="col-md-12 col-sm-12 DropdownListRefreshInfo" ng-show="venueReferenceData == undefined || venueReferenceData == null">
+                    <span>To Limit the Report by "{{input.parameterTitle}}" please get the List first ----></span>
+                </div>
+                <div class="col-md-12 col-sm-12" ng-show="venueReferenceData !== undefined && venueReferenceData !== null">
+                    <select class='form-control'
+                            ng-model="selectedVenue"
+                            ng-options="listItem.Title for listItem in venueReferenceData | filter:{Visible:true}"
+                            ng-change="selectVenueListItem(selectedVenue);reportParameterData.venueSingleParameterId={{input.parameterId}};">
+                        <option value="">Please select a {{input.parameterTitle}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class='col-md-2 col-sm-12 report-parameter-row-limiter'>
+                <!--<label class="col-md-4">
+                    <span class="col-md-12 col-sm-12">Show</span>
+                </label>
+                <div class="col-md-4">
+                    <select ng-model="selectedVenueReferenceShowRows" ng-options="opt as opt for opt in venueReferenceLimiterOptions"></select>
+                </div>
+                <label class="col-md-4">
+                    <span class="col-md-12 col-sm-12">Rows</span>
+                </label>-->
+                <div class='col-sm-12' ng-show="venueReferenceData == undefined || venueReferenceData == null">
+                    <button class="btn btn-default btn-sm pull-right" ng-click="getVenueReferenceData()();" title="Click to Selection List for {{input.parameterTitle}}">Get {{input.parameterTitle}} List</button>
+                </div>
+            </div>
+        </div>
+
+        <!--Trainer List-->
+        <div ng-repeat="input in report.inputParameters | filter: {'parameterType': 'TrainerSingle'} " class="row">
+            <div class='col-md-3 col-sm-12'>
+                <label class='col-md-12 col-sm-12 control-label report-parameter-label'>{{input.parameterTitle}}: </label>
+            </div>
+            <div class='col-md-7 col-sm-12'>
+                <div class="col-md-12 col-sm-12 DropdownListRefreshInfo" ng-show="trainerReferenceData == undefined || trainerReferenceData == null">
+                    <span>To Limit the Report by "{{input.parameterTitle}}" please get the List first ----></span>
+                </div>
+                <div class="col-md-12 col-sm-12" ng-show="trainerReferenceData !== undefined && trainerReferenceData !== null">
+                    <select class='form-control col-md-12 col-sm-12'
+                            ng-model="selectedTrainer"
+                            ng-options="listItem.TrainerName for listItem in trainerReferenceData | filter:{Visible:true}"
+                            ng-change="selectTrainerListItem(selectedTrainer);reportParameterData.trainerSingleParameterId={{input.parameterId}};">
+                        <option value="">Please select a {{input.parameterTitle}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class='col-md-2 col-sm-12 report-parameter-row-limiter'>
+                <!--<label class="col-md-4">
+                    <span class="col-md-12 col-sm-12">Show</span>
+                </label>
+                <div class="col-md-4">
+                    <select ng-model="selectedTrainerReferenceShowRows" ng-options="opt as opt for opt in trainerReferenceLimiterOptions"></select>
+                </div>
+                <label class="col-md-4">
+                    <span class="col-md-12 col-sm-12">Rows</span>
+                </label>-->
+                <div class='col-sm-12' ng-show="trainerReferenceData == undefined || trainerReferenceData == null">
+                    <button class="btn btn-default btn-sm pull-right" ng-click="getTrainerReferenceData()();" title="Click to Selection List for {{input.parameterTitle}}">Get {{input.parameterTitle}} List</button>
+                </div>
+            </div>
+        </div>
+
+        <!--Referring Authority List-->
+        <div ng-repeat="input in report.inputParameters | filter: {'parameterType': 'ReferringAuthoritySingle'} "
+             class="row">
+            <div class='col-md-3 col-sm-12'>
+                <label class='col-md-12 col-sm-12 control-label report-parameter-label'>{{input.parameterTitle}}: </label>
+            </div>
+            <div class='col-md-7 col-sm-12'>
+                <div class="col-md-12 col-sm-12 DropdownListRefreshInfo" ng-show="referringAuthorityReferenceData == undefined || referringAuthorityReferenceData == null">
+                    <span>To Limit the Report by "{{input.parameterTitle}}" please get the List first ----></span>
+                </div>
+                <div class="col-md-12 col-sm-12" ng-show="referringAuthorityReferenceData !== undefined && referringAuthorityReferenceData !== null">
+                    <select class='form-control col-md-12 col-sm-12'
+                            ng-model="selectedReferringAuthority"
+                            ng-options="listItem.ReferringAuthorityName for listItem in referringAuthorityReferenceData | filter:{Visible:true}"
+                            ng-change="selectReferringAuthorityListItem(selectedReferringAuthority);reportParameterData.referringAuthoritySingleParameterId={{input.parameterId}};">
+                        <option value="">Please select a {{input.parameterTitle}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class='col-md-2 col-sm-12 report-parameter-row-limiter'>
+                <!--<label class="col-md-4">
+                    <span class="col-md-12 col-sm-12">Show</span>
+                </label>
+                <div class="col-md-4">
+                    <select ng-model="selectedReferringAuthorityReferenceShowRows" ng-options="opt as opt for opt in referringAuthorityReferenceLimiterOptions"></select>
+                </div>
+                <label class="col-md-4">
+                    <span class="col-md-12 col-sm-12">Rows</span>
+                </label>-->
+                <div class='col-sm-12' ng-show="referringAuthorityReferenceData == undefined || referringAuthorityReferenceData == null">
+                    <button class="btn btn-default btn-sm pull-right" ng-click="getReferringAuthorityReferenceData()();" title="Click to Selection List for {{input.parameterTitle}}">Get {{input.parameterTitle}} List</button>
+                </div>
+            </div>
+        </div>
+
+        <!--Payment Method List-->
+        <div ng-repeat="input in report.inputParameters | filter: {'parameterType': 'PaymentMethod'} " class="row">
+            <div class='col-md-3 col-sm-12'>
+                <label class='col-md-12 col-sm-12 control-label report-parameter-label'>{{input.parameterTitle}}: </label>
+            </div>
+            <div class='col-md-7 col-sm-12'>
+                <div class="col-md-12 col-sm-12 DropdownListRefreshInfo" ng-show="paymentMethodReferenceData == undefined || paymentMethodReferenceData == null">
+                    <span>To Limit the Report by "{{input.parameterTitle}}" please get the List first ----></span>
+                </div>
+                <div class="col-md-12 col-sm-12" ng-show="paymentMethodReferenceData !== undefined && paymentMethodReferenceData !== null">
+                    <select class='form-control col-md-12 col-sm-12'
+                            ng-model="selectedPaymentMethod"
+                            ng-options="listItem.Name for listItem in paymentMethodReferenceData | filter:{Visible:true}"
+                            ng-change="selectPaymentMethodListItem(selectedPaymentMethod);reportParameterData.paymentMethodParameterId={{input.parameterId}};">
+                        <option value="">Please select a {{input.parameterTitle}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class='col-md-2 col-sm-12 report-parameter-row-limiter'>
+                <!--<label class="col-md-4">
+                    <span class="col-md-12 col-sm-12">Show</span>
+                </label>
+                <div class="col-md-4">
+                    <select ng-model="selectedPaymentMethodReferenceShowRows" ng-options="opt as opt for opt in paymentMethodReferenceLimiterOptions"></select>
+                </div>
+                <label class="col-md-4">
+                    <span class="col-md-12 col-sm-12">Rows</span>
+                </label>-->
+                <div class='col-sm-12' ng-show="paymentMethodReferenceData == undefined || paymentMethodReferenceData == null">
+                    <button class="btn btn-default btn-sm pull-right" ng-click="getPaymentMethodReferenceData()();" title="Click to Selection List for {{input.parameterTitle}}">Get {{input.parameterTitle}} List</button>
+                </div>
+            </div>
+        </div>
+
+        <!--CourseType List-->
+        <div ng-repeat="input in report.inputParameters | filter: {'parameterType': 'CourseType'} "
+             class="row">
+            <div class='col-md-3 col-sm-12'>
+                <label class='col-md-12 col-sm-12 control-label report-parameter-label'>{{input.parameterTitle}}: </label>
+            </div>
+            <div class='col-md-7 col-sm-12'>
+                <div class="col-md-12 col-sm-12 DropdownListRefreshInfo" ng-show="courseTypeReferenceData == undefined || courseTypeReferenceData == null">
+                    <span>To Limit the Report by "{{input.parameterTitle}}" please get the List first ----></span>
+                </div>
+                <div class="col-md-12 col-sm-12" ng-show="courseTypeReferenceData !== undefined && courseTypeReferenceData !== null">
+                    <select class='form-control col-md-12 col-sm-12'
+                            ng-model="selectedCourseType"
+                            ng-options="listItem.Title for listItem in courseTypeReferenceData | filter:{Visible:true}"
+                            ng-change="selectCourseTypeListItem(selectedCourseType);reportParameterData.courseTypeParameterId={{input.parameterId}};">
+                        <option value="">Please select a {{input.parameterTitle}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class='col-md-2 col-sm-12 report-parameter-row-limiter'>
+                <!--<label class="col-md-4">
+                    <span class="col-md-12 col-sm-12">Show</span>
+                </label>
+                <div class="col-md-4">
+                    <select ng-model="selectedCourseTypeReferenceShowRows" ng-options="opt as opt for opt in courseTypeReferenceLimiterOptions"></select>
+                </div>
+                <label class="col-md-4">
+                    <span class="col-md-12 col-sm-12">Rows</span>
+                </label>-->
+                <div class='col-sm-12' ng-show="courseTypeReferenceData == undefined || courseTypeReferenceData == null">
+                    <button class="btn btn-default btn-sm pull-right" ng-click="getCourseTypeReferenceData()();" title="Click to Selection List for {{input.parameterTitle}}">Get {{input.parameterTitle}} List</button>
+                </div>
+            </div>
+        </div>
+
+        <!--Courses Recent and Future List-->
+        <div ng-repeat="input in report.inputParameters | filter: {'parameterType': 'CoursesRecentFutureSingle'} "
+             class="row">
+            <div class='col-md-3 col-sm-12'>
+                <label class='col-md-12 col-sm-12 control-label report-parameter-label'>{{input.parameterTitle}}: </label>
+            </div>
+            <div class='col-md-7 col-sm-12'>
+                <div class="col-md-12 col-sm-12 DropdownListRefreshInfo" ng-show="coursesRecentFutureData == undefined || coursesRecentFutureData == null">
+                    <span>To Limit the Report by "{{input.parameterTitle}}" please get the List first ----></span>
+                </div>
+                <div class="col-md-12 col-sm-12" ng-show="coursesRecentFutureData !== undefined && coursesRecentFutureData !== null">
+                    <select class='form-control col-md-12 col-sm-12'
+                            ng-model="selectedRecentFutureCourse"
+                            ng-options="listItem.CourseIdentity for listItem in coursesRecentFutureData | filter:{Visible:true}"
+                            ng-change="selectedRecentFutureCourseListItem(selectedRecentFutureCourse);reportParameterData.coursesRecentFutureSingleParameterId={{input.parameterId}};">
+                        <option value="">Please select a {{input.parameterTitle}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class='col-md-2 col-sm-12 report-parameter-row-limiter'>
+                <!--<label class="col-md-4">
+                    <span class="col-md-12 col-sm-12">Show</span>
+                </label>
+                <div class="col-md-4">
+                    <select ng-model="selectedRecentFutureCourseShowRows" ng-options="opt as opt for opt in coursesRecentFutureLimiterOptions"></select>
+                </div>
+                <label class="col-md-4">
+                    <span class="col-md-12 col-sm-12">Rows</span>
+                </label>-->
+                <div class='col-sm-12' ng-show="coursesRecentFutureData == undefined || coursesRecentFutureData == null">
+                    <button class="btn btn-default btn-sm pull-right" ng-click="getCoursesRecentFutureData()();" title="Click to Selection List for {{input.parameterTitle}}">Get {{input.parameterTitle}} List</button>
+                </div>
+            </div>
+        </div>
+
+        <!--Course Past List-->
+        <div ng-repeat="input in report.inputParameters | filter: {'parameterType': 'CoursesPastSingle'} " class="row">
+            <div class='col-md-3 col-sm-12'>
+                <label class='col-md-12 col-sm-12 control-label report-parameter-label'>{{input.parameterTitle}}: </label>
+            </div>
+            <div class='col-md-7 col-sm-12'>
+                <div class="col-md-12 col-sm-12 DropdownListRefreshInfo" ng-show="coursesPastData == undefined || coursesPastData == null">
+                    <span>To Limit the Report by "{{input.parameterTitle}}" please get the List first ----></span>
+                </div>
+                <div class="col-md-12 col-sm-12" ng-show="coursesPastData !== undefined && coursesPastData !== null">
+                    <select class='form-control col-md-12 col-sm-12'
+                            ng-model="selectedPastCourse"
+                            ng-options="listItem.CourseIdentity for listItem in coursesPastData | filter:{Visible:true}"
+                            ng-change="selectedPastCourseListItem(selectedPastCourse);reportParameterData.coursesPastSingleParameterId={{input.parameterId}};">
+                        <option value="">Please select a {{input.parameterTitle}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class='col-md-2 col-sm-12 report-parameter-row-limiter'>
+                <!--<label class="col-md-4">
+                    <span class="col-md-12 col-sm-12">Show</span>
+                </label>
+                <div class="col-md-4">
+                    <select ng-model="selectedPastCourseShowRows" ng-options="opt as opt for opt in coursesPastLimiterOptions"></select>
+                </div>
+                <label class="col-md-4">
+                    <span class="col-md-12 col-sm-12">Rows</span>
+                </label>-->
+                <div class='col-sm-12' ng-show="coursesPastData == undefined || coursesPastData == null">
+                    <button class="btn btn-default btn-sm pull-right" ng-click="getCoursesPastData()();" title="Click to Selection List for {{input.parameterTitle}}">Get {{input.parameterTitle}} List</button>
+                </div>
+            </div>
+        </div>
+
+        <div class='row'></div>
+
+        <div class='row form-group'>
+            <div class='col-sm-12'>
+                <button class="btn btn-default btn-sm pull-right" title="Cancel" onclick="$('button.close').last().trigger('click')">Cancel</button>
+                <button class="btn btn-default btn-sm pull-right" ng-click="generateReport();" title="Click to Generate and Display the Report">Generate Report</button>
+                <button class="btn btn-default btn-sm pull-right" ng-click="exportReportData('csv');" title="Download Report Data in CSV Format">CSV Download</button>
+                <button class="btn btn-default btn-sm pull-right" ng-click="exportReportData('xlsx');" title="Download Report Data in XLSX-Excel Format">XLSX Download</button>
+                <button class="btn btn-default btn-sm pull-right" ng-click="exportReportData('xls');" title="Download Report Data in XLS-Excel Format">XLS Download</button>
+            </div>
+        </div>
+        <div class="row">
+            <h4><span>{{reportRunStatement}}</span></h4>
+        </div>
+        <div class="row {{StatusClass}}">
+            <div><span title="{{ExceptionMessage}}">{{reportRunStatus}}</span></div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+﻿@import "../modules/mixins";
+
+#documentUpload {
+    input[type="file"] {
+        display: none;
+    }
+    .pad-browse-button {
+        margin-top: 7px;
+    }
+    .pad-upload-value {
+        padding-top: 7px;
+        display: block;
+    }
+    .exceed-file-max {
+        color: red;
+    }
+    .file-information {
+        @include theBorderRadius(4px);
+        border: 1px solid #F1F1F1;
+        padding: 10px;
+        p {
+            margin-bottom: 0;
+        }
+    }
+}

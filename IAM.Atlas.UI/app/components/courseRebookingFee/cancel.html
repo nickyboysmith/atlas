@@ -1,0 +1,98 @@
+﻿<div id="cancelCourseRebookingFee" class="courseRebookingFee">
+
+    <form class="form-horizontal row" role="form">
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'></div>
+                <div class='col-sm-11'>
+                    {{selectedCourseType.selectedCourseTypeTitle}}
+                </div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'></div>
+                <div class='col-sm-11'>
+                    {{selectedCourseType.selectedCourseTypeCategoryName}}
+                </div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-1'></div>
+                <div class='col-sm-5'>
+                    Effective Date:
+                </div>
+                <div class='col-sm-6'>
+                    {{cancelCourseRebookingFeeDate | date:'dd MMM yyyy HH:mm:ss'}}
+                </div>
+            </div>
+        </div>
+        
+        <div class='panel'>
+
+            <div class='col-sm-12 form-group'>
+                <div class='form-line-holder'>
+                    <div class='col-sm-1'></div>
+                    <div class='col-sm-2'>
+                        Condition
+                    </div>
+                    <div class='col-sm-4'>
+                        Days Before
+                    </div>
+                    <div class='col-sm-5'>
+                        Rebooking Fee
+                    </div>
+                </div>
+            </div>
+
+            <div data-ng-repeat="dat in cancelCourseRebookingFees | filter: cancelCourseRebookingFeeDate">
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-1'></div>
+                        <div class='col-sm-2'>
+                            <label>{{dat.Condition}}</label>
+                        </div>
+                        <div class='col-sm-4'>
+                             {{dat.DaysBefore}}    
+                        </div>
+                        <div class='col-sm-4'>
+                             {{dat.CourseRebookingFee}}
+                        </div>
+                        <div class='col-sm-1'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='form-line-holder'>
+                <div class='col-sm-6'></div>
+                <div class='col-sm-6'>
+                    <button class="btn btn-default btn-sm"
+                            ng-click="cancelCourseRebookingFee()"
+                            title="Save">
+                        Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!--Message banner-->
+        <div class='form-line-holder'>
+            <div class="col-sm-12" ng-if="cancelSuccessMessage != ''">
+                <h3>{{ cancelSuccessMessage }}</h3>
+            </div>
+        </div>
+        <div class='form-line-holder'>
+            <div class="col-sm-12" ng-if="cancelValidationMessage != ''">
+                <h3>{{ cancelValidationMessage }}</h3>
+            </div>
+        </div>
+
+    </form>
+</div>
+

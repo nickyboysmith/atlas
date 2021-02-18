@@ -1,0 +1,97 @@
+﻿<div class="row section-container">
+
+    <div id="road-smart-pre"></div>
+    <div id="road-smart-branding-triangle-ish-thingy"></div>
+    <div id="road-smart-branding-container">
+        <img class="position-road-smart-logo"
+             src="/app_assets/images/iamroad_smart_logo_atlas.png" alt="" />
+    </div>
+
+    <div class="col-xs-12  col-sm-4">
+        <div class="company-logo"></div>
+    </div>
+    <div class="col-xs-12  col-sm-8">
+        <div class="main-title add-margin-to-title">DORS Course Booking</div>
+        <div class="main-subtitle">Online booking</div>
+    </div>
+</div>
+
+<div class="row section-container">
+    <div class="col-md-12 col-sm-12 col-xs-12 title-container add-margin-to-title">
+        <p class="top-text">You are in the process of booking a <span>{{selectedDORSSchemeName}}</span> program. Please select an Organisation from one of the Regions, in the list below.</p>
+    </div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12 title-container add-margin-to-title">
+        <div class="top-text" ng-show="!systemControl.NonAtlasAreaInfo == false && !systemControl.NonAtlasAreaLink == false">
+            <p class="top-text">
+                {{systemControl.NonAtlasAreaInfo}}:
+                <a href="{{systemControl.NonAtlasAreaLink}}"
+                   onclick="window.open(this.href, 'newwindow', 'width=800, height=600, scrollbars=yes, resizable=yes'); return false;">{{systemControl.NonAtlasAreaLinkTitle}}</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="col-xs-6"></div>
+    <div class="col-xs-6 rightalign">
+        <div class="licence-button btn" ng-show="clientWithMultipleCourseOptions" data-toggle="tooltip" title="Select Back to change Course Selection" ng-click="showMultipleCourseOptions();">Back</div>
+    </div>
+</div>
+
+<div class="row section-container">
+
+    <div class="col-xs-12 main-booking-title pull-left">
+        <h3>Please Select an Organisation</h3>
+    </div>
+
+
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-0 pull-left">
+        <div class="row form-line-holder organisationContactsAreaHeadings" id="organisationContacts">
+            <div class="col-md-5 tableHead">
+                <h3 align="center">Area</h3>
+            </div>
+            <div class="col-md-7 tableHead">
+                <h3 align="center">Organisation</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 main-booking-title" id="showProcessingSpinner" style="display:none;">
+        <div class="center-spinner">
+            <img src="/app_assets/images/ajax-loader.gif" />
+        </div>
+    </div>
+
+    <div class="col-xs-12 pull-left organisationContactsContainer">
+        <div class="row form-line-holder">
+            <div class="col-md-12" ng-repeat="contact in courseTypeOrganisations">
+                <div class="row form-line-holder">
+                    <div class="col-md-0 col-lg-0 col-sm-0 col-xs-12 organisationContactsContainerLine"></div>
+                    <div class="col-md-5">{{ contact.Area }}</div>
+                    <div class="col-md-7">
+                        <div class="row form-line-holder">
+                            <div class="col-md-9">{{ contact.OrganisationName }}</div>
+                            <div class="col-md-3">
+                                <input type="button" 
+                                       class="licence-button btn" 
+                                       title="Select: {{ contact.OrganisationName }} (Area: {{ contact.Area }})"
+                                       ng-click="registerClient(contact.OrganisationId, contact.CourseTypeId, contact.RegionId, contact.OrganisationName, contact.Area);" value="Select" />
+                            </div>
+                        </div>
+                        <div class="row form-line-holder" ng-show="showRow(contact.OrganisationEmail);">
+                            <div class="col-md-2"><label>Email:</label></div>
+                            <div class="col-md-6">{{ contact.OrganisationEmail }}</div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="row form-line-holder" ng-show="showRow(contact.OrganisationPhone);">
+                            <div class="col-md-2"><label>Phone:</label></div>
+                            <div class="col-md-6">{{ contact.OrganisationPhone }}</div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="row form-line-separator-20">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

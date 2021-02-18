@@ -1,0 +1,101 @@
+﻿<div id="interpreterLanguage" class="interpreterLanguage">
+
+    <system-feature-information title="Interpreter Administration"
+                                controller="InterpreterLanguageCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/interpreterLanguage/view"
+                                page-name="Interpreter Administration"></system-feature-information>
+
+    <form class="form-horizontal" role="form">
+
+        <div class='row'></div>
+        <div class='row'></div>
+
+        <div ng-show="isAdmin">
+            <div class='col-sm-12 form-group'>
+                <div class='col-sm-3'>
+                    <label>Organisation:</label>
+                </div>
+                <div class='col-sm-7'>
+                    <select ng-model="organisationId"
+                            ng-change="getInterpreterLanguagesByOrganisation(organisationId)"
+                            class='form-control'
+                            ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+                </div>
+                <div class='col-sm-2'></div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-3'>
+                <label>Language:</label>
+            </div>
+
+            <div class='col-sm-4'>
+                <select ng-model="selectedLanguage.selectedLanguageId"
+                        ng-change="getInterpreterNamesByOrganisationLanguage(selectedLanguage.selectedLanguageId)"
+                        class='form-control'
+                        ng-options="interpreterLanguage.LanguageId as interpreterLanguage.LanguageName for interpreterLanguage in interpreterLanguages">
+                </select>
+            </div>
+            <div class='col-sm-5'></div>
+        </div>
+
+
+
+
+        <!--<tr ng-repeat="organisation in organisations">
+            <td ng-click="getSystemConfigurationByOrganisation(organisation.Id, organisation.Name)"
+                ng-class="{selectedOrganisation : selectedOrganisation == organisation.Id}"
+                title="{{organisation.Name}}"
+                value="{{organisation.Id}}">
+                {{organisation.Name}}
+            </td>
+        </tr>-->
+
+
+
+
+
+
+        <div class="col-sm-12">
+            <div class="sml-scroll-div marginBottom10">
+                <table class="table table-hover table-bordered table-striped">
+                    <thead>
+                        <tr class="bootstrap-dialog-header">
+                            <th>Interpreter</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="interpreterName in interpreterNames">
+                            <td 
+                                ng-click="setSelectedInterpreter(interpreterName.interpreterId)"
+                                ng-class="{selectedInterpreter : selectedInterpreter == interpreterName.interpreterId}"
+                                title="{{interpreterName.InterpreterName}}"
+                                value="{{interpreterName.interpreterId}}">
+                                {{interpreterName.InterpreterName}} ({{interpreterName.InterpreterLanguageList}})
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-sm-12'>
+                <div class='col-sm-6'>
+                    <button class="btn btn-default btn-sm pull-left" ng-click="openAddInterpreterModal()">Add New</button>
+                </div>
+                <div class='col-sm-6'>
+                    <button class="btn btn-default btn-sm pull-right" ng-click="openEditInterpreterModal()">View Selected</button>
+                </div>
+            </div>
+        </div>
+
+       
+        <div class="row col-sm-12 noRightPadding" ng-if="!selectValidationMessage === false">
+            <div class="col-sm-12 validation-message noLeftPadding leftalign">{{ selectValidationMessage }}</div>
+        </div>
+
+    </form>
+</div>

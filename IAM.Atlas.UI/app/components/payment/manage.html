@@ -1,0 +1,91 @@
+﻿<div id="paymentType" class="paymentType">
+    <div class="Title row">
+        <h2>Payment Maintenance</h2>
+    </div>
+    <div class="row">
+    </div>
+    <form class="form-horizontal row" role="form">
+
+        <div ng-show="isAdmin">
+            <div class='row col-sm-12 marginBottom10'>
+                <div class='col-sm-2'>
+                    <label>Organisation:</label>
+                </div>
+                <div class='col-sm-4'>
+                    <select ng-model="organisationId"
+                            ng-change="getPaymentTypes(organisationId)"
+                            class='form-control'
+                            ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+                </div>
+                <div class='col-sm-6'></div>
+            </div>
+        </div>
+
+        <div class='row col-sm-12 marginBottom10'>
+            <div class='col-sm-12'>
+                <label>Payment Types</label>
+            </div>
+        </div>
+
+        <div class='row col-sm-12'>
+
+            <div class="col-sm-6">
+
+                <div class="sml-scroll-div">
+                    <table class="table table-hover table-bordered">
+                        <thead></thead>
+                        <tbody>
+                            <tr ng-repeat="paymentType in paymentTypes">
+                                <td ng-click="selectPaymentType(paymentType)"
+                                    ng-class="{selectedPaymentTypeId : selectedPaymentTypeId == paymentType.Id}"
+                                    value="{{paymentType.Id}}">
+                                    {{paymentType.Name}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class='col-sm-6'>
+
+                <div class='row marginBottom10'>
+                    <label class="col-sm-5">Payment Type</label>
+                    <div class='col-sm-7'>
+                        <input class="form-control" type="text" ng-model="paymentTypeDetails.Name" placeholder="Payment Type" />
+                    </div>
+                </div>
+                <div class='row marginBottom10'>
+                    <div class="col-sm-5">
+                        <label>Disabled</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input ng-model="paymentTypeDetails.Disabled"
+                                type="checkbox"
+                                class="checkbox-add-margin" />
+                    </div>
+                    <div class="col-sm-5"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="btn button-fill-width" data-ng-click="savePaymentType()">Save</div>
+                    </div>
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-3">
+                        <div class="btn button-fill-width" data-ng-click="addPaymentType()">Add New</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!successMessage === false">
+            <div class="col-sm-12 success-message noRightPadding rightalign">{{ successMessage }}</div>
+        </div>
+        <div class="row col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+            <div class="col-sm-12 validation-message noRightPadding rightalign">{{ validationMessage }}</div>
+        </div>
+
+    </form>
+</div>

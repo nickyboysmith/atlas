@@ -1,0 +1,148 @@
+﻿@import "../modules/_mixins";
+
+#trainerAbout {
+    input[type="file"] {
+        display: none;
+    }
+    .trainer-field-holder-row {
+        margin-bottom:10px;
+
+        div {
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+
+        /*label {
+            font-weight: normal;
+            padding-top: 7px;
+            font-size: 13px;
+        }*/
+        input {
+            width: 100%;
+            border-radius: 3px;
+            border: 1px solid #cecece;
+            padding:5px;
+        }
+        select {
+            width: 100%;
+            border-radius: 3px;
+            border: 1px solid #cecece;
+            padding: 5px 5px 4px 5px;
+        }
+        textarea {
+            width: 100%;
+            border-radius: 3px;
+            border: 1px solid #cecece;
+            padding: 5px;
+            height: auto!important;
+            overflow: hidden;
+        }
+        .textarea{
+            overflow-y:scroll;
+        }
+        .date-icon {
+            margin-top: 6px;
+            @include iconGetter(-6px, -506px);
+            height: 20px;
+            display: block;
+        }
+
+        .trainerDocumentList{
+            border:1px solid #ccc;
+            height:150px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            padding-left:0px;
+
+            .trainerDocumentListItem{
+                position:relative;
+                overflow-y: visible;
+                overflow-x: visible;                
+                .trainerDocumentTitle{
+                    padding:5px;
+                    width:100%;
+                    display:block;
+                }
+            }
+            .trainerDocumentListItem:hover
+            {
+                background-color: #ffffe6;
+            }
+
+            .trainerDocumentNotLastListItem {
+                //background-color: #cce9ff;
+                border-bottom: 1px solid #cce9ff;
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+
+        }
+
+        .tab-content-container {
+            border: 1px solid #cecece;
+            border-top: 0;
+            border-radius: 0px 0px 5px 5px;
+            padding: 3px 16px 13px;
+        }
+    }
+
+    .trainer-doc-container {
+        margin: 0px 1px 0 1px;
+    }
+
+    .trainer-file-upload-container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #cecece;
+
+        .image-preview {
+            margin-bottom: 10px;
+            //display: block;
+            width: 150px;
+            height: 150px;
+            border: 1px solid #eeeeee;
+            img {
+                width: 148px;
+                height: 148px;
+            }
+        }
+    }
+
+    .nav-tabs-short {
+        line-height: 0.5;
+        text-decoration: none;
+    }
+
+    .photocard-label-align {
+        padding-top: 1px!important;
+    }
+
+
+    .selectedTrainerVehicleDetailId {
+            background: #cce9ff !important;
+        }
+
+    .selectedTrainerVehicleDetailId:hover {
+        background: #ffffe6;
+        /*color: #fff;*/
+    }
+
+    .sml-scroll-div {
+        border: 1px solid black;
+        height:150px;
+        }
+
+}
+
+
+@media screen and (max-width: 767px) {
+    #trainerAbout {
+        .the-phone-number-container {
+            height: 60px;
+            overflow: visible;
+            margin-bottom: 10px;
+            display: block
+        }
+    }  
+}

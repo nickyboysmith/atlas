@@ -1,0 +1,78 @@
+﻿<div id="netcallAgents" class="netcallAgentsTable">
+
+    <system-feature-information title="netcall maintenance"
+                                controller="NetcallAgentsCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/users/netcallAgents"
+                                page-name="Netcall Maintenance"></system-feature-information>
+
+    <div class="Title row">
+        <h2></h2>
+    </div>
+    <form class="form-horizontal row" role="form">
+
+        <div ng-show="isAdmin">
+            <div class='col-sm-12 form-group'>
+                <div class='col-sm-3'>
+                    <label>Organisation:</label>
+                </div>
+                <div class='col-sm-9'>
+                    <select ng-model="organisationId"
+                            ng-change="getNetcallAgentsByOrganisation(organisationId)"
+                            class='form-control'
+                            ng-options="organisation.id as organisation.name for organisation in organisations">
+
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-12'>Netcall Agents</div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class="col-sm-11">
+                <div class="sml-scroll-div marginBottom10">
+                    <!--<div id=#netcallTable>-->
+                        <table class="table table-bordered">
+                            <thead></thead>
+                            <tbody>
+                                <tr ng-repeat="agent in netcallAgents" ng-class="{true: agent.Disabled}">
+                                    <td ng-click="setSelectedAgent(agent)"
+                                        ng-class="{selectedNetcallAgent: selectedNetcallAgent == agent.Id}"
+                                        title="{{agent.Name}}"
+                                        value="{{agent.Id}}">
+                                        {{agent.Name}} {login Id: {{agent.LoginId}} Number: {{agent.DefaultCallingNumber}}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    <!--</div>-->
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <button class="btn btn-default marginBottom10" ng-click="addNetcallAgent()">Add</button>
+                <button class="btn btn-default" ng-click="editNetcallAgentNumber()" ng-disabled="IsAgentSelected()">Edit</button>
+            </div>
+        </div>
+            
+
+            <div class="row">
+                <div class="col-sm-12">
+                   
+                    <div class="col-sm-6" ng-if="successMessage != ''">
+                        <h3>{{ successMessage }}</h3>
+                    </div>
+
+                    <div class="col-sm-6" ng-if="validationMessage != ''">
+                        <h3>{{ validationMessage }}</h3>
+                    </div>
+                </div>
+            </div>
+
+</form>
+</div>
+

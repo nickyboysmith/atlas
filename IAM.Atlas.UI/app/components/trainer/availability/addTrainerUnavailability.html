@@ -1,0 +1,132 @@
+﻿<style>
+    .highlight{
+        background: #76eff3;
+    }
+</style>
+<div>
+    Trainer: {{trainer.DisplayName}}
+    <h3>Add Unavailability</h3>
+    <table>
+        <tr>
+            <td>Start:</td>
+            <td>
+                <div class='col-sm-8'>
+                    <input class="form-control cm-sm-12" type="text" ng-model="unavailability.StartDate" ng-click="toggleStartCalendar()" />
+                </div>
+                <div class='col-sm-2 element-overflow-0'>
+                    <a ng-click="toggleStartCalendar()" ng-show="!displayStartCalendar" class="calendar-button col-sm-6" title="Show Calendar"><div></div></a>
+                    <a ng-click="toggleStartCalendar()" ng-show="displayStartCalendar" class="calendar-button col-sm-6" title="Hide Calendar"><div></div></a>
+                </div>
+                <div class='col-sm-12'>
+                    <div style="position:absolute;z-index:10;left:140px;" ng-show="displayStartCalendar">
+                        <date-picker ng-model="unavailability.StartDate" ng-mouseleave="toggleStartCalendar()" format-date="formatDate" parse-date="parseDate" on-date-selected="startDateSelected()"></date-picker>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <text-drop-down ng-model="unavailability.StartTime" items="items" ng-show="!unavailability.AllDay" ng-change="timeChanged()"></text-drop-down>
+                
+                <select ng-model="unavailability.StartTime" ng-show="false">
+                    <option>00:00</option>
+                    <option>01:00</option>
+                    <option>02:00</option>
+                    <option>03:00</option>
+                    <option>04:00</option>
+                    <option>05:00</option>
+                    <option>06:00</option>
+                    <option>07:00</option>
+                    <option>08:00</option>
+                    <option>10:00</option>
+                    <option>11:00</option>
+                    <option>12:00</option>
+                    <option>13:00</option>
+                    <option>14:00</option>
+                    <option>15:00</option>
+                    <option>16:00</option>
+                    <option>17:00</option>
+                    <option>18:00</option>
+                    <option>19:00</option>
+                    <option>20:00</option>
+                    <option>21:00</option>
+                    <option>22:00</option>
+                    <option>23:00</option>
+                </select>
+            </td>
+            <td>
+                <label><input type="checkbox" ng-model="unavailability.AllDay" ng-change="allDayChanged()" />All Day</label>
+            </td>
+        </tr>
+        <tr>
+            <td>End:</td>
+            <td>
+                <div class='col-sm-8'>
+                    <input class="form-control cm-sm-12" type="text" ng-model="unavailability.EndDate" ng-click="toggleEndCalendar()"  ng-show="unavailability.AllDay" ng-class="{highlight: highlightEndDate}" />
+                </div>
+                <div class='col-sm-2 element-overflow-0'>
+                    <a ng-click="toggleEndCalendar()" ng-show="!displayCalendar && unavailability.AllDay" class="calendar-button col-sm-6" title="Show Calendar"><div></div></a>
+                    <a ng-click="toggleEndCalendar()" ng-show="displayCalendar" class="calendar-button col-sm-6" title="Hide Calendar"><div></div></a>
+                </div>
+                <div class='col-sm-12'>
+                    <div style="position:absolute;z-index:10;left:140px;" ng-show="displayEndCalendar && unavailability.AllDay">
+                        <date-picker ng-model="unavailability.EndDate" ng-mouseleave="toggleEndCalendar()" format-date="formatDate" parse-date="parseDate" on-date-selected="endDateSelected()"></date-picker>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <text-drop-down ng-model="unavailability.EndTime" items="items" ng-show="!unavailability.AllDay" ng-change="timeChanged()" ng-class="{highlight: highlightEndTime}" css-class="{{getHighlightCss(highlightEndTime)}}"></text-drop-down>
+                <select ng-show="false">
+                    <option>00:00</option>
+                    <option>01:00</option>
+                    <option>02:00</option>
+                    <option>03:00</option>
+                    <option>04:00</option>
+                    <option>05:00</option>
+                    <option>06:00</option>
+                    <option>07:00</option>
+                    <option>08:00</option>
+                    <option>10:00</option>
+                    <option>11:00</option>
+                    <option>12:00</option>
+                    <option>13:00</option>
+                    <option>14:00</option>
+                    <option>15:00</option>
+                    <option>16:00</option>
+                    <option>17:00</option>
+                    <option>18:00</option>
+                    <option>19:00</option>
+                    <option>20:00</option>
+                    <option>21:00</option>
+                    <option>22:00</option>
+                    <option>23:00</option>
+                </select>
+            </td>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                <div style="margin-top:10px;">
+                    <button class="action-buttons btn" onclick="$('button.close').last().trigger('click')">Cancel</button>
+                </div>
+            </td>
+            <td colspan="2">
+                <div style="margin-top:10px;">
+                    <button class="action-buttons btn" ng-click="saveUnavailability()">Save</button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">{{validationMessage}}</td>
+        </tr>
+    </table>
+    <div data-ng-if="showSuccessFader == true">
+        <my-msgfader status="success"></my-msgfader>
+    </div>
+    <div data-ng-if="showErrorFader == true">
+        <my-msgfader status="error"></my-msgfader>
+    </div>
+</div>

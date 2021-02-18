@@ -1,0 +1,100 @@
+﻿<div id="documentUpload">
+
+    <div class="row form-line-separator-10">
+        <div class="col-sm-3">
+            <label>{{ theUploadLabel }}:</label>
+        </div><!-- end .col-sm-4 -->
+        <div class="col-sm-9">
+            <span class="pad-upload-value">{{ theUploadValue }}</span>
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-separator-10">
+        <div class="col-sm-3">
+            <label>Document:</label>
+        </div><!-- end .col-sm-4 -->
+        <div class="col-sm-7 pad-upload-value">
+            <input 
+                   class="form-control"
+                   ng-disabled="true"
+                   ng-model="document.FileName"
+                   type="text" />
+        </div>
+        <div class="col-sm-2">
+            <label 
+                   for="fileUpload" 
+                   class="btn pad-browse-button">
+                Browse
+            </label>
+            <input 
+                   id="fileUpload" 
+                   type="file"/>
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-separator-10">
+        <div class="col-sm-3"></div><!-- end .col-sm-4 -->
+        <div class="col-sm-7">
+            <div class="file-information">
+                <p ng-show="document.FileUploaded">File Size: {{ document.UploadedFileSize }}</p>
+                <p>Maximum File Size: {{ document.MaximumFileSize }}</p>
+                <p ng-show="document.ExceedsMaximum" class="exceed-file-max">Your file has exceeded your maximum upload size. Please upload a smaller file.</p>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+    </div><!-- end .row -->
+
+    <div id="showFileDetails" ng-show="document.FileUploaded && !document.ExceedsMaximum">
+        <div class="row form-line-separator" ng-show="document.IncorrectFileName">
+            <div class="col-sm-3"></div><!-- end .col-sm-3 -->
+            <div class="col-sm-7">
+                <p class="exceed-file-max"> Your file name can only include numbers, letters, underscores and dashes!</p>
+            </div>
+            <div class="col-sm-2"></div>
+        </div><!-- end .row -->
+        <div class="row form-line-separator-10">
+            <div class="col-sm-3">
+                <label>Name:</label>
+            </div><!-- end .col-sm-4 -->
+            <div class="col-sm-7">
+                <input id="documentFileName"
+                       class="form-control"
+                       ng-model="document.Name"
+                       type="text" />
+            </div>
+            <div class="col-sm-2"></div>
+        </div><!-- end .row -->
+        <div class="row form-line-separator-10">
+            <div class="col-sm-3">
+                <label>Title:</label>
+            </div><!-- end .col-sm-4 -->
+            <div class="col-sm-7">
+                <input class="form-control"
+                       ng-model="document.Title"
+                       type="text" />
+            </div>
+            <div class="col-sm-2"></div>
+        </div><!-- end .row -->
+        <div class="row form-line-separator-20">
+            <div class="col-sm-3">
+                <label>Description:</label>
+            </div><!-- end .col-sm-4 -->
+            <div class="col-sm-7">
+                <textarea class="form-control"
+                          rows="7"
+                          ng-model="document.Description"></textarea>
+            </div>
+            <div class="col-sm-2"></div>
+        </div><!-- end .row -->
+        <div class="row form-line-separator">
+            <div class="col-sm-2 col-sm-offset-10">
+                <div ng-click="processUpload()"
+                     class="btn pull-right">Save</div>
+            </div>
+        </div><!-- end .row -->
+    </div>
+
+
+
+
+</div>

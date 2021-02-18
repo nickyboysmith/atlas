@@ -1,0 +1,12 @@
+﻿<div id="uploadNewAllCourseDocument">
+    <upload-document the-upload-label="{{ theLabel }}"
+                     the-upload-value="{{ theLabelValue }}"
+                     maximum-file-size="{{ theMaxSize }}">
+    </upload-document>
+    <div ng-show="errorMessage != ''">
+        <div class="validation-message">{{ errorMessage }}</div>
+    </div>
+    <div ng-show="successMessage != ''">
+        {{ successMessage }}
+    </div>
+</div>

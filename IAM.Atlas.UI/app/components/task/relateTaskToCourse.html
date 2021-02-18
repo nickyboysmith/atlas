@@ -1,0 +1,47 @@
+﻿<div id="relateTaskToCourseDiv">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Courses</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table st-table="taskCourses" st-safe-src="taskCoursesTemplate" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            <input st-search="" class="form-control" placeholder="Filter Courses" type="search" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="taskCourse in taskCourses" ng-class="{taskSelectedOrganisationCourse : selectedCourseId == taskCourse.CourseId}">
+                        <td ng-click="selectCourse(taskCourse.CourseId)">
+                            {{ taskCourse.CourseReference }}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="text-center">
+                            <div ng-if="taskCoursesTemplate.length >= 1" class="TableSummary col-md-12 col-sm-12">
+                                {{taskCoursesTemplate.length}} Courses have been retrieved from the database
+                            </div>
+                            <div st-pagination="" st-items-by-page="maxResults" st-displayed-pages="7"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn" ng-click="linkTaskToCourse(selectedCourseId)" ng-disabled="selectedCourseId < 0">Link Course</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 validation-message">
+            {{validationMessage}}
+        </div>
+    </div>
+</div>

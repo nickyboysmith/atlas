@@ -1,0 +1,90 @@
+﻿<div id="ukVATRatesDiv">
+    <div class="row">
+        <div class="col-sm-6">
+            <div>
+                <h3>History</h3>
+            </div>
+            <div id="vatHistoryTableDiv">
+                <table class="table table-striped">
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="vatRate in vatRates">
+                            <td ng-click="selectVatRate(vatRate)"><span>{{ formatDateyyyyMondd(vatRate.EffectiveFromDate) }}: {{ vatRate.VATRate }}%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div>
+                &nbsp;
+            </div>
+            <div class="row" ng-show="currentVatRate != null">
+                <div class="col-sm-6">
+                    Current VAT Rate: 
+                </div>
+                <div class="col-sm-6">
+                    {{ currentVatRate.VATRate }}%
+                </div>
+            </div>
+            <div class="row" ng-show="currentVatRate != null">
+                <div class="col-sm-6">
+                    Effective From:
+                </div>
+                <div class="col-sm-6">
+                    {{ formatDateddMONyyyy(currentVatRate.EffectiveFromDate) }}
+                </div>
+            </div>
+            <div class="row marginBottom20">
+                <div class="col-sm-6">
+                    &nbsp;
+                </div>
+                <div class="col-sm-6">
+                    <button class="btn" ng-click="addUKVatRateModal()">Add VAT Rate Change</button>
+                </div>
+            </div>
+            <div class="row" ng-show="selectedVatRate != null">
+                <div class="col-sm-6">
+                    Selected VAT Rate:
+                </div>
+                <div class="col-sm-6">
+                    {{ selectedVatRate.VATRate }}%
+                </div>
+            </div>
+            <div class="row" ng-show="selectedVatRate != null">
+                <div class="col-sm-6">
+                    Effective From:
+                </div>
+                <div class="col-sm-6">
+                    {{ formatDateddMONyyyy(selectedVatRate.EffectiveFromDate) }}
+                </div>
+            </div>
+            <div class="row" ng-show="selectedVatRate != null && selectedVatRate.EffectiveToDate != null">
+                <div class="col-sm-6">
+                    Effective To:
+                </div>
+                <div class="col-sm-6">
+                    {{ formatDateddMONyyyy(selectedVatRate.EffectiveToDate) }}
+                </div>
+            </div>
+            <div class="row" ng-show="selectedVatRate != null">
+                <div class="col-sm-6">
+                    &nbsp;
+                </div>
+                <div class="col-sm-6">
+                    <button class="btn" ng-click="deleteSelectedVatRate()">Delete</button>
+                </div>
+            </div>
+            <div class="row" ng-show="statusMessage != null">
+                <div class="col-sm-6">
+                    &nbsp;
+                </div>
+                <div class="col-sm-6 validation-message">
+                    {{ statusMessage }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

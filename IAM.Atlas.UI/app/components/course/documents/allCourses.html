@@ -1,0 +1,87 @@
+﻿<div id="allCoursesDocuments">
+
+    <div class="row marginBottom10">
+        <system-feature-information title="documents for all courses"
+                                    controller="allCoursesDocumentsCtrl"
+                                    open-in-modal="true"
+                                    view-path="/app/components/course/documents/allCourses"
+                                    page-name="Documents for All Courses"></system-feature-information>
+
+        <!--Organisation-->
+    </div>
+
+    <div class='row marginBottom10' ng-show="isAdmin">
+        <div class="col-sm-3">
+            <label>Organisation:</label>
+        </div>
+        <div class='col-sm-9 form-line-separator'>
+            <select ng-init="getSelectedOrganisationId()"
+                    ng-change="getDocuments(selectedOrganisationId)"
+                    ng-model="selectedOrganisationId" class='col-sm-12 form-control'>
+                <option value="0">Organisation</option>
+                <option ng-repeat="organisation in organisations" value="{{organisation.id}}">{{organisation.name}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class='row form-line-separator tableDivHeight'>
+        <div class="col-sm-10">
+            <div>
+                <table st-table="documents" st-safe-src="displayDocuments" class="table">
+                    <thead>
+                        <tr>
+                            <th st-sort="Title">
+                                Documents
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input st-search="Title" class="form-control" placeholder="Filter Document Names" type="search" />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="document in documents" class="allCoursesDocumentList" ng-click="selectDocument(document.Id)" ng-class="{selectedAllCourseDocument : selectedDocumentId == document.Id}">
+                            <td>
+                                {{ document.Title }}
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                <div st-pagination="" st-items-by-page="20" st-displayed-pages="7"></div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-2 text-center">
+            <div class='row form-line-separator allCoursesButtonDivMargin'>
+                <button class="btn btn-block" ng-click="addNew()">Add New</button>
+            </div>
+            <div class='row form-line-separator'>
+                <button class="btn btn-block" ng-click="addExistingDocument()">Add Existing</button>
+            </div>
+            <div class='row form-line-separator'>
+                <button class="btn btn-block" ng-disabled="selectedDocumentId < 1" ng-click="editDetails()">Details</button>
+            </div>
+            <div class='row form-line-separator'>
+                <button class="btn btn-block" ng-disabled="selectedDocumentId < 1" ng-click="removeDocument()">Remove</button>
+            </div>
+            <div class='row form-line-separator'>
+                <button class="btn btn-block" ng-disabled="selectedDocumentId < 1" ng-click="deleteDocument()">Delete</button>
+            </div>
+        </div>
+    </div>
+    <div class="row form-line-separator text-center">
+        <div ng-show="errorMessage != ''">
+            <div class="validation-message">{{ errorMessage }}</div>
+        </div>
+        <div ng-show="successMessage != ''">
+            {{ successMessage }}
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,118 @@
+﻿<div id="newPaymentReconciliation">
+    <div class="row margintop10 marginBottom10">
+        <div class="col-md-3">Configuration:</div>
+        <div class="col-md-4">
+            <select ng-model="configurationId"
+                    ng-change="getConfigurationData(configurationId)"
+                    class='form-control'
+                    ng-options="configuration.Id as configuration.Name for configuration in configurations"></select>
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-md-3"></div>
+        <div class="col-md-4"><strong>For Payments</strong></div>
+        <div class="col-md-5"></div>
+    </div>
+    <div class="row marginBottom10">
+        <div class="col-md-3">Between:</div>
+        <div class="col-md-3">
+            <div class="row marginBottom20">
+                <div class="col-sm-8">
+                    <input class="form-control"
+                           type="text"
+                           ng-model="fromDate"
+                           ng-click="toggleFromCalendar()" />
+                </div>
+                <div class="col-sm-4">
+                    <a ng-click="toggleFromCalendar()" ng-show="!displayFromCalendar" class="calendar-button" title="Show Calendar"><div></div></a>
+                    <a ng-click="toggleFromCalendar()" ng-show="displayFromCalendar" class="calendar-button" title="Hide Calendar"><div></div></a>
+                </div>
+            </div>
+            <div class="row" ng-show="displayFromCalendar">
+                <div class="col-sm-12">
+                    <date-picker ng-model="fromDate"
+                                 format-date="formatDate"
+                                 ng-mouseleave="toggleFromCalendar(fromDate)"></date-picker>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1">and</div>
+        <div class="col-md-3">
+            <div class="row marginBottom20">
+                <div class="col-sm-8">
+                    <input class="form-control"
+                           type="text"
+                           ng-model="toDate"
+                           ng-click="toggleToCalendar()" />
+                </div>
+                <div class="col-sm-4">
+                    <a ng-click="toggleToCalendar()" ng-show="!displayToCalendar" class="calendar-button" title="Show Calendar"><div></div></a>
+                    <a ng-click="toggleToCalendar()" ng-show="displayToCalendar" class="calendar-button" title="Hide Calendar"><div></div></a>
+                </div>
+            </div>
+            <div class="row" ng-show="displayToCalendar">
+                <div class="col-sm-12">
+                    <date-picker ng-model="toDate"
+                                 format-date="formatDate"
+                                 ng-mouseleave="toggleToCalendar(toDate)"></date-picker>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row marginBottom10">
+        <div class="col-md-3">Name:</div>
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model="reconciliation.name" />
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+    <div class="row marginBottom10">
+        <div class="col-md-3">Reference:</div>
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model="reconciliation.reference" />
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+    <!--<div id="documentUpload">
+        <div class="row form-line-separator-10">
+            <div class="col-md-3">
+                <label>File:</label>
+            </div>
+            <div class="col-md-4 pad-upload-value">
+                <input class="form-control"
+                       ng-disabled="true"
+                       ng-model="reconciliation.FileName"
+                       type="text" />
+            </div>
+            <div class="col-md-2">
+                <label for="fileUpload"
+                       class="btn pad-browse-button">
+                    Browse
+                </label>
+                <input id="fileUpload"
+                       type="file"
+                       accept=".csv" />
+            </div>
+        <div class="col-md-2"></div>
+        </div>
+    </div>-->
+    <div id="documentUpload">
+        <upload-document the-upload-label="{{ theLabel }}"
+                         the-upload-value="{{ theLabelValue }}"
+                         maximum-file-size="{{ theMaxSize }}"
+                         accept=".csv">
+        </upload-document>
+    </div>
+        <!--<div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-2 marginBottom10">
+                <div class="btn" ng-click="saveNewReconciliation(fromDate, toDate)">Import File</div>
+            </div>
+            <div class="col-md-7"></div>
+        </div>-->
+        <div class="row">
+            <div class="col-md-12 validation-message">{{validationMessage}}</div>
+        </div>
+    </div>

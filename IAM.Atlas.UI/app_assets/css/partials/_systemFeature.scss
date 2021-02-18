@@ -1,0 +1,45 @@
+﻿
+
+.systemFeature {
+    
+    /*width: 900px;*/
+
+        form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+         /*textarea {
+	            height: 300px;
+            }*/
+
+        tr.isSelected td {
+            background: #00508f;
+            color: #fff;
+            }
+
+         .selectedFeatureGroup {
+            background: #00508f;
+            color: #fff;
+        }
+
+         .selectedFeatureGroup:hover {
+            background: #00508f;
+            color: #fff;
+        }
+
+         .selectedFeatureGroupItem {
+            background: #00508f;
+            color: #fff;
+        }
+
+         .selectedFeatureGroupItem:hover {
+            background: #00508f;
+            color: #fff;
+        }
+        
+    }
+}
+
+
+ 

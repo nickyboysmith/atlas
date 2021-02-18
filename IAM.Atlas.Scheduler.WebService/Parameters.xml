@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<parameters >
+
+  <!--<parameter name="Log Folder Location" description="Please provide a shared location where the app can write log files to" defaultValue="\\Logs\MvcApp\Logs\" tags="">
+    <parameterEntry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='LogFolder']/@value" />
+  </parameter>
+  defaultValue="http://localhost:61938/Service1.svc"
+  scope="\\web.config$"
+  <parameter name="DefaultEndpoint"
+             description="Please provide the Endpoint address for OutDorsService.svc that this MVC App needs to call"
+             defaultValue="Nick.svc"
+             tags="">
+    <parameterEntry
+      kind="XmlFile"
+      match="//system.serviceModel/client/endpoint/@address" />
+  </parameter>-->
+
+</parameters>

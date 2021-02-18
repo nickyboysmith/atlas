@@ -1,0 +1,214 @@
+ 
+******************************************************************************************
+ 
+**Running Script: "Migration_070.001_MigrateClientData.sql" Jul  1 2017  4:13PM
+Msg 2705, Level 16, State 4, Line 30
+Column names in each table must be unique. Column name 'TempFieldId' in table 'dbo.Location' is specified more than once.
+ 
+*Migrating Data For: Cleveland Driver Improvement Group .... OldSystemID: 178 .... NewSystemID: 318
+ 
+*Migrate Client Data Tables Jul  1 2017  4:13PM
+ 
+*Create Temp Table #OldClient Jul  1 2017  4:13PM
+
+(56440 row(s) affected)
+ 
+*POPULATE Client Table Jul  1 2017  4:32PM
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(23878 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(56440 row(s) affected)
+ 
+*POPULATE ClientPreviousId Table Jul  1 2017  4:33PM
+
+(56440 row(s) affected)
+ 
+*Set Client Gender Where known.... Jul  1 2017  4:33PM
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(20255 row(s) affected)
+
+(0 row(s) affected)
+
+(20255 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(35864 row(s) affected)
+
+(0 row(s) affected)
+
+(35864 row(s) affected)
+
+(0 row(s) affected)
+ 
+*POPULATE ClientLicence Table Jul  1 2017  4:33PM
+
+(56440 row(s) affected)
+ 
+*POPULATE ClientReference Table Jul  1 2017  4:33PM
+
+(21745 row(s) affected)
+ 
+*SET Phone Type ID Variables Jul  1 2017  4:33PM
+ 
+*Create Temp Table for Client Phone Numbers and Addresses Jul  1 2017  4:33PM
+
+(56440 row(s) affected)
+ 
+*Save Client Home Phone Numbers Jul  1 2017  4:41PM
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(7660 row(s) affected)
+
+(7660 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(7660 row(s) affected)
+ 
+*Save Client Work Phone Numbers Jul  1 2017  4:41PM
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(247 row(s) affected)
+
+(247 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(288 row(s) affected)
+ 
+*Save Client Mobile Phone Numbers Jul  1 2017  4:41PM
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(17883 row(s) affected)
+
+(17883 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(18768 row(s) affected)
+ 
+*Save Client Fax Numbers Jul  1 2017  4:41PM
+
+(0 row(s) affected)
+ 
+*Save Client Online Phone Numbers Jul  1 2017  4:41PM
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(30261 row(s) affected)
+
+(30261 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(30343 row(s) affected)
+ 
+*Save Client Addresses Jul  1 2017  4:42PM
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(56440 row(s) affected)
+
+(56440 row(s) affected)
+
+(56440 row(s) affected)
+ 
+*Save Client Notes Jul  1 2017  4:42PM
+
+(129999 row(s) affected)
+ 
+*Save Client Note Jul  1 2017  4:43PM
+
+(129999 row(s) affected)
+ 
+*Save Client Email Jul  1 2017  4:43PM
+
+(39668 row(s) affected)
+
+(39668 row(s) affected)
+ 
+*Save Client Organisation Jul  1 2017  4:43PM
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(4 row(s) affected)
+
+(56440 row(s) affected)
+ 
+*Save Client Special Requirements Jul  1 2017  4:44PM
+
+(1039 row(s) affected)
+ 
+*Tidy Up Jul  1 2017  4:44PM
+ 
+*Tidy Up Temp Tables Jul  1 2017  4:44PM
+ 
+*Tidy Up Temp Columns Jul  1 2017  4:44PM
+ 
+**Completed Script: "Migration_070.001_MigrateClientData.sql" Jul  1 2017  4:44PM
+ 
+******************************************************************************************

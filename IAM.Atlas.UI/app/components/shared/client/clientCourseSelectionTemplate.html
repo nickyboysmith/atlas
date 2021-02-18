@@ -1,0 +1,64 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="course-selection-container">
+            <div class="row onlineClientRow">
+            
+                <div class="col-xs-12" ng-show="noCoursesForDateSelectedLabel.length > 0">
+                    <span class="NoCourses">No courses are available for '{{noCoursesForDateSelectedLabel}}'. <span class="SelectOther">Please select one of the other Date Options above.</span></span>
+                </div>
+
+                <div class="col-xs-10" ng-show="courses.length > 0">
+                    <div class="main-page-title">
+                        Please select one of the courses:
+                    </div><!-- end .main-page-title -->
+                    <p>NB. Courses with "<span class="interpreter">I</span>" in-front of the start date has an interpreter available.</p>
+                </div>
+
+                <!-- we only show the book button if it's a reschedule -->
+                <div class="col-xs-2" style="z-index: 10; padding-top: 20px;" ng-show="courseSelected.CourseId > 0 && courseSelected.Reschedule == true">
+                    <div class="edit-button btn" ng-click="clientRescheduleCourseDetails(course)">Book</div>
+                </div>
+
+                <!--<div class="col-xs-12" ng-show="noCoursesForDateSelectedLabel.length == 0">-->
+                <div class="col-xs-12" ng-show="courses.length > 0">
+                    <div class="row onlineClientRow">
+                        <div class="course-list-container">
+                            <table class="table">
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th>Start Date & Time</th>
+                                    <th>End Date & Time</th>
+                                    <th>Location</th>
+                                    <th></th>
+                                </tr>
+                                <tr ng-repeat="course in courses | orderBy: 'StartDate'" ng-click="selectCourse($event, course)">
+                                    <td>
+                                        <input name="select-course"
+                                               type="radio" />
+                                    </td>
+                                    <td>
+                                        <span ng-if="course.HasInterpreter == true"
+                                              class="interpreter">I</span>
+                                    </td>
+                                    <td>{{ course.StartDateFormated }}</td>
+                                    <td>{{ course.EndDateFormated }}</td>
+                                    <td>
+                                        <span class="information">
+                                            <img src="/app_assets/images/venue_information.png"
+                                                 ng-click="showTheVenueLocationModal(course)" />
+                                        </span>
+                                        {{ course.Location }}
+                                    </td>
+                                    <td>{{ limitedPlaceCheck(course.Booked, course.MaxPlaces) }}</td>
+                                </tr>
+                            </table>
+                        </div><!-- end .course-list-container -->
+
+
+                    </div><!-- end .row -->
+                </div><!-- end .col-xs-12 -->
+            </div><!-- end .row -->
+        </div><!-- end .course-selection-container -->
+    </div><!-- end .col-xs-12 -->
+</div><!-- end .row -->

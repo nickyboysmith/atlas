@@ -1,0 +1,68 @@
+﻿#clientCourseConfirmation {
+
+        .pull-text-right {
+        text-align: right;
+        a {
+            color: #00b3e1;
+            text-decoration: none;
+        }
+        a:hover {
+            background: none;
+            text-decoration: underline;
+        }
+    }
+
+    .terms-container {
+        height: 20px; 
+    }
+    .terms-acceptance-container {
+        display: block;
+        float: left;
+        margin-top: -2px;
+        margin-right: 10px;
+    }
+    .paragraph-float {
+        float: left;
+    }
+
+    .reduce-text-size {
+        font-size: 11px;
+        a {
+            font-size: inherit!important;
+            padding: 0;
+        }
+    }
+
+    .terms-modal-link {
+        color: #00b3e1;
+        cursor: pointer;
+    }
+
+    .terms-modal-link:hover {
+        text-decoration: underline;
+    }
+
+    .reschedule-note {
+        padding: 10px;
+        border: 1px solid #cecece;
+        .main-title {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        p {
+
+        }
+    }
+
+    .course-detail-margin {
+        margin-top: 10px;
+    }
+
+    #googleMapContainer {
+        #map {
+            height: 250px;
+        }
+    }
+
+
+}

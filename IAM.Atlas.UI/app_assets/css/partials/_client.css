@@ -1,0 +1,176 @@
+﻿.AddClient {
+  width: 850px;
+  height: auto;
+  overflow: visible; }
+  .AddClient #DORSDataDiv {
+    border: 1px solid #c7c7c7;
+    background-color: #f2f2f2; }
+    .AddClient #DORSDataDiv .angular-date-picker {
+      z-index: 2000 !important; }
+  .AddClient .confirmation-button-float-right {
+    float: right;
+    width: 100%; }
+  .AddClient .line-holder {
+    height: auto;
+    overflow: hidden; }
+  .AddClient .confirmation-container {
+    padding-top: 4px; }
+    .AddClient .confirmation-container .checkbox-confirm-container {
+      float: left;
+      margin-right: 6px; }
+    .AddClient .confirmation-container .text-container {
+      float: left;
+      width: auto; }
+  .AddClient .AddFavourite {
+    position: absolute;
+    top: 0;
+    right: 20px; }
+  .AddClient form {
+    width: 100%;
+    height: auto;
+    overflow: visible; }
+    .AddClient form .row {
+      margin-bottom: 5px; }
+    .AddClient form .control-button {
+      margin-left: -25px; }
+    .AddClient form .control-label {
+      display: block;
+      white-space: nowrap;
+      padding: 0;
+      text-align: left; }
+
+.RegisterClient {
+  width: 850px;
+  height: auto;
+  overflow: visible; }
+  .RegisterClient #DORSDataDiv {
+    border: 1px solid #c7c7c7;
+    background-color: #f2f2f2; }
+    .RegisterClient #DORSDataDiv .angular-date-picker {
+      z-index: 2000 !important; }
+  .RegisterClient .confirmation-button-float-right {
+    float: right;
+    width: 100%; }
+  .RegisterClient .line-holder {
+    height: auto;
+    overflow: hidden; }
+  .RegisterClient .confirmation-container {
+    padding-top: 4px; }
+    .RegisterClient .confirmation-container .checkbox-confirm-container {
+      float: left;
+      margin-right: 6px; }
+    .RegisterClient .confirmation-container .text-container {
+      float: left;
+      width: auto; }
+  .RegisterClient .AddFavourite {
+    position: absolute;
+    top: 0;
+    right: 20px; }
+  .RegisterClient form {
+    width: 100%;
+    height: auto;
+    overflow: visible; }
+    .RegisterClient form .row {
+      display: inline-block; }
+    .RegisterClient form .control-button {
+      margin-left: -25px; }
+    .RegisterClient form .control-label {
+      display: block;
+      white-space: nowrap;
+      padding: 0;
+      text-align: left; }
+
+.ClientDetails .btn-blue {
+  background-color: #1095ff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1095ff), to(#004176));
+  background-image: -webkit-linear-gradient(top, #1095ff, #004176);
+  background-image: -moz-linear-gradient(top, #1095ff, #004176);
+  background-image: -ms-linear-gradient(top, #1095ff, #004176);
+  background-image: -o-linear-gradient(top, #1095ff, #004176);
+  background-image: linear-gradient(to bottom, #1095ff, #004176);
+  filter: progid:DXImageTransform.Microsoft.gradient GradientType=0, startColorstr=#1095ff, endColorstr=#004176; }
+
+.ClientDetails .btn-blue:hover {
+  color: #cccccc;
+  background-color: #75c2ff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#75c2ff), to(#006cc2));
+  background-image: -webkit-linear-gradient(top, #75c2ff, #006cc2);
+  background-image: -moz-linear-gradient(top, #75c2ff, #006cc2);
+  background-image: -ms-linear-gradient(top, #75c2ff, #006cc2);
+  background-image: -o-linear-gradient(top, #75c2ff, #006cc2);
+  background-image: linear-gradient(to bottom, #75c2ff, #006cc2);
+  filter: progid:DXImageTransform.Microsoft.gradient GradientType=0, startColorstr=#75c2ff, endColorstr=#006cc2; }
+
+.ClientDetails .Title {
+  vertical-align: top;
+  padding-left: 0; }
+  .ClientDetails .Title h2 {
+    margin-top: 2px;
+    padding-left: 0;
+    vertical-align: top; }
+  .ClientDetails .Title h3 {
+    margin-top: 4px;
+    padding-left: 0;
+    vertical-align: middle; }
+
+.ClientDetails .add-licence-margin {
+  margin-bottom: 5px; }
+
+.ClientDetails .reduced-text-size {
+  font-size: 13px; }
+
+.ClientDetails .TopButtons {
+  margin-left: -5px;
+  padding-left: 0;
+  padding-right: 0; }
+  .ClientDetails .TopButtons button {
+    margin-right: 0; }
+  .ClientDetails .TopButtons button.last {
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0; }
+
+.ClientDetails .details textarea {
+  border: none; }
+
+.ClientDetails .top-button-container-10 {
+  margin-top: 10px; }
+
+.ClientDetails .top-button-container-20 {
+  margin-top: 20px; }
+
+.ClientDetails .bottom-button-container-20 {
+  margin-bottom: 20px; }
+
+.ClientDetails .extended-button {
+  width: 100%; }
+
+.element-overflow-0 {
+  width: 0;
+  margin-left: 0; }
+
+.element-overflow-1 {
+  width: 0;
+  margin-left: -8.33%; }
+
+.element-overflow-2 {
+  width: 0;
+  margin-left: -16.66%; }
+
+.element-overflow-3 {
+  width: 0;
+  margin-left: -25%; }
+
+.form-control {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 9px;
+  padding-right: 9px; }
+
+/*.control-label {
+    display: block;
+    white-space: nowrap;
+    padding: 0;
+    text-align: left;
+}*/
+

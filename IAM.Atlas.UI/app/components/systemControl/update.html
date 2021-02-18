@@ -1,0 +1,377 @@
+﻿<div id="systemControl" class="systemControl">
+
+    <div class="Title row">
+        <h2></h2>
+    </div>
+    <form class="form-horizontal row" role="form">
+
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-7">
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class="col-sm-5"></div>
+                            <div class='noLeftPadding col-sm-1'>
+                                <input type="checkbox" ng-model="systemControl.SystemAvailable" />
+                            </div>
+                            <div class='noLeftPadding col-sm-6 blueitalic'>System Available</div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                Maximum Failed Logins
+                            </div>
+                            <div class='noLeftPadding col-sm-1'>
+                                <input type="text" class="form-control number" ng-model="systemControl.MaxFailedLogins" placeholder="9" />
+                            </div>
+                            <div class='noLeftPadding col-sm-6'></div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                System Activity Timeout
+                            </div>
+                            <div class='noLeftPadding col-sm-2'>
+                                <input type="text" class="form-control number" ng-model="systemControl.SystemInactivityTimeout" placeholder="99999" />
+                            </div>
+                            <div class='noLeftPadding col-sm-5'>
+                                Seconds
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                Atlas System From Email Name
+                            </div>
+                            <div class='noLeftPadding col-sm-5'>
+                                <input type="text" class="form-control" ng-model="systemControl.AtlasSystemFromName" placeholder="Email Name" />
+                            </div>
+                            <div class='noLeftPadding col-sm-2'></div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                Atlas System Email Address
+                            </div>
+                            <div class='noLeftPadding col-sm-5'>
+                                <input type="text" class="form-control" ng-model="systemControl.AtlasSystemFromEmail" placeholder="Email Address" />
+                            </div>
+                            <div class='noLeftPadding col-sm-2'></div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                System Blocked Message
+                            </div>
+                            <div class='noLeftPadding col-sm-7'>
+                                <input type="text" class="form-control" ng-model="systemControl.SystemBlockedMessage" placeholder="System Blocked Message" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                Feedback Name
+                            </div>
+                            <div class='noLeftPadding col-sm-5'>
+                                <input type="text" class="form-control" ng-model="systemControl.FeedbackName" placeholder="Feedback Name" />
+                            </div>
+                            <div class='noLeftPadding col-sm-2'></div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                Feedback Email Address
+                            </div>
+                            <div class='noLeftPadding col-sm-5'>
+                                <input type="text" class="form-control" ng-model="systemControl.FeedbackEmail" placeholder="Email Address" />
+                            </div>
+                            <div class='noLeftPadding col-sm-2'></div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                System Status Message
+                            </div>
+                            <div class='noLeftPadding col-sm-5'>
+                                <input type="text" class="form-control" ng-model="systemControl.SystemStatus" placeholder="System Status Message" />
+                            </div>
+                            <div class='noLeftPadding col-sm-2'></div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                System Status Colour
+                            </div>
+                            <div class='noLeftPadding col-sm-5'>
+                                <input type="text" class="form-control" ng-model="systemControl.SystemStatusColour" placeholder="System Status Colour" />
+                            </div>
+                            <div class='noLeftPadding col-sm-2'></div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class="col-sm-5"></div>
+                            <div class='noLeftPadding col-sm-1'>
+                                <input type="checkbox" ng-model="systemControl.MonitorForDuplicateClients" />
+                            </div>
+                            <div class='noLeftPadding col-sm-6 blueitalic'>Monitor For Duplicate Clients</div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                Default DORS Connection
+                            </div>
+                            <div class='noLeftPadding col-sm-7'>
+
+                                <select ng-model="selectedDefaultDORSConnection"
+                                        ng-change="selectDefaultDORSConnection(selectedDefaultDORSConnection)"
+                                        class='form-control number'
+                                        ng-options="defaultDORSConnection.Id as defaultDORSConnection.Name + '/' + defaultDORSConnection.LoginName for defaultDORSConnection in defaultDORSConnections">
+                                    <option value="" disabled>Organisation Name/DORS Connection Login Name</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                DORS Default Connection Rotates
+                            </div>
+                            <div class='noLeftPadding col-sm-2'>
+                                <input type="text"
+                                        class="form-control number"
+                                        ng-model="systemControl.HoursBetweenDORSConnectionRotation"
+                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                            </div>
+                            <div class='noLeftPadding col-sm-2'>
+                                Hours
+                            </div>
+                            <div class='noLeftPadding col-sm-3'></div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                Maximum Emails to Process at Once
+                            </div>
+                            <div class='noLeftPadding col-sm-2'>
+                                <input type="text"
+                                        class="form-control number"
+                                        ng-model="systemControl.MaxNumberEmailsToProcessAtOnce"
+                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                            </div>
+                            <div class='noLeftPadding col-sm-5'></div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                Maximum Emails to Process per Day
+                            </div>
+                            <div class='noLeftPadding col-sm-2'>
+                                <input type="text"
+                                        class="form-control"
+                                        ng-model="systemControl.MaxNumberEmailsToProcessPerDay"
+                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                            </div>
+                            <div class='noLeftPadding col-sm-5'></div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                Default Payment Provider
+                            </div>
+                            <div class='noLeftPadding col-sm-7'>
+
+                                <select ng-model="selectedDefaultPaymentProvider"
+                                        ng-change="selectDefaultPaymentProvider(selectedDefaultPaymentProvider)"
+                                        class='form-control'
+                                        ng-options="defaultPaymentProvider.Id as defaultPaymentProvider.Name for defaultPaymentProvider in defaultPaymentProviders">
+                                    <option value="" disabled>Default Payment Provider</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                Non-Atlas Area Information
+                            </div>
+                            <div class='noLeftPadding col-sm-7'>
+                                <textarea ng-model="systemControl.NonAtlasAreaInfo"
+                                            class="form-control"
+                                            maxlength="1000"
+                                            placeholder="Non-Atlas Area Information"></textarea>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                Non-Atlas Area Web Link
+                            </div>
+                            <div class='noLeftPadding col-sm-5'>
+                                <input type="text" class="form-control" ng-model="systemControl.NonAtlasAreaLink" placeholder="http://non-atlas-area-web-link.info" />
+                            </div>
+                            <div class='noLeftPadding col-sm-2'></div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'>
+                                Non-Atlas Area Web Link Title
+                            </div>
+                            <div class='noLeftPadding col-sm-5'>
+                                <input type="text" class="form-control" ng-model="systemControl.NonAtlasAreaLinkTitle" placeholder="Non-Atlas Area Web Link Title" />
+                            </div>
+                            <div class='noLeftPadding col-sm-2'></div>
+                        </div>
+                    </div>
+
+                    <div class='col-sm-12 form-group'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-5'></div>
+                            <div class='noLeftPadding col-sm-5'>
+                                <button class="btn btn-default btn-sm"
+                                        ng-click="save()"
+                                        title="Save Settings">
+                                    Save Settings
+                                </button>
+                            </div>
+                            <div class='noLeftPadding col-sm-2'></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Online Booking System Notice</div>
+                        <div class="panel-body">
+                            <div class='col-sm-12 form-group'>
+                                <div class='form-line-holder'>
+                                    <div class="col-sm-5"></div>
+                                    <div class='noLeftPadding col-sm-1'>
+                                        <input type="checkbox" ng-model="systemControl.OnlineBookingBlocked" />
+                                    </div>
+                                    <div class='noLeftPadding col-sm-5 blueitalic'>Blocked</div>
+                                </div>
+                            </div>
+
+                            <div class='col-sm-12 form-group'>
+                                <div class='form-line-holder'>
+                                    <div class="col-sm-5"></div>
+                                    <div class='noLeftPadding col-sm-1'>
+                                        <input type="checkbox" ng-model="systemControl.OnlineBookingSystemNoticeOn" />
+                                    </div>
+                                    <div class='noLeftPadding col-sm-5 blueitalic'>System Notice On</div>
+                                </div>
+                            </div>
+
+                            <div class='col-sm-12 form-group'>
+                                <div class='form-line-holder'>
+                                    <div class='col-sm-5'>
+                                        Message
+                                    </div>
+                                    <div class='noLeftPadding col-sm-7'>
+                                        <textarea class="form-control" ng-model="systemControl.OnlineBookingSystemNoticeMessage" maxlength="100" placeholder="Message"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class='col-sm-12 form-group'>
+                                <div class='form-line-holder'>
+                                    <div class="col-sm-5"></div>
+                                    <div class='noLeftPadding col-sm-1'>
+                                        <input type="checkbox" ng-model="systemControl.OnlineBookingSystemNoticeClickHereOn" />
+                                    </div>
+                                    <div class='noLeftPadding col-sm-5 blueitalic'>Click Here On</div>
+                                </div>
+                            </div>
+
+                            <div class='col-sm-12 form-group'>
+                                <div class='form-line-holder'>
+                                    <div class='col-sm-5'>
+                                        Click Here Message
+                                    </div>
+                                    <div class='noLeftPadding col-sm-7'>
+                                        <textarea class="form-control" ng-model="systemControl.OnlineBookingSystemNoticeClickHereMessage" maxlength="100" placeholder="Click Here Message"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class='col-sm-12 form-group'>
+                                <div class='form-line-holder'>
+                                    <div class='col-sm-5'>
+                                        Click Here Link
+                                    </div>
+                                    <div class='noLeftPadding col-sm-7'>
+                                        <textarea class="form-control" ng-model="systemControl.OnlineBookingSystemNoticeClickHereLink" maxlength="200" placeholder="Click Here Link"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class='col-sm-12 form-group'>
+                                <div class='form-line-holder'>
+                                    <div class='col-sm-5'>
+                                        Colour
+                                    </div>
+                                    <div class='noLeftPadding col-sm-5'>
+                                        <input type="text" class="form-control" ng-model="systemControl.OnlineBookingSystemNoticeColour" placeholder="" />
+                                    </div>
+                                    <div class='noLeftPadding col-sm-2'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <!--Message banner-->
+        <div class='form-line-holder'>
+            <div class="col-sm-12" ng-if="successMessage != ''">
+                <div class="success-message">{{ successMessage }}</div>
+            </div>
+        </div>
+        <div class='form-line-holder'>
+            <div class="col-sm-12" ng-if="validationMessage != ''">
+                <div class="validation-message">{{ validationMessage }}</div>
+            </div>
+        </div>
+
+    </form>
+</div>
+

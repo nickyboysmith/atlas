@@ -1,0 +1,54 @@
+﻿<div id="allCourseTypesDocumentsAddExisting">
+    <div class='row form-line-separator tableDivHeight'>
+        <div class="col-sm-12">
+            <div>
+                <table st-table="documents" st-safe-src="displayDocuments" class="table">
+                    <thead>
+                        <tr>
+                            <th st-sort="Title">
+                                Documents not assigned to all Course Types
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input st-search="Title" class="form-control" placeholder="Filter Document Names" type="search" />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="document in documents" class="allCourseTypesDocumentList" ng-click="selectDocument(document.Id)" ng-class="{selectedDocument : selectedExistingDocumentId == document.Id}">
+                            <td>
+                                {{ document.Title }}
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                <div st-pagination="" st-items-by-page="10" st-displayed-pages="7"></div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row form-line-separator">
+        <div class="col-sm-6 text-left">
+            <button class="btn" ng-disabled="selectedExistingDocumentId < 1" ng-click="selectExistingDocument()">Select</button>
+        </div>
+        <div class="col-sm-6 text-right">
+            <button class="btn" onclick="$('button.close').last().trigger('click')">Cancel</button>
+        </div>
+    </div>
+    <div class="row form-line-separator">
+        <div class="col-sm-12">
+            <div ng-show="errorMessage != ''">
+                <div class="validation-message">{{ errorMessage }}</div>
+            </div>
+            <div ng-show="successMessage != ''">
+                {{ successMessage }}
+            </div>
+        </div>
+    </div>
+</div>

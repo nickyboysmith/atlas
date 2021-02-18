@@ -1,0 +1,53 @@
+﻿<div id="taskAssignToUserDiv">
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Task</h3>{{ selectedTaskTitle }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Users</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table st-table="taskUsers" st-safe-src="taskUsersTemplate" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            <input st-search="" class="form-control" placeholder="Filter Users" type="search" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="taskUser in taskUsers" ng-class="{taskSelectedOrganisationUser : selectedUserId == taskUser.Id}">
+                        <td ng-click="selectUser(taskUser.Id)">
+                            {{ taskUser.Name }}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="text-center">
+                            <div ng-if="clients.length >= 1" class="TableSummary col-md-12 col-sm-12">
+                                {{clientsTemplate.length}} Users have been retrieved from the database
+                            </div>
+                            <div st-pagination="" st-items-by-page="maxResults" st-displayed-pages="7"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn" ng-click="assignTaskToUser(selectedTaskId, selectedUserId)" ng-disabled="selectedUserId < 0">Assign Task</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 validation-message">
+            {{validationMessage}}
+        </div>
+    </div>
+</div>

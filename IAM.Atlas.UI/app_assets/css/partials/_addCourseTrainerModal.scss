@@ -1,0 +1,72 @@
+﻿@import "../modules/_mixins.scss";
+@import "../modules/_mainColours.scss";
+
+.addCourseTrainerModal {
+
+    
+    .theContainer {
+        width: 818px;
+    }
+
+    .listHolder {
+        margin-top: 20px;
+        .listContainer {
+            @include theBorderRadius(5px);
+            height: 140px;
+            width: 100%;
+            border: 1px solid #cecece;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            z-index: 3;
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin-bottom: 0;
+                li {
+                    padding: 3px 10px;
+                    cursor: pointer;
+                }
+                li [ng-drag] {
+                    position: absolute;
+                    width: 100px;
+                    height: 100px;
+                    top:0; left:0;
+                    padding: 0;
+                    margin: 0;
+                    z-index: 1;
+                }
+                li:hover {
+                    background: #ffffe6;
+                    //color: white;
+                }
+                li:first-child {
+                    padding-top: 2px;
+                }
+            }
+        }
+        [ng-drop].drag-enter {
+            border:solid 1px  $background;
+        }
+        [ng-drag].dragging {
+            position: absolute;
+            z-index:9999;
+            width:300px;
+        }
+
+    }
+
+    .separateCloseButton {
+        border-top: 1px solid #cecece;
+        margin-top: 40px;
+        padding-top:30px;
+        //padding: 20px 0;
+        .closeModalButton {
+            width: 100%;
+        }
+    }
+
+.highlightTrainer {
+    background-color: #cce9ff;
+}
+
+}

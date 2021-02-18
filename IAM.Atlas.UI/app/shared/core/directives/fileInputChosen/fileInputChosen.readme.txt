@@ -1,0 +1,25 @@
+﻿http://stackoverflow.com/questions/17922557/angularjs-how-to-check-for-changes-in-file-input-fields
+
+view.html:
+
+<input type="file" custom-on-change="uploadFile">
+
+controller.js:
+
+app.controller('myCtrl', function($scope){
+    $scope.uploadFile = function(event){
+        var files = event.target.files;
+    };
+});     
+
+directive.js:
+
+app.directive('customOnChange', function() {
+  return {
+    restrict: 'A',
+    link: function (scope, element, attrs) {
+      var onChangeHandler = scope.$eval(attrs.customOnChange);
+      element.bind('change', onChangeHandler);
+    }
+  };
+});

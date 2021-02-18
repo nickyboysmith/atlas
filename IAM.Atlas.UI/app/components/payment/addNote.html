@@ -1,0 +1,62 @@
+﻿<div id="addPaymentNoteDiv">
+    
+    <div class="note-add-container" ng-show="!noteSaved">
+        <div class="row marginBottom10">
+            <div class="col-md-4">
+                <h3><strong>Payment:</strong></h3>
+            </div>
+            <div class="col-md-8">
+                <h3><strong><span class="blueitalic">{{paymentNote.PaymentAmount | currency:"£"}}</span></strong></h3>
+            </div>
+        </div><!-- end .row -->
+
+        <div class="row marginBottom10">
+            <div class="col-md-4">
+                <label>Note Type:</label>
+            </div><!-- end .col-md-5 -->
+            <div class="col-md-8">
+                <select class="form-control"
+                        ng-model="paymentNote.NoteTypeId"
+                        ng-options="noteType.Id as noteType.Name for noteType in noteTypes">
+                </select>
+            </div><!-- end .col-md-7 -->
+        </div><!-- end .row -->
+
+        <div class="row marginBottom10">
+            <div class="col-md-4">
+                <label>Note:</label>
+            </div>
+            <div class="col-md-8">
+                <textarea class="form-control default-note-textarea-height"
+                            ng-model="paymentNote.Note"></textarea>
+            </div><!-- end .col-md-8 -->
+        </div><!-- End note type select row -->
+
+        <div class="row marginBottom10">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-xs-6 col-md-6">
+                        <button class="btn" onclick="$('button.close').last().trigger('click')">Cancel</button>
+                    </div>
+                    <div class="col-xs-6 col-md-6 ">
+                        <button ng-click="saveNote()" class="btn pull-right">Save</button>
+                    </div>
+                </div>
+            </div><!-- end .col-md-8 -->
+        </div><!-- End note type select row -->
+    </div><!--end .note-add-container -->
+
+    <div ng-show="noteSaved">
+        <div class="col-md-12">
+            <div class="success-message">Note saved successfully.</div>
+        </div>
+    </div>
+
+    <div ng-show="!validationMessage == false">
+        <div class="col-md-12">
+            <div class="validation-message">{{validationMessage}}</div>
+        </div>
+    </div>
+
+</div>

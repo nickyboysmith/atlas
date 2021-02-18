@@ -1,0 +1,16 @@
+﻿.dorsLicenceCheck .modal-content {
+  width: 600px; }
+
+.dorsLicenceCheck .bootstrap-dialog-message {
+  width: 540px; }
+
+.dorsLicenceCheck .dorsClientStatus {
+  padding-bottom: 5px; }
+
+.dorsLicenceCheck #additionalDorsInfo {
+  max-height: 400px;
+  overflow-y: scroll; }
+
+.dorsLicenceCheck .row {
+  padding-bottom: 5px; }
+

@@ -1,0 +1,743 @@
+﻿
+<div id="viewCourse" class="ViewCourse">
+    <div id="courseTabsAndPanels">
+
+        <div id="courseTabs">
+            <div id="courseDetailsTab" ng-click="showCourseDetails()" class="courseTab">
+                <span>DETAILS</span>
+            </div>
+            <div id="courseClientsTab" ng-click="showCourseClients()" class="courseTab">
+                <span>CLIENTS</span>
+            </div>
+            <div id="courseHistoryTab" ng-click="showCourseHistory()" class="courseTab">
+                <span>HISTORY</span>
+            </div>
+        </div>
+
+        <div id="coursePanels">
+            <div id="courseDetailsPanel">
+                <div>
+                    <label><span style="color:#ee3b3b;">{{ cancelledMessage }}</span></label>
+                </div>
+                <div class="AddFavourite">
+                    <input class="AddFavourite" type="submit"
+                           id="addToMenuFavourite" name="submit"
+                           alt="Add to Favourites"
+                           value=""
+                           title="Add this to the your Favourites"
+                           ng-click="addToMenuFavourite()" />
+                </div>
+                <!--<div class="Title row" style="padding:10px;">
+                    <h2>Courses</h2>
+                </div>-->
+                <div class="container-modal">
+
+                    <form class="form-horizontal row" role="form" style="color: black; ">
+                        <div class="col-sm-7 noRightPadding">
+
+                            <div class="row bottom-button-container-10" ng-show="course.isCourseLocked == true || (course.isCourseLocked == true && course.isCourseProfileLocked == true)">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-8">
+                                    <span class="attention-text-bold">*Course Locked</span>
+                                </div>
+                                <div class="col-sm-1"></div>
+                            </div>
+                            <div class="row bottom-button-container-10"
+                                 ng-show="course.isCourseProfileLocked == true && course.isCourseLocked == false ">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-8">
+                                    <span class="attention-text-bold">*Course Profile Locked</span>
+                                </div>
+                                <div class="col-sm-1"></div>
+                            </div>
+
+                            <div class='row marginBottom5'>
+                                <div class="col-sm-3">
+                                    <label class='control-label'>Type:</label>
+                                </div>
+                                <div class='col-sm-8'>
+                                    {{ course.courseType.Title }}
+                                </div>
+                                <div class="col-sm-1"></div>
+                            </div>
+                            <div class='row marginBottom5'>
+                                <div class="col-sm-3">
+                                    <label class='control-label'>Venue:</label>
+                                </div>
+                                <div class='col-sm-8'>
+                                    <select ng-model="course.venueId"
+                                            class='col-sm-12 form-control'
+                                            ng-disabled="isCourseLockedOrProfileLocked() || isCourseDateInPast() || course.coursePlacesBooked > 0"
+                                            ng-options="courseVenue.Id as courseVenue.Title for courseVenue in course.courseVenueOptions">
+                                        >
+                                        <option value="0">Course Venue</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-1"></div>
+                            </div>
+                            <div class='row marginBottom5'>
+                                <div class="col-sm-3">
+                                    <label class='control-label'>Places:</label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input class="form-control cm-sm-12" type="text" ng-model="course.coursePlaces" ng-disabled="(!IsSystemAdmin && isCourseLockedOrProfileLocked()) || isCourseDateInPast() || systemIsReadOnly" />
+                                </div>
+                                <label class='col-sm-2 control-label'>Reserved:</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control cm-sm-12" type="text" ng-model="course.courseReserved" ng-disabled="(!IsSystemAdmin && isCourseLockedOrProfileLocked()) || isCourseDateInPast() || systemIsReadOnly" />
+                                </div>
+                            </div>
+                            <div class='row marginBottom5'>
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-8">
+                                    <div class="row">
+                                        <div class="col-sm-7 bluebold">
+                                            {{course.coursePlaceDetails.NumberOfBookedClients}} Places Booked
+                                        </div>
+                                        <div class="col-sm-5 bluebold rightalign">
+                                            {{course.coursePlaceDetails.PlacesRemaining}} Places Free
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1"></div>
+                            </div>
+                            <div class='row marginBottom5'>
+                                <div class="col-sm-3">
+                                    <label class='control-label'>Category:</label>
+                                </div>
+                                <div class='col-sm-8'>
+                                    <select ng-model="course.selectedCourseCategory"
+                                            class="form-control"
+                                            ng-options="courseCategory.Name for courseCategory in course.courseCategoryOptions "
+                                            ng-disabled="isCourseLockedOrProfileLocked() || isCourseDateInPast()">
+                                        <option value="">--Course Type Category (Optional)--</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-sm-1"></div>
+                            </div>
+                            <div class='row marginBottom5' ng-show="orgSystemConfig.ShowCourseLanguage == true">
+                                <div class="col-sm-3">
+                                    <label class='control-label'>Language:</label>
+                                </div>
+                                <div class='col-sm-8'>
+                                    <select ng-model="course.languageId"
+                                            class='col-sm-12 form-control'
+                                            ng-disabled="isCourseLockedOrProfileLocked() || isCourseDateInPast()"
+                                            ng-options="courseLanguage.Id as courseLanguage.Description for courseLanguage in course.courseLanguageOptions | orderBy: 'Description'">
+                                        <option value="">--Pick One--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class='row marginBottom5'>
+                                <div class="col-sm-3">
+                                    <label class=''>Trainers Required:</label>
+                                </div>
+                                <div class="col-sm-2">
+                                    <input class="form-control cm-sm-12" type="text" ng-model="course.trainersRequired" ng-disabled="isCourseLockedOrProfileLocked() || isCourseDateInPast()" />
+                                </div>
+                                <label class='col-sm-3 control-label' ng-show="orgSystemConfig.ShowTrainerCosts == true">Trainer Cost:</label>
+                                <div class="col-sm-3" ng-show="orgSystemConfig.ShowTrainerCosts == true">
+                                    <input class="form-control cm-sm-12" type="text" ng-model="course.trainerCost" ng-disabled="isCourseLockedOrProfileLocked() || isCourseDateInPast()" />
+                                </div>
+                            </div>
+                            <!--Course Dates and Times-->
+                            <!--
+                            <div class='row marginBottom5 MultiDayCourse'>
+                                <div class="col-sm-3">
+                                    <label class='control-label'>Dates and Times:</label>
+                                </div>
+                                <div class="col-sm-1">
+                                    <input class="cm-sm-1" type="checkbox" ng-model="course.multiday" ng-disabled="course.courseStarted == true || isCourseLockedOrProfileLocked() || isCourseDateInPast()" />
+                                </div>
+                                <label class='col-sm-3 control-label blueitalic'>Multi Day Course</label>
+                            </div>
+                            -->
+
+                            <div class='row marginBottom5 MultiDayCourse' ng-show="isMultiDayCoursesAllowed() && !isCourseLockedOrProfileLocked()">
+                                <div class="row MultiDayChoice">
+                                    <div class="col-sm-3">
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input class="cm-sm-1" type="checkbox" ng-model="course.multiday" ng-disabled="course.courseStarted == true || isCourseLockedOrProfileLocked() || isCourseDateInPast()" />
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class='control-label blueitalic'>Multi Day Course</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Course Dates and Times .......... MulitDay-->
+                            <div class='row MultiDayCourse' ng-show="course.multiday">
+                                <div class="row NumberOfCourseDates" ng-show="!isCourseLockedOrProfileLocked()">
+                                    <div class="col-md-3">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <span class='Information'>Input the number of Different Dates This Course will be Run on below.</span>
+                                    </div>
+                                </div>
+                                <div class="row NumberOfCourseDates">
+                                    <div class="col-md-3">
+                                        <label class='control-label'>No. of Course Dates:</label>
+                                    </div>
+                                    <div class='col-md-1 side-padding-1 margin-left-14'>
+                                        <input class="form-control cm-sm-12"
+                                               type="number"
+                                               ng-minlength="1"
+                                               ng-maxlength="2"
+                                               ng-disabled="course.courseStarted == true || isCourseLockedOrProfileLocked() || isCourseDateInPast()"
+                                               ng-model="course.NumberOfCourseDates" />
+                                    </div>
+                                    <div class="col-md-7 Information" ng-show="!(course.courseDateStart == null || course.courseDateStart == undefined)">
+                                        <span>{{course.courseDateStart}}</span><span> <b>To</b> </span><span>{{course.courseDateEnd}}</span>
+                                    </div>
+                                </div>
+                                <!--{ StartDate: '', EndDate: '', Session: '', StartTime: '', EndTime: '' }-->
+                                <div class="row MultiDatesAndTimes noRightPadding">
+                                    <!--Show New Line for Each Course Date with Times-->
+                                    <div class="MultiDateAndTime" ng-repeat="MultiDateAndTime in course.MultiDatesAndTimes track by $index" ng-scr>
+                                        <div class="row DateAndTimes" ng-show="{{$index}} < course.NumberOfCourseDates">
+                                            <div class="col-md-3 left-side-padding-17">
+                                                <label>{{NthNumber($index + 1)}} Date:</label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input class="form-control StartDate{{$index}}"
+                                                       type="text"
+                                                       ng-disabled="course.courseStarted == true || isCourseLockedOrProfileLocked() || isCourseDateInPast()"
+                                                       ng-model="MultiDateAndTime.StartDate"
+                                                       ng-mouseleave="hideCalendar($index)"
+                                                       ng-click="toggleCalendar($index)" />
+                                            </div>
+                                            <div class='col-md-1 element-overflow-0'>
+                                                <a ng-click="toggleCalendar($index)" ng-show="!MultiDateAndTime.DisplayCalendar" class="calendar-button col-md-6" title="Show Calendar"><div></div></a>
+                                                <a ng-click="toggleCalendar($index)" ng-show="MultiDateAndTime.DisplayCalendar" class="calendar-button col-md-6" title="Hide Calendar"><div></div></a>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label class='control-label'>Session:</label>
+                                            </div>
+                                            <div class="col-md-2 side-padding-1">
+                                                <select class="col-md-12 side-padding-1 form-control"
+                                                        title="Session: What Part of the Day is the Course Run Over."
+                                                        ng-disabled="course.courseStarted == true || isCourseLockedOrProfileLocked() || isCourseDateInPast()"
+                                                        ng-change="MultiDateSessionChanged($index)"
+                                                        ng-model="MultiDateAndTime.Session"
+                                                        ng-options="trainingSession.SessionTitle for trainingSession in course.courseTrainingSessions | orderBy: 'SessionNumber'"></select>
+                                            </div>
+                                        </div>
+                                        <div class="row SessionTimes side-padding-1" ng-show="{{$index}} < course.NumberOfCourseDates">
+                                            <div class="col-md-9"></div>
+                                            <div class="col-md-1 side-padding-1">
+                                                <input class="form-control col-md-12"
+                                                       title="Start Time"
+                                                       type="text"
+                                                       ng-disabled="course.courseStarted == true || isCourseLockedOrProfileLocked() || isCourseDateInPast()"
+                                                       ng-model="MultiDateAndTime.StartTime"
+                                                       placeholder="HH:MM" />
+                                            </div>
+                                            <div class="col-md-1">
+                                                <label>To:</label>
+                                            </div>
+                                            <div class="col-md-1 side-padding-1">
+                                                <input class="form-control col-md-12"
+                                                       title="End Time"
+                                                       type="text"
+                                                       ng-disabled="course.courseStarted == true || isCourseLockedOrProfileLocked() || isCourseDateInPast()"
+                                                       ng-model="MultiDateAndTime.EndTime"
+                                                       placeholder="HH:MM" />
+                                            </div>
+                                            <!--<div class="col-md-5"></div>-->
+                                        </div>
+
+                                    </div> <!--END ng-repeat="MultiDateAndTime in course.MultiDatesAndTimes"-->
+                                </div>
+                            </div>
+                            <div class="row MultiDatesAndTimesHiddenElements">
+                                <div class="MultiDateAndTime" ng-repeat="MultiDateAndTime in course.MultiDatesAndTimes track by $index">
+                                    <div class="row StartDateCalendar Calendar{{$index}}" style="z-index:10;">
+                                        <div class='col-md-9' ng-show="MultiDateAndTime.DisplayCalendar">
+                                            <date-picker ng-model="MultiDateAndTime.StartDate"
+                                                         format-date="formatDate"
+                                                         ng-mouseleave="toggleCalendar($index)"
+                                                         ng-change="CheckDateEntries()"></date-picker>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Course Dates and Times .......... Not MulitDay-->
+                            <div class='row marginBottom5 NotMultiDayCourse' ng-show="!course.multiday">
+                                <div class="row DateAndTimes">
+                                    <div class="col-sm-3">
+                                        <label class='control-label'>Date and Times:</label>
+                                    </div>
+                                    <div class='col-sm-3 side-padding-1 margin-left-14'>
+                                        <input class="form-control cm-sm-12" type="text" ng-model="course.courseDateStart" ng-click="toggleCalendar()" ng-disabled="isCourseLockedOrProfileLocked() || isCourseDateInPast()" />
+                                    </div>
+                                    <div class="col-sm-2" ng-show="course.courseStarted == false && !isCourseLockedOrProfileLocked()">
+                                        <a ng-click="toggleCalendar()" ng-show="!displayCalendar" class="calendar-button col-sm-6" title="Show Calendar" ng-disabled="course.courseStarted == true || isCourseLockedOrProfileLocked() || isCourseDateInPast()"><div></div></a>
+                                        <a ng-click="toggleCalendar()" ng-show="displayCalendar" class="calendar-button col-sm-6" title="Hide Calendar" ng-disabled="course.courseStarted == true || isCourseLockedOrProfileLocked() || isCourseDateInPast()"><div></div></a>
+                                    </div>
+                                </div>
+                                <div class="row StartDateCalendar" style="z-index:10;">
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-6">
+                                        <div style="position:absolute; z-index:2000;" ng-show="displayCalendar">
+                                            <date-picker ng-model="course.courseDateStart" format-date="formatDate" ng-mouseleave="toggleCalendar()"></date-picker>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row SessionPicker">
+                                    <div class="col-sm-3">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class='control-label'>Session:</label>
+                                    </div>
+                                    <div class="col-sm-3 side-padding-1">
+                                        <select ng-model="course.sessionNumber"
+                                                class='col-sm-12 form-control'
+                                                ng-disabled="isCourseLockedOrProfileLocked() || isCourseDateInPast()"
+                                                ng-change="updateCourseAssociatedSession(trainingSession)"
+                                                ng-options="trainingSession.SessionNumber as trainingSession.SessionTitle for trainingSession in course.courseTrainingSessions | orderBy: 'SessionNumber'">
+                                            <!--<option value="">--Pick One--</option>-->
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                                <div class="row SessionTimes">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-1 side-padding-1">
+                                        <input class="form-control" type="text" ng-model="course.courseTimeStart" placeholder="HH:MM" ng-disabled="isCourseLockedOrProfileLocked() || isCourseDateInPast()" />
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <label>To:</label>
+                                    </div>
+                                    <div class="col-sm-1 side-padding-1">
+                                        <input class="form-control" type="text" ng-model="course.courseTimeEnd" placeholder="HH:MM" ng-disabled="isCourseLockedOrProfileLocked() || isCourseDateInPast()" />
+                                    </div>
+                                    <div class="col-sm-5"></div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class='col-sm-12'>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class=''>Last Booking Date:</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input class="form-control col-sm-12" type="text" format-date-iam ng-model="course.lastBookingDate" ng-click="toggleCalendar3()" ng-disabled="isCourseLockedOrProfileLocked() || isCourseDateInPast()" />
+                                        </div>
+                                        <div class='col-sm-2 element-overflow-0' ng-show="course.courseStarted == false && !isCourseLockedOrProfileLocked()">
+                                            <a ng-click="toggleCalendar3()" ng-show="!displayCalendar3" class="calendar-button col-sm-6" title="Show Calendar" ng-disabled="course.courseStarted == true"><div></div></a>
+                                            <a ng-click="toggleCalendar3()" ng-show="displayCalendar3" class="calendar-button col-sm-6" title="Hide Calendar" ng-disabled="course.courseStarted == true"><div></div></a>
+                                        </div>
+                                    </div>
+                                    <div class='row' style="z-index:10;">
+                                        <div class="col-sm-3"></div>
+                                        <div class='col-sm-9'>
+                                            <div style="position:absolute; z-index:2000;" ng-show="displayCalendar3">
+                                                <date-picker ng-model="course.lastBookingDate" format-date="formatDate" parse-date="parseDate" ng-mouseleave="toggleCalendar3()" ng-disabled="isCourseLockedOrProfileLocked() || isCourseDateInPast()"></date-picker>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class='row CourseCheckBox'>
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1"><input class="cm-sm-1" type="checkbox" ng-disabled="course.courseStarted == true || isCourseLocked() || systemIsReadOnly" ng-model="course.available" /></div>
+                                <label class='col-sm-7 control-label blueitalic'>Course Available</label>
+                            </div>
+                            <div class='row CourseCheckBox'>
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1"><input class="cm-sm-1" type="checkbox" ng-disabled="course.courseStarted == true || isCourseLocked() || systemIsReadOnly" ng-model="course.courseHasInterpreter" /></div>
+                                <label class='col-sm-7 control-label blueitalic'>Interpreter Provided</label>
+                            </div>
+                            <div class='row CourseCheckBox'>
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1"><input class="cm-sm-1" type="checkbox" ng-disabled="course.courseStarted == true || isCourseLocked() || systemIsReadOnly" ng-model="course.courseAttendanceByTrainer" /></div>
+                                <label class='col-sm-7 control-label blueitalic'>Attendance should be Updated by Trainer</label>
+                            </div>
+                            <div class='row CourseCheckBox' ng-show="orgSystemConfig.ShowManulCarCourseRestriction == true">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1"><input class="cm-sm-1" type="checkbox" ng-disabled="course.courseStarted == true || isCourseLocked() || systemIsReadOnly" ng-model="course.courseManualCarsOnly" /></div>
+                                <label class='col-sm-7 control-label blueitalic'>Manual Cars Only</label>
+                            </div>
+                            <div class='row CourseCheckBox' ng-show="orgSystemConfig.ShowManulCarCourseRestriction == true">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1"><input class="cm-sm-1" type="checkbox" ng-disabled="course.courseStarted == true || isCourseLocked() || systemIsReadOnly" ng-model="course.courseRestrictOnlineBookingManualOnly" /></div>
+                                <label class='col-sm-7 control-label blueitalic'>Restrict on-line Bookings to Manual Cars Only</label>
+                            </div>
+                            <div class='row CourseCheckBox'>
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1"><input class="cm-sm-1" type="checkbox" ng-disabled="course.courseStarted == true || isCourseLocked() || systemIsReadOnly" ng-model="course.courseAttendanceCheckRequired" /></div>
+                                <label class='col-sm-7 control-label blueitalic'>Attendance Check Required</label>
+                            </div>
+                            <div class='row CourseCheckBox'>
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1"><input class="cm-sm-1" type="checkbox" ng-disabled="true" ng-model="course.courseAttendanceVerified" /></div>
+                                <label class='col-sm-7 control-label blueitalic'>Attendance Verified</label>
+                            </div>
+                            <div class='row CourseCheckBox'>
+                                <div class='col-sm-12'></div>
+                            </div>
+                            <div class='row CourseCheckBox' ng-show="isDorsFeatureEnabled() && course.courseDorsCourse == true">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1"><input class="cm-sm-1" type="checkbox" ng-model="course.courseDorsCourse" ng-disabled="isDorsEditable() || course.courseStarted == true || isCourseLocked() || systemIsReadOnly" /></div>
+                                <label class='col-sm-7 control-label blueitalic'>DORS Course</label>
+                            </div>
+                            <div class='row CourseCheckBox' ng-show="isDorsCourseChecked()">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1"><input class="cm-sm-1" type="checkbox" ng-disabled="course.courseStarted == true || isCourseLocked() || systemIsReadOnly" ng-model="course.courseUpdateDorsAttendance" /></div>
+                                <label class='col-sm-7 control-label blueitalic'>Send Attendance to DORS</label>
+                            </div>
+                            <div class='row CourseCheckBox' ng-show="course.courseAttendeanceSentToDorsTime">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1"><input class="cm-sm-1" type="checkbox" ng-disabled="true" ng-model="course.courseAttendeanceSentToDors" /></div>
+                                <label class='col-sm-7 control-label blueitalic'>Attendance Sent To DORS ({{course.courseAttendeanceSentToDorsTime}})</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-5">
+                            <div class='row' style="min-height:30px;">
+                                <div class="col-sm-3">
+                                    <label class='control-label'>Reference:</label>
+                                </div>
+                                <div class='col-sm-8'>
+                                    <label class='col-sm-3 control-label'>{{course.courseReference}}</label>
+                                </div>
+                            </div>
+
+                            <!-- does this course have a theory component?  does this course have a practical component? -->
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="checkbox" ng-model="course.TheoryCourse" ng-disabled="isCourseLockedOrProfileLocked()" />&nbsp;<label class=""><i>Theory Course</i></label><br />
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="checkbox" ng-model="course.PracticalCourse" ng-disabled="isCourseLockedOrProfileLocked()" />&nbsp;<label class=""><i>Practical Course</i></label>
+                                </div>
+                            </div>
+
+                            <div class='row marginBottom10'>
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label class='col-sm-5 control-label'>Allocated Trainers &amp; Interpreters:</label>
+                                        </div>
+                                    </div>
+                                    <div class='row marginBottom5'>
+                                        <div class='col-sm-12'><textarea rows="4" class="form-control" type="text">{{trainerText()}}</textarea></div>
+                                    </div>
+                                    <div class="row marginBottom10">
+                                        <div class="col-sm-6" ng-controller="CourseTrainerCtrl">
+                                            <button class="btn btn-default btn-sm" ng-click="addCourseTrainer(course)" ng-disabled="isCourseDateInPast() || isCourseLocked() || systemIsReadOnly">Edit Trainers</button>
+                                        </div>
+                                        <div class="col-sm-6 text-right" ng-controller="CourseInterpreterCtrl">
+                                            <button class="btn btn-default btn-sm" ng-click="addCourseInterpreter(course)" ng-disabled="isCourseDateInPast() || isCourseLocked() || systemIsReadOnly">Edit Interpreters</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class='row marginBottom5'>
+                                <div class="col-sm-6">
+                                    <label class='col-sm-2 control-label'>Notes:</label>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <button class="btn btn-default btn-sm" ng-click="addCourseNoteModal(course.courseId)" ng-disabled="systemIsReadOnly">Add Notes</button>
+                                </div>
+                            </div>
+                            <div class='row marginBottom10'>
+                                <div class='col-sm-12'><textarea rows="8" class="form-control" type="text" ng-model="notes"></textarea></div>
+                            </div>
+
+                            <div class='row marginBottom10'>
+                                <div class="col-sm-6">
+                                    <label class='col-sm-6 control-label'>Documents:</label>
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-5 noLeftPadding docInfo" title="Click for more Document Information" ng-click="openDocInfoModal()"></div>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <button class="btn btn-default btn-sm"
+                                            ng-click="addDocumentModal(course.courseId)"
+                                            title="Upload and Add a new Document relating to this Course"
+                                            ng-disabled="isCourseDateInPast() || systemIsReadOnly">
+                                        Add Document
+                                    </button>
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class="col-sm-12">
+                                    <div id="editCourseDocumentList">
+                                        <span ng-show="documents.length == 0">
+                                            &nbsp;No documents for this Course.
+                                        </span>
+                                        <div class="editCourseDocumentListItem {{ $last ? '' : 'editCourseDocumentNotLastListItem' }}" ng-repeat="document in documents">
+                                            <span class="courseDocumentTitle"
+                                                  title="{{document.Description}}"
+                                                  ng-click="selectDocument(document)"
+                                                  ng-class="{selectedListOrTableItem : selectedDocument.Id == document.Id}">
+                                                {{ document.Title }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class='col-sm-12' ng-show="selectedDocument.Id > 0">
+                                <div class="col-sm-6"></div>
+                                <div class="text-right">
+                                    <button class="btn btn-default btn-sm" ng-click="openDownloadDocumentModal(selectedDocument)" title="Download selected course document">Download</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+            <div id="courseClientPanel" style="">
+                <div id="courseClients" class="container-modal">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <table class="">
+                                <tr>
+                                    <td>Reference:</td>
+                                    <td><b>{{course.courseReference}}</b></td>
+                                </tr>
+                                <tr>
+                                    <td>Type:</td>
+                                    <td><b>{{course.courseType.Title}}</b></td>
+                                </tr>
+                                <tr>
+                                    <td>Date:</td>
+                                    <td><b>{{course.courseDateStart}}<span ng-show="course.courseTimeStart">, {{ course.courseTimeStart }}</span></b></td>
+                                </tr>
+                                <tr>
+                                    <td>Session:</td>
+                                    <td><b>{{ getSessionLabel(course.sessionNumber) }}</b></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-sm-6">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 text-left">
+                            <strong>Clients</strong>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <button class="btn btn-default btn-sm"
+                                    ng-click="addClient(course.courseId)"
+                                    title="Add New Client and book onto this Course"
+                                    ng-disabled="isCourseDateInPast() || isCourseLocked() || systemIsReadOnly">
+                                Add Client
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">&nbsp;</div>
+                        <div class="col-sm-10">
+                            <div id="courseClientListDiv">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Client Name</th>
+                                            <th>Date Added</th>
+                                            <th>Added By</th>
+                                            <th>Amount Paid (Total)</th>
+                                            <th>Last Payment Date</th>
+                                            <th>Outstanding</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="max-height: 3px; overflow-y: scroll;">
+                                        <tr ng-if="systemIsReadOnly == false" ng-repeat="client in course.clients" ng-dblclick="editCourseBooking(course, client)" title="Double-Click to Edit the Course Booking" ng-disabled="isCourseDateInPast()">
+                                            <td>{{ client.ClientName }}</td>
+                                            <td>{{ client.DateAdded | date: 'dd-MM-yyyy HH:mm' }}</td>
+                                            <td>{{ client.AddedByUser }}</td>
+                                            <td>{{ client.TotalAmountPaid | currency:"£" }}</td>
+                                            <td><span ng-show="client.LastPaymentDate != null">{{ client.LastPaymentDate | date: 'dd-MM-yyyy HH:mm' }}</span></td>
+                                            <td>{{ client.Outstanding | currency:"£" }}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody style="max-height: 3px; overflow-y: scroll;">
+                                        <tr ng-if="systemIsReadOnly == true" ng-repeat="client in course.clients">
+                                            <td>{{ client.ClientName }}</td>
+                                            <td>{{ client.DateAdded | date: 'dd-MM-yyyy HH:mm' }}</td>
+                                            <td>{{ client.AddedByUser }}</td>
+                                            <td>{{ client.TotalAmountPaid | currency:"£" }}</td>
+                                            <td><span ng-show="client.LastPaymentDate != null">{{ client.LastPaymentDate | date: 'dd-MM-yyyy HH:mm' }}</span></td>
+                                            <td>{{ client.Outstanding | currency:"£" }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-sm-1">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="courseHistoryPanel" class="container-modal">
+                <div class="row sidepanelcoursecontent3" id="courseHistory">
+                    <div class="col-sm-12 margin-top-spacer-20">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label>Type:</label>
+                                {{course.courseType.Title}}
+                            </div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-7">
+                                <label>Reference:</label>
+                                {{course.courseReference}}
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label>Date:</label>
+                                {{course.courseDateStart}}
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-11" id="courseHistoryContainer">
+                                <event-History type-name="Course"
+                                               type-id="{{course.courseId}}"
+                                               course-reference="{{course.courseReference}}"
+                                               course-type-title="{{course.courseType.Title}}"
+                                               course-date="{{course.courseDateStart}}">
+                                </event-History>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--<div data-ng-if="showSuccessFader == true">
+                <my-msgfader status="success"></my-msgfader>
+            </div>
+            <div data-ng-if="showErrorFader == true">
+                <my-msgfader status="error"></my-msgfader>
+            </div>-->
+
+
+        </div>
+
+    </div>
+
+    <div id="viewCourseButtons" class="ViewCourseButtons">
+        <div class="row">
+            <div class="col-sm-12">
+                <label><span style="margin-left: 20px;" class="validation-message">{{ validationMessage }}</span><span style="color:#2196F3; margin-left: 20px;">{{ successMessage }}</span></label>
+            </div>
+        </div>
+
+        <!--<div class="row marginBottom10" ng-if="orgSystemConfig.SMSEnabled">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10  text-left">
+                <button ng-click="showSMSAllClientModal()"
+                        class="btn btn-default btn-sm"
+                        title="SMS Clients"
+                        ng-disabled="isCourseDateInPast() || systemIsReadOnly">
+                    SMS Clients
+                </button>
+
+                <button ng-click="showSMSAllTrainerModal()"
+                        class="btn btn-default btn-sm"
+                        title="SMS Trainers"
+                        ng-disabled="isCourseDateInPast() || systemIsReadOnly">
+                    SMS Trainers
+                </button>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>-->
+        
+        <div class="row">
+            <div class="col-md-12 text-left">
+                <button class="btn btn-default btn-sm margin-right-10"
+                        onclick="$('button.close').last().trigger('click')"
+                        title="Close">
+                    Close
+                </button>
+                <button ng-click="emailClients()"
+                        class="btn btn-default btn-sm"
+                        title="Email Clients"
+                        ng-disabled="isCourseDateInPast() || systemIsReadOnly">
+                    Email Clients
+                </button>
+
+                <button ng-click="emailTrainers()"
+                        class="btn btn-default btn-sm"
+                        title="Email Trainers"
+                        ng-disabled="isCourseDateInPast() || systemIsReadOnly">
+                    Email Trainers
+                </button>
+
+                <button ng-click="showSMSAllClientModal()"
+                        class="btn btn-default btn-sm"
+                        title="SMS Clients"
+                        ng-disabled="isCourseDateInPast() || systemIsReadOnly"
+                        ng-if="orgSystemConfig.SMSEnabled"
+                        >
+                    SMS Clients
+                </button>
+
+                <button ng-click="showSMSAllTrainerModal()"
+                        class="btn btn-default btn-sm"
+                        title="SMS Trainers"
+                        ng-disabled="isCourseDateInPast() || systemIsReadOnly"
+                        ng-if="orgSystemConfig.SMSEnabled"
+                        >
+                    SMS Trainers
+                </button>
+
+                <button class="btn btn-default btn-sm"
+                        ng-click="addClient(course.courseId)"
+                        ng-disabled="isCourseDateInPast() || isCourseLocked() || systemIsReadOnly"
+                        title="Add New Client and book onto this Course">
+                    Add Client
+                </button>
+                <div class="tooltip-wrapper tooltipWrapperContainer" title="{{cancelButtonTitle}}">
+                    <button class="btn btn-default btn-sm"
+                            ng-click="cancelCourse()"
+                            ng-show="showCancelButton"
+                            ng-disabled="disableCancelButton || isCourseDateInPast() || systemIsReadOnly"
+                            title="{{cancelButtonTitle}}">
+                        Cancel Course
+                    </button>
+                </div>
+                <button class="btn btn-default btn-sm"
+                        ng-disabled="systemIsReadOnly"
+                        ng-click="newCourse()">
+                    New Course
+                </button>
+                <button class="btn btn-default btn-sm"
+                        ng-disabled="systemIsReadOnly"
+                        ng-click="openCloneCourse()">
+                    Clone Course
+                </button>
+                <button ng-click="saveCourse(true)"
+                        class="btn btn-default btn-sm"
+                        title="Save and Close the Dialog"
+                        ng-disabled="(!IsSystemAdmin && isCourseLockedOrProfileLocked()) || isCourseDateInPast() || systemIsReadOnly">
+                    Save And Close
+                </button>
+                <button ng-click="saveCourse()"
+                        class="btn btn-default btn-sm"
+                        title="Save"
+                        ng-disabled="(!IsSystemAdmin && isCourseLockedOrProfileLocked()) || isCourseDateInPast() || systemIsReadOnly">
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

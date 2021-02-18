@@ -1,0 +1,98 @@
+﻿
+<div id="clientRescheduleCourseDetails">
+
+    <div class="row">
+        <div class="col-sm-12" id="addressDetails">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <label class="blueitalic"><strong>You have chosen to reschedule your course attendance date.</strong></label>
+                    <label class="blueitalic"><strong>Please check the details below and then select Confirm.</strong></label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12" style="padding-bottom:10px;"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-10">
+                    <label class="blueitalic"><strong>{{courseSelected.CourseType}}</strong></label>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4">
+                    <label>Course Date:</label>
+                </div>
+                <div class="col-sm-7">
+                    <span class="blueitalic"><strong>{{courseSelected.StartDate | date:'dd-MMM-yyyy'}} At {{courseSelected.StartDate | date: 'hh:mm a'}}</strong></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4">
+                    <label>Location:</label>
+                </div>
+                <div class="col-sm-7">
+                    <span class="blueitalic"><strong>{{courseSelected.Location}}</strong></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-5"></div>
+                <div class="col-sm-7">
+                    <span class="blueitalic" style="white-space:pre-wrap;"><strong>{{courseSelected.venueAddress}}</strong></span>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-12" style="padding-bottom:10px;"></div>
+            </div>
+
+            <div class="row no-padding-or-margin" ng-show="courseSelected.RebookingFee > 0">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10 no-padding-or-margin">
+                    <div class="reschedule-note">
+                        <div class="main-title">Re-Scheduling the Course</div>
+                        <p><strong>N.B.</strong> Re-Scheduling the course is subject to an additional fee of {{ courseSelected.RebookingFee | currency: "£" }} </p>
+                    </div>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12" style="padding-bottom:10px;"></div>
+            </div>
+
+            <div class="row" ng-show="courseSelected.ErrorMessage != ''">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-11">
+                    <span class="validation-message">{{courseSelected.ErrorMessage}}</span>
+                </div>
+                <div class="col-sm-12" style="padding-bottom:10px;"></div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="edit-button btn" ng-click="confirmReschedule()">Confirm</div>
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="edit-button btn rightalign" onclick="$('button.close').last().trigger('click')">Cancel Reschedule</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12" style="padding-bottom:10px;"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,13 @@
+﻿<div>
+    <button ng-click="getValues()" ng-disabled="{{ processing }}" value="Get Values">Get Values</button>
+
+    <div>
+        <table>
+            <tr ng-repeat="value in values">
+                <td>
+                    {{ value }}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

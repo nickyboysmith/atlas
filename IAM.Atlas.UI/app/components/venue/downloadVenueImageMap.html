@@ -1,0 +1,30 @@
+﻿<div id="downloadVenueImageMapDiv">
+    <div class="row marginBottom5">
+        <div class="col-sm-4">
+            Venue:
+        </div>
+        <div class="col-sm-8">
+            {{ venueTitle }}<br />
+            {{ venueImageMap.Title }} ({{venueImageMap.FileName}})
+        </div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-4">
+            File Name:
+        </div>
+        <div class="col-sm-8">
+            <input type="text" ng-model="saveAsFileName" placeholder="Save File as Name" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            &nbsp;
+        </div>
+        <div class="col-sm-4">
+            <button class="btn" ng-click="download(saveAsFileName)">Download</button>
+        </div>
+        <div class="col-sm-4 text-right">
+            <button class="btn" onclick="$('button.close').last().trigger('click')">Cancel</button>
+        </div>
+    </div>
+</div>

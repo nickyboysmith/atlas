@@ -1,0 +1,28 @@
+﻿#clientAvailableCoursesDiv{
+    
+    width:800px;
+    
+    .selectedCourseTableRow td{
+
+        background-color:#85d5f8;
+    }
+
+    .clientDORSData{
+        border: 1px solid #808080;
+        background-color: #ddd;
+        padding:5px;
+        margin-bottom: 5px;
+    }
+}
+
+#transferToNewCourseDiv{
+    .clientDORSData{
+        border: 1px solid #808080;
+        background-color: #ddd;
+        padding:5px;
+        margin-bottom: 5px;
+
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 12px;
+    }
+}

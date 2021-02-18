@@ -1,0 +1,423 @@
+﻿<div id="clientDetails" class="ClientDetails">
+    <div class="client-detail-container">
+        <div class="row bottom-button-container-10">
+            <div class="col-sm-1">
+                <button class="btn "
+                        ng-disabled="client.ClientMarkedForDeletion.length > 0 || clientLock.isReadOnly == true"
+                        ng-hide="isReferringAuthority || systemIsReadOnly"
+                        ng-click="editClient(clientId)"
+                        title="Edit the Client's Details">
+                    Edit
+                </button>
+            </div>
+            <div class="col-sm-4">
+                <!--<div class="col-sm-3"></div>-->
+                <div class="col-sm-12" title="{{clientIdHoverText}}">
+                    <!-- System Id and Uid -->
+                    <label class='side-padding-1-5'>Client System ID: </label><span>{{client.Id}}</span>
+                    <span ng-show="client.ClientUniqueIdentifier.length > 0">
+                        <label class='side-padding-1-5'>Client UID: </label>
+                        <span>{{client.ClientUniqueIdentifier[client.ClientUniqueIdentifier.length - 1].UniqueIdentifier}}</span>
+                    </span>
+                    <div ng-click="showUniqueIdentiferModal()"
+                         ng-hide="isReferringAuthority || systemIsReadOnly"
+                         class="side-padding-5-1 btn"
+                         title="Edit the Client Unique Identifier"
+                         ng-disabled="clientLock.isReadOnly == true">...</div>
+                </div>
+            </div>
+            <div class="col-sm-7" ng-if="client.clientStatus.length > 0">
+                <div class="text-center panel panel-default panel-body ClientStatusPanel">
+                    {{client.clientStatus}}
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="row bottom-button-container-10" ng-show="clientLock.isReadOnly == true">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-11">
+                <span class="attention-text-bold">View Only - ** Locked by : {{clientLock.lockedByUserName}}</span>
+            </div>
+        </div>
+
+        <div class="row bottom-button-container-20" ng-show="client.ClientMarkedForDeletion.length > 0">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-11">
+                <span class="error-red-underlined">THIS CLIENT HAS BEEN MARKED FOR DELETION AFTER {{client.ClientMarkedForDeletion}}</span>&nbsp;<button class="btn" ng-click="cancelDeletion(clientId)">Cancel Deletion</button>
+            </div>
+        </div>
+
+        <div class="row bottom-button-container-20">
+            <div class="col-sm-5 details">
+
+                <div class="row" ng-show="IsMysteryShopperAdministrator == true && client.IsMysteryShopper == true">
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="col-sm-9">
+                        <span class="reditalicbold">This Client is a Mystery Shopper</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label class='control-label'>Name:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <span>{{client.DisplayName}}</span>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="hasLicenceDetails">
+                    <div ng-repeat="licence in client.Licences">
+                        <div class="col-sm-3">
+                            <label class='control-label'>Licence:</label>
+                        </div><!-- end .col-sm-9 -->
+                        <div class="col-sm-9">
+                            <div class="add-licence-margin">{{ licence.LicenceNumber }}<br /></div>
+                            <div class="row reduced-text-size" ng-show="showDriversLicenceExpiryDate">
+                                <div class="col-sm-4">Expiry Date:</div>
+                                <div class="col-sm-8">{{ licence.LicenceExpiryDate | date:'dd MMM yyyy' }}</div>
+                            </div><!-- end .row -->
+                            <div class="row reduced-text-size" ng-show="showPhotocardExpiry">
+                                <div class="col-sm-4">Photo Expiry:</div>
+                                <div class="col-sm-8">{{ licence.LicencePhotocardExpiryDate | date:'dd MMM yyyy' }}</div>
+                            </div><!-- end .row -->
+                            <div class="row reduced-text-size">
+                                <div class="col-sm-4">Type:</div>
+                                <div class="col-sm-8">{{ licence.DriverLicenceType.Name }}</div>
+                            </div><!-- end .row -->
+                        </div><!-- end .col-sm-9 -->
+
+                    </div><!-- end ng-repeat div -->
+                </div><!-- end .row w/ng-if -->
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label class='control-label'>Address:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <div>
+                            <pre>{{ client.Address }}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label class='control-label'>Email:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <div ng-repeat="email in client.Emails">
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    {{ email.Address }}
+                                </div>
+                                <div class="col-sm-2">
+                                    <div ng-click="showEmailClientModal()"
+                                         ng-hide="isReferringAuthority || systemIsReadOnly"
+                                         class="btn pull-right"
+                                         ng-disabled="client.ClientMarkedForDeletion.length > 0"
+                                         title="Email Client">...</div>
+                                </div>
+                            </div>
+                            <b>{{}}</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label class='control-label'>Phone:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <div ng-repeat="phone in client.PhoneNumbers">
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    {{phone.NumberType}}:&nbsp;<b>{{phone.Number}}</b>
+                                </div>
+                                <div class="col-sm-2" ng-if="isSMSEnabled">
+                                    <div ng-click="showSMSClientModal(phone.Number)"
+                                         class="btn pull-right"
+                                         ng-disabled="phone.NumberType != 'Mobile'"
+                                         title="SMS Client">...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label class='control-label'>Date of Birth:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        {{ formatDate(client.DateOfBirth) }} <span ng-show="client.DateOfBirth != null"> - (Age {{ getClientAge(client.DateOfBirth) }})</span>
+                    </div>
+                </div>
+                <!-- Referring Authority -->
+                <div class="row" ng-show="client.ReferringAuthority.length > 0">
+                    <div class="col-sm-4">
+                        <label class='control-label'>Referring Authority:</label>
+                    </div>
+                    <div class="col-sm-8">
+                        {{ client.ReferringAuthority }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label class='control-label'>Booked Course:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <div ng-repeat="courseInfo in client.CourseInformation">
+                            <div class="row marginBottom" ng-show="!courseInfo.ClientRemoved">
+                                <div class="col-sm-10">
+                                    <row class="courseView blueitalic">
+                                        <div ng-click="openCourseModal(courseInfo)">
+                                            {{ courseInfo.Reference }}<br />
+                                        </div>
+                                    </row>
+                                    <row class="marginBottom10">
+                                        {{ formatDate(courseInfo.CourseDate) }} at {{courseInfo.CourseDate | date :'HH:mm'}}<br />
+                                        {{courseInfo.CourseType}}
+                                    </row>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="btn pull-right"
+                                         title="Edit Course Booking"
+                                         ng-click="editCourseBooking(courseInfo)"
+                                         ng-hide="isReferringAuthority || systemIsReadOnly"
+                                         ng-disabled="client.ClientMarkedForDeletion.length > 0 ||clientLock.isReadOnly == true">...</div>
+                                </div>
+                            </div>
+                            <div class="row" ng-show="!courseInfo.ClientRemoved">
+                                <div class="col-sm-7">
+                                    <label>Amount Paid: </label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <span class="pull-right">{{courseInfo.AmountPaid | currency:"£"}}</span>
+                                </div>
+                                <div class="col-sm-2">
+                                </div>
+                            </div>
+                            <div class="row" ng-show="!courseInfo.ClientRemoved">
+                                <div class="col-sm-7">
+                                    <label>Amount Outstanding: </label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <span class="pull-right">{{courseInfo.AmountOutstanding | currency:"£"}}</span>
+                                </div>
+                                <div class="col-sm-2">
+                                </div>
+                            </div>
+                            <div class="row" ng-show="!courseInfo.ClientRemoved && courseInfo.AmountOutstanding > 0">
+                                <div class="col-sm-6">
+                                    <label>Payment Due Date: </label>
+                                </div>
+                                <div class="col-sm-5">
+                                    <span class="pull-right">{{courseInfo.PaymentDueDate | date:"dd MMM yyyy" }}</span>
+                                </div>
+                                <div class="col-sm-1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-12">
+                                <label><input type="checkbox" ng-model="client.EmailCourseReminders" ng-disabled="true" />&nbsp;Email Course Reminders</label>
+                            </div>
+                            <!--<div class="col-sm-10">Email Course Reminders</div>
+                            <div class="col-sm-1">&nbsp;</div>-->
+                        </div><!-- end .row emailCourseReminders -->
+                        <div class="row marginBottom10" ng-if="isSMSEnabled">
+                            <div class="col-sm-12">
+                                <label><input type="checkbox" ng-model="client.SMSCourseReminders" ng-disabled="true" />&nbsp;SMS Course Reminders</label>
+                            </div>
+                            <!--<div class="col-sm-10">SMS Course Reminders</div>
+                            <div class="col-sm-1">&nbsp;</div>-->
+                        </div><!-- end .row SMSCourseReminders -->
+                        <div ng-show="isAdmin">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="btn" ng-click="performDORSCheck()">Perform DORS Check</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-repeat="courseInfo in client.CourseInformation" ng-show="isAdmin">
+                            <div class="row" ng-show="client.dorsClientCourseAttendances.length > 0">
+                                <div class="col-sm-6">
+                                    DORS Attendance Refs
+                                </div>
+                                <div class="col-sm-6">
+                                    <div ng-repeat="dorsClientCourseAttendance in client.dorsClientCourseAttendances">
+                                        {{dorsClientCourseAttendance.DORSAttendanceRef}}<br/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="courseInfo.IsDORSCourse"
+                                 ng-repeat="dorsDetails in courseInfo.DORSDetails"
+                                 class="DorsInfo">                                
+                                <div class="row marginbottom5">
+                                    <span class="label">Referrer: </span>
+                                    <span class="data">{{ dorsDetails.ReferringAuthority }}</span>
+                                </div>
+                                <div class="row marginbottom5">
+                                    <span class="label">Client Expiry Date:</span>
+                                    <span class="data">{{ dorsDetails.ExpiryDate | date:'dd MMM yyyy'  }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--- end row -->
+
+                <div class="row margintop10">
+                    <div class="col-sm-4">
+                        <label class="control-label">Additional Requirements:</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <div ng-if="client.SpecialRequirements.length ==0">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p>None</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-repeat="specialRequirement in client.SpecialRequirements">
+                            <div class="row">
+                                <div class="col-sm-12">{{ specialRequirement.Name }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="btn pull-right"
+                             ng-disabled="client.ClientMarkedForDeletion.length > 0 || clientLock.isReadOnly == true"
+                             ng-hide="isReferringAuthority || systemIsReadOnly"
+                             ng-click="openClientSpecialRequirementModal()"
+                             title="Edit client additional requirements">...</div>
+                    </div>
+                </div><!--- end .row -->
+
+            </div>
+
+
+            <div class="col-sm-7" id="clientHistoryContainer">
+                <event-History type-name="Client"
+                               type-id="{{clientId}}"
+                               update-client-history="{{updateClientHistory}}">
+                </event-History>
+
+                <div id="clientDocumentContainer"
+                     ng-init="setClientID(clientId)"
+                     ng-controller="ClientDocumentCtrl">
+                    <div ng-include src="'/app/components/client/documents.html'"></div>
+                </div>
+            </div>
+
+        </div>
+        <!--Start Buttons Div-->
+        <div class="row bottom-button-container-20">
+            <!--Next Previous Buttons-->
+            <div class="col-sm-2 col-md-2">
+                <div ng-hide="hidePrevNext">
+                    <div class="col-sm-6">
+                        <button class="btn extended-button pull-left"
+                                ng-click="PrevClient()"
+                                ng-disabled="clientIndex == 0"
+                                title="Show the Previous Client's Details from the Search List">
+                            Prev
+                        </button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button class="btn extended-button pull-right"
+                                ng-click="NextClient()"
+                                ng-disabled="clientIndex == clients.length - 1"
+                                title="Show the Next Client's Details from the Search List">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--End Next Previous Buttons-->
+            <!--All the Other Buttons-->
+            <div class="col-sm-6 col-md-6">
+                <button class="btn"
+                        ng-disabled="client.ClientMarkedForDeletion.length > 0 || clientLock.isReadOnly == true"
+                        ng-click="bookCourse(clientId)"
+                        ng-hide="isReferringAuthority || systemIsReadOnly"
+                        title="Book this Client onto a Course">
+                    Book Course
+                </button>
+                <button class="btn"
+                        ng-disabled="client.ClientMarkedForDeletion.length > 0 || clientLock.isReadOnly == true"
+                        ng-click="takePayment(clientId, client.DisplayName)"
+                        ng-hide="isReferringAuthority || systemIsReadOnly"
+                        title="Take a Card Payment from a Client">
+                    Take Payment
+                </button>
+                <button class="btn"
+                        ng-disabled="client.ClientMarkedForDeletion.length > 0 || clientLock.isReadOnly == true"
+                        ng-click="enterPayment(clientId, client.DisplayName)"
+                        ng-hide="isReferringAuthority || systemIsReadOnly"
+                        title="Record a Payment already Received from the Client">
+                    Enter Payment
+                </button>
+                <button class="btn"
+                        ng-disabled="client.ClientMarkedForDeletion.length > 0 || clientLock.isReadOnly == true"
+                        ng-click="refundPayment(clientId)"
+                        ng-hide="isReferringAuthority || systemIsReadOnly"
+                        title="Refund a Payment or Part of a Payment">
+                    Refund Payment
+                </button>
+                <button class="btn"
+                        ng-disabled="client.ClientMarkedForDeletion.length > 0"
+                        ng-click="addNote(clientId)"
+                        ng-hide="systemIsReadOnly"
+                        title="Add a new Note against the Client's Details'">
+                    Add Note
+                </button>
+                <button class="btn"
+                        ng-disabled="client.ClientMarkedForDeletion.length > 0 || clientLock.isReadOnly == true"
+                        ng-click="editClient(clientId)"
+                        ng-hide="isReferringAuthority || systemIsReadOnly"
+                        title="Edit the Client's Details">
+                    Edit
+                </button>
+                <button class="btn"
+                        ng-click="deleteClient(clientId, client.DisplayName)"
+                        ng-hide="client.ClientMarkedForDeletion.length > 1 || isReferringAuthority || systemIsReadOnly" 
+                        ng-disabled="clientLock.isReadOnly == true"
+                        title="Mark the Client's Details for deletion from the Database">
+                    Delete
+                </button>
+            </div>
+            <!--End All the Other Buttons-->
+            <!-- Clear DORS Data -->
+            <div class="col-sm-2 col-md-2">
+                <div class="col-sm-12 text-right" ng-show="IsSystemAdmin == true">
+                    <button class="btn btn-blue"
+                            ng-click="clearDORSData(clientId)"
+                            title="Clear DORS Data."
+                            onclick="javascript:confirm('Are you sure you want to clear this clients DORS Data?')">
+                        Clear DORS Data
+                    </button>
+                </div>
+            </div>
+            <!--Close and Remain Locked Button-->
+            <div class="col-sm-2 col-md-2">
+                <div class="col-sm-12" ng-show="clientLock.isReadOnly == false">
+                    <button class="btn btn-blue"
+                            ng-click="CloseAndRemainLocked()"
+                            title="Close this window. Keep the Client's Details Locked.">
+                        Close - Remain Locked
+                    </button>
+                </div>
+            </div>
+            
+            <!--End Close and Remain Locked Button-->
+        </div>
+        <!--End Buttons Div-->
+        <div style="margin-top:10px;" class="row">
+            <span ng-show="prevClientName != undefined">Previous: {{ prevClientName }}</span><span ng-show="nextClientName != undefined">Next: {{ nextClientName }}</span>
+        </div>
+
+    </div>
+</div>

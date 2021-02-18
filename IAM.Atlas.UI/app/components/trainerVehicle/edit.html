@@ -1,0 +1,126 @@
+﻿<div id="editTrainerVehicle" class="editTrainerVehicle">
+
+    <form class="form-horizontal row" role="form">
+
+        <div class='col-sm-12'>
+
+            <div class='row'>
+                <div class='col-sm-3'>
+                    <label>Trainer:</label>
+                </div>
+                <div class='col-sm-3'>
+                    {{editedTrainerVehicleDetails.TrainerName}}
+                </div>
+                <div class='col-sm-2'>
+                    <label>DOB: </label>
+                </div>
+                <div class='col-sm-4'>
+                    {{editedTrainerVehicleDetails.TrainerDateOfBirth | date:'dd-MMM-yyyy' }}
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-sm-2'>
+                </div>
+                <div class='col-sm-4'>
+                    <label>Licence No:</label>
+                </div>
+                <div class='col-sm-6'>
+                    {{editedTrainerVehicleDetails.TrainerLicenceNumber}}
+                </div>
+            </div>
+
+
+            <div class='row'>
+                <div class='col-sm-3'>
+                    <label>Type:</label>
+                </div>
+
+                <div class='col-sm-9'>
+                    {{editedTrainerVehicleDetails.VehicleTypeName}}
+     
+                </div>
+
+            </div>
+
+
+            <div class='row margintop10'>
+                <div class='col-sm-3'>
+                    <label>Number Plate: </label>
+                </div>
+                <div class='col-sm-9'>
+                    {{editedTrainerVehicleDetails.TrainerVehicleNumberPlate}}
+                </div>
+            </div>
+
+            <div class='row margintop10'>
+                <div class='col-sm-3'>
+                    <label>Description: </label>
+                </div>
+                <div class='col-sm-9'>
+                    <textarea rows="8"
+                              class="form-control"
+                              type="text"
+                              ng-model="editedTrainerVehicleDetails.TrainerVehicleDescription"
+                              placeholder="Description"></textarea>
+                </div>
+
+            </div>
+
+            <div class='row margintop10'>
+
+                <div class='col-sm-3'>
+                    <label>Categories: </label>
+                </div>
+                <div class='col-sm-9'>
+
+                    
+                    <div class="sml-scroll-div marginBottom10">
+                        <table class="table table-hover table-bordered table-striped">
+                            <thead></thead>
+                            <tbody>
+                                <tr ng-repeat="vehicleCategory in vehicleCategories" ng-class="{'isSelected': vehicleCategory.isSelected}">
+                                    <td ng-click="setSelectedCategories(vehicleCategory)"
+                                        title="{{vehicleCategory.Name}}"
+                                        value="{{vehicleCategory.Id}}">
+                                        {{vehicleCategory.Name}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class='row marginBottom10'>
+                <div class='col-sm-3'></div>
+                <div class="col-sm-4 text-left">
+                    <button class="btn btn-default btn-sm"
+                            title="Save"
+                            ng-click="save()">
+                        Save
+                    </button>
+                </div>
+                <div class='col-sm-1'></div>
+                <div class="col-sm-4 text-right">
+                    <button class="btn btn-default btn-sm"
+                            title="Add New"
+                            ng-click="removeVehicle()">
+                        Remove Vehicle
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!successMessage === false">
+            <div class="col-sm-12 success-message noRightPadding rightalign">{{ successMessage }}</div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+            <div class="col-sm-12 validation-message noRightPadding rightalign">{{ validationMessage }}</div>
+        </div>
+
+    </form>
+</div>

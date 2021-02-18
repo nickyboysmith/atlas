@@ -1,0 +1,55 @@
+﻿<div id="viewClientNoteDiv">    
+    
+    <div class="row">
+        <div class="col-md-4">
+            <label>{{selectedNote.DisplayDetailsLabel}}:</label>
+        </div>
+        <div class="col-md-8">
+            {{selectedNote.DisplayDetails}}
+        </div>    
+    </div>
+
+    <div class="row marginBottom10" ng-show="!selectedNote.courseTypeTitle == false">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+            {{selectedNote.courseTypeTitle}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <label>Event Date:</label>
+        </div>
+        <div class="col-md-8">
+            {{selectedNote.EventDate | date: "dd-MMM-yyyy hh:mm:ss"}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <label>Event Type:</label>
+        </div>
+        <div class="col-md-8">
+            {{selectedNote.EventType}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <label>Created By:</label>
+        </div>
+        <div class="col-md-8">
+            {{selectedNote.UserName}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <label>Event Details:</label>
+        </div>
+        <div class="col-md-8" ng-bind-html="trustAsHtml(selectedNote.History)">
+            
+        </div>
+    </div>
+
+</div>

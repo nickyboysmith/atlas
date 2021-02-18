@@ -1,0 +1,25 @@
+﻿.paymentType {
+    
+        form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+        .table tr:hover td
+        {
+            background-color:#ffffe6;
+        }
+
+        .selectedPaymentTypeId {
+            background: #cce9ff !important;
+        }
+
+        .selectedPaymentTypeId:hover {
+            background: #ffffe6;
+        }
+
+        .sml-scroll-div {
+            border: 1px solid black;
+        }
+    }
+}

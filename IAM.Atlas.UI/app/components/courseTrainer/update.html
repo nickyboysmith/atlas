@@ -1,0 +1,195 @@
+﻿<div id="courseTrainer" class="courseTrainer">
+
+
+    <system-feature-information title="course trainers"
+                                class="MergeDown"
+                                controller="CourseTrainersCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/courseTrainer/update"
+                                page-name="Course Trainers"
+                                add-favourite="true">
+    </system-feature-information>
+
+    <div class="row">
+        <div class="col-md-12" data-ng-hide="completedMessage.length > 0">{{ completedMessage }}</div>
+    </div>
+    <!-- Dropdowns Row -->
+    <div class="row marginBottom10">
+        <div class="col-sm-8">
+            <!-- Organisation Dropdown -->
+            <div class="row" data-ng-hide="hideOrganisationList == true">
+                <div class="col-md-4"><label class="remove-left-padding">Organisation</label></div>
+                <div class="col-md-8">
+                    <select class="form-control" ng-model="selectedOrganisation" data-ng-change="selectTheOrganisation(selectedOrganisation)">
+                        <option value="*">Please select</option>
+                        <option data-ng-repeat="organisation in relatedOrganisations" value="{{ organisation.id }}">{{ organisation.name }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Course Type Dropdown -->
+            <div class="row">
+                <div class="col-md-4"><label class="remove-left-padding">Course Type</label></div>
+                <div class="col-md-8">
+                    <select class="form-control" ng-model="selectedCourseType" data-ng-change="selectTheCourseType(selectedCourseType)">
+                        <option value="*">Please select</option>
+                        <option data-ng-repeat="coursetype in courseTypeCollection" value="{{ coursetype.Id }}">{{ coursetype.Title }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Category Dropdown -->
+            <div class="row">
+                <div class="col-md-4"><label class="remove-left-padding">Category</label></div>
+                <div class="col-md-8">
+                    <select class="form-control" ng-model="selectedCategory" data-ng-change="selectTheCategory(selectedCategory)">
+                        <option value="*">None</option>
+                        <option data-ng-repeat="category in courseTypeCategories" value="{{ category.Id }}">{{ category.Name }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Course Dates -->
+            <!-- From Date -->
+            <div class="row">
+                <div class="col-md-4"><label class="remove-left-padding">Course Date</label></div>
+                <div class="col-md-2"><label class="remove-left-padding">Between: </label></div>
+                <div class="col-md-4"><input ng-model="fromDate" type="text" class="form-control" /></div>
+                <div class="col-md-1 element-overflow-0">
+                    <a ng-click="toggleCalendar()" ng-show="!displayCalendar" class="calendar-button col-sm-6" title="Show Calendar"><div></div></a>
+                    <a ng-click="toggleCalendar()" ng-show="displayCalendar" class="calendar-button col-sm-6" title="Hide Calendar"><div></div></a>
+                </div>
+            </div>
+
+            <div class='row col-sm-12' style="z-index:10;">
+                <div class="col-sm-4"></div>
+                <div class='col-sm-8'>
+                    <div style="position:absolute;" ng-show="displayCalendar">
+                        <date-picker ng-model="fromDate" format-date="formatDate" ng-change="selectedFromDate(fromDate)" ng-mouseleave="toggleCalendar()"></date-picker>
+                    </div>
+                </div>
+            </div>
+
+            <!-- To Date -->
+            <div class="row">
+                <div class="col-md-4"><label class="remove-left-padding"></label></div>
+                <div class="col-md-2"><label class="remove-left-padding">And: </label></div>
+                <div class="col-md-4"><input ng-model="toDate" type="text" class="form-control" /></div>
+                <div class="col-md-1 element-overflow-0">
+                    <a ng-click="toggleCalendar2()" ng-show="!displayCalendar2" class="calendar-button col-sm-6" title="Show Calendar"><div></div></a>
+                    <a ng-click="toggleCalendar2()" ng-show="displayCalendar2" class="calendar-button col-sm-6" title="Hide Calendar"><div></div></a>
+                </div>
+            </div>
+
+            <div class='row col-sm-12' style="z-index:10;">
+                <div class="col-sm-3"></div>
+                <div class='col-sm-9'>
+                    <div style="position:absolute;" ng-show="displayCalendar2">
+                        <date-picker ng-model="toDate" format-date="formatDate" ng-change="selectedToDate(toDate)" ng-mouseleave="toggleCalendar2()"></date-picker>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"><label class="remove-left-padding"></label></div>
+                <div class="col-md-1"><input type="checkbox" ng-change="changeTrainersAllocated(noTrainersAllocated)" ng-model="noTrainersAllocated" /></div>
+                <div class="col-md-8"><label class="remove-left-padding">Find Only Courses With No Trainers Allocated </label></div>
+
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <button type="button" ng-click="searchForCourses()" class="btn" title="Search">Search</button>
+        </div>
+    </div>
+    <!-- Courses and Trainers Row -->
+    <div class="row">
+        <!-- Course Filter Results -->
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12"><label class="remove-left-padding">Courses</label><i ng-show="coursesCollection.length > 0">first 100 results returned</i></div>
+            </div>
+            
+            <div class="courseTypes row" ng-show="coursesCollection.length > 0">
+                <div id="courseTypesMaintenanceGridHolder" class="col-sm-12">
+                    <table st-safe-src="coursesCollection" st-table="courses" class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="4"><input st-search="" class="form-control" placeholder="Filter results" type="text" /></th>
+                            </tr>
+                            <tr>
+                                <th st-sort="startDate">Date</th>
+                                <th st-sort="reference">Reference</th>
+                                <th st-sort="venue">Venue</th>
+                                <th st-sort="trainers">Trainers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="course in courses" ng-class="{selectedTableRow: course.Id == selectedCourse.Id}" data-ng-click="selectTheCourse(course)">
+                                <td>{{ course.startDate | date:'dd MMM yyyy' }}</td>
+                                <td>
+                                    {{ course.reference }}
+                                </td>
+                                <td>
+                                    {{course.venue}}
+                                </td>
+                                <td>
+                                    {{ zeroNullTrainerCount(course.trainers) }}
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4" class="text-center">
+                                    <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 validation-message text-left">
+                    {{ validationMessage }}
+                    <div ng-show="coursesCollection.length == 0">
+                        No courses found.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Trainers -->
+        <div class="col-sm-6">
+            <div class="col-sm-12" ng-show="selectedCourse">
+                <span>
+                    <strong>{{selectedCourse.courseType}}; {{selectedCourse.courseTypeCategory}}</strong>
+                    <br />Reference: <strong>{{selectedCourse.reference}}</strong>
+                    <br />Venue: <strong>{{selectedCourse.venue}}</strong>
+                    <br />Date: <strong>{{selectedCourse.startDate | date:'dd MMM yyyy'}} to {{selectedCourse.endDate | date:'dd MMM yyyy'}}</strong>
+                </span><br /><br />
+                <label class="remove-left-padding" ng-show="courseStarted == false">Allocated Trainers</label>
+                
+                    <button class="btn btn-default btn-sm text-right" ng-click="addCourseTrainer(selectedCourse)" ng-show="courseStarted == false">Update</button>
+                
+            </div>
+            <div class="courseTypes row">
+                <div id="courseTypesMaintenanceGridHolder">
+                    <table class="table table-hover table-bordered">
+                        <tbody>
+                            <tr data-ng-repeat="trainer in trainers">
+                                <td ng-class="{selectedTableRow: trainer.Id === selectedTrainer}" data-ng-click="selectTheTrainer(trainer)">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                {{ trainer.Name }}({{trainer.Id}})
+                                            </div>
+                                            <div class="col-sm-6 text-right">
+                                                <span ng-show="trainer.TrainerDistanceToVenueInMilesRounded > 0">{{ trainer.TrainerDistanceToVenueInMilesRounded }} Miles</span>
+                                            </div>
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

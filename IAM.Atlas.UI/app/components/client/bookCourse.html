@@ -1,0 +1,34 @@
+﻿<div>
+    Client: {{ client.DisplayName }} ({{ client.ClientLicence[0].LicenceNumber }})
+</div>
+<div>
+    Course types available:
+    <div ng-repeat="clientStatus in clientStatuses">
+        <div ng-show="clientStatus.AttendanceStatusId <= 3">
+            <a ng-click="selectClientStatus(clientStatus)">{{ clientStatus.SchemeName }} ({{ clientStatus.AttendanceStatus }})</a>
+        </div>
+        <div ng-show="clientStatus.AttendanceStatusId > 3">
+            {{ clientStatus.SchemeName }} ({{ clientStatus.AttendanceStatus }})
+        </div>
+    </div>
+</div>
+<div ng-show="selectedClientStatus">
+    Please select a course:
+    <div ng-repeat="course in courses" class="row">
+        <div ng-show="selectedClientStatus.AttendanceStatusId == 1">
+            <div>{{ course.Reference }}&nbsp;({{ formatDate(course.CourseDate[0].DateStart) }}, {{ course.DefaultStartTime }} - {{ course.DefaultEndTime }})&nbsp;<button class="btn" ng-click="bookCourse(course.Id)">Book</button></div>
+        </div>
+        <div ng-show="selectedClientStatus.AttendanceStatusId > 1 && selectedClientStatus.AttendanceStatusId < 4">
+            <div>{{ course.Reference }}&nbsp;({{ formatDate(course.CourseDate[0].DateStart) }}, {{ course.DefaultStartTime }} - {{ course.DefaultEndTime }})&nbsp;<button class="btn" ng-click="bookCourse(course.Id)">Change Booking</button></div>
+        </div>
+    </div>
+    <div ng-show="courses.length == 0">
+        No courses found.
+    </div>
+</div>
+<div ng-show="errorMessage">
+    <font color="crimson">{{ errorMessage }}</font>
+</div>
+<div ng-show="statusMessage">
+    <span class="validation-message">{{ statusMessage }}</span>
+</div>

@@ -1,0 +1,194 @@
+﻿<div id="courseType" class="courseType">
+
+    <system-feature-information title="course type"
+                                controller="CourseTypeCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/courseType/update"
+                                page-name="Course Type"></system-feature-information>
+
+
+    <form class="form-horizontal row" role="form">
+
+        <div class='row'></div>
+        <div class='row'></div>
+
+        <div ng-show="isAdmin">
+            <div class='col-sm-12 form-group'>
+                <div class='col-sm-2'>
+                    <label>Organisation:</label>
+                </div>
+                <div class='col-sm-4'>
+                    <select ng-model="organisationId"
+                            ng-change="getCourseTypesByOrganisation(organisationId)"
+                            class='form-control'
+                            ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+                </div>
+                <div class='col-sm-6'></div>
+            </div>
+        </div>
+
+        <div class='row'>
+
+            <div class="col-sm-12">
+                <div class='col-sm-6'>
+                    <label>Course Types</label>
+
+
+                    <table st-table="courseTypes" class="table table-hover table-bordered" st-safe-src="courseTypeCollection">
+                        <thead></thead>
+                        <tbody>
+                            <tr ng-repeat="courseType in courseTypes">
+                                <td ng-class="{selectedCourseTypeDetailId: courseType.Id === selectedCourseTypeDetailId}"
+                                    ng-click="setSelectedCourseTypeDetail(courseType)">
+                                    {{ courseType.Title }}
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" class="text-center">
+                                    <div st-pagination="" st-items-by-page="11" st-displayed-pages="5"></div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+
+                <div class="col-sm-6">
+
+                    <div class='row marginBottom5'>
+                        <!-- Title -->
+                        <div class="col-sm-3">
+                            <label>Title</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" data-ng-model="selectedCourseTypeDetail.Title" />
+                        </div>
+                    </div>
+                    <!-- Course Type Code -->
+                    <div class="row marginBottom5">
+                        <div class="col-sm-3">
+                            <label>Code</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" data-ng-model="selectedCourseTypeDetail.Code" />
+                        </div>
+                    </div>
+
+                    <!-- Course Type Description -->
+                    <div class="row marginBottom5">
+                        <div class="col-sm-3">
+                            <label>Description</label>
+                        </div>
+                        <div class='col-sm-9'>
+                            <textarea rows="4" class="form-control" type="text" data-ng-model="selectedCourseTypeDetail.Description" placeholder="Description" />
+                        </div>
+                    </div>
+
+                    <!-- Last Booking -->
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Last Booking</label>
+                        </div>
+                        <div class='col-sm-2'>
+                            <input id="courseTypeLastBookingDays"
+                                   class="form-control"
+                                   type="text"
+                                   data-ng-model="selectedCourseTypeDetail.DaysBeforeCourseLastBooking"
+                                   onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                        </div>
+                        <div class="col-sm-7">
+                            Days, before the Course Start
+                        </div>
+                    </div>
+
+                    <!-- Course Type Disable Checkbox -->
+                    <div class="row">
+                        <div class='col-sm-3'></div>
+                        <div class="col-sm-1">
+                            <input type="checkbox" data-ng-model="selectedCourseTypeDetail.Disabled" data-ng-click="changeTheMessage()" />
+                        </div>
+                        <div class="col-sm-8">
+                            <label class="disabled-label">Disabled</label>
+                        </div>
+                    </div>
+
+                    <!-- Course Type Categories -->
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Categories</label>
+                        </div>
+
+                        <div class="col-sm-8">
+                            <div class="sml-scroll-div marginBottom10">
+                                <table class="table table-hover table-bordered table-striped">
+                                    <thead></thead>
+                                    <tbody>
+                                        <tr data-ng-repeat="courseCategory in courseTypeCategories">
+                                            <td>
+                                                {{ courseCategory.Name }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+                            <button class="btn btn-default btn-sm pull-right" ng-click="editCourseTypeCategories()">...</button>
+                        </div>
+                    </div>
+
+                    <!-- DORS Scheme for this course type -->
+                    <div class="row marginBottom5" ng-show="selectedCourseTypeDetail.DORSOnly == true">
+                        <div class="col-sm-3">
+                            &nbsp;
+                        </div>
+                        <div class="col-sm-9">
+                            <strong>This is a DORS Course Type</strong>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="DORSScheme != null">
+                        <div class="col-sm-3">
+                            <label>Scheme</label>
+                        </div>
+                        <div class="col-sm-9">
+                            {{ DORSScheme.Name }}
+                        </div>
+                    </div>
+                    <div class="row marginBottom5" ng-show="DORSScheme != null">
+                        <div class="col-sm-3">
+                            <label>Scheme Id</label>
+                        </div>
+                        <div class="col-sm-9">
+                            {{ DORSScheme.DORSSchemeIdentifier }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class='col-sm-3'></div>
+                        <div class="col-sm-3">
+                            <div class="btn button-fill-width" data-ng-click="saveCourseTypeMaintenance()">Save</div>
+                        </div>
+
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-1">      
+                            <div class="btn button-fill-width" data-ng-click="addNewCourseType()">Add new</div>
+                        </div>
+                        <div class='col-sm-2'></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!successMessage === false">
+            <div class="col-sm-12 success-message leftalign">{{ successMessage }}</div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+            <div class="col-sm-12 validation-message leftalign">{{ validationMessage }}</div>
+        </div>
+    </form>
+
+</div>

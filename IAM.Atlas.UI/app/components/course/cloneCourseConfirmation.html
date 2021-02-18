@@ -1,0 +1,23 @@
+﻿<div id="cloneCourseConfirmation">
+
+    <div class="row form-line-separator-20">
+        <div class="col-md-12">
+            <p>
+                {{ courseType.Title }}
+                <span ng-if="courseTypeCategory"> ({{ courseTypeCategory.Name }})</span>
+            </p>
+        </div><!-- end .col-md-12 -->
+        <div class="col-md-12 disabled-label">
+            <p>You are about to create Courses based on this course.</p>
+            <p>Please confirm by clicking "Create Courses"</p>
+        </div><!-- end .col-md-12 -->
+    </div><!-- end .row .form-line-separator-20 -->
+
+    <div class="row form-line-separator">
+        <div class="col-md-12 rightalign">
+            <div ng-click="courseCreate()"
+                 class="btn">Create Courses</div>
+        </div><!-- end .col-md-12 -->
+    </div><!-- end .row .form-line-separator -->
+
+</div><!-- end #cloneCourseConfirmation -->

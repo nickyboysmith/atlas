@@ -1,0 +1,30 @@
+﻿@import "../modules/_mixins.scss";
+
+#documentContainer {
+
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+
+        li {
+            border-bottom: 1px solid #cecece;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        li:last-child {
+            border-bottom: 0;
+        }
+    }
+
+    tr.isSelected td {
+        background: #cce9ff;
+    }
+
+    .docInfo {
+        width: 24px;
+        height: 24px;
+        background: url(/app_assets/images/info.png) no-repeat !important;
+        background-size: 100% !important;
+    }
+}

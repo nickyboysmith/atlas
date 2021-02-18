@@ -1,0 +1,82 @@
+﻿
+
+.interpreterLanguage {
+    
+    form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+       .sml-scroll-div {
+        border: 1px solid black;
+        }
+
+       .table tr:hover td
+        {
+            background-color:#ffffe6;
+        }
+
+         .selectedInterpreter {
+            background: #cce9ff !important;
+        }
+
+         .selectedInterpreter:hover {
+            background: #ffffe6;
+            color: #fff;
+        }
+
+       
+    }
+}
+
+.addInterpreterLanguage {
+    
+    form {
+            width: 100%;
+            height: auto;
+            overflow: visible;
+
+           .sml-scroll-div {
+            border: 1px solid black;
+            height:150px;
+            }
+        
+    }
+}
+
+.editInterpreterLanguage {
+    
+    form {
+            width: 100%;
+            height: auto;
+            overflow: visible;
+
+           .sml-scroll-div {
+            border: 1px solid black;
+            height:100px;
+            }
+        
+    }
+}
+
+.addLanguage {
+    
+    form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+       .sml-scroll-div {
+        border: 1px solid black;
+        }
+
+        tr.isSelected td {
+            background: #cce9ff;
+            }
+
+        .table tr:hover td
+        {
+            background-color:#ffffe6;
+        }
+    }
+}

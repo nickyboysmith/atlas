@@ -1,0 +1,17 @@
+﻿<div id="chooseOrganisation">
+
+    <div class="row">
+        <div class="col-md-12">
+            <p>Please select an organisation</p>
+        </div>
+        <div class="col-md-12">
+            <select 
+                    ng-model="selectedOrganisation"
+                    ng-change="chooseOrganisation(selectedOrganisation)"
+                    ng-options="organisation as organisation.Name for organisation in organisationList">
+                <option value="">Please select an organisation</option>
+            </select>
+        </div>
+    </div>
+
+</div>

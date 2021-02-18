@@ -1,0 +1,42 @@
+﻿#assignMeterUsers {
+
+    width:950px;
+
+    .meter-title {
+        margin-bottom: 10px;
+    }
+
+    ul.booking-note-holder {
+        padding-left: 0px!important;
+        list-style-type: none!important;
+        li {
+            border-bottom: 1px solid #e8e8e8!important;
+            cursor: pointer;
+        }
+        li:last-child {
+            border-bottom: 0!important;
+        }
+    }
+
+    .has-dropdown-false {
+        margin-top: 15px;
+    }
+
+    .has-dropdown-true {
+        margin-top: 86px;
+        ul.booking-note-holder {
+            height: 282px!important;
+        }
+    }
+
+    td.selectedTableRow
+    {
+        color: white;
+        background-color:#428bca;
+    }
+
+    #meterNotSelectedYet{
+        height:300px;
+        line-height:300px;
+    }
+}

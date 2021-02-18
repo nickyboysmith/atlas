@@ -1,0 +1,187 @@
+﻿<div id="atlasAbout" class="container-fluid">
+   
+    <form class="form-horizontal row" role="form">
+
+        <div class='col-sm-12 form-group'>
+            <div class="main-atlas-logo-holder">
+                <div id="AtlasLogo"></div>
+                <div id="AtlasTitle">
+                    Atlas
+                </div>
+
+            </div>
+        </div>
+
+        <!--Product Version Line-->
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-1'></div>
+            <div class='col-sm-10'>
+                <span><label>Product Version:</label></span>
+
+                <span class="blueitalic">{{systemControl.SystemName}}</span>
+
+                <span>
+                    {{systemControl.ApplicationVersionPart1 | limitTo:1}}
+                    <label>.</label>
+                    {{systemControl.ApplicationVersionPart2}}
+                </span>
+
+                <span>
+                    <label>R</label>
+                    {{systemControl.ApplicationVersionPart3 | limitTo:1}}
+                </span>
+
+                <span>{{("000" + systemControl.ApplicationVersionPart4).slice(-6)}} </span>
+
+        </div>
+            <div class='col-sm-1'></div>
+        </div>
+
+        <!--DB Line-->
+        <div class='col-sm-12 form-group'>
+
+            <div class='col-sm-3'></div>
+            <div class='col-sm-6'>
+
+                <span><label>DB:</label></span>
+
+                <span>
+                    {{systemControl.DatabaseVersionPart1}}
+                    <label>.</label>
+                    {{systemControl.DatabaseVersionPart2}}
+                </span>
+               
+                <span>
+                    <label>R</label>{{("000" + systemControl.DatabaseVersionPart3).slice(-3)}}
+                </span>
+
+                <span>
+                    {{("000" + systemControl.DatabaseVersionPart4).slice(-6)}}
+                </span>
+
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <!--Browser Line-->
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-1'></div>
+            <div class='col-sm-10'>
+
+                <span>
+                    <label>Browser:</label>
+                </span>
+
+                <span>{{systemInfo.Browser}}</span>
+
+                <span>
+                    {{systemInfo.MajorVersion}}
+                    On
+                    {{systemInfo.Platform}}
+                </span>
+
+                
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+        <div class="col-sm-12 form-group linkRow">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-4 feedback">
+                <span alt="Feedback"
+                        title="Feedback"
+                        ng-click="DisplayFeedback()"
+                        class="AboutLink">Page Feedback</span>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-4 help">
+                <span alt="Help"
+                        title="Help & Support"
+                        ng-click="DisplayHelp()"
+                        class="AboutLink">Help + Support</span>
+            </div>
+            <div class="col-sm-1"></div>
+        </div> 
+
+        <div class="main-atlas-logo-holder">
+            <div id="IAMRoadSmart"></div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--<div class="col-sm-12 row">
+            <div class="atlasLogo col-sm-3"></div>
+        </div>
+        <div class="col-sm-12 row">
+        </div>
+        <div class="col-sm-12 row">
+        </div>
+
+                hello
+        {{systemControl.AtlasSystemFromName}}
+                hello
+
+        <div class="col-sm-12 row infoRow" title="{{ atlasSettings.atlasHoverInfo}}">
+            <label class='control-label version'>Product Version:</label>
+            <label class="control-label version data">Atlas {{ atlasSettings.atlasVersion }}</label>
+            <label class="control-label versionRelease data">R{{ atlasSettings.atlasVersionRelease}}</label>
+        </div>
+        <div class="col-sm-12 row infoRow">
+            <label class='control-label browser'>Browser:</label>
+            <label class="control-label browser data">{{ systemInfo }}</label>
+        </div>
+        <div class="col-sm-12 row infoRow">
+            <label class='control-label browser'>Cookies:</label>
+            <label class="control-label browser data">{{ cookieInfo }}</label>
+        </div>
+        <div class="col-sm-12 row linkRow">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-7 feedback">
+                <span alt="Feedback"
+                      title="Feedback"
+                      ng-click="DisplayFeedback()"
+                      class="AboutLink">Page Feedback</span>
+            </div>
+
+        </div>
+
+        <div class="col-sm-12 row linkRow">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-7 help">
+                <span alt="Help"
+                      title="Help & Support"
+                      ng-click="DisplayHelp()"
+                      class="AboutLink">Help + Support</span>
+            </div>
+        </div>
+
+        <div class="col-sm-12 row">
+        </div>
+        <div class="col-sm-12 row">
+        </div>
+        <div class="col-sm-12 row">
+        </div>
+
+        <div class="col-sm-12 col-sm-offset-9 row">
+
+            <img src="~/../../app_assets/images/iamroad_smart_logo_atlas_negative.png" alt="" />
+
+        </div>-->

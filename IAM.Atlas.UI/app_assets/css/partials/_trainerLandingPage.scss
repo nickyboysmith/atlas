@@ -1,0 +1,368 @@
+﻿@import "../modules/_mixins";
+
+#trainerLanding {
+    background: white;
+    min-height:100%;
+    .container {
+
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        overflow: visible;
+
+        .main-side-bar-container {
+            height:100%!important;
+            position:absolute;
+        } 
+        .main-trainer-container {
+            margin-left:25%;
+            
+            .main-atlas-logo-holder {
+                /*margin: 5px 0 30px 0;*/
+                margin: 5px 0 10px 10px;
+                #CompanyLogo {
+                    height: 60px;
+                    width: 275px;
+                    background: url(/app_assets/images/logo_with_iamgroup.png) no-repeat;
+                    background-size: 185px;
+                    margin-left: -9px;
+                    margin-top: 30px;
+
+                    a {
+                        height: 60px;
+                        width: 198px;
+                        text-indent: -9999999px;
+                        position: absolute;
+                        display: block;
+                    }
+
+                    a:hover {
+                        background: transparent;
+                    }
+                }
+                #AtlasLogo {
+                    float: left;
+                    height: 30px;
+                    width: 30px;
+                    background: url(/app_assets/images/atlaslogo.png) no-repeat;
+                    background-size: 100%;
+                    margin-left: -9px;
+                    margin-top: 10px;
+                }
+                #AtlasTitle {
+                    float: left;
+                    font-family: "-apple-system",BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Ubuntu,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+                    font-size: 24px;
+                    font-weight: bolder;
+                    color: #378280;
+                    margin-left: 5px;
+                    margin-top: 10px;
+                    width: 200px;
+                }
+            }
+        }
+        .quick-links-holder {
+            float: left;
+            min-height:100%;
+            background: #8C8C8C;
+            width: 15%;
+            .small-home-icon {
+                @include iconGetter(-11px, -441px);
+            }
+            .small-email-icon {
+                @include iconGetter(-11px, -410px);
+            }
+            .small-info-icon {
+                @include iconGetter(-11px, -379px);
+            }
+            ul {
+                height: auto;
+                margin:0 auto;
+                margin-top: 20px;
+                padding-left: 0;
+                width: 20px;
+                a {
+                    padding: 0;
+                    border: 0;
+                }
+                li {
+                    height:20px;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+        .inner-sidebar-holder {
+            float: right;
+            min-height:100%;
+            width: 85%;
+            /*background: #F9F9F9;*/
+            background: #5f5e5e;
+            color:white;
+            border-left: solid 1px white;
+            .trainer-profile-picture {
+                width: 70%;
+                margin: 20px auto;
+                border: 2px solid #F1F1F1;
+                /*img {
+                    width:146px;
+                }*/
+            }
+            a {
+            color:white;
+            }
+            .trainer-details {
+                height: auto;
+                overflow: hidden;
+                text-align: center;
+                padding-bottom: 20px;
+                border-bottom: 1px solid #F3EDED;
+                color: white;
+                margin-left: 15%;
+                margin-right: 15%;
+                .trainer-name {
+                    font-weight: bold;
+                }
+                .trainer-role {
+
+                }
+                .trainer-location {
+
+                }
+            }
+            .trainer-links {
+                ul {
+                    list-style-type: none;
+                    margin: 0;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    padding: 0 10px;
+                    padding: 0;
+                    padding-left: 35px;
+                    padding-right: 20px;
+                    /*.trainer-about-icon {
+                        @include iconGetter(-6px, -473px);
+                    }
+                    .trainer-available-icon {
+                        @include iconGetter(-6px, -506px);
+                    }
+                    .trainer-booking-icon {
+                        @include iconGetter(-9px, -538px);
+                        height: 24px!important;
+                        a {
+                            padding-top: 2px;
+                        }
+                    }*/
+                    li {
+                        margin-bottom: 13px;  
+                        width: 100%;            
+                        height: 25px;      
+                    }
+                    li a {
+                        text-decoration:none;    
+                        display: block;
+                        /*padding-left: 35px;*/
+                        width: 75%;
+                        float:left;
+                    }
+                    li a:hover {
+                        /*color: #2c507f;*/
+                        text-decoration: underline;
+                        text-decoration: none;   
+                    }
+                    li:hover {
+                        color: #2c507f !important;
+                        background-color: #cecece; 
+                    }
+                    .trainer-icon {
+                        background-size: 100%;
+                        width: 25px;
+                        height: 25px;
+                        float: right;
+                        margin-left: 5px;
+                        margin-right: 0;
+                    }
+                    .trainer-icon.about {
+                        background-image: url(/app_assets/images/trainer/about.png);
+                    }
+                    .trainer-icon.available {
+                        background-image: url(/app_assets/images/trainer/trainercalendar.png);
+                    }
+                    .trainer-icon.booking {
+                        background-image: url(/app_assets/images/trainer/bookings.png);
+                    }
+                    .trainer-icon.messages {
+                        background-image: url(/app_assets/images/trainer/messages.png);
+                    }
+                    .trainer-icon.attendance {
+                        background-image: url(/app_assets/images/trainer/courseattendance.png);
+                    }
+                }
+            }
+        }
+        .branding-container {
+            margin-top: 18px; 
+            img {
+                margin: 0 auto;
+                display: block;
+                width: 35%;
+            }
+        }
+        .trainer-header {
+            margin-top: 5px;
+            height: auto;
+            overflow: hidden;
+            width: 100%;
+            margin-bottom: 5px;
+            .toggle-menu-button {
+                @include iconGetter(-4px, -565px);
+                height: 36px!important;
+                cursor: pointer;
+            }
+            img.company-logo{
+                max-height: 45px;
+                display: none; /*not needed for now*/
+            }
+            div.company-display-name h3{
+                font-size: 1.8em;
+                font-weight: bold;
+            }
+            .sign-out-trainer {
+                text-transform: uppercase;
+                text-align: right;
+                font-weight: bold;
+                font-size: 12px;
+                text-decoration: none;
+                background: none;
+                display: block;
+                cursor: pointer;
+
+            }
+            .sign-out-trainer:hover  {
+                text-decoration: underline;
+            }
+
+        }
+        .trainer-content-body {
+            margin-top:30px;
+            .btn {
+                margin-top: 2px;
+                @include newButton(#6495d6, #4b519e);
+                padding: 4px 12px;
+            }
+            h1 {
+                margin-bottom: 10px;
+            }
+            .trainer-field-holder-row {
+                margin-bottom:10px;
+
+                label {
+                    font-weight: normal;
+                    padding-top: 7px;
+                    font-size: 13px;
+                }
+                input {
+                    width: 100%;
+                    border-radius: 3px;
+                    border: 1px solid #cecece;
+                    padding:5px;
+                }
+                select {
+                    width: 100%;
+                    border-radius: 3px;
+                    border: 1px solid #cecece;
+                    padding: 5px 5px 4px 5px;
+                }
+                textarea {
+                    width: 100%;
+                    border-radius: 3px;
+                    border: 1px solid #cecece;
+                    padding: 5px;
+                    height: auto!important;
+                    overflow: hidden;
+                }
+                .textarea{
+                    overflow-y:scroll;
+                }
+                .date-icon {
+                    margin-top: 6px;
+                    @include iconGetter(-6px, -506px);
+                    height: 20px;
+                    display: block;
+                }
+            }
+
+        }
+
+    }
+}
+
+@media (min-width: 500px) and (max-width: 767px) {
+    #trainerLanding {
+        .container {
+            .inner-sidebar-holder {
+                color: white;
+                .trainer-profile-picture {
+                    width: 60%;
+                }
+            }
+        }
+    }  
+    #trainerLanding .branding-container {
+        margin-top: 18px; 
+        img {
+            margin: 0 auto;
+            display: block;
+            width: 35%;
+        }
+    }
+}
+
+@media (min-width: 391px) and (max-width: 767px) {
+    #trainerLanding {
+        .container {
+            .trainer-header {
+                .toggle-menu-button {
+                    background-position: -10px -564px;
+                }
+            }
+        }
+    }  
+}
+
+@media (min-width: 359px) and (max-width: 390px) {
+    #trainerLanding {
+        .container {
+            .trainer-header {
+                .toggle-menu-button {
+                    background-position: -10px -564px;
+                }
+            }
+        }
+    }  
+}
+
+@media (min-width: 344px) and (max-width: 358px) {
+    #trainerLanding {
+        .container {
+            .trainer-header {
+                .toggle-menu-button {
+                    background-position: -10px -564px;
+                }
+            }
+        }
+    }  
+}
+
+@media screen and (max-width: 343px) {
+    #trainerLanding {
+        .container {
+            .trainer-header {
+                .toggle-menu-button {
+                    background-position: -17px -568px;
+                }
+            }
+        }
+    }  
+}

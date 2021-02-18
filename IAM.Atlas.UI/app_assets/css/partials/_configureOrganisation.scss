@@ -1,0 +1,98 @@
+﻿.configureOrganisation {
+    width:880px;
+    .mainConfigurationHolder {
+
+        select  {
+            width: 100%;
+        }
+
+        .preview-holder {
+            border: 1px solid #cecece; 
+            height: auto;
+            overflow: hidden;
+            margin-bottom: 20px;
+            .companyLogo {
+                float:left;
+                width: 45%;
+                img {
+                    background-size: contain;
+                    width:95%;
+                }
+            }
+            .companyNameText {
+                width: 50%;
+                float: right;
+                font-size: 20px;
+                font-weight: bold;
+                overflow: hidden;
+                max-height: 60px;
+            }
+
+        }
+
+        .organisation-field-holder {
+            height: auto;
+            overflow: hidden;
+            margin-bottom: 10px;
+            .reveal-checkbox-container {
+                margin-bottom:10px;
+                .reveal-checkbox-holder {
+                    width: 100%;
+                    height: auto;
+                    overflow: hidden;
+                    .checkbox-holder {
+                        float: left;
+                        margin-right:10px;
+                    }
+                    .option-name-holder {
+                        float: left;
+                    }
+                }
+
+            }
+            .field-with-colour-picker {
+                margin-bottom: 10px;
+                .option-name-holder {
+                    padding-top: 2px;
+                }
+                .colour-picker-holder {
+                    float: right;
+                    height: 26px;
+                    width: 26px;
+                    background-image: url(/app_assets/images/sprite.png);
+                      background-position: -13px -276px;
+                    background-repeat: no-repeat; 
+                    display: block;
+                }
+            }
+        }
+
+        .logo-options {
+            .image-preview {
+                border: 1px solid #cecece; 
+                height: auto;
+                overflow: hidden;
+                img {
+                    width:217px;
+                }
+            }
+            input[type="file"] {
+
+            }
+        }
+
+        .button-holder {
+            .configure-button {
+                background: #f6f5f5;
+                border: 1px solid #cbcbcb;
+                text-align: center;
+                padding: 8px 15px;
+            }
+        }
+
+        input[type="text"] {
+            width: 100%;
+        }
+
+    }
+}

@@ -1,0 +1,59 @@
+﻿<div id="editAllTrainersDocument">
+    <div class="row form-line-separator">
+        <div class="col-sm-4">
+            Document:
+        </div>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Original Document Name" ng-disabled="true" ng-model="document.OriginalFileName" />
+        </div>
+    </div>
+    <div class="row form-line-separator">
+        <div class="col-sm-4">
+            Name:
+        </div>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Document File Name" ng-disabled="true"  ng-model="document.FileName" />
+        </div>
+    </div>
+    <div class="row form-line-separator">
+        <div class="col-sm-4">
+            Title:
+        </div>
+        <div class="col-sm-8">
+            <input class="form-control" type="text" placeholder="Document Title" ng-model="document.Title" />
+        </div>
+    </div>
+    <div class="row form-line-separator">
+        <div class="col-sm-4">
+            Description:
+        </div>
+        <div class="col-sm-8">
+            <textarea class="form-control" placeholder="Description" ng-model="document.Description"></textarea>
+        </div>
+    </div>
+    
+    <div class="row form-line-separator text-center">
+        <div class="col-sm-4">
+            &nbsp;
+        </div>
+        <div class="col-sm-8">
+            <div ng-show="errorMessage != ''">
+                <div class="validation-message">{{ errorMessage }}</div>
+            </div>
+            <div ng-show="successMessage != ''">
+                {{ successMessage }}
+            </div>
+        </div>
+    </div>
+    <div class="row form-line-separator">
+        <div class="col-sm-4">
+            &nbsp;
+        </div>
+        <div class="col-sm-4 text-left">
+            <button class="btn" ng-click="saveDocument()">Save</button>
+        </div>
+        <div class="col-sm-4 text-right">
+            <button class="btn" onclick="$('button.close').last().trigger('click')">Cancel</button>
+        </div>
+    </div>
+</div>

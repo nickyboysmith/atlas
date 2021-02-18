@@ -1,0 +1,34 @@
+﻿<div id="addSpecialRequirement">
+    <div ng-show="!removed">
+        <div class="row marginBottom5">
+            <div class="col-md-4">
+                <label>Name:</label>
+            </div>
+            <div class="col-md-8">
+                <input type="text" placeholder="Additional Requirement Title" class="form-control" ng-model="newtitle" />
+            </div>
+        </div>
+        <div class="row marginBottom5">
+            <div class="col-md-4 form-group">
+                <label>Description:</label>
+            </div>
+            <div class="col-md-8 form-group">
+                <textarea rows="4" placeholder="Additional Requirement Description" class="form-control" ng-model="newdescription"></textarea>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4">                   
+            </div>
+            <div class="col-sm-4 text-left">
+                <button class="btn fixed-width-80" ng-click="addSpecialRequirement(newtitle, newdescription)">Save</button>
+            </div>
+            <div class="col-sm-4 text-right">
+                <button class="btn fixed-width-80" ng-click="cancel()">Cancel</button>
+            </div>
+        </div>
+        <div class="row" ng-show="errorMessage != ''">
+            <div class="col-sm-12 validation-message">{{ errorMessage }}</div>
+        </div>
+    </div>
+</div>

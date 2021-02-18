@@ -1,0 +1,74 @@
+﻿<div id="DeleteMarkedClients" class="clientDeleteMarked">
+
+    <system-feature-information title="delete marked clients"
+                                controller="DeleteMarkedClientsCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/client/deleteMarked"
+                                page-name="Delete Marked Clients"></system-feature-information>
+
+    <div class="Title row">
+        <h2></h2>
+    </div>
+    <form class="form-horizontal row" role="form">
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-12 col-xs-offset-1'>The Clients below will be removed from the Atlas System</div>
+            <div class='col-sm-12 col-xs-offset-1'>and the Data will be archived after the Date specified.</div>
+        </div>
+
+        <div ng-show="$parent.isAdmin">
+            <div class='col-sm-12 form-group'>
+                <div class='col-sm-3'>
+                    <label>Organisation:</label>
+                </div>
+                <div class='col-sm-9'>
+                    <select ng-model="organisationId"
+                            ng-change="getMarkedClientsByOrganisation(organisationId)"
+                            class='form-control'
+                            ng-options="organisation.id as organisation.name for organisation in organisations">
+
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="sml-scroll-div marginBottom10">
+                <table class="table table-bordered">
+                    <thead></thead>
+                    <tbody>
+                        <tr ng-repeat="markedclient in markedClients" ng-class="{'isSelected': markedclient.isSelected}" >
+                            <td ng-click="setMarkedClients(markedclient)"  
+                                title="{{markedclient.Client.DisplayName}}"
+                                value="{{markedclient.Id}}">
+                                {{markedclient.Client.DisplayName}} (ID: {{markedclient.ClientId}}) Delete {{markedclient.DeleteAfterDate | date:'dd MMM yyyy' }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <button class="btn btn-default btn-sm"
+                            ng-click="removeMarkedClients()"
+                            title="Remove Marked Clients"
+                            ng-disabled="HasMarkedClients()">
+                        Remove Selected From the List
+                    </button>
+                </div>
+                <div class="col-sm-6" ng-if="successMessage != ''">
+                    <h3>{{ successMessage }}</h3>
+                </div>
+
+                <div class="col-sm-6" ng-if="validationMessage != ''">
+                    <h3>{{ validationMessage }}</h3>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+

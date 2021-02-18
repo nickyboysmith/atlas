@@ -1,0 +1,70 @@
+﻿
+#clientSearch{
+    
+    #clientGridHolder{
+        table {
+            background: transparent;
+            tbody {
+                tr.false {
+                    background: red;
+                    td {
+                        background: red;
+                        color: white
+                    }
+                    td a {
+                        color: white;
+                    }
+                    th {
+                        background: red;
+                        color: white;
+                    }
+                }
+            }
+        }
+        .client-hidden-message 
+        {
+            text-align: center;
+            background: #00508f;
+            position: absolute;
+            font-size: 15px;
+            opacity: 0.85;
+            z-index: 100;
+            padding: 10px 0;
+            color: #f3f6ff; 
+        }
+    }
+
+    .st-sort-ascent:before {
+        content: '\25B2';
+    }
+
+    .st-sort-descent:before {
+        content: '\25BC';
+    }
+
+    .table-hover thead tr:hover th
+    {
+        cursor: pointer;
+    }
+
+    .danger.table-hover tbody tr:hover td, .danger.table-hover tbody tr:hover th 
+    {
+        background-color: #006cc2;
+        color:#fff;
+        cursor: pointer;
+    }
+
+    .table-striped > tbody > tr.clientLocked {
+        background-color: #ff00ff;
+    }
+    
+    .table-striped > tbody > tr.clientLocked:nth-child(even) {
+        background-color: #ff00ff;
+    }
+
+    .wide-blue-button {
+        background-color: blue;
+        text-decoration-color: white;
+    }
+    
+} 

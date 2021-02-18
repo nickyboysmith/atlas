@@ -1,0 +1,103 @@
+﻿<div id="cancelCourseFee" class="cancelCourseFee">
+
+    <form class="form-horizontal row" role="form">
+       
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-1'></div>
+                        <div class='col-sm-11'>
+                            {{selectedCourseType.selectedCourseTypeTitle}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-1'></div>
+                        <div class='col-sm-11'>
+                            {{selectedCourseType.selectedCourseTypeCategoryName}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-1'></div>
+                        <div class='col-sm-5'>
+                            Effective Date:
+                        </div>
+                        <div class='col-sm-6'>
+                            {{courseFees[selectedCourseType.selectedCourseFeeId].EffectiveDate | date:'dd MMM yyyy HH:mm:ss'}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-1'></div>
+                        <div class='col-sm-5'>
+                            Fee:
+                        </div>
+                        <div class='col-sm-6'>
+                            {{courseFees[selectedCourseType.selectedCourseFeeId].CourseFee}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-1'></div>
+                        <div class='col-sm-5'>
+                            Booking Supplement:
+                        </div>
+                        <div class='col-sm-6'>
+                            {{courseFees[selectedCourseType.selectedCourseFeeId].BookingSupplement}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-1'></div>
+                        <div class='col-sm-5'>
+                            Payment Due within
+                        </div>
+                        <div class='col-sm-2'>
+                            {{courseFees[selectedCourseType.selectedCourseFeeId].PaymentDays}}
+                        </div>
+                        <div class='col-sm-1'>
+                            Days
+                        </div>
+                        <div class='col-sm-3'></div>
+
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-6'></div>
+                        <div class='col-sm-6'>
+                            <button class="btn btn-default btn-sm"
+                                    ng-click="cancelCourseFee()"
+                                    title="Save">
+                                Confirm
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+        <!--Message banner-->
+        <div class='form-line-holder'>
+            <div class="col-sm-12" ng-if="cancelSuccessMessage != ''">
+                <h3>{{ cancelSuccessMessage }}</h3>
+            </div>
+        </div>
+        <div class='form-line-holder'>
+            <div class="col-sm-12" ng-if="cancelValidationMessage != ''">
+                <h3>{{ cancelValidationMessage }}</h3>
+            </div>
+        </div>
+
+    </form>
+</div>
+

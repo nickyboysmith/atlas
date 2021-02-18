@@ -1,0 +1,127 @@
+﻿<div id="vehicleTypeAdministration" class="vehicleTypeAdministration">
+
+    <form class="form-horizontal row" role="form">
+
+            <div ng-show="isAdmin">
+                <div class='col-sm-12 form-group margintop10 marginBottom20'>
+                    <div class='col-sm-3'>
+                        <label>Organisation</label>
+                    </div>
+                    <div class='col-sm-6'>
+                        <select ng-model="organisationId"
+                                ng-change="getVehicleTypes(organisationId)"
+                                class='form-control'
+                                ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+                    </div>
+                    <div class='col-sm-3'></div>
+                </div>
+            </div>
+
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-12'>
+                <label>Vehicle Types</label>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class="col-sm-6">
+                <div class="sml-scroll-div marginBottom10">
+                    <table class="table table-bordered table-striped">
+                        <thead></thead>
+                        <tbody>
+                            <tr ng-repeat="vehicleType in vehicleTypes">
+                                <td ng-click="setSelectedVehicleType(vehicleType)"
+                                    ng-class="{vehicleType : vehicleType == vehicleType.Id}"
+                                    value="{{vehicleType}}">
+                                    {{vehicleType.Name}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class='row marginBottom5'>
+                    <div class='col-sm-12'>
+                        <div class='col-sm-4 noLeftPadding'>
+                            <label>Vehicle Type</label>
+                        </div>
+                        <div class='col-sm-8 noRightPadding'>
+                            <input type="text"
+                                   class="form-control"
+                                   maxlength="100"
+                                   ng-model="selectedVehicleType.Name"
+                                   placeholder="Vehicle Type Name" 
+                                   readonly />
+                        </div>
+                    </div>
+                </div>
+                <div class='row marginBottom5'>
+                    <div class='col-sm-12'>
+                        <div class='col-sm-4'></div>
+                        <div class='col-sm-8 noRightPadding'>
+                            <textarea ng-model="selectedVehicleType.Description"
+                                      class="form-control"
+                                      maxlength="400"
+                                      rows="4"
+                                      placeholder="Vehicle Type Description"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class='row marginBottom10'>
+                    <div class='col-sm-12'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-4'></div>
+                            <div class='col-sm-8 noRightPadding'>
+                                <input type="checkbox" ng-model="selectedVehicleType.Automatic" />
+                                <span class="blueitalic">Automatic</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='row marginBottom10'>
+                    <div class='col-sm-12'>
+                        <div class='form-line-holder'>
+                            <div class='col-sm-4'></div>
+                            <div class='col-sm-8 noRightPadding'>
+                                <input type="checkbox" ng-model="selectedVehicleType.Disabled" />
+                                <span class="blueitalic">Disable</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class='row'>
+                    <div class='col-sm-12'>
+                        <div class='col-sm-4'></div>
+                        <div class="col-sm-2">
+                            <button ng-click="save()" class="btn btn-default" title="Save Changes">Save</button>
+                        </div>
+                        <div class='col-sm-4'></div>
+                        <div class="col-sm-2">
+                            <button ng-click="add()" class="btn btn-default" title="Add New Vehicle Type">New</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='row'></div>
+
+
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class="col-sm-12 noRightPadding" ng-if="!successMessage === false">
+                <div class="col-sm-12 success-message noRightPadding">{{ successMessage }}</div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+                <div class="col-sm-12 validation-message noRightPadding">{{ validationMessage }}</div>
+            </div>
+        </div>
+    </form>
+</div>

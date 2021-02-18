@@ -1,0 +1,129 @@
+﻿<div id="testNetcallDiv">
+    <div class="row marginBottom10">
+        <div class="col-sm-12">
+            Please enter user extension number for current client to test Netcall and click on button to submit Netcall payment.
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            
+            <br />
+            
+            
+            
+        </div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-4">
+            Agent's phone extension:
+        </div>
+        <div class="col-sm-8">
+            <input type="text" ng-model="agentsPhoneExtension" placeholder="Agent's phone extension" />
+        </div>
+    </div>
+    <div class="row marginBottom5">
+        <div class="col-sm-4">
+            Netcall payment result:
+        </div>
+        <div class="col-sm-4">
+            <select ng-model="netcallPaymentResult">
+                <option value="SUCCESS">
+                    Success
+                </option>
+                <option value="CARD_DECLINED">
+                    Card Declined
+                </option>
+                <option value="ABANDONED">
+                    Gave up mid process
+                </option>
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <button class="btn" ng-click="testNetcall(agentsPhoneExtension, netcallPaymentResult)">Simulate Netcall</button>
+        </div>
+    </div>
+    <div class="row" ng-show="accountDetail != null">
+        <div class="col-sm-12">
+            <h2>Results</h2><br />
+            <h3>Get Account Details:</h3><br />
+            <table class="table-striped table-hover" ng-show="accountDetail != null">
+                <tr>
+                    <td class="text-left">
+                        Client Id
+                    </td>
+                    <td>
+                        {{ accountDetail.ClientID }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-left">
+                        Result
+                    </td>
+                    <td>
+                        {{ accountDetail.Result }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-left">
+                        Result Description
+                    </td>
+                    <td>
+                        {{ accountDetail.ResultDescription }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-left">
+                        Amount to Pay
+                    </td>
+                    <td>
+                        {{ accountDetail.AmountToPay }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-left">
+                        Course Date Time
+                    </td>
+                    <td>
+                        {{ formatDate(accountDetail.CourseDateTime) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-left">
+                        Course Venue
+                    </td>
+                    <td>
+                        {{ accountDetail.CourseVenue }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row" ng-show="accountPaymentResult != null">
+        <div class="col-sm-12">
+            <h3>Post Account Payment Result:</h3><br />
+            <table class="table-striped table-hover" ng-show="accountDetail != null">
+                <tr>
+                    <td class="text-left">
+                        Result
+                    </td>
+                    <td>
+                        {{ accountPaymentResult.Result }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-left">
+                        Result Description
+                    </td>
+                    <td>
+                        {{ accountPaymentResult.ResultDescription }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row" ng-show="validationMessage != ''">
+        <div class="col-sm-12 validation-message">
+            {{ validationMessage }}
+        </div>
+    </div>
+</div>

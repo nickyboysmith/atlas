@@ -1,0 +1,95 @@
+﻿<div id="TrainerSettings" class="trainerSettings">
+
+    <form class="form-horizontal row" role="form">
+
+        <div ng-show="isAdmin">
+            <div class='col-sm-12 form-group'>
+                <div class='col-sm-2'>
+                    <label>Organisation:</label>
+                </div>
+                <div class='col-sm-5'>
+                    <select ng-model="organisationId"
+                            ng-change="getOrganisationTrainers(organisationId)"
+                            class='form-control'
+                            ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+                </div>
+                <div class='col-sm-5'></div>
+            </div>
+        </div>
+
+       
+        <div class='row'>
+            <div class='col-sm-12'>
+
+                <div class="col-sm-6">
+
+                    <label>Trainers</label>
+
+                    <div class="sml-scroll-div">
+                        <table class="table table-hover table-bordered table-striped">
+                            <thead></thead>
+                            <tbody>
+
+                                <tr ng-repeat="trn in trainers">
+                                    <td ng-click="getTrainerSettings(trn.Id)"
+                                        value="{{trn.Id}}"
+                                        title="{{trn.DisplayName}}"
+                                        ng-class="{selectedTrainer : selectedTrainer == trn.Id}">
+                                        {{trn.DisplayName}}
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                   
+                </div>
+
+                <div class="col-sm-6">
+                    <div class='row marginBottom10'>
+                        <div class='col-sm-2'>
+                            <label>Trainer:</label>
+                        </div>
+                        <div class='col-sm-10'>
+                            {{trainer.FirstName}} {{trainer.Surname}}
+                        </div>
+                    </div>
+
+                    <div class='row marginBottom10'>
+                        <div class='col-sm-2'>
+                            <input type="checkbox" data-ng-model="trainer.ProfileEditing"/>
+                        </div>
+                        <div class='col-sm-10'>
+                            Trainer Allowed To Edit Own Profile
+                        </div>
+                    </div>
+
+                    <div class='row marginBottom10'>
+                        <div class='col-sm-2'>
+                            <input type="checkbox" data-ng-model="trainer.CourseTypeEditing" />
+                        </div>
+                        <div class='col-sm-10'>
+                            Trainer Allowed To Edit Own Course Type
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-10">
+                            <div class="btn button-fill-width" data-ng-click="saveTrainerSettings()">Save Settings</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!successMessage === false">
+            <div class="col-sm-12 success-message noRightPadding rightalign">{{ successMessage }}</div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+            <div class="col-sm-12 validation-message noRightPadding rightalign">{{ validationMessage }}</div>
+        </div>
+
+    </form>
+</div>

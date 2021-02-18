@@ -1,0 +1,66 @@
+﻿
+
+.addCourseType {
+
+    form {
+        width: 400px;
+        height: auto;
+        overflow: visible;
+        }
+
+}
+
+.courseType {
+
+    form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+       .table tr:hover td
+        {
+            background-color:#ffffe6;
+        }
+
+        .selectedCourseTypeDetailId {
+            background: #cce9ff !important;
+        }
+
+        .selectedCourseTypeDetailId:hover {
+            background: #ffffe6;
+        }
+
+        .sml-scroll-div {
+            border: 1px solid black;
+            height:160px;
+        }
+
+        /*.row {
+            margin: 5px;
+        }*/
+       
+    }
+
+ }
+
+
+    /*.selectedCourseType {
+        background-color: #006cc2;
+        color: #fff;
+    }
+
+    tr.selectedCourseType:hover > td {
+        background-color: #006cc2;
+    }
+
+    categoryTable {
+        min-height: 180px;
+    }
+
+    .row {
+        margin: 5px;
+    }
+
+    th {
+        color: white;
+    }*/

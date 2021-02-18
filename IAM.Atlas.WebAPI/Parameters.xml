@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<parameters >
+  <parameter name="netBanxChargeURL" 
+             description="description"
+             defaultValue="https://api.test.netbanx.com/cardpayments/v1/accounts/[account_number]/auths">
+    <parameterEntry kind="XmlFile"
+                    scope="\\web.config$"
+                    match="/configuration/appSettings/add[@key='netBanxChargeURL']/@value" />
+  </parameter>
+
+  <parameter name="netBanxThreeDSecureURL" 
+             description="description"
+             defaultValue="https://api.test.netbanx.com/threedsecure/v1/accounts/[account_number]/enrollmentchecks">
+    <parameterEntry kind="XmlFile"
+                    scope="\\web.config$"
+                    match="/configuration/appSettings/add[@key='netBanxThreeDSecureURL']/@value" />
+  </parameter>
+
+  <parameter name="netBanxThreeDSecureDetailsURL" 
+             description="description"
+             defaultValue="https://api.test.netbanx.com/threedsecure/v1/accounts/[account_number]/authentications">
+    <parameterEntry kind="XmlFile"
+                    scope="\\web.config$"
+                    match="/configuration/appSettings/add[@key='netBanxThreeDSecureDetailsURL']/@value" />
+  </parameter>
+
+  <parameter name="netBanxMerchantURL" 
+             description="description"
+             defaultValue="https://www.merchant.com">
+    <parameterEntry kind="XmlFile"
+                    scope="\\web.config$"
+                    match="/configuration/appSettings/add[@key='netBanxMerchantURL']/@value" />
+  </parameter>
+
+  <parameter name="BarclaycardSmartpayURL" 
+             description="description"
+             defaultValue="https://pal-test.barclaycardsmartpay.com/pal/Payment.wsdl">
+    <parameterEntry kind="XmlFile"
+                    scope="\\web.config$"
+                    match="/configuration/appSettings/add[@key='BarclaycardSmartpayURL']/@value" />
+  </parameter>
+
+  <parameter name="BarclaycardSmartpayAction" 
+             description="description"
+             defaultValue="https://pal-test.barclaycardsmartpay.com/pal/servlet/soap/Payment">
+    <parameterEntry kind="XmlFile"
+                    scope="\\web.config$"
+                    match="/configuration/appSettings/add[@key='BarclaycardSmartpayAction']/@value" />
+  </parameter>
+
+  <parameter name="SecureTradingServiceHost" 
+             description="description"
+             defaultValue="webservices.securetrading.net">
+    <parameterEntry kind="XmlFile"
+                    scope="\\web.config$"
+                    match="/configuration/appSettings/add[@key='SecureTradingServiceHost']/@value" />
+  </parameter>
+
+  <parameter name="SecureTradingServiceURL" 
+             description="description"
+             defaultValue="https://webservices.securetrading.net/xml/">
+    <parameterEntry kind="XmlFile"
+                    scope="\\web.config$"
+                    match="/configuration/appSettings/add[@key='SecureTradingServiceURL']/@value" />
+  </parameter>
+  
+</parameters>
+
+

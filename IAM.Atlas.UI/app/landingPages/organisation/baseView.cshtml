@@ -1,0 +1,579 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-cloak>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title ng-bind="title">@(PageData["title"] ?? "IAM.Atlas for Visual Studio")</title>
+    <meta name="description" content="@PageData["description"]">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="/favicon.ico?v=1.1"> 
+    @Styles.Render("~/app_assets/css/app")
+    <link rel="stylesheet" href="~/app_assets/vendor/datepicker/angular-date-picker.css" />
+
+</head>
+
+<body ng-controller="NavbarCtrl" id="mainBody" ng-cloak>
+
+
+
+    <!--[if lt IE 9]>
+         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+     <![endif]-->
+    @*ng-show="{{menuEntry.isVisible}}" data-semver="1.2.0-rc2" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-animate.js"></script>*@
+
+    <sign-out-message style="display: none;"></sign-out-message>
+
+    <quickLaunch ng-controller="QuickSearchCtrl" id="theQuickLaunchContainer">
+
+        <div id="preloader"></div>
+
+        <div id="quickLaunchContainer">
+            <div class="quick-links-holder">
+                <ul>
+                    <a ui-sref="home">
+                        <li class="small-home-icon"  title="Home"></li>
+                    </a>
+                    <a href="">
+                        <li class="small-info-icon"  ng-click="showQuickSearchBox($event, 'Find System Information', 'systemfeature')"  title="System Feature Information"></li>
+                    </a>
+                    <a href="">
+                        <li class="small-client-icon" ng-click="showQuickSearchBox($event, 'Find a client', 'client')" title="Client Search"></li>
+                    </a>
+                    <a href="" ng-if="isReferringAuthority != true && systemIsReadOnly != true">
+                        <li class="small-course-icon" ng-click="showQuickSearchBox($event, 'Find a course', 'course')" title="Course Search"></li>
+                    </a>
+                    <a href="" ng-if="isReferringAuthority != true && systemIsReadOnly != true">
+                        <li class="small-internalmessaging-icon" title="Internal System Messaging" ng-click="ShowMenuItem('Internal System Messaging', '/app/components/messaging/send', 'MessagingCtrl', 'true', 'true', 'MessagingModal')"></li>
+                    </a>
+                    <a href="" ng-if="isReferringAuthority != true && systemIsReadOnly != true">
+                        <li class="small-blockedusers-icon" ng-click="showBlockedUsers()" title="Show Blocked Users"></li>
+                    </a>
+                    <a href="" ng-if="isReferringAuthority != true && systemIsReadOnly != true">
+                        <li class="small-feedback-icon" title="Provide Feedback" ng-click="ShowMenuItem('Page Feedback', '/app/components/feedback/view', 'FeedBackCtrl', 'true', 'true', 'feedback')"></li>
+                    </a>
+                    <a href="" ng-if="isReferringAuthority != true && systemIsReadOnly != true">
+                        <li class="small-enterpayment-icon" title="Enter Payment Transaction{{CHAR(13)+CHAR(10)}}(Record a Payment Transaction)" ng-click="ShowMenuItem('Enter Payment Transaction', '/app/components/payment/record', 'RecordPaymentCtrl', 'true', 'true', 'recordPaymentModal')"></li>
+                    </a>
+                    <a href="" ng-if="isReferringAuthority != true && systemIsReadOnly != true">
+                        <li class="small-takepayment-icon" title="Take New Payment<br/>(Follow procedures to take a Card Payment from a Client.)" ng-click="ShowMenuItem('Take Card Payment', '/app/components/payment/acceptCard', 'AcceptCardPaymentCtrl', 'true', 'true', 'acceptCardPaymentModal')"></li>
+                    </a>
+                    @*<a href="#">
+                        <li class="small-ndors-icon" title="DORS Licence Check" ng-click="ShowMenuItem('DORS Licence Check', '/app/components/dors/dorsLicenceCheck', 'DORSLicenceCheckCtrl', 'true', 'true', 'dorsLicenceCheck')"></li>
+                    </a>*@
+                    <a href="" ng-if="isReferringAuthority != true && systemIsReadOnly != true">
+                        <li class="small-courseattendance-icon" title="Course Attendance" ng-click="ShowMenuItem('Course Attendance', '/app/components/course/attendance', 'CourseAttendanceCtrl', 'true', 'true', 'courseAttendanceModal')"></li>
+                    </a>
+                    <a href="" ng-if="isReferringAuthority != true && systemIsReadOnly != true">
+                        <li class="small-availablecourses-icon" title="Available Courses Search" ng-click="ShowMenuItem('Available Courses', '/app/components/course/availableCourses', 'AvailableCoursesCtrl', 'true', 'true', 'availableCoursesModal')"></li>
+                    </a>
+                    <a href="" ng-if="isReferringAuthority != true && systemIsReadOnly != true">
+                        <li class="small-findpayment-icon" title="Find recorded Payments" ng-click="ShowMenuItem('Payments', '/app/components/payment/find', 'FindPaymentCtrl', 'true', 'true', 'findPaymentModal')"></li>
+                    </a>
+                    <a href="" ng-if="isReferringAuthority != true && systemIsReadOnly != true && isAdmin == true">
+                        <li class="small-administerblockedips-icon" title="Administer Blocked IPs" ng-click="ShowMenuItem('Administer Blocked IPs', '/app/components/blockedIP/update', 'BlockedIPCtrl', 'true', 'true', 'blockedIPModal')"></li>
+                    </a>
+                    <a href="" ng-if="isReferringAuthority != true && systemIsReadOnly != true">
+                        <li class="small-trainerCalendar-icon" title="Trainer Calendar" ng-click="ShowMenuItem('Trainer Calendar', '/app/components/trainer/admin/calendar', 'TrainerAdminCalendarCtrl', 'true', 'true', 'trainerAdminCalendarModal')"></li>
+                    </a>
+                    <a href="" ng-if="isAdmin == true">
+                        <li class="small-phone-icon" title="Test Netcall" ng-click="ShowMenuItem('Test Netcall', '/app/components/netcall/test', 'TestNetcallCtrl', 'true', 'true', 'testNetcallModal')"></li>
+                    </a>
+                    <a href="" ng-if="isReferringAuthority != true && systemIsReadOnly != true && isAdmin == true && showPaymentReconciliation == true" ng-click="ShowMenuItem('Payment Reconciliation', '/app/components/paymentReconciliation/view', 'PaymentReconciliationCtrl', 'true', 'true', 'paymentReconciliation')">
+                        <li class="small-paymentReconciliation-icon" title="Payment Reconciliation"></li>
+                    </a>
+                    @*<a href="#">
+                        <li class="small-internalmessaging-icon" title="Internal System Messaging" ng-click="ShowMenuItem('Internal System Messaging', '/app/components/messaging/send', 'MessagingCtrl', 'true', 'true', 'messagingModal')"></li>
+                    </a>*@
+                </ul><!-- end ul -->
+            </div><!-- end .quick-links-holder -->
+        </div><!-- end #quickLaunchContainer-->
+        <div id="quickSearchContainer" style="display:none;">
+
+            <div class="closeQuickContainer" ng-click="closeContainer()"></div>
+            <label>{{ searchText }}</label>
+            <div ng-show="showCheckBox" class="checkbox-holder">
+                <input type="checkbox" ng-model="showFutureDates" /> Future and Recent course only
+            </div>
+            <input type="text"
+                   id="quickType"
+                   ng-model="selected"
+                   typeahead-min-length="3"
+                   typeahead-on-select="selectedItem()"
+                   typeahead-no-results="noResults"
+                   typeahead-loading="loadingLocations"
+                   uib-typeahead="item as item.DisplayContent for item in getSearchableItems($viewValue) | limitTo:15" />
+            <div ng-show="loadingLocations" class="set-white">
+                <i class="glyphicon glyphicon-refresh"></i> Loading results
+            </div>
+            <div ng-show="noResults" class="set-red">
+                <i class="glyphicon glyphicon-remove"></i> No Results Found
+            </div>
+        </div><!-- end #quickSearchContainer -->
+        <div id="blockedUsers" ng-show="showingBlockedUsers" style="">
+            <div>
+                <div style="float:right;">
+                    <div ng-click="showBlockedUsers()" class="closeXButton"></div>
+                </div>
+                <div><h3 style="margin-top:0px;">Blocked Users</h3></div>
+                <div><button ng-show="blockedUsers.length > 0" ng-click="unblockAllUsers()">Unblock All</button></div>
+            </div>
+            <div>
+                <div class="blockerUsersTable">
+                    <table>
+                        <tr ng-repeat="blockedUser in blockedUsers">
+                            <td ng-click="selectBlockedUser(blockedUser.Id)" ng-class="{selectedBlockedUser: blockedUser.Id === selectedBlockedUserId}">
+                                <span>{{blockedUser.Name}}</span><span ng-show="blockedUser.Trainers.length > 0">&nbsp;(Trainer)</span><span>{{GetBlockedSince(blockedUser.LastLoginAttempt)}}</span>
+                            </td>
+                        </tr>
+                    </table>
+                    <span ng-show="blockedUsers.length == 0">No Blocked Users at this time</span>
+                </div>
+                <div class="blockerUsersRightCol">
+                    <div>
+                        <button ng-show="selectedBlockedUserId > 0" ng-click="unblockUser(selectedBlockedUserId)">Unblock User</button>
+                    </div>
+                    <div class="blockedUsersCloseButton">
+                        <button ng-click="showBlockedUsers()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </quickLaunch><!-- end the quickLaunch tag -->
+
+    <div id="mainNavigationContainer">
+        <div id="reservedSection">
+            <img src="~/app_assets/images/iamroad_smart_logo_atlas_negative.png" alt="" />
+        </div>
+        <div id="systemNavigation">
+            <ul id="mainNavigation">
+                <li ng-repeat="menuEntry in menuEntries">
+                    <a ui-sref="{{ menuEntry.state }}"
+                       alt="{{ menuEntry.altText }}"
+                       ng-show="{{menuEntry.isVisible}}"
+                       @*data-ng-click="showHiddenMenu(menuEntry.subMenuItems, menuEntry.display, $event)">*@
+                       data-ng-click="showModalorHiddenMenu(menuEntry, $event)">
+                       <div class="navigation-icon {{ menuEntry.iconClass }}"></div>
+                       <div class="navigation-title">{{ menuEntry.display }}</div>
+                    </a>
+                </li>
+            </ul><!-- End ul#mainNavigation -->
+            <ul id="menuFavourite" ng-show="!systemIsReadOnly">
+                <li ng-repeat="menuFavouriteEntry in menuFavouriteEntries" title="Favourite: {{ menuFavouriteEntry.Title | uppercase }}">
+                    <a 
+                       href="" data-ng-click="ShowMenuItem(menuFavouriteEntry.Title, menuFavouriteEntry.Link, menuFavouriteEntry.Parameters, 'true' , menuFavouriteEntry.Modal)">
+                        <div class="navigation-icon {{ menuFavouriteEntry.iconClass }}"> </div>
+                        <div class="navigation-title">{{ menuFavouriteEntry.Title }}</div>
+                    </a>
+                </li>
+            </ul><!-- End ul#menuFavourite -->
+        </div><!-- End #systemNavigation -->
+
+
+    </div><!-- End #mainNavigationContainer -->
+    
+    <!-- Start .topPanel -->
+    <div class="topPanel">
+        <div id="statusTab"
+             class="topPanel_Tab"
+             title="System Status (Last checked: {{ statusCheckedAt }})"
+             data-topPanelData="statusData"
+             ng-click="topTabOpen('statusTab', 'statusData')">
+            <div class="StatusIcon {{ getStatusSystemLevel() }}"></div>
+            <span>Status</span>
+        </div>
+        <div id="statusData"
+             class="topPanel_Data"
+             style="display:none;">
+            <div class="Close" title="Close" ng-click="topDataClose('statusTab', 'statusData')"></div>
+            <div>
+                <div ng-repeat="status in statuses" class="StatusItem {{ getStatusItemLevel(status) }}">
+                    <div class="icon"></div>
+                    <span title="Last checked: {{ FormatDate(status.DateUpdated) }}">{{ status.Message }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End .topPanel -->
+
+    <div id="hiddenSubMenu"
+         data-ng-show="isHiddenMenuVisible == true"
+         @*data-ng-mouseleave="hideHiddenMenu($event)"*@
+         >
+        <div class="closeHiddenMenuContainer">
+            <div class="subMenuCloseButton" data-ng-click="hideHiddenMenu()"></div>
+        </div>
+        <div class="title"><span>{{theRelatedSubMenuTitle}}</span></div>
+        <ul style="height: 90%;">
+            <li 
+                class="{{ ((subMenuItem.children) ? 'show-drop-icon' : '') }}"
+                ng-repeat="subMenuItem in theRelatedSubMenuItems" 
+                disabled="{{ subMenuItem.disabled }}">
+                <a 
+                   data-ng-click="processHiddenMenuClick(subMenuItem.children, $event)" 
+                   href="{{ subMenuItem.path }}" 
+                   alt="{{ subMenuItem.altText }}" 
+                   disabled="{{ subMenuItem.disabled }}" 
+                   class="{{ subMenuItem.itemClass }}">{{ subMenuItem.display }}</a>
+                <ul 
+                    class="sub-menu-children" 
+                    style="display:none;" >
+                    <li 
+                        ng-repeat="childSubMenuItem in subMenuItem.children"
+                        title="{{ childSubMenuItem.altText }}"
+                        ng-click="ShowMenuItem(childSubMenuItem.display, childSubMenuItem.path, childSubMenuItem.controller, childSubMenuItem.enabled, childSubMenuItem.modal, childSubMenuItem.iconClass)"
+                        >{{ childSubMenuItem.display }}</li>
+                </ul>
+            </li>
+        </ul>
+    </div><!-- End #hiddenSubMenu -->
+    <div id="reportsMenu" data-ng-show="showReportsMenu == true">
+        <div class="closeHiddenMenuContainer">
+            <div class="subMenuCloseButton" data-ng-click="hideHiddenMenu()"></div>
+        </div>
+        <div class="title"><span>Reports</span></div>
+        <ul style="height: 90%;">
+            <li class="show-drop-icon"
+                data-ng-repeat="reportCategory in reportMenuItems | unique: 'ReportCategory'">
+                <a data-ng-click="toggleShowHideMenuChildren(reportCategory.ReportCategory)"
+                   href="#"
+                   alt="{{ reportCategory.ReportCategory }}"
+                   class="ReportCategory"
+                   >{{ reportCategory.ReportCategory }}</a>
+                <ul class="sub-menu-children" ng-hide="showReportsMenuChildren != '{{reportCategory.ReportCategory}}'" >
+                    <li data-ng-repeat="report in reportMenuItems | filter: reportCategory.ReportCategory"
+                        title="{{ report.ReportDescription }}"
+                        ng-click="showReportParameters(report.ReportId)">{{ report.ReportTitle }}</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    @*<li data-ng-repeat="report in reportMenuItems | filter:{ 'ReportCategory': reportCategory.ReportCategory }"*@
+        @*<div id="preloader"></div>*@
+
+    <div id="mainContentContainer">
+        <div class="main-atlas-logo-holder">
+            @*<div id="CompanyLogo"></div>*@
+            <div id="AtlasLogo"></div>
+            <div id="AtlasTitle"><span>Atlas</span></div>
+            @*<div id="organisationDisplay" data-ng-controller="OrganisationDisplayCtrl" data-ng-click="openConfigureOrganisationOptions($event)">*@
+            @*TODO Re-enable the Organisation Display Form, relocate elsewhere*@
+                @*<div id="organisationDisplay" data-ng-controller="OrganisationDisplayCtrl">
+                    <img id="organisationLogo" src="{{ organisationLogo }}" alt="" />
+                    <div id="organisationName">{{ organisationDisplayName }}</div>
+                </div>*@
+            </div>
+
+        @*//TODO: Replace the Breadcrumb below. Should just be a simple formatted DIV*@
+        @*<ul class="breadcrumb">
+            <li>{{ profileDisplayName }} <span ng-show="referringAuthorityName != ''">- {{ referringAuthorityName }}</span></li>
+        </ul>*@
+        <div class="applicationInformation">
+            <div>{{ profileDisplayName }} <span ng-show="referringAuthorityName != ''">- {{ referringAuthorityName }}</span></div>
+        </div>
+        <div class="insideMainContainer">
+            <div id="ui-view" ui-view data-tmpl-url="@Request.RequestContext.RouteData.DataTokens[" templateUrl"]">
+            </div>
+        </div>
+    </div> <!-- End #mainContentContainer -->
+    <!-- Set after the first body tag has loaded -->
+    <script type="text/javascript" src="~/app_assets/js/template.js"></script>
+    <!-- Do not remove from the page -->
+
+    <!--Markup below for the User Admin Menu Tab and Messages Tabs-->
+    <div id="sidePanel" class="sidePanel" ng-hide="systemIsReadOnly">
+
+        @*--Start Administration Menu*@
+        <div id="adminMenuData"
+             style="display:none;"
+             data-sidePanelTab="adminMenuTab"
+             class="sidePanel_Data Menu">
+            <div class="Close" title="Close" ng-click="adminDataClose('adminMenuTab', 'adminMenuData')"></div>
+            <div class="title"><span>Administration Menu</span></div>
+            <div id="adminMenu">
+                <div class="list-group panel">
+                    <div ng-repeat="adminsection in adminMenu">
+                        <a href="#adminMenu_Sub{{adminsection.Id}}"
+                           class="list-group-head list-group-item list-group-item-success"
+                           data-toggle="collapse"
+                           data-parent="#adminMenu"
+                           ng-click="closeOtherOpenDivs($event)"
+                           onclick="return false;"
+                           title="{{adminsection.Description}}">
+                            {{adminsection.Title}}
+                        </a>
+                        <div class="collapse list-group-submenu" id="adminMenu_Sub{{adminsection.Id}}">
+                            <a ng-repeat="menuitem in adminsection.adminMenuItems"
+                               class="list-group-item"
+                               data-parent="#adminMenu_Sub{{adminsection.Id}}"
+                               ng-click="ShowMenuItem(menuitem.Title, menuitem.Url, menuitem.Controller, 'true', menuitem.Modal, menuitem.Class)"
+                               title="{{menuitem.Description}}"
+                               onclick="return false;">
+                                {{menuitem.Title}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+             ng-if="isReferringAuthority != true"
+             id="adminMenuTab" ng-show="adminMenu.length > 0"
+             class="sidePanel_Tab Menu"
+             title="Administration Menu"
+             data-sidePanelData="adminMenuData"
+             ng-click="adminTabOpen('adminMenuTab', 'adminMenuData')">
+            <SPAN>Administration</SPAN>
+        </div>
+        @*--End Administration Menu*@
+
+        @*--Start Notification Messages*@
+        <div ng-controller="NotificationMsgCtrl">
+            <div ng-repeat="category in notificationMessages.messageCategory"
+                 ng-show="HasMessages(catIndex)"
+                 ng-init="catIndex = $index">
+                <div id="messageTab{{$index}}"
+                     class="sidePanel_Tab Message Message{{$index}}"
+                     title="{{ category.CategoryName }} Messages"
+                     data-sidePanelData="messageData{{$index}}"
+                     ng-style="{'background-color': category.CategoryColour}"
+                     ng-click="messageTabOpen('messageTab' + $index, 'messageData' + $index)">
+                    <div class="MessageIcon"></div>
+                    <SPAN>{{ category.CategoryName }}</SPAN>
+                </div>
+                <div id="messageData{{$index}}"
+                     style="display:none;"
+                     data-sidePanelTab="messageTab{{$index}}"
+                     ng-style="{'background-color': category.CategoryColour}"
+                     class="sidePanel_Data Message">
+                    <div ng-repeat="message in category.message track by message.Id">
+                        <div ng-if="CheckCategoryIndex(catIndex, $index)" class="MessageContent">
+                            <div class="Close" title="Close" ng-click="messageTabClose('messageTab' + catIndex, 'messageData' + catIndex)"></div>
+                            <div class="MessageContent_NumberAndButtons">
+                                <div class="MessageContent_Number">
+                                    <span>Displaying message {{$index + 1}} of {{category.message.length}}</span>
+                                </div>
+                                <div class="MessageContent_ControlButtons">
+                                    <div ng-click="previous(catIndex)" ng-disabled="$index == 0" title="Previous Message" class="Previous Button"></div>
+                                    <div ng-click="next(catIndex)" ng-disabled="$index + 1 == category.message.length" title="Next Message" class="Next Button"></div>
+                                </div>
+                            </div>
+                            <div class="MessageContent_Title"><span>{{message.Title}}</span></div>
+                            <div class="MessageContent_Details"><span>{{ message.Content }}</span></div>
+                            <div class="MessageContent_Acknowledge">
+                                <label><input type="checkbox" ng-click="messageAcknowledged(message.Id, catIndex, $index)"><span>Message Acknowledged</span></label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*--End Notification Messages*@
+
+    </div><!-- End .sidepanel -->
+
+    <div id="accountDetailContainer" data-user-access="administrator">
+        <div class="account-details-holder" ng-click="showPersonalMenu = !showPersonalMenu">
+            <div class="account-holder-name">
+                <div class="account-holder-full-name" title="{{isOrganisationAdmin}}">
+                    {{ adminUserName }}
+                </div>
+                <div class="account-holder-organisation">
+                    {{AssignedDate.now() | date:'dd/MM/yyyy HH:mm:ss'}}
+                </div>
+            </div>
+            <div class="account-holder-image">
+                <img class="default-picture" src="/app_assets/images/profile_picture.png" alt="" />
+            </div>
+            <div class="status-bar"></div>
+        </div><!-- End .account-details-holder -->
+        <div class="PersonalMenu" ng-show="showPersonalMenu" ng-mouseleave="showPersonalMenu = !showPersonalMenu">
+            <!--Upper Menu Section-->
+        <div ng-repeat="menu in personalMenusUpper" class="{{ menu.name }} Section">
+                <ul id="personalMenu{{ menu.name }}">
+                    <li ng-repeat="menuEntry in menu.menu"
+                        alt="{{ menuEntry.altText }}"
+                        title="{{ menuEntry.altText }}"
+                        ng-click='ShowMenuItem(menuEntry.display, menuEntry.path, menuEntry.controller, menuEntry.enabled, menuEntry.modal, menuEntry.iconClass)'
+                        enabled="{{ menuEntry.enabled }}"
+                        class="PersonalMenuItem {{ menuEntry.enabled }}"
+                        ng-show="( {{ menuEntry.userAccess }}==true )
+                                || ( {{ menuEntry.userAccess }}==false && isAdmin && {{ menuEntry.systemsAdminAccess }}==true )
+                                || ( {{ menuEntry.userAccess }}==false && isOrganisationAdmin && {{ menuEntry.organisationAdminAccess }}==true )
+                                "
+                        >
+                        <span>{{ menuEntry.display }}</span>
+                        <div class="{{ menuEntry.iconClass }} icon"></div>
+                    </li>
+                </ul>
+            </div>
+            <!--Middle Menu Section-->
+
+            <div ng-show="isAdmin">
+                <select class="" ng-model="selectedOrganisation"
+                        ng-change="chooseOrganisation(selectedOrganisation)"
+                        ng-options="organisation as organisation.Name for organisation in organisationList"
+                        ng-init="setToCurrentOrganisation()">
+                </select>
+            </div>
+
+            <div ng-repeat="menu in personalMenusMiddle" class="{{ menu.name }} Section">
+                <ul id="personalMenu{{ menu.name }}">
+
+                    <li ng-repeat="menuEntry in menu.menu | filter:{ 'section': 'A' }"
+                        alt="{{ menuEntry.altText }}"
+                        title="{{ menuEntry.altText }}"
+                        ng-click='ShowMenuItem(menuEntry.display, menuEntry.path, menuEntry.controller, menuEntry.enabled, menuEntry.modal, menuEntry.iconClass)'
+                        enabled="{{ menuEntry.enabled }}"
+                        class="PersonalMenuItem {{ menuEntry.enabled }}"
+                        ng-show="( {{ menuEntry.userAccess }}==true )
+                                || ( {{ menuEntry.userAccess }}==false && isAdmin && {{ menuEntry.systemsAdminAccess }}==true )
+                                || ( {{ menuEntry.userAccess }}==false && isOrganisationAdmin && {{ menuEntry.organisationAdminAccess }}==true )
+                                "
+                        >
+                            <span>{{ menuEntry.display }}</span>
+                            <div class="{{ menuEntry.iconClass }} icon"></div>
+
+                    </li>
+                    <li ng-repeat="menuEntry in menu.menu | filter:{ 'section': 'B' }"
+                        alt="{{ menuEntry.altText }}"
+                        title="{{ menuEntry.altText }}"
+                        ng-click='toggleAdminSupportUser()'
+                        enabled="{{ menuEntry.enabled }}"
+                        class="PersonalMenuItem {{ menuEntry.enabled }}"
+                        ng-show="( {{ menuEntry.systemsAdminAccess }}== true && isAdmin && {{ menuEntry.systemsAdminSupportAccess }}==false && isSystemAdminSupport )
+                                || ( {{ menuEntry.systemsAdminAccess }}== true && isAdmin && {{ menuEntry.systemsAdminSupportAccess }}==true && !isSystemAdminSupport )
+                                "
+                        >
+
+                        <span>{{ menuEntry.display }}</span>
+                        <div class="{{ menuEntry.iconClass }} icon"></div>
+
+                    </li>
+                    <li ng-repeat="menuEntry in menu.menu | filter:{ 'section': 'C' }"
+                        alt="{{ menuEntry.altText }}"
+                        title="{{ menuEntry.altText }}"
+                        ng-click='ShowMenuItem(menuEntry.display, menuEntry.path, menuEntry.controller, menuEntry.enabled, menuEntry.modal, menuEntry.iconClass)'
+                        enabled="{{ menuEntry.enabled }}"
+                        class="PersonalMenuItem {{ menuEntry.enabled }}"
+                        ng-show="( {{ menuEntry.userAccess }}==true )
+                                || ( {{ menuEntry.userAccess }}==false && isAdmin && {{ menuEntry.systemsAdminAccess }}==true )
+                                || ( {{ menuEntry.userAccess }}==false && isOrganisationAdmin && {{ menuEntry.organisationAdminAccess }}==true )
+                                "
+                        >
+
+                        <span>{{ menuEntry.display }}</span>
+                        <div class="{{ menuEntry.iconClass }} icon"></div>
+
+                    </li>
+                </ul>
+            </div>
+
+            <!--Lower Menu Section-->
+            <div ng-repeat="menu in personalMenusLower" class="{{ menu.name }} Section">
+                <ul id="personalMenu{{ menu.name }}">
+                    <li ng-repeat="menuEntry in menu.menu"
+                        alt="{{ menuEntry.altText }}"
+                        title="{{ menuEntry.altText }}"
+                        ng-click='ShowMenuItem(menuEntry.display, menuEntry.path, menuEntry.controller, menuEntry.enabled, menuEntry.modal, menuEntry.iconClass)'
+                        enabled="{{ menuEntry.enabled }}"
+                        class="PersonalMenuItem {{ menuEntry.enabled }}"
+                        ng-show="( {{ menuEntry.userAccess }}==true )
+                                || ( {{ menuEntry.userAccess }}==false && isAdmin && {{ menuEntry.systemsAdminAccess }}==true )
+                                || ( {{ menuEntry.userAccess }}==false && isOrganisationAdmin && {{ menuEntry.organisationAdminAccess }}==true )
+                                "
+                        >
+                        <span>{{ menuEntry.display }}</span>
+                        <div class="{{ menuEntry.iconClass }} icon"></div>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- End .PersonalMenu -->
+    </div><!-- End #accountDetailContainer -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    @*Documentation http://www.chartjs.org/*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    @*<script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>*@
+    @*<link rel="stylesheet" href="//cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.css" />*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-chart.js/0.8.5/angular-chart.min.js"></script>
+
+    @*xx//cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js
+    //cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.css*@
+
+    <!-- Angular UI -->
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.js"></script>
+    <!-- End Angular UI -->
+
+    @*<script src="~/Scripts/vendor/smart-table/smart-table.min.js"></script>*@
+    <script src="~/Scripts/vendor/smart-table/smart-table-custom.js"></script>
+
+
+    <script src="~/Scripts/angular-breadcrumb.min.js"></script>
+    @*Documentation for the autocomplete https://github.com/JustGoscha/allmighty-autocomplete*@
+    <script src="~/Scripts/angular-autocomplete.js"></script>
+    <script src="~/Scripts/spectrum.js"></script>
+
+    @*Documentation for the datepicker http://myplanet.github.io/angular-date-picker/*@
+    <script src="~/app_assets/vendor/datepicker/angular-date-picker.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-datepicker/0.2.16/angular-datepicker.min.js"></script>*@
+
+    <script src="~/app_assets/js/vendor/postcode/crafty_postcode.class.js"></script>
+    <script src="~/app_assets/js/globals.js"></script>
+    <script src="~/app/components/changePassword/services/angular-no-captcha.js"></script>
+    @*For Examples see of Bootstrap Dialog http://nakupanda.github.io/bootstrap3-dialog/*@
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.4/js/bootstrap-dialog.min.js"></script>
+    <link rel="stylesheet" href="~/app_assets/css/bootstrap/bootstrap-dialog.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
+
+    @*Documentation for Bootstrap UI for angular*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
+
+
+    @*Download Data Scripts*@
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/alasql/0.4.0/alasql.min.js" ></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.10.5/xlsx.full.min.js"></script>
+
+
+
+    @* Using jQuery Cookie to manage cookies. Documentation is here: https://github.com/js-cookie/js-cookie *@
+    <script type="text/javascript" src="~/Scripts/updatedCookie.js"></script>
+
+    <!-- Place the app.js here -->
+    <script src="~/app/landingPages/organisation/organisationAuthenticated.js"></script>
+
+    <script src="~/Scripts/atlas.js"></script>
+
+    @Scripts.Render("~/js/app")
+    @*
+        Google Analytics
+        ----------------
+        Google recommends that this script be placed at the top of the page. Factors to consider: if you place this
+        script at the top of the page, you'll be able to count users who don't fully load the page, and you'll incur
+        the max number of simultaneous connections of the browser.
+        https://developers.google.com/analytics/devguides/collection/analyticsjs/
+    *@
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', '@WebConfigurationManager.AppSettings["GoogleAnalytics:PropertyID"]', '@(Request.IsLocal ? "none" : "auto")');
+    </script>
+</body>
+
+
+
+</html>

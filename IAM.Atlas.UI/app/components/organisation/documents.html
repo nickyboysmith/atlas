@@ -1,0 +1,167 @@
+﻿<div id="OrganisationDocuments">
+
+    <system-feature-information title="document management"
+                                controller="OrganisationDocumentsCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/organisation/documents"
+                                page-name="Document Management"></system-feature-information>
+
+    <div class="row" ng-show="isAdmin">
+        <div class="col-sm-3">
+            Organisation:
+        </div>
+        <div class="col-sm-6">
+            <select ng-init="getSelectedOrganisationId()" class='form-control col-sm-12 marginBottom5'
+                    ng-change="getDocuments(selectedDocumentType, showDeletedDocuments, selectedOrganisationId, documentCategory)"
+                    ng-model="selectedOrganisationId">
+                <option value="0">Organisation</option>
+                <option ng-repeat="organisation in organisations" value="{{organisation.id}}">{{organisation.name}}</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            &nbsp;
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            Category:
+        </div>
+        <div class="col-sm-6">
+            <select ng-init="getDefaultCategory()" ng-model="documentCategory" class='form-control marginBottom5'
+                    ng-change="getDocuments(selectedDocumentType, showDeletedDocuments, selectedOrganisationId, documentCategory)">
+                <option selected>All</option>
+                <option>Client</option>
+                <option>Course</option>
+                <option>Trainer</option>
+                <option>*UNKNOWN*</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            &nbsp;
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            Type:
+        </div>
+        <div class="col-sm-6">
+            <select ng-init="getSelectedDocumentType()"
+                     ng-change="getDocuments(selectedDocumentType, showDeletedDocuments, selectedOrganisationId, documentCategory)"
+                    ng-model="selectedDocumentType" class='form-control marginBottom5'>
+                <option>All</option>
+                <option ng-repeat="documentType in documentTypes" value="{{documentType.Type}}">{{documentType.Type}}</option>
+            </select><br/>
+            <span ng-show="documents.length > 0">Total file size: {{ totalFileSize }}</span><br/>
+            <label class="control-label"><input type="checkbox" ng-model="showDeletedDocuments" />&nbsp;Show Deleted Documents</label>
+
+        </div>
+        <div class="col-sm-3">
+            &nbsp;
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10">
+            <label>Documents</label><br/>
+            <div id="hoverDeletedMsg"
+                 ng-show="showDeletedMsg">Deleted</div>
+            <div id="hoverMarkedForDeletionMsg"
+                 ng-show="showMarkedForDeletionMsg">Marked for Deletion</div>
+            <table st-table="documents" st-safe-src="displayDocuments" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="6">
+                            <input st-search="Title" class="form-control" placeholder="Filter Document Names" type="search" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th st-sort="Title">
+                            Document
+                        </th>
+                        <th st-sort="Name">
+                            Name
+                        </th>
+                        <th st-sort="LastModified">
+                            Last Modified
+                        </th>
+                        <th st-sort="UpdatedByName">
+                            Updated By Name
+                        </th>
+                        <th st-sort="FileSize">
+                            Size
+                        </th>
+                        <th st-sort="Type">
+                            Type
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="document in documents"
+                        id="organisationDocument{{document.Id}}"
+                        class="organisationDocumentList" 
+                        ng-mouseenter="documentHover(document)" 
+                        ng-mouseleave="documentHoverId = 0" 
+                        ng-click="selectDocument(document.Id)"
+                        data-ng-dblclick="editDocument(document.Id)"
+                        ng-class="{selectedOrgDocument : selectedDocumentId == document.Id, deletedOrgDocument : document.Deleted, markedForDeletionOrgDocument : document.MarkedForDeletion}">
+                        <td>
+                            {{ document.Title }}
+                        </td>
+                        <td>
+                            {{ document.FileName }}
+                        </td>
+                        <td>
+                            {{ document.LastModified | date:'dd MMM yyyy'}}
+                        </td>
+                        <td>
+                            {{ document.UpdatedByName }}
+                        </td>
+                        <td>
+                            {{ getFileSize(document.FileSize) }}
+                        </td>
+                        <td>
+                            {{ document.Type }}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            <div st-pagination="" st-items-by-page="12" st-displayed-pages="7"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="col-sm-2" id="documentListButtons">
+            <div class="marginBottom5">
+                <button class="btn btn-block" ng-click="editDocument(selectedDocumentId)" ng-disabled="selectedDocumentId < 1">Details</button>
+            </div>
+            <div class="marginBottom5">
+                <button class="btn btn-block" ng-click="downloadDocument(selectedDocumentId)" ng-disabled="selectedDocumentId < 1">Download</button>
+            </div>
+            <div class="marginBottom5">
+                <button class="btn btn-block" ng-click="deleteDocument(selectedDocumentId)" ng-disabled="selectedDocumentId < 1">Delete</button>
+            </div>
+            <div class="marginBottom5 margintop10">
+                <label>Upload ...</label>
+            </div>
+            <div class="marginBottom5">
+                <button class="btn btn-block" ng-click="uploadLetterTemplate()">Letter Template</button>
+            </div>
+            <div class="marginBottom5">
+                <button class="btn btn-block" ng-click="uploadAllTrainers()">All Trainers</button>
+            </div>
+            <div class="marginBottom5">
+                <button class="btn btn-block" ng-click="uploadAllCourses()">All Courses</button>
+            </div>
+            <div class="marginBottom5">
+                <button class="btn btn-block" ng-click="uploadAllCourseTypes()">All Course Types</button>
+            </div>
+
+            <div class="marginBottom5">
+                <div ng-show="statusMessage != ''"><span class="validation-message">{{ statusMessage }}</span></div>
+                <div ng-show="errorMessage != ''"><div class="validation-message">{{ errorMessage }}</div></div>
+            </div>
+        </div>
+    </div>
+</div>

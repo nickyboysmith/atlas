@@ -1,0 +1,42 @@
+﻿
+<div id="showVenueAddress">
+
+    <div class="row">
+        <div class="col-sm-12" id="addressDetails">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="course-title">{{ courseName }}</div>
+                </div>
+            </div><!-- .row -->
+            <div class="row">
+                <div class="col-sm-3">Date:</div>
+                <div class="col-sm-8">
+                    {{ courseDate }}
+                </div><!-- .col-sm-8-->
+            </div><!-- .row -->
+
+            <div class="row venue-details">
+                <div class="col-sm-3">Venue:</div>
+                <div class="col-sm-8">
+                    <strong>{{ courseVenue }}</strong>
+                </div><!-- .col-sm-8-->
+            </div><!-- .row -->
+
+            <div class="row">
+                <div class="col-sm-3">Address:</div>
+                <div class="col-sm-8">
+                    <textarea rows="8" class="form-control hidden-border">{{ venueAddress }}</textarea>
+                    
+                </div><!-- .col-sm-8-->
+            </div><!-- .row -->
+
+        </div><!-- .col-sm-5 #addressDetails -->
+
+        <div class="col-sm-7" id="googleMap" style="display:none">
+            <div id="googleMapContainer">
+                <div id="map"></div>
+            </div><!-- #googleMapContainer -->
+        </div><!-- .col-sm-7 -->
+    </div>
+
+</div>

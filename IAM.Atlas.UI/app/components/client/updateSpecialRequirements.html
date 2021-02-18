@@ -1,0 +1,61 @@
+﻿<div id="updateSpecialRequirements">
+
+    <div class="row extended-header">
+        <div class="col-sm-6">
+            <div class="row marginBottom10">
+                <div class="col-sm-12">
+                    <div>
+                        <label>Client:</label>
+                        {{ clientName }} - (Id: {{ clientId }})
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <label class="header-titles">Additional Requirements</label>
+                </div>
+                <div class="col-sm-2">
+                    <div 
+                         class="btn pull-right"
+                         title="Add a new additional requirement"
+                         ng-click="openNewSpecialRequirementModal()">
+                    New</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row marginBottom15">
+                <div class="col-sm-12">
+                    &nbsp;
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <label class="header-titles">Client's Additional Requirements</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <drag-drop-update reference-one-title="For Course"
+                      reference-one-value="Test Course"
+                      reference-two-title="Reference"
+                      reference-two-value="#wf23dqadqw"
+                      show-reference-header=false
+                      from="selected"
+                      to="available"
+                      from-data-source="available"
+                      to-data-source="selected"
+                      list-one-header=""
+                      list-two-header=""></drag-drop-update>
+
+    <div class="row extended-header">
+        <div class="col-sm-12">
+            <div class='col-sm-12 success-message' ng-hide="statusMessage.length == 0">{{statusMessage}}</div>
+        </div>
+        <div class="col-sm-12">
+            <div class='col-sm-12 validation-message' ng-hide="errorMessage.length == 0">{{errorMessage}}</div>
+        </div>
+    </div>
+
+</div>

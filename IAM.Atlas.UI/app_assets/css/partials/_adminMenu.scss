@@ -1,0 +1,70 @@
+/*THIS IS BEING REPLACED*/
+
+.sidepanelcontainer{
+	position:absolute;	
+	right:0px;
+	margin:0px 0px 0px 0px;
+	}
+	
+	.sidepaneltab{
+	width:40px; 
+	min-height:160px; 
+	float:right;
+	background-color: #00508F;
+	color:white;
+	}
+	
+	.sidepaneltab p{
+	width:5px;
+	word-wrap: break-word;
+	padding: 15px;
+	}
+	
+	.sidepanelcontent{
+	min-height:200px; 
+	float:right;
+	background-color: #00508F;
+	color:white;
+	display:none;
+	width:0px;
+	}
+
+
+
+/*.container {
+	position: absolute;
+	right:0px;
+}*/
+
+.slide-tile {
+	transition:all 0.5s ease-in-out;
+	width:200px;
+	line-height:30px;
+	text-align:center;
+	border: 1px solid black;
+	transform: translateX(80%);
+	
+}
+
+
+.slide-tile:hover {
+	transform: translateX(0%);
+	
+}
+
+	.xsidepaneltab{
+	/*width:40px; 
+	min-height:160px; 
+	float:right;
+	background-color: #00508F;
+	color:white;*/
+	}
+	
+	.xsidepaneltab p{
+	position:absolute;
+	width:5px;
+	word-wrap: break-word;
+	padding: 15px;
+	color:white;
+	left:0;
+	}

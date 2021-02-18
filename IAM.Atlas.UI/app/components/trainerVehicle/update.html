@@ -1,0 +1,199 @@
+﻿<div id="TrainerVehicle" class="trainerVehicle">
+
+    <system-feature-information title="Trainer Vehicle Maintenance"
+                                controller="TrainerVehicleCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/trainerVehicle/update"
+                                page-name="Trainer Vehicle Maintenance"></system-feature-information>
+
+    <form class="form-horizontal row" role="form">
+
+        <div class='row'></div>
+        <div class='row'></div>
+
+        <div ng-show="isAdmin">
+            <div class='col-sm-12 form-group'>
+                <div class='col-sm-2'>
+                    <label>Organisation:</label>
+                </div>
+                <div class='col-sm-4'>
+                    <select ng-model="organisationId"
+                            ng-change="getTrainerVehicleDropdownDataByOrganisation(organisationId)"
+                            class='form-control'
+                            ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+                </div>
+                <div class='col-sm-6'></div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-2'>
+                <label>Trainer:</label>
+            </div>
+
+            <div class='col-sm-4'>
+                <select ng-model="selectedTrainerVehicle.selectedTrainerId"
+                        ng-change="setSelectedTrainerId(selectedTrainerVehicle.selectedTrainerId)"
+                        class='form-control'
+                        ng-options="trainer.Id as trainer.DisplayName + ' (' + trainer.LicenceNumber + ')' for trainer in trainers">
+                    <option style="display: none" value=""></option>
+                </select>
+            </div>
+            <div class='col-sm-6'></div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-2'>
+                <label>Type:</label>
+            </div>
+
+            <div class='col-sm-4'>
+                <select ng-model="selectedTrainerVehicle.selectedVehicleTypeId"
+                        ng-change="setSelectedVehicleTypeId(selectedTrainerVehicle.selectedVehicleTypeId)"
+                        class='form-control'
+                        ng-options="vehicleType.Id as vehicleType.Name for vehicleType in vehicleTypes">
+                    <option style="display: none" value=""></option>
+                </select>
+            </div>
+            <div class='col-sm-6'></div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-2'>
+                <label>Category:</label>
+            </div>
+
+            <div class='col-sm-4'>
+                <select ng-model="selectedTrainerVehicle.selectedVehicleCategoryId"
+                        ng-change="setSelectedVehicleCategoryId(selectedTrainerVehicle.selectedVehicleCategoryId)"
+                        class='form-control'
+                        ng-options="vehicleCategory.Id as vehicleCategory.Name for vehicleCategory in vehicleCategories">
+                    <option style="display: none" value=""></option>
+                </select>
+            </div>
+            <div class='col-sm-6'></div>
+        </div>
+
+        <div class='row'>
+            <div class='col-sm-12'>
+
+                <div class="col-sm-6">
+
+                    <label>Vehicles</label>
+
+                    <div class="col-sm-12">
+                        <div class="sml-scroll-div marginBottom10">
+                            <table class="table table-hover table-bordered table-striped">
+                                <thead></thead>
+                                <tbody>
+                                    
+                                    <tr ng-repeat="trainerVehicleDetail in trainerVehicleDetails">
+                                        <td ng-click="setSelectedTrainerVehicleDetails(trainerVehicleDetail)"
+                                            ng-class="{selectedTrainerVehicleDetailId : selectedTrainerVehicleDetailId == trainerVehicleDetail.TrainerVehicleId}"
+                                            title="{{trainerVehicleDetail.TrainerName}} {{trainerVehicleDetail.VehicleTypeDescription}} "
+                                            value="{{trainerVehicleDetail.TrainerVehicleId}}">
+                                            {{trainerVehicleDetail.TrainerName}} {{trainerVehicleDetail.VehicleTypeDescription}} {{trainerVehicleDetail.TrainerVehicleNumberPlate}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-6">
+                    <div class='row'>
+                        <div class='col-sm-2'>
+                            <label>Trainer:</label>
+                        </div>
+                        <div class='col-sm-4'>
+                            {{selectedTrainerVehicleDetails.TrainerName}}
+                        </div>
+                        <div class='col-sm-2'>
+                            <label>DOB: </label>
+                        </div>
+                        <div class='col-sm-4'>
+                            {{selectedTrainerVehicleDetails.TrainerDateOfBirth | date:'dd-MMM-yyyy' }}
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='col-sm-2'>
+                        </div>
+                        <div class='col-sm-4'>
+                            <label>Licence No:</label>
+                        </div>
+                        <div class='col-sm-6'>
+                            {{selectedTrainerVehicleDetails.TrainerLicenceNumber}}
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='col-sm-2'>
+                            <label>Vehicle:</label>
+                        </div>
+                        <div class='col-sm-10'>
+                            {{selectedTrainerVehicleDetails.VehicleTypeName}}
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='col-sm-2'>
+                        </div>
+                        <div class='col-sm-10'>
+                            <label>Registration: </label> 
+                            {{selectedTrainerVehicleDetails.TrainerVehicleNumberPlate}}
+                        </div>
+                    </div>
+
+                    <div class='row'>
+                        <div class='col-sm-2'>
+                        </div>
+                        <div class='col-sm-10'>
+                            {{selectedTrainerVehicleDetails.TrainerVehicleDescriptionWithCategories}}
+                        </div>
+                    </div>
+
+                    <div class='row marginBottom5'>
+                        <div class='col-sm-6'>
+                            <label class='col-sm-2 control-label'>Vehicle Notes:</label>
+                        </div>
+                        <div class="col-sm-6 text-right" title="{{isTrainerVehicleSelected() ? 'Please Select a Vehicle First': ''}}">
+                            <button class="btn btn-default btn-sm" 
+                                    title="Add"
+                                    ng-click="openAddNoteModal()"
+                                    ng-disabled="isTrainerVehicleSelected()">Add</button>
+                        </div>
+                    </div>
+                    <div class='row marginBottom10'>
+                        <div class='col-sm-12'><textarea rows="8" class="form-control" type="text" ng-disabled="true" ng-model="selectedTrainerVehicleDetails.TrainerVehicleNotes"></textarea></div>
+                    </div>
+                    <div class='row marginBottom5'>
+                        <div class="col-sm-6 text-left" title="{{isTrainerVehicleSelected() ? 'Please Select a Vehicle First': ''}}">
+                            <button class="btn btn-default btn-sm" 
+                                    title="Edit"
+                                    ng-click="openEditTrainerVehicleModal()"
+                                    ng-disabled="isTrainerVehicleSelected()">Edit</button>
+                        </div>
+                        <div class="col-sm-6 text-right" title="{{isTrainerSelected() ? 'Please Select a Trainer First': ''}}">
+                            <button class="btn btn-default btn-sm" 
+                                    title="Add New"
+                                    ng-click="openAddTrainerVehicleModal()"
+                                    ng-disabled="isTrainerSelected()">Add New</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Message banner-->
+        <div class='form-line-holder'>
+            <div class="col-sm-12" ng-if="successMessage != ''">
+                <h3>{{ successMessage }}</h3>
+            </div>
+        </div>
+        <div class='form-line-holder'>
+            <div class="col-sm-12" ng-if="validationMessage != ''">
+                <h3>{{ validationMessage }}</h3>
+            </div>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,144 @@
+﻿<div id="assignMeterUsers">
+
+
+    <system-feature-information title="meter availability"
+                                controller="AssignMeterUsersCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/dashboardMeter/assignUser"
+                                page-name="Meter Availability"></system-feature-information>        
+
+    <!-- Extendable div on select -->
+
+    <div class="row">
+
+        <div id="assignMeterFirstModalColumn" class="col-sm-5">
+
+            <div class='row form-line-separator-20' ng-show="showOrganisationDropdown">
+                <div class='col-md-12'>
+                    <label>Organisation</label>
+                </div>
+                <div class='col-md-12 '>
+                    <select id="organisationDD"
+                            class='form-control'
+                            ng-options="organisation as organisation.name for organisation in organisationList"
+                            ng-change="getMeterForTheOrganisation(selectedOrganisation)"
+                            ng-model="selectedOrganisation">
+                        <option value="">Please Select an organisation</option>
+                    </select><!-- end select -->
+                </div><!-- end .col-sm-12 -->
+            </div><!-- end div  -->
+
+            <div class='row form-line-separator' ng-show="showMeterList">
+                <!--Organisation list here -->
+                <div class='col-sm-12'>
+                    <label>Dashboard Meters</label>
+                </div>
+                <div class='col-sm-12' ng-show="meterList.length > 0">
+                    <table st-safe-src="meterCollection" st-table="meterList" class="table table-hover table-bordered">
+                        <tbody>
+                            <tr ng-repeat="meter in meterList">
+                                <td ng-click="selectTheMeter(meter)"
+                                    ng-class="{selectedTableRow: meter === selectedMeter}">
+                                    {{ meter.Name }}
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" class="text-center">
+                                    <div st-pagination="" st-items-by-page="5" st-displayed-pages="7"></div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table><!-- Close Table-->
+                </div><!-- end .col-sm-12 -->
+                <div class='col-sm-12' ng-show="meterList.length == 0">
+                    The current organisation does not have any dashboard meters.
+                </div>
+            <div class="col-sm-12">
+                <span>{{successMessage}}</span>
+            </div>
+            </div><!-- end div -->
+
+        </div><!-- end #assignMeterFirstModalColumn .col-sm-5 -->
+        <div id="additionalAssignMeterContainer" class="col-sm-7">
+            <div class="row" ng-show="selectedMeter.Id > 0">
+                <div class="col-sm-6 has-dropdown-{{ showOrganisationDropdown }}">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Meter: {{ selectedMeter.DisplayName }}</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <span>{{selectedMeter.Title}}</span>
+                        </div><!-- end .col-sm-12 -->
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-9">
+                            <span>{{selectedMeter.Description}}</span>
+                        </div><!-- end .col-sm-12 -->
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Refreshes:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <span>{{selectedMeter.RefreshRate}} (seconds)</span>
+                        </div><!-- end .col-sm-12 -->
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-9">
+                            <input ng-disabled="" class="cm-sm-1" type="checkbox" ng-model="selectedMeter.AvailableToAll" />
+                            <label class='disabled-label'>Make Available to All</label>
+                        </div><!-- end .col-sm-12 -->
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="button-hold btn" ng-click="updateOrganisationMeterSetting(selectedMeter)">Save</div>
+                        </div>
+                        <div class="col-sm-9">
+                                
+                        </div><!-- end .col-sm-12 -->
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6 has-dropdown-{{ showOrganisationDropdown }}">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <label>Available to Users</label>
+                        </div>
+                        <div class="col-sm-4 text-right">
+                            <div class="button-hold btn" ng-click="openAssignUsersModal()">Edit</div>
+                        </div>
+                    </div><!-- end .row -->
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <ul class="booking-note-holder">
+                                <li ng-repeat="meterUser in selectedMeterUsers">
+                                    {{ meterUser.Name }}
+                                </li>
+                            </ul>
+
+                        </div><!-- end .col-sm-10 -->
+                        <!-- end .col-sm-2 -->
+                    </div><!-- end .row -->
+                </div><!-- end .col-sm-7 -->
+            </div>
+            <div class="row" ng-show="meterSelected(selectedMeter) == false && meterList.length > 0">
+                <div class="col-sm-12 text-center">
+                    <div id="meterNotSelectedYet" class="text-center">
+                        Click on a Meter to see it's details.
+                    </div>
+                    
+                </div>
+            </div>
+        </div><!-- end #additionalAssignMeterContainer -->
+    </div>
+
+
+</div>

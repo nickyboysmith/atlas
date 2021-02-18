@@ -1,0 +1,69 @@
+﻿@import "../modules/_mixins.scss";
+
+#trainerBookings {
+
+    a {
+        text-decoration: none;
+    }
+
+    .tab-holding-container {
+        border: 1px solid #cecece;
+        border-top: 0;
+        padding: 15px;
+        .tab-header {
+            height: auto;
+            overflow: hidden;
+            margin-bottom: 15px;
+            h1 {
+                margin-top: 0;
+            }
+            p.current-date {
+                padding-top: 3px;
+                text-align: right;
+            }
+        }
+        .sub-tab-holding-container {
+            border: 1px solid #cecece;
+            border-top: 0;
+            .no-course-bookings {
+                padding: 20px;
+                margin-bottom: 0;
+            }
+            #trainerBookingDisplay {
+                padding: 20px;
+                .trainer-booking-separation {
+                    p.course-booking-information {
+                        margin-bottom: 1px;
+                    }
+                    .move-right {
+                        float: right!important;
+                    }
+                    .line-below {
+                        width: 100%;
+                        height: auto;
+                        overflow: hidden;
+                        padding-top: 25px;
+                        margin-bottom: 20px;
+                        border-bottom: 1px solid #cecece
+                    }
+                    .add-course-note-button {
+                        margin-bottom: 10px;
+                    }
+                    ul {
+                        list-style-type: none;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    
+                }
+            }
+        }
+        ul.custom-nav-tabs {
+            li a {
+                padding: 5px;
+            }
+        } 
+    }
+
+
+}

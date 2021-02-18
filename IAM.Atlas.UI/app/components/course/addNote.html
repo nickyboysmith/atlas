@@ -1,0 +1,62 @@
+﻿<div ng-controller="addCourseNoteCtrl">
+    <div id="addCourseNote">
+
+        <div class="note-add-container" ng-show="!noteSaved">
+            <div class="row form-line-separator">
+                <div class="col-md-12">
+                    <h2>Course: {{course.courseReference}}</h2>
+                </div>
+            </div><!-- end .row -->
+
+            <div class="row form-line-separator">
+                <div class="col-xs-12 col-md-4">
+                    <label>Note Type:</label>
+                </div><!-- end .col-md-5 -->
+                <div class="col-xs-12 col-md-8">
+                    <select class="form-control" ng-model="courseNote.NoteTypeId" ng-options="noteType.Id as noteType.Title for noteType in noteTypes" />
+                </div><!-- end .col-md-7 -->
+            </div><!-- end .row -->
+            <div class="row form-line-separator" ng-show="trainerSite == false">
+                <div class="col-xs-12 col-md-4">
+                    &nbsp;
+                </div><!-- end .col-md-5 -->
+                <div class="col-xs-12 col-md-8">
+                    <input type="checkbox" ng-model="courseNote.OrganisationOnly" />&nbsp;<span><i>Internal Organisational Note</i></span>
+                </div><!-- end .col-md-7 -->
+            </div><!-- end .row -->
+            <div class="row form-line-separator">
+                <div class="col-xs-12 col-md-4">
+                    <label>Note</label>
+                </div>
+                <div class="col-xs-12 col-md-8">
+                    <textarea class="form-control default-note-textarea-height"
+                              ng-model="courseNote.Note"></textarea>
+                </div><!-- end .col-md-8 -->
+            </div><!-- End note type select row -->
+
+            <div class="row form-line-separator">
+                <div class="col-xs-12 col-md-4"></div>
+                <div class="col-xs-12 col-md-8">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-6">
+                            <button class="btn" onclick="$('button.close').last().trigger('click')">Cancel</button>
+                        </div>
+                        <div class="col-xs-6 col-md-6 ">
+                            <button ng-click="saveNote()" class="btn pull-right">Save</button>
+                        </div>
+                    </div>
+                </div><!-- end .col-md-8 -->
+            </div><!-- End note type select row -->
+        </div><!--end .note-add-container -->
+
+
+        <div ng-show="noteSaved">
+            <h3>Note saved successfully.</h3>
+            <div style="margin-top:30px;text-align:center;">
+                <button class="btn btn-success" onclick="$('button.close').last().trigger('click')">Close</button>
+            </div>
+        </div>
+
+    </div><!-- end #addCourseNote -->
+</div><!-- end // holding div  - ng - controller should be removed on this // -->
+

@@ -1,0 +1,205 @@
+﻿<div id="refundPaymentDiv" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="refundingPaymentDiv" class="marginBottom10">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h3>Refunding Payment</h3>
+                    </div>
+                    <div class="col-sm-8">
+                        <span class="validation-message" ng-show="previousRefundAmount > 0">This Payment has a refund allocated for {{ previousRefundAmount | currency: '£' }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-7">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                Payment Date:
+                            </div>
+                            <div class="col-sm-4">
+                                {{ formatDate(payment.DateCreated) }}
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <button class="btn" ng-click="openPaymentModal(payment.PaymentId)">...</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                Payment From:
+                            </div>
+                            <div class="col-sm-8">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                Amount:
+                            </div>
+                            <div class="col-sm-8">
+                                {{ payment.PaymentAmount | currency: '£' }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                Method:
+                            </div>
+                            <div class="col-sm-8">
+                                {{ payment.PaymentMethodName }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                Reference:
+                            </div>
+                            <div class="col-sm-8">
+                                {{ payment.PaymentReference }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        Payment Notes:<br />
+                        <textarea placeholder="Payment Notes" class="form-control notes">{{ payment.PaymentNotes }}</textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        Relating to Client:
+                    </div>
+                    <div class="col-sm-8">
+                        {{ payment.ClientName }}
+                    </div>
+                    <div class="col-sm-1">
+                        <button class="btn" ng-click="openClientModal(payment.ClientId)" ng-show="payment.ClientId != null">...</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        Relating to Course:
+                    </div>
+                    <div class="col-sm-8" ng-show="payment.CourseId != null">
+                        {{ payment.CourseReference }} - {{ formatDate(payment.CourseStartDate) }} - {{ payment.CourseType }}
+                    </div>
+                    <div class="col-sm-1" ng-show="payment.CourseId != null">
+                        <button class="btn" ng-click="openCourseModal(payment.CourseId)">...</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row marginBottom10">
+                <div class="col-sm-3">
+                    <h3>Refund Details:</h3>
+                </div>
+                <div class="col-sm-9">
+                    <span class="blueitalic">
+                        <b>Please note that the entry made here is a request to send a payment to the Payee entered, relating to the selected Payment, Client and Course.</b>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    &nbsp;
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Method:
+                        </div>
+                        <div class="col-sm-8">
+                            <select ng-model="refund.RefundMethodId" ng-options="refundMethod.Id as refundMethod.Name for refundMethod in refundMethods" class="form-control">
+                                <option value="">Select Refund Method</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Type:
+                        </div>
+                        <div class="col-sm-8">
+                            <select ng-model="refund.RefundTypeId" ng-options="refundType.Id as refundType.Name for refundType in refundTypes" class="form-control">
+                                <option value="">Select Refund Type</option>
+                            </select>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Payee:
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" ng-model="refund.Payee" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Amount (£):
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" ng-model="refund.Amount" class="form-control" value="{{ refund.Amount | currency: '£' }}" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Reference:
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" ng-model="refund.Reference" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Payment Date:
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" ng-model="refund.PaymentDate" class="form-control" ng-click="toggleCalendar()" />
+                        </div>
+                        <div class="col-sm-2">
+                            <a ng-click="toggleCalendar()" ng-show="!displayCalendar" class="calendar-button col-sm-6" title="Show Calendar"><div></div></a>
+                            <a ng-click="toggleCalendar()" ng-show="displayCalendar" class="calendar-button col-sm-6" title="Hide Calendar"><div></div></a>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='col-sm-12'>
+                            <div style="position:absolute; right:0px; z-index:10;" ng-show="displayCalendar">
+                                <date-picker ng-model="refund.PaymentDate" format-date="formatDate" ng-mouseleave="toggleCalendar()"></date-picker>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Notes:
+                        </div>
+                        <div class="col-sm-8">
+                            <textarea ng-model="refund.Notes" placeholder="Notes" class="form-control notes"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+
+                        </div>
+                        <div class="col-sm-8">
+                            <button class="btn" ng-click="saveRefund()">Save</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+
+                        </div>
+                        <div class="col-sm-8">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    &nbsp;
+                </div>
+            </div>
+            <div class="row" ng-show="validationMessage != ''">
+                <div class="col-sm-12">
+                    <span class="validation-message">{{ validationMessage }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

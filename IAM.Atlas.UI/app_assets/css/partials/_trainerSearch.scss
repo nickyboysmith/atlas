@@ -1,0 +1,18 @@
+﻿#searchTrainer {
+    .row {
+        margin: 5px;
+    }
+
+    .btn {
+        margin: 0px 5px 5px 5px;
+    }
+
+    .selectedTrainer {
+        background-color: #006cc2;
+        color: #fff;
+    }
+
+    tr.selectedTrainer:hover>td  {
+        background-color: #006cc2;
+    }
+}

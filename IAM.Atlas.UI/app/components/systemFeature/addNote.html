@@ -1,0 +1,53 @@
+﻿<div id="systemFeatureAddNote">
+
+    <div class="row form-line-separator-10">
+        <div class="col-md-12">
+            <div class="add-note-title">
+                <strong>Add Note</strong>
+            </div><!-- end .add-note-title -->
+        </div><!-- end .col-md-2 -->
+    </div><!-- end .row .form-line-separator-10 -->
+
+    <div class="row form-line-separator">
+        <div class="col-md-12">
+            <select 
+                    ng-options="noteType.Id as noteType.Name for noteType in noteTypes"
+                    ng-model="note.type"
+                    class="form-control">
+                <option value="">Please select a type</option>
+            </select>
+        </div><!-- .col-md-12 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row form-line-separator">
+        <div class="col-md-12">
+            <textarea 
+                      ng-model="note.text"
+                      class="form-control default-note-textarea-height"></textarea>
+        </div><!-- end .col-md-2 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row form-line-separator-10">
+        <div class="col-md-12">
+            <div class="checkbox-container">
+                <input 
+                       ng-model="note.shareInformation"
+                       type="checkbox"/>
+            </div><!-- end .checkbox-container -->
+            <div class="checkbox-text">
+                Share this information
+            </div><!-- end .checkbox-text -->
+        </div><!-- end .col-md-2 -->
+    </div><!-- end .row .form-line-separator -->
+
+    <div class="row form-line-separator-10">
+        <div class="col-md-12">
+            <div 
+                 ng-click="save()"
+                 class="btn pull-right"
+                 >Save note</div>
+        </div><!-- end .col-md-2 -->
+    </div><!-- end .row .form-line-separator -->
+
+
+</div><!-- end #systemFeatureAddNote -->

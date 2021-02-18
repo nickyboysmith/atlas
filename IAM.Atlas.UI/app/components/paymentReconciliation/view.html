@@ -1,0 +1,126 @@
+﻿<div id="paymentReconciliation">
+    <div class="row margintop10" ng-if="isSystemAdmin">
+        <div class="col-md-2">Organisation:</div>
+        <div class="col-md-4">
+            <select ng-model="organisationId"
+                    ng-change="getPaymentReconciliationList(organisationId)"
+                    class='form-control'
+                    ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+        </div>
+        <div class="col-md-6"></div>
+    </div>
+    <div class="row margintop10 marginBottom20">
+        <div class="col-md-2">Reconciliation:</div>
+        <div class="col-md-4">
+            <select ng-model="reconciliationId"
+                    ng-change="getPaymentReconciliationData(reconciliationId)"
+                    class='form-control'
+                    ng-options="reconciliationConfiguration.ReconciliationId as reconciliationConfiguration.ReconciliationName for reconciliationConfiguration in reconciliationConfigurations"></select>
+        </div>
+        <div class="col-md-2 btn" ng-click="openNewReconciliationModal()"> New Reconciliation</div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="col-md-12 col-sm-12">
+                <table class="table table-striped" id="reconciliationDataTable" st-table="reconciliationDatas" st-safe-src="reconciliationDatasTemplate">
+                    <thead>
+                        <tr>
+                            <th colspan="2">
+                                <input st-search="" class="form-control" placeholder="Filter Results" type="search" />
+                            </th>
+                        </tr>
+                        <tr>
+                            <th st-sort="TransactionDate">
+                                Transaction Date
+                            </th>
+                            <th st-sort="TransactionAmount">
+                                Amount
+                            </th>
+                            <th st-sort="Reference1">
+                                Ref 1
+                            </th>
+                            <th st-sort="Reference2">
+                                Ref 2
+                            </th>
+                            <th st-sort="Reference3">
+                                Ref 3
+                            </th>
+                            <th st-sort="PaymentId">
+                                Payment Id
+                            </th>
+                            <th st-sort="PaymentTransactionDate">
+                                Transaction Date
+                            </th>
+                            <th st-sort="PaymentAmount">
+                                Amount
+                            </th>
+                            <th st-sort="PaymentAuthCode">
+                                Auth Code
+                            </th>
+                            <th st-sort="ReceiptNumber">
+                                Receipt No.
+                            </th>
+                            <th st-sort="Duplicate">
+                                Duplicate
+                            </th>
+                            <th st-sort="Comments">
+                                Comments
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="reconciliationData in reconciliationDatas">
+                            <td>
+                                {{ reconciliationData.ReconciliationTransactionDate | date:'dd-MMM-yyyy' }}
+                            </td>
+                            <td>
+                                {{ reconciliationData.ReconciliationTransactionAmount | currency:"£"}}
+                            </td>
+                            <td>
+                                {{ reconciliationData.ReconciliationReference1 }}
+                            </td>
+                            <td>
+                                {{ reconciliationData.ReconciliationReference2 }}
+                            </td>
+                            <td>
+                                {{ reconciliationData.ReconciliationReference3 }}
+                            </td>
+                            <td>
+                                {{ reconciliationData.PaymentId }}
+                            </td>
+                            <td>
+                                {{ reconciliationData.PaymentTransactionDate | date:'dd-MMM-yyyy'}}
+                            </td>
+                            <td>
+                                {{ reconciliationData.PaymentAmount | currency:"£"}}
+                            </td>
+                            <td>
+                                {{ reconciliationData.PaymentAuthCode }}
+                            </td>
+                            <td>
+                                {{ reconciliationData.ReceiptNumber }}
+                            </td>
+                            <td>
+                                {{ reconciliationData.Duplicate }}
+                            </td>
+                            <td>
+                                {{ reconciliationData.Comments }}
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="12" class="text-center">
+                                <div st-pagination="" st-items-by-page="maxResults" st-displayed-pages="10"></div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

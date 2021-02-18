@@ -1,0 +1,37 @@
+﻿
+<h2>Script Log ...</h2>
+<p>Script Log Demo page.</p>
+
+<button class="btn btn-primary" ng-disabled="isProcessing" ng-click="getList()">Get List</button>
+
+<div class="gridStyle" ng-grid="gridOptions"></div>
+
+<div class="row alert alert-success margin-top-5" ng-show="showMessage">{{message}}</div>
+
+<div class="col-md-8">
+    <table class="table table-condensed table-striped ">
+        <thead>
+            <tr>
+                <th>Script Name</th>
+                <th>Comments</th>
+                <th>DateTime Started</th>
+                <th>DateTime Completed</th>
+                <th>Run By</th>
+            </tr>
+           
+        </thead>
+        <tbody>
+
+
+            <tr ng-repeat="item in ScriptLog | orderBy:'ID':reverse=true">
+
+                <td>{{item.Name}}</td>
+                <td>{{item.Comments}}</td>
+                <td>{{item.DateTimeStarted | date:"dd/MM/yyyy"}}</td>
+                <td>{{item.DateTimeCompleted | date:"dd/MM/yyyy"}}</td>
+                <td>{{item.UserDetails}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

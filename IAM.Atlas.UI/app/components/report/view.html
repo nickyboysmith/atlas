@@ -1,0 +1,86 @@
+﻿
+<div id="searchReport" class="SearchReport">
+    <div class="AddFavourite">
+        <input class="AddFavourite" type="submit"
+               id="addToMenuFavourite" name="submit"
+               alt="Add to Favourites"
+               value=""
+               title="Add this to the your Favourites"
+               ng-click="addToMenuFavourite()" />
+    </div>
+    <div class="Title row">
+        <h2>Reports</h2>
+    </div>
+    <div class='row'>
+    </div>
+    <form class="form-horizontal row" role="form" style="color: black; ">
+        <div class="row col-md-12">
+            <div ng-if="successMessage != ''">
+                <h3>{{ successMessage }}</h3>
+            </div>
+        </div>
+        <!--Organisation-->
+        <div class='row col-sm-12' ng-show="isAdmin">
+            <label class='col-sm-4 control-label'>Organisation:</label>
+            <div class='col-sm-8'>
+                <select ng-change="getReportCategories(selectedOrganisation)" ng-model="selectedOrganisation" class='col-sm-12 form-control'>
+                    <option value="0">Organisation</option>
+                    <option ng-repeat="organisation in organisations" value="{{organisation.id}}">{{organisation.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <!--Report Category-->
+        <div class='row col-sm-12' ng-hide="!showCategories">
+            <label class='col-sm-4 control-label'>Category:</label>
+            <div class='col-sm-7'>
+                <select ng-change="getReports(selectedReportCategory)" ng-model="selectedReportCategory" class='col-sm-12 form-control'>
+                    <option value="-1">All</option>
+                    <option value="0">Own Reports Only</option>
+                    <option ng-repeat="reportcategory in reportCategories" value="{{reportcategory.Id}}">{{reportcategory.Title}}</option>
+                </select>
+            </div>
+            <div class="col-sm-1">
+                <button ng-click="createReportCategory()" class="btn btn-default btn-sm" title="Click to Add New Category">.....</button>
+            </div>
+        </div>
+        <!--Results-->
+        <div class='row col-sm-12 form-group'>
+            <!--Organisation list here -->
+            <div class='col-sm-12 OrganisationList'>
+                <table class="table table-hover table-bordered table-striped table-condensed">
+                    <div ng-if="(reports.lenght>0)==false"><span>No Reports. Please select Organisation and Category.</span></div>
+                    <tbody>
+                        <tr ng-repeat="report in reports">
+                            <td ng-click="$parent.selectReport(report.Id)"
+                                ng-dblclick="$parent.showReportParameters(report.Id)"
+                                atlas-right-click="openReportMenu(report.Id, report.DisplayName, $event)"
+                                value="{{report.Id}}"
+                                ng-class="{selectedReport: report.Id === selectedReport}"
+                                ng-show="report.Id > 0"
+                                title="Report: '{{report.DisplayName}}' .... Right Click for Options."
+                                >
+                                {{report.DisplayName}}
+                            </td>
+                        </tr>
+                    </tbody>
+                    <div class="right-click-hidden-menu"
+                            ng-style="menuStyle"
+                            data-ng-show="reportHiddenMenuVisible"
+                            data-ng-mouseleave="setHiddenMenuVisible()">
+                        <ul class="reportMenu">
+                            <li class="report-menu-title">Report : {{ theReportName }}</li>
+                            <li data-ng-repeat="reportOption in reportListOptions" data-ng-click="openModalFromContextMenu(reportOption, theReportID, theReportName)">{{ reportOption.name }}</li>
+                        </ul>
+                    </div>
+                </table>
+            </div>
+        </div>
+        <div class='row col-sm-12 form-group'>
+            <div class='col-sm-3'>
+                <button ng-click="createReport()" class="btn btn-default btn-sm" title="Add New">Add New</button>
+                <!--<button ng-click="editReport()" class="btn btn-default btn-sm" title="Details">Details</button>-->
+            </div>
+        </div>
+    </form>
+</div>

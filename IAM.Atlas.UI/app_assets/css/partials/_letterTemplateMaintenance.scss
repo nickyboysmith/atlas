@@ -1,0 +1,27 @@
+﻿@import "../modules/_mixins.scss";
+
+#letterTemplateMaintenance {
+
+    .selectedLetterTemplateCategory {
+        background: #cce9ff !important;      
+    }
+
+
+    .selectedLetterTemplateCategory:hover {
+        background: #ffffe6;
+    }
+
+    .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+        background-color: #ffffe6;
+        cursor: pointer;
+    }
+
+    .letterTemplateCategorySelectionHolder {
+        border: 1px solid #cecece;
+        height: 165px;
+        overflow-y: scroll;
+        margin-top: 2px;
+        z-index: 100;
+        padding-left: -15px;
+    }
+}

@@ -1,0 +1,28 @@
+﻿#specialRequirementMaintenance {
+
+    .selectedSpecialRequirement {
+        background: #cce9ff !important;      
+    }
+
+    .disabledSpecialRequirement {
+        background: lightpink !important;      
+    }
+
+    .selectedSpecialRequirement:hover {
+        background: #ffffe6;
+    }
+
+    .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+        background-color: #ffffe6;
+        cursor: pointer;
+    }
+
+    .specialRequirementSelectionHolder {
+        border: 1px solid #cecece;
+        height: 165px;
+        overflow-y: scroll;
+        margin-top: 2px;
+        z-index: 100;
+        padding-left: -15px;
+    }
+}

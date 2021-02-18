@@ -1,0 +1,54 @@
+﻿@import '../modules/mixins';
+@import "../modules/_mainColours.scss";
+
+#dragDropUpdate {
+
+    .listHolder {
+        margin-top: 20px;
+        position:relative;
+        .listContainer {
+            @include theBorderRadius(5px);
+            height: 200px;
+            width: 100%;
+            border: 1px solid #cecece;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            z-index: 3;
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin-bottom: 0;
+                li {
+                    padding: 3px 10px;
+                    cursor: pointer;
+                }
+                li [ng-drag] {
+                    //position: absolute;
+                    width: 100px;
+                    height: 100px;
+                    //top:0; left:0;
+                    padding: 0;
+                    margin: 0;
+                    z-index: 1;
+                }
+                li:hover {
+                    background: $background;
+                    color: white;
+                }
+                li:first-child {
+                    padding-top: 2px;
+                }
+            }
+        }
+        [ng-drop].drag-enter {
+            border:solid 1px  $background;
+        }
+        [ng-drag].dragging {
+            position: absolute;
+            z-index:9999;
+            width:300px;
+            top:100px;
+        }
+    }
+
+}

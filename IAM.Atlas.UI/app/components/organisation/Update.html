@@ -1,0 +1,145 @@
+﻿<div class="row configureOrganisation">
+    <div class="col-md-12">{{ returnApiMessage }}</div>
+    <div class="col-md-12 mainConfigurationHolder">
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="preview-holder" id="previewHold" style="{{ newBackgroundColor }}; {{ newBorderColor }}">
+                    <div class="companyLogo">
+                        <img src="" alt="" />
+                    </div>
+                    <div id="displayName" class="companyNameText">{{ organisation.companyName }}</div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+
+        <div class="row organisation-field-holder">
+            <div class="col-md-3">Display Name</div>
+            <div class="col-md-6"><input type="text" data-ng-model="organisation.companyName" data-ng-change="watchDisplayNameChanges()" /></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row organisation-field-holder">
+            <div class="col-md-3">Logo</div>
+            <div class="col-md-6">
+
+                <div class="row logo-options">
+                    <div class="col-md-6">
+                        <div class="image-preview">
+                            <img src="" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-md-6"><input type="file" ng-model="organisation.image" data-ng-change="showImagePreview()" /></div>
+                </div>
+
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row organisation-field-holder">
+            <div class="col-md-3">Options</div>
+            <div class="col-md-6">
+
+                <div class="row reveal-checkbox-container">
+                    <div class="col-md-12 reveal-checkbox-holder">
+                        <div class="checkbox-holder"><input type="checkbox" data-ng-model="organisation.showLogo" /></div>
+                        <div class="option-name-holder">Show Logo</div>
+                    </div>
+                    <div class="col-md-12" data-ng-show="organisation.showLogo">
+                        <select data-ng-model="organisation.alignLogo" data-ng-change="logoAlignment()">
+                            <option value="">Select an Option</option>
+                            <option value="left">Align Left</option>
+                            <option value="right">Align Right</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="row reveal-checkbox-container">
+                    <div class="col-md-12 reveal-checkbox-holder">
+                        <div class="checkbox-holder"><input type="checkbox" data-ng-model="organisation.showDisplayName"/></div>
+                        <div class="option-name-holder">Show Display Name</div>
+                    </div>
+                    <div class="col-md-12" data-ng-show="organisation.showDisplayName" >
+                        <select data-ng-model="organisation.alignDisplayName" data-ng-change="displayNameAlignment()">
+                            <option value="">Select an Option</option>
+                            <option value="left">Align Left</option>
+                            <option value="right">Align Right</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row reveal-checkbox-container">
+                    <div class="col-md-12 reveal-checkbox-holder">
+                        <div class="checkbox-holder"><input type="checkbox" data-ng-model="organisation.showBorder" data-ng-change="showPreviewBorder()" /></div>
+                        <div class="option-name-holder">Border</div>
+                    </div>
+                </div>
+
+                <div class="row field-with-colour-picker">
+                    <div class="col-md-4">
+                        <div class="option-name-holder">Border Colour</div>
+                    </div>
+                    <div class="col-md-7">
+                        <input type="text" data-ng-model="organisation.borderColor"/>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="colour-picker-holder" id="theBorderColor"></div>
+                    </div>       
+                </div>
+
+
+                <div class="row field-with-colour-picker">
+                    <div class="col-md-4">
+                        <div class="option-name-holder">Background Colour</div>
+                    </div>
+                    <div class="col-md-7">
+                        <input type="text" data-ng-model="organisation.backgroundColor" />
+                    </div>
+                    <div class="col-md-1">
+                        <div class="colour-picker-holder" id="theBackgroundColor"></div>
+                    </div>
+                </div>
+
+
+                <div class="row field-with-colour-picker">
+                    <div class="col-md-4">
+                        <div class="option-name-holder">Font Colour</div>
+                    </div>
+                    <div class="col-md-7">
+                        <input type="text" data-ng-model="organisation.fontColor"/>
+                    </div>
+                    <div class="col-md-1">
+
+                        <div class="colour-picker-holder" id="theFontColor"></div>
+                    </div>
+                </div>
+
+
+                <div class="row field-with-colour-picker">
+                    <div class="col-md-4">
+                        <div class="option-name-holder">Font Name</div>
+                    </div>
+                    <div class="col-md-8">
+                        <select data-ng-model="organisation.fontName" data-ng-change="changeFontName()">
+                            <option value="">Please select an option</option>
+                            <option data-ng-repeat="font in fonts"  value="{{ font.Id }}">{{ font.DisplayName }}</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row button-holder">
+            <div class="col-md-3 btn" onclick="$('button.close').trigger('click')">Cancel</div>
+            <div class="col-md-6"></div>
+            <div class="col-md-3 btn" ng-click="saveLogoOptions()">Save</div>
+        </div>
+
+    </div>
+
+
+
+</div>

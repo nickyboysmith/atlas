@@ -1,0 +1,23 @@
+﻿.emailAllTrainers {
+    
+    
+    form {
+
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+        .textareacontent {
+	        height: 200px;
+        }
+
+        .textareaattachment {
+	        height: 60px;
+        }
+      
+
+        #trainerEmailSendAfterTime{
+             width: 100px;
+        }
+    }
+}

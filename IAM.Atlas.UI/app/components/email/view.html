@@ -1,0 +1,116 @@
+﻿<div id="sendEmail">
+
+    <div class="row form-line-separator-10">
+        <div class="col-sm-4">
+            <label>{{email.recipientType}}:</label>
+        </div>
+        <div class="col-sm-8">
+            {{ email.name }} - Id:  {{ email.clientId }}
+        </div>
+    </div>
+
+    <div class="row form-line-separator-10">
+        <div class="col-sm-4">
+            <label>Email Address:</label>
+        </div>
+        <div class="col-sm-8">
+            <input ng-disabled="true"
+                   ng-model="email.address"
+                   class="form-control"
+                   type="text" />
+        </div>
+    </div>
+
+    <div class="row form-line-separator-10">
+        <div class="col-sm-4">
+            <label>CC:</label>
+        </div>
+        <div class="col-sm-8">
+            <input ng-model="email.cc"
+                   class="form-control"
+                   type="text" />
+        </div>
+    </div>
+
+    <div class="row form-line-separator-10">
+        <div class="col-sm-4">
+            <label>BCC:</label>
+        </div>
+        <div class="col-sm-8">
+            <input ng-model="email.bcc"
+                   class="form-control"
+                   type="text" />
+        </div>
+    </div>
+
+    <div class="row form-line-separator-10" ng-show="documents.length > 0">
+        <div class="col-sm-4">
+            <label>Attachment:</label>
+        </div>
+        <div class="col-sm-8">
+            <textarea ng-disabled="true"
+                      ng-model="email.attachmentTitle"
+                      class="form-control"
+                      rows="{{textAreaRows}}" />
+        </div>
+    </div>
+
+    <div class="row form-line-separator-10">
+        <div class="col-sm-4">
+            <label><span class="red">*</span> Subject:</label>
+        </div>
+        <div class="col-sm-8">
+            <input ng-model="email.subject"
+                   class="form-control"
+                   type="text" />
+        </div>
+    </div>
+
+    <div class="row form-line-separator-20">
+        <div class="col-sm-4">
+            <label><span class="red">*</span> Content Template:</label>
+        </div>
+        <div class="col-sm-8">
+            <select class="form-control"
+                    ng-model="selectedEmailTemplate"
+                    ng-options="emailTemplate as emailTemplate.Title for emailTemplate in emailTemplates track by emailTemplate.Id"
+                    ng-change="changeEmailContent(selectedEmailTemplate)">
+                <option ng-if="!defaultEmailTemplatePresent" value="">--Select a Template--</option>
+                <option ng-if="defaultEmailTemplatePresent" ng-model="selectedEmailTemplate" value="">{{Title}}</option>
+            </select>
+        </div>
+    </div>
+   
+    <div class="row form-line-separator-20">
+        <div class="col-sm-4">
+            <label><span class="red">*</span> Email Content:</label>
+        </div>
+        <div class="col-sm-8">
+            <textarea ng-model="email.content"
+                      class="email-content-area form-control"></textarea>
+        </div>
+    </div>
+
+    <div class='row marginBottom5'>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <button class="btn btn-default btn-sm"
+                    title="Preview"
+                    ng-click="previewTheEmail()">
+                Preview
+            </button>
+            <button class="btn btn-default btn-sm"
+                    title="Send"
+                    ng-click="sendTheEmail()">
+                Send
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12" ng-show="email.errorMessage != ''">
+            <div class="validation-message">{{email.errorMessage}}</div>
+        </div>
+    </div>
+
+</div>

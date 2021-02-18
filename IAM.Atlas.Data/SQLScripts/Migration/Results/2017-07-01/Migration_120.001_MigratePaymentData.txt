@@ -1,0 +1,102 @@
+ 
+******************************************************************************************
+ 
+**Running Script: "Migration_120.001_MigratePaymentData.sql" - Jul  2 2017  6:59AM
+ 
+*Migrating Data For: Cleveland Driver Improvement Group .... OldSystemID: 178 .... NewSystemID: 318
+ 
+*Migrate Payment Data Tables - Jul  2 2017  6:59AM
+ 
+*Populate PaymentMethod - Jul  2 2017  6:59AM
+
+(16 row(s) affected)
+ 
+*POPULATE Payment - Jul  2 2017  6:59AM
+ 
+-Create PaymentDetails Temp Table - Jul  2 2017  6:59AM
+
+(57197 row(s) affected)
+ 
+-INSERT INTO Payment Table - Jul  2 2017  7:00AM
+
+(57197 row(s) affected)
+
+(57197 row(s) affected)
+
+(57197 row(s) affected)
+ 
+INSERT INTO PreviousPaymentId Table - Jul  2 2017  7:00AM
+
+(57197 row(s) affected)
+ 
+-UPDATE Payment Table - Jul  2 2017  7:00AM
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(57197 row(s) affected)
+ 
+INSERT INTO ClientPayment Table - Jul  2 2017  7:00AM
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(57197 row(s) affected)
+
+(57197 row(s) affected)
+ 
+INSERT INTO CourseClientPayment Table - Jul  2 2017  7:01AM
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(4 row(s) affected)
+
+(56141 row(s) affected)
+ 
+INSERT INTO ClientPaymentPreviousClientId Table - Jul  2 2017  7:01AM
+
+(57197 row(s) affected)
+ 
+INSERT INTO Client Payment Note Tables - Jul  2 2017  7:01AM
+ 
+Create Temp Table #PaymentNotes - Jul  2 2017  7:01AM
+
+(57331 row(s) affected)
+ 
+INSERT INTO Note Table - Jul  2 2017  7:01AM
+
+(57331 row(s) affected)
+ 
+INSERT INTO ClientPaymentNote Table - Jul  2 2017  7:01AM
+
+(57599 row(s) affected)
+ 
+*Tidy Up - Jul  2 2017  7:01AM
+ 
+*Remove Temp Tables - Jul  2 2017  7:01AM
+ 
+*Remove the Temp Column Indexes - Jul  2 2017  7:01AM
+ 
+*Remove the Temp Column on the Payment Table - Jul  2 2017  7:01AM
+ 
+*Remove the Temp Column on the Note Table - Jul  2 2017  7:01AM
+ 
+**Completed Script: "Migration_110.001_MigratePaymentProviderData.sql" - Jul  2 2017  7:01AM
+ 
+******************************************************************************************

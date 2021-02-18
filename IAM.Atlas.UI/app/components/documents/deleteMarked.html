@@ -1,0 +1,77 @@
+﻿<div id="DeleteMarkedDocuments" class="documentDeleteMarked">
+
+
+    <system-feature-information title="delete marked documents"
+                                controller="DeleteMarkedDocumentsCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/documents/deleteMarked"
+                                page-name="Delete Marked Documents"></system-feature-information>
+
+    <div class="Title row">
+        <h2></h2>
+    </div>
+    <form class="form-horizontal row" role="form">
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-12 col-xs-offset-1'>The Documents below will be removed from the Atlas System</div>
+            <div class='col-sm-12 col-xs-offset-1'>and the Data will be archived after the Date specified.</div>
+        </div>
+
+        <div ng-show="$parent.isAdmin">
+            <div class='col-sm-12 form-group'>
+                <div class='col-sm-3'>
+                    <label>Organisation:</label>
+                </div>
+                <div class='col-sm-9'>
+                    <select ng-model="organisationId"
+                            ng-change="getMarkedDocumentsByOrganisation(organisationId)"
+                            class='form-control'
+                            ng-options="organisation.id as organisation.name for organisation in organisations">
+
+                        <!--<option value="">*Global*</option>-->
+
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="sml-scroll-div marginBottom10">
+                <table class="table table-bordered">
+                    <thead></thead>
+                    <tbody>
+                        <tr ng-repeat="markeddocument in markedDocuments"ng-class="{'isSelected': markeddocument.isSelected}">
+                            <td ng-click="setMarkedDocuments(markeddocument)"
+                                title="{{markeddocument.Document.Title}}"
+                                value="{{markeddocument.Id}}">
+                                {{markeddocument.Document.Title}} will be deleted on {{markeddocument.DeleteAfterDate | date:'dd-MMM-yyyy' }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-12">
+                    <button class="btn btn-default btn-sm"
+                            ng-click="removeMarkedDocuments()"
+                            title="Remove Marked Documents"
+                            ng-disabled="HasMarkedDocuments()">
+                        Remove Deletion Flag for Highlighted Documents
+                    </button>
+                </div>
+                <div class="col-sm-12" ng-if="successMessage != ''">
+                    <span class="validation-message">{{ successMessage }}</span>
+                </div>
+
+                <div class="col-sm-12" ng-if="validationMessage != ''">
+                    <span class="validation-message">{{ validationMessage }}</span>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+

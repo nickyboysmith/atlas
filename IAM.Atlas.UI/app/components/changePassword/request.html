@@ -1,0 +1,50 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="change-password-container">
+            <div class="row">
+                <div class="col-md-12 text-center marginBottom10">
+                    <h2>Password Reset Request</h2>
+                </div>
+
+                <div class="col-md-12 marginBottom15">
+                    <div class="row">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" placeholder="Login Id" ng-model="user.loginId" />
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            An Email will be sent to you with the new Password.
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="field-holder send-email-button">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8 text-center">
+                                <button class="btn" ng-click="sendEmailRequest()" ng-disabled="requestSent == true">Send Email Now</button>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 text-center password-confirmation-message">
+                        {{ user.statusMessage }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

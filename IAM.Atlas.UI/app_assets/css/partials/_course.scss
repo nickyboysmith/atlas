@@ -1,0 +1,248 @@
+﻿@import '../modules/mixins';
+
+#courseFeature {
+    label {
+        //font-weight: normal;
+       // padding-top: 7px;
+    }
+
+    h1.courses-title {
+        margin-top: 1px;
+    }
+
+    .search-icon-holder {
+        height: auto;
+        overflow: hidden;
+
+        .course-search-icon {
+            @include iconGetter(-9px, -311px);
+            float: right;
+            height: 32px;
+            width: 33px;
+        }
+    }
+
+    .form-line-separator {
+        margin-bottom: 5px !important;
+    }
+      
+    .separate-rows {
+        margin-bottom: 10px;
+    }
+
+    .previous-search-separator {
+        margin-bottom: 10px;
+    }
+
+    .parameter-separator {
+        margin-top: 50px;
+    }
+
+    .button-full-width {
+        width: 100%;
+    }
+
+    select.full {
+        width: 100%;
+    }
+
+    select.medium {
+        width: 50%;
+    }
+
+    input.day-amount {
+        width: 100%;
+    }
+
+    input.date-input-field {
+        width: 100%;
+    }
+
+    .separate-hidden-search-params {
+        margin-top: 10px;
+    }
+
+    .date-separation {
+        margin-top: 10px;
+    }
+
+    .theDatePicker {
+        z-index: 100;
+        float: right;
+        position: absolute;
+    }
+
+    .date-picker {
+        width: 100%;
+        height: 26px;
+    }
+
+    .date-picker-icon {
+        width: 100%;
+        height: 26px;
+        text-decoration: none !important;
+        background: url('/app_assets/images/calendar.png') no-repeat !important;
+        background-size: 65% !important;
+    }
+    /**
+     * Holds the smart table grid
+     */
+    #courseGridHolder {
+        margin-top: 30px;
+        border-top: 1px solid #cecece;
+        padding-top: 20px;
+
+        .course-hidden-message {
+            text-align: center;
+            background: #00508f;
+            position: absolute;
+            font-size: 15px;
+            opacity: 0.85;
+            z-index: 100;
+            padding: 10px 0;
+            color: #f3f6ff;
+        }
+
+       
+        table.table.table-striped {
+            background: transparent;
+
+            thead tr:hover th {
+                    cursor: pointer;
+                    }
+                
+            tbody {
+                tr.false {
+                    background: #FFF2F2;
+
+                    td {
+                        background: #FFF2F2;
+                        /*color: white;*/
+                    }
+
+                    td a {
+                        /*color: white;*/
+                    }
+
+                    th {
+                        background: #FFF2F2;
+                        /*color: white;*/
+                    }
+                }
+
+                tr.cancelled {
+                    background: lightpink !important;
+
+                    td {
+                        background: lightpink !important;
+                        color: white;
+                    }
+
+                    td a {
+                        color: white;
+                    }
+
+                    th {
+                        background: lightpink !important;
+                        color: white;
+                    }
+                }
+
+                
+
+            }
+
+            .st-sort-ascent:before {
+                content: '\25B2';
+            }
+
+             .st-sort-descent:before {
+                content: '\25BC';
+            }
+
+        }
+    }
+}
+
+#addCourse, #viewCourse{
+    
+    .MultiDayCourse, .NotMultiDayCourse{        
+        .row.MultiDayChoice, .row.DateAndTimes, .row.SessionPicker, .row.SessionTimes, .row.NumberOfCourseDates, .row.MultiDatesAndTimes
+        {
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-top: 2px;
+        }
+
+        .margin-left-14{
+            margin-left: 14px;
+        }
+
+        span.Information, .Information span {
+            width: 100%;
+            font-size: 12px;
+            font-style: italic;
+        }
+
+    }
+
+    .MultiDayCourse{        
+        .row.MultiDatesAndTimes{
+            max-height: 200px;
+            overflow: hidden;
+            overflow-y: auto;
+            margin-right: 20px;
+        }
+        .row.MultiDatesAndTimesHiddenElements{
+        }
+    }
+    
+    .NotMultiDayCourse{        
+        .row.MultiDatesAndTimes{
+            max-height: 200px;
+            overflow: hidden;
+            overflow-y: auto;
+            margin-right: 20px;
+            margin-bottom: 10px;
+            padding-left: 30px;
+        }
+        .row.MultiDatesAndTimesHiddenElements{
+        }
+    }
+    
+    .row.TrainersRequired div {
+        padding-right: 1px;
+    }
+
+    .margin-right-10{
+        margin-right: 10px;
+    }
+}
+
+#viewCourse{
+    #courseClientListDiv{
+        margin: 1px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        border: 1px solid #cccccc;
+        min-height: 185px;
+        height:470px;
+        overflow-y:scroll;
+    }
+    
+    .MultiDayCourse{        
+        .row.MultiDatesAndTimes{
+            margin-left: 5px;
+        }
+    }    
+}
+
+#addCourse{
+    .SessionTimes input{
+        font-size: 10px;
+    }
+
+    .CourseOptions{
+        margin-top: 8px;
+    }
+}

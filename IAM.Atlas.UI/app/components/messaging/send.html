@@ -1,0 +1,121 @@
+﻿
+<div id="MessagingDiv"><!--class="systemControl"-->
+
+    <div class="Title row">
+        <h2></h2>
+    </div>
+    <form class="form-horizontal" role="form">
+
+        <!--Organisation-->
+        <div ng-show="isAdmin" class="row form-group">
+            <div class='col-sm-3'>
+                <label>Organisation</label>
+            </div>
+            <div class='col-sm-9'>
+                <!--ng-change="$parent.getUsers(organisationId)"-->
+                <select ng-model="organisationId"
+                        ng-change="getUserDetailByOrganisation(organisationId)"
+                        class='form-control'
+                        ng-options="organisation.id as organisation.name for organisation in organisations">
+                        <option value="" disabled>Organisation</option>
+                </select>
+            </div>
+        </div>
+
+        <div class='row form-group'>
+            <div class='col-sm-3'>
+                <label>Category</label>
+            </div>
+            <div class='col-sm-9'>
+                <!--ng-change="$parent.getUsers(organisationId)"-->
+                <select ng-model="categoryId"
+                        ng-change="selectMessageCategory(categoryId)"
+                        class='form-control'
+                        ng-options="messageCategory.Id as messageCategory.Name for messageCategory in messageCategories">
+                        <option value="" disabled>Message Category</option>
+                </select>
+            </div>
+        </div>
+
+       
+        <div ng-repeat="level in userLevel">
+            <div class='row form-group'>
+                <div class='form-line-holder'>
+                    <div class='col-sm-3'>
+                        &nbsp;    
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="checkbox" ng-model="level.checked" ng-click="updateSelection($index, userLevel)" />&nbsp;{{level.name}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+            <div class='row form-group'>
+                <div class='form-line-holder'>
+                    <div class='col-sm-3'>
+                        <label>User</label>
+                    </div>
+                    <div class='col-sm-9'>
+                        <input type="text"
+                               id="quickType"
+                               ng-model="selected"
+                               typeahead-min-length="3"
+                               typeahead-on-select="selectedItem(selected)"
+                               typeahead-no-results="noResults"
+                               typeahead-loading="loadingLocations"
+                               class="form-control"
+                               ng-disabled="!userLevel[5].checked"
+                               uib-typeahead="item as item.UserName + '(' + item.UserId + ')' for item in getSearchableItems($viewValue) | limitTo:15" />
+                        <div ng-show="loadingLocations" class="set-white">
+                            <i class="glyphicon glyphicon-refresh"></i> Loading results
+                        </div>
+                        <div ng-show="noResults" class="set-red">
+                            <i class="glyphicon glyphicon-remove"></i> No Results Found
+                        </div>
+                        <div class="closeQuickContainer" ng-click="closeContainer()"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='row form-group'>
+                <div class='form-line-holder'>
+                    <div class='col-sm-3'></div>
+                    <div class='col-sm-9'>
+                        <textarea ng-model="messageWrapper.Message"
+                                  class="form-control"
+                                  maxlength="400"
+                                  placeholder="Message"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class='row form-group'>
+                <div class='form-line-holder'>
+                    <div class='col-sm-3'></div>
+                    <div class='col-sm-4'>
+                        <button class="btn btn-default btn-sm"
+                                ng-click="send()"
+                                title="Send">
+                            Send
+                        </button>
+                    </div>
+                    <div class='col-sm-5'></div>
+                </div>
+            </div>
+
+            <div class='row form-line-holder'>
+                <div class="col-sm-12" ng-if="successMessage != ''">
+                    <h3>{{ successMessage }}</h3>
+                </div>
+            </div>
+            <div class='row form-line-holder'>
+                <div class="col-sm-12" ng-if="validationMessage != ''">
+                    <h3>{{ validationMessage }}</h3>
+                </div>
+            </div>
+
+</form>
+</div>
+

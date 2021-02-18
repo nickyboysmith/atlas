@@ -1,0 +1,53 @@
+﻿<div ng-controller="FeedBackCtrl" class="FeedBack container-fluid" id="FeedbackForm">
+    <div ng-show="!feedbackSent" class="col-md-12 row">
+        <div class="row">
+            <div class="col-md-12 row">
+                <div class="col-md-12 FeedbackTitle">
+                    <h3>Feedback and Page Review</h3>
+                </div>
+                <div class="col-md-12 FeedbackComments">
+                    <span>Please let us know how you believe we can improve things.</span><br/>
+                    <span>Thanking You</span><br />
+                    <span>The Administration Team</span><br /><br />
+                </div>
+            </div>
+            <div class="col-md-12 row FeedbackResponse">
+                <table>
+                    <tr>
+                        <td><label for="title">Title:</label></td>
+                        <td><input type="text" ng-model="feedback.title" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="title">Comments:</label></td>
+                        <td><textarea type="text" ng-model="feedback.body" ng-keyup="charsRemainingCount()" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td colspan="2"><label><input type="checkbox" ng-model="feedback.responseRequired" /> Response Required</label></td>
+                    </tr>
+                    <tr>
+                        <td><label>Reply email:</label></td>
+                        <td><input type="text" ng-model="feedback.email" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button ng-click="submitFeedback()" class="btn btn-default btn-sm">Send Feedback</button>&nbsp;<label><span style="color:#ee3b3b;">{{ validationMessage }}</span></label></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div ng-show="feedbackSent" class="col-md-12 row">
+        <div class="col-md-12">
+            <h2>Thank you for your feedback!</h2>
+        </div>
+    </div>
+
+    <div data-ng-if="showSuccessFader == true">
+        <my-msgfader status="success"></my-msgfader>
+    </div>
+    <div data-ng-if="showErrorFader == true">
+        <my-msgfader status="error"></my-msgfader>
+    </div>
+
+</div>

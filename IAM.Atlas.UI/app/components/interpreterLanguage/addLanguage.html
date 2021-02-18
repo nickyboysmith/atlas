@@ -1,0 +1,59 @@
+﻿<div id="addLanguage" class="addLanguage">
+
+
+    <form class="form-horizontal" role="form">
+
+        <div class="col-sm-12">
+            <div class="sml-scroll-div marginBottom10">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr class="bootstrap-dialog-header">
+                            <th>Language</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="language in languages" ng-class="{'isSelected': language.isSelected}">
+                            <td ng-click="setSelectedLanguages(language)"
+                                title="{{language.EnglishName}}"
+                                value="{{language.Id}}">
+                                {{language.EnglishName}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <button class="btn btn-default btn-sm"
+                            ng-click="addSelectedLanguages()"
+                            title="Add Selected Languages"
+                            ng-disabled="HasSelectedLanguages()">
+                        Add Selected From the List
+                    </button>
+                </div>
+                <div class="col-sm-6" ng-if="successMessage != ''">
+                    <h3>{{ successMessage }}</h3>
+                </div>
+
+                <div class="col-sm-6" ng-if="validationMessage != ''">
+                    <h3>{{ validationMessage }}</h3>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </form>
+
+</div>

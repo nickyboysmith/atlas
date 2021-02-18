@@ -1,0 +1,108 @@
+﻿
+
+<div id="stencilCourseMaintenance" class="stencilCourseModal">
+    <system-feature-information title="update course stencil"
+                                controller="editStencilCourseCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/stencilCourse/update"
+                                page-name="Multi-Course Stencils"></system-feature-information>
+
+    <form class="form-horizontal" role="form" style="color: black; ">
+        <!-- First Row -->
+        <div class="row">
+            <!-- First Column -->
+            <div class="col-sm-8">
+
+                <div class='row form-line-separator' ng-show="isAdmin">
+                    <div class='col-sm-2'><label>Organisation</label></div>
+                    <div class='col-sm-9'>
+                        <select id="organisationDD" class='col-sm-12 form-control'
+                                ng-model="selectedOrganisationId"
+                                ng-options="organisation.id as organisation.name for organisation in organisations"
+                                ng-change="showStencils(selectedOrganisationId)"></select>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+
+        <div class="row form-line-separator-20"></div>
+
+        <!-- Second Row -->
+        <div class="row">
+            <!-- First Column -->
+            <div class="col-sm-6">
+                <div class='row form-group'>
+                    <div class='col-sm-2'></div>
+                    <div class='col-sm-10' ng-show="courseStencils.length > 0">
+                        <label>Stencil List</label>
+                        <div class="sml-scroll-div">
+
+                            <table class="table table-hover table-bordered">
+                                <!--<thead>
+                                    <tr class="bootstrap-dialog-header">
+                                        <th style="color:black;">Stencil List</th>
+                                    </tr>
+                                </thead>-->
+                                <tbody>
+                                    <tr ng-repeat="courseStencil in courseStencils">
+                                        <td ng-click="loadStencilDetail(courseStencil)" value="{{courseStencil.Id}}" ng-class="{selectedCourseStencil : selectedCourseStencil.Id == courseStencil.Id}">{{courseStencil.Name}} (Version {{courseStencil.VersionNumber | leftPad: "000"}})</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 form-group" ng-show="selectedCourseStencil && selectedOrganisationId > 0">
+                
+                <div class="row form-line-separator-20"></div>
+
+                <div class='row form-line-separator'>
+                    <div class="col-sm-1"></div>
+                    <label class='col-sm-3 control-label'>Stencil Name:</label>
+                    <div class='col-sm-8 alignText' ng-show="selectedCourseStencil.Id"><span>{{selectedCourseStencil.Name}} <br />(Version {{selectedCourseStencil.VersionNumber | leftPad: "000"}})</span></div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-1"></div>
+                    <label class="col-sm-3 control-label">Created:</label>
+                    <div class='col-sm-8 alignText'><span>{{selectedCourseStencil.DateCreated | date: 'dd-MMM-yyyy HH:mm'}}</span></div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-1"></div>
+                    <label class="col-sm-3 control-label">Notes:</label>
+                    <div class='col-sm-8 alignText height-seperator-100'><span>{{selectedCourseStencil.Notes}}</span></div>
+                </div>
+
+                <div class='row form-group'>
+                    <div class="col-sm-6 text-center marginBottom10" ng-show="selectedCourseStencil.showCreateCourses == true && disabled != true" >
+                        <div><button ng-click="openCreateStencilCourseModal()" class="btn btn-default btn-sm fixed-width-140" title="Create Courses based on this Stencil">Create Courses</button></div>
+                    </div>
+                    <div class="col-sm-6 text-center marginBottom10" ng-show="selectedCourseStencil.showRemoveCourses == true && selectedCourseStencil.showCreateCourses == false  && disabled != true">
+                        <div><button ng-click="openRemoveStencilCourseModal()" class="btn btn-default btn-sm fixed-width-140" title="Remove Courses based on this Stencil">Remove Courses</button></div>
+                    </div>
+
+                    <div class="col-sm-6 text-center marginBottom10" ng-show="selectedCourseStencil.showEditStencil == true  && disabled != true">
+                        <div><button ng-click="openEditStencilModal(false)" class="btn btn-default btn-sm fixed-width-140" title="Edit Stencil">Edit Stencil</button></div>
+                    </div>
+                    <div class="col-sm-6 text-center marginBottom10" ng-show="selectedCourseStencil.showEditStencil != true  && disabled != true">
+                        <div><button ng-click="openEditStencilModal(true)" class="btn btn-default btn-sm fixed-width-140" title="Create a New Stencil Version">New Stencil Version</button></div>
+                    </div>
+
+                    <div class="col-sm-6 text-center marginBottom10">
+                        <div><button ng-click="openNewStencilModal()" class="btn btn-default btn-sm fixed-width-140" title="New Stencil">New Stencil</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-ng-if="showSuccessFader == true">
+                <my-msgfader status="success"></my-msgfader>
+            </div>
+            <div data-ng-if="showErrorFader == true">
+                <my-msgfader status="error"></my-msgfader>
+            </div>
+        </div>
+    </form>
+</div>

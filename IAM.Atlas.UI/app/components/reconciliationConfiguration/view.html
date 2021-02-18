@@ -1,0 +1,88 @@
+﻿<div id="reconciliationConfiguration">
+    <div class="row margintop10 marginBottom20" ng-if="isAdmin">
+        <div class="col-md-2">Organisation:</div>
+        <div class="col-md-4">
+            <select ng-model="organisationId"
+                    ng-change="getPaymentReconciliationData(organisationId)"
+                    class='form-control'
+                    ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+        </div>
+        <div class="col-md-6"></div>
+    </div>
+
+    <div class="row" ng-if="reconciliationConfigurations.length > 0">
+        <div class="col-sm-12 form-group">
+            <div class="row"></div>
+            <div class="col-sm-4 noLeftPadding">
+                <div class="sml-scroll-div">
+                    <table class="table table-hover table-bordered table-striped">
+                        <thead></thead>
+                        <tbody>
+                            <tr ng-repeat="reconciliationConfiguration in reconciliationConfigurations">
+                                <td ng-click="selectConfiguration(reconciliationConfiguration)"
+                                    value="{{reconciliationConfiguration.Id}}">
+                                    {{reconciliationConfiguration.Name}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-sm-8">
+                <div class="row marginBottom10">
+                    <div class="col-sm-3">
+                        Configuration:
+                    </div>
+                    <div class="col-sm-9">{{selectedConfiguration.Name}}</div>
+                </div>
+                <div class="row marginBottom10">
+                    <div class="col-sm-3">
+                        Created:
+                    </div>
+                    <div class="col-sm-9">{{selectedConfiguration.DateCreated | date:'dd MMM yyyy HH:mm:ss'}}</div>
+                </div>
+                <div class="row marginBottom20">
+                    <div class="col-sm-3">
+                        Created By:
+                    </div>
+                    <div class="col-sm-9">{{selectedConfiguration.UserName}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">Date Column Number: </div>
+                    <div class="col-sm-3">{{selectedConfiguration.TransactionDateColumnNumber}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">Amount Column Number: </div>
+                    <div class="col-sm-3">{{selectedConfiguration.TransactionAmountColumnNumber}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">Reference 1 Column Number: </div>
+                    <div class="col-sm-3">{{selectedConfiguration.Reference1ColumnNumber}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">Reference 2 Number: </div>
+                    <div class="col-sm-3">{{selectedConfiguration.Reference2ColumnNumber}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">Reference 3 Number: </div>
+                    <div class="col-sm-3">{{selectedConfiguration.Reference3ColumnNumber}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row margintop10">
+        <div class="col-sm-4 no-padding-or-margin">
+            <button ng-click="newConfig()" class="btn btn-block" title="New Configuration">New Configuration</button>
+        </div>
+        <div class="col-sm-7"></div>
+    </div>
+</div>
+
+

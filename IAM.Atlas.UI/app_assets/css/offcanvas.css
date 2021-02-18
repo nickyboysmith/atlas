@@ -1,0 +1,78 @@
+﻿    @media screen and (max-width: 767px) {
+
+
+        #trainerLanding .container .main-side-bar-container {
+            height:100%!important;
+            position:relative;
+        }
+
+        #trainerLanding .container .main-trainer-container {
+            margin-left: 0%;
+        }
+
+      .row-offcanvas {
+        position: relative;
+        -webkit-transition: all .25s ease-out;
+             -o-transition: all .25s ease-out;
+                transition: all .25s ease-out;
+      }
+
+      .row-offcanvas-right {
+        right: 0;
+      }
+
+      .row-offcanvas-left {
+        left: 0;
+      }
+
+      .row-offcanvas-right
+      .sidebar-offcanvas {
+
+        right: -50%; /* 6 columns */
+      }
+
+      .row-offcanvas-left
+      .sidebar-offcanvas {
+        left: -79%; /* 6 columns */
+        display: none;
+      }
+
+      .row-offcanvas-right.active {
+        right: 50%; /* 6 columns */
+      }
+
+      .row-offcanvas-left.active {
+        left: 80%; /* 6 columns */
+      }
+
+      .row-offcanvas-left.active
+      .sidebar-offcanvas {
+        display:block;
+        position: absolute!important;
+        /* left: 50%;  6 columns */
+      }
+
+      .sidebar-offcanvas {
+
+        position: absolute;
+        top: 0;
+        width: 80%; /* 6 columns */
+      }
+    }
+
+
+    @media (min-width: 467px) and (max-width: 767px) {
+      .sidebar-offcanvas {
+        position: absolute;
+        top: 0;
+        width: 70%; /* 6 columns */
+      }
+    }
+
+   @media (min-width: 467px) and (max-width: 767px) {
+      .sidebar-offcanvas {
+        position: absolute;
+        top: 0;
+        width: 70%; /* 6 columns */
+      }
+    }

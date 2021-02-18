@@ -1,0 +1,280 @@
+ 
+******************************************************************************************
+ 
+**Running Script: "Migration_090.001_MigrateCourseData.sql" Jul  1 2017  4:54PM
+ 
+*****************************************************************************
+ 
+**DISABLE SOME TRIGGERS
+ 
+*Migrating Data For: Cleveland Driver Improvement Group .... OldSystemID: 178 .... NewSystemID: 318
+ 
+*Migrate Course Data Tables Jul  1 2017  4:54PM
+ 
+*Populate StandardCourseType Jul  1 2017  4:54PM
+
+(14 row(s) affected)
+ 
+*Populate CourseType Jul  1 2017  4:54PM
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(167 row(s) affected)
+ 
+*Populate Venue Jul  1 2017  4:54PM
+ 
+- Create Venue Temp Table Jul  1 2017  4:54PM
+
+(134 row(s) affected)
+ 
+*Save Venue Addresses Jul  1 2017  4:54PM
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(26 row(s) affected)
+
+(26 row(s) affected)
+ 
+*Save Venue Email Addresses Jul  1 2017  4:54PM
+
+(9 row(s) affected)
+ 
+*Save Venues Jul  1 2017  4:54PM
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(26 row(s) affected)
+
+(1 row(s) affected)
+
+(26 row(s) affected)
+
+(0 row(s) affected)
+ 
+*Save Venue Addresses Jul  1 2017  4:54PM
+
+(26 row(s) affected)
+ 
+*Save Venue Email Jul  1 2017  4:54PM
+
+(9 row(s) affected)
+ 
+*Save Venue CourseType Jul  1 2017  4:54PM
+
+(134 row(s) affected)
+ 
+*Save Venue Directions Jul  1 2017  4:54PM
+
+(0 row(s) affected)
+ 
+*Populate Venue Locale Jul  1 2017  4:54PM
+
+(26 row(s) affected)
+ 
+*Populate VenueCostType TableJul  1 2017  4:54PM
+
+(152 row(s) affected)
+ 
+*Populate VenueCost TableJul  1 2017  4:54PM
+
+(52 row(s) affected)
+ 
+*Populate Trainers Jul  1 2017  4:54PM
+
+(41 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(1476 row(s) affected)
+
+(123 row(s) affected)
+
+(1476 row(s) affected)
+
+(0 row(s) affected)
+
+(41 row(s) affected)
+ 
+*Populate Trainers - TrainerPreviousIdJul  1 2017  4:54PM
+
+(43 row(s) affected)
+ 
+*Populate Trainers - TrainerEmailJul  1 2017  4:54PM
+
+(38 row(s) affected)
+
+(38 row(s) affected)
+ 
+*Populate Trainers - TrainerInsuranceJul  1 2017  4:54PM
+
+(41 row(s) affected)
+ 
+*Populate Trainers - TrainerLicenceJul  1 2017  4:54PM
+
+(43 row(s) affected)
+ 
+*Populate Trainers - TrainerLocation (Addresses)Jul  1 2017  4:54PM
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(41 row(s) affected)
+
+(41 row(s) affected)
+
+(41 row(s) affected)
+ 
+*Populate Trainers - TrainerNoteJul  1 2017  4:54PM
+
+(41 row(s) affected)
+
+(41 row(s) affected)
+ 
+*Populate Trainers - TrainerPhoneJul  1 2017  4:54PM
+
+(68 row(s) affected)
+ 
+*Populate Trainers - TrainerVehicleJul  1 2017  4:54PM
+
+(43 row(s) affected)
+ 
+*Populate Course Jul  1 2017  4:54PM
+ 
+- Create Course Temp Table Jul  1 2017  4:54PM
+
+(5438 row(s) affected)
+ 
+- Insert into Course Table Jul  1 2017  4:54PM
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(5438 row(s) affected)
+
+(0 row(s) affected)
+
+(5438 row(s) affected)
+
+(5438 row(s) affected)
+ 
+*Populate CoursePreviousId Jul  1 2017  4:54PM
+
+(5438 row(s) affected)
+ 
+*Populate Course Venue Jul  1 2017  4:54PM
+
+(5438 row(s) affected)
+ 
+*Populate CourseNote Jul  1 2017  4:54PM
+
+(1 row(s) affected)
+
+(128 row(s) affected)
+
+(128 row(s) affected)
+ 
+*Populate CourseDate Jul  1 2017  4:54PM
+
+(1 row(s) affected)
+
+(1 row(s) affected)
+
+(5461 row(s) affected)
+
+(5461 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(5438 row(s) affected)
+
+(0 row(s) affected)
+
+(1 row(s) affected)
+
+(0 row(s) affected)
+
+(5461 row(s) affected)
+ 
+*Tidy Up Jul  1 2017  4:54PM
+ 
+*Tidy Up Temp Tables Jul  1 2017  4:54PM
+ 
+*****************************************************************************
+ 
+**ENABLE DISABLED TRIGGERS
+ 
+*Tidy Up Temp Columns Jul  1 2017  4:54PM
+ 
+**Completed Script: "Migration_090.001_MigrateCourseData.sql" Jul  1 2017  4:54PM
+ 
+******************************************************************************************

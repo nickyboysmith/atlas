@@ -1,0 +1,51 @@
+﻿<div id="addVehicleCategoryModal" class="addVehicleCategoryModal">
+
+    <div class="row form-line-separator">
+        <div class="col-sm-12">
+            <label class='control-label'>Name</label>
+        </div>
+        <div class="col-sm-12">
+            <input class="form-control" 
+                   type="text" 
+                   ng-model="vehicleCategory.VehicleCategoryName" 
+                   placeholder="Vehicle Category Name"/>
+        </div>
+    </div>
+
+    <div class="row form-line-separator marginBottom5">
+        <div class="col-sm-12">
+            <label>Description</label>
+        </div>
+        <div class="col-sm-12">
+            <textarea class="form-control"
+                      ng-model="vehicleCategory.VehicleCategoryDescription"
+                      maxlength="400"
+                      rows="4"
+                      placeholder="Vehicle Category Decription"></textarea>
+        </div>
+    </div>
+
+    <div class='row form-line-separator'>
+        <div class='col-sm-12'>
+            <input type="checkbox"  ng-model="vehicleCategory.VehicleCategoryDisabled" />
+            <span class="blueitalic">Disable</span>
+        </div>
+    </div>
+
+    <div class="row form-line-separator">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-6">
+                    <button class="btn btn-default btn-sm pull-left" onclick="$('button.close').last().trigger('click')">Cancel</button>
+                </div>
+                <div class="col-sm-6">
+                    <button class="btn btn-default btn-sm pull-right" ng-click="addVehicleCategory()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row form-line-separator noRightPadding" ng-if="!validationMessage === false">
+        <div class="col-sm-12 validation-message noRightPadding">{{ validationMessage }}</div>
+    </div>
+</div>

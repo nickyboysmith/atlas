@@ -1,0 +1,212 @@
+﻿@import "../modules/mixins";
+
+#courseAttendance {
+
+    .header-title {
+        font-size: 16px;
+        font-weight: bold;
+        .verified {
+            color: green;
+        }
+        .not-verified {
+            color: red; 
+        }
+    }
+
+    #showTrainerOneDetails {
+        display: none;
+    }
+
+    #showTrainerTwoDetails {
+        display: none;
+    }
+
+    .attendees-title {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .top-level-padder {
+        padding-top: 10px;
+    }
+
+    table.table.table-striped {
+        tr:first-child {
+            td {
+                border-top: 0px;
+            }
+
+        }
+        tr {
+            td.red {
+                color: red;
+            }
+            td.normal {
+                // nothing yet
+            }
+        }
+        margin-bottom: 0px;
+    }
+
+    .theDatePicker {
+        z-index: 100;
+    }
+
+    .date-holder {
+        label {
+            font-weight: normal;
+        }
+    }
+
+    .calendar {
+        margin-top: 6px;
+        @include iconGetter(-6px, -506px);
+        height: 20px;
+        display: block;
+        width: 23px;
+        margin-left: -6px;
+    }
+
+    #courseSelectionHolder { 
+        display: none;
+        @include theBorderRadius(3px);
+        border: 1px solid #cecece;
+        height: 334px;
+        overflow-y: scroll;
+        margin-top: 2px;
+        table.table.table-striped {
+            margin-bottom: 0px;
+        }
+    }
+
+    #courseSpinner {
+        display: none;
+        .center-spinner {
+              display: block;
+              margin: 0 auto;
+              width: 100px;
+        }
+    }
+
+    #courseAttendanceSpinner {
+        display: none;
+        .center-spinner {
+            display: block;
+            margin: 0 auto;
+            width: 100px;
+        }
+    }
+
+    #courseError {
+        display: none;
+    }
+
+    #theCourseAttendanceClients {
+        display: none;
+    }
+
+    #courseVerificationContainer {
+        @include theBorderRadius(2px);
+        border: 1px solid #cecece;
+        .the-right-border {
+            border-right:1px solid #cecece;
+        }
+        .top-holding-container {
+            height: 220px;
+            border-bottom: 1px solid #cecece;
+        }
+        .left-top-margin {
+            margin-left: 0px;
+        }
+        .middle-top-margin {
+            // nothing needed yet!
+        }
+        .right-top-margin {
+            margin-right: 0px;
+        }
+        .left-bottom-margin {
+            margin-left: 15px;
+        }
+        .middle-bottom-margin {
+            // nothing needed yet!
+        }
+        .right-bottom-margin {
+            margin-right: 15px;
+        }
+        .list-container {
+
+        }
+        .MarkAllAbsent, .MarkAllPresent{
+            margin-top: 4px;
+            margin-right: 1px;
+        }
+        .MarkAllAbsent{
+
+        }
+        .MarkAllPresent{
+
+        }
+        #trainerAttendanceContainer {
+            height: 350px;
+            overflow-y: scroll;
+            .trainer-container {
+                margin-right: 5px;
+                margin-left: 3px;
+
+                span.ClientName{
+
+                }
+                span.AttendanceInfo{
+                    font-size: 8px;
+                    color: blueviolet;
+                }
+                span.AttendanceInfo.Present{
+                    font-size: 10px;
+                    color: green;
+                }
+                span.AttendanceInfo.Absent{
+                    font-size: 10px;
+                    color: red;
+                }
+            }
+            .left-padder {
+                padding-left: 0px;
+            }
+            .middle-table {
+                margin-left: 15px;
+                padding-left: 0px;
+                padding-right: 15px;
+                margin-right: 0px;
+                width: 33.9%;
+            }
+            .right-table {
+                margin-right: 0px;
+                width: 30.75%;
+            }
+            
+            #trainerAttendanceOneTable {display: none;}
+            #trainerAttendanceOneMessage {display: none;}
+            #trainerAttendanceOneSpinner {
+                display: none;
+                .center-spinner {
+                    display: block;
+                    margin: 0 auto;
+                    width: 100px;
+                }
+            }
+
+            #trainerAttendanceTwoTable {display: none;}
+            #trainerAttendanceTwoMessage {display: none;}
+            #trainerAttendanceTwoSpinner {
+                display: none;
+                .center-spinner {
+                    display: block;
+                    margin: 0 auto;
+                    width: 100px;
+                }
+            }
+
+        }
+    }
+
+}

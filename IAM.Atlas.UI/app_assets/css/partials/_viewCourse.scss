@@ -1,0 +1,400 @@
+﻿
+
+.ViewCourse {
+    width: 900px;
+    /*height: 750px;*/
+    min-height: 670px;
+    height: auto;
+    overflow: visible;
+
+    .x-sml-scroll-div {
+        overflow-y:scroll;
+        height :150px;
+        border: 1px solid black;
+    }
+
+    .sml-scroll-div {
+        border: 1px solid black;
+    }
+
+     .docInfo {
+          width: 24px;
+          height: 24px;
+          background: url(/app_assets/images/info.png) no-repeat !important;
+          background-size: 100% !important; 
+    }
+
+    .x-btn-sm {
+        width:70px;
+    }
+
+    .AddFavourite {
+        position: absolute;
+        top: 0;
+        right: 20px;
+    }
+    .form-line-holder {
+        height: auto;
+        overflow: hidden;
+        margin-bottom: 10px; 
+    }
+
+    form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+        .col-sm-12 {
+            display: inline-block;
+        }
+
+        .control-button {
+            margin-left: -25px;
+        }
+
+        .control-label {
+            display: block;
+            white-space: nowrap;
+            padding: 0;
+            text-align: left;
+        }
+    }
+
+    #additionalVenueDetailContainer{
+
+        .selectedVenueCost {
+            color: #fff;
+            background-color: #00508f;
+        }
+
+        .selectedVenueCourseType {
+            color: #fff;
+            background-color: #00508f;
+        }
+
+        .selectedVenueLocaleId {
+            color: #fff;
+            background-color: #00508f;
+        }
+
+    }
+
+    #firstVenueModalColumn{
+        .selectedVenue {
+            color: #fff;
+            background-color: #00508f;
+        }
+    }
+
+    #editCourseDocumentList{
+        border:1px solid #ccc;
+        height:150px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+        .editCourseDocumentListItem{            
+            position:relative;
+            overflow-y: visible;
+            overflow-x: visible;
+            .courseDocumentTitle{
+                padding:5px;
+                width:100%;
+                display:block;
+            }
+        }
+        .editCourseDocumentListItem:hover
+        {
+            background-color:#ffffe6;
+        }
+        .editCourseDocumentNotLastListItem{
+            border-bottom: 1px solid #cce9ff;
+        }
+    }
+}
+
+
+
+
+.CourseDetails {
+    width: 1000px;
+
+    .Title {
+        vertical-align: top;
+        padding-left: 0;        
+
+        h2 {
+            margin-top: 2px;
+            padding-left: 0;       
+            vertical-align: top;
+        }
+
+        h3 {
+            margin-top: 4px;
+            padding-left: 0;     
+            vertical-align: middle;
+        }
+    }
+
+    .TopButtons {
+        margin-left: -5px;
+        padding-left: 0;
+        padding-right: 0;
+
+        button {
+            margin-right: 0;
+        }
+
+        button.last {
+            margin-right: 0;
+            padding-left: 0;
+            padding-right: 0;    
+        }
+    }
+
+    .details {
+        textarea {
+            border: none;
+        }   
+    }
+}
+
+.AddCourseType {
+    width: 400px;
+    .selectedCourseType {
+            color: #fff;
+            background-color: #006cc2;
+        }
+
+        .selectedCourseType:hover {
+            background-color: #006cc2;
+        }
+
+}
+
+
+.sidepanelcoursecontainer {
+  position: absolute;
+  right: 0px;
+  margin: 0px 0px 0px 0px;
+    background-color: white;
+}
+
+/*.sidepanelcoursetab {
+  width: 40px;
+  min-height: 160px;
+  float: right;
+  background-color: #00508F;
+    color: white;
+}
+
+.sidepanelcoursetab p {
+  width: 5px;
+  word-wrap: break-word;
+    padding: 15px;
+}*/
+
+.tooltipWrapperContainer {
+        display: inline;
+    }
+
+.sidepanelcoursecontent {
+  min-height: 550px;
+  float: right;
+  background-color: #00508F;
+  color: white;
+  display: none;
+    width: 0px;
+}
+
+.sidepanelcoursecontenttable {
+    background-color: white;
+    margin: 0px 20px 20px 30px;
+    width: 90%;
+    color: #00508F;
+
+    tr {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #00508F;
+    }
+}
+
+#courseGridHolder {
+    .course-hidden-menu {
+        position: absolute;
+        z-index: 101;
+
+        ul {
+            border: 1px solid #cecece;
+            background: #fdfdfd;
+            width: 250px;
+            list-style-type: none;
+            margin: 0;
+            padding: 10px;
+
+            li.course-menu-title {
+                border-bottom: 1px solid #E7E7E7;
+                margin-top: 5px;
+                margin-bottom: 15px;
+                padding-bottom: 4px;
+                font-weight: bold;
+            }
+
+            li.course-menu-title:hover {
+                background: none;
+            }
+
+            li {
+                border-bottom: 1px solid #f0f0f0;
+                display: block;
+                width: 100%;
+                padding: 5px 0;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            li:hover {
+                background: #f3f3f3;
+            }
+
+            li:last-child {
+                border-bottom: 0;
+            }
+        }
+    }
+}
+
+#courseClientsTab, #courseHistoryTab, #courseDetailsTab{
+    /*background-color: #00508F;
+    width:40px;
+    height:180px;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;*/
+    cursor: pointer;
+	position:absolute;
+	background-color: darken($background, 20%);
+    min-height: 150px;
+    max-width: 25px;
+
+    /*Rotate Writing Here*/
+    -ms-writing-mode: tb-rl; /* old syntax. IE */
+    -webkit-writing-mode: vertical-rl;
+    -moz-writing-mode: vertical-rl;
+    -ms-writing-mode: vertical-rl;
+    writing-mode: vertical-rl; /* new syntax */
+			
+    padding: 0;
+    vertical-align: middle;
+    text-align: center;
+
+    font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 300;
+    font-family: Arial;
+	line-height: 26.4px;
+
+    box-shadow: lighten($background, 50%) -2px -2px 15px ;
+    z-index:10;
+}
+
+#courseDetailsTab {
+    top:220px;
+    left:0;
+    display:none;
+}
+
+#courseClientsTab {
+    top:100px;	
+	right:0;	
+}
+
+#courseHistoryTab{
+    top:260px;	
+	right:0;	
+}
+
+#courseClients, #courseHistory{
+    position:absolute;
+    background:#fff;
+    height:900px;
+    width:100%;
+}
+
+.courseDetailsSpan{
+    width: 400px;
+    display: inline-block;
+}
+
+$editModalWidth: 940px;
+
+#courseTabsAndPanels{
+    min-height: 700px;
+}
+
+#courseTabs{
+    position:absolute;
+    width:$editModalWidth;
+    height:700px;
+    top:0;
+    left:0;
+    word-wrap: break-word;
+    color:#fff;
+    font-weight:bold;
+}
+
+#coursePanels{
+    position:absolute;
+    top:0px;
+    left:0px;
+    overflow:hidden;
+    width:$editModalWidth;
+    /*height:750px;*/
+    min-height: 680px;
+    /*min-height: 710px;*/
+    height: auto;
+
+    .CourseCheckBox{
+        line-height: 1.2;
+    }
+}
+
+#viewCourseButtons{
+    /*position:absolute;
+    bottom:0px;
+    left:0px;
+    right:0px;*/
+    overflow:hidden;
+    width:$editModalWidth;
+    height: auto;
+    padding-bottom: 10px;
+}
+
+#courseDetailsPanel{
+    /*height: 550px;*/
+    min-height: 720px;
+    height: auto;
+    left:0px;
+    width:$editModalWidth;
+    position:absolute;
+    top:0px;
+    padding:10px;
+    padding-top: 2px;
+}
+
+#courseClientPanel{
+    /*height: 550px;*/
+    height: auto;
+    left:$editModalWidth;
+    width:$editModalWidth;
+    position:absolute;
+    top:0px;
+}
+
+#courseHistoryPanel{
+    /*height: 550px;*/
+    height: auto;
+    left:$editModalWidth;
+    width:$editModalWidth;
+    position:absolute;
+    top:0px;
+}

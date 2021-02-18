@@ -1,0 +1,212 @@
+﻿<div class="row theContainer">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>For Course:</label>
+             </div> 
+            <div class="col-md-8">
+                {{ courseType }} <span ng-show="courseTypeCategory != ''">({{ courseTypeCategory }})</span>
+            </div>
+        </div>                
+
+        <div class="row">
+            <div class="col-md-4">
+                <label>Date:</label>
+            </div>
+            <div class="col-md-8">
+                {{ course.courseDateStartDate | date: 'dd-MMM-yyyy' }} to {{ course.courseDateEndDate | date: 'dd-MMM-yyyy' }}
+            </div>
+        </div>
+
+        <div class="row" ng-show="course.courseAssociatedSession != ''">
+            <div class="col-md-4">
+                <label>Session(s):</label>
+            </div>
+            <div class="col-md-8">
+                {{ course.courseAssociatedSession }} 
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label>Max Practical Trainers:</label>
+            </div>
+            <div class="col-md-6">
+                {{ course.MaxPracticalTrainers }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label>Max Theory Trainers:</label>
+            </div>
+            <div class="col-md-6">
+                {{ course.MaxTheoryTrainers }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <span class="blueitalic">There is no restriction on Interpreters</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Reference</label>
+            </div>
+            <div class="col-md-8">
+                {{ course.courseReference }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <label>Venue:</label>
+            </div>
+            <div class="col-md-8">
+                <span>{{ course.venueTitle }}</span>
+               <span style="white-space:pre-wrap;">{{ course.venueAddress }}</span>
+                <p>{{ course.venuePostCode }}</p>
+            </div>
+        </div>
+
+    </div>
+</div><!-- end .theContainer -->
+
+<div class="row listHolder" ng-show="course.PracticalCourse == true">
+    <div class="col-md-5">
+        <p><strong>Available Practical Interpreters:</strong></p>
+        <div 
+            class="listContainer" 
+            id="availableInterpretersForPractical">
+            <ul>
+                <li ng-repeat="availableInterpreter in availableInterpretersForPractical | orderBy: 'Name'"
+                    track by availableInterpreter.Id
+                    data-allow-transform="true"
+                    ng-click="setValue(availableInterpreter, 'availablePractical')"
+                    ng-class="{'highlightInterpreter': availableInterpreter.isSelected }">
+                    <div class="row">
+                        <div class="col-sm-12">{{ availableInterpreter.Name }}
+                            <span class="smallitalic" title="Interpreter Languages">({{availableInterpreter.InterpreterLanguageList}})</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div><!-- end .listContainer -->
+    </div><!-- end .col-md-6 -->
+
+    <div class="col-md-2">
+        <br />
+        <div class="text-center" style="line-height: 40px;">
+            <p>
+                <button class="btn-default fixed-width-40 btn"
+                    ng-click="dropInNewArea('availableInterpretersForPractical', 'selectedInterpretersForPractical', 'availablePractical')">&gt;
+                </button>
+            </p>
+            <p>
+                <button class="btn-default fixed-width-40 btn" 
+                    ng-click="dropInNewArea('selectedInterpretersForPractical', 'availableInterpretersForPractical', 'selectedPractical')">&lt;
+                </button>
+            </p>
+        </div>
+    </div>
+
+    <div class="col-md-5">
+        <p><strong>Selected Practical Interpreters:</strong></p>
+        <div class="listContainer"
+                id="selectedInterpretersForPractical">
+            <ul>
+                <li ng-repeat="selectedInterpreter in selectedInterpretersForPractical | orderBy: 'Name'"
+                    track by selectedInterpreter.Id
+                    data-allow-transform="true"
+                    ng-click="setValue(selectedInterpreter, 'selectedPractical')"
+                    ng-class="{'highlightInterpreter': selectedInterpreter.isSelected }">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{ selectedInterpreter.Name }}
+                            <span class="smallitalic" title="Interpreter Languages">({{selectedInterpreter.InterpreterLanguageList}})</span>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+        </div><!-- end .listContainer -->
+    </div><!-- end .col-md-6 -->
+
+
+</div><!-- end .listHolder -->
+
+
+<div class="row listHolder" ng-show="course.TheoryCourse == true">
+    <div class="col-md-5">
+        <p><strong>Available Theory Interpreters:</strong></p>
+        <div class="listContainer" id="availableInterpretersForTheory">
+            <ul>
+                <li ng-repeat="availableInterpreter in availableInterpretersForTheory | orderBy: 'Name'"
+                    track by availableInterpreter.Id
+                    data-allow-transform="true"
+                    ng-click="setValue(availableInterpreter, 'availableTheory')"
+                    ng-class="{'highlightInterpreter': availableInterpreter.isSelected }">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{ availableInterpreter.Name }}
+                            <span class="smallitalic" title="Interpreter Languages">({{availableInterpreter.InterpreterLanguageList}})</span>
+                        </div>
+                    </div>
+
+                </li>
+
+            </ul>
+        </div><!-- end .listContainer -->
+    </div><!-- end .col-md-6 -->
+
+    <div class="col-md-2">
+        <br />
+        <div class="text-center" style="line-height: 40px;">
+            <p>
+                <button class="btn btn-default fixed-width-40" 
+                    ng-click="dropInNewArea('availableInterpretersForTheory', 'selectedInterpretersForTheory', 'availableTheory')">&gt;
+                </button>
+            </p>
+            <p>
+                <button class="btn btn-default fixed-width-40" 
+                        ng-click="dropInNewArea('selectedInterpretersForTheory', 'availableInterpretersForTheory', 'selectedTheory')">&lt;
+                </button>
+            </p>
+        </div>
+    </div>
+
+    <div class="col-md-5">
+        <p><strong>Selected Theory Interpreters:</strong></p>
+        <div class="listContainer"
+                id="selectedInterpretersForTheory">
+            <ul>
+                <li ng-repeat="selectedInterpreter in selectedInterpretersForTheory | orderBy: 'Name'"
+                    track by selectedInterpreter.Id
+                    data-allow-transform="true"
+                    ng-click="setValue(selectedInterpreter, 'selectedTheory')"
+                    ng-class="{'highlightInterpreter': selectedInterpreter.isSelected }">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{ selectedInterpreter.Name }}
+                            <span class="smallitalic" title="Interpreter Languages">({{selectedInterpreter.InterpreterLanguageList}})</span>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+        </div><!-- end .listContainer -->
+    </div><!-- end .col-md-6 -->
+
+    <div data-ng-if="showSuccessFader == true">
+        <my-msgfader status="success"></my-msgfader>
+    </div>
+    <div data-ng-if="showErrorFader == true">
+        <my-msgfader status="error"></my-msgfader>
+    </div>
+
+</div><!-- end .listHolder -->

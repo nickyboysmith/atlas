@@ -1,0 +1,26 @@
+﻿[
+  {
+    "outputFile": "app_assets/css/main.css",
+    "inputFile": "app_assets/css/main.scss"
+  },
+  {
+    "outputFile": "app_assets/css/partials/_trainerSearch.css",
+    "inputFile": "app_assets/css/partials/_trainerSearch.scss"
+  },
+  {
+    "outputFile": "app_assets/css/partials/_dorsLicenceCheck.css",
+    "inputFile": "app_assets/css/partials/_dorsLicenceCheck.scss"
+  },
+  {
+    "outputFile": "app_assets/css/partials/_allTrainersDocuments.css",
+    "inputFile": "app_assets/css/partials/_allTrainersDocuments.scss"
+  },
+  {
+    "outputFile": "app_assets/css/modules/_modal.css",
+    "inputFile": "app_assets/css/modules/_modal.scss"
+  },
+  {
+    "outputFile": "app_assets/css/partials/_allCourseTypesDocuments.css",
+    "inputFile": "app_assets/css/partials/_allCourseTypesDocuments.scss"
+  }
+]

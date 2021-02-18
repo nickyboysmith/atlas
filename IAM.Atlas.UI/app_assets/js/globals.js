@@ -1,0 +1,1 @@
+var apiServer = 'http://localhost:63105/api'; var apiServerImagePath = 'http://localhost:63105'; var schedulerServer = 'http://localhost:51955/'

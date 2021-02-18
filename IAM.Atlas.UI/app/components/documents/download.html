@@ -1,0 +1,45 @@
+﻿<div id="documentDownloadDiv">
+    <div class="row">
+        <div class="col-sm-3">
+            <label class="control-label">{{downloadDocument.typeLabel}}:</label>
+        </div>
+        <div class="col-sm-9 marginBottom5">
+            {{downloadDocument.typeDescription}}
+        </div>
+        
+        <div class="col-sm-3">
+            <label class="control-label">Type:</label>
+        </div>
+        <div class="col-sm-9 marginBottom5">
+            {{downloadDocument.typeName}}
+        </div>
+
+    </div>
+    <div class="row marginBottom10">
+        <div class="col-sm-3">
+            <label class="control-label">Document:</label>
+        </div>
+        <div class="col-sm-9">
+            <input class="form-control cm-sm-12" type="text" ng-model="downloadDocument.documentSaveName" placeholder="Save Document as Name"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">  
+            &nbsp;          
+        </div>
+        <div class="col-sm-9">
+            <div class="btn pull-left"
+                 ng-click="downloadSelectedDocument()"
+                 title="Download the selected document">Download</div>
+            <div class="btn pull-right"
+                 ng-click="closeModal()"
+                 title="Cancel the Download">Cancel</div>
+        </div>
+    </div>
+    <div ng-show="errorMessage != ''">
+        <div class="validation-message">{{ errorMessage }}</div>
+    </div>
+    <div ng-show="successMessage != ''">
+        {{ successMessage }}
+    </div>
+</div>

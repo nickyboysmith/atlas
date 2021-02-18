@@ -1,0 +1,143 @@
+﻿<div id="clientSpecialRequirements" class="registration-process">
+
+    <div class="row section-container">
+
+        <div id="road-smart-pre"></div>
+        <div id="road-smart-branding-triangle-ish-thingy"></div>
+        <div id="road-smart-branding-container">
+            <img class="position-road-smart-logo"
+                 src="/app_assets/images/iamroad_smart_logo_atlas.png" alt="" />
+        </div>
+        <div class="col-xs-12  col-sm-4">
+            <div class="company-logo"></div>
+        </div>
+        <div class="col-xs-12  col-sm-8">
+            <div class="main-title add-margin-to-title"><span>{{ system.OrganisationName }}</span></div>
+            <div class="main-subtitle"><span>{{ system.AppName }}</span></div>
+        </div>
+    </div>
+
+    <div class="row section-container title-container">
+        <div class="col-xs-12">
+            <p class="top-text">
+                You are in the process of booking a <span>{{ confirmationDetails.DORSCourse }}</span> program.
+                Before selecting your course date you must complete the registration.
+            </p>
+        </div>
+    </div><!-- end .row .section-container title-container -->
+
+    <div class="row section-container title-container">
+        <div class="col-xs-8">
+            <div class="main-title">Registration</div>
+        </div>
+        <div class="col-xs-4">
+            <div class="btn pull-right" ng-click="previousStep()">Back</div>
+        </div>
+    </div><!-- end .row .section-container title-container -->
+
+    <div class="row section-container remove-40margin-replace-10margin">
+        <div class="col-xs-12">
+            <div class="main-page-title">
+                <span>Thank you {{ confirmationDetails.DisplayName }},</span>
+            </div><!-- end .main-page-title -->
+        </div><!-- end .col-xs-12 -->
+        <div class="col-xs-12">
+            <p>
+                You have confirmed that you are {{ confirmationDetails.DisplayName }}
+                and that you wish to attend a {{ confirmationDetails.DORSCourse }}.
+            </p>
+        </div><!-- end .col-xs-12 -->
+
+        <div class="col-xs-12 text-separation">
+            <div class="main-page-title">
+                If you have any disabilities or additional requirements please notify us here:
+            </div><!-- end .main-page-title -->
+        </div><!-- end .col-xs-12 -->
+
+        <div class="col-xs-12">
+            <div class="row" ng-repeat="requirement in specialRequirements">
+                <div class="col-xs-1">
+                    <input type="checkbox"
+                           checklist-model="theRequirements.selected"
+                           checklist-value="requirement.Id"
+                           title="{{ requirement.Description }}" />
+                </div><!-- end .col-xs-2 -->
+                <div class="col-xs-10">
+                    <p title="{{ requirement.Description }}">{{ requirement.Name }}</p>
+                </div><!-- end .col-xs-10 -->
+            </div><!-- end .row -->
+
+        </div><!-- end .col-xs-12 -->
+
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>
+                        Other Requirements /language / anything else which may create difficulties during the course<br />
+                        e.g breathing problems, difficulty in walking etc.
+                    </p>
+                </div><!-- end .col-xs-12 -->
+            </div><!-- end .row -->
+        </div><!-- end .col-xs-12 -->
+
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                    <input ng-model="clientRequirements.first"
+                           class="requirement"
+                           type="text"
+                           maxlength="100"
+                           placeholder="Other requirements 1" />
+                </div><!-- end .col-xs-12 -->
+                <div class="col-xs-12">
+                    <input ng-model="clientRequirements.second"
+                           class="requirement"
+                           type="text"
+                           maxlength="100"
+                           placeholder="Other requirements 2" />
+                </div><!-- end .col-xs-12 -->
+                <div class="col-xs-12">
+                    <input ng-model="clientRequirements.third"
+                           class="requirement"
+                           type="text"
+                           maxlength="100"
+                           placeholder="Other requirements 3" />
+                </div><!-- end .col-xs-12 -->
+            </div><!-- end .row -->
+        </div><!-- end .col-xs-12 -->
+
+        <div class="col-xs-12 text-separation">
+            <div class="main-page-title remove-bottom-margin">
+                Any other notes:
+            </div><!-- end .main-page-title -->
+        </div><!-- end .col-xs-12 -->
+
+        <div class="col-xs-12 text-separation text-separation-10">
+            <div class="text-container">
+                <textarea ng-model="clientNote"
+                          class="form-control"
+                          rows="5"></textarea>
+            </div><!-- end .main-page-title -->
+        </div><!-- end .col-xs-12 -->
+
+        <div class="col-xs-12 add-extra-margin" ng-hide="validationMessage==''">
+            <label><span class="validation-message">{{ validationMessage }}</span></label>
+        </div>
+
+        <div class="col-xs-12 text-separation-40">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="btn pull-left" ng-click="restartProcess()">Cancel</div>
+                </div><!-- end .col-xs-7 -->
+                <div class="col-xs-8 text-right">
+                    <button class="btn" ng-click="previousStep()">Back</button>
+                    &nbsp;
+                    <button class="btn" ng-click="save()">Save and Continue</button>    
+                </div><!-- end .col-xs-5 -->
+            </div><!-- end .row -->
+        </div><!-- end .col-xs-12 -->
+
+    </div><!-- end .row .section-container remove-40margin-replace-10margin -->
+
+
+</div>

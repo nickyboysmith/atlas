@@ -1,0 +1,51 @@
+﻿@import "../modules/_mixins.scss";
+#trainerAttendance {
+
+    .date-picker-placeholder {
+        /*width: 90%;*/
+    }
+    .date-icon {
+        margin-top: 6px;
+        @include iconGetter(-6px, -506px);
+        height: 20px;
+        display: block;
+    } 
+
+    #trainerAttendanceCourseDetails {
+        padding-top: 25px;
+        h3 {
+            font-weight: bold;
+            padding-bottom: 15px;
+        }
+        .add-course-note-button {
+            margin-bottom: 10px;
+        }
+        .note-container {
+            margin-bottom: 20px;
+        }
+        ul.booking-note-holder {
+            li {
+                margin-bottom: -1px;
+            }
+        }
+        ul  {
+            list-style-type: none;
+            padding-left: 0px;
+            li {
+                margin-bottom: 10px;
+                .checkbox-container {
+                    float: left;
+                    input[type=checkbox]{
+                        margin-right: 8px;
+                    }
+                }
+                label{
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+
+
+
+}

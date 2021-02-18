@@ -1,0 +1,26 @@
+
+
+/*
+	SCRIPT: SP001_02.01_CreateSP_DropTableContraints
+	Author: Robert Newnham
+	Created: 07/04/2015
+*/
+
+CREATE PROCEDURE uspDropTableContraints 
+	@TableName Varchar(50)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DECLARE @SQL NVARCHAR(MAX) = N'';
+
+	SELECT @SQL += N'
+	ALTER TABLE [' + OBJECT_NAME(PARENT_OBJECT_ID) + '] DROP CONSTRAINT ' + OBJECT_NAME(OBJECT_ID) + ';' 
+	FROM SYS.OBJECTS
+	WHERE TYPE_DESC LIKE '%CONSTRAINT' AND OBJECT_NAME(PARENT_OBJECT_ID) = @TableName
+	ORDER BY OBJECT_NAME(OBJECT_ID) ASC; /*SO THAT "PK_" (Primary Keys) are Dropped Last */
+
+	EXECUTE(@SQL)
+END
+
+GO
+

@@ -1,0 +1,303 @@
+﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script><!-- Should only be available to payment pages, might move this at a later date to be site wide -->
+<!-- googlecode version had been removed -  use [https://cdnjs.com/libraries/crypto-js - aes rollup version - might be an idea to keep a local version]-->
+<script src="/Scripts/creditCardValidator.js"></script><!-- Should only be available to payment pages, might move this at a later date to be site wide -->
+<div id="acceptCard">
+
+
+    <div ng-show="showCompletedMessage" class="row form-line-separator-20">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <p>{{ completedMessage }}</p>
+        </div>
+    </div>
+
+    <div id="cardDetailsContainer">
+        <div class="row form-line-separator">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <label>Relating to client</label>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-disabled="true"
+                       type="text"
+                       class="form-control"
+                       ng-model="paymentDetail.client" />
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                <div id="assignClientButton"
+                     ng-click="assignClient()"
+                     class="assign-client-button btn"
+                     title="Assign a Client to Payment">...</div>
+            </div>
+        </div>
+
+        <div class="row form-line-separator">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <label>Relating to course</label>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                <input ng-disabled="true"
+                       type="text"
+                       class="form-control"
+                       ng-model="paymentDetail.course" />
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
+        </div>
+
+        <div class="row form-line-separator" ng-show="showPaymentCardSupplier == true">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <label>Card Supplier</label>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                <input placeholder="Start typing.."
+                       class="form-control"
+                       type="text"
+                       id="quickTypeClient"
+                       ng-model="paymentDetail.CardSupplier"
+                       typeahead-min-length="3"
+                       typeahead-on-select="selectedItem($item)"
+                       typeahead-no-results="noResults"
+                       typeahead-loading="loadingLocations"
+                       uib-typeahead="item as item.Name for item in getSearchableItems($viewValue) | limitTo:15" />
+                <div ng-show="loadingLocations" class="pad-text-top set-white">
+                    <i class="glyphicon glyphicon-refresh"></i> Loading results
+                </div>
+                <div ng-show="noResults" class="pad-text-top set-red">
+                    <i class="glyphicon glyphicon-remove"></i> No Results Found - This supplier will be added
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
+        </div>
+
+        <div class="row form-line-separator">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <label>Card Number <font color="red">*</font></label>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                <input class="form-control"
+                       id="ccNumber"
+                       ng-model="paymentDetail.Card.Number"
+                       ng-blur="validateCreditCardNumber()"
+                       type="text"
+                       required="required" />
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
+        </div>
+
+        <div class="row form-line-separator">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <label>Card Holder Name <font color="red">*</font></label>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                <input class="form-control"
+                       id="cardHolderName"
+                       ng-model="paymentDetail.Card.HolderName"
+                       type="text"
+                       required="required" />
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
+        </div>
+
+        <!--<div class="row form-line-separator" ng-if="!creditCardValidMessage == false">-->
+        <div class="row form-line-separator card-message">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                <p class="credit-card-{{ creditCardClass }}">  {{ creditCardValidMessage }}</p>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
+        </div>
+
+        <div class="row form-line-separator">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <label>Card Type <font color="red">*</font></label>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                <select class="form-control"
+                        id="cardType"
+                        ng-options="cardType.Name as cardType.DisplayName for cardType in cardTypes | filter:{ValidationTypeName: creditCardValidationTypeName}"
+                        ng-model="paymentDetail.Card.Type">
+                    <option value="">Please select a card type<div class="CardTypeWhilie{{CardTypeWhilieShowHide}}"></div></option>
+                </select>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
+        </div>
+
+        <div class="row form-line-separator">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <label>Expiry Date <font color="red">*</font></label>
+            </div>
+            <div class="col-sm-3">
+                <div class="row">
+                    <div class="col-sm-4 PaymentCardDatePart">
+                        <input placeholder="MM"
+                               class="form-control"
+                               ng-model="paymentDetail.Card.Expiry.Month"
+                               ng-blur="validateCreditCardExpiryDate()"
+                               type="text" />
+                    </div>
+                    <div class="col-sm-5 PaymentCardDatePart">
+                        <input placeholder="YYYY"
+                               class="form-control"
+                               ng-model="paymentDetail.Card.Expiry.Year"
+                               ng-blur="validateCreditCardExpiryDate()"
+                               type="text" />
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+            </div>
+            <div class="col-sm-6"><span class="PaymentCardDetailInvalidMessage">{{ExpiryDateMessage}}</span></div>
+        </div>
+
+        <div class="row form-line-separator">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <label>Start Date</label>
+            </div>
+            <div class="col-sm-3">
+                <div class="row">
+                    <div class="col-sm-4 PaymentCardDatePart">
+                        <input placeholder="MM"
+                               class="form-control"
+                               ng-model="paymentDetail.Card.Start.Month"
+                               ng-blur="validateCreditCardStartDate()"
+                               type="text" />
+                    </div>
+                    <div class="col-sm-5 PaymentCardDatePart">
+                        <input placeholder="YYYY"
+                               class="form-control"
+                               ng-model="paymentDetail.Card.Start.Year"
+                               ng-blur="validateCreditCardStartDate()"
+                               type="text" />
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+            </div>
+            <div class="col-sm-6"><span class="PaymentCardDetailInvalidMessage">{{StartDateMessage}}</span></div>
+        </div>
+
+        <div class="row form-line-separator">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <label>Issue Number</label>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input placeholder="0"
+                               class="form-control"
+                               ng-model="paymentDetail.Card.IssueNumber"
+                               type="text" />
+                    </div>
+                    <div class="col-sm-5"></div>
+                    <div class="col-sm-3"></div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <p></p>
+            </div>
+        </div>
+
+
+        <div class="row form-line-separator">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <label>CVV / CV2 <font color="red">*</font></label>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input placeholder="000"
+                               class="form-control"
+                               ng-model="paymentDetail.Card.CV2"
+                               ng-blur="validateCreditCardCVNumber()"
+                               type="text" />
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="OtherInformation" 
+                             title="The three-digit CVV number is printed on the signature panel on the back of the card immediately after the card's account number. For American Express, the four-digit CVV number is printed on the front of the card above the card account number."
+                             ></div>                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5"><span class="PaymentCardDetailInvalidMessage">{{CreditCardCVMessage}}</span></div>
+        </div>
+
+        <div class="row form-line-separator">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <label>Payment Amount <font color="red">*</font></label>
+            </div>
+            <div class="col-sm-2">
+                <input id="paymentAmount"
+                       placeholder="0.00"
+                       class="form-control"
+                       ng-model="paymentDetail.Amount"
+                       ng-blur="validateCreditCardAmount()"
+                       type="text" />
+            </div>
+            <div class="col-sm-7"><span class="PaymentCardDetailInvalidMessage">{{CreditCardAmountMessage}}</span></div>
+        </div>
+
+        <div class="row form-line-separator">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <label>House Number</label>
+            </div>
+            <div class="col-sm-5">
+                <input class="form-control"
+                       id="streetAddress"
+                       ng-model="paymentDetail.Address.StreetAddress"
+                       type="text" />
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+
+        <div class="row form-line-separator-20">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <label>Postcode</label>
+            </div>
+            <div class="col-sm-2">
+                <input class="form-control"
+                       id="postCode"
+                       ng-model="paymentDetail.Address.PostCode"
+                       type="text" />
+            </div>
+        </div>
+
+        <div class="row form-line-separator">
+            <div class="col-sm-7">
+                <div id="paymentProvider">
+                    <div class="row form-line-separator">
+                        <div class="col-sm-12">
+                            <div id="organisation">
+                                <!-- Fill with graphic by adding class to div -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div id="savePaymentButton"
+                     ng-click="processPayment()"
+                     class="save-payment-button btn pull-right">Save Payment</div>
+            </div>
+            <div class="col-sm-12"></div>
+        </div>
+    </div>
+
+    <div id="showProcessingSpinner" style="display:none;">
+        <p>We're processing the payment.</p>
+        <div class="center-spinner">
+            <img src="/app_assets/images/ajax-loader.gif" />
+        </div>
+    </div>
+
+    <div ng-show="paymentSuccessful">
+        <div class="text-center">
+            <h3>Payment successful.</h3>
+        </div>
+    </div>
+
+    <div class="row" ng-if="validationMessage != ''">
+        <div class="col-xs-1"></div>
+        <div class="row col-sm-10">
+            <span class="validation-message" title="{{ actualResponse }}">{{ validationMessage }}</span>
+        </div>
+    </div>
+
+</div>

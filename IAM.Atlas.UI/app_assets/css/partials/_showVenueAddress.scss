@@ -1,0 +1,26 @@
+﻿#showVenueAddress {
+
+    .venue-details {
+        margin-top: 30px;
+    }
+
+    .hidden-border {
+        border: 0!important;
+        box-shadow: inset 0 0 0!important;
+        padding: 0!important;
+    }
+
+    .course-title {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 2px;
+    }
+
+
+    #googleMapContainer {
+        #map {
+            height: 250px;
+        }
+    }
+
+}

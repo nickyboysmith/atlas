@@ -1,0 +1,46 @@
+﻿<div id="AddSupportUserDiv">
+    <div class="row">
+        <div class="col-sm-12">
+            <div>{{ selectedOrganisationName }}</div>
+            <table st-table="organisationUsers" st-safe-src="displayOrganisationUsers" class="table">
+                <thead>
+                    <tr>
+                        <th colspan="4">
+                            <input st-search="Name" class="form-control" placeholder="Filter Users" type="search" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th st-sort="Name">
+                            Name
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in organisationUsers"
+                        class="supportUsersList"
+                        ng-click="selectUser(user.Id)"
+                        ng-class="{selectedUser : selectedUserId == user.Id}">
+                        <td>
+                            {{ user.Name }}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5" class="text-center">
+                            <div st-pagination="" st-items-by-page="7" st-displayed-pages="7"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn" ng-click="makeSupportUser(selectedUserId)" ng-disabled="selectedUserId < 1">Select</button>
+            <div ng-show="addUserErrorMessage != ''">
+                <font color="red">{{addUserErrorMessage}}</font>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+﻿<div id="trainerVehicleDetail" class="trainerVehicleDetail">
+    
+    <form class="form-horizontal row" role="form">
+
+        <div class='col-sm-12'>
+
+            <div class='row'>
+                <div class='col-sm-2'>
+                    <label>Trainer:</label>
+                </div>
+                <div class='col-sm-4'>
+                    {{selectedTrainerVehicleDetails.TrainerName}}
+                </div>
+                <div class='col-sm-2'>
+                    <label>DOB: </label>
+                </div>
+                <div class='col-sm-4'>
+                    {{selectedTrainerVehicleDetails.TrainerDateOfBirth | date:'dd-MMM-yyyy' }}
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-sm-2'>
+                </div>
+                <div class='col-sm-4'>
+                    <label>Licence No:</label>
+                </div>
+                <div class='col-sm-6'>
+                    {{selectedTrainerVehicleDetails.TrainerLicenceNumber}}
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-sm-2'>
+                    <label>Vehicle:</label>
+                </div>
+                <div class='col-sm-10'>
+                    {{selectedTrainerVehicleDetails.VehicleTypeName}}
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-sm-2'>
+                </div>
+                <div class='col-sm-10'>
+                    <label>Registration: </label>
+                    {{selectedTrainerVehicleDetails.TrainerVehicleNumberPlate}}
+                </div>
+            </div>
+
+            <div class='row'>
+                <div class='col-sm-2'>
+                </div>
+                <div class='col-sm-10'>
+                    {{selectedTrainerVehicleDetails.TrainerVehicleDescriptionWithCategories}}
+                </div>
+            </div>
+
+            <div class='row marginBottom5'>
+                <div class='col-sm-6'>
+                    <label class='col-sm-2 control-label'>Vehicle Notes:</label>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <button class="btn btn-default btn-sm"
+                            title="Add Note"
+                            ng-click="openAddNoteModal()">
+                        Add Note
+                    </button>
+                </div>
+            </div>
+
+            <div class='row marginBottom10'>
+                <div class='col-sm-12'>
+                    <textarea rows="8" 
+                              class="form-control" 
+                              type="text" 
+                              ng-disabled="true" 
+                              ng-model="selectedTrainerVehicleDetails.TrainerVehicleNotes">
+                    </textarea>
+                </div>
+            </div>
+
+            <div class='row marginBottom5'>
+                <div class="col-sm-6 text-left">
+                    <button class="btn btn-default btn-sm"
+                            title="Edit This Vehicle"
+                            ng-click="openEditTrainerVehicleModal()">
+                        Edit Vehicle
+                    </button>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <button class="btn btn-default btn-sm"
+                            title="Add Vehicle"
+                            ng-click="openAddTrainerVehicleModal()">
+                        Add Vehicle
+                    </button>
+                </div>
+            </div>
+                  
+    </div>
+    <!--Message banner-->
+    <div class='form-line-holder'>
+        <div class="col-sm-12" ng-if="successMessage != ''">
+            <h3>{{ successMessage }}</h3>
+        </div>
+    </div>
+    <div class='form-line-holder'>
+        <div class="col-sm-12" ng-if="validationMessage != ''">
+            <h3>{{ validationMessage }}</h3>
+        </div>
+    </div>
+        
+</form>
+</div>

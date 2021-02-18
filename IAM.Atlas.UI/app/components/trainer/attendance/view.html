@@ -1,0 +1,211 @@
+﻿<div id="trainerAttendance">
+
+    <h1>Trainer Attendance</h1>
+    <p>This is the booking page page</p>
+
+    <div class="row form-line-separator">
+
+        <div class="col-sm-3">
+            <label>Course Start Date:</label>
+        </div>
+        <div class="col-sm-5">
+            <input ng-disabled="true"
+                   ng-model="courseDate"
+                   format-date-iam
+                   type="text"
+                   placeholder="Please select a date"
+                   class="form-control date-picker-placeholder" />
+        </div>
+        <div class="col-sm-4">
+            <div class="date-icon" ng-click="showDatePicker()"></div>
+        </div>
+
+    </div><!-- end .row -->
+    <div class="row">
+        <div class="col-sm-offset-8 col-sm-4">
+            <date-picker ng-model="courseDate"
+                         ng-show="showCourseDate"
+                         format-date="formatDate"
+                         on-date-selected="getAttendanceForCourseDate()"></date-picker>
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-separator"
+         ng-show="showCourseSelect">
+        <div class="col-sm-3">
+            <label>Course:</label>
+        </div>
+        <div class="col-sm-5">
+            <select class="form-control"
+                    ng-model="courseSelected"
+                    ng-options="category as category.CourseName for category in courseListOptions.categories"
+                    ng-change="selectCourse()">
+                <option value="">Please select a course</option>
+            </select>
+        </div>
+        <div class="col-sm-4"></div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-separator"
+         ng-show="showCourseDateTimes">
+        <div class="col-sm-3">
+            <label>Course Date & Time:</label>
+        </div>
+        <div class="col-sm-5">
+            <select class="form-control"
+                    ng-model="courseDateSelected"
+                    ng-options="courseDateOption as courseDateOption[0].StartTime for courseDateOption in courseDateOptions"
+                    ng-change="showTrainerAttendanceData()">
+                <option value="">Please select a date/time </option>
+            </select>
+        </div>
+        <div class="col-sm-4"></div>
+    </div><!-- end .row -->
+
+    <div id="trainerAttendanceCourseDetails" ng-show="showCourseDetails">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Course Details</h3>
+                <p>{{ completedMessage }}</p>
+            </div>
+        </div>
+
+        <!-- Start the course details -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Reference: </label>
+                    </div><!-- End .col-sm-4 -->
+                    <div class="col-sm-8">
+                        {{ courseDetails.Reference }}
+                    </div>
+                </div><!-- End .row .col-sm-12 .row -->
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Venue: </label>
+                    </div><!-- End .col-sm-4 -->
+                    <div class="col-sm-8">
+                        {{ courseDetails.Venue[0].Name }}
+                    </div>
+                </div><!-- End .row .col-sm-12 .row -->
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Max Places: </label>
+                    </div><!-- End .col-sm-4 -->
+                    <div class="col-sm-8">
+                        {{ courseDetails.Venue[0].MaxPlaces }}
+                    </div>
+                </div><!-- End .row .col-sm-12 .row -->
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Booked: </label>
+                    </div><!-- End .col-sm-4 -->
+                    <div class="col-sm-8">
+                        {{ courseDetails.Venue[0].Booked }}
+                    </div>
+                </div><!-- End .row .col-sm-12 .row -->
+
+            </div><!-- End.col-sm-12 -->
+
+        </div><!-- End .row -->
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Trainers Attending</h3>
+            </div>
+        </div>
+
+        <!-- Start the trainer details -->
+        <div class="row">
+            <div class="col-sm-12">
+                <ul>
+                    <li ng-repeat="trainer in courseDetails.TrainerList">
+                        <div class="checkbox-container">
+                            <input 
+                                   class="trainerAttending"
+                                   type="checkbox" 
+                                   ng-model="selectedTrainer[$index]"
+                                   ng-checked="trainer.IsTrainerAttending"
+                                   ng-click="updateTrainerList($index, selectedTrainer[$index])"
+
+                                   />
+                        </div>
+                        
+                        <label>{{ trainer.DisplayName }}</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Clients Attending</h3>
+            </div>
+        </div>
+
+        <!-- Start the client details -->
+        <div class="row">
+            <div class="col-sm-12">
+                <ul>
+                    <li ng-repeat="client in courseDetails.ClientList">
+                        <div class="checkbox-container">
+                            <input 
+                                   class="clientAttending"
+                                   type="checkbox" 
+                                   ng-model="selectedClient[$index]"
+                                   ng-checked="client.DidClientAttend"
+                                   ng-click="updateClientList($index, selectedClient[$index])"
+                                   />
+                        </div>
+                        <label>{{ client.ClientDisplayName }} - ({{ client.Licence[0].Number }})</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        
+
+        <!-- Save button -->
+        <div class="row">
+            <div class="col-sm-4 marginBottom15">
+                <div class="save-attendance btn" ng-click="saveAttendanceList()">Save</div>
+            </div>
+            <div class="col-sm-8"></div>
+        </div>
+
+        <!-- Add notes -->
+        <div class="row note-container margintop10">
+            <div class="col-sm-12">
+                <ul class="booking-note-holder">
+                    <li ng-repeat="note in courseNotes">
+                        <ul class="note-structure">
+                            <li class="note-header">{{ convertDateForDisplay(note.Date) }}: {{ note.Type }} - ({{ note.User }}):</li>
+                            <li>{{ note.Text }}</li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="add-course-note-button btn" ng-click="openAddNoteModal(courseDetails.CourseId)">Add Note</div>
+                    </div>
+                </div>
+            </div><!-- End.col-sm-12 -->
+        </div>
+
+    </div>
+
+    <div id="trainerAttendanceErrorContainer" ng-show="showErrorContainer">
+        <div class="row">
+            <div class="col-sm-12">
+                <p>{{ errorMessage }}</p>
+            </div>
+        </div>
+    </div>
+
+
+</div>

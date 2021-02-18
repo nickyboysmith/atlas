@@ -1,0 +1,53 @@
+﻿@import '../modules/_mixins.scss';
+
+#findSingleClient {
+
+    p {
+        margin-bottom: 2px;
+    }
+
+    .address-holder {
+        height: 100px;
+        padding: 0px;
+        overflow-y: scroll;
+        @include theBorderRadius(5px);
+        border: 1px solid #cecece;
+    }
+
+    .address-padder {
+        padding: 5px!important;
+    }
+
+    ul.course-container {
+        height: 150px!important;
+        li {
+            padding: 5px;
+            border-bottom: 1px solid #EAE9E9;
+            margin-bottom: 5px;
+            height: auto;
+            overflow: hidden;
+        }
+        li:last-child {
+            border-bottom: 0px;
+        }
+    }
+
+    input.checkbox-spacer {
+        margin-top: 11px!important;
+    }
+
+    .check-box-container {
+        float: left;
+        display: block;
+        width: 10%;
+    }
+    .course-label-container {
+        float: right;
+        display: block;
+        width: 90%;
+        label {
+            font-weight: normal!important;
+        }
+    }
+
+}

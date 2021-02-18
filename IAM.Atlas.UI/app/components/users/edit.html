@@ -1,0 +1,143 @@
+﻿<div id="editUser">
+
+    <div class="row form-line-holder" ng-show="userRoles.IsTrainer == true || userRoles.IsClient == true">
+        <div class="col-md-12">
+            <span class="blueitalic">** This Account is linked to a <strong>{{userRoles.IsTrainer ? "Trainer" : "Client" ;}}</strong> Full Detail Change is not allowed . **</span>
+        </div>
+    </div>
+
+
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Name:</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text"
+                   class="form-control"
+                   ng-model="user.Name"
+                   ng-required="true"
+                   ng-minlength="1" 
+                   ng-disabled="userRoles.IsTrainer == true || userRoles.IsClient == true" />
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Email Address:</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text"
+                   class="form-control"
+                   ng-model="user.Email"
+                   ng-required="true"
+                   ng-minlength="1"
+                   ng-disabled="userRoles.IsTrainer == true || userRoles.IsClient == true" />
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Phone:</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" ng-model="user.Phone" ng-required="true" ng-minlength="1" ng-disabled="userRoles.IsTrainer == true || userRoles.IsClient == true" />
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Gender:</label>
+        </div>
+        <div class="col-md-8">
+            <select class="form-control"
+                    ng-model="user.GenderId"
+                    ng-options="gender.Id as gender.Name for gender in genders"
+                    ng-disabled="userRoles.IsTrainer == true || userRoles.IsClient == true">
+            </select>
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>User Role:</label>
+        </div>
+        <div class="col-md-8">
+            <div class="row form-line-holder">
+                <div class="col-md-12 blueitalic">{{userRoles.roleToDisplay}}</div>
+            </div>
+            <div class="row form-line-holder" ng-hide="userRoles.IsTrainer == true || userRoles.IsClient == true || userRoles.IsSystemAdministrator">
+                <div class="col-md-12">
+                    <input type="checkbox" id="isAdministrator" ng-model="userRoles.IsAdministrator" ng-change="switchRole()"/><span>Administrator</span>
+                </div>
+            </div>
+            <div class="row form-line-holder">
+                <div class="col-md-12">
+                    <input type="checkbox" ng-model="user.Disabled" /><span class="blueitalic">Disable User</span>
+                </div>
+            </div>
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder">
+        <div class="col-md-4">
+            <label>Login Id:</label>
+        </div>
+        <div class="col-md-8 blueitalic">
+            {{ user.LoginId }}<br />
+            <button class="btn" ng-click="requestPasswordChange(user)">Request Password Reset</button>
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder" ng-hide="userRoles.IsTrainer == true || userRoles.IsClient == true">
+        <div class="col-md-4">
+            <label>Secret Question:</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text"
+                   class="form-control"
+                   ng-model="user.SecretQuestion"
+                   ng-required="true"
+                   ng-minlength="1" />
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder" ng-hide="userRoles.IsTrainer == true || userRoles.IsClient == true">
+        <div class="col-md-4">
+            <label>Secret Answer:</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text"
+                   class="form-control"
+                   ng-model="user.SecretAnswer"
+                   ng-required="true"
+                   ng-minlength="1" />
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row form-line-holder" ng-show="showButtons">
+        <div class="col-md-4">
+            <label>&nbsp;</label>
+        </div>
+        <div class="col-md-4">
+            <button class="btn" onclick="$('button.close').last().trigger('click')">Cancel</button>
+        </div>
+        <div class="col-md-4" align="right">
+            <button class="btn" ng-click="saveUser()">Save</button>
+        </div>
+    </div><!-- end .row -->
+
+    <div class="row">
+        <div class="col-md-4">
+            <label>&nbsp;</label>
+        </div>
+        <div class="col-md-8">
+            <div class="row col-sm-12 noRightPadding" ng-if="!successMessage === false">
+                <div class="col-sm-12 success-message noRightPadding rightalign">{{ successMessage }}</div>
+            </div>
+
+            <div class="row col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+                <div class="col-sm-12 validation-message noRightPadding rightalign">{{ validationMessage }}</div>
+            </div>
+        </div>
+    </div>
+</div>

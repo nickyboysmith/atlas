@@ -1,0 +1,230 @@
+﻿<div id="archiveControl" class="archiveControl">
+
+    <system-feature-information title="Archive Control"
+                                controller="ArchiveControlCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/archiveControl/update"
+                                page-name="Archive Control"></system-feature-information>
+
+    <form class="form-horizontal row" role="form">
+        <div class='col-sm-12 form-group'>
+            <div class="col-sm-6">
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <label>Atlas System Default Settings</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <label>Organisation Default Settings</label>
+                    </div>
+                </div>
+                <div ng-show="isAdmin">
+                    <div class='col-sm-12 form-group'>
+
+                        <div class='form-line-holder'>
+                            <select ng-model="organisationId"
+                                    ng-change="getOrganisationArchiveControl(organisationId)"
+                                    class='form-control'
+                                    ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='col-sm-12 form-group'>
+
+            <div class="col-sm-6">
+
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-7'>
+                            Archive Emails After
+                        </div>
+                        <div class='col-sm-3'>
+                            <input type="text"
+                                    class="form-control"
+                                    ng-model="archiveControl.ArchiveEmailsAfterDaysDefault"
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                        </div>
+                        <div class='col-sm-2'>
+                            Days
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-7'>
+                            Archive SMSs After
+                        </div>
+                        <div class='col-sm-3'>
+                            <input type="text"
+                                    class="form-control"
+                                    ng-model="archiveControl.ArchiveSMSsAfterDaysDefault"
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                        </div>
+                        <div class='col-sm-2'>
+                            Days
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-7'>
+                            Delete Emails After
+                        </div>
+                        <div class='col-sm-3'>
+                            <input type="text"
+                                    class="form-control"
+                                    ng-model="archiveControl.DeleteEmailsAfterDaysDefault"
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                        </div>
+                        <div class='col-sm-2'>
+                            Days
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-7'>
+                            Delete SMSs After
+                        </div>
+                        <div class='col-sm-3'>
+                            <input type="text"
+                                    class="form-control"
+                                    ng-model="archiveControl.DeleteSMSsAfterDaysDefault"
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                        </div>
+                        <div class='col-sm-2'>
+                            Days
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-7'></div>
+                        <div class='col-sm-3'>
+                            <button class="btn btn-default btn-sm"
+                                    ng-click="saveArchiveControl()"
+                                    title="Save">
+                                Save
+                            </button>
+                        </div>
+                        <div class='col-sm-2'></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-7'>
+                            Archive Emails After
+                        </div>
+                        <div class='col-sm-3'>
+                            <input type="text"
+                                    class="form-control"
+                                    ng-model="organisationArchiveControl.ArchiveEmailsAfterDays"
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                        </div>
+                        <div class='col-sm-2'>
+                            Days
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-7'>
+                            Archive SMSs After
+                        </div>
+                        <div class='col-sm-3'>
+                            <input type="text"
+                                    class="form-control"
+                                    ng-model="organisationArchiveControl.ArchiveSMSsAfterDays"
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                        </div>
+                        <div class='col-sm-2'>
+                            Days
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-7'>
+                            Delete Emails After
+                        </div>
+                        <div class='col-sm-3'>
+                            <input type="text"
+                                    class="form-control"
+                                    ng-model="organisationArchiveControl.DeleteEmailsAfterDays"
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                        </div>
+                        <div class='col-sm-2'>
+                            Days
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-7'>
+                            Delete SMSs After
+                        </div>
+                        <div class='col-sm-3'>
+                            <input type="text"
+                                    class="form-control"
+                                    ng-model="organisationArchiveControl.DeleteSMSsAfterDays"
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                        </div>
+                        <div class='col-sm-2'>
+                            Days
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class='col-sm-12 form-group'>
+                    <div class='form-line-holder'>
+                        <div class='col-sm-7'></div>
+                        <div class='col-sm-3'>
+                            <button class="btn btn-default btn-sm"
+                                    ng-click="saveOrganisationArchiveControl()"
+                                    title="Save">
+                                Save
+                            </button>
+                        </div>
+                        <div class='col-sm-2'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!successMessage === false">
+            <div class="col-sm-12 success-message leftalign">{{ successMessage }}</div>
+        </div>
+
+        <div class="row col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+            <div class="col-sm-12 validation-message leftalign">{{ validationMessage }}</div>
+        </div>
+
+    </form>
+</div>
+

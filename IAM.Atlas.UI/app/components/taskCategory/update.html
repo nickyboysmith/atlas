@@ -1,0 +1,126 @@
+﻿<div id="taskCategory" class="taskCategory">
+
+    <system-feature-information title="Task Category"
+                                controller="TaskCategoryCtrl"
+                                open-in-modal="true"
+                                view-path="/app/components/taskCategory/update"
+                                page-name="Task Category">
+    </system-feature-information>
+
+    <form class="form-horizontal row" role="form">
+
+        <div class='row'></div>
+        <div class='row'></div>
+
+        <div ng-show="isAdmin">
+            <div class='col-sm-12 form-group'>
+                <div class='col-sm-2'>
+                    <label>Organisation</label>
+                </div>
+                <div class='col-sm-6'>
+                    <select ng-model="organisationId"
+                            ng-change="getTaskCategoryByOrganisation(organisationId)"
+                            class='form-control'
+                            ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+                </div>
+                <div class='col-sm-4'></div>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class='col-sm-12'>
+                <label>Task Categories</label>
+            </div>
+        </div>
+
+        <div class='col-sm-12 form-group'>
+            <div class="col-sm-6">
+                <div class="sml-scroll-div marginBottom10">
+                    <table class="table table-bordered table-striped">
+                        <thead></thead>
+                        <tbody>
+                            <tr ng-repeat="taskCategory in taskCategories">
+                                <td ng-click="setSelectedTaskCategory(taskCategory)"
+                                    ng-class="{selectedTaskCategoryId : selectedTaskCategoryId == taskCategory.TaskCategoryId}"
+                                    title="{{taskCategory.TaskCategoryTitle}}"
+                                    value="{{taskCategory.TaskCategoryId}}">
+                                    {{taskCategory.TaskCategoryTitle}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <!--<div data-ng-repeat="taskCategory in taskCategories | filter: taskCategoryFilter">-->
+                    <div class='row marginBottom5'>
+                        <div class='col-sm-12'>
+                            <div class='col-sm-2 noLeftPadding'>
+                                <label>Title</label>
+                            </div>
+                            <div class='col-sm-10 noRightPadding'>
+                                <input type="text"
+                                       ng-model="selectedTaskCategory.TaskCategoryTitle"
+                                       class="form-control"
+                                       ng-disabled="!selectedTaskCategory.TaskEditableByOrganisation"
+                                       maxlength="100"
+                                       placeholder="Task Category Title" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row marginBottom5'>
+                        <div class='col-sm-12'>
+                            <div class='col-sm-2'></div>
+                            <div class='col-sm-10 noRightPadding'>
+                                <textarea ng-model="selectedTaskCategory.TaskCategoryDescription"
+                                          class="form-control"
+                                          ng-disabled="!selectedTaskCategory.TaskEditableByOrganisation"
+                                          maxlength="400"
+                                          rows="4"
+                                          placeholder="Task Category Decription"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row marginBottom10'>
+                        <div class='col-sm-12'>
+                            <div class='form-line-holder'>
+                                <div class='col-sm-2'></div>
+                                <div class='col-sm-10'>
+                                    <input type="checkbox" ng-disabled="!selectedTaskCategory.TaskEditableByOrganisation" ng-model="selectedTaskCategory.TaskCategoryDisabled" />
+                                    <span class="blueitalic">Disable</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class='row'>
+                        <div class='col-sm-12'>
+                            <div class='col-sm-2'></div>
+                            <div class="col-sm-4">
+                                <button ng-click="save()" class="btn btn-default" title="Save Changes" ng-disabled="!selectedTaskCategory.TaskEditableByOrganisation">Save</button>
+                            </div>
+                            <div class='col-sm-4'></div>
+                            <div class="col-sm-2">
+                                <button ng-click="add()" class="btn btn-default" title="Add New Requirement">New</button>
+                            </div>
+                        </div>
+                    </div>
+
+                <!--</div>-->
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class="col-sm-12 noRightPadding" ng-if="!successMessage === false">
+                <div class="col-sm-12 success-message noRightPadding">{{ successMessage }}</div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-sm-12 noRightPadding" ng-if="!validationMessage === false">
+                <div class="col-sm-12 validation-message noRightPadding">{{ validationMessage }}</div>
+            </div>
+        </div>
+    </form>
+</div>

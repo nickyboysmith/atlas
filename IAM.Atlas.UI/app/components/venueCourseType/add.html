@@ -1,0 +1,95 @@
+﻿
+<div id="selectCourseTypes" class="AddCourseType">
+
+    <div class="Title row">
+        <h2>Venue Course Types</h2>
+    </div>
+
+
+
+    <div ng-show="organisationId < 0">
+        No Venue selected
+    </div>
+
+    <div ng-show="organisationId > 0">
+
+        <div class='row'>
+        </div>
+        <form class="form-horizontal row" role="form" style="color: black; ">
+            <div class="col-sm-12">
+
+                <div class="Title row">
+                    <h2>Select Course Type</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" data-ng-hide="hideSuccessMessage == true">{{ completedMessage }}</div>
+                   
+                        <div class='row col-sm-12 form-group'>
+
+                            <div class='col-sm-12'>
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+
+                                        <!--<th>Select Course Types</th>-->
+                                        Select Course Types
+                                    </thead>
+                                    <tbody>
+
+                                        <!--$scope.venue.courseTypes-->
+
+                                        <tr data-ng-repeat="courseType in venueCourseTypes">
+                                            <td ng-click="selectVenueCourseType(courseType.Id)" ng-class="{selectedCourseType: courseType.Id === selectedCourseType}" value="{{courseType.Id}}">{{courseType.Title}}</td>
+                                        </tr>
+                                    </tbody>
+                                    <!--<tfoot>
+                                        <tr>
+                                            <td colspan="6" class="text-center">
+                                                <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="5"></div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>-->
+                                </table>
+                            </div>
+                        </div>
+
+
+                            <div class='row col-sm-12 form-group'>
+                                <div class='col-sm-4'>
+
+                                    <button ng-click="addSelectedVenueCourseType()"
+                                            class="btn btn-default btn-sm" title="Save Changes">
+                                        OK
+                                    </button>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <button ng-click="addNewVenueCourseType()" class="btn btn-default btn-sm" title="Add a New Venue Course Type">
+                                        Add New
+                                    </button>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <button ng-click="cancelCourseType()"
+                                            class="btn btn-default btn-sm" title="Cancel">
+                                        Cancel
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                <div>
+
+            </div>
+
+        </form>
+        <div data-ng-if="showSuccessFader == true">
+            <my-msgfader status="success"></my-msgfader>
+        </div>
+        <div data-ng-if="showErrorFader == true">
+            <my-msgfader status="error"></my-msgfader>
+        </div>
+    </div>
+</div>

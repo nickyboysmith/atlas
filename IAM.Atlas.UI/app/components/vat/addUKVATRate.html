@@ -1,0 +1,55 @@
+﻿<div id="addUKVATRateDiv">
+    <div class="row marginBottom10">
+        <div class="col-sm-4">
+            VAT Rate
+        </div>
+        <div class="col-sm-8">
+            <input type="text" ng-model="vatRateToAdd" class="form-control" />
+        </div>
+    </div>
+    <div class="row marginBottom20">
+        <div class="col-sm-4">
+            Effective From
+        </div>
+        <div class="col-sm-8">
+            <div class="row marginBottom20">
+                <div class="col-sm-8">
+                    <input class="form-control"
+                           type="text"
+                           ng-model="vatRateToAddEffectiveFromDate"
+                           ng-click="toggleCalendar()" />
+                </div>
+                <div class="col-sm-4">
+                    <a ng-click="toggleCalendar()" ng-show="!displayCalendar" class="calendar-button" title="Show Calendar"><div></div></a>
+                    <a ng-click="toggleCalendar()" ng-show="displayCalendar" class="calendar-button" title="Hide Calendar"><div></div></a>
+                </div>
+            </div>
+            <div class="row" ng-show="displayCalendar">
+                <div class="col-sm-12">
+                    <date-picker ng-model="vatRateToAddEffectiveFromDate"
+                                 format-date="formatDate"
+                                 ng-mouseleave="toggleCalendar()"></date-picker>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            &nbsp;
+        </div>
+        <div class="col-sm-4">
+            <button class="btn" ng-click="addUKVATRate(vatRateToAdd, vatRateToAddEffectiveFromDate)">Save</button>
+        </div>
+        <div class="col-sm-4 text-right">
+            <button class="btn" onclick="$('button.close').last().trigger('click')">Cancel</button>
+        </div>
+    </div>
+    <div class="row" ng-show="statusMessage != null">
+        <div class="col-sm-4">
+            &nbsp;
+        </div>
+        <div class="col-sm-8 validation-message">
+            {{ statusMessage }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿
+
+.addCourseTypeCategory {
+
+    form {
+        width: 500px;
+        height: auto;
+        overflow: visible;
+        }
+
+}
+
+.courseTypeCategory {
+
+    form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+       .table tr:hover td
+        {
+            background-color:#ffffe6;
+        }
+
+        .selectedCourseTypeCategoryDetailId {
+            background: #cce9ff !important;
+        }
+
+        .selectedCourseTypeCategoryDetailId:hover {
+            background: #ffffe6;
+        }
+
+        .sml-scroll-div {
+            border: 1px solid black;
+            /*height:160px;*/
+        }
+
+ 
+       
+    }
+
+ }
+
+
+ 

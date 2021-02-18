@@ -1,0 +1,43 @@
+﻿<div id="addVenueRegionDiv">
+    <div class="row marginBottom10" ng-show="statusMessage != ''">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-9 validation-message">
+            {{ statusMessage }}
+        </div>
+    </div>
+    <div class="row marginBottom10">
+        <div class="col-sm-3 text-right">
+            Venue:
+        </div>
+        <div class="col-sm-9">
+            {{ venue.title }}
+        </div>
+    </div>
+    <div class="row marginBottom10">
+        <div class="col-sm-3 text-right">
+            Region:
+        </div>
+        <div class="col-sm-9">
+            <select id="venueRegions"
+                    class='form-control'
+                    ng-change="selectRegion(selectedRegionId)"
+                    ng-model="selectedRegionId"
+                    ng-options="region.id as region.name for region in regions | filter:filterAllItem "></select>
+        </div>
+    </div>
+    <div class="row marginBottom10">
+        <div class="col-sm-3 text-right">
+
+        </div>
+        <div class="col-sm-3">
+            <button class="btn" ng-click="addRegion(selectedRegionId)">Save</button>
+        </div>
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-sm-3 text-right">
+            <button class="btn">Cancel</button>
+        </div>
+    </div>
+</div>

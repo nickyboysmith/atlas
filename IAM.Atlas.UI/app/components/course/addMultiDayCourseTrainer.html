@@ -1,0 +1,267 @@
+﻿<div class="row theContainer marginBottom20">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>For Course:</label>
+            </div>
+            <div class="col-md-8">
+                {{ courseType }} <span ng-show="courseTypeCategory != ''">({{ courseTypeCategory }})</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <label>Date:</label>
+            </div>
+            <div class="col-md-8">
+                {{ course.courseDateStart | date: 'dd-MMM-yyyy' }} to {{ course.courseDateEnd | date: 'dd-MMM-yyyy' }}
+            </div>
+        </div>
+
+        <div class="row" ng-show="course.courseAssociatedSession != ''">
+            <div class="col-md-4">
+                <label>Session(s):</label>
+            </div>
+            <div class="col-md-8">
+                {{ course.courseAssociatedSession }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label>Max Practical Trainers:</label>
+            </div>
+            <div class="col-md-6">
+                {{ course.MaxPracticalTrainers }}
+                <span class="validation-message" ng-show="selectedTrainersForPractical.length == course.MaxPracticalTrainers"> - Max Reached</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label>Max Theory Trainers:</label>
+            </div>
+            <div class="col-md-6">
+                {{ course.MaxTheoryTrainers }}
+                <span class="validation-message" ng-show="selectedTrainersForTheory.length == course.MaxTheoryTrainers"> - Max Reached</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Reference</label>
+            </div>
+            <div class="col-md-8">
+                {{ course.courseReference }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <label>Venue:</label>
+            </div>
+            <div class="col-md-8">
+                <span>{{ course.venueTitle }}</span>
+                <span style="white-space:pre-wrap;">{{ course.venueAddress }}</span>
+                <p>{{ course.venuePostCode }}</p>
+            </div>
+        </div>
+
+    </div>
+</div><!-- end .theContainer -->
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 text-center validation-message panel panel-default noLeftPadding noRightPadding">
+        <div class="panel-body">An email is sent to the trainer every time a he/she is added or removed from a course</div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+<div class="row listHolder" ng-show="course.PracticalCourse == true">
+
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-8 noRightPadding">
+                <p><strong>Available Practical Trainers:</strong></p>
+            </div>
+            <!--AM & PM is session 4, PM & EVE is session 5-->
+            <div class='col-md-1 noRightPadding' ng-show="course.sessionNumber == 4">
+                <input type="checkbox" ng-model="practicalSession.AM" ng-change="getAvailableTrainersBySession()" />
+            </div>
+            <div class='col-md-1 noRightPadding blueitalic' ng-show="course.sessionNumber == 4">AM</div>
+
+            <div class='col-md-1 noRightPadding' ng-show="course.sessionNumber == 4 || course.sessionNumber == 5">
+                <input type="checkbox" ng-model="practicalSession.PM" ng-change="getAvailableTrainersBySession()" />
+            </div>
+            <div class='col-md-1 noRightPadding blueitalic' ng-show="course.sessionNumber == 4 || course.sessionNumber == 5">PM</div>
+
+            <div class='col-md-1 noRightPadding' ng-show="course.sessionNumber == 5">
+                <input type="checkbox" ng-model="practicalSession.EVE" ng-change="getAvailableTrainersBySession()" />
+            </div>
+            <div class='col-md-1 noRightPadding blueitalic' ng-show="session.Number == 5">EVE</div>
+
+        </div>
+        <div class="listContainer"
+             id="availableTrainersForPractical">
+            <ul>
+                <li ng-repeat="availableTrainer in availableTrainersForPractical | orderBy: 'Name'"
+                    track by availableTrainer.Id
+                    data-allow-transform="true"
+                    ng-click="setValue(availableTrainer, 'availablePractical')"
+                    ng-class="{'highlightTrainer': availableTrainer.isSelected }">
+                    <div class="row">
+                        <div class="col-sm-8">{{ availableTrainer.Name }}</div>
+                        <div class="col-sm-4">
+                            <span ng-show="availableTrainer.TrainerDistanceToVenueInMilesRounded > 0" title="Trainer {{ availableTrainer.Name }}: {{availableTrainer.TrainerDistanceToVenueInMilesRounded}} miles from the venue">{{ availableTrainer.TrainerDistanceToVenueInMilesRounded }} Miles</span>
+                            <span ng-show="availableTrainer.TrainerDistanceToVenueInMilesRounded < 1" title="Trainer {{ availableTrainer.Name }}: Unknown distanace from the venue">Unknown</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <br />
+        <div class="text-center" style="line-height: 40px;">
+            <p>
+                <button class="btn-default fixed-width-40 btn"
+                        ng-disabled="selectedTrainersForPractical.length >= course.courseType.MaxPracticalTrainers"
+                        ng-click="dropInNewArea('availableTrainersForPractical', 'selectedTrainersForPractical', 'availablePractical', practicalSession.AM, practicalSession.PM, practicalSession.EVE)">
+                    &gt;
+                </button>
+            </p>
+            <p>
+                <button class="btn-default fixed-width-40 btn"
+                        ng-click="dropInNewArea('selectedTrainersForPractical', 'availableTrainersForPractical', 'selectedPractical', practicalSession.AM, practicalSession.PM, practicalSession.EVE)">
+                    &lt;
+                </button>
+            </p>
+        </div>
+    </div>
+
+    <div class="col-md-5">
+        <p><strong>Selected Practical Trainers:</strong></p>
+        <div class="listContainer"
+             id="selectedTrainersForPractical">
+            <ul>
+                <li ng-repeat="selectedTrainer in selectedTrainersForPractical | orderBy: 'Name'"
+                    track by selectedTrainer.Id
+                    data-allow-transform="true"
+                    ng-click="setValue(selectedTrainer, 'selectedPractical')"
+                    ng-class="{'highlightTrainer': selectedTrainer.isSelected }">
+                    <div class="row">
+                        <div class="col-sm-8">{{ selectedTrainer.Name }}</div>
+                        <div class="col-sm-4">
+                            <span ng-show="selectedTrainer.TrainerDistanceToVenueInMilesRounded > 0" title="Trainer {{ selectedTrainer.Name }}: {{selectedTrainer.TrainerDistanceToVenueInMilesRounded}} miles from the venue">{{ selectedTrainer.TrainerDistanceToVenueInMilesRounded }} Miles</span>
+                            <span ng-show="selectedTrainer.TrainerDistanceToVenueInMilesRounded <= 0" title="Trainer {{ selectedTrainer.Name }}: Unknown distanace from the venue">Unknown</span>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+        </div><!-- end .listContainer -->
+    </div><!-- end .col-md-6 -->
+
+
+</div><!-- end .listHolder -->
+
+
+<div class="row listHolder" ng-show="course.TheoryCourse == true">
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-8 noRightPadding">
+                <p><strong>Available Theory Trainers:</strong></p>
+            </div>
+            <!--AM & PM is session 4, PM & EVE is session 5-->
+            <div class='col-md-1 noRightPadding' ng-show="course.sessionNumber == 4">
+                <input type="checkbox" ng-model="theorySession.AM" ng-change="getAvailableTrainersBySession('theory')" />
+            </div>
+            <div class='col-md-1 noRightPadding blueitalic' ng-show="course.sessionNumber == 4">AM</div>
+
+            <div class='col-md-1 noRightPadding' ng-show="course.sessionNumber == 4 || course.sessionNumber == 5">
+                <input type="checkbox" ng-model="theorySession.PM" ng-change="getAvailableTrainersBySession('theory')" />
+            </div>
+            <div class='col-md-1 noRightPadding blueitalic' ng-show="course.sessionNumber == 4 || course.sessionNumber == 5">PM</div>
+
+            <div class='col-md-1 noRightPadding' ng-show="course.sessionNumber == 5">
+                <input type="checkbox" ng-model="theorySession.EVE" ng-change="getAvailableTrainersBySession('theory')" />
+            </div>
+            <div class='col-md-1 noRightPadding blueitalic' ng-show="session.Number == 5">EVE</div>
+
+        </div>
+        <div class="listContainer" id="availableTrainersForTheory">
+            <ul>
+                <li ng-repeat="availableTrainer in availableTrainersForTheory | orderBy: 'Name'"
+                    track by availableTrainer.Id
+                    data-allow-transform="true"
+                    ng-click="setValue(availableTrainer, 'availableTheory')"
+                    ng-class="{'highlightTrainer': availableTrainer.isSelected }">
+                    <div class="row">
+                        <div class="col-sm-8">{{ availableTrainer.Name }}</div>
+                        <div class="col-sm-4">
+                            <span ng-show="availableTrainer.TrainerDistanceToVenueInMilesRounded > 0" title="Trainer {{ availableTrainer.Name }}: {{availableTrainer.TrainerDistanceToVenueInMilesRounded}} miles from the venue">{{ availableTrainer.TrainerDistanceToVenueInMilesRounded }} Miles</span>
+                            <span ng-show="availableTrainer.TrainerDistanceToVenueInMilesRounded < 1" title="Trainer {{ availableTrainer.Name }}: Unknown distanace from the venue">Unknown</span>
+                        </div>
+
+                    </div>
+
+                </li>
+
+            </ul>
+        </div><!-- end .listContainer -->
+    </div><!-- end .col-md-6 -->
+
+    <div class="col-md-2">
+        <br />
+        <div class="text-center" style="line-height: 40px;">
+            <p>
+                <button class="btn btn-default fixed-width-40"
+                        ng-disabled="selectedTrainersForTheory.length >= course.courseType.MaxTheoryTrainers"
+                        ng-click="dropInNewArea('availableTrainersForTheory', 'selectedTrainersForTheory', 'availableTheory', theorySession.AM, theorySession.PM, theorySession.EVE)">
+                    &gt;
+                </button>
+            </p>
+            <p>
+                <button class="btn btn-default fixed-width-40"
+                        ng-click="dropInNewArea('selectedTrainersForTheory', 'availableTrainersForTheory', 'selectedTheory', theorySession.AM, theorySession.PM, theorySession.EVE)">
+                    &lt;
+                </button>
+            </p>
+        </div>
+    </div>
+
+    <div class="col-md-5">
+        <p><strong>Selected Theory Trainers:</strong></p>
+        <div class="listContainer"
+             id="selectedTrainersForTheory">
+            <ul>
+                <li ng-repeat="selectedTrainer in selectedTrainersForTheory | orderBy: 'Name'"
+                    track by selectedTrainer.Id
+                    data-allow-transform="true"
+                    ng-click="setValue(selectedTrainer, 'selectedTheory')"
+                    ng-class="{'highlightTrainer': selectedTrainer.isSelected }">
+                    <div class="row">
+                        <div class="col-sm-8">{{ selectedTrainer.Name }}</div>
+                        <div class="col-sm-4">
+                            <span ng-show="selectedTrainer.TrainerDistanceToVenueInMilesRounded > 0" title="Trainer {{ selectedTrainer.Name }}: {{selectedTrainer.TrainerDistanceToVenueInMilesRounded}} miles from the venue">{{ selectedTrainer.TrainerDistanceToVenueInMilesRounded }} Miles</span>
+                            <span ng-show="selectedTrainer.TrainerDistanceToVenueInMilesRounded <= 0" title="Trainer {{ selectedTrainer.Name }}: Unknown distanace from the venue">Unknown</span>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+        </div><!-- end .listContainer -->
+    </div><!-- end .col-md-6 -->
+
+    <div data-ng-if="showSuccessFader == true">
+        <my-msgfader status="success"></my-msgfader>
+    </div>
+    <div data-ng-if="showErrorFader == true">
+        <my-msgfader status="error"></my-msgfader>
+    </div>
+
+</div><!-- end .listHolder -->

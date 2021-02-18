@@ -1,0 +1,47 @@
+﻿<div id="relateTaskToClientDiv">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Clients</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table st-table="taskClients" st-safe-src="taskClientsTemplate" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            <input st-search="" class="form-control" placeholder="Filter Users" type="search" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="taskClient in taskClients" ng-class="{taskSelectedOrganisationClient : selectedClientId == taskClient.Id}">
+                        <td ng-click="selectClient(taskClient.Id)">
+                            {{ taskClient.DisplayName }}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="text-center">
+                            <div ng-if="taskClientsTemplate.length >= 1" class="TableSummary col-md-12 col-sm-12">
+                                {{taskClientsTemplate.length}} Users have been retrieved from the database
+                            </div>
+                            <div st-pagination="" st-items-by-page="maxResults" st-displayed-pages="7"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn" ng-click="linkTaskToClient(selectedClientId)" ng-disabled="selectedClientId < 0">Assign Task</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 validation-message">
+            {{validationMessage}}
+        </div>
+    </div>
+</div>

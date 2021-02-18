@@ -1,0 +1,72 @@
+﻿
+
+.ViewDataView {
+    width: 850px;
+    /*height: 750px;*/
+    min-height: 670px;
+    height: auto;
+    overflow: visible;
+
+    .x-sml-scroll-div {
+        overflow-y:scroll;
+        height :500px;
+        border: 1px solid black;
+    }
+
+    .sml-scroll-div {
+        border: 1px solid black;
+    }
+
+    .x-btn-sm {
+        width:70px;
+    }
+
+    .AddFavourite {
+        position: absolute;
+        top: 0;
+        right: 20px;
+    }
+    .form-line-holder {
+        height: auto;
+        overflow: hidden;
+        margin-bottom: 10px; 
+    }
+
+    form {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+        .col-sm-12 {
+            display: inline-block;
+        }
+
+        .control-button {
+            margin-left: -25px;
+        }
+
+        .control-label {
+            display: block;
+            white-space: nowrap;
+            padding: 0;
+            text-align: left;
+        }
+
+        .table tr:hover td
+        {
+            background-color:#ffffe6;
+        }
+
+        .selectedDataView {
+            background: #cce9ff !important;
+        }
+
+        .selectedDataView:hover {
+            background: #ffffe6;
+        }
+
+
+    }
+
+}
+

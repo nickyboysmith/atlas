@@ -1,0 +1,139 @@
+﻿@import "../modules/_mixins";
+
+/**
+    QuickLaunch 
+*/
+body#organisationLogin {
+     
+    background: #F3F2F2;
+    min-height:100%;
+
+    #orgLoginContainer {
+        width: 100%;
+        .branding-container {
+            margin:20px 0;
+            img {
+                float: right;
+            }
+        }
+        .organisation-logo {
+            height: 60px;
+            width: 180px;
+            background: url(/app_assets/images/atlas_organisation_logo_2.png) no-repeat;
+            background-size: 180px;
+            display: block;
+            margin-left: -16px;
+        }
+        .contact-link-holder {
+            margin-top: 40px;
+            height: auto;
+            overflow: hidden;
+            .contact-link {
+                float: right;
+                display: block;
+                margin-right: -19px;
+            }
+        }
+        .login-box {
+            margin-top: 15px;
+            border: 2px solid #cecece;
+            background: #ECECEC;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            @include theBorderRadius(3px);
+
+
+
+            label {
+                font-size: 13px;
+                padding-top: 7px;
+                display: block;
+            }
+            .login-input {
+                width: 100%;
+                @include theBorderRadius(3px);
+                border: 1px solid #cecece;
+                padding: 5px;
+            }
+            .checkbox-container {
+                padding-top:2px;
+            }
+            .login-checkbox {
+                float: left;
+                display: block;
+                margin-right: 10px;
+                margin-top: 4px;
+            }
+            .separate-row-top {
+                margin-top: 20px;
+            }
+            .separate-row {
+                margin-bottom: 10px;
+            }
+            .separate-row-20 {
+                margin-bottom: 20px;
+            }
+            .change-requests {
+                font-size: 13px;
+                padding-top: 6px;
+                cursor: pointer;
+                text-decoration: underline;
+                color: blue;
+            }
+            .change-requests:hover {
+                text-decoration: underline;
+            }
+            .sign-in-button {
+                width: 100%;
+            }
+            .system-message {
+                padding-top: 2px;
+            }
+            .system-message-response {
+                // border: 
+                padding: 10px 0;
+                color: #6B6868;
+                font-size: 15px;
+                @include theBorderRadius(3px);
+                margin-bottom: 10px;
+            }
+
+            .system-message-response {
+                border: 1px solid green;
+                background: #D1EFD1;
+            }
+            .red {
+                border: 1px solid #F1483D;
+                background: #EFD3D8;
+            }
+            .green {
+                border: 1px solid green;
+                background: #D1EFD1;
+            }
+            .yellow {
+                border: 1px solid yellow;
+                background: #faf6b7;
+            }
+            .blue {
+                border: 1px solid blue;
+                background: #b8f0fa;
+            }
+
+            .system-icon {
+                width: 24px;
+                height: 24px;
+                float: left; 
+                margin-right: 10px;
+                margin-left: 10px;
+            }
+            .system-icon {
+                @include iconGetter(-10px, -661px);
+            }
+            .system-icon {
+                @include iconGetter(-10px, -629px);
+            }
+            
+        }
+    }
+
+}

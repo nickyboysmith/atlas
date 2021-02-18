@@ -1,0 +1,37 @@
+﻿#systemFeatureInformationDirective {
+    
+    float: right;
+    width: 60px;
+    height: 20px;
+    margin-right: 20px;
+
+    div{
+        height: 20px;
+    }
+    div div{
+        width: 20px;
+    }
+
+    .system-feature-information-icon {
+        img {
+            height: 20px;
+        }
+    }
+
+    .favourite-icon {
+        margin-right: 20px
+    }
+
+    .information-icon {
+        img {
+            height: 18px;
+            margin-top: 2px;      
+        }
+    }
+
+}
+system-feature-information.MergeDown {
+    position: absolute;
+    right: 20px;
+    z-index: 2;
+}

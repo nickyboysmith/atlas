@@ -1,0 +1,48 @@
+﻿<publishData>
+  <publishProfile profileName="iam-atlas-uat - Web Deploy" 
+                  publishMethod="MSDeploy" 
+                  publishUrl="iam-atlas-uat.scm.azurewebsites.net:443" 
+                  msdeploySite="iam-atlas-uat" 
+                  userName="$iam-atlas-uat" 
+                  userPWD="b2WwbEbnpJcECeR5QwoWje32GZRk4oM2yrAl9CaTMZM2Xiskzyed6vBduJtp" 
+                  destinationAppUrl="http://iam-atlas-uat.azurewebsites.net" 
+                  SQLServerDBConnectionString="Data Source=tcp:ymw3trna08.database.windows.net,1433;Initial Catalog=Atlas_UAT;User ID=AtlasDev@ymw3trna08;Password=IAM2015dev~!" 
+                  mySQLDBConnectionString="" 
+                  hostingProviderForumLink="" 
+                  controlPanelLink="http://windows.azure.com" 
+                  webSystem="WebSites" 
+                  targetDatabaseEngineType="sqlazuredatabase" 
+                  targetServerVersion="Version100">
+    <databases>
+      <add name="DefaultConnection" 
+           connectionString="Data Source=tcp:ymw3trna08.database.windows.net,1433;Initial Catalog=Atlas_UAT;User ID=AtlasDev@ymw3trna08;Password=IAM2015dev~!" 
+           providerName="System.Data.SqlClient" 
+           type="Sql" 
+           targetDatabaseEngineType="sqlazuredatabase" 
+           targetServerVersion="Version100" />
+    </databases>
+  </publishProfile>
+  <publishProfile profileName="iam-atlas-uat - FTP" 
+                  publishMethod="FTP" 
+                  publishUrl="ftp://waws-prod-am2-025.ftp.azurewebsites.windows.net/site/wwwroot" 
+                  ftpPassiveMode="True" 
+                  userName="iam-atlas-uat\$iam-atlas-uat" 
+                  userPWD="b2WwbEbnpJcECeR5QwoWje32GZRk4oM2yrAl9CaTMZM2Xiskzyed6vBduJtp" 
+                  destinationAppUrl="http://iam-atlas-uat.azurewebsites.net" 
+                  SQLServerDBConnectionString="Data Source=tcp:ymw3trna08.database.windows.net,1433;Initial Catalog=Atlas_UAT;User ID=AtlasDev@ymw3trna08;Password=IAM2015dev~!" 
+                  mySQLDBConnectionString="" 
+                  hostingProviderForumLink="" 
+                  controlPanelLink="http://windows.azure.com" 
+                  webSystem="WebSites" 
+                  targetDatabaseEngineType="sqlazuredatabase" 
+                  targetServerVersion="Version100">
+    <databases>
+      <add name="DefaultConnection" 
+           connectionString="Data Source=tcp:ymw3trna08.database.windows.net,1433;Initial Catalog=Atlas_UAT;User ID=AtlasDev@ymw3trna08;Password=IAM2015dev~!" 
+           providerName="System.Data.SqlClient" 
+           type="Sql" 
+           targetDatabaseEngineType="sqlazuredatabase" 
+           targetServerVersion="Version100" />
+    </databases>
+  </publishProfile>
+</publishData>

@@ -1,0 +1,50 @@
+﻿<div ng-controller="cloneReportCtrl">
+    <style>
+        .descriptionArea
+        {
+            width:100%;
+        }
+    </style>
+    <div>
+        <table style="width:350px;">
+            <tr>
+                <td colspan="2">
+                    {{successMessage}}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h3>Cloning Report:&nbsp;{{sourceReport.Title}}</h3><br />
+                </td>                
+            </tr>
+            <tr>
+                <td style="width:30%">
+                    Title:
+                </td>
+                <td style="width:70%" align="right">
+                    <input style="width:100%" type="text" ng-model="cloneReport.Title" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Description:
+                </td>
+                <td>
+                    <textarea ng-model="cloneReport.Description" placeholder="Description" class="descriptionArea" rows="5"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="margin-top:10px;">
+                        <button class="btn" onclick="$('button.close').last().trigger('click')">Cancel</button>
+                    </div>
+                </td>
+                <td align="right">
+                    <div style="margin-top:10px;">
+                        <button ng-click="cloneExistingReport()"  class="btn">Save</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>   
+</div>
